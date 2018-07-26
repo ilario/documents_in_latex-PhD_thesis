@@ -11,48 +11,48 @@
 % non so se sia necessario lanciare altre volte biber, makeglossaries o pdflatex, di certo male non fa.
 %
 
-\documentclass[a4paper, 12pt, openright]{book}
+\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
 \usepackage[utf8]{inputenc}
 \usepackage[catalan, spanish, italian, english]{babel}
 \usepackage[binary-units]{siunitx} % Typesetting quantities in a consistent way
-\usepackage{chemmacros} 		% \ch{}
+%\usepackage{chemmacros} 		% \ch{}
 \usepackage[backend=biber, labelnumber=true, url=false, isbn=false, maxcitenames=10, giveninits=true, sorting=none]{biblatex}
-\usepackage{chemnum}			% Package used to manage index of compounds and schemes
+%\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 \usepackage{graphicx}
 \usepackage{subcaption} %the subfigure and subfig packages are deprecated
-\usepackage{csquotes} 
+%\usepackage{csquotes} 
 \usepackage[wide, ragged]{sidecap}%[ragged, margincaption, centerbody]
-\usepackage{ragged2e} % needed by ragged option of sidecap?
-\usepackage{chngcntr} % needed for setting option not resetting footnote counter at chapter end
-\usepackage{pgfplots} % graphs
-\usepackage{booktabs}
-\usepackage{lscape} %for big landscape figures, rotate the page
-\usepackage{afterpage} %for making landscape float
+%\usepackage{ragged2e} % needed by ragged option of sidecap?
+%\usepackage{chngcntr} % needed for setting option not resetting footnote counter at chapter end
+%\usepackage{pgfplots} % graphs
+%\usepackage{booktabs}
+%\usepackage{lscape} %for big landscape figures, rotate the page
+%\usepackage{afterpage} %for making landscape float
 \usepackage[section]{placeins} %keeps floats `in their place', preventing them from floating past a "\FloatBarrier" command into another section.
-\usepackage{float}
+%\usepackage{float}
 \usepackage{eso-pic} %background image on titlepage
 \usepackage{transparent} %transparency for background image on titlepage
 \usepackage[format=hang, labelfont=bf, textfont=small]{caption}%personalize figure and table captions
 \usepackage[xindy, nonumberlist, acronym, nomain]{glossaries} %table of acronyms
-\usepackage{relsize}%needed by smaller in glossaries
-\usepackage{multirow}% for tables
-\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
+%\usepackage{relsize}%needed by smaller in glossaries
+%\usepackage{multirow}% for tables
+%\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
 \usepackage{fancyhdr}%page headers
 \usepackage[hmarginratio=1:1, vmarginratio=1:1, a4paper, marginparwidth=1.5cm, textheight=630pt]{geometry}% marginparwidth inserted only for wide sidecaps
-\usepackage{amssymb}% for the \square math symbol
+%\usepackage{amssymb}% for the \square math symbol
 
 \renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 \captionsetup[SCfigure]{format=plain}
-\pgfplotsset{compat=newest}
-\counterwithout{footnote}{chapter} % not resetting footnote counter at chapter end
+%\pgfplotsset{compat=newest}
+%\counterwithout{footnote}{chapter} % not resetting footnote counter at chapter end
 \newcommand{\HNMR}{$^1$\ch{H}-\textsmaller{NMR}}
 \newcommand{\CNMR}{$^{13}$\ch{C}-\textsmaller{NMR}}
-\pgfplotsset{tick label style={font=\small},label style={font=\small}}
+%\pgfplotsset{tick label style={font=\small},label style={font=\small}}
 %\let\oldch\ch %move the ch command, needed for redefinition
 %\renewcommand{\ch}[1]{\textsf{\oldch{#1}}} %add sans serif to \ch
 
 \DeclareSIUnit\Molar{M}
-\DeclareSIUnit\rpm{rpm}
+\DeclareSIUnit\RPM{RPM}
 \DeclareSIUnit\eq{eq}
 \DeclareSIUnit\eV{eV}
 \DeclareSIUnit\ppm{ppm}
@@ -60,7 +60,7 @@
 
 % \cmpd*[cmpd-label = 1S]{ig2-1}
 \newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-\pgfplotsset{minor grid style={densely dotted,lightgray}}
+%\pgfplotsset{minor grid style={densely dotted,lightgray}}
 
 \bibliography{phd-biblio}
 
@@ -99,13 +99,13 @@ test \ifmorenames
 \vfill
 \centering
 \transparent{0.04}%stampato risulta randomicamente più scuro o più chiato, on paper this image results much more visible (or less, randomly) than on screen
-	{\includegraphics[width=0.9\paperwidth]{img/emblem-urv.pdf}}%
+	{\includegraphics[width=0.9\paperwidth]{contents_img/emblem-urv.pdf}}%
 \vfill
 }
 }
 }
 
-	\makebox[\textwidth]{\centering{\includegraphics[width=.27\textwidth]{img/logo-urv.pdf}}}\\%
+	\makebox[\textwidth]{\centering{\includegraphics[width=.27\textwidth]{contents_img/logo-urv.pdf}}}\\%
 	\bigskip
 	\large{\textsc{Universitat Rovira i Virgili\\ Institute of Chemical Research of Catalonia}}\\
 		\rule{5cm}{1pt}\\
@@ -254,105 +254,47 @@ Fotofisica de celdas de perovskita
 
 
 \chapter{Introduction}
-%\graphicspath{ {./img/intro/} }
-%\input{chap/intro.tex}
-
-	\section{PhotoVoltaic Effect}
-	
-	\section{Perovskite Solar Cells}
-	
-	\section{Efficiency Limiting Factors}
-	
-	\section{Studying and Understanding the System}
-
-	\section{Aims}
+	\graphicspath{ {./contents_img/intro/} }
+	\input{contents_tex/intro.tex}
 
 \chapter{Background and Related Work}
+	\graphicspath{ {./contents_img/background/} }
+	\input{contents_tex/background.tex}
 
-	\section{Perovskite Solar Cells}
-	
-	\section{Hole Transporting Materials}
-	
-	\section{PhotoPhysical Studies and Techniques}
-	
-	\section{Modelling and Relevant Physics}
-
-\chapter{Computational, Data Acquisition and Data Analysis Methods}
-\chaptermark{Computational Methods}
-
-	\section{Current-Voltage Curve Acquisition}
-
-	\section{PhotoPhysics Data Analysis}
-
-	\section{Maximum Power Point Tracking}
-	
-	\section{Time Resolved Modelling of Free Carges and Ionic Defects Drift and Diffusion in One Dimension}
-
-\chapter{Experimental Methods}
-
-	\section{Top Cathode Perovskite Solar Cells One Step Fabrication}
-	
-	\section{Top Cathode Perovskite Solar Cells Two Step Fabrication}
-	
-	\section{Bottom Cathode Perovskite Solar Cells Fabrication}
-
-	\section{Solar Cells Handling and Routinary Characterization}
-	
-	\section{Advanced Characterization}
-	
-		\subsection{Transient PhotoVoltage}
-		
-		\subsection{Charge Extraction}
-		
-		\subsection{Transient PhotoCurrent}
-		
-		\subsection{Impedance Spectroscopy}
-		
-		\subsection{Stark (ElectroAbsorption) Spectroscopy}
-
-\chapter{Optimization of Perovskite Photovoltaic Devices Towards Efficiency and Reproducibility}
-\chaptermark{Optimization of Devices}
-	\section{Critical Assessment}
+\chapter{Experimental, Data Acquisition and Data Analysis Methods}
+	\chaptermark{Methods}
+	\graphicspath{ {./contents_img/methods/} }
+	\input{contents_tex/methods.tex}
 
 \chapter{Evidence of HOMO-LUMO Energy Shift for Hole Transport Material in Perovskite Solar Cells}
-\chaptermark{HOMO-LUMO Shift for HTM}
-	\section{DC}
-	\section{TPV}
-	\section{KPFM}
-	\section{Conclusions}
-	\section{Critical Assessment}
+	\chaptermark{HOMO-LUMO Shift for HTM}
+	\graphicspath{ {./contents_img/tae/} }
+	\input{contents_tex/tae.tex}
 
 \chapter{Selective Organic Contacts for Methyl Ammonium Lead Iodide (MAPI) Perovskite Solar Cells: Influence of Layer Thickness on Carriers Extraction and Carriers Lifetime}
-\chaptermark{Thickness of Selective Contacts}
-	\section{Devices with Different MAPI Thickness (Variations on the Absorber Material Layer)}
-	\section{Devices with Different PCBM-C70 Thickness (Variations on the Electron Transport Material Layer)}
-	\section{Devices with Different PEDOT:PSS Thickness (Variations on the Hole Transport Material Layer)}
-	\section{Critical Assessment}
+	\chaptermark{Thickness of Selective Contacts}
+	\graphicspath{ {./contents_img/thicknesses/} }
+	\input{contents_tex/thicknesses.tex}
 	
-\chapter{Apparent Gigantic Capacitance from Impedance Spectroscopy}
-\chaptermark{Apparent Capacitance in IS}
-
-	\section{Critical Assessment}
+\chapter{Ionic-to-electronic Current Amplification in Hybrid Perovskite Solar Cells}
+	\chaptermark{Ionic-to-electronic current amplification}
+	\graphicspath{ {./contents_img/impedance/} }
+	\input{contents_tex/impedance.tex}
 	
-\chapter{Analysis of Transient PhotoVoltage Components and Insights on Ionic Migration}
-\chaptermark{Analysis of TPV Components}
-
-	\section{Critical Assessment}
-
-\chapter{Analysis of Charge Extraction and Insights on Ionic Migration}
-\chaptermark{Analysis of CE}
-
-	\section{Critical Assessment}
-	
-\chapter{Analysis of Stark (ElectroAbsorption) Spectroscopy}
+\chapter{Interpretation of Stark (ElectroAbsorption) Spectroscopy for Perovskite Solar Cells}
 	\chaptermark{Analysis of EA}
-	
-	\section{Critical Assessment}	
+	\graphicspath{ {./contents_img/electroabsorption/} }
+	\input{contents_tex/electroabsorption.tex}
+
+\chapter{Software Development for Data Acquisition, Analysis and Physical Modelling}
+	\chaptermark{Software Development}
+	\graphicspath{ {./contents_img/software/} }
+	\input{contents_tex/software.tex}
 
 \chapter{Summary Conclusions}
 
 
-\chapter{Further work}
+\chapter{Further Work}
 
 
 \chapter*{Acknowledgements}
