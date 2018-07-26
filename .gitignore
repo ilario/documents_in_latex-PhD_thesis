@@ -1,0 +1,29 @@
+# adapted from https://gist.github.com/misberner/8316891
+
+# LaTeX temporary files
+*.aux
+*.log
+*.toc
+
+# Latexmk
+*.fdb_latexmk
+
+# SyncTeX
+*.synctex.gz
+
+# LaTeX Beamer
+*.snm
+*.vrb
+*.nav
+*.out
+
+# BibTeX
+*.bbl
+*.blg
+
+# MATLAB saves
+*.mat
+*.fig
+
+# syncthing
+.stversions
