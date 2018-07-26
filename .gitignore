@@ -5,6 +5,15 @@
 *.log
 *.toc
 
+# More useless LaTeX files
+*.acn
+*.bcf
+*.glsdefs
+*.lof
+*.lot
+*.xml
+*.xdy
+
 # Latexmk
 *.fdb_latexmk
 
@@ -27,3 +36,6 @@
 
 # syncthing
 .stversions
+
+# do not watch binary PDF
+*.pdf
