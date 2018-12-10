@@ -1,5 +1,16 @@
 # adapted from https://gist.github.com/misberner/8316891
 
+*.zip
+*.pdf
+trash/
+*.xls
+*.xlsx
+*.tif
+*.tiff
+*.ods
+*\#
+.RData
+
 # LaTeX temporary files
 *.aux
 *.log

@@ -13,14 +13,13 @@
 
 \documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
 \usepackage[utf8]{inputenc}
-\usepackage[catalan, spanish, italian, english]{babel}
+\usepackage[spanish, italian, english]{babel}
 \usepackage[binary-units]{siunitx} % Typesetting quantities in a consistent way
 %\usepackage{chemmacros} 		% \ch{}
-\usepackage[backend=biber, labelnumber=true, url=false, isbn=false, maxcitenames=10, giveninits=true, sorting=none]{biblatex}
+\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, maxcitenames=10, giveninits=true, sorting=none]{biblatex}
 %\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 \usepackage{graphicx}
 \usepackage{subcaption} %the subfigure and subfig packages are deprecated
-%\usepackage{csquotes} 
 \usepackage[wide, ragged]{sidecap}%[ragged, margincaption, centerbody]
 %\usepackage{ragged2e} % needed by ragged option of sidecap?
 %\usepackage{chngcntr} % needed for setting option not resetting footnote counter at chapter end
@@ -40,6 +39,8 @@
 \usepackage{fancyhdr}%page headers
 \usepackage[hmarginratio=1:1, vmarginratio=1:1, a4paper, marginparwidth=1.5cm, textheight=630pt]{geometry}% marginparwidth inserted only for wide sidecaps
 %\usepackage{amssymb}% for the \square math symbol
+\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
+\MakeOuterQuote{"}
 
 \renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 \captionsetup[SCfigure]{format=plain}
@@ -62,7 +63,7 @@
 \newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 %\pgfplotsset{minor grid style={densely dotted,lightgray}}
 
-\bibliography{phd-biblio}
+\bibliography{biblio}
 
 \renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
 \ifboolexpr{
@@ -79,7 +80,7 @@ test \ifmorenames
 \hyphenation{tetra-hydro-furan di-chloro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse}
 \makeglossaries
 
-\title{Advanced characterization and modeling of charge transfer reactions in perovskite solar cells.}
+\title{Advanced characterization and modelling of charge transfer reactions in perovskite solar cells.}
 \author{Ilario Gelmetti}
 \date{2018}
 \begin{document}
@@ -111,10 +112,10 @@ test \ifmorenames
 		\rule{5cm}{1pt}\\
 	{
 \smallskip
-	{Doctoral thesis in \textsc{Electronic Engineering}}}\\
+	{\textsc{Doctoral Thesis} in \textsc{Electronic Engineering}}}\\
 \vfill
 
-	\huge{\textsc{Advanced characterization and modeling of charge transfer reactions in perovskite solar cells.}}\\
+	\huge{\textsc{Advanced characterization and modelling of charge transfer reactions in perovskite solar cells}}\\
 \vfill
 	\footnotesize{Author:}\\
 	\large{Ilario Gelmetti}\\
@@ -212,6 +213,7 @@ Perovskite photophisics
 \vfill
 }
 \selectlanguage{italian}
+\EnableQuotes
 \noindent
 Fotofisica di celle di perovskite
 
@@ -221,6 +223,7 @@ Fotofisica di celle di perovskite
 	\vfill
 }
 \selectlanguage{spanish}
+\EnableQuotes
 \noindent
 
 Fotofisica de celdas de perovskita
@@ -230,7 +233,7 @@ Fotofisica de celdas de perovskita
 	\centering \rule{5cm}{1pt}\\
 	\vfill
 }
-\selectlanguage{catalan}
+%\selectlanguage{catalan}
 \noindent
 
 Fotofisica de celdas de perovskita
@@ -238,6 +241,7 @@ Fotofisica de celdas de perovskita
 \vfill
 
 \selectlanguage{english}
+\EnableQuotes
 
 \restoregeometry
 
@@ -308,6 +312,41 @@ bla bla bla
 
 \chapter{List of publications}
 
-
+\printbibliography
 
 \end{document}
+
+
+
+%{\hfill\includegraphics[width=1\textwidth]{}\hfill}
+
+%\begin{SCfigure}%[!hbtp]%
+%	\centering
+%	\includegraphics[width=0.4\textwidth]{}
+%	\caption{}\label{fig:}
+%\end{SCfigure}
+
+%\begin{figure}%[!hbtp]%
+%        \centering
+%        \begin{subfigure}[b]{0.45\textwidth}
+%                \includegraphics[width=1\textwidth]{}
+%                \subcaption{}\label{fig:}
+%        \end{subfigure}
+%        \qquad
+%        \begin{subfigure}[b]{0.45\textwidth}
+%                \includegraphics[width=1\textwidth]{}
+%                \subcaption{}\label{fig:}
+%        \end{subfigure}
+%        \caption{}\label{fig:}
+%\end{figure}
+
+%\begin{table}%[h]
+%	\caption{ }
+%	\begin{center}
+%	\begin{tabular}{p{4cm}|c|c|c|}
+%	\hline
+%	\rule[0ex]{-4pt}{3ex}
+%	\multirow{2}{*}{text}
+%	\end{tabular}
+%	\end{center}
+%\end{table}

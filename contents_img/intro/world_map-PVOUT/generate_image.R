@@ -1,0 +1,7 @@
+library(raster)
+library(RColorBrewer)
+pdf("world_map-PVOUT.pdf", width=6, height=2, pointsize=7)
+op <- par(mar=c(1,1,2,3))
+plot(raster("PVOUT-resized003.tif"), col=brewer.pal(9, "YlGnBu"), ylim = c(-45, 60), asp=NA, axes=FALSE, box=FALSE, legend.args=list(text='kWh / kWp', side=3, font=2, line=2, cex=1))
+graphics.off()
+par(op)
