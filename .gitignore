@@ -10,6 +10,12 @@ trash/
 *.ods
 *\#
 .RData
+*.acr
+*.alg
+*.idx
+*.ind
+*.jpg
+
 
 # LaTeX temporary files
 *.aux

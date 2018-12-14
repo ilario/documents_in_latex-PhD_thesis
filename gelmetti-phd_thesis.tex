@@ -16,7 +16,12 @@
 \usepackage[spanish, italian, english]{babel}
 \usepackage[binary-units]{siunitx} % Typesetting quantities in a consistent way
 %\usepackage{chemmacros} 		% \ch{}
-\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, maxcitenames=10, giveninits=true, sorting=none]{biblatex}
+\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
+
+% from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
+\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
+%\AtEveryBibitem{\ifentrytype{article}{\togglefalse{bbx:url}}{}}
+
 %\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 \usepackage{graphicx}
 \usepackage{subcaption} %the subfigure and subfig packages are deprecated
@@ -32,13 +37,22 @@
 \usepackage{eso-pic} %background image on titlepage
 \usepackage{transparent} %transparency for background image on titlepage
 \usepackage[format=hang, labelfont=bf, textfont=small]{caption}%personalize figure and table captions
+\usepackage{hyperref}
+
 \usepackage[xindy, nonumberlist, acronym, nomain]{glossaries} %table of acronyms
-%\usepackage{relsize}%needed by smaller in glossaries
+\makeglossaries % has to be after glossaries and after hyperref
+\setacronymstyle{long-sp-short}
+\usepackage{relsize}%needed by textsmaller in glossaries
+\renewcommand*{\acronymfont}[1]{\textsmaller{#1}}
+
+
 %\usepackage{multirow}% for tables
 %\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
 \usepackage{fancyhdr}%page headers
 \usepackage[hmarginratio=1:1, vmarginratio=1:1, a4paper, marginparwidth=1.5cm, textheight=630pt]{geometry}% marginparwidth inserted only for wide sidecaps
 %\usepackage{amssymb}% for the \square math symbol
+\usepackage{makeidx} % for alphabetical index, using xindy or makeindex
+\makeindex
 \usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
 \MakeOuterQuote{"}
 
@@ -62,23 +76,24 @@
 % \cmpd*[cmpd-label = 1S]{ig2-1}
 \newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 %\pgfplotsset{minor grid style={densely dotted,lightgray}}
+\newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
+\newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
 
 \bibliography{biblio}
 
-\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
-\ifboolexpr{
-test {\ifnumequal{\value{listcount}}{\value{liststop}}}
-and
-test \ifmorenames
-}
-{\ifnumgreater{\value{liststop}}{1}
-{\finalandcomma}
-{}%
-\andothersdelim\bibstring[\emph]{andothers}}
-{}}
+%\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
+%\ifboolexpr{
+%test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+%and
+%test \ifmorenames
+%}
+%{\ifnumgreater{\value{liststop}}{1}
+%{\finalandcomma}
+%{}%
+%\andothersdelim\bibstring[\emph]{andothers}}
+%{}}
 
 \hyphenation{tetra-hydro-furan di-chloro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse}
-\makeglossaries
 
 \title{Advanced characterization and modelling of charge transfer reactions in perovskite solar cells.}
 \author{Ilario Gelmetti}
@@ -179,20 +194,22 @@ test \ifmorenames
 \listoffigures
 \listoftables
 
-\newacronym{HOMO}{\textsmaller{HOMO}}{highest-energy occupied molecular orbital}
-\newacronym{LUMO}{\textsmaller{LUMO}}{lowest-energy unoccupied molecular orbital}
-\newacronym{PL}{\textsmaller{PL}}{photoluminescence}
-\newacronym{UVvis}{\textsmaller{UV}--vis}{ultraviolet--visible}
-\newacronym{NMR}{\textsmaller{NMR}}{nuclear magnetic resonance}
-\newacronym{XRD}{\textsmaller{XRD}}{X--ray diffraction}
-\newacronym{PCBM}{\textsmaller{PC}$_{60}$\textsmaller{BM}}{phenyl-\ch{C}61-butyric acid methyl ester}
-\newacronym{PTFE}{\textsmaller{PTFE}}{poly\-tetra\-fluoro\-ethylene}
-\newacronym{FTO}{\textsmaller{FTO}}{fluorine tin oxide}
-\newacronym{PEDOT:PSS}{\textsmaller{PEDOT:PSS}}{poly\-(3,4-ethylene\-di\-oxy\-thiophene) poly\-(styrene\-sulfonate)}
-\newacronym{FF}{\textsmaller{FF}}{fill factor}
+\newacronym{homo}{HOMO}{highest-energy occupied molecular orbital}
+\newacronym{lumo}{LUMO}{lowest-energy unoccupied molecular orbital}
+\newacronym{pl}{PL}{photoluminescence}
+\newacronym{uvvis}{UV--vis}{ultraviolet--visible}
+\newacronym{nmr}{NMR}{nuclear magnetic resonance}
+\newacronym{xrd}{XRD}{X--ray diffraction}
+\newacronym{pcbm}{PC$_{60}$BM}{phenyl-\ch{C}61-butyric acid methyl ester}
+\newacronym{ptfe}{PTFE}{poly\-tetra\-fluoro\-ethylene}
+\newacronym{fto}{FTO}{fluorine tin oxide}
+\newacronym{pedotpss}{PEDOT:PSS}{poly\-(3,4-ethylene\-di\-oxy\-thiophene) poly\-(styrene\-sulfonate)}
+\newacronym{ff}{FF}{fill factor}
+\newacronym{mai}{MAI}{methylammonium iodide}
+\newacronym{mabr}{MABr}{methylammonium bromide}
+\newacronym{fai}{FAI}{formamidinium iodide}
 
-\printglossary[type=\acronymtype
-]
+\printglossary[type=\acronymtype]
 
 }%here ends openany and starts openright
 
@@ -312,41 +329,8 @@ bla bla bla
 
 \chapter{List of publications}
 
+\printindex
+
 \printbibliography
 
 \end{document}
-
-
-
-%{\hfill\includegraphics[width=1\textwidth]{}\hfill}
-
-%\begin{SCfigure}%[!hbtp]%
-%	\centering
-%	\includegraphics[width=0.4\textwidth]{}
-%	\caption{}\label{fig:}
-%\end{SCfigure}
-
-%\begin{figure}%[!hbtp]%
-%        \centering
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=1\textwidth]{}
-%                \subcaption{}\label{fig:}
-%        \end{subfigure}
-%        \qquad
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=1\textwidth]{}
-%                \subcaption{}\label{fig:}
-%        \end{subfigure}
-%        \caption{}\label{fig:}
-%\end{figure}
-
-%\begin{table}%[h]
-%	\caption{ }
-%	\begin{center}
-%	\begin{tabular}{p{4cm}|c|c|c|}
-%	\hline
-%	\rule[0ex]{-4pt}{3ex}
-%	\multirow{2}{*}{text}
-%	\end{tabular}
-%	\end{center}
-%\end{table}
