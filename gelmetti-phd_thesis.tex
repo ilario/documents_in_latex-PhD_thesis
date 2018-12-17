@@ -15,12 +15,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, italian, english]{babel}
 \usepackage[binary-units]{siunitx} % Typesetting quantities in a consistent way
-%\usepackage{chemmacros} 		% \ch{}
+\usepackage{chemmacros} 		% \ch{}
+\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
 \usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
 
 % from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
 \AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
 %\AtEveryBibitem{\ifentrytype{article}{\togglefalse{bbx:url}}{}}
+\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
 
 %\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 \usepackage{graphicx}
@@ -38,6 +40,13 @@
 \usepackage{transparent} %transparency for background image on titlepage
 \usepackage[format=hang, labelfont=bf, textfont=small]{caption}%personalize figure and table captions
 \usepackage{hyperref}
+\usepackage{xcolor} % for colors in hyperref links
+\hypersetup{
+	colorlinks,
+	linkcolor={red!10!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
 
 \usepackage[xindy, nonumberlist, acronym, nomain]{glossaries} %table of acronyms
 \makeglossaries % has to be after glossaries and after hyperref
@@ -45,16 +54,28 @@
 \usepackage{relsize}%needed by textsmaller in glossaries
 \renewcommand*{\acronymfont}[1]{\textsmaller{#1}}
 
+\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
 
 %\usepackage{multirow}% for tables
 %\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
 \usepackage{fancyhdr}%page headers
 \usepackage[hmarginratio=1:1, vmarginratio=1:1, a4paper, marginparwidth=1.5cm, textheight=630pt]{geometry}% marginparwidth inserted only for wide sidecaps
-%\usepackage{amssymb}% for the \square math symbol
+
 \usepackage{makeidx} % for alphabetical index, using xindy or makeindex
 \makeindex
 \usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
 \MakeOuterQuote{"}
+
+\usepackage{amssymb}% for the \square math symbol
+\usepackage{mathtools}
+\sisetup{per-mode=symbol}
+\DeclareSIUnit\sq{\ensuremath\Box} % for the sheet resistance units https://tex.stackexchange.com/questions/71220/si-units-for-sheet-resistance-using-siunitx
+\DeclareSIUnit\Molar{M}
+\DeclareSIUnit\rpm{rpm}
+\DeclareSIUnit\eq{eq}
+\DeclareSIUnit\eV{eV}
+\DeclareSIUnit\ppm{ppm}
+\DeclareSIUnit\unit{unit}
 
 \renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 \captionsetup[SCfigure]{format=plain}
@@ -66,12 +87,6 @@
 %\let\oldch\ch %move the ch command, needed for redefinition
 %\renewcommand{\ch}[1]{\textsf{\oldch{#1}}} %add sans serif to \ch
 
-\DeclareSIUnit\Molar{M}
-\DeclareSIUnit\RPM{RPM}
-\DeclareSIUnit\eq{eq}
-\DeclareSIUnit\eV{eV}
-\DeclareSIUnit\ppm{ppm}
-\DeclareSIUnit\unit{unit}
 
 % \cmpd*[cmpd-label = 1S]{ig2-1}
 \newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
@@ -79,19 +94,29 @@
 \newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
 \newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
 
+\newcommand{\PbItwo}{\ch{PbI2}\index{lead diiodide}}
+\newcommand{\PbBrtwo}{\ch{PbBr2}\index{lead dibromide}}
+\newcommand{\CsI}{\ch{CsI}\index{cesium iodide}}
+\newcommand{\TiOtwo}{\ch{TiO2}\index{titanium dioxide}\xspace}
+\newcommand{\dTiOtwo}{\ch{d-TiO2}\index{titanium dioxide}\xspace}
+\newcommand{\mpTiOtwo}{\ch{mp-TiO2}\index{titanium dioxide}\xspace}
+
 \bibliography{biblio}
 
-%\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
-%\ifboolexpr{
-%test {\ifnumequal{\value{listcount}}{\value{liststop}}}
-%and
-%test \ifmorenames
-%}
-%{\ifnumgreater{\value{liststop}}{1}
-%{\finalandcomma}
-%{}%
-%\andothersdelim\bibstring[\emph]{andothers}}
-%{}}
+\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
+\ifboolexpr{
+test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+and
+test \ifmorenames
+}
+{\ifnumgreater{\value{liststop}}{1}
+{\finalandcomma}
+{}%
+\andothersdelim\bibstring[\emph]{andothers}}
+{}}
+
+
+
 
 \hyphenation{tetra-hydro-furan di-chloro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse}
 
@@ -203,11 +228,25 @@
 \newacronym{pcbm}{PC$_{60}$BM}{phenyl-\ch{C}61-butyric acid methyl ester}
 \newacronym{ptfe}{PTFE}{poly\-tetra\-fluoro\-ethylene}
 \newacronym{fto}{FTO}{fluorine tin oxide}
+\newacronym{ito}{ITO}{indium tin oxide}
 \newacronym{pedotpss}{PEDOT:PSS}{poly\-(3,4-ethylene\-di\-oxy\-thiophene) poly\-(styrene\-sulfonate)}
 \newacronym{ff}{FF}{fill factor}
 \newacronym{mai}{MAI}{methylammonium iodide}
 \newacronym{mabr}{MABr}{methylammonium bromide}
 \newacronym{fai}{FAI}{formamidinium iodide}
+\newacronym{dmso}{DMSO}{dimethyl sulfoxide}
+\newacronym{dmf}{DMF}{N,N-dimethylformamide}
+\newacronym{rt}{RT}{room temperature}
+\newacronym{htm}{HTM}{hole transporting material}
+
+
+\newglossaryentry{litfsi}{name={LiTFSI},description={bis(trifluoromethane)sulfonimide lithium salt}}
+\newglossaryentry{spiro}{name={\iupac{spiro-MeOTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octakis(4-methoxyphenyl)-9,9'-spirobi[9H-fluorene]-2,2',7,7'-tetramine}}}
+\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra\{4-[N,N-(4,4'-dimethoxydiphenylamino)]phenyl\}ethene}}}
+\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetrakis [N, N-bis(4-methoxyphenyl) amino]-9,9'-bifluorenylidene}}}
+\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetrakis(3,6-dimethoxy-9H-carbazol-9-yl)-9,9'-bifluorenylidene}}}
+%\newacronym{}{}{}
+
 
 \printglossary[type=\acronymtype]
 
