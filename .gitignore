@@ -15,7 +15,7 @@ trash/
 *.idx
 *.ind
 *.jpg
-
+manuals/
 
 # LaTeX temporary files
 *.aux
