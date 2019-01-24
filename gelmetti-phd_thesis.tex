@@ -1,141 +1,158 @@
-%
-% If you are looking for the PDF file, you can compile the .tex file or donwload the PDF from here:
-% 
-% 
-% Istruzioni di compilazione (per produrre il pdf): avere un texlive funzionante e i pacchetti che vengono richiesti qui sotto; lanciare i comandi
-% pdflatex gelmetti-master_thesis.tex
-% makeglossaries gelmetti-master_thesis
-% biber gelmetti-master_thesis
-% pdflatex gelmetti-master_thesis.tex
-% pdflatex gelmetti-master_thesis.tex
-% non so se sia necessario lanciare altre volte biber, makeglossaries o pdflatex, di certo male non fa.
-%
+	%
+	% If you are looking for the PDF file, you can compile the .tex file or donwload the PDF from here:
+	% 
+	% 
+	% Istruzioni di compilazione (per produrre il pdf): avere un texlive funzionante e i pacchetti che vengono richiesti qui sotto; lanciare i comandi
+	% pdflatex gelmetti-master_thesis.tex
+	% makeglossaries gelmetti-master_thesis
+	% biber gelmetti-master_thesis
+	% pdflatex gelmetti-master_thesis.tex
+	% pdflatex gelmetti-master_thesis.tex
+	% non so se sia necessario lanciare altre volte biber, makeglossaries o pdflatex, di certo male non fa.
+	%
+	
+	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
+	\usepackage[utf8]{inputenc}
+	\usepackage[spanish, es-noquoting, italian, english]{babel}
+	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
+	
+	\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
+	% product-units controls if 1 x 1 m or 1 m x 1 m
+	
+	\DeclareSIUnit\sq{\ensuremath\Box} % for the sheet resistance units https://tex.stackexchange.com/questions/71220/si-units-for-sheet-resistance-using-siunitx
+	\DeclareSIUnit\Molar{M}
+	\DeclareSIUnit\rpm{rpm}
+	\DeclareSIUnit\eq{eq}
+	\DeclareSIUnit\eV{eV}
+	\DeclareSIUnit\ppm{ppm}
+	\DeclareSIUnit\unit{unit}
+	\DeclareSIUnit\year{yr}
+	
+	\usepackage{chemmacros} 		% \ch{}
+	\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
+	
+	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
+	
+	% from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
+	\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
+	%\AtEveryBibitem{\ifentrytype{article}{\togglefalse{bbx:url}}{}}
+	\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
+	
+	%\usepackage{chemnum}			% Package used to manage index of compounds and schemes
+	\usepackage{graphicx}
+	\usepackage[textfont={small}]{subcaption} %the subfigure and subfig packages are deprecated
+	\usepackage{ragged2e} % needed by ragged option of sidecap?
+	
+	
+	%\usepackage{chngcntr} % needed for setting option not resetting footnote counter at chapter end
+	%\usepackage{pgfplots} % graphs
+	%\usepackage{booktabs}
+	%\usepackage{lscape} %for big landscape figures, rotate the page
+	%\usepackage{afterpage} %for making landscape float
+	\usepackage[section]{placeins} %keeps floats `in their place', preventing them from floating past a "\FloatBarrier" command into another section.
+	%\usepackage{float}
+	\usepackage{eso-pic} %background image on titlepage
+	\usepackage{transparent} %transparency for background image on titlepage
+	
+	\usepackage[format=plain, indention=1cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
+	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}
+	
+	\newcommand{\myparagraph}[1]{\paragraph{\hspace*{-0.5cm}#1}}
 
-\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
-\usepackage[utf8]{inputenc}
-\usepackage[spanish, es-noquoting, italian, english]{babel}
-% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
+	\usepackage[ragged, centerbody, rightcaption]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
+	\captionsetup[SCfigure]{indention=0cm}
+	
+	\usepackage{hyperref}
+	\usepackage{xcolor} % for colors in hyperref links
+	\hypersetup{
+		colorlinks,
+		linkcolor={red!10!black},
+		citecolor={blue!50!black},
+		urlcolor={blue!80!black}
+	}
+	
+	\usepackage[xindy, nonumberlist, acronym, nomain]{glossaries} %table of acronyms
+	\makeglossaries % has to be after glossaries and after hyperref
+	\setacronymstyle{long-sp-short}
+	\usepackage{relsize}%needed by textsmaller in glossaries
+	\renewcommand*{\acronymfont}[1]{\textsmaller{#1}}
+	
+	\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
+	
+	\usepackage{multirow}% for tables
+	%\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
+	\usepackage{fancyhdr}%page headers
+	\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
+	
+	\usepackage{makeidx} % for alphabetical index, using xindy or makeindex
+	\makeindex
+	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
+	\MakeOuterQuote{"}
+	
+	\usepackage{amssymb}% for the \square math symbol
+%	\usepackage{mathtools}
+	\usepackage{bm}% for bold in mathematical writing with \bm, for example when greek symbols are included in paragraph titles
+	
+	\usepackage[super]{nth} % for superscript 1st 2nd, to be used with \nth{1}
+	
+	\usepackage{epigraph}% for inserting stupid phrases in random places
+	\setlength{\epigraphrule}{0pt}% eliminate the rule below the epigraphs
+	
+	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
+	\captionsetup[SCfigure]{format=plain}
+	%\pgfplotsset{compat=newest}
+	%\counterwithout{footnote}{chapter} % not resetting footnote counter at chapter end
+	\newcommand{\HNMR}{$^1$\ch{H}-\textsmaller{NMR}}
+	\newcommand{\CNMR}{$^{13}$\ch{C}-\textsmaller{NMR}}
+	%\pgfplotsset{tick label style={font=\small},label style={font=\small}}
+	%\let\oldch\ch %move the ch command, needed for redefinition
+	%\renewcommand{\ch}[1]{\textsf{\oldch{#1}}} %add sans serif to \ch
+	
+	
+	% \cmpd*[cmpd-label = 1S]{ig2-1}
+	\newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+	%\pgfplotsset{minor grid style={densely dotted,lightgray}}
+	\newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
+	\newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
+	
+	\newcommand{\PbItwo}{\ch{PbI2}\index{lead diiodide}\xspace}
+	\newcommand{\PbBrtwo}{\ch{PbBr2}\index{lead dibromide}\xspace}
+	\newcommand{\PbCltwo}{\ch{PbCl2}\index{lead dichloride}\xspace}
+	\newcommand{\CsI}{\ch{CsI}\index{cesium iodide}\xspace}
+	\newcommand{\TiOtwo}{\ch{TiO2}\index{titanium dioxide}\xspace}
+	\newcommand{\dTiOtwo}{\ch{d-TiO2}\index{titanium dioxide}\xspace}
+	\newcommand{\mpTiOtwo}{\ch{mp-TiO2}\index{titanium dioxide}\xspace}
+	
+	\newcommand{\spiro}{\gls{spiro}\index{\gls{spiro}}\xspace}
+	\newcommand{\Spiro}{\Gls{spiro}\index{\gls{spiro}}\xspace}
+	\newcommand{\tae}[1]{\gls{tae#1}\index{\gls{tae#1}}\xspace} % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
+	\newcommand{\Tae}[1]{\Gls{tae#1}\index{\gls{tae#1}}\xspace}
+	
+	
+	
+	\bibliography{biblio}
+	
+	\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
+	\ifboolexpr{
+	test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+	and
+	test \ifmorenames
+	}
+	{\ifnumgreater{\value{liststop}}{1}
+	{\finalandcomma}
+	{}%
+	\andothersdelim\bibstring[\emph]{andothers}}
+	{}}
+	
 
-\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
-% product-units controls if 1 x 1 m or 1 m x 1 m
-
-\DeclareSIUnit\sq{\ensuremath\Box} % for the sheet resistance units https://tex.stackexchange.com/questions/71220/si-units-for-sheet-resistance-using-siunitx
-\DeclareSIUnit\Molar{M}
-\DeclareSIUnit\rpm{rpm}
-\DeclareSIUnit\eq{eq}
-\DeclareSIUnit\eV{eV}
-\DeclareSIUnit\ppm{ppm}
-\DeclareSIUnit\unit{unit}
-\DeclareSIUnit\year{yr}
-
-\usepackage{chemmacros} 		% \ch{}
-\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
-\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
-
-% from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
-\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
-%\AtEveryBibitem{\ifentrytype{article}{\togglefalse{bbx:url}}{}}
-\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
-
-%\usepackage{chemnum}			% Package used to manage index of compounds and schemes
-\usepackage{graphicx}
-\usepackage{subcaption} %the subfigure and subfig packages are deprecated
-\usepackage[wide, ragged]{sidecap}%[ragged, margincaption, centerbody]
-%\usepackage{ragged2e} % needed by ragged option of sidecap?
-%\usepackage{chngcntr} % needed for setting option not resetting footnote counter at chapter end
-%\usepackage{pgfplots} % graphs
-%\usepackage{booktabs}
-%\usepackage{lscape} %for big landscape figures, rotate the page
-%\usepackage{afterpage} %for making landscape float
-\usepackage[section]{placeins} %keeps floats `in their place', preventing them from floating past a "\FloatBarrier" command into another section.
-%\usepackage{float}
-\usepackage{eso-pic} %background image on titlepage
-\usepackage{transparent} %transparency for background image on titlepage
-\usepackage[format=hang, labelfont=bf, textfont=small]{caption}%personalize figure and table captions
-\usepackage{hyperref}
-\usepackage{xcolor} % for colors in hyperref links
-\hypersetup{
-	colorlinks,
-	linkcolor={red!10!black},
-	citecolor={blue!50!black},
-	urlcolor={blue!80!black}
-}
-
-\usepackage[xindy, nonumberlist, acronym, nomain]{glossaries} %table of acronyms
-\makeglossaries % has to be after glossaries and after hyperref
-\setacronymstyle{long-sp-short}
-\usepackage{relsize}%needed by textsmaller in glossaries
-\renewcommand*{\acronymfont}[1]{\textsmaller{#1}}
-
-\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
-
-\usepackage{multirow}% for tables
-%\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
-\usepackage{fancyhdr}%page headers
-\usepackage[hmarginratio=1:1, vmarginratio=1:1, a4paper, marginparwidth=1.5cm, textheight=630pt]{geometry}% marginparwidth inserted only for wide sidecaps
-
-\usepackage{makeidx} % for alphabetical index, using xindy or makeindex
-\makeindex
-\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
-\MakeOuterQuote{"}
-
-\usepackage{amssymb}% for the \square math symbol
-\usepackage{mathtools}
-
-\usepackage[super]{nth} % for superscript 1st 2nd, to be used with \nth{1}
-
-\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
-\captionsetup[SCfigure]{format=plain}
-%\pgfplotsset{compat=newest}
-%\counterwithout{footnote}{chapter} % not resetting footnote counter at chapter end
-\newcommand{\HNMR}{$^1$\ch{H}-\textsmaller{NMR}}
-\newcommand{\CNMR}{$^{13}$\ch{C}-\textsmaller{NMR}}
-%\pgfplotsset{tick label style={font=\small},label style={font=\small}}
-%\let\oldch\ch %move the ch command, needed for redefinition
-%\renewcommand{\ch}[1]{\textsf{\oldch{#1}}} %add sans serif to \ch
-
-
-% \cmpd*[cmpd-label = 1S]{ig2-1}
-\newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-%\pgfplotsset{minor grid style={densely dotted,lightgray}}
-\newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
-\newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
-
-\newcommand{\PbItwo}{\ch{PbI2}\index{lead diiodide}}
-\newcommand{\PbBrtwo}{\ch{PbBr2}\index{lead dibromide}}
-\newcommand{\PbCltwo}{\ch{PbCl2}\index{lead dichloride}}
-\newcommand{\CsI}{\ch{CsI}\index{cesium iodide}}
-\newcommand{\TiOtwo}{\ch{TiO2}\index{titanium dioxide}\xspace}
-\newcommand{\dTiOtwo}{\ch{d-TiO2}\index{titanium dioxide}\xspace}
-\newcommand{\mpTiOtwo}{\ch{mp-TiO2}\index{titanium dioxide}\xspace}
-
-\newcommand{\spiro}{\gls{spiro}\index{\gls{spiro}}}
-\newcommand{\Spiro}{\Gls{spiro}\index{\gls{spiro}}}
-\newcommand{\tae}[1]{\gls{tae#1}\index{\gls{tae#1}}} % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
-\newcommand{\Tae}[1]{\Gls{tae#1}\index{\gls{tae#1}}}
-
-\bibliography{biblio}
-
-\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
-\ifboolexpr{
-test {\ifnumequal{\value{listcount}}{\value{liststop}}}
-and
-test \ifmorenames
-}
-{\ifnumgreater{\value{liststop}}{1}
-{\finalandcomma}
-{}%
-\andothersdelim\bibstring[\emph]{andothers}}
-{}}
-
-
-
-
-\hyphenation{tetra-hydro-furan di-chloro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse}
-
-\title{Advanced characterization and modelling of charge transfer reactions in perovskite solar cells.}
-\author{Ilario Gelmetti}
-\date{2018}
+	\renewcommand{\floatpagefraction}{.8}% less likely to have images by their own in a page https://tex.stackexchange.com/questions/68516/avoid-that-figure-gets-its-own-page
+	
+	
+	\hyphenation{tetra-hydro-furan di-chloro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse}
+	
+	\title{Advanced characterization and modelling of charge transfer in perovskite solar cells.}
+	\author{Ilario Gelmetti}
+	\date{2018}
 \begin{document}
 \pagestyle{plain}
 
@@ -147,56 +164,56 @@ test \ifmorenames
 \begin{titlepage}\begin{center}
 
 
-\AddToShipoutPicture*{
-\put(0,0){
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
-\transparent{0.04}%stampato risulta randomicamente più scuro o più chiato, on paper this image results much more visible (or less, randomly) than on screen
-	{\includegraphics[width=0.9\paperwidth]{contents_img/emblem-urv.pdf}}%
-\vfill
-}
-}
-}
+		\AddToShipoutPicture*{
+			\put(0,0){
+				\parbox[b][\paperheight]{\paperwidth}{%
+					\vfill
+					\centering
+					\transparent{0.04}%stampato risulta randomicamente più scuro o più chiato, on paper this image results much more visible (or less, randomly) than on screen
+					{\includegraphics[width=0.9\paperwidth]{contents_img/emblem-urv.pdf}}%
+					\vfill
+				}
+			}
+		}
 
-	\makebox[\textwidth]{\centering{\includegraphics[width=.27\textwidth]{contents_img/logo-urv.pdf}}}\\%
-	\bigskip
-	\large{\textsc{Universitat Rovira i Virgili\\ Institute of Chemical Research of Catalonia}}\\
+		\makebox[\textwidth]{\centering{\includegraphics[width=.27\textwidth]{contents_img/logo-urv.pdf}}}\\%
+		\bigskip
+		\large{\textsc{Universitat Rovira i Virgili\\ Institute of Chemical Research of Catalonia}}\\
 		\rule{5cm}{1pt}\\
-	{
-\smallskip
-	{\textsc{Doctoral Thesis} in \textsc{Electronic Engineering}}}\\
-\vfill
+		{
+		\smallskip
+		{\textsc{Doctoral Thesis} in \textsc{Electronic Engineering}}}\\
+		\vfill
 
-	\huge{\textsc{Advanced characterization and modelling of charge transfer reactions in perovskite solar cells}}\\
-\vfill
-	\footnotesize{Author:}\\
-	\large{Ilario Gelmetti}\\
+		\huge{\textsc{Advanced characterization and modelling of charge transfer in perovskite solar cells}}\\
+		\vfill
+		\footnotesize{Author:}\\
+		\large{Ilario Gelmetti}\\
 		\makebox[.2\textwidth]{\rule{0pt}{.02\textheight}}\\
-\end{center}
-\begin{small}
-\makebox{\parbox[b]{.8\textwidth}{
-
-
-
-	\flushleft{\textbf{Supervised by:}}
-		\flushright{\begin{tabular}{r c}
-		{\large Prof. Dr. Emilio Jose Palomares Gil}&\makebox[.4\textwidth]{\dotfill}\\
-		\end{tabular}}
-	\bigskip
-
-	\flushleft{\textbf{Author:}}
-		\flushright{\begin{tabular}{r c}
-		{\large Ilario Gelmetti}&\makebox[.4\textwidth]{\dotfill}\\
-		\end{tabular}}
-
-}}
-\bigskip\bigskip\bigskip\bigskip
-	\begin{center}
-	\rule{3cm}{1pt}\\
-	Session: 2018\\
 	\end{center}
-\end{small}
+	\begin{small}
+		\makebox{\parbox[b]{.8\textwidth}{
+
+
+
+				\flushleft{\textbf{Supervised by:}}
+				\flushright{\begin{tabular}{r c}
+						{\large Prof. Dr. Emilio Jose Palomares Gil} & \makebox[.4\textwidth]{\dotfill} \\
+					\end{tabular}}
+				\bigskip
+
+				\flushleft{\textbf{Author:}}
+				\flushright{\begin{tabular}{r c}
+						{\large Ilario Gelmetti} & \makebox[.4\textwidth]{\dotfill} \\
+					\end{tabular}}
+
+			}}
+		\bigskip\bigskip\bigskip\bigskip
+		\begin{center}
+			\rule{3cm}{1pt}\\
+			Session: 2018\\
+		\end{center}
+	\end{small}
 \end{titlepage}
 
 \addtocounter{page}{-1}
@@ -208,25 +225,25 @@ test \ifmorenames
 \makeatletter
 \noindent I, \@author, declare that this thesis titled, \enquote{\@title} and the work presented in it are my own. I confirm that:
 \makeatother
-	
-	\begin{itemize} 
-		\item This work was done wholly or mainly while in candidature for a doctoral degree at this University.
-		\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-		\item Where I have consulted the published work of others, this is always clearly attributed.
-		\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-		\item I have acknowledged all main sources of help.
-		\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.
-	\end{itemize}
+
+\begin{itemize}
+	\item This work was done wholly or mainly while in candidature for a doctoral degree at this University.
+	\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
+	\item Where I have consulted the published work of others, this is always clearly attributed.
+	\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
+	\item I have acknowledged all main sources of help.
+	\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.
+\end{itemize}
 
 \bigskip\bigskip
-	
-	\noindent Signed:\\
-	\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
-	
-	 \bigskip
-	 
-	\noindent Date:\\
-	\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
+
+\noindent Signed:\\
+\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
+
+\bigskip
+
+\noindent Date:\\
+\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
 
 \tableofcontents
 \listoffigures
@@ -249,8 +266,8 @@ test \ifmorenames
 \newacronym{dmso}{DMSO}{dimethyl sulfoxide}
 \newacronym{dmf}{DMF}{N,N-dimethylformamide}
 \newacronym{pes}{PES}{polyethersulfone}
-\newacronym{mapi}{MAPI}{methylammonium lead iodide}
-\newacronym{mapicl}{MAPICl}{methylammonium lead iodide chloride}
+\newacronym{mapi}{\ch{MAPbI3}}{methylammonium lead iodide}
+\newacronym{mapicl}{\ch{MAPI3-xClx}}{methylammonium lead iodide chloride}
 \newacronym{csfamapbibr}{CsFAMAPbIBr}{cesium formamidinium methylammonium lead iodide bromide}
 
 % techniques
@@ -264,23 +281,34 @@ test \ifmorenames
 \newacronym{tpc}{TPC}{transient photocurrent}
 \newacronym{ce}{CE}{charge extraction}
 \newacronym{dc}{DC}{differential capacitance}
+\newacronym{mppt}{MPPT}{maximum power point tracking}
+\newacronym{tcspc}{TCSPC}{time-correlated single photon counting}
+\newacronym{kpfm}{KPFM}{Kelvin probe force microscopy}
 
 % physical properties
 \newacronym{homo}{HOMO}{highest-energy occupied molecular orbital}
 \newacronym{lumo}{LUMO}{lowest-energy unoccupied molecular orbital}
 \newacronym{ff}{FF}{fill factor}
+\newacronym{pce}{PCE}{power conversion efficiency}
+\newacronym{voc}{V\textsubscript{OC}}{open circuit voltage}
+\newacronym{jsc}{J\textsubscript{SC}}{short circuit current}
 
 % other
 \newacronym{rt}{RT}{room temperature}
 \newacronym{htm}{HTM}{hole transporting material}
 \newacronym{etm}{ETM}{electron transporting material}
+\newacronym{led}{LED}{light emitting diode}
+\newacronym{osc}{OSC}{organic solar cells}
+\newacronym{dssc}{DSSC}{dye sensitized solar cells}
 
 % long non-acronym names and descriptions
-\newglossaryentry{litfsi}{name={LiTFSI},description={bis(trifluoromethane)sulfonimide lithium salt}}
-\newglossaryentry{spiro}{name={\iupac{spiro-MeOTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octakis(4-methoxyphenyl)-9,9'-spirobi[9H-fluorene]-2,2',7,7'-tetramine}}}
-\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra\{4-[N,N-(4,4'-dimethoxydiphenylamino)]phenyl\}ethene}}}
-\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetrakis [N, N-bis(4-methoxyphenyl) amino]-9,9'-bifluorenylidene}}}
-\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetrakis(3,6-dimethoxy-9H-carbazol-9-yl)-9,9'-bifluorenylidene}}}
+\newglossaryentry{litfsi}{name={LiTFSI},description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
+\newglossaryentry{spiro}{name={\iupac{spiro-MeOTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octakis|(4-methoxy|phenyl)|-9,9'-spiro|bi|[9H-fluorene]|-2,2',7,7'-tetr|amine}}}
+\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-|[N,N-|(4,4'-di|methoxy|di|phenyl|amino)]|phenyl\}|ethene}}}
+\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetra|kis|[N,N-bis|(4-methoxy|phenyl)|amino]|-9,9'-bi|fluorenyl|idene}}}
+\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetra|kis|(3,6-di|methoxy-|9H-carbazol-9-yl)|-9,9'-bi|fluorenyl|idene}}}
+\newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly[bis(4-phenyl)(2,4,6-trimethylphenyl)amine}}}
+\newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
 \printglossary[type=\acronymtype]
 
@@ -288,100 +316,103 @@ test \ifmorenames
 
 \cleardoublepage \vspace*{12cm}
 \begin{flushright}
-\large {\it Dedicata a So$\phi$a.}
+	\large {\it Dedicata a So$\phi$a.}
 \end{flushright}
 
 \newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
 
 \chapter[Abstract]{\centering Abstract}
-\vfill
-Perovskite photophisics
-
-{
-\vfill
-\centering \rule{5cm}{1pt}\\
-\vfill
-}
-\selectlanguage{italian}
-\EnableQuotes
-\noindent
-Fotofisica di celle di perovskite
-
-{
 	\vfill
-	\centering \rule{5cm}{1pt}\\
+	Perovskite photophisics
+
+		{
+			\vfill
+			\centering \rule{5cm}{1pt}\\
+			\vfill
+		}
+	\selectlanguage{italian}
+	\EnableQuotes
+	\noindent
+	Fotofisica di celle di perovskite
+
+		{
+			\vfill
+			\centering \rule{5cm}{1pt}\\
+			\vfill
+		}
+	%\selectlanguage{spanish}
+	\EnableQuotes
+	\noindent
+
+	Fotofisica de celdas de perovskita
+
+		{
+			\vfill
+			\centering \rule{5cm}{1pt}\\
+			\vfill
+		}
+	%\selectlanguage{catalan}
+	\noindent
+
+	Fotofisica de celdas de perovskita
+
 	\vfill
-}
-%\selectlanguage{spanish}
-\EnableQuotes
-\noindent
 
-Fotofisica de celdas de perovskita
+	\selectlanguage{english}
+	\EnableQuotes
 
-{
-	\vfill
-	\centering \rule{5cm}{1pt}\\
-	\vfill
-}
-%\selectlanguage{catalan}
-\noindent
+	\restoregeometry
 
-Fotofisica de celdas de perovskita
+	\fancypagestyle{plain}{% chapter pages use style plain
+		\renewcommand{\headrulewidth}{0pt} % no top rule
+		\fancyhf{}% clear all fields
+		\fancyfoot[L]{\footnotesize{Ilario Gelmetti}}% left footer
+		\fancyfoot[C]{\footnotesize{\textit{Photophysics of perovskite}}}
+		\fancyfoot[R]{\thepage}% right footer
+	}
 
-\vfill
-
-\selectlanguage{english}
-\EnableQuotes
-
-\restoregeometry
-
-\fancypagestyle{plain}{% chapter pages use style plain
-\renewcommand{\headrulewidth}{0pt} % no top rule
-\fancyhf{}% clear all fields
-\fancyfoot[L]{\footnotesize{Ilario Gelmetti}}% left footer
-\fancyfoot[C]{\footnotesize{\textit{Photophysics of perovskite}}}
-\fancyfoot[R]{\thepage}% right footer
-}
-
-\mainmatter
-\pagestyle{headings}
+	\mainmatter
+	\pagestyle{headings}
 
 
-\chapter{Introduction}
+\chapter{Introduction}\label{ch:intro}
 	\graphicspath{ {./contents_img/intro/} }
 	\input{contents_tex/intro.tex}
 
-\chapter{Background and Related Work}
-	\graphicspath{ {./contents_img/background/} }
-	\input{contents_tex/background.tex}
-
-\chapter{Experimental, Data Acquisition and Data Analysis Methods}
-	\chaptermark{Methods}
+\chapter{Experimental Methods}\label{ch:methods}
+	%	\chaptermark{Experimental Methods}
 	\graphicspath{ {./contents_img/methods/} }
 	\input{contents_tex/methods.tex}
 
-\chapter{Evidence of HOMO-LUMO Energy Shift for Hole Transport Material in Perovskite Solar Cells}
-	\chaptermark{HOMO-LUMO Shift for HTM}
+%\chapter{Interpretation of Common Characterization Techniques Output}\label{ch:interpretation}
+%\chaptermark{Interpretation of PhotoPhysics}
+%	\graphicspath{ {./contents_img/interpretation/} }
+%	\input{contents_tex/interpretation.tex}
+
+\chapter{Implementation of Common Characterization Techniques in Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:impedance}
+\chaptermark{Ionic-to-electronic current amplification}
+\graphicspath{ {./contents_img/impedance/} }
+\input{contents_tex/impedance.tex}
+
+\chapter{Comparison of \gls{htm} in Bottom Cathode \gls{csfamapbibr} Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
+\chaptermark{Comparing \textsmaller{htm}}
 	\graphicspath{ {./contents_img/tae/} }
 	\input{contents_tex/tae.tex}
 
-\chapter{Selective Organic Contacts for Methyl Ammonium Lead Iodide (MAPI) Perovskite Solar Cells: Influence of Layer Thickness on Carriers Extraction and Carriers Lifetime}
-	\chaptermark{Thickness of Selective Contacts}
+\chapter{Insights on the Charge Storage via Thickness Variation of Layers in Top Cathode \gls{mapi} Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
+\chaptermark{Thickness of Layers}
 	\graphicspath{ {./contents_img/thicknesses/} }
 	\input{contents_tex/thicknesses.tex}
-	
-\chapter{Ionic-to-electronic Current Amplification in Hybrid Perovskite Solar Cells}
-	\chaptermark{Ionic-to-electronic current amplification}
-	\graphicspath{ {./contents_img/impedance/} }
-	\input{contents_tex/impedance.tex}
-	
-\chapter{Interpretation of Stark (ElectroAbsorption) Spectroscopy for Perovskite Solar Cells}
-	\chaptermark{Analysis of EA}
-	\graphicspath{ {./contents_img/electroabsorption/} }
-	\input{contents_tex/electroabsorption.tex}
 
-\chapter{Software Development for Data Acquisition, Analysis and Physical Modelling}
-	\chaptermark{Software Development}
+
+
+%\chapter{Drift-Diffusion Simulation of Stark Spectroscopy (ElectroAbsorption) for Perovskite Solar Cells}\label{ch:electroabsorption}
+%\chaptermark{Analysis of EA}
+%	\graphicspath{ {./contents_img/electroabsorption/} }
+%	\input{contents_tex/electroabsorption.tex}
+
+\chapter{Software Development for Data Acquisition and Data Analysis}\label{ch:software}
+\chaptermark{Software Development}
 	\graphicspath{ {./contents_img/software/} }
 	\input{contents_tex/software.tex}
 
@@ -392,18 +423,18 @@ Fotofisica de celdas de perovskita
 
 
 \chapter*{Acknowledgements}
-%\selectlanguage{spanish}
-bla bla bla
+	%\selectlanguage{spanish}
+	bla bla bla
 
-\selectlanguage{english}
-\appendix
+	\selectlanguage{english}
+	\appendix
 \chapter{Code}
 
 
 \chapter{List of publications}
 
-\printindex
+	\printindex
 
-\printbibliography
+	\printbibliography
 
 \end{document}
