@@ -13,6 +13,7 @@
 	
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
 	\usepackage[utf8]{inputenc}
+	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
 	\usepackage[spanish, es-noquoting, italian, english]{babel}
 	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
 	
@@ -63,6 +64,7 @@
 	\captionsetup[SCfigure]{indention=0cm}
 	
 	\usepackage{hyperref}
+
 	\usepackage{xcolor} % for colors in hyperref links
 	\hypersetup{
 		colorlinks,
@@ -97,6 +99,13 @@
 	
 	\usepackage{epigraph}% for inserting stupid phrases in random places
 	\setlength{\epigraphrule}{0pt}% eliminate the rule below the epigraphs
+	
+	
+	\usepackage{listings}
+	\usepackage[numbered,framed]{matlab-prettifier}% for Matlab listings highlighting
+	\lstset{style=Matlab-editor, basicstyle=\footnotesize}% basicstyle has to be placed after style
+	
+	\usepackage{cleveref} % for automatic Figure or figure and for ranges
 	
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -248,6 +257,8 @@
 \tableofcontents
 \listoffigures
 \listoftables
+\lstlistoflistings
+
 
 %%%%%%%%%%%%
 % ACRONYMS %
@@ -277,6 +288,7 @@
 \newacronym{xrd}{XRD}{X--ray diffraction}
 \newacronym{sem}{SEM}{scanning electron microscope}
 \newacronym{esem}{ESEM}{environmental scanning electron microscopy}
+\newacronym{edx}{EDX}{energy-dispersive X-ray analysis}
 \newacronym{tpv}{TPV}{transient photovoltage}
 \newacronym{tpc}{TPC}{transient photocurrent}
 \newacronym{ce}{CE}{charge extraction}
@@ -389,11 +401,6 @@
 %	\graphicspath{ {./contents_img/interpretation/} }
 %	\input{contents_tex/interpretation.tex}
 
-\chapter{Implementation of Common Characterization Techniques in Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:impedance}
-\chaptermark{Ionic-to-electronic current amplification}
-\graphicspath{ {./contents_img/impedance/} }
-\input{contents_tex/impedance.tex}
-
 \chapter{Comparison of \gls{htm} in Bottom Cathode \gls{csfamapbibr} Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
 \chaptermark{Comparing \textsmaller{htm}}
 	\graphicspath{ {./contents_img/tae/} }
@@ -404,12 +411,20 @@
 	\graphicspath{ {./contents_img/thicknesses/} }
 	\input{contents_tex/thicknesses.tex}
 
-
-
 %\chapter{Drift-Diffusion Simulation of Stark Spectroscopy (ElectroAbsorption) for Perovskite Solar Cells}\label{ch:electroabsorption}
 %\chaptermark{Analysis of EA}
 %	\graphicspath{ {./contents_img/electroabsorption/} }
 %	\input{contents_tex/electroabsorption.tex}
+
+\chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
+\chaptermark{Impedance Sectroscopy}
+\graphicspath{ {./contents_img/impedance/} }
+\input{contents_tex/impedance.tex}
+
+\chapter{Implementation of Common Characterization Techniques in Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
+\chaptermark{Modelling of Characterization Techniques}
+\graphicspath{ {./contents_img/modelling/} }
+\input{contents_tex/modelling.tex}
 
 \chapter{Software Development for Data Acquisition and Data Analysis}\label{ch:software}
 \chaptermark{Software Development}
@@ -427,8 +442,14 @@
 	bla bla bla
 
 	\selectlanguage{english}
+	
 	\appendix
+	
 \chapter{Code}
+\label{ch:code}
+\chaptermark{Code}
+\graphicspath{ {./contents_img/code/} }
+\input{contents_tex/code.tex}
 
 
 \chapter{List of publications}

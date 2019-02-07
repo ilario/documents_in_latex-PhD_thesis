@@ -1,3 +1,8 @@
+\epigraph{\textit{"Why nobody tried to fix this bug?"}}
+
+\myparagraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
+
+\myparagraph{Publications} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
 
 \section{PyPV: An easy Current-Voltage curves acquisition interface}
 
@@ -14,10 +19,14 @@
 	\subsection{Original Project}
 		I received a proof-of-concept software developed by Daniel Fernandez Pinto and decided to continue the development. At that point the software had an interface with few buttons and a working Keithley communication library.
 
-	\subsection{User's requests}
+	\subsection{User's requests} 
+	
+	Installation instructions
+	Shutter control
+	GPIB GPIB0
 	\subsection{Implementation and user interface}
 
-		\myparagraph{Autoscale} As it was explained in page~\pageref{autoscale}, the automatic scale setting of the Keithley is detrimental for perovskite solar cells dynamic measurements.
+		\myparagraph{Autoscale} As it was explained in \cpageref{autoscale}, the automatic scale setting of the Keithley is detrimental for perovskite solar cells dynamic measurements.
 
 		\myparagraph{Auto-measure}\label{automeasure}
 		
@@ -44,24 +53,3 @@
 CITE Cimaroli2017
 
 http://candlelight-systems.com/
-
-\section{Time Resolved 1-D Drift and Diffusion Modelling}
-	\subsection{Improvements and Additions to the DrIFtFUSION Core}
-	\subsection{Impedance Spectroscopy}
-	\subsection{ElectroAbsorption}
-	
-	\subsection{Ideality Factor}\label{dd_ideality}
-		\myparagraph{Ideality Factor from \gls{voc}}
-		
-		\myparagraph{Ideality Factor from Current-Voltage Points}\label{dd_ideality_dark_jv}
-https://www.pveducation.org/pvcdrom/characterisation/measurement-of-ideality-factor
-
-\subsection{Techniques Which Could Be Implemented}
-\epigraph{\textit{"Wow, this is a gold mine!"}}
-
-\myparagraph{IMVS}
-
-\myparagraph{IMPS}
-
-\myparagraph{Mott-Schottky}
-\url{https://en.wikipedia.org/wiki/Mott-Schottky_plot}
