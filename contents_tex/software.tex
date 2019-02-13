@@ -1,8 +1,8 @@
 \epigraph{\textit{"Why nobody tried to fix this bug?"}}
 
-\myparagraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
+\paragraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
 
-\myparagraph{Publications} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
+\paragraph{Publications} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
 
 \section{PyPV: An easy Current-Voltage curves acquisition interface}
 
@@ -26,9 +26,11 @@
 	GPIB GPIB0
 	\subsection{Implementation and user interface}
 
-		\myparagraph{Autoscale} As it was explained in \cpageref{autoscale}, the automatic scale setting of the Keithley is detrimental for perovskite solar cells dynamic measurements.
+		\paragraph{Autoscale} As it was explained in \cpageref{autoscale}, the automatic scale setting of the Keithley is detrimental for perovskite solar cells dynamic measurements.
 
-		\myparagraph{Auto-measure}\label{automeasure}
+		\paragraph{Auto-measure}\label{automeasure}
+		
+		\paragraph{Resistances} The shunt and series resistances estimation from current-voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
 		
 	\subsection{Limitations}
 		

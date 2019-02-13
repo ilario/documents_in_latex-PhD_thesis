@@ -29,7 +29,10 @@
 	\DeclareSIUnit\unit{unit}
 	\DeclareSIUnit\year{yr}
 	
-	\usepackage{chemmacros} 		% \ch{}
+	\usepackage{upgreek} % for avoiding the warning "Package chemmacros Warning: You haven't loaded any package for upright Greek"
+	\usepackage{chemmacros} 		% for \ch{} and \iupac{}
+
+	
 	\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
 	
 	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
@@ -58,7 +61,7 @@
 	\usepackage[format=plain, indention=1cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
 	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}
 	
-	\newcommand{\myparagraph}[1]{\paragraph{\hspace*{-0.5cm}#1}}
+
 
 	\usepackage[ragged, centerbody, rightcaption]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
 	\captionsetup[SCfigure]{indention=0cm}
@@ -107,6 +110,26 @@
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
 	
+	\usepackage{microtype} % automagically reduces overfull lines and improves justification
+
+	\usepackage{titlesec}
+	% standatard definitions from section 9.2 in titlesec manual
+%\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+%\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+%\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+%\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+%\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+%\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+
+% add negative spacing
+\titleformat{\section}{\normalfont\Large\bfseries}{\hspace*{-0.8cm}\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\hspace*{-0.8cm}\thesubsection}{1em}{}
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{\hspace*{-0.8cm}}
+	%\newcommand{\myp}[1]{\paragraph{\hspace*{-0.5cm}#1}}
+	
+	\usepackage{etoolbox}
+	\preto\section{\vfil\penalty-20\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
+		
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
 	%\pgfplotsset{compat=newest}
@@ -157,7 +180,7 @@
 	\renewcommand{\floatpagefraction}{.8}% less likely to have images by their own in a page https://tex.stackexchange.com/questions/68516/avoid-that-figure-gets-its-own-page
 	
 	
-	\hyphenation{tetra-hydro-furan di-chloro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse}
+	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne}
 	
 	\title{Advanced characterization and modelling of charge transfer in perovskite solar cells.}
 	\author{Ilario Gelmetti}
@@ -278,7 +301,7 @@
 \newacronym{dmf}{DMF}{N,N-dimethylformamide}
 \newacronym{pes}{PES}{polyethersulfone}
 \newacronym{mapi}{\ch{MAPbI3}}{methylammonium lead iodide}
-\newacronym{mapicl}{\ch{MAPI3-xClx}}{methylammonium lead iodide chloride}
+\newacronym{mapicl}{\ch{MAPI_{3-x}Cl_x}}{methylammonium lead iodide chloride}
 \newacronym{csfamapbibr}{CsFAMAPbIBr}{cesium formamidinium methylammonium lead iodide bromide}
 
 % techniques
@@ -315,7 +338,7 @@
 
 % long non-acronym names and descriptions
 \newglossaryentry{litfsi}{name={LiTFSI},description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
-\newglossaryentry{spiro}{name={\iupac{spiro-MeOTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octakis|(4-methoxy|phenyl)|-9,9'-spiro|bi|[9H-fluorene]|-2,2',7,7'-tetr|amine}}}
+\newglossaryentry{spiro}{name={\iupac{spiro-OMeTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octakis|(4-methoxy|phenyl)|-9,9'-spiro|bi|[9H-fluorene]|-2,2',7,7'-tetr|amine}}}
 \newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-|[N,N-|(4,4'-di|methoxy|di|phenyl|amino)]|phenyl\}|ethene}}}
 \newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetra|kis|[N,N-bis|(4-methoxy|phenyl)|amino]|-9,9'-bi|fluorenyl|idene}}}
 \newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetra|kis|(3,6-di|methoxy-|9H-carbazol-9-yl)|-9,9'-bi|fluorenyl|idene}}}
@@ -391,15 +414,15 @@
 	\graphicspath{ {./contents_img/intro/} }
 	\input{contents_tex/intro.tex}
 
-\chapter{Experimental Methods}\label{ch:methods}
+\chapter{Experimental Methods and Fabrication}\label{ch:methods}
 	%	\chaptermark{Experimental Methods}
 	\graphicspath{ {./contents_img/methods/} }
 	\input{contents_tex/methods.tex}
 
-%\chapter{Interpretation of Common Characterization Techniques Output}\label{ch:interpretation}
-%\chaptermark{Interpretation of PhotoPhysics}
-%	\graphicspath{ {./contents_img/interpretation/} }
-%	\input{contents_tex/interpretation.tex}
+\chapter{Characterization Techniques: Description and Interpretation}\label{ch:interpretation}
+\chaptermark{Characterization Techniques}
+	\graphicspath{ {./contents_img/characterization/} }
+	\input{contents_tex/characterization.tex}
 
 \chapter{Comparison of \gls{htm} in Bottom Cathode \gls{csfamapbibr} Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
 \chaptermark{Comparing \textsmaller{htm}}

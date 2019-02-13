@@ -10,27 +10,30 @@ trash/
 *.ods
 *\#
 .RData
-*.acr
-*.alg
-*.idx
-*.ind
 *.jpg
 manuals/
 *.bak*
 
 # LaTeX temporary files
-*.aux
-*.log
-*.toc
-
-# More useless LaTeX files
 *.acn
+*.acr
+*.alg
+*.aux
+*.bbl
 *.bcf
+*.blg
 *.glsdefs
+*.gz
+*.idx
+*.ind
 *.lof
+*.log
+*.lol
 *.lot
-*.xml
+*.out
+*.toc
 *.xdy
+*.xml
 
 # Latexmk
 *.fdb_latexmk

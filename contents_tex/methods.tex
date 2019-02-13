@@ -1,74 +1,75 @@
 \epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
 
-\myparagraph{Abstract} The experimental methods are described here in a very detailed way, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD. Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
+\paragraph{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD. Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
 
 \section{Materials}
-
+	Dust free cloths Super Polx 1200A \SI{23x23}{\cm} were bought from Berkshire.
+	
+	Patterned \gls{fto} substrates with sheet resistance of \SI{7}{\ohm\per\sq} (TEC7) on \SI{2.2}{\mm} thick and \SI{14.8x14.8}{\mm} wide Pilkington glass were bought from Xinyan Technology Ltd.
+	
+	Patterned \gls{ito} substrates with sheet resistance of \SI{15}{\ohm\per\sq} on \SI{1.1}{\mm} thick and \SI{15x15}{\mm} wide glass were bought from Xinyan Technology Ltd.
+	
 	All anhydrous and non-anhydrous solvents had a reagent grade purity; were purchased from Sigma-Aldrich and used without any additional treatment.
-
-	\Acr{fai}, \acr{mabr} and \acr{mai} were either synthesized (see \cpageref{methods-MAI}) or bought from GreatCell Solar.
-
-	\PbItwo (99~\%), \PbBrtwo (99.999~\%), \CsI (99.999~\%), \PbCltwo (98~\%), anhydrous chlorobenzene, anhydrous \gls{dmf}, and anhydrous \gls{dmso} were bought form Sigma-Aldrich and kept in a nitrogen-filled glovebox.
 
 	Titanium(IV) isopropoxide (97~\%), acetylacetone, and \glsdesc{litfsi} (\gls{litfsi}) were bought from Sigma-Aldrich.
 
-	4-tert-butylpyridine and hydroiodic acid (57~m/m\% in water) were bought from Sigma-Aldrich and kept in a fridge (the colour of both these reagents change with ageing when kept out of the fridge).
+	\Gls{pedotpss} Clevios P VP.AI 4083 was bought from Heraeus.
+
+	\PbItwo (99~\%), \PbBrtwo (99.999~\%), \CsI (99.999~\%), \PbCltwo (98~\%), anhydrous chlorobenzene, anhydrous \gls{dmf}, and anhydrous \gls{dmso} were bought form Sigma-Aldrich and kept in a nitrogen-filled glovebox.
+	
+	Methylamine in methanol (40~w/w\%, \SI{\approx9.8}{\Molar}) was bought from Tokyo Chemical Industry.
+	
+	\Acr{fai}, \acr{mabr} and \acr{mai} were either synthesized (described in \cpageref{methods-MAI}) or bought from GreatCell Solar (unknown purity).
+
+	4-tert-butylpyridine and hydroiodic acid (57~m/m\% in water) were bought from Sigma-Aldrich and kept in a fridge (the colour of both these reagents change with ageing when kept out of the fridge, indicating degradation).
 
 	\Spiro was bought from 1-Material and stored in a nitrogen-filled glovebox.
 
-	Methylamine in methanol (40~w/w\%, \SI{\approx9.8}{\Molar}) was bought from Tokyo Chemical Industry.
-
-	\Tae1, \tae3, and \tae4 molecules were used as received from Inés García-Benito, Agustín Molina-Ontoria and Nazario Martín (IMDEA, Madrid). The synthesis of \tae1 has been described in \authoryear{Cabau2015a} and \authoryear{Choi2015b}. The synthesis of \tae3 and \tae4 has been described in CITATION.
-
-	Patterned \gls{fto} substrates with sheet resistance of \SI{7}{\ohm\per\sq} (TEC7) on \SI{2.2}{\mm} thick and \SI{14.8x14.8}{\mm} wide Pilkington glass were bought from Xinyan Technology Ltd.
-
-	Patterned \gls{ito} substrates with sheet resistance of \SI{15}{\ohm\per\sq} on \SI{1.1}{\mm} thick and \SI{15x15}{\mm} wide glass were bought from Xinyan Technology Ltd.
-
-	Dust free cloths Super Polx 1200A \SI{23x23}{\cm} were bought from Berkshire.
-
-	\Gls{pedotpss} Clevios P VP.AI 4083 was bought from Heraeus.
+	\Tae1, \tae3, and \tae4 molecules (subject of the study in \cref{ch:tae}) were used as received from Dr. Inés García-Benito, Dr. Agustín Molina-Ontoria and Dr. Nazario Martín (IMDEA, Madrid). The synthesis of \tae1 has been described in \authoryear{Cabau2015a} and \authoryear{Choi2015b}. The synthesis of \tae3 and \tae4 has been described in CITATION.
 	
 \section{Equipments}
 
-	\myparagraph{Organic residuals removal} UV/ozone treatment was performed with a T10X10/OES ultra-violet ozone cleaning system from UVOCS. Most common failure: insufficient gas extraction flow detected by differential pressure meter on the rear, it can be partially configured via a screw.
+	\paragraph{Ultra-violet ozone cleaning system} Organic residuals removal was performed with a T10X10/OES UV/ozone cleaning system from UVOCS. Most common failure: insufficient gas extraction flow detected by differential pressure meter on the rear, it can be partially configured via a screw.
 
-	\myparagraph{Spin coating in air} Spin coating depositions in the clean room were performed with a Laurell WS-400BZ-6NPP-LITE spin coater.
+	\paragraph{Spin coating in air} Spin coating depositions in the clean room were performed with a Laurell WS-400BZ-6NPP-LITE spin coater.
 
-	\myparagraph{Muffle oven} Calcination was performed with a muffle oven Hobersal HD-230 controlled with a Fuji Electric PXR-4. Most common failure: users setting very badly the heating ramp.
+	\paragraph{Muffle oven} Calcination was performed with a muffle oven Hobersal HD-230 controlled with a Fuji Electric PXR-4. Most common failure: misuse of the controller by the users can cause unexpected excessive heating.
 	
-	\myparagraph{Titanium hotplate} As an alternative to the muffle oven, calcination was performed with a titanium hotplate Harry Gestigkeit PZ 28-3TD. Most common failures: controller failure and heating resistance breaks in a point, it can be unmounted and replaced.
+	\paragraph{Titanium hotplate} As an alternative to the muffle oven, calcination was performed with a titanium hotplate Harry Gestigkeit PZ 28-3TD. Most common failures: controller failure and heating resistance breaks in a point, it can be unmounted and replaced.
 
-	\myparagraph{Glovebox} Perovskite deposition was performed in a nitrogen-filled glovebox MBraun UNILab.
+	\paragraph{Glovebox} Perovskite deposition and precursors storage was done:wq in a nitrogen-filled glovebox MBraun UNILab.
 
-	\myparagraph{Spin coating in inert atmosphere} Spin coating depositions in the nitrogen-filled glovebox were performed with a SPIN150 equipment (this model does not require a gas inlet, which would be troublesome in a glovebox) from SPS Europe where the transparent cap was removed from the lid for helping solvent vapours removal. The internal side of the deposition chamber was covered with aluminium foil and this foil replaced between an user and the next. Most common failure: exhaustion of the supposedly \SI{20}{\year} lasting non-volatile SRAM (integrated circuit BattRam DS1230Y-85+ DIP28, a perfect example of planned obsolescence).
+	\paragraph{Spin coating in inert atmosphere} Spin coating depositions in the nitrogen-filled glovebox were performed with a SPIN150 equipment (this model does not require a gas inlet, which would be troublesome in a glovebox) from SPS Europe where the transparent cap was removed from the lid for helping solvent vapours removal. The internal side of the deposition chamber was covered with aluminium foil and this foil replaced between an user and the next. Most common failure: exhaustion of the supposedly \SI{20}{\year} lasting non-volatile SRAM (integrated circuit BattRam DS1230Y-85+ DIP28, a perfect example of planned obsolescence).
 
-	\myparagraph{Precision hotplate} Perovskite layers annealing were performed with a highly homogeneous hotplate JP Selecta Plactronic.
+	\paragraph{Precision hotplate} Perovskite layers annealing were performed with a highly homogeneous hotplate JP Selecta Plactronic.
 
-	\myparagraph{Profilometer} Thicknesses were measured furrowing layers with an hard object and measuring the elevation profile with an Ambios Tech. XP-1 profilometer.
+	\paragraph{Profilometer} Thicknesses were measured furrowing layers with an hard object and measuring the elevation profile with an Ambios Tech. XP-1 profilometer.
 
-	\myparagraph{Optical microscope} Optical microscopy images were acquired with a Leica S6 D microscope.
+	\paragraph{Optical microscope} Optical microscopy images were acquired with a Leica S6 D microscope.
 	
-	\myparagraph{UV-Vis-NIR absorbance} Absorbance measurements were carried out on a Lambda 1050 PerkinElmer spectrophotometer equipped with a PhotoMultiplier Tube, \ch{InGaAs} and \ch{PbS} detectors system, double beam optics, double monochromator and \ch{D2} and \ch{W} light sources.
+	\paragraph{UV-Vis-NIR absorbance} Absorbance measurements were carried out on a Lambda 1050 PerkinElmer spectrophotometer equipped with a PhotoMultiplier Tube, \ch{InGaAs} and \ch{PbS} detectors system, double beam optics, double monochromator and \ch{D2} and \ch{W} light sources.
 	
-	\myparagraph{PhotoLuminescence spectroscopy} Fluorescence measurements were carried out on a Fluorolog Horiba Jobin Yvon spectrofluorimeter equipped with photomultiplier detector, double monochromator and	Xenon light source.
+	\paragraph{PhotoLuminescence spectroscopy} Fluorescence measurements were carried out on a Fluorolog Horiba Jobin Yvon spectrofluorimeter equipped with photomultiplier detector, double monochromator and	Xenon light source.
 
-	\myparagraph{Time Resolved PhotoLuminescence} PhotoLuminescence lifetime measurements were carried out on a Edinburgh Instruments LifeSpec-II based on the \gls{tcspc} technique, equipped with a PhotoMultiplier Tube detector, double subtractive monochromator and picosecond pulsed diode lasers source.
+	\paragraph{Time Resolved PhotoLuminescence} PhotoLuminescence lifetime measurements were carried out on a Edinburgh Instruments LifeSpec-II based on the \gls{tcspc} technique, equipped with a PhotoMultiplier Tube detector, double subtractive monochromator and picosecond pulsed diode lasers source.
 	
-	\myparagraph{Thermal evaporator} High vacuum thermal depositions were performed with a MBraun vacuum deposition chamber connected with a scroll pump in series to a turbo pump. The inorganic and metallic materials deposition was managed by a Inficom SQC310C (firmware version 6.44) while the organic material deposition was controlled in a manual fashion with a CreaPhys temperature control unit CU~103. The deposition speed was sensed via two oscillating quartz sensors whose calibration tooling was performed yearly. The evaporation chamber was embedded in a MBraun MB200B glovebox module controlled by a MBraun MB20G.
+	\paragraph{Thermal evaporator} High vacuum thermal depositions were performed with a MBraun vacuum deposition chamber connected with a scroll pump in series to a turbo pump. The inorganic and metallic materials deposition was managed by a Inficom SQC310C (firmware version 6.44) while the organic material deposition was controlled in a manual fashion with a CreaPhys temperature control unit CU~103. The deposition speed was sensed via two oscillating quartz sensors whose calibration tooling was performed yearly. The evaporation chamber was embedded in a MBraun MB200B glovebox module controlled by a MBraun MB20G.
 
-	\myparagraph{Devices holder} The devices holder is designed for holding 4 devices with 4 independent diodes each (the bottom contact is assumed to be in common, the top ones are isolated) and consists in an airtight container topped with a quartz window. It was designed and fabricated by Ikerlan. The holder has at least one gold tip for each diode's electrode, the contact is ensured by springs pushing the tips towards the devices. A printed circuit board connects the gold tips to a coaxial connector via two rotatory selectors which allows to select the needed diode.
+	\paragraph{Devices holder} The devices holder is designed for holding 4 devices with 4 independent diodes each (the bottom contact is assumed to be in common, the top ones are isolated) and consists in an airtight container topped with a quartz window. It was designed and fabricated by Ikerlan. The holder has at least one gold tip for each diode's electrode, the contact is ensured by springs pushing the tips towards the devices. A printed circuit board connects the gold tips to a coaxial connector via two rotatory selectors which allows to select the needed diode.
 
-	\myparagraph{Solar simulator}\label{solarsimulator}Illumination for current-voltage scans was provided by a Sun 2000 solar simulator (\SI{150}{\W}) bought from ABET Technologies. The proper filters of the lamp were set to simulate the AM 1.5G solar spectrum. The light intensity at the measurement position was measured via the short circuit current of a small photodiode calibrated with a certified (NREL) silicon photodiode and regulated to \SI{1000}{\W\per\m\squared}. Most common failure: lamp power supply.
+	\paragraph{Solar simulator}\label{solarsimulator}Illumination for current-voltage scans was provided by a Sun 2000 solar simulator (\SI{150}{\W}) bought from ABET Technologies. The proper filters of the lamp were set to simulate the AM 1.5G solar spectrum. The light intensity at the measurement position was measured via the short circuit current of a small photodiode calibrated with a certified (NREL) silicon photodiode and regulated to \SI{1000}{\W\per\m\squared}. Most common failure: lamp power supply.
 
-	\myparagraph{Current-voltage scans} Current-voltage scans were performed with a Tektronix Keithley 2400 with firmware revision C30 programmable digital source meter connected to a computer via a GPIB-USB-HS adapter from National Instruments, connected to the solar simulator for the shutter control via a RS-232 (Keithley side) to coaxial (solar simulator side), and connected to the device to measure via a coaxial (devices side) to 2 banana plugs (Keithley side). Even if Keithley is a remarkable piece of hardware, I observed various times sparks in my devices when connecting them to the equipment, so I warmly suggest to manually set the Keithley in current measure mode with zero applied voltage, start the measure with the devices not connected and finally connect the devices.
+	\paragraph{Current-voltage scans} Current-voltage scans were performed with a Tektronix Keithley 2400 with firmware revision C30 programmable digital source meter connected to a computer via a GPIB-USB-HS adapter from National Instruments, connected to the solar simulator for the shutter control via a RS-232 (Keithley side) to coaxial (solar simulator side), and connected to the device to measure via a coaxial (devices side) to 2 banana plugs (Keithley side). Even if Keithley is a remarkable piece of hardware, I observed various times sparks in my devices when connecting them to the equipment, so I warmly suggest to manually set the Keithley in current measure mode with zero applied voltage, start the measure with the devices not connected and finally connect the devices.
 
-	\myparagraph{White \gls{led} illumination} Background illumination for \acr{tpv}, \acr{tpc}, and \acr{ce} measurements was provided via a white light \gls{led} ring assembled in-house with \gls{led} from LUXEON Lumileds.
+	\paragraph{White \gls{led} illumination} Background illumination for \acr{tpv}, \acr{tpc}, and \acr{ce} measurements was provided via a white light \gls{led} ring assembled in-house with \gls{led} from LUXEON Lumileds.
 
-	\myparagraph{Pulsed illumination} Perturbation illumination for \acr{tpv} and \acr{tpc} measurements was provided by a nanosecond PTI GL-3300 nitrogen laser. The wavelength was selected using a dissolved molecular dye. The pulse intensity was attenuated with a semi-transparent glass for ensuring the small perturbation regime. The spark in the nitrogen laser emits a strong and unwanted electromagnetic pulse that can be received from all non-coaxial cables and from the samples holder, adding a transient noise to the oscilloscope measurement.
+	\paragraph{Pulsed illumination} Perturbation illumination for \acr{tpv} and \acr{tpc} measurements was provided by a nanosecond PTI GL-3300 nitrogen laser. The wavelength was selected using a dissolved molecular dye. The pulse intensity was attenuated with a semi-transparent glass for ensuring the small perturbation regime. The spark in the nitrogen laser emits a strong and unwanted electromagnetic pulse that can be received from all non-coaxial cables and from the samples holder, adding a transient noise to the oscilloscope measurement.
 
-	\myparagraph{Oscilloscope} The voltage transients for \acr{tpv}, \acr{tpc}, and \acr{ce} measurements were registered with a Yokogawa DLM2052 oscilloscope connected to the device holder via coaxial cable and to the computer via an USB2 port (the transfer speed could be better if an Ethernet connection were used). For each registered transient, \SI{12500}{points} were saved (the maximum record length for this oscilloscope is \SI{125}{Mpoints} and the maximum sampling rate is \SI{2.5}{Gpoints\per\s}).
+	\paragraph{Oscilloscope} The voltage transients for \acr{tpv}, \acr{tpc}, and \acr{ce} measurements were registered with a Yokogawa DLM2052 oscilloscope connected to the device holder via coaxial cable and to the computer via an USB2 port (the transfer speed could be better if an Ethernet connection were used). For each registered transient, \SI{12500}{points} were saved (the maximum record length for this oscilloscope is \SI{125}{Mpoints} and the maximum sampling rate is \SI{2.5}{Gpoints\per\s}).
 
-	\myparagraph{\Gls{sem}, \gls{esem} and \gls{esem}-\gls{edx} imaging} Superficial and cross section \gls{sem} images were acquired using a Jeol JSM-6400 microscope. Superficial and cross section \gls{esem} images were acquired at low voltage (20 keV) and low vacuum in a FEI Quanta 600 FEG microscope. The cut for cross section was performed mechanically: A small angle grinder (from Dremel) was used for furrowing a diagonal line on the substrate glass side (opposite to the \gls{fto}), then using two pliers the substrate was forced as if it was to bend the glass and opening further the furrow.
+	\paragraph{\Gls{sem}, \gls{esem} and \gls{esem}-\gls{edx} imaging} Superficial and cross section \gls{sem} images were acquired using a Jeol JSM-6400 microscope. Superficial and cross section \gls{esem} images were acquired at low voltage (20 keV) and low vacuum in a FEI Quanta 600 FEG microscope. The cut for cross section was performed mechanically: A small angle grinder (from Dremel) was used for furrowing a diagonal line on the substrate glass side (opposite to the \gls{fto}), then using two pliers the substrate was forced as if it was to bend the glass and opening further the furrow.
+	
+	\paragraph{X--ray diffraction} \gls{xrd} measurements were made using a Bruker-AXS D8-Discover diffractometer equipped with parallel incident beam (Göbel mirror), vertical $\Theta$~-~$\Theta$ goniometer, XYZ motorized stage and with a GADDS (General Area Diffraction System). Samples were placed directly on the sample holder and the area of interest was selected with the aid of a video-laser focusing  system. An X-ray collimator system allows to analyse areas of \SI{500}{\um}. The X-ray diffractometer was operated at \SI{40}{\kV} and \SI{40}{\mA} to generate \ch{Cu} K$\alpha$ radiation. The GADDS detector was a HI-STAR (multiwire proportional counter of \SI{30x30}{\cm} with a \SI{1024x1024}{pixel}). We collected frames (2D \gls{xrd} patterns) covering \SIrange{15}{70}{\degree} $2\Theta$ from three different detector positions at a distance of \SI{15}{\cm} from the sample. The exposition time was \SI{300}{\s} per frame and it was chi-integrated to generate the conventional $2\Theta$ vs. intensity diffractogram. Identification of the materials was achieved by comparison of the \gls{xrd} diffractogram with the ICDD data base (release 2007) using Diffracplus Evaluation software (Bruker 2007).
 
 %FT-IR ATR
 %CycloVoltammetry CH instruments electrochemical workstation CHI660C
@@ -77,7 +78,6 @@
 %TAS
 %TEM
 %raman
-%xrd
 
 \section{Synthesis, handling and purification}
 
@@ -122,13 +122,14 @@
 
 		The solutions were prepared in a nitrogen-filled glovebox in order to have control over the oxygen oxidation degree of the molecules.
 
-\section{Perovskite Solar Cells}
+\section{Perovskite Solar Cells Fabrication}
+\epigraph{\textit{"Making good devices is an art"}}
 
 	The "top" or "bottom" naming refers to the cell orientation during fabrication, so the "bottom" layer is the one closer to the glass substrate.
 
 	\subsection{Top Cathode Perovskite Solar Cells}\label{methods_top}
 
-		\myparagraph{Anode and \gls{htm} Substrate Preparation}
+		\paragraph{Anode and \gls{htm} Substrate Preparation}
 			% based on ig77
 			This process was performed in a class 7 clean room.
 
@@ -152,13 +153,13 @@
 				\end{center}
 			\end{table}
 
-		\myparagraph{\Acr{mapicl} Perovskite One Step Fabrication}
+		\paragraph{\Acr{mapicl} Perovskite One Step Fabrication}
 			% ig71
 			The deposition process was performed in a nitrogen-filled glovebox.
 
 			The precursors solution (see \cpageref{precursors_mapicl}) was deposited via spin coating (\SI{80}{\ul}, static dispensing, loading time \SI{5}{\s}) with an acceleration of \SI{1000}{\rpm\per\s}, a speed of \SI{1900}{\s} for \SI{40}{\s}. The substrate was moved directly to a hotplate at \SI{100}{\celsius} and annealed for \SI{80}{\min}, resulting in a \SI{430}{\nm} thick perovskite layer. The film is colourless just after deposition, then it turns to brown, yellow and finally black on the hotplate.
 
-		\myparagraph{\Acr{mapi} Perovskite Two Step Fabrication}
+		\paragraph{\Acr{mapi} Perovskite Two Step Fabrication}
 			% based on ig79
 			This process was performed in a nitrogen-filled glovebox
 			while constantly purging with a nitrogen flow for reducing the \gls{dmf} and \gls{dmso} vapours concentration.
@@ -180,7 +181,7 @@
 				\end{center}
 			\end{table}
 
-		\myparagraph{\Gls{etm} and Cathode Deposition}
+		\paragraph{\Gls{etm} and Cathode Deposition}
 			% based on ig75
 			The solution was prepared in the clean room (weighting fullerene derivatives in a glovebox would be difficult due to electrostatic phenomena) and the deposition process was performed in a nitrogen-filled glovebox.
 
@@ -208,7 +209,7 @@
 \label{methods_top_end}
 	\subsection{Bottom Cathode Perovskite Solar Cells}
 
-		\myparagraph{Cathode and \gls{etm} substrate preparation}
+		\paragraph{Cathode and \gls{etm} substrate preparation}
 			This process was performed in a class 7 clean room.
 
 			Pre-patterned \SI{1.5 x 1.5}{\cm} \gls{fto} coated glasses were employed as substrate. An identification code was scratched on the glass side with a diamond tip pencil. The glass dust was removed with adhesive tape and rubbing with a dust free cloth. The substrates were cleaned with ultrasonication in water with Hellmanex soap, then in deionized water, and finally in isopropanol; dried rubbing with a dust free cloth and the organic residuals were removed with an UV/ozone treatment for \SI{20}{\min}.
@@ -218,10 +219,10 @@
 
 			The usage of a thicker glass as compared to the one used for top cathode cells and the usage of \gls{fto} in place of \gls{ito} (\gls{fto} absorbs more in the infrared region and is way rougher) are needed for resisting the high temperature processing of the titania layers.
 
-			%\myparagraph{\Acr{mapi} Perovskite Two Step Fabrication}	
+			%\paragraph{\Acr{mapi} Perovskite Two Step Fabrication}	
 			% ig87
 
-		\myparagraph{\Acr{csfamapbibr} Perovskite One Step Fabrication}
+		\paragraph{\Acr{csfamapbibr} Perovskite One Step Fabrication}
 
 			This process was performed in a nitrogen-filled glovebox
 			while constantly purging with a nitrogen flow for reducing the \gls{dmf} and \gls{dmso} vapours concentration.
@@ -237,7 +238,7 @@
 
 			After removing from the hotplate, the devices were stored in a glass Petri dish for protecting from dust deposition. It was left partially open to avoid accumulation of vapours from solvent residuals.
 
-		\myparagraph{\Gls{htm} and Cathode Deposition}
+		\paragraph{\Gls{htm} and Cathode Deposition}
 
 			The \gls{htm} solutions (\spiro, \tae1, \tae3, or \tae4) were filtered (\SI{0.2}{\um}, \gls{ptfe}) just before usage and deposited by spin-coating in a nitrogen-filled glovebox
 			onto the perovskite layer (\SI{60}{\ul}, static dispensing, \spiro at \SI{4000}{\rpm}, \SI{4000}{\rpm\per\s},
@@ -254,7 +255,7 @@
 			\SI{9}{\mm\squared}.
 
 	\subsection{Handling and Preservation}
-		In case of bottom cathode cells, the oxidation of the HTM has been proven to improve the PCE. The oxidation can be induced via a dopant, for example FK 209 Co(III) TFSI salt\cite{Burschka2013}, or via oxygen exposure. The latter has to be performed in dark as a synergic light and oxygen contribution on the perovskite layer degradation has been reported CITATION. The oxygen can enter in direct contact with the perovskite layer due to permeability of the HTM; additionally, when a mesoporous ETM is used (e.g. titania) oxygen can diffuse rapidly through the partially infiltrated mesoporous structure. For this reason a cabinet has been modified adding of a constant dry air inlet and physically reducing the leaks of the opening door edges.
+		In case of bottom cathode cells, the oxidation of the \gls{htm} has been proven to improve the \gls{pce}. The oxidation can be induced via a dopant, for example FK 209 Co(III) TFSI salt\cite{Burschka2013}, or via oxygen exposure. The latter has to be performed in dark as a synergic light and oxygen contribution on the perovskite layer degradation has been reported CITATION. The oxygen can enter in direct contact with the perovskite layer due to permeability of the \gls{htm}; additionally, when a mesoporous \gls{etm} is used (e.g. titania) oxygen can diffuse rapidly through the partially infiltrated mesoporous structure. For this reason a cabinet has been modified adding of a constant dry air inlet and physically reducing the leaks of the opening door edges.
 
 		\begin{figure}%[!hbtp]%
 			\makebox[\textwidth][c]{
@@ -280,163 +281,7 @@
 			\mycaption[Degradation due to oxygen and illumination combination.]{A \gls{fto}/\dTiOtwo/\mpTiOtwo/\acr{csfamapbibr}/\spiro/Au device upon \SI{10}{\minute} illumination in air.}\label{fig:microscope_degradation}
 		\end{figure}
 
-		In \cref{fig:microscope_degradation} the degradation of a complete device exposed to continuous illumination for 10 minutes and ambient air conditions is shown. An analogous device kept in air but without illumination did not show any degradation as observable via optical microscopy. The gold contact was not enough for protecting the perovskite layer from degradation, as oxygen could penetrate through the mesoporous titania. Interestingly the degradation is more prominent at metallic contacts' edges, one could speculate the reason being the electrical field being higher at smaller curvature metallic edges (seems that there's no therm in English for this, in Italian is referred as "effetto punta" and corona effect concentration ad edges derives from this). It could also be that the ionic profile of perovskite when holes quasi Fermi level is pinned at gold workfunction makes perovskite more sensible to degradation, and this is more evident at edges due to oxygen diffusion being blocked by the gold layer.
+		In \cref{fig:microscope_degradation} the degradation of a complete device exposed to continuous illumination for \SI{10}{\minute} and ambient air conditions is shown. An analogous device kept in air but without illumination did not show any degradation as observable via optical microscopy. The gold contact was not enough for protecting the perovskite layer from degradation, as oxygen could penetrate through the mesoporous titania. Interestingly the degradation is more prominent at metallic contacts' edges, one could speculate the reason being the electrical field being higher at smaller curvature metallic edges (seems that there's no therm in English for this, in Italian is referred as "effetto punta" and corona effect concentration ad edges derives from this). It could also be that the ionic profile of perovskite when holes quasi Fermi level is pinned at gold workfunction makes perovskite more sensible to degradation, and this is more evident at edges due to oxygen diffusion being blocked by the gold layer.
 
 		Even if storage in dark and dry air should not be damaging for perovskite solar cells, usually the long-term storage happens in a nitrogen-filled glovebox.
 
-\section{Solar Cells Characterization}
-
-	All the characterization on complete devices was performed keeping them in a air tight holder filled with nitrogen. The electrical connection from the cell electrode to the external end of the holder was obtained via gold tips connected via a printed circuit board to a coaxial cable.
-	
-	\subsection{Sign Convention and Parameters Definitions}
-	
-	Considering a solar cell device at steady state under illumination and open circuit conditions, its cathode is defined as the contact where the electrons electrochemical potential $\bar\mu$ (Fermi level, the energy required for adding an electron, it depends mainly from the electrostatic potential $V$ and from the chemical potential $\mu$ due to the concentration of electrons) is the highest. By consequence the other contact is the anode. The naming of the two contacts holds to the one defined in illuminated, open circuit conditions even in conditions where the contacts' electrochemical potential is in the reversed order.
-	
-	The voltage $\Delta V$ is defined subtracting the electrons electrochemical potential of the cathode from the anode's one. So in the aforementioned conditions, the voltage is positive. The unit is the Volt.
-	
-	The electrical power $P$ is defined as positive when the device absorbs electrical energy (incoming, passive element) and negative when it generates energy (outgoing, active element). It can be expressed in extensive form with power (Watt) unit or in intensive form "electrical power density" with power (Watt) over active area (square centimetre) unit.
-	
-	The current $J=P/V$ is measured through an external circuit and the sign is a consequence of the voltage and electrical power definition: A current ("conventional current", flow of positively charged particles) being released from the device's anode and being received from the device's cathode is defined as negative. This can be thought as: Inside the device, somehow, a positive charge was moved from the high Fermi level contact to the low Fermi level contact, increasing its electrochemical energy, the opposite to what would happen in a resistor, whose current is always positive. In a solar cell device, the current and the electrical power can be either positive or negative depending on the illumination and voltage conditions. It can be expressed in extensive form with current (Amperes) unit or in intensive form "current density" with current (Amperes) per active area (square centimetre) unit.
-
-		\Gls{voc} parameter is defined as the voltage $\Delta V$ at which the current is zero while the solar cell device is illuminated at 1~sun conditions and in steady state (positive by its own definition).
-
-\Gls{jsc} parameter is defined as the unsigned value of the current density flowing in an external circuit short circuiting (zero resistance) the solar cell device's contacts while illuminated at 1~sun and in steady state. It is usually reported in current (milli Amperes) over active area (square centimetre) unit.
-
-The maximum power is defined as the unsigned minimum of electrical power density which can be obtained by $P(V) = J(V) \cdot V$. It is usually reported using power (Watt) over active area (square centimetre) unit.
-
-\Gls{pce} parameter is defined as the maximum power density over the illuminating power density, which at 1~sun AM 1.5G is defined to \SI{100}{\mW\per\square\cm}.
-
-\Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}. This parameter does not have a physical meaning, it just helps understanding how much factors like the series and the shunt resistance affect the device efficiency.
-
-	\subsection{Shadowing Mask Was Not Used}
-	
-		In literature is generally suggested to use a shadowing mask when measuring the solar cell devices in order to better define the illuminated area (as in \cite{NatureResearch2017}, the file is an dynamic XFA form and cannot be opened by most PDF readers (and they rightly do not, as it was deprecated in ISO 32000-2:2017), Adobe products or Master PDF Editor is required for reading). In our case the active area is just \SI{0.09}{\square\cm} so the mask aperture should be extremely small and its exact positioning troublesome. Additionally, the fact that the illumination reaches the mask from a wide angle (the illuminating source dimension, which is not just the lamp as the illumination passes through spread lenses, is not small compared to the lamp-cell distance) allows the light to spread through the substrate glass (\SI{2.2}{\mm} for \gls{fto} substrates, other groups use even thicker glass substrates) reaching a significantly larger area on the active layer at the other side of the glass. In our solar simulator a linear widening of 8~\% over \SI{2}{\mm} was estimated, this makes an illuminated area 16~\% larger than the mask aperture. Even if the total incident power is still determined from the mask aperture, the illumination intensity is not 1~sun any more, compromising the validity of a measurement done with a shadowing mask.
-
-	\subsection{Current-Voltage Sweeps}
-
-		After calibrating the light intensity in the solar simulator (see \cpageref{solarsimulator}), the devices were exposed to the illumination at open circuit for some seconds in order to have a stabilized open circuit voltage. Then usually the curves were measured with the auto-measure function of the PyPV software (see \cpageref{automeasure}) which measures the reverse scan and then the forward scan.
-		
-		\myparagraph{Parameters Extraction from Sweeps}
-			In the whole thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep. Checking the aforementioned definitions, one can easily notice how this is not the correct way as these parameters need to be measured in steady-state conditions. This is a widely accepted due to the tradition of solar cell reporting, which was established in pre-hysteresis times and is no longer a valid approximation. Apologizing for the lack of coherence I hope I'll be able to implement the static measurements of \gls{voc} and \gls{jsc} in the PyPV measurement routines (described in \cpageref{automeasure}). Regarding the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis) which implies that the voltage associated to the maximum power point is drifting and the measurement affects this evolution. A proper \gls{mppt} system needs to be bought or developed, see \cpageref{software_mppt} for thoughts about possible implementations.
-
-		\myparagraph{Scan speed}
-			The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for having an aesthetically good looking current-voltage curve (avoiding bumps leading to currents higher than \gls{jsc}), like the one in \cref{fig:iv_ugly}.
-
-			\begin{SCfigure}%[!hbtp]%
-				\centering
-				\includegraphics[width=0.5\textwidth]{iv_ugly/ig47-b32-int2-4.pdf}
-				\mycaption[Hysteretic current-voltage scan.]{At the employed scan speed, the hysteresis phenomena causes the reverse (solid line) scan to reach currents higher than the \gls{jsc}.}\label{fig:iv_ugly}
-			\end{SCfigure}
-
-			Due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one and they all heavily affect the resulting \gls{pce}. Indeed has been shown that even so-called "hysteresis-free" perovskite solar cells can have hysteresis on smaller or bigger time scale\cite{Jacobs2018}. Rather, a static measurement or a \acr{mppt} should be used for obtaining a result not completely alienated from the real world.
-
-			The noise often observed in current-voltage scans at high sweep speeds is mainly caused by oscillations in the solar simulator illumination intensity, as an example see REFERENCE FIGURE. Indeed, using a white \gls{led} as illumination source, this noise is not present but the spectral mismatch affects the meaningfulness of the measurement.
-
-		\myparagraph{Auto-scale}\label{autoscale}
-
-			\begin{SCfigure}%[!hbtp]%
-				\centering
-				\includegraphics[width=0.5\textwidth]{autoscale/ig1-3-1-int4.pdf}
-				\mycaption[Kinks in JV sweep due to autoscale.]{A current-voltage sweep of an hysteretic perovskite solar cell with Keithley autoscale active. Both the forward (dashed) and the reverse (solid line) present small discontinuities around \SI{1}{\mA} and \SI{0.1}{\mA}.}\label{fig:autoscale}
-			\end{SCfigure}
-
-			In literature one can easily find current-voltage curves with discontinuities and kinks\cite{Li2016,Snaith2014,Zhang2015} like the one reported in \cref{fig:autoscale}. Some even lucubrate about the origin of these in perovskite solar cells. Indeed this is likely just caused by the auto-scale feature of the Keithley equipment, disabling this, the discontinuities disappears.
-
-	\subsection{\Gls{voc} and \gls{jsc} Dependence on Light Intensity}
-		The illumination by solar simulation is reduced via neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter). The devices are kept at this reduced illumination $\phi$ and at open circuit or short circuit conditions until steady state for measuring respectively $V_{OC}(\phi)$ or $J_{SC}(\phi)$.
-		
-		\myparagraph{\Gls{jsc} versus $\bm{\phi}$}\label{methods_jsc_intensity} The \gls{jsc} dependency on the light intensity $\phi$ can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
-		
-		\myparagraph{\Gls{voc} versus $\bm{\phi}$}\label{methods_voc_intensity} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
-		$$V_{OC} = k + \frac{n_{id} k_B T}{q}\cdot\ln(\phi)$$
-		where $k$ does not contain physical meaning (depends on the light intensity units and on the \gls{voc} at 1~sun), $k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b} (in literature one can found inexact reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. In this thesis, this measurement is reported both from static measurement of \gls{voc} (proper method) and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case.	An applied voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis. Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
-		
-		For the interpretation of these results, see \cpageref{interpretation_lightintensity}.
-		
-	\subsection{Charge Extraction (\acr{ce})}
-
-		The device is kept under 1~sun equivalent illumination by a white \gls{led} at open circuit conditions until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. The \gls{led}-solar spectral mismatch affects slightly the measurement, but in no case a \gls{pce} is reported from any \gls{led}-illuminated experiment. After stabilization the illumination is switched off and, at the exactly same moment, the device is short circuited through a small and known resistance of \SI{50}{\ohm} \cite{Duffy2000}.
-
-		This is repeated decreasing the light intensity from 1~sun down to dark (in dark no signal should be observed, indeed some residual charge can usually be seen, the reason of this could be ionic profile updating or an insufficient darkness) and a single decay is measured for each illumination point, over approximatively 30 illumination points.
-
-		The equipment includes two transistors (in a in-house built circuit by Javier Pérez Hernández) connected to a pulse generator providing a square pulse long at least as the measurement window. I suggest to reduce as much as possible the duration of the dark period (ruled by the pulse generator) in order to save time for the stabilization step in the next measure.
-
-		The measurement is carried out with an oscilloscope in parallel to the known small resistance. In the first microseconds, most of the free charge flows through the resistor generating a voltage drop across it which is measured by the oscilloscope. This potential drop can be converted to current using the Ohm's law, which, integrated over time, gives the amount of extracted charge.
-
-		For the interpretation, see \cpageref{interpretation_ce}; for the implementation, see \cpageref{r_ce}.
-
-		\myparagraph{Noise reduction}\label{r_ce_noise}
-			Most of the observed short-times noise (\SI{< 5E-7}{\s}) is, supposedly, related to the opening and closing of the transistors included in the in-house built circuit.
-
-			Annoyingly, the noise profile is characteristic of the cell and of the circuitry, so a simple average over many decays does not help in cancelling it.
-
-			This affects the resulting measurement to a noticeable extent, which starts to be a problem if the charge versus light bias (\gls{voc} generated at a given illumination intensity) profile has to be studied in detail, as in \cref{ch:tae}.
-
-			In order to reduce this effect various approaches have been tested; finally the single decays were fitted with a bi-exponential formula (sum of two exponential) and the integral of this fit was used.
-
-	\subsection{Transient PhotoVoltage (\acr{tpv})}
-
-		The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser. The pulse duration is around \SI{1.5}{\ns}. The equipment can output up to 20~pulses per second, but due to the oscilloscope settings and oscilloscope internal memory speed we're limited to 1~pulse per second (maybe decreasing the number of acquired points would allow us to acquire higher repetition rates). The pulse was triggered with a square wave pulse generator. The wavelength is selected with the absorption and emission of a dissolved molecular dye, usually a wavelength of \SI{650}{\nm} is selected using a RhodamineB solution\cite{RadiantDyesLaser}, this wavelength allow us to illuminate in deep the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material).
-
-		During all the process, the device is connected to a \SI{1}{\Mohm} oscilloscope, registering the open circuit voltage profile (the high resistance of the oscilloscope is a good approximation of open circuit). An auxiliary output from the square wave pulse generator used for the pulse is used for the trigger of the oscilloscope.
-
-		The intensity of the laser pulse is decreased using a variable neutral density filter (a partially reflecting wheel with different positions for different transmittivities) so that the voltage perturbation caused by the light pulse does not exceed \SI{10}{\mV} with 1~sun background illumination intensity. We consider this as a "small-enough" perturbation.
-
-		This process is repeated decreasing the light intensity from 1~sun down to dark. Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not so at lower ones and cannot be small at dark conditions. We \emph{do not} regulate the pulse intensity depending from the background illumination for being able to use this data also for \acr{dc} studies. The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity. The switch from \acr{tpv} to \acr{tpc} setups and back would be complex and time demanding with the current setup. Anyway quite all the information from the \acr{tpv} is obtained from the high background illumination intensity measurements.
-
-		For each illumination intensity, the reported decay is the result of averaging around 30~transients. This manages to reduce the noise.
-
-		For the interpretation, see \cpageref{interpretation_tpv}; for the implementation, see \cpageref{r_tpv}.
-
-
-		\myparagraph{Noise treatment}\label{tpv_robust}
-			Most of the observed noise (\SI{< 2E-7}{\s}) is due to the radiofrequency emitted by the spark in the nitrogen laser which gets absorbed by the circuitry of the samples holder acting as a receiving antenna (the connection cables are coaxial, so they don't absorb radiofrequency). On the contrary to what happens for \acr{ce}, the short times noise seems to not follow a constant pattern, so averaging the measurement over a few repetitions (usually 30) manages to reduce the noise.
-
-			This noise can affect the exponential or bi-exponential fitting, for this reason a robust fitting routine has been used, which gives a lower weight to outlier points. An example can be seen in \cref{fig:tpv_robust}.
-			
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.9\textwidth]{{tpv_robust/TPV_ig52-68-3_0.883897_V-monoexp}.pdf}
-				\mycaption[Robust and normal fitting comparison.]{In grey the fitted points, in yellow the points not considered for the fitting, the solid black line is the \gls{loess}. The normal non-linear least squares fitting (in green) is affected by noise, outliers and characteristics not of interest by the model. The non-linear robust fitting (in brown) manages to reduce the weight of these points.}\label{fig:tpv_robust}
-			\end{figure}
-		
-
-		\myparagraph{Voltage Increase Value}\label{tpv_deltaV}
-
-			The value of the voltage increase due to the additional illumination is needed for \acr{dc} measurement.
-
-			In the group this $\Delta V$ value was traditionally obtained subtracting the steady state \gls{voc} from the maximum voltage point in the measured transient. This is obviously heavily affected by the aforementioned noise when a short time window is used.
-
-			The following alternatives were tested:
-			\begin{itemize}
-				\item The linear factor in an exponential fit was used, but it can fail if the decay does not have a simple exponential shape (often a bi-exponential, sum of two exponentials, is observed);
-				\item The sum of the two linear factors in a bi-exponential fit, which could work but one have to carefully set boundary values to the fitting parameters for avoiding a fast exponential matching just some noise;
-				\item The maximum value of a \gls{loess} local regression was used, but this underestimates the value, especially when the peak top are just few points (when the measurement time window is large);
-				\item The average of the values registered starting from the maximum voltage point and during a specified time lapse.
-			\end{itemize}
-
-			This last option is the one currently in place. The average was performed over \SI{50}{ns} after the peak and this allowed us to get a reliable $\Delta V$ value.
-
-	\subsection{Transient PhotoCurrent (\acr{tpc})}
-
-		The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
-
-		The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor. This allows us to measure a potential drop across the resistor and the related current via Ohm's law. Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge generated by the laser pulse.
-
-		This process is repeated at 1~sun and at dark background illumination conditions.
-
-		For each illumination intensity, the reported decay is the result of averaging around 30~transients. This manages to reduce the noise.
-		
-		For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
-
-	\subsection{Differential Capacitance (\acr{dc})}
-
-		This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experiment\cite{Shuttle2008}, sometimes also referred to as "differential capacitance".
-
-		As explained in \cpageref{interpretation_dc}, the electrical capacitance of a solar cell is not a constant (as in most of the commercial capacitors), indeed it depends on the applied voltage bias or light bias.
-
-		The charge obtained with the \acr{tpc} (in case the dark and illuminated results were different, the third quartile of all \acr{tpc} measurements was used) is divided by an array of values obtained from \acr{tpv}, one for each illumination intensity. The needed value is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity (obtained as described in \cpageref{tpv_deltaV}).
-
-		This allows us to estimate the capacitance of the solar cell device at open circuit with various illumination intensities.
-
-		For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
