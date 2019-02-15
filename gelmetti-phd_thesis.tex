@@ -3,13 +3,13 @@
 	% 
 	% 
 	% Istruzioni di compilazione (per produrre il pdf): avere un texlive funzionante e i pacchetti che vengono richiesti qui sotto; lanciare i comandi
-	% pdflatex gelmetti-master_thesis.tex
-	% makeglossaries gelmetti-master_thesis
-	% biber gelmetti-master_thesis
-	% pdflatex gelmetti-master_thesis.tex
-	% pdflatex gelmetti-master_thesis.tex
-	% non so se sia necessario lanciare altre volte biber, makeglossaries o pdflatex, di certo male non fa.
-	%
+	% pdflatex gelmetti-phd_thesis
+	% biber gelmetti-phd_thesis
+	% makeglossaries gelmetti-phd_thesis
+	% texindy gelmetti-phd_thesis.idx
+	% pdflatex gelmetti-phd_thesis
+	% pdflatex gelmetti-phd_thesis
+
 	
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
 	\usepackage[utf8]{inputenc}
@@ -31,8 +31,10 @@
 	
 	\usepackage{upgreek} % for avoiding the warning "Package chemmacros Warning: You haven't loaded any package for upright Greek"
 	\usepackage{chemmacros} 		% for \ch{} and \iupac{}
-
-	
+	%\chemsetup{formula={chemformula}}
+	%\chemsetup[chemformula]{font-shape=sf}
+	%\chemsetup[chemformula]{format=\sffamily}
+		
 	\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
 	
 	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
@@ -96,7 +98,12 @@
 	
 	\usepackage{amssymb}% for the \square math symbol
 %	\usepackage{mathtools}
-	\usepackage{bm}% for bold in mathematical writing with \bm, for example when greek symbols are included in paragraph titles
+
+%	\usepackage{bm}% for bold in mathematical writing with \bm, for example when greek symbols are included in paragraph titles
+% this replaces the usage of \bm, taken from https://tex.stackexchange.com/a/124311/173645
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
 	
 	\usepackage[super]{nth} % for superscript 1st 2nd, to be used with \nth{1}
 	
@@ -110,7 +117,7 @@
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
 	
-	\usepackage{microtype} % automagically reduces overfull lines and improves justification
+	\usepackage[spacing=true, stretch=40, shrink=40]{microtype} % automagically reduces overfull lines and improves justification
 
 	\usepackage{titlesec}
 	% standatard definitions from section 9.2 in titlesec manual
@@ -180,7 +187,10 @@
 	\renewcommand{\floatpagefraction}{.8}% less likely to have images by their own in a page https://tex.stackexchange.com/questions/68516/avoid-that-figure-gets-its-own-page
 	
 	
-	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne}
+
+	
+	
+	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile}
 	
 	\title{Advanced characterization and modelling of charge transfer in perovskite solar cells.}
 	\author{Ilario Gelmetti}
@@ -287,23 +297,6 @@
 % ACRONYMS %
 %%%%%%%%%%%%
 
-% molecules and materials
-\newacronym{pcbm60}{PC$_{60}$BM}{[6,6]-phenyl C\textsubscript{61} butyric acid methyl ester}
-\newacronym{pcbm70}{PC$_{70}$BM}{[6,6]-phenyl C\textsubscript{71} butyric acid methyl ester}
-\newacronym{ptfe}{PTFE}{poly\-tetra\-fluoro\-ethylene}
-\newacronym{fto}{FTO}{fluorine tin oxide}
-\newacronym{ito}{ITO}{indium tin oxide}
-\newacronym{pedotpss}{PEDOT:PSS}{poly\-(3,4-ethylene\-di\-oxy\-thiophene) poly\-(styrene\-sulfonate)}
-\newacronym{mai}{MAI}{methylammonium iodide}
-\newacronym{mabr}{MABr}{methylammonium bromide}
-\newacronym{fai}{FAI}{formamidinium iodide}
-\newacronym{dmso}{DMSO}{dimethyl sulfoxide}
-\newacronym{dmf}{DMF}{N,N-dimethylformamide}
-\newacronym{pes}{PES}{polyethersulfone}
-\newacronym{mapi}{\ch{MAPbI3}}{methylammonium lead iodide}
-\newacronym{mapicl}{\ch{MAPI_{3-x}Cl_x}}{methylammonium lead iodide chloride}
-\newacronym{csfamapbibr}{CsFAMAPbIBr}{cesium formamidinium methylammonium lead iodide bromide}
-
 % techniques
 \newacronym{pl}{PL}{photoluminescence}
 \newacronym{uvvis}{UV--vis}{ultraviolet--visible}
@@ -339,12 +332,30 @@
 \newacronym{dssc}{DSSC}{dye sensitized solar cells}
 
 % long non-acronym names and descriptions
-\newglossaryentry{litfsi}{name={LiTFSI},description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
-\newglossaryentry{spiro}{name={\iupac{spiro-OMeTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octakis|(4-methoxy|phenyl)|-9,9'-spiro|bi|[9H-fluorene]|-2,2',7,7'-tetr|amine}}}
-\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-|[N,N-|(4,4'-di|methoxy|di|phenyl|amino)]|phenyl\}|ethene}}}
-\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetra|kis|[N,N-bis|(4-methoxy|phenyl)|amino]|-9,9'-bi|fluorenyl|idene}}}
-\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetra|kis|(3,6-di|methoxy-|9H-carbazol-9-yl)|-9,9'-bi|fluorenyl|idene}}}
-\newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly[bis(4-phenyl)(2,4,6-trimethylphenyl)amine}}}
+
+% molecules and materials
+\newglossaryentry{pcbm60}{name={\ch{PC60BM}}, description={\iupac{[6,6]-phenyl C\textsubscript{61} butyric acid methyl ester}}}
+\newglossaryentry{pcbm70}{name={\ch{PC70BM}}, description={\iupac{[6,6]-phenyl C\textsubscript{71} butyric acid methyl ester}}}
+\newglossaryentry{ptfe}{name={\ch{PTFE}}, description={\iupac{poly|tetra|fluoro|ethyl|ene}}}
+\newglossaryentry{fto}{name={\ch{FTO}}, description={fluorine tin oxide}}
+\newglossaryentry{ito}{name={\ch{ITO}}, description={indium tin oxide}}
+\newglossaryentry{pedotpss}{name={\ch{PEDOT:PSS}}, description={\iupac{poly\-(3,4-ethyl|ene|di|oxy|thio|phene) poly|(styr|ene|sulfon|ate)}}}
+\newglossaryentry{mai}{name={\ch{MAI}}, description={methylammonium iodide}}
+\newglossaryentry{mabr}{name={\ch{MABr}}, description={methylammonium bromide}}
+\newglossaryentry{fai}{name={\ch{FAI}}, description={formamidinium iodide}}
+\newglossaryentry{dmso}{name={\ch{DMSO}}, description={dimethyl sulfoxide}}
+\newglossaryentry{dmf}{name={\ch{DMF}}, description={\iupac{N,N-di|methyl|form|amide}}}
+\newglossaryentry{pes}{name={\ch{PES}}, description={\iupac{poly|ether|sulf|one}}}
+\newglossaryentry{mapi}{name={\ch{MAPbI3}}, description={\iupac{methyl|ammonium lead iodide}}}
+\newglossaryentry{mapicl}{name={\ch{MAPbI_{3-x}Cl_x}}, description={\iupac{methyl|ammonium lead iodide chloride}}}
+\newglossaryentry{csfamapbibr}{name={\ch{CsFAMAPbIBr}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iodide bromide}}}
+\newglossaryentry{csfamapbibr_complete}{name={\ch{Cs_{0.06}FAMA_{0.2}Pb_{1.3}I_{3.2}Br_{0.6}}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iodide bromide}}}
+\newglossaryentry{litfsi}{name={\ch{LiTFSI}}, description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
+\newglossaryentry{spiro}{name={\iupac{spiro-OMeTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octa|kis|(4-meth|oxy|phenyl)|-9,9'-spiro|bi|[9H-fluor|ene]|-2,2',7,7'-tetr|amine}}}
+\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-|[N,N-|(4,4'-di|meth|oxy|di|phen|yl|amino)]|phen|yl\}|eth|ene}}}
+\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetra|kis|[N,N-bis|(4-meth|oxy|phen|yl)|amino]|-9,9'-bi|fluor|en|yl|id|ene}}}
+\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetra|kis|(3,6-di|meth|oxy-|9H-carba|zol-9-yl)|-9,9'-bi|fluor|en|yl|id|ene}}}
+\newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly[bis(4-phen|yl)(2,4,6-tri|methyl|phen|yl)amine}}}
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
 \printglossary[type=\acronymtype]
@@ -417,7 +428,7 @@
 	\input{contents_tex/intro.tex}
 
 \chapter{Experimental Methods and Fabrication}\label{ch:methods}
-	%	\chaptermark{Experimental Methods}
+	\chaptermark{Experimental Methods}
 	\graphicspath{ {./contents_img/methods/} }
 	\input{contents_tex/methods.tex}
 
@@ -427,7 +438,7 @@
 	\input{contents_tex/characterization.tex}
 
 \chapter{Comparison of \gls{htm} in Bottom Cathode \gls{csfamapbibr} Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
-\chaptermark{Comparing \textsmaller{htm}}
+\chaptermark{Comparing HTM}
 	\graphicspath{ {./contents_img/tae/} }
 	\input{contents_tex/tae.tex}
 
@@ -446,8 +457,8 @@
 \graphicspath{ {./contents_img/impedance/} }
 \input{contents_tex/impedance.tex}
 
-\chapter{Implementation of Common Characterization Techniques in Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
-\chaptermark{Modelling of Characterization Techniques}
+\chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
+\chaptermark{Modelling}
 \graphicspath{ {./contents_img/modelling/} }
 \input{contents_tex/modelling.tex}
 

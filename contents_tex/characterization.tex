@@ -35,12 +35,12 @@ In literature is generally suggested to use a shadowing mask when measuring the 
 
 \subsection{Stability During the Measurement and Small/Large Perturbations}
 
-	Most of the reported hybrid lead halide perovskite materials can show rather impressive changes in their structure on long time scales, for example due to ionic migration CITE, degradation CITE and self-healing CITE 10.1002/adma.201706273.
-	This have to be taken into account for all the measurements techniques output which either takes too long time to be measured or employs large perturbations. Large perturbations regime means that the independent variable under study (e.g. light in \acr{tpv} or voltage in impedance measurements) is changed by an amount large enough to cause the quantities under study (e.g. free charges concentration in \acr{tpv} or current in impedance measurements) to respond in a more than first order fashion (e.g. a very intense light pulse in \acr{tpv} or a \SI{1}{\volt} oscillation in impedance measurements).
-	
-	\paragraph{Long lasting measurement} An example of the first case is the impedance spectroscopy where during the long lasting measurement various phenomena can occur, like: a slow current evolution due to perovskite well known hysteretic behaviour prior to stabilization; a degradation process changing the current; the heating of the device changing its properties. This slow current evolution can easily be misinterpreted for capacitive current CITE JACOBS and introduce artefacts like loops in the Nyquist plots CITE IMPEDANCE PAPER.
-	
-	\paragraph{Large perturbations} Let's take as an example the Time-Resolved PhotoLuminescence. As the devices does not usually have a background illumination, apart from the laser pulses AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Most of the reported hybrid lead halide perovskite materials can show rather impressive changes in their structure on long time scales, for example due to ionic migration CITE, degradation CITE and self-healing CITE 10.1002/adma.201706273.
+This have to be taken into account for all the measurements techniques output which either takes too long time to be measured or employs large perturbations. Large perturbations regime means that the independent variable under study (e.g. light in \acr{tpv} or voltage in impedance measurements) is changed by an amount large enough to cause the quantities under study (e.g. free charges concentration in \acr{tpv} or current in impedance measurements) to respond in a more than first order fashion (e.g. a very intense light pulse in \acr{tpv} or a \SI{1}{\volt} oscillation in impedance measurements).
+
+\paragraph{Long lasting measurement} An example of the first case is the impedance spectroscopy where during the long lasting measurement various phenomena can occur, like: a slow current evolution due to perovskite well known hysteretic behaviour prior to stabilization; a degradation process changing the current; the heating of the device changing its properties. This slow current evolution can easily be misinterpreted for capacitive current CITE JACOBS and introduce artefacts like loops in the Nyquist plots CITE IMPEDANCE PAPER.
+
+\paragraph{Large perturbations} Let's take as an example the Time-Resolved PhotoLuminescence. As the devices does not usually have a background illumination, apart from the laser pulses AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
 
@@ -79,16 +79,16 @@ The noise often observed in current-voltage scans at high sweep speeds is mainly
 \paragraph{Stabilized or dynamic current-voltage sweeps}
 One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported. CITE 10.1039/c4ee02465f 10.3390/photonics2041101
 An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current-time derivative falls below a threshold (e.g. \SI{0.2}{\%\per\minute}).CITE 10.1039/c7ta05609e 10.1002/pip.2839
-In this thesis, these techniques have not been used. 
+In this thesis, these techniques have not been used.
 
 \paragraph{Shunt and series resistances} \label{resistances} In our group the shunt and series resistances are evaluated by the current versus voltage derivative of a dark current-voltage sweep respectively at zero and at high-enough voltage. This methodology is inherited from organic solar cells and, as is easy to foresee, is unreliable on hysteretic devices: in the case of perovskite solar cells a measurement of the stabilised current at a few points have better chances to produce a useful result. The measurement of the current at a voltage close to zero is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
 
 \section{\textsmaller{V\textsubscript{OC}} and \textsmaller{J\textsubscript{SC}} Dependence on Light Intensity}
 The illumination by solar simulation is reduced via neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter). The devices are kept at this reduced illumination $\phi$ and at open circuit or short circuit conditions until steady state for measuring respectively $V_{OC}(\phi)$ or $J_{SC}(\phi)$.
 
-\paragraph{\Gls{jsc} versus $\bm{\phi}$}\label{methods_jsc_intensity} The \gls{jsc} dependency on the light intensity $\phi$ can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
+\paragraph{\Gls{jsc} versus $\phi$}\label{methods_jsc_intensity} The \gls{jsc} dependency on the light intensity $\phi$ can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
 
-\paragraph{\Gls{voc} versus $\bm{\phi}$}\label{methods_voc_intensity} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
+\paragraph{\Gls{voc} versus $\phi$}\label{methods_voc_intensity} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
 $$V_{OC} = k + \frac{n_{id} k_B T}{q}\cdot\ln(\phi)$$
 where $k$ does not contain physical meaning (depends on the light intensity units and on the \gls{voc} at 1~sun), $k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b} (in literature one can found inexact reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. In this thesis, this measurement is reported both from static measurement of \gls{voc} (proper method) and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case.	An applied voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis. Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
 
