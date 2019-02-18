@@ -78,29 +78,45 @@
 		urlcolor={blue!80!black}
 	}
 	
+	%%%%%%%%%%%
+	%%%%%%%%%%% GLOSSARIES
+	%%%%%%%%%%%
 	\usepackage[xindy, nonumberlist, acronym, nomain]{glossaries} %table of acronyms
 	\makeglossaries % has to be after glossaries and after hyperref
 	\setacronymstyle{long-sp-short}
 	\usepackage{relsize}%needed by textsmaller in glossaries
 	\renewcommand*{\acronymfont}[1]{\textsmaller{#1}}
 	
+	% for the table of symbols, this soultion could be used: https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis
+	
 	\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
 	
+	%%%%%%%%%%%
+	%%%%%%%%%%% MULTIROW
+	%%%%%%%%%%%
 	\usepackage{multirow}% for tables
 	%\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
+	
+	%%%%%%%%%%%
+	%%%%%%%%%%% FANCYHDR
+	%%%%%%%%%%%
 	\usepackage{fancyhdr}%page headers
 	\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
 	
+	%%%%%%%%%%%
+	%%%%%%%%%%% MAKEIDX
+	%%%%%%%%%%%
 	\usepackage{makeidx} % for alphabetical index, using xindy or makeindex
 	\makeindex
 	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
 	\MakeOuterQuote{"}
 	
+	%%%%%%%%%%%
+	%%%%%%%%%%% AMSSYMB
+	%%%%%%%%%%%
 	\usepackage{amssymb}% for the \square math symbol
-%	\usepackage{mathtools}
 
-%	\usepackage{bm}% for bold in mathematical writing with \bm, for example when greek symbols are included in paragraph titles
-% this replaces the usage of \bm, taken from https://tex.stackexchange.com/a/124311/173645
+% this replaces the usage of \bm (bold in math), taken from https://tex.stackexchange.com/a/124311/173645
 \makeatletter
 \g@addto@macro\bfseries{\boldmath}
 \makeatother
@@ -135,8 +151,10 @@
 	%\newcommand{\myp}[1]{\paragraph{\hspace*{-0.5cm}#1}}
 	
 	\usepackage{etoolbox}
-	\preto\section{\vfil\penalty-20\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
-		
+%	\preto\section{\vfil\penalty-10\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
+%	\preto\section{\vskip 0pt plus 1fil\penalty-200\vskip 0pt plus -1fil}
+	\preto\section{\penalty-500}
+
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
 	%\pgfplotsset{compat=newest}
@@ -314,6 +332,7 @@
 \newacronym{kpfm}{KPFM}{Kelvin probe force microscopy}
 \newacronym{afm}{AFM}{atomic force microscopy}
 \newacronym{ac-afm}{AC-AFM}{alternating current atomic force microscopy}
+\newacronym{trpl}{TRPL}{time-resolved photoluminescence}
 
 % physical properties
 \newacronym{homo}{HOMO}{highest-energy occupied molecular orbital}

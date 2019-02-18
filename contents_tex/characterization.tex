@@ -1,16 +1,20 @@
+\epigraph{\textit{""}}
+
+\paragraph{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells. The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
+
 \section{Conventions and General Remarks}
 
-All the characterization on complete devices was performed keeping them in a air tight holder filled with nitrogen. The electrical connection from the cell electrode to the external end of the holder was obtained via gold tips connected via a printed circuit board to a coaxial cable.
+All the characterization on complete devices was performed keeping them in an air-tight holder filled with nitrogen. The electrical connection from the cell electrode to the external end of the holder was obtained using gold tips connected via a printed circuit board to a coaxial cable.
 
 \subsection{Sign Convention and Parameters Definitions}
 
 \paragraph{Fermi level} The electrons electrochemical potential, also known as Fermi level, is defined as the energy required for adding an electron in a specified position. Its value depends on the electrostatic potential $V$ in that position and on the internal chemical potential $\mu$ which in our case depends mainly on the concentration of electrons (not related to their electric charge, similarly to the density of a gas). As the Fermi level is going to be used mainly for comparisons, its zero is not going to be defined thesis-wide, instead it will be defined to a convenient reference just where needed.
 
-\paragraph{Cathode and anode} Considering a solar cell device at steady state under illumination and open circuit conditions, its cathode is defined as the contact where the electrons electrochemical potential $\bar\mu$  is the highest. By consequence the other contact is the anode. The naming of the two contacts holds to the one defined in illuminated, open circuit conditions even in conditions where the contacts' electrochemical potential is in the reversed order.
+\paragraph{Cathode and anode} Considering a solar cell device at steady state under illumination and in open circuit conditions, its cathode is defined as the contact where the electrons electrochemical potential $\bar\mu$  is the highest. By consequence the other contact is the anode. The naming of the two contacts holds to the one defined in illuminated, open circuit conditions even in conditions where the contacts' electrochemical potential is in the reversed order.
 
 \paragraph{Voltage} The voltage $\Delta V$ is always used as a relative value, defined subtracting the electrons electrochemical potential of the cathode from the anode's one. So in the aforementioned solar cell example, the voltage is positive. The unit is the Volt.
 
-\paragraph{Electrical power} The electrical power $P$ is defined as positive when the device absorbs electrical energy (incoming, passive element) and negative when it generates energy (outgoing, active element). It can be expressed in extensive form with power (Watt) unit or in intensive form "electrical power density" with power (Watt) over active area (square centimetre) unit.
+\paragraph{Electrical power} The electrical power $P$ is defined as positive when the device absorbs electrical energy (incoming, passive element) and negative when it generates energy (outgoing, active element). It can be expressed in extensive form with power (Watt) unit or in intensive form "electrical power density" with power over active area unit (Watt over square centimetre).
 
 \paragraph{Current} The current $J=P/V$ is measured through an external circuit and the sign is a consequence of the voltage and electrical power definition: A current ("conventional current", flow of positively charged particles) being released from the device's anode and being received from the device's cathode is defined as negative. This can be thought as: Inside the device, somehow, a positive charge was moved from the high Fermi level contact to the low Fermi level contact, increasing its electrochemical energy, the opposite to what would happen in a resistor, whose current is always positive. In a solar cell device, the current and the electrical power can be either positive or negative depending on the illumination and voltage conditions. It can be expressed in extensive form with current (Amperes) unit or in intensive form "current density" with current (Amperes) per active area (square centimetre) unit.
 
@@ -22,28 +26,40 @@ All the characterization on complete devices was performed keeping them in a air
 
 \paragraph{\Glsdesc{pce}} \Gls{pce} parameter is defined as the maximum power density over the illuminating power density, which at 1~sun AM 1.5G is defined to \SI{100}{\mW\per\square\cm}. It is usually reported as a percentage.
 
-\paragraph{\Glsdesc{ff}} \Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}. This parameter does not have a physical meaning, it just helps understanding how much factors like the series and the shunt resistance affect the device efficiency.
+\paragraph{\Glsdesc{ff}} \Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}. This parameter does not have a physical meaning, but it represents how much the series and shunt resistances affect the device efficiency.
 
 \paragraph{Forward and reverse bias} Forward bias is a device condition where the voltage is positive, reverse bias is the case where the voltage is negative.
 
 \paragraph{Forward and reverse scan} In current-voltage sweeps, a scan where the voltage is increasing over time is a forward scan, while a voltage variation in the opposite direction constitutes a reverse scan.
 
-\subsection{Shadowing Mask Was Not Used}
+\paragraph{Top and bottom of devices} The point of view of the manufacturer is used for defining the physical top and bottom of a device: the bottom is the glass substrate and the top is the last deposited layer. This is opposite with the usage of a solar cell in the real world and with most of the solar simulators (but not all of them, for example Paios from Fluxim has an illumination from below, more convenient for contacting the electrodes without a samples holderCITE FLUXIM).
 
-In literature is generally suggested to use a shadowing mask when measuring the solar cell devices in order to better define the illuminated area (as in \cite{NatureResearch2017}, the file is an dynamic XFA form and cannot be opened by most PDF readers (and they rightly do not, as it was deprecated in ISO 32000-2:2017), Adobe products or Master PDF Editor is required for reading). In our case the active area is just \SI{0.09}{\square\cm} so the mask aperture should be extremely small and its exact positioning troublesome. Additionally, the fact that the illumination reaches the mask from a wide angle (the illuminating source dimension, which is not just the lamp as the illumination passes through spread lenses, is not small compared to the lamp-cell distance) allows the light to spread through the substrate glass (\SI{2.2}{\mm} for \gls{fto} substrates, other groups use even thicker glass substrates) reaching a significantly larger area on the active layer at the other side of the glass. In our solar simulator a linear widening of 8~\% over \SI{2}{\mm} was estimated, this makes an illuminated area 16~\% larger than the mask aperture. Even if the total incident power is still determined from the mask aperture, the illumination intensity is not 1~sun any more, compromising the validity of a measurement done with a shadowing mask.
+\subsection{Usage of Shadowing Mask}
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{shadowing_mask/shadowing_mask.pdf}
+	\mycaption[Illuminated area after a shadowing mask.]{This schema is just for explaining the concept described in the text, its dimensions are not realistic.}\label{fig:shadowing_mask}
+\end{SCfigure}
+
+In literature is generally suggested to use a shadowing mask when measuring the solar cell devices in order to better define the illuminated area (as in the brokenCITE BRINSER form from Nature\cite{NatureResearch2017}). %, the file is a dynamic XFA form and cannot be opened by most PDF readers (and they rightly do not, as it was deprecated in ISO 32000-2:2017), Adobe products or Master PDF Editor is required for reading).
+In our case the active area is just \SI{0.09}{\square\cm} so the mask aperture should be extremely small and its exact positioning troublesome. Additionally, the fact that the illumination reaches the mask from a wide angle (the illuminating source dimension, which is not just the lamp as the illumination passes through spread lenses, is not small compared to the lamp-cell distance) allows the light to spread through the substrate glass (\SI{2.2}{\mm} for \gls{fto} substrates, other groups use even thicker glass substrates) reaching a significantly larger area on the active layer at the other side of the glass, as represented in \cref{fig:shadowing_mask}. In our solar simulator a linear widening of 8~\% over \SI{2}{\mm} was estimated, this makes an illuminated area 16~\% larger than the mask aperture. Even if the total incident power is still determined from the mask aperture, the illumination intensity is not 1~sun any more, compromising the validity of a measurement done with a shadowing mask.
 
 
 \subsection{Stability During the Measurement and Small/Large Perturbations}
 
 Most of the reported hybrid lead halide perovskite materials can show rather impressive changes in their structure on long time scales, for example due to ionic migration CITE, degradation CITE and self-healing CITE 10.1002/adma.201706273.
-This have to be taken into account for all the measurements techniques output which either takes too long time to be measured or employs large perturbations. Large perturbations regime means that the independent variable under study (e.g. light in \acr{tpv} or voltage in impedance measurements) is changed by an amount large enough to cause the quantities under study (e.g. free charges concentration in \acr{tpv} or current in impedance measurements) to respond in a more than first order fashion (e.g. a very intense light pulse in \acr{tpv} or a \SI{1}{\volt} oscillation in impedance measurements).
+This have to be taken into account for all the measurements techniques output which either takes too long time to be measured or employs large perturbations.
 
 \paragraph{Long lasting measurement} An example of the first case is the impedance spectroscopy where during the long lasting measurement various phenomena can occur, like: a slow current evolution due to perovskite well known hysteretic behaviour prior to stabilization; a degradation process changing the current; the heating of the device changing its properties. This slow current evolution can easily be misinterpreted for capacitive current CITE JACOBS and introduce artefacts like loops in the Nyquist plots CITE IMPEDANCE PAPER.
 
-\paragraph{Large perturbations} Let's take as an example the Time-Resolved PhotoLuminescence. As the devices does not usually have a background illumination, apart from the laser pulses AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\paragraph{Large perturbations} Large perturbations regime means that the independent variable being perturbed is changed by an amount large enough to cause the quantities under study to not follow the approximation given by the first term of the series expansion. Let's take some example.
 
+\paragraph{Large perturbations -- \gls{tpv}} For example, if too intense, the light pulse in \acr{tpv} could change the voltage by a less-than-linear amount. In this case, the light pulse is not only probing the recombination, but it is adding some, so a large perturbation has to be avoided.
 
+\paragraph{Large perturbations -- impedance} Another example: a too wide sinusoidal voltage oscillation amplitude in impedance measurements can cause a non-sinusoidal current output. This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation. But artefacts could arise and cause misinterpretations, as explained in \cpageref{impedance-large_perturbations}.
 
+\paragraph{Large perturbations -- \gls{trpl}} Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer. This pulse induces a the migration of the ionic defects to a new profile depending on the pulse intensity CITE LEVINE 2018 ARXIV, by a small extent due to its short duration. The fact that the relaxation time of the ionic migration is usually much larger than the laser repetition rate (\si{\ms} to seconds for the ionsCITE JACOBS and \si{\ms} to \si{\us} for typical \gls{trpl} lasersCITE EDINBURGH) implies that the ionic profile variation slowly "builds up" pulse after pulse. As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care. An example of hysteretic behaviour observed with \gls{trpl} can be found in CITE AUTHORYEAR 10.1021/acsenergylett.6b00355 .
 
 
 \section{Current-Voltage Sweeps}
@@ -51,9 +67,11 @@ This have to be taken into account for all the measurements techniques output wh
 After calibrating the light intensity in the solar simulator (see \cpageref{solarsimulator}), the devices were exposed to the illumination at open circuit for some seconds in order to have a stabilized open circuit voltage. Then usually the curves were measured with the auto-measure function of the PyPV software (see \cpageref{automeasure}) which measures the reverse scan and then the forward scan.
 
 \paragraph{Parameters Extraction from Sweeps}
-In the whole thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep. Checking the aforementioned definitions, one can easily notice how this is not the correct way as these parameters need to be measured in steady-state conditions. This is a widely accepted due to the tradition of solar cell reporting, which was established in pre-hysteresis times and is no longer a valid approximation. Apologizing for the lack of coherence I hope I'll be able to implement the static measurements of \gls{voc} and \gls{jsc} in the PyPV measurement routines (described in \cpageref{automeasure}). Regarding the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis) which implies that the voltage associated to the maximum power point is drifting and the measurement affects this evolution. A proper \gls{mppt} system needs to be bought or developed, see \cpageref{software_mppt} for thoughts about possible implementations.
+For the devices studied in this thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep. This is in accordion to the tradition of solar cells reporting but for hysteretic devices, like perovskite solar cells, a static measurement should be preferred. %Checking the aforementioned definitions, one can easily notice how this is not the correct way as these parameters need to be measured in steady-state conditions. This is comes from the tradition of solar cell reporting, which was established in pre-hysteresis times and is no longer a valid approximation. Apologizing for the lack of coherence I hope I'll be able to implement the static measurements of \gls{voc} and \gls{jsc} in the PyPV measurement routines (described in \cpageref{automeasure}).
 
-\paragraph{Auto-scale}\label{autoscale}
+\paragraph{Parameters Extraction from Sweeps -- \gls{pce}} Regarding the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis). The voltage associated to the maximum power point is drifting and its localization affects its evolution. A proper \gls{mppt} system needs to be bought or developed, see \cpageref{software_mppt} for thoughts about possible implementations.
+
+\paragraph{Auto-scale}\label{autoscale} In literature one can easily find current-voltage curves with discontinuities or "kinks"\cite{Li2016,Snaith2014,Zhang2015} CITE  10.1039/C4MH00238E  like the one reported in \cref{fig:autoscale}. Some even lucubrate about the origin of these in perovskite solar cells. Indeed this is likely just caused by the auto-scale feature of the Keithley equipment, disabling this, the discontinuities disappears.
 
 \begin{SCfigure}%[!hbtp]%
 	\centering
@@ -61,23 +79,20 @@ In the whole thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and 
 	\mycaption[Kinks in JV sweep due to autoscale.]{A current-voltage sweep of an hysteretic perovskite solar cell with Keithley autoscale active. Both the forward (dashed) and the reverse (solid line) present small discontinuities around \SI{1}{\mA} and \SI{0.1}{\mA}.}\label{fig:autoscale}
 \end{SCfigure}
 
-In literature one can easily find current-voltage curves with discontinuities and kinks\cite{Li2016,Snaith2014,Zhang2015} CITE  10.1039/C4MH00238E  like the one reported in \cref{fig:autoscale}. Some even lucubrate about the origin of these in perovskite solar cells. Indeed this is likely just caused by the auto-scale feature of the Keithley equipment, disabling this, the discontinuities disappears.
-
-\paragraph{Scan speed}
-The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for having an aesthetically good looking current-voltage curve (avoiding bumps leading to currents higher than \gls{jsc}), like the one in \cref{fig:iv_ugly}.
-
+\paragraph{Scan speed} The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly}. %having an aesthetically good looking current-voltage curve
+Our arbitrary choice allowed us to make fair comparisons between devices, but the absolute values should be considered as approximations.
 \begin{SCfigure}%[!hbtp]%
 	\centering
 	\includegraphics[width=0.5\textwidth]{iv_ugly/ig47-b32-int2-4.pdf}
 	\mycaption[Hysteretic current-voltage scan.]{At the employed scan speed, the hysteresis phenomena causes the reverse (solid line) scan to reach currents higher than the \gls{jsc}.}\label{fig:iv_ugly}
 \end{SCfigure}
+We wanted to underline that due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one.  % and they all heavily affect the resulting \gls{pce}.
+Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result.
+This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena\cite{Jacobs2018}. 
 
-Due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one and they all heavily affect the resulting \gls{pce}. Indeed has been shown that even so-called "hysteresis-free" perovskite solar cells can have hysteresis on smaller or bigger time scale\cite{Jacobs2018}. Rather, a static measurement or a \acr{mppt} should be used for obtaining a result not completely alienated from the real world.
+\paragraph{Noise} The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see REFERENCE FIGURE. For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted via a parabolic fitting. %Indeed, using a white \gls{led} as illumination source, this noise is not present but the spectral mismatch affects the meaningfulness of the measurement.
 
-The noise often observed in current-voltage scans at high sweep speeds is mainly caused by oscillations in the solar simulator illumination intensity, as an example see REFERENCE FIGURE. Indeed, using a white \gls{led} as illumination source, this noise is not present but the spectral mismatch affects the meaningfulness of the measurement.
-
-\paragraph{Stabilized or dynamic current-voltage sweeps}
-One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported. CITE 10.1039/c4ee02465f 10.3390/photonics2041101
+\paragraph{Stabilized or dynamic current-voltage sweeps} One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported. CITE 10.1039/c4ee02465f 10.3390/photonics2041101
 An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current-time derivative falls below a threshold (e.g. \SI{0.2}{\%\per\minute}).CITE 10.1039/c7ta05609e 10.1002/pip.2839
 In this thesis, these techniques have not been used.
 
@@ -86,13 +101,17 @@ In this thesis, these techniques have not been used.
 \section{\textsmaller{V\textsubscript{OC}} and \textsmaller{J\textsubscript{SC}} Dependence on Light Intensity}
 The illumination by solar simulation is reduced via neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter). The devices are kept at this reduced illumination $\phi$ and at open circuit or short circuit conditions until steady state for measuring respectively $V_{OC}(\phi)$ or $J_{SC}(\phi)$.
 
-\paragraph{\Gls{jsc} versus $\phi$}\label{methods_jsc_intensity} The \gls{jsc} dependency on the light intensity $\phi$ can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
+\paragraph{\Gls{jsc} versus $\phi$}\label{methods_jsc_intensity} The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
+
+\paragraph{\Gls{jsc} versus $\phi$ -- interpretation} %The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ as described in \cpageref{methods_jsc_intensity}.
+An $\alpha$ value lower than 1 indicates the presence of non-geminate recombination (for geminate recombination see \cpageref{intro_geminate}) at short circuit\cite{Credgington2011}, indicating that not all the photo-generated charges get extracted.
 
 \paragraph{\Gls{voc} versus $\phi$}\label{methods_voc_intensity} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
 $$V_{OC} = k + \frac{n_{id} k_B T}{q}\cdot\ln(\phi)$$
-where $k$ does not contain physical meaning (depends on the light intensity units and on the \gls{voc} at 1~sun), $k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b} (in literature one can found inexact reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. In this thesis, this measurement is reported both from static measurement of \gls{voc} (proper method) and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case.	An applied voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis. Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
+where $k$ does not contain physical meaning, % (depends on the light intensity units and on the \gls{voc} at 1~sun),
+$k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b} (in literature one can found inexact reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. In this thesis, this measurement is reported both from static measurement of \gls{voc} (proper method) and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case.	A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
 
-For the interpretation of these results, see \cpageref{interpretation_lightintensity}.
+\paragraph{\Gls{voc} versus $\phi$ -- interpretation} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $n_{id}$. This method was applied by \authoryear{Pockett2015} obtaining ideality factors as high as 5. According to \authoryear{Calado2018b}, the so-obtained ideality factor is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 \section{Charge Extraction (\textsmaller{CE})}
 
@@ -184,17 +203,31 @@ This allows us to estimate the capacitance of the solar cell device at open circ
 
 For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
 
-
-\section{Time-Resolved PhotoLuminescence}
-influence of pulse intensity CITE https://arxiv.org/abs/1805.00263
-PL wile applying voltage sweep shows hysteresis 10.1021/acs.jpcc.7b06711
-
-Petrozza CITE 10.1021/acsenergylett.6b00355
-
-
 \section{Impedance Spectroscopy}
 
 \section{Stark Spectroscopy (ElectroAbsorbance)}
+
+\section{Molecular Characterization}
+
+Otra cosa, flipé mucho con la respuesta del Vidal y me puse a intentar
+ver que se supone que se saca del espectro experimental y desde cual
+pico. Como el dijo, las simulaciones son correctas.
+Pero, creo que sea mi concepto (el HOMO-LUMO está bastante lejos del
+absorption onset, como demostrado de sus simulaciones donde el
+absoprtion onset, por ejemplo de TAE-1, está a 2.9 eV y el HOMO-LUMO gap
+está a 5.06 eV) que lo de Vidal (el pico de máxima absorción no tiene
+nada a que ver con el HOMO-LUMO gap, en mi opinión para nada) estaban
+totalmente equivocados y que habría que enviar a medir el UPS de las
+moléculas para sacar el HOMO-LUMO gap.
+
+El concepto está explicado en el primer párrafo de esta pagina:
+https://chemical-quantum-images.blogspot.com/2013/06/why-is-homo-lumo-gap-not-good-guess-of.html
+
+Lo que he puesto, o sea que lo hemos medido por Tauc plot, creo colaría
+porque todo el mundo lo mide así y está bien aceptado como método. Pero
+la verdad es que es valido solo para semiconductores donde los orbitales
+están bien deslocalizados, no como nuestra molécula en solución donde el
+estado es bien localizado en la molécula.
 
 \section{Our Solar Cells Characterization Steps}
 
