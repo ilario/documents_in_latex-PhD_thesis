@@ -18,6 +18,12 @@ All the characterization on complete devices was performed keeping them in an ai
 
 \paragraph{Current} The current $J=P/V$ is measured through an external circuit and the sign is a consequence of the voltage and electrical power definition: A current ("conventional current", flow of positively charged particles) being released from the device's anode and being received from the device's cathode is defined as negative. This can be thought as: Inside the device, somehow, a positive charge was moved from the high Fermi level contact to the low Fermi level contact, increasing its electrochemical energy, the opposite to what would happen in a resistor, whose current is always positive. In a solar cell device, the current and the electrical power can be either positive or negative depending on the illumination and voltage conditions. It can be expressed in extensive form with current (Amperes) unit or in intensive form "current density" with current (Amperes) per active area (square centimetre) unit.
 
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{iv_params/IV-revIVs.pdf}
+	\mycaption[Parameters extraction from current-voltage sweeps.]{A typical current-voltage sweep is represented. MPP stands for maximum power point, \gls{jsc} stands for \glsdesc{jsc}, \gls{voc} stands for \glsdesc{voc}. The ration between the small and the large rectangles areas is the \glsdesc{ff} (\gls{ff}).}\label{fig:iv_params}
+\end{SCfigure}
+
 \paragraph{\Glsdesc{voc}} \Gls{voc} parameter is defined as the voltage $\Delta V$ at which the current is zero while the solar cell device is illuminated at 1~sun conditions and in steady state (positive by its own definition).
 
 \paragraph{\Glsdesc{jsc}} \Gls{jsc} parameter is defined as the unsigned value of the current density flowing in an external circuit short circuiting (zero resistance) the solar cell device's contacts while illuminated at 1~sun and in steady state. It is usually reported in current (milli Amperes) over active area (square centimetre) unit.
@@ -27,6 +33,11 @@ All the characterization on complete devices was performed keeping them in an ai
 \paragraph{\Glsdesc{pce}} \Gls{pce} parameter is defined as the maximum power density over the illuminating power density, which at 1~sun AM 1.5G is defined to \SI{100}{\mW\per\square\cm}. It is usually reported as a percentage.
 
 \paragraph{\Glsdesc{ff}} \Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}. This parameter does not have a physical meaning, but it represents how much the series and shunt resistances affect the device efficiency.
+
+\paragraph{Ideality factor} An ideality factor $n_{id}$ different from 1 describes deviations from the ideal photo-diode. The adapted $J(V,\phi)$ equation becomes\cite{Calado2018b}:
+\begin{equation} \label{eq:photodiode}
+J = J_{SC}(\phi) - J_0\left(\exp\left(\frac{qV}{n_{id}k_BT}\right)-1\right)
+\end{equation}
 
 \paragraph{Forward and reverse bias} Forward bias is a device condition where the voltage is positive, reverse bias is the case where the voltage is negative.
 
@@ -90,7 +101,7 @@ We wanted to underline that due to hysteresis phenomena, no scan speed, directio
 Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result.
 This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena\cite{Jacobs2018}. 
 
-\paragraph{Noise} The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see REFERENCE FIGURE. For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted via a parabolic fitting. %Indeed, using a white \gls{led} as illumination source, this noise is not present but the spectral mismatch affects the meaningfulness of the measurement.
+\paragraph{Noise} The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}. For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted via a parabolic fitting. %Indeed, using a white \gls{led} as illumination source, this noise is not present but the spectral mismatch affects the meaningfulness of the measurement.
 
 \paragraph{Stabilized or dynamic current-voltage sweeps} One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported. CITE 10.1039/c4ee02465f 10.3390/photonics2041101
 An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current-time derivative falls below a threshold (e.g. \SI{0.2}{\%\per\minute}).CITE 10.1039/c7ta05609e 10.1002/pip.2839
@@ -98,22 +109,27 @@ In this thesis, these techniques have not been used.
 
 \paragraph{Shunt and series resistances} \label{resistances} In our group the shunt and series resistances are evaluated by the current versus voltage derivative of a dark current-voltage sweep respectively at zero and at high-enough voltage. This methodology is inherited from organic solar cells and, as is easy to foresee, is unreliable on hysteretic devices: in the case of perovskite solar cells a measurement of the stabilised current at a few points have better chances to produce a useful result. The measurement of the current at a voltage close to zero is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
 
-\section{\textsmaller{V\textsubscript{OC}} and \textsmaller{J\textsubscript{SC}} Dependence on Light Intensity}
-The illumination by solar simulation is reduced via neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter). The devices are kept at this reduced illumination $\phi$ and at open circuit or short circuit conditions until steady state for measuring respectively $V_{OC}(\phi)$ or $J_{SC}(\phi)$.
+\section{V\textsubscript{OC} and J\textsubscript{SC} Dependence on Light Intensity}
+The solar simulator illumination intensity $\phi$ is reduced via neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter). The values of $V_{OC}(\phi)$ and $J_{SC}(\phi)$ can be obtained from static measurements or from current-voltage sweeps. The static measurement of $V_{OC}(\phi)$ at high light intensities is troublesome as it can easily damage the device. In this thesis, the used method is specified case by case. %this measurement is reported both from static measurement of \gls{voc} and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case. %The devices are kept at this reduced illumination $\phi$ and at open circuit or short circuit conditions until steady state for measuring respectively 
 
-\paragraph{\Gls{jsc} versus $\phi$}\label{methods_jsc_intensity} The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
+\subsection{\Gls{jsc} versus $\phi$}
+The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
 
-\paragraph{\Gls{jsc} versus $\phi$ -- interpretation} %The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ as described in \cpageref{methods_jsc_intensity}.
-An $\alpha$ value lower than 1 indicates the presence of non-geminate recombination (for geminate recombination see \cpageref{intro_geminate}) at short circuit\cite{Credgington2011}, indicating that not all the photo-generated charges get extracted.
+\paragraph{Interpretation} %The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ as described in \cpageref{methods_jsc_intensity}.
+An $\alpha$ value lower than 1 indicates the presence of non-geminate recombination (for geminate recombination see \cpageref{intro_geminate}) at short circuit\cite{Credgington2011}, indicating that not all the photo-generated charges get extracted, neither at short circuit conditions.
 
-\paragraph{\Gls{voc} versus $\phi$}\label{methods_voc_intensity} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
+\subsection{\Gls{voc} versus $\phi$ and the Ideality Factor}
+
+Setting $J=0$, which corresponds to open circuit conditions, in \cref{eq:photodiode} we can obtain a relation between \gls{jsc} and \gls{voc}. The ideality factor can be obtained measuring \gls{jsc} and \gls{voc} at various light intensities $\phi$ and fitting. A correction should be applied for taking into account the presence of the series resistance. In our case, for circumventing this problem we employ the AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
 $$V_{OC} = k + \frac{n_{id} k_B T}{q}\cdot\ln(\phi)$$
 where $k$ does not contain physical meaning, % (depends on the light intensity units and on the \gls{voc} at 1~sun),
-$k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b} (in literature one can found inexact reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. In this thesis, this measurement is reported both from static measurement of \gls{voc} (proper method) and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case.	A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
+$k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b}. In literature one can found reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency. The results of the latter method may differ from the aforementioned one due to series resistance and the non-linear dependency of the \gls{jsc} from the light intensity ($\alpha < 1$). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2018b}. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
 
-\paragraph{\Gls{voc} versus $\phi$ -- interpretation} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $n_{id}$. This method was applied by \authoryear{Pockett2015} obtaining ideality factors as high as 5. According to \authoryear{Calado2018b}, the so-obtained ideality factor is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+\paragraph{Interpretation} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $n_{id}$. \authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells via stabilized \gls{voc} obtaining, for some cases, values as high as 5. According to \authoryear{Calado2018b}, the so-obtained ideality factor is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-\section{Charge Extraction (\textsmaller{CE})}
+\section{Charge Extraction (CE)}
 
 The device is kept under 1~sun equivalent illumination by a white \gls{led} at open circuit conditions until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. The \gls{led}-solar spectral mismatch affects slightly the measurement, but in no case a \gls{pce} is reported from any \gls{led}-illuminated experiment. After stabilization the illumination is switched off and, at the exactly same moment, the device is short circuited through a small and known resistance of \SI{50}{\ohm} \cite{Duffy2000}.
 
@@ -134,7 +150,7 @@ This affects the resulting measurement to a noticeable extent, which starts to b
 
 In order to reduce this effect various approaches have been tested; finally the single decays were fitted with a bi-exponential formula (sum of two exponential) and the integral of this fit was used.
 
-\section{Transient PhotoVoltage (\textsmaller{TPV})}
+\section{Transient PhotoVoltage (TPV)}
 \epigraph{\textit{"Imma firin mah lazor\\pewpew pewpewpew"}}
 
 The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser. The pulse duration is around \SI{1.5}{\ns}. The equipment can output up to 20~pulses per second, but due to the oscilloscope settings and oscilloscope internal memory speed we're limited to 1~pulse per second (maybe decreasing the number of acquired points would allow us to acquire higher repetition rates). The pulse was triggered with a square wave pulse generator. The wavelength is selected with the absorption and emission of a dissolved molecular dye, usually a wavelength of \SI{650}{\nm} is selected using a RhodamineB solution\cite{RadiantDyesLaser}, this wavelength allow us to illuminate in deep the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material).
@@ -179,7 +195,7 @@ The following alternatives were tested:
 
 This last option is the one currently in place. The average was performed over \SI{50}{ns} after the peak and this allowed us to get a reliable $\Delta V$ value.
 
-\section{Transient PhotoCurrent (\textsmaller{TPC})}
+\section{Transient PhotoCurrent (TPC)}
 
 The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
 
@@ -191,7 +207,7 @@ For each illumination intensity, the reported decay is the result of averaging a
 
 For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
 
-\section{Differential Capacitance (\textsmaller{DC})}
+\section{Differential Capacitance (DC)}
 
 This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experiment\cite{Shuttle2008}, sometimes also referred to as "differential capacitance".
 
