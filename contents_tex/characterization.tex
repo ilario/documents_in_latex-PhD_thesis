@@ -34,14 +34,19 @@ All the characterization on complete devices was performed keeping them in an ai
 
 \paragraph{\Glsdesc{ff}} \Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}. This parameter does not have a physical meaning, but it represents how much the series and shunt resistances affect the device efficiency.
 
-\paragraph{Ideality factor} An ideality factor $n_{id}$ different from 1 describes deviations from the ideal photo-diode. The adapted $J(V,\phi)$ equation becomes\cite{Calado2018b}:
-\begin{equation} \label{eq:photodiode}
-J = J_{SC}(\phi) - J_0\left(\exp\left(\frac{qV}{n_{id}k_BT}\right)-1\right)
-\end{equation}
-
 \paragraph{Forward and reverse bias} Forward bias is a device condition where the voltage is positive, reverse bias is the case where the voltage is negative.
 
 \paragraph{Forward and reverse scan} In current-voltage sweeps, a scan where the voltage is increasing over time is a forward scan, while a voltage variation in the opposite direction constitutes a reverse scan.
+
+\paragraph{Ideality factor} An ideality factor $m$ different from 1 describes deviations from the ideal photo-diode. The adapted $J(V,\phi)$ equation becomes\cite{Calado2018b}:
+\begin{equation} \label{eq:photodiode}
+J = J_{SC}(\phi) - J_0\left(\exp\left(\frac{qV}{mk_BT}\right)-1\right)
+\end{equation}
+where $J_0$ is the diode saturation current (the current flowing in dark when applying a reverse bias), $q$ is the elementary charge, $k_B$ is the Boltzmann constant, and $T$ is the temperature.  Clearly the reported equation just offers a simplified model. For example, it can be improved adding the contribution from the series resistance $R_s$ and would become 
+
+$$J = J_{ph}(\phi) - J_0\left(\exp\left(\frac{q(V+JR_s)}{mk_BT}\right)-1\right)$$
+
+where now $J_{ph}$ is the total photo-generated current. The function is now an implicit one, requiring numerical solving even for obtaining $J_{SC}$.
 
 \paragraph{Top and bottom of devices} The point of view of the manufacturer is used for defining the physical top and bottom of a device: the bottom is the glass substrate and the top is the last deposited layer. This is opposite with the usage of a solar cell in the real world and with most of the solar simulators (but not all of them, for example Paios from Fluxim has an illumination from below, more convenient for contacting the electrodes without a samples holderCITE FLUXIM).
 
@@ -113,21 +118,42 @@ In this thesis, these techniques have not been used.
 The solar simulator illumination intensity $\phi$ is reduced via neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter). The values of $V_{OC}(\phi)$ and $J_{SC}(\phi)$ can be obtained from static measurements or from current-voltage sweeps. The static measurement of $V_{OC}(\phi)$ at high light intensities is troublesome as it can easily damage the device. In this thesis, the used method is specified case by case. %this measurement is reported both from static measurement of \gls{voc} and from \gls{voc} obtained from current-voltage sweeps; the used method is specified case by case. %The devices are kept at this reduced illumination $\phi$ and at open circuit or short circuit conditions until steady state for measuring respectively 
 
 \subsection{\Gls{jsc} versus $\phi$}
-The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ giving $\alpha$ values usually from 0.95 to 1.
+The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law:
+\begin{equation} \label{eq:jsc-phi}
+J_{SC} \propto \phi^\alpha
+\end{equation}
+giving $\alpha$ values usually from 0.95 to 1.
 
 \paragraph{Interpretation} %The \gls{jsc} dependency on the light intensity $\phi$ is close to linear and can be fitted with a power law $J_{SC} \propto \phi^\alpha$ as described in \cpageref{methods_jsc_intensity}.
 An $\alpha$ value lower than 1 indicates the presence of non-geminate recombination (for geminate recombination see \cpageref{intro_geminate}) at short circuit\cite{Credgington2011}, indicating that not all the photo-generated charges get extracted, neither at short circuit conditions.
 
-\subsection{\Gls{voc} versus $\phi$ and the Ideality Factor}
+\subsection{\Gls{voc} versus $\phi$ and the Ideality Factor $m$}
 
-Setting $J=0$, which corresponds to open circuit conditions, in \cref{eq:photodiode} we can obtain a relation between \gls{jsc} and \gls{voc}. The ideality factor can be obtained measuring \gls{jsc} and \gls{voc} at various light intensities $\phi$ and fitting. A correction should be applied for taking into account the presence of the series resistance. In our case, for circumventing this problem we employ the AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Setting $J=0$, which corresponds to open circuit conditions, in \cref{eq:photodiode} (without considering the series resistance correction) we can obtain a relation between \gls{jsc} and \gls{voc}:
+%\begin{equation} \label{eq:photodiode-zerocurrent}
+$$J_{SC}(\phi) = J_0\left(\exp\left(\frac{qV_{OC}(\phi)}{mk_BT}\right)-1\right)$$
+%\end{equation}
+This equation can already be used for obtaining the $m$ and $J_0$ values fitting the \gls{jsc} and \gls{voc} measured at different light intensities $\phi$ (also varying the temperature could be used for fitting the values, but it was not done during this thesis).
 
-The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic (the base of the logarithm comes from Boltzmann distribution) dependence as:
-$$V_{OC} = k + \frac{n_{id} k_B T}{q}\cdot\ln(\phi)$$
-where $k$ does not contain physical meaning, % (depends on the light intensity units and on the \gls{voc} at 1~sun),
-$k_B$ is Boltzmann constant, $T$ is temperature in Kelvin, and $q$ is the elementary charge\cite{Calado2018b}. In literature one can found reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency. The results of the latter method may differ from the aforementioned one due to series resistance and the non-linear dependency of the \gls{jsc} from the light intensity ($\alpha < 1$). The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2018b}. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
+Solving for \gls{voc} we obtain:
+%\begin{equation} \label{eq:photodiode-zerocurrent-voc}
+$$V_{OC}(\phi) = \frac{mk_BT}{q}\cdot\ln\left(\frac{J_{SC}}{J_0} + 1\right)$$
+%\end{equation}
 
-\paragraph{Interpretation} The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $n_{id}$. \authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells via stabilized \gls{voc} obtaining, for some cases, values as high as 5. According to \authoryear{Calado2018b}, the so-obtained ideality factor is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Considering that the saturation current $J_0$ (current in dark under reverse bias) is much smaller than $J_{SC}$ for the light intensities we usually employ (down to \SI{0.05}{suns}), we can approximate to:
+%\begin{equation} \label{eq:photodiode-zerocurrent-voc_approx}
+$$V_{OC}(\phi) \approx u_1 + \frac{mk_BT}{q}\cdot\ln(J_{SC})$$
+%\end{equation}
+
+where $u_1$ is a useless constant. Then if the $\alpha$ value is close enough to~1, we can use \cref{eq:jsc-phi} and further approximate for plotting against light intensity $\phi$:
+
+$$V_{OC}(\phi) \approx u_2 + \frac{mk_BT}{q}\cdot\ln(\phi)$$
+
+This is the equation we commonly employ for fitting and obtaining ideality factorsCITE NELSON. %In literature one can found reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency. The results of the latter method may differ from the aforementioned one due to series resistance and the non-linear dependency of the \gls{jsc} from the light intensity ($\alpha < 1$). 
+The so-obtained ideality factor $m$ is usually from 1 to 2. A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2018b}. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
+
+\paragraph{Interpretation} %\The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $m$. 
+\authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells via stabilized \gls{voc} obtaining, for some cases, values as high as 5. According to \authoryear{Calado2018b}, the so-obtained ideality factor is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 \section{Charge Extraction (CE)}
 
