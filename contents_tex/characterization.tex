@@ -149,11 +149,11 @@
 
 		$$V_{OC}(\phi) \approx u_2 + \frac{mk_BT}{q}\cdot\ln(\phi)$$
 
-		This is the equation we commonly employ for fitting and obtaining ideality factorsCITE NELSON. %In literature one can found reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency. The results of the latter method may differ from the aforementioned one due to series resistance and the non-linear dependency of the \gls{jsc} from the light intensity ($\alpha < 1$). 
-		The so-obtained ideality factor $m$ is usually from 1 to 2. A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2018b}. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
+		This is the equation we commonly employ for fitting and obtaining ideality factorsCITE NELSON CITE Kirchartz2012. %In literature one can found reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency. The results of the latter method may differ from the aforementioned one due to series resistance and the non-linear dependency of the \gls{jsc} from the light intensity ($\alpha < 1$). 
+		The so-obtained ideality factor $m$ is usually from 1 to 2. A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method (employing a pre-biassing for flattening the ionic profile) can be found in \authoryear{Calado2018b}. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
 
 		\paragraph{Interpretation} %\The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $m$. 
-		\authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells via stabilized \gls{voc} obtaining, for some cases, values as high as 5. According to \authoryear{Calado2018b}, the so-obtained ideality factor is XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		\authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells via stabilized \gls{voc} obtaining, for some cases, values as high as 5. Also in organicCITEKirchartz2011 CITEKirchartz2012 and silicon solar cellsCITE Breitenstein2006 ideality factors greater than 2 has been observed and explained. According to \authoryear{Calado2018b}, the ideality factor, once obtained in the correct way, is 1 when studying most of the recombination types and 2 for mid-gap trap mediated recombination in regions where the electrons and holes concentrations are similar, $n \approx p$.
 
 \section{Charge Extraction (CE)}
 
@@ -161,11 +161,9 @@
 
 	This is repeated decreasing the light intensity from 1~sun down to dark (in dark no signal should be observed, indeed some residual charge can usually be seen, the reason of this could be ionic profile updating or an insufficient darkness) and a single decay is measured for each illumination point, over approximatively 30 illumination points.
 
-	The equipment includes two transistors (in a in-house built circuit by Javier Pérez Hernández) connected to a pulse generator providing a square pulse long at least as the measurement window. I suggest to reduce as much as possible the duration of the dark period (ruled by the pulse generator) in order to save time for the stabilization step in the next measure.
+	The equipment includes two transistors (in a home made circuit by Dr. Javier Pérez Hernández) connected to a pulse generator providing a square pulse long at least as the measurement window. From my experience, I recommend to use a short dark period in order to save time for the following stabilization step.
 
 	The measurement is carried out with an oscilloscope in parallel to the known small resistance. In the first microseconds, most of the free charge flows through the resistor generating a voltage drop across it which is measured by the oscilloscope. This potential drop can be converted to current using the Ohm's law, which, integrated over time, gives the amount of extracted charge.
-
-	For the interpretation, see \cpageref{interpretation_ce}; for the implementation, see \cpageref{r_ce}.
 
 	\paragraph{Noise reduction}\label{r_ce_noise}
 	Most of the observed short-times noise (\SI{< 5E-7}{\s}) is, supposedly, related to the opening and closing of the transistors included in the in-house built circuit.
@@ -175,6 +173,28 @@
 	This affects the resulting measurement to a noticeable extent, which starts to be a problem if the charge versus light bias (\gls{voc} generated at a given illumination intensity) profile has to be studied in detail, as in \cref{ch:tae}.
 
 	In order to reduce this effect various approaches have been tested; finally the single decays were fitted with a bi-exponential formula (sum of two exponential) and the integral of this fit was used.
+	
+	For the implementation, see \cpageref{r_ce}.
+
+\section{Interpretation of Charge Extraction}\label{interpretation_ce}
+\paragraph{\Acr{ce} time constant}
+The free charges extraction time is related to the RC time of the \SI{50}{\ohm} resistor and the capacitance of the solar cell device. We can see in \cref{fig:chargeExtraction_RCtime} a weak covariance (Pearson correlation coefficient of 0.3) between the RC time obtained considering the dark capacitance from \acr{dc} (geometric capacitance) and the extraction time (as obtained by an exponential fitting to a single \acr{ce} current decay) at low light intensity (enough for having a signal but far from 1~sun light intensity). At higher light intensities, the correlation is weaker as the capacitance is less defined as the cell is in a transition between illuminated (high capacitance) and dark (low capacitance) status. Anyway, the extraction time does not change much between low light intensity and 1~sun with an increase from \SIrange{1.1}{2.4}{times} (first and third quartile).
+
+\begin{SCfigure}%[!hbtp]%
+	\centering
+	\includegraphics[width=0.45\textwidth]{chargeExtraction_RCtime/CEaBitOfSunExpTime_vs_RCdarkTime.pdf}
+	\mycaption[Charge extraction time is related to a RC time.]{Covariance of \acr{ce} extraction time at low light intensity versus the expected time from geometric capacitance (as obtained from dark \acr{dc}). Each point is a different device, many different structures studied during my PhD are represented. The grey line indicates the 1 to 1 relationship.}\label{fig:chargeExtraction_RCtime}
+\end{SCfigure}
+
+\paragraph{Comparison between \acr{ce} time constant and \acr{tpv} time constant}
+During this time, and depending on its location in the device stack, some free charge can recombine. One could argue that a \acr{ce} measurement is valid only if the extraction is faster than the recombination time as measured via \acr{tpv}CITE RYAN2017 or that the extracted charge should be corrected considering the recombination CITE Credgington2011. Considering the charges accumulated in the depletion layers in the selective contacts, these will flow to the electrodes without crossing the perovskite/selective contacts interfaces, where has been reported that most of the recombination occurs CITE 10.1021/jz501163r CITE Stolterfoht2018a CITE Stolterfoht2018. So this part of the extracted charge, distinguishable as the linear part of the charge versus voltage plot, as represented in \cref{fig:} should not be corrected. Instead, regarding the charge accumulating in the perovskite layer, which we assume can be assigned to a chemical capacitance and can be recognized as the exponential part in \cref{fig:}, it may be that a correction CITE 10.1063/1.3006316 EPAPS Document No. E-APPLAB-93-043843 is needed, but this has not be done in this thesis.
+
+\paragraph{Interpretation of the single measurement}
+From some preliminary and unpublished simulations of \acr{ce} show that a short living exponential decay can be accounted for free charges and a long living and weak exponential decay is caused by a displacement current due to ionic profile updating to the new voltage. The slow decay is not usually measured and seldom reported\cite{ORegan2015b}.
+
+\paragraph{Interpretation of the charge versus light bias trend}
+
+
 
 \section{Transient PhotoVoltage (TPV)}
 	\epigraph{\textit{"Imma firin mah lazor\\pewpew pewpewpew"}}
@@ -221,6 +241,23 @@
 
 	This last option is the one currently in place. The average was performed over \SI{50}{ns} after the peak and this allowed us to get a reliable $\Delta V$ value.
 
+\section{Interpretation of Transient PhotoVoltage}\label{interpretation_tpv}
+
+\paragraph{Factors Affecting the \acr{tpv}}
+The decays we can observe are limited at long times by the discharge of the extra charge through the oscilloscope resistance and through the device shunt resistance, whatever is the smallest. This happens with an RC time of the circuit composed by the capacitance of the device and the \SI{1}{\Mohm} resistance of the oscilloscope or the internal device resistance. The oscilloscope resistance could be varied using an attenuating probe (usually 10X or 100X). This limit to long times is often observed at low light intensities as a plateau in the \acr{tpv} graph. XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{tpv_RCtime/TPVdarkTime_vs_RCdarkTime.pdf}
+	\mycaption[\gls{tpv} time has an upper bond due to discharge through oscilloscope.]{The green line indicates the 1 to 1 relation between the dark \acr{tpv} time (from a robust exponential fit) and the RC time derived from the geometric capacitance from \acr{dc} and the \SI{1}{\Mohm} of the oscilloscope. Each point is a different device.}\label{fig:tpv_RCtime}
+\end{SCfigure}
+
+\section{Interpretation of Transient PhotoVoltage Referenced to Charge Extraction}\label{interpretation_tpvce}
+
+recombination order $\Phi = \lambda + 1$ CITE 10.1103/PhysRevB.78.113201 Credgington2011
+
+
+
 \section{Transient PhotoCurrent (TPC)}
 
 	The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
@@ -249,7 +286,10 @@
 
 \section{Stark Spectroscopy (ElectroAbsorbance)}
 
+\section{Interpretation of Kelvin Probe Force Microscopy}\label{interpretation_kpfm}
+
 \section{Molecular Characterization}
+\subsection{Interpretation of Band Gap Values Obtained via Tauc Plot, PhotoLuminescence and Computational Simulations}\label{interpretation_bg}
 
 	Otra cosa, flipé mucho con la respuesta del Vidal y me puse a intentar
 	ver que se supone que se saca del espectro experimental y desde cual
