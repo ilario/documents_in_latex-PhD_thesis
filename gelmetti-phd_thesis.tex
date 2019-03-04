@@ -152,9 +152,27 @@
 	%\newcommand{\myp}[1]{\paragraph{\hspace*{-0.5cm}#1}}
 	
 	\usepackage{etoolbox}
+	% \sectionmark is broken for the page of first appearance
+	% solution from https://tex.stackexchange.com/a/241299/173645
+	% this sets the title for the ToC as the same of the section title, but the title for the header as a shorter alternative
+	\usepackage{ifthen} % provides \ifthenelse test  
+	\newcommand{\mysection}[2][]{
+		\ifthenelse{\equal{#1}{}}%
+			{\section{#2}}%
+			{%
+				\let\orisectionmark\sectionmark% solution from https://tex.stackexchange.com/a/241299/173645
+				\renewcommand\sectionmark[1]{}%
+				\section[#2]{#2\orisectionmark{#1}}%
+				\orisectionmark{#1}%
+				\let\sectionmark\orisectionmark%
+			}%
+	}
+	
+	\usepackage{needspace}
 %	\preto\section{\vfil\penalty-10\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
 %	\preto\section{\vskip 0pt plus 1fil\penalty-200\vskip 0pt plus -1fil}
-	\preto\section{\penalty-500}
+	\preto\section{\needspace{7\baselineskip}}
+
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -209,7 +227,7 @@
 
 	
 	
-	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-luminescence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile}
+	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-lu-mine-scence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile}
 	
 	\title{Advanced characterization and modelling of charge transfer in perovskite solar cells.}
 	\author{Ilario Gelmetti}
@@ -218,6 +236,10 @@
 \pagestyle{plain}
 
 \selectlanguage{english}
+%\apptocmd{\@epitext}{\penalty=500}{}{}
+%\apptocmd{\epigraph}{\nopagebreak}{}{}
+%\AtEndEnvironment{\epigraphflush}{\nopagebreak}
+
 \frontmatter
 
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
@@ -503,7 +525,7 @@
 
 \chapter{Code}
 	\label{ch:code}
-\chaptermark{Code}
+%\chaptermark{Code}
 	\graphicspath{ {./contents_img/code/} }
 	\input{contents_tex/code.tex}
 
