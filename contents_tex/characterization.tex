@@ -161,7 +161,32 @@
 	
 	\paragraph{Limitations -- from \gls{osc}}
 	
-	\paragraph{Limitations -- specific of perovskite} When measuring the \gls{ce} of a perovsktie solar cell, additionally to the aforementioned limitations, one should also consider that the ionic profile update (from $V=V_{OC}$ to $V=0$) causes a displacement current, as described in \cpageref{intro_displacement_current}. This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is usually not reported\cite{ORegan2015b}.
+	\paragraph{Limitations -- specific of perovskite} When measuring the \gls{ce} of a perovsktie solar cell, additionally to the aforementioned limitations, one should also consider that the ionic profile update (from $V=V_{OC}$ to $V=0$) causes a displacement current, as described in \cpageref{intro_displacement_current}. A simulation with DrIFtFUSION is reported for an homojunction device in \cref{fig:ce_single_dd}, it can be seen that with ionic mobile defects in \cref{fig:ce_single_dd-ions_zoom} a very weak but long lasting current appears and gives a relevant contribution to the integrated charge. This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported\cite{ORegan2015b}. The charge measured in the external circuit due to the ionic displacement current could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
+	
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-noions.pdf}
+				\subcaption{Without mobile ions}\label{fig:ce_single_dd-noions}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions.pdf}
+				\subcaption{With mobile ions}\label{fig:ce_single_dd-ions}
+			\end{subfigure}
+			\qquad			
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions_zoom.pdf}
+				\subcaption{With mobile ions, magnified current axis}\label{fig:ce_single_dd-ions_zoom}
+			\end{subfigure}
+		}
+	}
+	\mycaption[Simulation of a CE without or with mobile ions.]{The current versus time profile of a \acr{ce} simulated experiment is shown on the left axis just for the 1~sun illumination intensity. On the right axis the cumulative integration of the extracted charge. Clearly, the extraction is unrealistically quick as the resistance included in a real \acr{ce} experiment was not included in the simulation. In (\textbf{a}) the measurement of a device without mobile ions is shown, we can observe just one current peak contributing to the integrated charge; in (\textbf{b}) the presence of the mobile ions introduces a long-times contribution to the extracted charge, the current causing this is very weak and long lasting, it can be better observed in the magnification in (\textbf{c}).}\label{fig:ce_single_dd}
+\end{figure}
+	
 	%\paragraph{Interpretation of the single measurement}
 	%From some preliminary and unpublished simulations of \acr{ce} show that a short living exponential decay can be accounted for free charges and a long living and weak exponential decay is caused by a displacement current due to ionic profile updating to the new voltage. The slow decay is not usually measured and seldom reported\cite{ORegan2015b}.
 	
@@ -219,25 +244,25 @@
 %					\subcaption{Results from integration of fitting}\label{fig:ce_noise-integrateExp_ce}
 %				\end{subfigure}
 				\begin{subfigure}[t]{1\textwidth}
-					\includegraphics[width=0.55\textwidth]{{ce_noise/normal-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}	
+					\includegraphics[width=0.45\textwidth]{{ce_noise/normal-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}	
 					\qquad
-					\includegraphics[width=0.3\textwidth]{ce_noise/normal-spiro_vs_TAEs-CEs-crop.pdf}
+					\includegraphics[width=0.35\textwidth]{ce_noise/normal-spiro_vs_TAEs-CEs-crop.pdf}
 					\subcaption{Direct integration of raw data}\label{fig:ce_noise-normal}
 				\end{subfigure}
 				\bigskip
 				
 				\begin{subfigure}[t]{1\textwidth}
-					\includegraphics[width=0.55\textwidth]{{ce_noise/subtractDark-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}
+					\includegraphics[width=0.45\textwidth]{{ce_noise/subtractDark-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}
 					\qquad
-					\includegraphics[width=0.3\textwidth]{ce_noise/subtractDark-spiro_vs_TAEs-CEs-crop.pdf}
+					\includegraphics[width=0.35\textwidth]{ce_noise/subtractDark-spiro_vs_TAEs-CEs-crop.pdf}
 					\subcaption{Subtraction of morphed noise profile}\label{fig:ce_noise-subtractDark}
 				\end{subfigure}
 				\bigskip
 				
 				\begin{subfigure}[t]{1\textwidth}
-					\includegraphics[width=0.55\textwidth]{{ce_noise/integrateExp-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}
+					\includegraphics[width=0.45\textwidth]{{ce_noise/integrateExp-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}
 					\qquad
-					\includegraphics[width=0.3\textwidth]{ce_noise/integrateExp-spiro_vs_TAEs-CEs-crop.pdf}
+					\includegraphics[width=0.35\textwidth]{ce_noise/integrateExp-spiro_vs_TAEs-CEs-crop.pdf}
 					\subcaption{Integration of an exponential fitting}\label{fig:ce_noise-integrateExp}
 				\end{subfigure}
 			}
@@ -262,7 +287,7 @@ The free charges extraction time is related to the RC time of the \SI{50}{\ohm} 
 \end{SCfigure}
 
 \paragraph{Comparison between \acr{ce} time constant and \acr{tpv} time constant -- Corrections} 
-During this time, and depending on its location in the device stack, some free charge can recombine. One could argue that a \acr{ce} measurement is valid only if the extraction is faster than the recombination time as measured via \acr{tpv} \cite{Ryan2017a} or that the extracted charge should be corrected considering the recombination \cite{Credgington2011}. Considering the charges accumulated in the depletion layers in the selective contacts, these will flow to the electrodes without crossing the perovskite/selective contacts interfaces, where has been reported that most of the recombination occurs \cite{Barnea-Nehoshtan2014,Stolterfoht2018a,Stolterfoht2018}. So this part of the extracted charge, distinguishable as the linear part of the charge versus voltage plot, as represented on the right column of \cref{fig:ce_noise} should not be corrected. Instead, regarding the charge accumulating in the perovskite layer, which we assume can be assigned to a chemical capacitance and can be recognized as the exponential part on the right column of \cref{fig:ce_noise}, it may be that a correction \cite{Shuttle2008a,Shuttle2008b} is needed, but this has not be done in this thesis. 
+During this time, and depending on its location in the device stack, some free charge can recombine. One could argue that a \acr{ce} measurement is valid only if the extraction is faster than the recombination time as measured via \acr{tpv} \cite{Ryan2017a} or that the extracted charge should be corrected considering the recombination \cite{Credgington2011}. Considering the charges accumulated in the depletion layers in the selective contacts, these will flow to the electrodes without crossing the perovskite/selective contacts interfaces, where has been reported that most of the recombination occurs \cite{Barnea-Nehoshtan2014,Stolterfoht2018a,Stolterfoht2018}. So this part of the extracted charge, distinguishable as the linear part of the charge versus voltage plot, as represented on the right column of \cref{fig:ce_noise} should not be corrected. Instead, regarding the charge accumulating in the perovskite layer, which we assume can be assigned to a chemical capacitance and can be recognized as the exponential part on the right column of \cref{fig:ce_noise}, it may be that a correction \cite{Shuttle2008a,Shuttle2008b} is needed, but this has not be done in this thesis.
 
 \paragraph{Comparison between \acr{ce} time constant and \acr{tpv} time constant -- Correlation?} Some covariance (Pearson correlation coefficient of~0.4) can be observed in \cref{fig:ce_1sun_time_vs_tpv_1sun_time} between the \acr{ce} and the \acr{tpv} time constants at 1 sun illumination. This is unexpected and weird as the two times change with very different trends with light bias (when changing the preconditioning light intensity, \gls{ce} extraction time changes just slightly while \gls{tpv} decay time varies over various orders of magnitude). In case a stronger proof of correlation is found, this could indicate that both processes, even if not of the same nature, are limited by the same diffusion process, for example the migration of free charges from all the absorber to the absorber/contacts interfaces.
 
@@ -372,25 +397,25 @@ recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
 \section{Molecular Characterization}
 \subsection{Interpretation of Band Gap Values Obtained via Tauc Plot, PhotoLuminescence and Computational Simulations}\label{interpretation_bg}
 
-	Otra cosa, flipé mucho con la respuesta del Vidal y me puse a intentar
-	ver que se supone que se saca del espectro experimental y desde cual
-	pico. Como el dijo, las simulaciones son correctas.
-	Pero, creo que sea mi concepto (el HOMO-LUMO está bastante lejos del
-	absorption onset, como demostrado de sus simulaciones donde el
-	absoprtion onset, por ejemplo de TAE-1, está a 2.9 eV y el HOMO-LUMO gap
-	está a 5.06 eV) que lo de Vidal (el pico de máxima absorción no tiene
-	nada a que ver con el HOMO-LUMO gap, en mi opinión para nada) estaban
-	totalmente equivocados y que habría que enviar a medir el UPS de las
-	moléculas para sacar el HOMO-LUMO gap.
-
-	El concepto está explicado en el primer párrafo de esta pagina:
-	https://chemical-quantum-images.blogspot.com/2013/06/why-is-homo-lumo-gap-not-good-guess-of.html
-
-	Lo que he puesto, o sea que lo hemos medido por Tauc plot, creo colaría
-	porque todo el mundo lo mide así y está bien aceptado como método. Pero
-	la verdad es que es valido solo para semiconductores donde los orbitales
-	están bien deslocalizados, no como nuestra molécula en solución donde el
-	estado es bien localizado en la molécula.
+%	Otra cosa, flipé mucho con la respuesta del Vidal y me puse a intentar
+%	ver que se supone que se saca del espectro experimental y desde cual
+%	pico. Como el dijo, las simulaciones son correctas.
+%	Pero, creo que sea mi concepto (el HOMO-LUMO está bastante lejos del
+%	absorption onset, como demostrado de sus simulaciones donde el
+%	absoprtion onset, por ejemplo de TAE-1, está a 2.9 eV y el HOMO-LUMO gap
+%	está a 5.06 eV) que lo de Vidal (el pico de máxima absorción no tiene
+%	nada a que ver con el HOMO-LUMO gap, en mi opinión para nada) estaban
+%	totalmente equivocados y que habría que enviar a medir el UPS de las
+%	moléculas para sacar el HOMO-LUMO gap.
+%
+%	El concepto está explicado en el primer párrafo de esta pagina:
+%	https://chemical-quantum-images.blogspot.com/2013/06/why-is-homo-lumo-gap-not-good-guess-of.html
+%
+%	Lo que he puesto, o sea que lo hemos medido por Tauc plot, creo colaría
+%	porque todo el mundo lo mide así y está bien aceptado como método. Pero
+%	la verdad es que es valido solo para semiconductores donde los orbitales
+%	están bien deslocalizados, no como nuestra molécula en solución donde el
+%	estado es bien localizado en la molécula.
 
 \section{Our Solar Cells Characterization Steps}
 
