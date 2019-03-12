@@ -128,7 +128,6 @@
 		An $\alpha$ value lower than 1 indicates the presence of non-geminate recombination (for geminate recombination see \cpageref{intro_geminate}) at short circuit\cite{Credgington2011}, indicating that not all the photo-generated charges get extracted, neither at short circuit conditions.
 
 	\subsection{\Gls{voc} versus $\phi$ and the Ideality Factor $m$}
-
 		Setting $J=0$, which corresponds to open circuit conditions, in \cref{eq:photodiode} (without considering the series resistance correction) we can obtain a relation between \gls{jsc} and \gls{voc}:
 		%\begin{equation} \label{eq:photodiode-zerocurrent}
 		$$J_{SC}(\phi) = J_0\left(\exp\left(\frac{qV_{OC}(\phi)}{n_{id}k_BT}\right)-1\right)$$
@@ -137,17 +136,18 @@
 
 		Solving for \gls{voc} we obtain:
 		%\begin{equation} \label{eq:photodiode-zerocurrent-voc}
-		$$V_{OC}(\phi) = \frac{n_{id}k_BT}{q}\cdot\ln\left(\frac{J_{SC}}{J_0} + 1\right)$$
+		$$V_{OC} = \frac{n_{id}k_BT}{q}\cdot\ln\left(\frac{J_{SC}}{J_0} + 1\right)$$
 		%\end{equation}
 
 		Considering that the saturation current $J_0$ (current in dark under reverse bias) is much smaller than $J_{SC}$ for the light intensities we usually employ (down to \SI{0.05}{suns}), we can approximate to:
 		%\begin{equation} \label{eq:photodiode-zerocurrent-voc_approx}
-		$$V_{OC}(\phi) \approx u_1 + \frac{n_{id}k_BT}{q}\cdot\ln(J_{SC})$$
+		$$V_{OC} \approx u_1 + \frac{n_{id}k_BT}{q}\cdot\ln(J_{SC})$$
 		%\end{equation}
 
 		where $u_1$ is a useless constant. Then if the $\alpha$ value is close enough to~1, we can use \cref{eq:jsc-phi} and further approximate for plotting against light intensity $\phi$:
-
-		$$V_{OC}(\phi) \approx u_2 + \frac{n_{id}k_BT}{q}\cdot\ln(\phi)$$
+\begin{equation}\label{eq:voc_vs_phi}
+V_{OC}(\phi) \approx u_2 + \frac{n_{id}k_BT}{q}\cdot\ln(\phi)
+\end{equation}
 
 		This is the equation we commonly employ for fitting and obtaining ideality factors \cite{Nelson2003}. In some cases this latest expression is used as ideality factor definition as it conveniently uses a zero current measurement (\gls{voc}) so that series resistance can be completely ignored \cite{Kirchartz2012}. %In literature one can found reports of ideality factor determined via \gls{voc} versus \gls{jsc} dependency. The results of the latter method may differ from the aforementioned one due to series resistance and the non-linear dependency of the \gls{jsc} from the light intensity ($\alpha < 1$). 
 		The so-obtained ideality factor $n_{id}$ is usually from 1 to 2. A voltage dependent ideality factor can also be measured from a current-voltage sweeps in dark but has not been evaluated in this thesis, as it would be affected by hysteresis. A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method (employing a pre-biassing for flattening the ionic profile) can be found in \authoryear{Calado2018b}. % Anyway in perovskite solar cells exhibiting hysteresis, a current-voltage sweep would not give fair ideality factors and the current-voltage points should be acquired reaching steady state conditions for each point. Both these methods for deriving the ideality factor have been implemented in the DrIFtFUSION simulation as described in \cpageref{dd_ideality}.
@@ -161,7 +161,7 @@
 	
 	\paragraph{Limitations -- from \gls{osc}}
 	
-	\paragraph{Limitations -- specific of perovskite} When measuring the \gls{ce} of a perovsktie solar cell, additionally to the aforementioned limitations, one should also consider that the ionic profile update (from $V=V_{OC}$ to $V=0$) causes a displacement current, as described in \cpageref{intro_displacement_current}. A simulation with DrIFtFUSION is reported for an homojunction device in \cref{fig:ce_single_dd}, it can be seen that with ionic mobile defects in \cref{fig:ce_single_dd-ions_zoom} a very weak but long lasting current appears and gives a relevant contribution to the integrated charge. This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported\cite{ORegan2015b}. The charge measured in the external circuit due to the ionic displacement current could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
+	\paragraph{Limitations -- specific of perovskite} \label{ce_limitations_perovskite}When measuring the \gls{ce} of a perovsktie solar cell, additionally to the aforementioned limitations, one should also consider that the ionic profile update (from $V=V_{OC}$ to $V=0$) causes a displacement current, as described in \cpageref{intro_displacement_current}. A simulation with DrIFtFUSION is reported for an homojunction device in \cref{fig:ce_single_dd}, it can be seen that with ionic mobile defects in \cref{fig:ce_single_dd-ions_zoom} a very weak but long lasting current appears and gives a relevant contribution to the integrated charge. This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported\cite{ORegan2015b}. The charge measured in the external circuit due to the ionic displacement current could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
 	
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -180,7 +180,7 @@
 			\qquad			
 			\begin{subfigure}[t]{0.5\textwidth}
 				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions_zoom.pdf}
-				\subcaption{With mobile ions, magnified current axis}\label{fig:ce_single_dd-ions_zoom}
+				\subcaption{With mobile ions, magnified}\label{fig:ce_single_dd-ions_zoom}
 			\end{subfigure}
 		}
 	}
@@ -286,10 +286,10 @@ The free charges extraction time is related to the RC time of the \SI{50}{\ohm} 
 	\mycaption[Charge extraction time is related to a RC time.]{Covariance of \acr{ce} extraction time at low light intensity versus the expected time from geometric capacitance (as obtained from dark \acr{dc}). Each point is a different device for a total of 78 devices, many different structures studied during my PhD are represented. The green line indicates the 1 to 1 relationship.}\label{fig:chargeExtraction_RCtime}
 \end{SCfigure}
 
-\paragraph{Comparison between \acr{ce} time constant and \acr{tpv} time constant -- Corrections} 
+\paragraph{\Acr{ce} time constant and \acr{tpv} time constant -- Corrections} 
 During this time, and depending on its location in the device stack, some free charge can recombine. One could argue that a \acr{ce} measurement is valid only if the extraction is faster than the recombination time as measured via \acr{tpv} \cite{Ryan2017a} or that the extracted charge should be corrected considering the recombination \cite{Credgington2011}. Considering the charges accumulated in the depletion layers in the selective contacts, these will flow to the electrodes without crossing the perovskite/selective contacts interfaces, where has been reported that most of the recombination occurs \cite{Barnea-Nehoshtan2014,Stolterfoht2018a,Stolterfoht2018}. So this part of the extracted charge, distinguishable as the linear part of the charge versus voltage plot, as represented on the right column of \cref{fig:ce_noise} should not be corrected. Instead, regarding the charge accumulating in the perovskite layer, which we assume can be assigned to a chemical capacitance and can be recognized as the exponential part on the right column of \cref{fig:ce_noise}, it may be that a correction \cite{Shuttle2008a,Shuttle2008b} is needed, but this has not be done in this thesis.
 
-\paragraph{Comparison between \acr{ce} time constant and \acr{tpv} time constant -- Correlation?} Some covariance (Pearson correlation coefficient of~0.4) can be observed in \cref{fig:ce_1sun_time_vs_tpv_1sun_time} between the \acr{ce} and the \acr{tpv} time constants at 1 sun illumination. This is unexpected and weird as the two times change with very different trends with light bias (when changing the preconditioning light intensity, \gls{ce} extraction time changes just slightly while \gls{tpv} decay time varies over various orders of magnitude). In case a stronger proof of correlation is found, this could indicate that both processes, even if not of the same nature, are limited by the same diffusion process, for example the migration of free charges from all the absorber to the absorber/contacts interfaces.
+\paragraph{\Acr{ce} time constant and \acr{tpv} time constant -- Correlation?} Some covariance (Pearson correlation coefficient of~0.4) can be observed in \cref{fig:ce_1sun_time_vs_tpv_1sun_time} between the \acr{ce} and the \acr{tpv} time constants at 1 sun illumination. This is unexpected and weird as the two times change with very different trends with light bias (when changing the preconditioning light intensity, \gls{ce} extraction time changes just slightly while \gls{tpv} decay time varies over various orders of magnitude). In case a stronger proof of correlation is found, this could indicate that both processes, even if not of the same nature, are limited by the same diffusion process, for example the migration of free charges from all the absorber to the absorber/contacts interfaces.
 
 \begin{SCfigure}%[!hbtp]%
 	\centering
@@ -297,21 +297,49 @@ During this time, and depending on its location in the device stack, some free c
 	\mycaption[Comparison between \gls{ce} and \gls{tpv} exponential decay times.]{Covariance of \acr{ce} extraction time at 1~sun light intensity versus the \gls{tpv} mono-exponential decay time at 1~sun light intensity. Each point is a different device for a total of 79 devices, including many different structures. The green line indicates the 1 to 1 relationship.}\label{fig:ce_1sun_time_vs_tpv_1sun_time}
 \end{SCfigure}
 
-\paragraph{Interpretation of the charge versus light bias trend}
-In \gls{osc} literature the charge versus light bias voltage trend is described as an exponential. In some cases an ideality factor $m$ is introduced \cite{Kirchartz2012}, so the expression can be found as:
+\paragraph{Charge versus light bias trend - Exponential part}
+In \gls{osc} literature the charge versus light bias voltage trend is described simply as the exponential shape which describes a Maxwell--Boltzmann distribution for a two levels scenario. For a common solar cell working conditions, the Maxwell--Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much bigger than $k_BT$. This could be false for high applied voltages, where Fermi--Dirac distribution for fermions should be used.
+$$n_{CE} = n_{DOS} \exp\left(\frac{qV - E_g}{k_BT}\right) = n_{0,CE} \exp\left(\frac{qV}{k_BT}\right)$$
+In some cases an ideality factor $m$ is introduced \cite{Kirchartz2012}, which can help to account for the shape of the density of states of the conduction band, so the expression can be found as:
 $$n_{CE} = n_{0,CE} \exp\left(\frac{qV}{mk_BT}\right)$$
+
+\paragraph{Charge versus light bias trend - Linear part}
+In perovskite solar cells a linear trend sums to the exponential part, accounting for the accumulation in the selective contacts and electrodes, in a parallel plate capacitor fashion \cite{Gelmetti2017,Ryan2017a}: $Q = C_g \cdot V = \frac{\epsilon_0 \epsilon_r A}{d} \cdot V$ where $C_g$ is the geometric capacitance, $A$ is the active area, and $d$ is the thickness of the dielectric. More exactly, $d$ is the distance between the regions where the opposed charges are getting accumulated, which is the space charge layers (usually depletion layers) in the electrodes. So this value can be somewhat wider than just the distance separating the two electrodes interfaces. By consequence, $\epsilon_r$ should be considered as a thickness-weighted mean of the $\epsilon_r$ of each material between the two accumulation zones.
+
+\paragraph{Charge versus light bias trend - Linear part in presence of ions}
+The presence of mobile ions in perovskite materials which can accumulate at the perovskite/contacts interfaces, adds an additional capacitance, which sums up to the geometric capacitance, as we showed in \authoryear{Moia2019}. Nevertheless, as pointed out in \cpageref{ce_limitations_perovskite}, the \acr{ce} measurements are never carried on for long enough to include the ionic migration, and so also the ionic accumulation capacitance gets ignored in our experiments. This can be visualized with the simulation reported in \cref{}.
+
+\begin{SCfigure}%[!hbtp]%
+	\centering
+	\includegraphics[width=0.45\textwidth]{.pdf}
+	\mycaption[Simulation of CE experiment: charge versus light bias with or without mobile ions.]{.}\label{fig:}
+\end{SCfigure}
+
+
 
 \FloatBarrier
 \section{Transient PhotoVoltage (TPV)}
 	\epigraph{\textit{"Imma firin mah lazor\\pewpew pewpewpew"}}
 	
-	The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser. The pulse duration is around \SI{1.5}{\ns}. The equipment can output up to 20~pulses per second, but due to the oscilloscope settings and oscilloscope internal memory speed we're limited to 1~pulse per second (maybe decreasing the number of acquired points would allow us to acquire higher repetition rates). The pulse was triggered with a square wave pulse generator. The wavelength is selected with the absorption and emission of a dissolved molecular dye, usually a wavelength of \SI{650}{\nm} is selected using a Rhodamine B solution\cite{RadiantDyesLaser}, this wavelength allow us to illuminate in deep the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material).
-
-	During all the process, the device is connected to a \SI{1}{\Mohm} oscilloscope, registering the open circuit voltage profile (the high resistance of the oscilloscope is a good approximation of open circuit). An auxiliary output from the square wave pulse generator used for the pulse is used for the trigger of the oscilloscope.
-
-	The intensity of the laser pulse is decreased using a variable neutral density filter (a partially reflecting wheel with different positions for different transmittivities) so that the voltage perturbation caused by the light pulse does not exceed \SI{10}{\mV} with 1~sun background illumination intensity. We consider this as a "small-enough" perturbation.
-
-	This process is repeated decreasing the light intensity from 1~sun down to dark. Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not so at lower ones and cannot be small at dark conditions. We \emph{do not} regulate the pulse intensity depending from the background illumination for being able to use this data also for \acr{dc} studies. The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity. The switch from \acr{tpv} to \acr{tpc} setups and back would be complex and time demanding with the current setup. Anyway quite all the information from the \acr{tpv} is obtained from the high background illumination intensity measurements.
+	\paragraph{Concept} While a complete device is kept open circuit under constant illumination, a small extra illumination is added via a short laser pulse.
+	The \gls{voc}, originally at its steady state value, will be perturbed due to the greater generation rate during the laser pulse.
+	From the \gls{voc} versus illumination relation for photodiodes reported in \cref{eq:voc_vs_phi} follows that the \gls{voc}, at this new higher illumination, increases (this is not always the case, as for non-stabilized perovskite solar cells \cite{Calado2016}).
+	After the short pulse the \gls{voc} will slowly go back to the steady state value relative to the constant illumination.
+	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments. 
+	
+	\paragraph{Procedure} The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached.
+	1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
+	Then an additional illumination pulse is provided by a nitrogen laser. The pulse duration (\SI{\approx 1.5}{\ns}) is shorter than the oscilloscope resolution we usually employ, so we assume that the measurement happens when the pulse is already over.
+	In the literature, this is not always the case as other research groups use a \gls{led} diode for the pulsed illumination \cite{Calado2016}.
+	Usually a wavelength of \SI{650}{\nm} is selected using a Rhodamine B solution\cite{RadiantDyesLaser}, this wavelength illuminates in depth the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material \cite{Bi2016}).
+	During all the process, the device is connected to an oscilloscope, registering the open circuit voltage profile (the \SI{1}{\Mohm} resistance of the oscilloscope is a good approximation of open circuit). %An auxiliary output from the square wave pulse generator used for the pulse is used for the trigger of the oscilloscope.
+	The voltage profile gets averaged over a few tens of pulses in order to increase the signal to noise ratio.
+	Then the background light intensity is slightly decreased and, after the stabilization to the new steady state, the new  \gls{voc} is registered and more transients are registered. This process is repeated over a few tens of light illuminations from 1~sun down to dark.
+		
+	\paragraph{Small perturbations regime} The intensity of the laser pulse is attenuated using a variable neutral density filter (a partially reflecting wheel with different positions for different transmittivities) so that the voltage perturbation caused by the light pulse does not exceed \SI{10}{\mV} with 1~sun background illumination intensity.
+	We consider this a "small-enough" perturbation.
+	Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not small any more at lower nackground illuminations and definitively cannot be small at dark conditions.
+	We \emph{do not} regulate the pulse intensity depending from the background illumination for being able to use this data also for \acr{dc} studies. The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity. The switch from \acr{tpv} to \acr{tpc} setups and back would be complex and time demanding with the current setup. Anyway quite all the information from the \acr{tpv} is obtained from the high background illumination intensity measurements.
 
 	For each illumination intensity, the reported decay is the result of averaging around 30~transients. This manages to reduce the noise.
 
