@@ -172,7 +172,8 @@
 %	\preto\section{\vfil\penalty-10\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
 %	\preto\section{\vskip 0pt plus 1fil\penalty-200\vskip 0pt plus -1fil}
 	\preto\section{\needspace{7\baselineskip}}
-
+	
+	\usepackage{breqn} % for automatic line breaking in equations with dmath environment
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
