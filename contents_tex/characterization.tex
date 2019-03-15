@@ -75,8 +75,7 @@
 
 		\paragraph{Large perturbations -- impedance} Another example: a too wide sinusoidal voltage oscillation amplitude in impedance measurements can cause a non-sinusoidal current output. This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation. But artefacts could arise and cause misinterpretations, as explained in \cpageref{impedance-large_perturbations}.
 
-		\paragraph{Large perturbations -- \gls{trpl}} Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer. This pulse induces a the migration of the ionic defects to a new profile depending on the pulse intensity \cite{Levine2018}, by a small extent due to its short duration. The fact that the relaxation time of the ionic migration is usually much larger than the laser repetition rate (\si{\ms} to seconds for the ions \cite{Jacobs2018} and \si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse. As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care. An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016}.
-
+		\paragraph{Large perturbations -- \gls{trpl}} Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer. This pulse induces a the migration of the ionic defects to a new profile depending on the pulse intensity \cite{Levine2018}, by a small extent due to its short duration. The fact that the relaxation time of the ionic migration is usually much larger than the laser repetition rate (\si{\ms} to seconds for the ions \cite{Jacobs2018} and \si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse. As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care. An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016} and elsewhere \cite{Chen2015,Chen2017}.
 
 \section{Current-Voltage Sweeps}
 
@@ -332,7 +331,7 @@ The presence of mobile ions in perovskite materials which can accumulate at the 
 		The green crosses simulates the experimentally utilised conditions: the charge gets integrated over few microseconds, while the mobile ions didn't have enough time to start migrating.
 		The orange pluses considers the charge integrated until the device stabilization, over various seconds, including also the ionic displacement current.
 		The purple circles simulates a mobile-ions free device.
-		The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the equation $n = C_g V + u_1 (e^{q V / (mK_BT)} - 1$ where $C_g$, $P_1$, and $m$ are free fitting parameters.}\label{fig:ce_full_dd}
+		The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the equation $n = C_g V + u_1 (e^{q V / (mK_BT)} - 1)$ where $C_g$, $P_1$, and $m$ are free fitting parameters.}\label{fig:ce_full_dd}
 	}
 }
 \end{figure}
@@ -350,7 +349,7 @@ This is caused by the very different free charge accumulation profile: the prese
 	The \gls{voc}, originally at its steady state value, will be perturbed due to the greater generation rate during the laser pulse.
 	From the \gls{voc} versus illumination relation for photodiodes reported in \cref{eq:voc_vs_phi} follows that the \gls{voc}, at this new higher illumination, increases (this is not always the case, as for non-stabilized perovskite solar cells \cite{Calado2016}).
 	After the short pulse the \gls{voc} will slowly go back to the steady state value relative to the constant illumination.
-	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments (also known as PhotoVoltage Decay experiments). 
+	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments \cite{ORegan2004,ORegan2005,ORegan2006} (also known as PhotoVoltage Decay experiments). 
 	
 	\paragraph{Procedure} The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached.
 	1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
@@ -368,14 +367,55 @@ This is caused by the very different free charge accumulation profile: the prese
 	We \emph{do not} regulate the pulse intensity depending from the background illumination for being able to use this data also for \acr{dc} studies. The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity. The switch from \acr{tpv} to \acr{tpc} setup and back would be complex and too time demanding with the current setup. Anyway quite all the information from the \acr{tpv} is obtained from the high background illumination intensity measurements.
 	%For the interpretation, see \cpageref{interpretation_tpv}; for the implementation, see \cpageref{r_tpv}.
 	
-	\paragraph{Voltage re-equilibration dynamics} As we ensured to be in the small perturbation regime, we can study the \cref{eq:ce_full} up to the first term of its series expansion:
+	\paragraph{Voltage and charge concentration relationship} As we ensured to be in the small perturbation regime, we can study the \cref{eq:ce_full} up to the first term of its series expansion:
 	\begin{dmath*}
-	$$n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \left.\frac{\partial n}{\partial V}\right\rvert_{V=V_0} = n(V_0) + \Delta V \cdot \left(C_g + \frac{u_1q}{mk_BT}\exp\left(\frac{qV_0}{mk_BT}\right)\right)$$
+	n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \left.\frac{\partial n}{\partial V}\right\rvert_{V=V_0} = n(V_0) + \Delta V \cdot \left(C_g + \frac{u_1q}{mk_BT}\exp\left(\frac{qV_0}{mk_BT}\right)\right)
 	\end{dmath*}
-	Assigning the last addend to $\Delta n$ we can see that the charge amount variation have a dependency on the steady state voltage $V_0$. Nevertheless, as we're in small perturbation regime, the relation between $\Delta V$ and $\Delta n$ is linear, so the lifetime extracted from a $\Delta V$ decay will have the same lifetime of the underlying $\Delta n$. This means that we can observe the variations in voltage for having a correct kinetic description of the charge amount variation.
+	Assigning the last addend to $\Delta n$ we can see that the charge amount variation not only is linear with $\Delta V$ (as we're in the small perturbation regime), but it also depends on the steady state voltage $V_0$. This relation is studied in the differential capacitance (\acr{dc}) experiment, described further in this chapter. 
+	
+	\paragraph{Voltage re-equilibration dynamics}
+	For what concerns a \acr{tpv} experiment, we're just interested in the analysis of the time needed for re-equilibration to steady state conditions.
+	As aforementioned, the relation between $\Delta V$ and $\Delta n$ in small perturbation regime is linear, so the lifetime extracted from a $\Delta V$ decay will have the same lifetime of the underlying $\Delta n$, which is the interesting quantity when speaking of recombination.
+	This means that we can observe the variations in voltage for having a correct kinetic description of the charge amount variation.
+	At steady state conditions, the time derivative of the amount of charge is zero $\partial n_0 / \partial t = g(\phi) - U(n_0) = 0$ where $g$ is the generation and $U$ is the recombination.
+	Considering the situation after the end of the light pulse, so while $g$ is constant but $n$ has been increased by $\Delta n$, and using a simplified expression for the recombination including just two contributions with reaction order 1 and 2 we can write:
+	\begin{dmath*}
+		\frac{\partial (n_0 + \Delta n)}{\partial t} = g - k_1(n_0 + \Delta n) - k_2(n_0 + \Delta n)^2 = (g - k_1 n_0 - k_2 n_0^2) - (k_1 \Delta n + 2 k_2 n_0 \Delta n) - (k_2 \Delta n ^2) \approx - (k_1 + 2 k_2 n_0 ) \Delta n
+	\end{dmath*}
+	where the zeroth order term is the steady state value, so it's zero, and the second order order term can be neglected. So the rate equation is a simple first order reaction, and the kinetic behaviour follows an exponential description like:
+	\begin{equation}\label{eq:tpv_monoexp}
+		n (t) = n_0 + \Delta n_0 \cdot e^{-(k_1 + 2 k_2 n_0) t}
+	\end{equation}
+
+	
+	\paragraph{Bi-exponential decays - high background illumination}
+	For some devices, rather than an exponential decay, a bi-exponential decay is observed. With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
+	$$\Delta V (t) = \Delta V_1 \cdot e^{-k_1t} + \Delta V_2 \cdot e^{-k_2t}$$
+	This cannot be justified just by the presence of two different recombination processes.
+	This is clear looking back to \cref{eq:tpv_monoexp}, where even treating two recombination processes with even two different reaction orders we obtained a simple exponential decay.
+	What we have to remember here, is that \cref{eq:tpv_monoexp} was obtained for a zero dimensional case, like what would happen in a homogeneous chemical reaction.
+	In our case, the multiple recombination centres could be spatially separated.
+	If the charge concentration in the two centres is dis-entangled (is not identical at any time), the sum of two exponential decays can be expected rather than a simple exponential.
+	This dis-entanglement is possible if the time needed for the free carriers to migrate from a recombination centre to the other is larger than the shorter recombination life-time.
+	This can happen thanks to a large distance between recombination centres together with a slow free carriers mobility.
+	Barnes group is investigating the AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \cite{Montcada2017}
 	
 	\paragraph{Mobility limited case}
-	 
+	As we just saw, the mobility is a crucial parameter for the \acr{tpv} experiment.
+	As a mental exercise we can imagine a case where the mobility is so slow that the free charges take a long time to diffuse (we consider diffusion as perovskite solar cells are assumed to be field-free in the absorber layer, but the same concept would hold with charges' drift) from the generation zone (in the absorber) to the recombination centre (\textit{e.g.} at a contact/absorber interface).
+	In such an extreme case the provisioning of charges to the recombination centres could become a bottleneck rather than the recombination itself.
+	In this regime, a \acr{tpv} experiment would be rather insensitive to actual recombination constants and even to light intensity, giving just information about mobility.
+	As the observed \acr{tpv} life-times are strongly light-intensity dependent, at least at high background illumination, we can exclude to be in this mobility-limited regime.
+	This would have to be revised in case a strong illumination-dependent mobility in perovskite materials was demonstrated, as has been reported in \gls{osc} \cite{Eng2010,Shuttle2010}.
+	
+	\paragraph{Bi-exponential decays - low background illumination}
+	When studying a decay measured at lower background light intensity, we have to remember that, at least for our group's \acr{tpv} procedure, we're out of the small perturbation regime and this could explain non-exponential decays.
+	Moreover
+	
+	Maier's paper is proposing that high holes concentration increases the ionic conductivity. 
+	\paragraph{Bi-exponential decays - low background illumination}
+	
+
 	
 	\paragraph{Noise treatment}\label{tpv_robust} Most of the observed noise (\SI{< 2E-7}{\s}) is due to the radiofrequency emitted by the spark in the nitrogen laser which gets absorbed by all the non-coaxial cables (coaxial ones don't) and from the circuitry of the samples holder acting as a receiving antenna.
 	On the contrary to what happens for \acr{ce}, the short times noise seems to not follow a constant pattern, so averaging the measurement over a few repetitions (usually 30) manages to reduce the noise.
@@ -423,7 +463,7 @@ recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
 
 
 \section{Transient PhotoCurrent (TPC)}
-
+\cite{ORegan2004}
 	The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
 
 	The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor. This allows us to measure a potential drop across the resistor and the related current via Ohm's law. Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge generated by the laser pulse.
@@ -436,7 +476,7 @@ recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
 
 \section{Differential Capacitance (DC)}
 
-	This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experiment\cite{Shuttle2008}, sometimes also referred to as "differential capacitance".
+	This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experiment \cite{ORegan2005,ORegan2006,Shuttle2008}, sometimes also referred to as "differential capacitance".
 
 	As explained in \cpageref{interpretation_dc}, the electrical capacitance of a solar cell is not a constant (as in most of the commercial capacitors), indeed it depends on the applied voltage bias or light bias.
 
