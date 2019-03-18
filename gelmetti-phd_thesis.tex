@@ -44,6 +44,9 @@
 	%\AtEveryBibitem{\ifentrytype{article}{\togglefalse{bbx:url}}{}}
 	\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
 	
+	\DeclareBibliographyCategory{mypapers}
+	\addtocategory{mypapers}{Moia2019,Gelmetti2019,Gelmetti2017}
+	
 	%\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 	\usepackage{graphicx}
 	\usepackage[textfont={small}]{subcaption} %the subfigure and subfig packages are deprecated
@@ -234,6 +237,9 @@
 	\author{Ilario Gelmetti}
 	\date{2018}
 \begin{document}
+% I cite here the papers which should be numbered first	
+\nocite{Gelmetti2017,Moia2019,Gelmetti2019}
+
 \pagestyle{plain}
 
 \selectlanguage{english}
@@ -531,10 +537,14 @@
 	\input{contents_tex/code.tex}
 
 
-\chapter{List of publications}
+%\chapter{List of publications}
 
+	
 	\printindex
+	
+	\printbibliography[category=mypapers, title=List of Publications]
+	
+	\printbibliography[notcategory=mypapers]
 
-	\printbibliography
 
 \end{document}
