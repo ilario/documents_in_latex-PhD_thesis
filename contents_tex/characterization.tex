@@ -103,7 +103,7 @@
 	\end{SCfigure}
 	We wanted to underline that due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one.  % and they all heavily affect the resulting \gls{pce}.
 	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result.
-	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena\cite{Jacobs2018}.
+	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena\cite{Jacobs2018,Du2018}.
 
 	\paragraph{Noise} The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}. For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted via a parabolic fitting. %Indeed, using a white \gls{led} as illumination source, this noise is not present but the spectral mismatch affects the meaningfulness of the measurement.
 
@@ -487,8 +487,9 @@ This allows the simulated ions-free device to store more charge at the same illu
 	In drift-diffusion simulations, such a plateau is not observable.
 	But in the actual experiment setup, decays life-times are limited at long times by the discharge of the through the oscilloscope resistance and through the device shunt resistance, whatever is the smallest.
 	This happens with an RC time of the circuit composed by the capacitance of the device (which can be obtained via a \acr{dc} experiment) and the \SI{1}{\Mohm} resistance of the oscilloscope or the internal device resistance.
-	The oscilloscope resistance could be varied using an attenuating probe (usually 10X or 100X).
-	This limit is often observed at low light intensities as a plateau in the \acr{tpv} life-time \textit{versus} light bias graph. 
+	The oscilloscope resistance could be varied using an attenuating probe (usually 10X or 100X) or a high impedance amplifier.
+	This limit is often observed at low light intensities as a plateau in the \acr{tpv} life-time \textit{versus} light bias graph.
+	Indeed, in \authoryear{Kiermasch2018}, where a \SI{1}{\tera\ohm} input impedance amplifier is used, the plateau is observable around \SIrange{1E-1}{1}{\s}, \textit{i.e.} three orders of magnitude higher than what we observe with our \SI{1}{\Mohm}.
 	This affirmation is corroborated by the correlation observable in \cref{fig:tpv_RCtime}.
 	
 	\begin{SCfigure}
