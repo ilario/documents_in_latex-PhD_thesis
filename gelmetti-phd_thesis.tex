@@ -489,12 +489,17 @@
 	\mainmatter
 	\pagestyle{headings}
 
-
+\chapter{Summary of the Thesis}\label{ch:summary}
+	\input{contents_tex/summary.tex}
+	
 \chapter{Introduction}\label{ch:intro}
 	\graphicspath{ {./contents_img/intro/} }
 	\input{contents_tex/intro.tex}
+	
+\chapter{Motivation and Aims}\label{ch:aims}
+	\input{contents_tex/aims.tex}
 
-\chapter{Experimental Methods and Fabrication}\label{ch:methods}
+\chapter{Experimental Methods}\label{ch:methods}
 \chaptermark{Experimental Methods}
 	\graphicspath{ {./contents_img/methods/} }
 	\input{contents_tex/methods.tex}
@@ -534,19 +539,18 @@
 	\graphicspath{ {./contents_img/software/} }
 	\input{contents_tex/software.tex}
 
-\chapter{Summary Conclusions}
+\chapter{Overall Conclusions}\label{ch:conclusions}
+	\input{contents_tex/conclusions.tex}
 
-
-\chapter{Further Work}
+%\chapter{Further Work}
 
 
 \chapter*{Acknowledgements}
-	%\selectlanguage{spanish}
-	bla bla bla
+	\input{contents_tex/acknowledgements.tex}
 
-	\selectlanguage{english}
 
-	\appendix
+
+\appendix
 
 \chapter{Code}
 	\label{ch:code}
