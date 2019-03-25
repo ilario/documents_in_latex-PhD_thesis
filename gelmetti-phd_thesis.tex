@@ -154,6 +154,8 @@
 	\lstset{style=Matlab-editor, basicstyle=\footnotesize}% basicstyle has to be placed after style
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
+	%\crefdefaultlabelformat{#2\textbf{#1}#3} % bold numbers of references https://tex.stackexchange.com/a/255187/173645
+	\creflabelformat{figure}{#2\textbf{#1}#3} % bold numbers just for figures references
 	
 	\usepackage[spacing=true, stretch=40, shrink=40]{microtype} % automagically reduces overfull lines and improves justification
 
@@ -389,6 +391,7 @@
 \newacronym{pce}{PCE}{power conversion efficiency}
 \newacronym{voc}{V\textsubscript{OC}}{open circuit voltage}
 \newacronym{jsc}{J\textsubscript{SC}}{short circuit current}
+\newacronym{eqe}{EQE}{external quantum efficiency}
 
 % other
 \newacronym{rt}{RT}{room temperature}

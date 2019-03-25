@@ -94,7 +94,7 @@
 		\mycaption[Kinks in JV sweep due to autoscale.]{A current-voltage sweep of an hysteretic perovskite solar cell with Keithley autoscale active. Both the forward (dashed) and the reverse (solid line) present small discontinuities around \SI{1}{\mA} and \SI{0.1}{\mA}.}\label{fig:autoscale}
 	\end{SCfigure}
 
-	\paragraph{Scan speed} The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly} (seldom reported in literature, like in figure~S3 of \cite{Du2018}). %having an aesthetically good looking current-voltage curve
+	\paragraph{Scan speed} The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly} (seldom reported in literature, like in figure~S3 of \cite{Du2018} and simulated with drift-diffusion in \cite{Walter2018}). %having an aesthetically good looking current-voltage curve
 	Our arbitrary choice allowed us to make fair comparisons between devices, but the absolute values should be considered as approximations.
 	\begin{SCfigure}%[!hbtp]%
 		\centering
@@ -412,17 +412,17 @@ This allows the simulated ions-free device to store more charge at the same illu
 	This process is repeated over a few tens of light illuminations from 1~sun down to dark.
 	%For each illumination intensity, the reported decay is the result of averaging around 30~transients. This manages to reduce the noise.
 	
-	\paragraph{Small perturbations regime}
+	\paragraph{Small perturbations regime}\label{tpv_perturbation}
 	The intensity of the laser pulse is attenuated using a variable neutral density filter (a partially reflecting wheel with different positions for different transmittivities) so that the voltage perturbation caused by the light pulse does not exceed \SI{10}{\mV} with 1~sun background illumination intensity.
 	We consider this a "small-enough" perturbation with regards to the measured \gls{voc} (see \cpageref{perturbation} for a definition of small perturbation).
 	For example, comparing the excess charge in a \gls{fto}\-/\dTiOtwo\-/\acr{csfamapbibr}\-/\spiro\-/Au solar cell at \gls{voc} and at \gls{voc}~+~\SI{10}{\mV} which can be obtained from the data in \cref{fig:ce_noise-integrateExp} fitted with \cref{eq:ce_full} we can obtain respectively a value of \SI{8.2E-8}{} and \SI{8.9E-8}{\coulomb\per\square\cm}.
 	Even if we're not considering the dark charge concentration (not measurable in a \acr{ce} experiment), the smallness of the charge perturbation is arguable.
 	Still, we're limited to \SI{> 3}{\mV} perturbations due to the strong noise observed in this transient measurement.
 	Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not small any more at lower illumination and definitively cannot be small at dark background conditions.
-	We \emph{do not} regulate the pulse intensity depending from the background illumination for being able to use this data also for \acr{dc} studies
-	 The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity.
-	The switch from \acr{tpv} to \acr{tpc} setup and back would be complex and too time demanding with the current setup.
+	We could regulate the pulse intensity depending on the background light intensity, to ensure its smallness, but we \emph{do not} do this in order to be able to use the \acr{tpv} data for calculating \acr{dc}, as explained in \cpageref{dc_perturbation}.
 	Anyway quite all the information from the \acr{tpv} is obtained from the high background illumination intensity measurements.
+
+
 	
 	\paragraph{Voltage and charge concentration relationship} As we assume to be in the small perturbation regime, we can study the \cref{eq:ce_full} up to the first term of its series expansion:
 	\begin{dmath*}
@@ -439,10 +439,18 @@ This allows the simulated ions-free device to store more charge at the same illu
 	\begin{dmath*}
 		\frac{\partial (n_0 + \Delta n)}{\partial t} = g - k_1(n_0 + \Delta n) - k_2(n_0 + \Delta n)^2 = (g - k_1 n_0 - k_2 n_0^2) - (k_1 \Delta n + 2 k_2 n_0 \Delta n) - (k_2 \Delta n ^2) \approx - (k_1 + 2 k_2 n_0 ) \Delta n
 	\end{dmath*}
-	where the zeroth order term is the steady state value, so it's zero, and the second order order term can be neglected (if $\Delta n \ll n_0$ then $k_2 \Delta n^2 \ll k_2 n_0 \Delta n$). So the rate equation is a simple first order reaction, and the kinetic behaviour follows an exponential description like:
+	where the zeroth order term is the steady state value, so it's zero, and the second order order term can be neglected (if $\Delta n \ll n_0$ then $k_2 \Delta n^2 \ll k_2 n_0 \Delta n$). So the rate equation is a simple pseudo-first order reaction, and the kinetic behaviour follows an exponential description like:
 	\begin{equation}\label{eq:tpv_monoexp}
-		n (t) = n_0 + \Delta n_0 \cdot e^{-(k_1 + 2 k_2 n_0) t}
+		n (t) = n_0 + \Delta n_0 \cdot e^{-(k_1 + 2 k_2 n_0) t} = n_0 + \Delta n_0 \cdot e^{-k_{pfo} t}
 	\end{equation}
+	
+	\paragraph{From pseudo-first order rate constant to rate constant}
+	Let's consider a simple case where just a first order or a second order recombination is present.
+	From the \cref{eq:tpv_monoexp} it is clear that for the first case it is easy to obtain $k_1$ as it is equal to $k_{pfo}$.
+	But for the second case, to obtain $k_2$ is non-trivial as it is related to $k_{pfo}$ via the charge density \cite{ORegan2007}.
+	Nevertheless, for practical reasons in this thesis $k_{pfo}$ is always considered, unless explicitly specified.
+	Comparisons of $k_{pfo}$ have to be performed taking care of having similar charge densities in the devices under study if an information on underlying rate constants is sought \cite{ORegan2008}.
+	For this reason, rather than comparing \acr{tpv}, we usually compare life-times referenced to charge density, as in TPV-CE experiment described in \cpageref{tpvce}.
 	
 	\paragraph{Bi-exponential decays - high background illumination}
 	For some devices, rather than an exponential decay, a bi-exponential decay is observed. With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
@@ -532,7 +540,7 @@ This allows the simulated ions-free device to store more charge at the same illu
 	\end{figure}
 
 
-\section{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{interpretation_tpvce}
+\section{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{tpvce}
 In order to obtain information on the recombination processes, it is more useful to relate the recombination life-time to the charge concentration, rather than to the light bias, as in a pure \acr{tpv} experiment.
 One way to obtain this is taking the $\tau (V)$ relation from \acr{tpv} and substituting $V$ with the inverse of $n(V)$ obtainable from \acr{ce} experiments, obtaining the $\tau (n)$ relationship.
 In \gls{osc} literature, where a simple exponential charge \textit{versus} voltage is usually observed, the full $n$ obtained by \acr{ce} is taken.
@@ -543,6 +551,19 @@ recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
 
 
 \section{Transient PhotoCurrent (TPC)}
+
+\paragraph{Concept}
+This technique, applied to a solar cell at short circuit conditions, allows us to study the dependence of \gls{eqe} on the light illumination intensity.
+Just the generated charge, rather than actual value of \gls{eqe} (generated charge over incident photons ratio) is obtained as the incident power is not usually measured (on the contrary to the classical \gls{eqe} experiment).
+
+\paragraph{Procedure}
+
+\paragraph{Dependency on background illumination}
+When measuring \acr{tpc} at various background illumination intensities, a constant pulse-generated charge amount can be gathered for low illuminations that starts decreasing as the background illumination exceeds \SI{1}{sun}.
+In \gls{osc} this was assigned to primary geminate recombination, which, as seen in \cpageref{intro_geminate}, is negligible in perovskite materials.
+Other kind of recombination can affect the extracted charge, even in short circuit conditions.
+For this reason, in case of large discrepancies between the dark and the \SI{1}{sun} background illumination measures, the dark one better describes the photo-generated free-charge. 
+
 \cite{ORegan2004}
 	The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
 
@@ -565,6 +586,15 @@ recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
 	The charge obtained with the \acr{tpc} (in case the dark and illuminated results were different, the third quartile of all \acr{tpc} measurements was used) is divided by an array of values obtained from \acr{tpv}, one for each illumination intensity. The needed value is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity.
 
 	This allows us to estimate the capacitance of the solar cell device at open circuit with various illumination intensities.
+
+\paragraph{Small perturbations}\label{dc_perturbation}
+	As mentioned in \cpageref{tpv_perturbation}, we measure \acr{tpv} ensuring to be in the small perturbation conditions for high light bias illumination.
+	But the perturbations are surely large getting close to dark illumination conditions.
+	This happens because we're not changing the laser pulse intensity when decreasing the background illumination.
+	This way, we can measure just one \acr{tpc} for knowing the amount of generated charge, as we assume that it depends just on the laser pulse intensity.
+	The measure of as many \acr{tpc} as many laser pulse intensities would be too complex with our current experimental setup.
+%	The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity.
+%The switch from \acr{tpv} to \acr{tpc} setup and back would be complex and too time demanding with the current setup.
 
 	\paragraph{Voltage increase value from \acr{tpv}}\label{tpv_deltaV}
 %The value of the voltage increase due to the additional illumination is needed for \acr{dc} measurement.
