@@ -69,13 +69,23 @@
 
 		\paragraph{Long lasting measurement} An example of the first case is the impedance spectroscopy where during the long lasting measurement various phenomena can occur, like: a slow current evolution due to perovskite well known hysteretic behaviour prior to stabilization; a degradation process changing the current; the heating of the device changing its properties. This slow current evolution can easily be misinterpreted for capacitive current \cite{Jacobs2018} and introduce artefacts like loops in the Nyquist plots CITE IMPEDANCE PAPER.
 
-		\paragraph{Large perturbations} \label{perturbation} Large perturbations regime means that the independent variable being perturbed is changed by an amount large enough to cause the quantity under study to not follow the approximation given by the first term of its series expansion. Let's take some example.
+		\paragraph{Large perturbations} \label{perturbation}
+		Large perturbations regime means that the independent variable being perturbed is changed by an amount large enough to cause the quantity under study to not follow the approximation given by the first term of its series expansion. Let's take some example.
 
-		\paragraph{Large perturbations -- \gls{tpv}} For example, if too intense, the light pulse in \acr{tpv} could change the voltage by a less-than-linear amount. In this case, the light pulse is not only probing the recombination, but it is adding some, so a large perturbation has to be avoided.
+		\paragraph{Large perturbations -- \gls{tpv}}
+		For example, if too intense, the light pulse in \acr{tpv} could change the voltage by a less-than-linear amount.
+		In this case, the light pulse is not only probing the recombination, but it is adding some, so a large perturbation has to be avoided.
+		This effect has been reported for \gls{dssc} in \authoryear{Barnes2013}.
 
 		\paragraph{Large perturbations -- impedance} Another example: a too wide sinusoidal voltage oscillation amplitude in impedance measurements can cause a non-sinusoidal current output. This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation. But artefacts could arise and cause misinterpretations, as explained in \cpageref{impedance-large_perturbations}.
 
-		\paragraph{Large perturbations -- \gls{trpl}} Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer. This pulse induces a the migration of the ionic defects to a new profile depending on the pulse intensity \cite{Levine2018}, by a small extent due to its short duration. The fact that the relaxation time of the ionic migration is usually much larger than the laser repetition rate (\si{\ms} to seconds for the ions \cite{Jacobs2018} and \si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse. As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care. An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016} and elsewhere \cite{Chen2015,Chen2017}.
+		\paragraph{Large perturbations -- \gls{trpl}}
+		Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer.
+		This pulse induces a the migration of the ionic defects to a new profile depending on the pulse intensity \cite{Levine2018}, by a small extent due to its short duration.
+		The fact that the relaxation time of the ionic migration is usually much larger than the laser repetition rate (\si{\ms} to seconds for the ions \cite{Jacobs2018} and \si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse.
+		As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care.
+		An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016} and elsewhere \cite{Chen2015,Chen2017}.
+		This should also be considered when comparing life-times from different laser fluences \cite{Manser2014}.
 
 \section{Current-Voltage Sweeps}
 
@@ -156,8 +166,10 @@ V_{OC}(\phi) \approx u_2 + \frac{n_{id}k_BT}{q}\cdot\ln(\phi)
 
 \section{Charge Extraction (CE)}
 
-	\paragraph{Concept} The charge extraction experiment has been designed\cite{Duffy2000} to quantify the free charges available in a device. After stabilization of a device at a light intensity and an applied voltage (in our case always at \gls{voc}), the illumination is switched off and the electrodes of the device are short circuited. The transient current flowing through the short circuiting circuit can be measured and integrated to estimate the available charge.
-	
+	\paragraph{Concept} The charge extraction experiment has been designed\cite{Duffy2000} to quantify the free charges available in a device.
+	After stabilization of a device at a light intensity and an applied voltage (in our case always at \gls{voc}), the illumination is switched off and the electrodes of the device are short circuited.
+	The transient current flowing through the short circuiting circuit can be measured and integrated to estimate the available charge.
+	The integrated charge has to be considered as a lower bound to the actually present excess charge, as part of it could recombine inside the device during the extraction time \cite{ORegan2005}.
 	%\paragraph{Limitations -- from \gls{osc}}
 	
 	\paragraph{Limitations specific of perovskite solar cells} \label{ce_limitations_perovskite}When measuring the \gls{ce} of a perovsktie solar cell, additionally to the aforementioned limitations, one should also consider that the ionic profile update (from $V=V_{OC}$ to $V=0$) causes a displacement current, as described in \cpageref{intro_displacement_current}. A simulation with DrIFtFUSION is reported for an homojunction device in \cref{fig:ce_single_dd}, it can be seen that with ionic mobile defects in \cref{fig:ce_single_dd-ions_zoom} a very weak but long lasting current appears and gives a relevant contribution to the integrated charge. This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported\cite{ORegan2015b}. The charge measured in the external circuit due to the ionic displacement current could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
@@ -453,9 +465,11 @@ This allows the simulated ions-free device to store more charge at the same illu
 	For this reason, rather than comparing \acr{tpv}, we usually compare life-times referenced to charge density, as in TPV-CE experiment described in \cpageref{tpvce}.
 	
 	\paragraph{Bi-exponential decays - high background illumination}
-	For some devices, rather than an exponential decay, a bi-exponential decay is observed. With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
+	For some devices, rather than an exponential decay, a bi-exponential decay is observed.
+	This is more frequent in bottom cathode devices including mesoporous titania layers \cite{Carnie2015,ORegan2015b}.
+	With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
 	$$\Delta V (t) = \Delta V_1 \cdot e^{-k_1t} + \Delta V_2 \cdot e^{-k_2t}$$
-	This cannot be justified just by the presence of two different recombination processes.
+	The presence of two different recombination processes is not enough for justifying a bi-exponential decay.
 	This is clear looking back to \cref{eq:tpv_monoexp}, where even treating two recombination processes with even two different reaction orders we obtained a simple exponential decay.
 	What we have to remember here, is that \cref{eq:tpv_monoexp} was obtained for a zero dimensional case, like what would happen in a homogeneous chemical reaction.
 	In our case, the multiple recombination centres could be spatially separated.
@@ -539,6 +553,9 @@ This allows the simulated ions-free device to store more charge at the same illu
 		\mycaption[Robust and normal fitting comparison.]{In grey the fitted points, in yellow the points not considered for the fitting, the solid black line is the \gls{loess}. The normal non-linear least squares fitting (in green) is affected by noise, outliers and characteristics not of interest by the model. The non-linear robust fitting (in brown) manages to reduce the weight of these points.}\label{fig:tpv_robust}
 	\end{figure}
 
+\paragraph{Importance of stable steady state starting point}
+The values extracted from \acr{tpv} are strongly sensible to the surface recombination and electric fields in the absorber, which in turn vary during ionic profile stabilization. Comparison of decay times with different stabilization times can be found in \authoryear{ORegan2015b}, while in \authoryear{Calado2016} even negative peaks are reported and explained with the presence of a residual electric field in the absorber previous to ionic profile stabilization.
+
 
 \section{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{tpvce}
 In order to obtain information on the recombination processes, it is more useful to relate the recombination life-time to the charge concentration, rather than to the light bias, as in a pure \acr{tpv} experiment.
@@ -553,35 +570,39 @@ recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
 \section{Transient PhotoCurrent (TPC)}
 
 \paragraph{Concept}
-This technique, applied to a solar cell at short circuit conditions, allows us to study the dependence of \gls{eqe} on the light illumination intensity.
+This technique, applied to a solar cell at short circuit conditions, allows us to study the dependence of \gls{eqe} on the light illumination intensity \cite{ORegan2004}.
 Just the generated charge, rather than actual value of \gls{eqe} (generated charge over incident photons ratio) is obtained as the incident power is not usually measured (on the contrary to the classical \gls{eqe} experiment).
 
 \paragraph{Procedure}
+The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
 
-\paragraph{Dependency on background illumination}
-When measuring \acr{tpc} at various background illumination intensities, a constant pulse-generated charge amount can be gathered for low illuminations that starts decreasing as the background illumination exceeds \SI{1}{sun}.
-In \gls{osc} this was assigned to primary geminate recombination, which, as seen in \cpageref{intro_geminate}, is negligible in perovskite materials.
-Other kind of recombination can affect the extracted charge, even in short circuit conditions.
-For this reason, in case of large discrepancies between the dark and the \SI{1}{sun} background illumination measures, the dark one better describes the photo-generated free-charge. 
-
-\cite{ORegan2004}
-	The device is kept under 1~sun illumination by a white \gls{led} ring at short circuited through a \SI{50}{\ohm} resistor until stabilization is reached. 1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator. Then an additional illumination pulse is provided by a nitrogen laser.
-
-	The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor. This allows us to measure a potential drop across the resistor and the related current via Ohm's law. Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge generated by the laser pulse.
-	
-	Constant when changing background illumination S5 \cite{Du2018}
+The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor. This allows us to measure a potential drop across the resistor and the related current via Ohm's law. Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge generated by the laser pulse.
 
 	This process is repeated at 1~sun and at dark background illumination conditions.
+	
+		For each illumination intensity, the reported decay is the result of averaging around 30~transients. This manages to reduce the noise.
+		
+	
+\paragraph{Dependency on background illumination}
+When measuring \acr{tpc} at various background illumination intensities, a constant pulse-generated charge amount can be gathered for low illuminations that starts decreasing as the background illumination exceeds \SI{1}{sun} (as reported for perovskite solar cells in figure S5 of \cite{Du2018}).
+In \gls{osc} this was assigned to primary geminate recombination, which, as seen in \cpageref{intro_geminate}, is negligible in perovskite materials.
+Other kind of recombination can affect the extracted charge, even in short circuit conditions, if the charge extraction is not sufficiently quick.
+For this reason, in case of large discrepancies between the dark and the \SI{1}{sun} background illumination measures, the dark one better describes the photo-generated free-charge. 
+The influence of the different electric field on the absorption, explained in \cpageref{intro_electroabsorbance}, can be neglected as the field is screened in most of the absorber and anyway the electro absorbance phenomena should have just a small contribution.
 
-	For each illumination intensity, the reported decay is the result of averaging around 30~transients. This manages to reduce the noise.
 
-	For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
+
+
+
+
+%	For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
 
 \section{Differential Capacitance (DC)}
 	In the differential capacitance experiment (also known as differential charging)
 	This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experiment \cite{ORegan2005,ORegan2006,Shuttle2008}, sometimes also referred to as "differential capacitance".
 
 	As explained in \cpageref{interpretation_dc}, the electrical capacitance of a solar cell is not a constant (as in most of the commercial capacitors), indeed it depends on the applied voltage bias or light bias.
+\\
 
 	The charge obtained with the \acr{tpc} (in case the dark and illuminated results were different, the third quartile of all \acr{tpc} measurements was used) is divided by an array of values obtained from \acr{tpv}, one for each illumination intensity. The needed value is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity.
 
@@ -596,7 +617,7 @@ For this reason, in case of large discrepancies between the dark and the \SI{1}{
 %	The \acr{dc} does not intrinsically need the usage of a constant pulse intensity but it needs the measurement of a \acr{tpc} for each pulse intensity.
 %The switch from \acr{tpv} to \acr{tpc} setup and back would be complex and too time demanding with the current setup.
 
-	\paragraph{Voltage increase value from \acr{tpv}}\label{tpv_deltaV}
+	\paragraph{Voltage peak value from \acr{tpv}}\label{tpv_deltaV}
 %The value of the voltage increase due to the additional illumination is needed for \acr{dc} measurement.
 
 In our group, the $\Delta V$ value has been extracted  obtained subtracting the steady state \gls{voc} from the maximum voltage point in the measured transient. This is obviously heavily affected by the aforementioned noise when a short time window is used.
@@ -610,6 +631,14 @@ The following alternatives were tested:
 \end{itemize}
 
 This last option is the one currently in place. The average was performed over \SI{50}{ns} after the peak and this allowed us to get a reliable $\Delta V$ value.
+
+\paragraph{Capacitance from voltage and current increase during the pulse}
+In case a slow light pulse have to be employed, \textit{e.g.} from a \gls{led} source, the voltage peak is too strongly affected by the ongoing recombination. An alternative method considering the plateau current of a \acr{tpc} experiment \textit{versus} the voltage grow rate from \acr{tpv} has been reported in \authoryear{ORegan2015b}.
+
+\paragraph{Comparison of charge from DC and from CE}
+The \acr{dc} experiment has been demonstrated to output a very similar charge \textit{versus} light bias profile as a \acr{ce} experiment when used for \gls{dssc} \cite{ORegan2005,Barnes2013} and in \gls{osc} \cite{Shuttle2008a}.
+\Acr{dc} started to be employed in perovskite solar cells characterization due to the excessively large charge amount sometimes measured by \acr{ce} \cite{Wheeler2017,ORegan2015b}.
+
 
 \section{Impedance Spectroscopy}
 
