@@ -439,45 +439,17 @@
 
 \newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
 
-\chapter[Abstract]{\centering Abstract}
-	\vfill
-	Perovskite photophisics
+\chapter[Summary of the Thesis]{\centering Summary of the Thesis}
+	\input{contents_tex/summary.tex}
 
-		{
-			\vfill
-			\centering \rule{5cm}{1pt}\\
-			\vfill
-		}
-	\selectlanguage{italian}
+
 	\EnableQuotes
-	\noindent
-	Fotofisica di celle di perovskite
 
-		{
-			\vfill
-			\centering \rule{5cm}{1pt}\\
-			\vfill
-		}
-	%\selectlanguage{spanish}
-	\EnableQuotes
-	\noindent
 
-	Fotofisica de celdas de perovskita
+\chapter[Motivation and Aims]{Motivation and Aims}\label{ch:aims}
+	%\addcontentsline{toc}{chapter}{Motivation and Aims}
+	\input{contents_tex/aims.tex}
 
-		{
-			\vfill
-			\centering \rule{5cm}{1pt}\\
-			\vfill
-		}
-	%\selectlanguage{catalan}
-	\noindent
-
-	Fotofisica de celdas de perovskita
-
-	\vfill
-
-	\selectlanguage{english}
-	\EnableQuotes
 
 	\restoregeometry
 
@@ -492,15 +464,12 @@
 	\mainmatter
 	\pagestyle{headings}
 
-\chapter{Summary of the Thesis}\label{ch:summary}
-	\input{contents_tex/summary.tex}
-	
+
+
+
 \chapter{Introduction}\label{ch:intro}
 	\graphicspath{ {./contents_img/intro/} }
 	\input{contents_tex/intro.tex}
-	
-\chapter{Motivation and Aims}\label{ch:aims}
-	\input{contents_tex/aims.tex}
 
 \chapter{Experimental Methods}\label{ch:methods}
 \chaptermark{Experimental Methods}
@@ -542,32 +511,34 @@
 	\graphicspath{ {./contents_img/software/} }
 	\input{contents_tex/software.tex}
 
-\chapter{Overall Conclusions}\label{ch:conclusions}
+\chapter*[Overall Conclusions]{Overall Conclusions}\label{ch:conclusions}
+	\addcontentsline{toc}{chapter}{Overall Conclusions}
 	\input{contents_tex/conclusions.tex}
 
-%\chapter{Further Work}
+	%\chapter{Further Work}
 
 
-\chapter*{Acknowledgements}
+\chapter*[Acknowledgements]{Acknowledgements}
+	\addcontentsline{toc}{chapter}{Acknowledgements}
 	\input{contents_tex/acknowledgements.tex}
 
 
 
-\appendix
+	\appendix
 
 \chapter{Code}
 	\label{ch:code}
-%\chaptermark{Code}
+	%\chaptermark{Code}
 	\graphicspath{ {./contents_img/code/} }
 	\input{contents_tex/code.tex}
 
 
-%\chapter{List of publications}
+	%\chapter{List of publications}
 
-	
+
 	\printindex
-	
-	\chapter*{List of Oral and Poster Presentations at Conferences}
+
+\chapter*{List of Oral and Poster Presentations at Conferences}
 	\begin{itemize}
 		\item 45 min plenary oral presentation, at \textit{International Krutyn Summer School on Advanced Perovskite, Hybrid and Thin-film Photovoltaics} in Krutyn, Poland on June the 14th, 2016 titled \textit{"How to make efficient perovskite solar cells and charge transfer reactions in perovskite solar cell"}
 		\item 20 min plenary oral presentation at \textit{Workshop on Flexible Electronics} in DEEEA-URV, Tarragona, Spain on June the 29th, 2016 titled \textit{"Photophysical characterization of charge transfer and recombination in hybrid lead halide perovskite solar cells"}
@@ -577,9 +548,9 @@
 		\item 15 min plenary oral presentation in \textit{Graduate Students Meeting on Electronics Engineering} in DEEEA-URV, Tarragona, Spain on June the 28th, 2018 titled \textit{"Simulating the impedance spectroscopy of an hybrid perovskite solar cells via time-dependent 1D driftdiffusion model"}
 		\item 15 min oral presentation in \textit{NanoBio Conference 2018} in Heraklion, Crete, Greece on September the 27th, 2018 titled \textit{"Perovskite solar cells impedance spectroscopy explained via 1D time dependent drift-diffusion modelling"}
 	\end{itemize}
-	
+
 	\printbibliography[category=mypapers, title=List of Publications]
-	
+
 	\printbibliography[notcategory=mypapers]
 
 

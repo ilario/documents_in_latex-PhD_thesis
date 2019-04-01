@@ -41,119 +41,156 @@
 	In \cref{fig:world_map-electrical_vs_land} we can see how electricity consumption density is greatly inhomogeneous and comparing with the photovoltaic potential map in \cref{fig:world_map-PVOUT}, it is evident that such a problem is shared with many other poorly insulated but energy eager regions.
 	Both an increase in machinery's efficiency and a change in life-style can be part of the solution, following the example and thinking at life-style, in USA the per capita energy usage is more than twice the European average, and five times the Latin America average.\cite{IEA}
 
-	\paragraph{And more research is needed} Every source of electrical energy we can think of works via the conversion of motive power (a flow of steam, wind, or water, waves, tides...) to electricity, which relays on the well established electric generator. Except photovoltaic energy. This very simple difference already hints for the huge conceptual and technological step required by photovoltaics as compared to other electrical energy sources.
+	\paragraph{And more research is needed} Every source of electrical energy we can think of works via the conversion of motive power (a flow of steam, wind, or water, waves, tides...) to electricity, which relays on the well established electric generator.
+	Except photovoltaic energy.
+	This very simple difference already hints for the huge conceptual and technological step required by photovoltaics as compared to other electrical energy sources.
 
 	% transducer
-\mysection[Relevant Physics]{Relevant Physics of Stacked Semiconductor Thin Films}
+	\mysection[Relevant Physics]{Relevant Physics of Stacked Semiconductor Thin Films}
 
-\subsection{Energy Levels and Occupancy}
+	\subsection{Energy Levels and Occupancy}
 
-\paragraph{Valence and conduction bands}
+		\paragraph{Valence and conduction bands}
 
-\paragraph{Boltzmann and Fermi-Dirac statistics}
+		\paragraph{Boltzmann and Fermi-Dirac statistics}
 
-\paragraph{Fermi and quasi-Fermi levels}
+		\paragraph{Fermi and quasi-Fermi levels}
 
-\subsection{Charge Generation}
+	\subsection{Charge Generation}
 
-\paragraph{Light absorption}
+		\paragraph{Light absorption}
 
-\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
+		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
 
-\paragraph{Excitons and free charges generation}
+		\paragraph{Excitons and free charges generation}
 
-\paragraph{Hot carriers}
+		\paragraph{Hot carriers}
 
-\subsection{Electrostatics}
+	\subsection{Electrostatics}
 
-\paragraph{Poisson equation}
-	
-\subsection{Charge Dynamics}
+		\paragraph{Poisson equation}
 
-\paragraph{Charge diffusion}
+	\subsection{Charge Dynamics}
 
-\paragraph{Charge drift}
+		\paragraph{Charge diffusion}
 
-\paragraph{Space charge limited layers}
+		\paragraph{Charge drift}
 
-\subsection{Charge Recombination}
+		\paragraph{Space charge limited layers}
 
-\paragraph{Primary geminate recombination} \label{intro_geminate} This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation. This is independent from the illumination intensity, so it can be considered as having a reaction order of zero. Lead halide perovskite have quite a high static permittivity CITE IMPEDANCE and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_BT$ \cite{Miyata2015,Galkowski2016} and the direct generation of free charges occurs. So this kind of recombination is negligible in perovskite solar cells. %Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
+	\subsection{Charge Recombination}
 
-\paragraph{Radiative recombination} This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that all the absorbed thermal photons have to be re-emitted as black body radiation. From this parallelism it can be understood that it is larger for materials with greater absorptivity \cite{Nelson2003}. An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations). Radiative recombination involves the clash of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1. The expression used for modelling is: $U_{rad} = k_{rad} (np-n_i^2)$, where $n_i$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
+		\paragraph{Primary geminate recombination} \label{intro_geminate} This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
+		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
+		Lead halide perovskite have quite a high static permittivity CITE IMPEDANCE and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_BT$ \cite{Miyata2015,Galkowski2016} and the direct generation of free charges occurs.
+		So this kind of recombination is negligible in perovskite solar cells.
+		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
-\paragraph{SRH trap mediated recombination} Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it. Usually both the momentum difference and the chemical energy get released via phonons, so no radiative emission is involved. This recombination type can have reaction order of 1 or of 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}. In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1. In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2. The expression used for modelling is \cite{Shockley1952}:
-$$U_{SRH} = k_{SRH} \frac{np-n_i^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}$$
-where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		\paragraph{Radiative recombination} This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that all the absorbed thermal photons have to be re-emitted as black body radiation.
+		From this parallelism it can be understood that it is larger for materials with greater absorptivity \cite{Nelson2003}.
+		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
+		Radiative recombination involves the clash of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
+		The expression used for modelling is: $U_{rad} = k_{rad} (np-n_i^2)$, where $n_i$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
 
-\paragraph{Surface recombination} Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface. At the interface between a, let's say, p-doped and a close-to-intrinsic material as we consider the perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and the opposite charge in the intrinsic semiconductor. As the doped semiconductor has abundance of majority carriers, the limiting factor will be the concentration of "minority" carriers on the other side of the interface, which will depend on its mobility and on the electric field in the intrinsic. So the reaction order should be 1 for this case. As we will see below, this is the most important recombination pathway for perovskite solar cells.
+		\paragraph{SRH trap mediated recombination} Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
+		Usually both the momentum difference and the chemical energy get released via phonons, so no radiative emission is involved.
+		This recombination type can have reaction order of 1 or of 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}.
+		In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1.
+		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
+		The expression used for modelling is \cite{Shockley1952}:
+		$$U_{SRH} = k_{SRH} \frac{np-n_i^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}$$
+		where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-\paragraph{Auger recombination} When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy. This recombination is important in materials with high free carriers densities or at high photo-generation conditions. Additionally to the two free charges of the same kind, it also requires a free charge of the opposite kind for the decay to be possible, so it can be considered as having a reaction order of three.
+		\paragraph{Surface recombination} Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
+		At the interface between a, let's say, p-doped and a close-to-intrinsic material as we consider the perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and the opposite charge in the intrinsic semiconductor.
+		As the doped semiconductor has abundance of majority carriers, the limiting factor will be the concentration of "minority" carriers on the other side of the interface, which will depend on its mobility and on the electric field in the intrinsic.
+		So the reaction order should be 1 for this case.
+		As we will see below, this is the most important recombination pathway for perovskite solar cells.
 
-\subsection{PhotoVoltaic Effect}
+		\paragraph{Auger recombination} When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
+		This recombination is important in materials with high free carriers densities or at high photo-generation conditions.
+		Additionally to the two free charges of the same kind, it also requires a free charge of the opposite kind for the decay to be possible, so it can be considered as having a reaction order of three.
 
-\paragraph{Charge collection}
+	\subsection{PhotoVoltaic Effect}
 
-\paragraph{Electromotive force}
+		\paragraph{Charge collection}
 
-%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
-	
-\subsection{Just the Needed Electrodynamics}
-	
-	\paragraph{Displacement current -- definition}\label{intro_displacement_current} The displacement current $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$. The displacement electric field $D$ includes contributions from the electric field intensity $E$ and the polarization $P$: $D=\epsilon_0 E + P$ which can also be written in terms of relative permittivity $\epsilon_r$ as: $D= \epsilon_0 \epsilon_r E$. So its time derivative defining the displacement current is: $\frac{\partial D}{\partial t} = \epsilon_0 (\epsilon_r\frac{\partial E}{\partial t} + E\frac{\partial \epsilon_r}{\partial t})$. For the scope of this thesis we're interested in the first term and we're going to ignore the second one considering the relative permittivity as a material dependent constant.
-	
-	
-	\begin{figure}
-		\makebox[\textwidth][c]{
-			\parbox{1.1\textwidth}{
-				\centering
-				\begin{subfigure}[t]{0.5\textwidth}
-					\includegraphics[width=1\textwidth]{displacement_current/first.pdf}
-					\subcaption{Initial condition}\label{fig:displacement_current-initial}
-				\end{subfigure}
-				\bigskip
-				
-				\begin{subfigure}[t]{0.5\textwidth}
-					\includegraphics[width=1\textwidth]{displacement_current/second.pdf}
-					\subcaption{Free charges crossing interfaces}\label{fig:displacement_current-electronic}
-				\end{subfigure}
-				\qquad
-				\begin{subfigure}[t]{0.5\textwidth}
-					\includegraphics[width=1\textwidth]{displacement_current/third.pdf}
-					\subcaption{Ionic charges accumulating at interfaces}\label{fig:displacement_current-ionic}
-				\end{subfigure}
+		\paragraph{Electromotive force}
+
+		%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
+
+	\subsection{Just the Needed Electrodynamics}
+
+		\paragraph{Displacement current -- definition}\label{intro_displacement_current} The displacement current $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$.
+		The displacement electric field $D$ includes contributions from the electric field intensity $E$ and the polarization $P$: $D=\epsilon_0 E + P$ which can also be written in terms of relative permittivity $\epsilon_r$ as: $D= \epsilon_0 \epsilon_r E$.
+		So its time derivative defining the displacement current is: $\frac{\partial D}{\partial t} = \epsilon_0 (\epsilon_r\frac{\partial E}{\partial t} + E\frac{\partial \epsilon_r}{\partial t})$.
+		For the scope of this thesis we're interested in the first term and we're going to ignore the second one considering the relative permittivity as a material dependent constant.
+
+
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.5\textwidth}
+						\includegraphics[width=1\textwidth]{displacement_current/first.pdf}
+						\subcaption{Initial condition}\label{fig:displacement_current-initial}
+					\end{subfigure}
+					\bigskip
+
+					\begin{subfigure}[t]{0.5\textwidth}
+						\includegraphics[width=1\textwidth]{displacement_current/second.pdf}
+						\subcaption{Free charges crossing interfaces}\label{fig:displacement_current-electronic}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.5\textwidth}
+						\includegraphics[width=1\textwidth]{displacement_current/third.pdf}
+						\subcaption{Ionic charges accumulating at interfaces}\label{fig:displacement_current-ionic}
+					\end{subfigure}
+				}
 			}
-		}
-		\mycaption[Representation of current and displacement current.]{(\textbf{a}) a mixed ionic-electronic conductor material layered between two layers of electronic conductor material. (\textbf{b}) the electronic charge can cross the material's interfaces. (\textbf{c}) ionic charge cannot be transferred to the electrodes, still a displacement current due to the ionic migration is generated and can be measured in the amperometer.}\label{fig:displacement_current}
-	\end{figure}
-	
-	
-	\paragraph{Displacement current -- interpretation} So the displacement current accounts for the charge movements not identifiable as current and for their effect on the surrounding circuitry. An example is represented in \cref{fig:displacement_current-ionic}: the amperometer can measure a current even if no charge crossed the perovskite/electrode interface, this is a displacement current caused by the creation of a dipole due to the ionic accumulation at the interfaces. One can imagine the resulting current as needed for maintaining the zero potential difference between the two contacts. It is not, as one could erroneously and instinctively think, the effect of an electric field generated in the contacts by the moving charge in the perovskite layer (with related Coulomb force and image charges) as out of the two two-dimensional planes of opposed charges no electric field is present. This can be understood thinking that the electric field intensity generated by an large plate of charges has a constant magnitude at distances much smaller than the plate dimensions (which is always true in our solar cells considering the thickness \SI{\approx 1}{\um} to area \SI{3x3}{\square\mm} ratio, except at electrode edges). The concept is represented in \cref{fig:dipole_plane}. In \cpageref{displacement_current_ionic} we'll use the displacement current concept for simulating the current caused in the electrodes not by a net flux of charges through a device section but by the rearrangement of charges which not necessarily leave the device, like the ionic migration in perovskite material. 
-	
-	\begin{figure}
-		\makebox[\textwidth][c]{
-			\parbox{1.1\textwidth}{
-				\centering
-				\begin{subfigure}[t]{0.3\textwidth}
-					\includegraphics[height=0.3\textheight]{dipole_plane/single.pdf}
-					\subcaption{Infinite plane of charges}\label{fig:dipole_plane-single}
-				\end{subfigure}
-				\qquad
-				\begin{subfigure}[t]{0.3\textwidth}
-					\includegraphics[height=0.3\textheight]{dipole_plane/double.pdf}
-					\subcaption{Two infinite planes of opposed charges}\label{fig:dipole_plane-double}
-				\end{subfigure}
-			}
-		}
-		\mycaption[Electric field by two planes of opposite charges.]{(\textbf{a}) an infinite plane of charged particles is represented, the electric field is constant on the two sides, with a discontinuity in the plane. (\textbf{b}) adding a second plane with the same concentration of charges of the opposite kind, the electric field out of the sandwich cancels out. What is present outside of the sandwich is just an electrostatic potential difference.}\label{fig:dipole_plane}
-	\end{figure}
+			\mycaption[Representation of current and displacement current.]{(\textbf{a}) a mixed ionic-electronic conductor material layered between two layers of electronic conductor material.
+				(\textbf{b}) the electronic charge can cross the material's interfaces.
+				(\textbf{c}) ionic charge cannot be transferred to the electrodes, still a displacement current due to the ionic migration is generated and can be measured in the amperometer.}\label{fig:displacement_current}
+		\end{figure}
 
-	\paragraph{Continuity equations} The continuity equations have a very intuitive meaning: the concentration of a specie in a specific volume can increase due to generation $G$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by. This last contribution can be understood with the following example: a traffic light stops the cars flow and causes the increase of their concentration. For electron concentration $n$:	
-$$\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_{n,x}$$
+
+		\paragraph{Displacement current -- interpretation} So the displacement current accounts for the charge movements not identifiable as current and for their effect on the surrounding circuitry.
+		An example is represented in \cref{fig:displacement_current-ionic}: the amperometer can measure a current even if no charge crossed the perovskite/electrode interface, this is a displacement current caused by the creation of a dipole due to the ionic accumulation at the interfaces.
+		One can imagine the resulting current as needed for maintaining the zero potential difference between the two contacts.
+		It is not, as one could erroneously and instinctively think, the effect of an electric field generated in the contacts by the moving charge in the perovskite layer (with related Coulomb force and image charges) as out of the two two-dimensional planes of opposed charges no electric field is present.
+		This can be understood thinking that the electric field intensity generated by an large plate of charges has a constant magnitude at distances much smaller than the plate dimensions (which is always true in our solar cells considering the thickness \SI{\approx 1}{\um} to area \SI{3x3}{\square\mm} ratio, except at electrode edges).
+		The concept is represented in \cref{fig:dipole_plane}.
+		In \cpageref{displacement_current_ionic} we'll use the displacement current concept for simulating the current caused in the electrodes not by a net flux of charges through a device section but by the rearrangement of charges which not necessarily leave the device, like the ionic migration in perovskite material.
+
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.3\textwidth}
+						\includegraphics[height=0.3\textheight]{dipole_plane/single.pdf}
+						\subcaption{Infinite plane of charges}\label{fig:dipole_plane-single}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.3\textwidth}
+						\includegraphics[height=0.3\textheight]{dipole_plane/double.pdf}
+						\subcaption{Two infinite planes of opposed charges}\label{fig:dipole_plane-double}
+					\end{subfigure}
+				}
+			}
+			\mycaption[Electric field by two planes of opposite charges.]{(\textbf{a}) an infinite plane of charged particles is represented, the electric field is constant on the two sides, with a discontinuity in the plane.
+				(\textbf{b}) adding a second plane with the same concentration of charges of the opposite kind, the electric field out of the sandwich cancels out.
+				What is present outside of the sandwich is just an electrostatic potential difference.}\label{fig:dipole_plane}
+		\end{figure}
+
+		\paragraph{Continuity equations} The continuity equations have a very intuitive meaning: the concentration of a specie in a specific volume can increase due to generation $G$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
+		This last contribution can be understood with the following example: a traffic light stops the cars flow and causes the increase of their concentration.
+		For electron concentration $n$:
+		$$\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_{n,x}$$
 
 \section{Perovskite Solar Cells}
 
-	Perovskite solar cells is a relatively new player in the photovoltaics world, existing just since 2009 (started by the research groups Miyasaka\cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}). In relatively short time, see \cref{fig:nrel_chart}, these kind of devices reached a record stabilized efficiency of 20.9~\% \cite{Green2019} with reports of even higher non-stabilized efficiencies (23.7~\% \cite{Green2019,Jiang2017}).
+	Perovskite solar cells is a relatively new player in the photovoltaics world, existing just since 2009 (started by the research groups Miyasaka\cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}).
+	In relatively short time, see \cref{fig:nrel_chart}, these kind of devices reached a record stabilized efficiency of 20.9~\% \cite{Green2019} with reports of even higher non-stabilized efficiencies (23.7~\% \cite{Green2019,Jiang2017}).
 
 
 	\begin{SCfigure}
@@ -164,37 +201,43 @@ $$\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_
 
 
 	\paragraph{Perovskite Absorber Synthesis}
-	The preparation of this hybrid semiconductor via spin coating and annealing at low temperature is extremely easy and convenient for small-scale research purposes. From my point of view, what most affects the perovskite research is the lack of reproducibility, likely caused by the extremely sensible crystallization during the annealing phase. In literature various reports of completely different results obtained from perfectly identical synthesis can be found\cite{Pockett2015,Gottesman2014}. This issue is being addressed recently with the publication of more reliable and complete fabrication procedures \cite{Saliba2018}.
-	
+	The preparation of this hybrid semiconductor via spin coating and annealing at low temperature is extremely easy and convenient for small-scale research purposes.
+	From my point of view, what most affects the perovskite research is the lack of reproducibility, likely caused by the extremely sensible crystallization during the annealing phase.
+	In literature various reports of completely different results obtained from perfectly identical synthesis can be found\cite{Pockett2015,Gottesman2014}.
+	This issue is being addressed recently with the publication of more reliable and complete fabrication procedures \cite{Saliba2018}.
+
 	\paragraph{Recombination mechanisms}
-The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material. This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
-This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime gets dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
-Even if not universally accepted \cite{Valadez-Villalobos2019}, it is often reported that in open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable in the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2018b,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016}.
-Nevertheless, also reports on the impact of the perovskite material morphology and composition on the \gls{voc} can be found in literature: non-passivated perovskite surface states which can act as traps \cite{Zheng2017}; inhomogeneous perovskite layer can lead to pinholes \cite{Lee2015,Montcada2017,Qiu2016}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
+	The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material.
+	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
+	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime gets dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
+	Even if not universally accepted \cite{Valadez-Villalobos2019}, it is often reported that in open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable in the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2018b,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016}.
+	Nevertheless, also reports on the impact of the perovskite material morphology and composition on the \gls{voc} can be found in literature: non-passivated perovskite surface states which can act as traps \cite{Zheng2017}; inhomogeneous perovskite layer can lead to pinholes \cite{Lee2015,Montcada2017,Qiu2016}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
 
 	\paragraph{Open circuit voltage}
-The open circuit voltage of a perovskite solar cell depends on many contributions, one of these is the aforementioned charge recombination velocity. Other important factors are: the perovskite band gap, which can be tuned changing its stoichiometry, for example partially replacing iodine with bromine \cite{McMeekin2016,Noh2013a,Wheeler2017} or using different organic cations \cite{Eperon2014}.
-This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation which increases the minority carriers concentration at the perovskite/contacts interfaces.
+	The open circuit voltage of a perovskite solar cell depends on many contributions, one of these is the aforementioned charge recombination velocity.
+	Other important factors are: the perovskite band gap, which can be tuned changing its stoichiometry, for example partially replacing iodine with bromine \cite{McMeekin2016,Noh2013a,Wheeler2017} or using different organic cations \cite{Eperon2014}.
+	This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation which increases the minority carriers concentration at the perovskite/contacts interfaces.
 
-\paragraph{Charge extraction and charge blocking}
-Selective contacts are in charge of selectively extract one kind of charge, blocking the other. Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015} and for blockage CITE SOMETHING.
+	\paragraph{Charge extraction and charge blocking}
+	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
+	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015} and for blockage CITE SOMETHING.
 
 	\paragraph{Ionic migration}
 	The presence of charged and mobile ionic species have been demonstrated in various kind of hybrid lead halide perovskite materials, via \gls{kpfm} \cite{Birkhold2018} XXXXXXXXXXXXXXXXXX.
 	The presence of mobile ions has been demonstrated also in absence of current-voltage hysteretic behaviour\cite{Calado2016,Jacobs2018}.
 	It has also been demonstrated that for \gls{mapi} the majoritarian mobile species is the iodine vacancy XXXXXXXXXXXXXXXX \cite{Senocrate2017} and has been excluded a significant contribution from methylammonium ions \cite{Senocrate2018,Senocrate2017}.
 	These charged species can migrate inside the material either by diffusion or when drifted by an electric field \cite{Xiao2014}.
-	
+
 	\paragraph{Field free absorber}
 	Thanks to the abundance of the ionic specie CITATION, the electric field inside the absorber is completely shielded \cite{Tress2015}
-	
+
 	\paragraph{Diffusion as the main transport mechanism}(due to the built-in voltage being the workfunction difference of the selective contacts)(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
 
 
-\paragraph{Hysteresis}
-It is nowadays widely accepted that hysteretic behaviour, while not so important in other kind of solar cells, it is paramount in perovskite solar cells due to the ionic migration in the absorber material \cite{Unger2014,Xiao2014}. 
-The recombination and the collection of the free charges is clearly affected by the ions-modulated electric field, and this is enough to explain the presence of hysteresis \cite{Tress2015,Calado2016} via the modulation of interfacial energy barriers \cite{Moia2019}.
-Additionally, trapping or chemical reaction of perovskite ionic defects with the selective contact surface (e.g. with titanium oxide \cite{Yu2016,Beilsten-Edmands2015}) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis while top cathode with all-organic contacts usually does not. 
+	\paragraph{Hysteresis}
+	It is nowadays widely accepted that hysteretic behaviour, while not so important in other kind of solar cells, it is paramount in perovskite solar cells due to the ionic migration in the absorber material \cite{Unger2014,Xiao2014}.
+	The recombination and the collection of the free charges is clearly affected by the ions-modulated electric field, and this is enough to explain the presence of hysteresis \cite{Tress2015,Calado2016} via the modulation of interfacial energy barriers \cite{Moia2019}.
+	Additionally, trapping or chemical reaction of perovskite ionic defects with the selective contact surface (\textit{e.g.}\ with titanium oxide \cite{Yu2016,Beilsten-Edmands2015}) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis while top cathode with all-organic contacts usually does not.
 
 	\paragraph{Intrinsic or doped semiconductor}
 
@@ -205,19 +248,22 @@ Additionally, trapping or chemical reaction of perovskite ionic defects with the
 	Unfortunately, perovskite solar cells are different enough from \gls{osc} and \gls{dssc} to doom the utility of most of these observations.
 	In the past few years, the theoretical framework has been expanded and should finally enable the perovskite community to re-interpret and re-design the solar cells characterization techniques.
 	In \cref{ch:interpretation} the reader can find some of the accepted concepts and some novel proposals about the interpretation of the classical characterization techniques when used on perovskite solar cells.
-	
+
 	\paragraph{Stability}
-	The stability of the perovskite solar cells is the number one blocker to commercialization. Its keystone has still to be identified. An interesting investigation is being carried on by D. R. Ceratti and D. Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus leaving the perovskite crystal structure. This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
-	
-	
+	The stability of the perovskite solar cells is the number one blocker to commercialization.
+	Its keystone has still to be identified.
+	An interesting investigation is being carried on by D.\ R.\ Ceratti and D.\ Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus leaving the perovskite crystal structure.
+	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
+
+
 	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
-	
-	
-	
 
-Influence of perovskite material on Voc \cite{Wheeler2017,Eperon2014,Noh2013a}
 
-Influence of contacts on Voc \cite{CorreaBaena2015} WU2016A
+
+
+	Influence of perovskite material on Voc \cite{Wheeler2017,Eperon2014,Noh2013a}
+
+	Influence of contacts on Voc \cite{CorreaBaena2015} WU2016A
 
 \section{Background and Related Work}\label{sec:background}
 
