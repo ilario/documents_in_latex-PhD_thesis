@@ -540,7 +540,9 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	For some devices, rather than an exponential decay, a bi-exponential decay is observed.
 	This is more frequent in bottom cathode devices including mesoporous titania layers \cite{Carnie2015,ORegan2015b}.
 	With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
-	$$\Delta V (t) = \Delta V_1 \cdot e^{-k_1t} + \Delta V_2 \cdot e^{-k_2t}$$
+	\begin{equation}\label{eq:tpv_biexp}
+		V (t) = V_0 + \Delta V_1 \cdot e^{-k_1t} + \Delta V_2 \cdot e^{-k_2t}
+	\end{equation}
 	The presence of two different recombination processes is not enough for justifying a bi-exponential decay.
 	This is clear looking back to \cref{eq:tpv_monoexp}, where even treating two recombination processes with even two different reaction orders we obtained a simple exponential decay.
 	What we have to remember here, is that \cref{eq:tpv_monoexp} was obtained for a zero dimensional case, like what would happen in a homogeneous chemical reaction.
@@ -619,19 +621,29 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	\paragraph{Noise treatment}\label{tpv_robust}
 	Most of the observed noise (\SI{< 2E-7}{\s}) is due to the radiofrequency emitted by the spark in the nitrogen laser which gets absorbed by all the non-coaxial cables (coaxial ones don't) and from the circuitry of the samples holder acting as a receiving antenna.
 	On the contrary to what happens for \acr{ce} (see \cpageref{ce_noise}), the short times noise does not follow a constant pattern, so averaging the measurement over a few repetitions (usually 30) manages to reduce the noise.
-
 	This noise can affect the exponential or bi-exponential fitting, for this reason a robust fitting routine has been used, which gives a lower weight to outlier points.
 	An example can be seen in \cref{fig:tpv_robust}.
 
+%	\begin{figure}
+%		\centering
+%		\includegraphics[width=0.9\textwidth]{{tpv_robust/TPV_ig52-68-3_0.883897_V-monoexp}.pdf}
+%		\mycaption[Robust and normal fitting comparison.]{In grey the fitted points, in yellow the points not considered for the fitting, the solid black line is the \gls{loess}.
+%			The normal non-linear least squares fitting (in green) is affected by noise, outliers and characteristics not of interest by the model.
+%			The non-linear robust fitting (in brown) manages to reduce the weight of these points.
+%			The studied device is a \gls{fto}\-/\dTiOtwo\-/\acr{famapbibr}\-/\spiro\-/Ag whose fabrication is not reported in this thesis.}\label{fig:tpv_robust}
+%	\end{figure}
+
 	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\textwidth]{{tpv_robust/TPV_ig52-68-3_0.883897_V-monoexp}.pdf}
-		\mycaption[Robust and normal fitting comparison.]{In grey the fitted points, in yellow the points not considered for the fitting, the solid black line is the \gls{loess}.
-			The normal non-linear least squares fitting (in green) is affected by noise, outliers and characteristics not of interest by the model.
-			The non-linear robust fitting (in brown) manages to reduce the weight of these points.}\label{fig:tpv_robust}
+	\centering
+	\includegraphics[width=0.9\textwidth]{{tpv_robust/TPV_ig101-1555-1_0.815394_V-monoexp}.pdf}
+	\mycaption[Robust and normal fitting comparison.]{Plot of a voltage profile from a single \gls{tpv} decay.
+		The 12500 voltage points are represented in a 2D histogram for avoiding the overplotting problem.
+		The normal non-linear least squares fitting (in orange) is affected by initial noise (a faster decay if we consider this as a bi-exponential decay), outliers and characteristics not of interest by the model.
+		The non-linear robust fitting (in magenta) manages to reduce the weight of these points.
+		The studied device is a \gls{fto}\-/\dTiOtwo\-/\acr{csfamapbibr}\-/\tae4\-/Au with 1~sun background illumination.}\label{fig:tpv_robust}
 	\end{figure}
 
-	\paragraph{Importance of stable steady state starting point}
+	\paragraph{Importance of stable steady state starting point}\label{tpv_negativePeaks}
 	The values extracted from \acr{tpv} are strongly sensible to the surface recombination and electric fields in the absorber, which in turn vary during ionic profile stabilization.
 	Comparison of decay times with different stabilization times can be found in \authoryear{ORegan2015b}, while in \authoryear{Calado2016} even negative peaks are reported and explained with the presence of a residual electric field in the absorber previous to ionic profile stabilization.
 
@@ -641,8 +653,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	One way to obtain this is taking the $\tau (V)$ relation from \acr{tpv} and substituting $V$ with the inverse of $n(V)$ obtainable from \acr{ce} experiments, obtaining the $\tau (n)$ relationship.
 	In \gls{osc} literature, where a simple exponential charge \textit{versus} voltage is usually observed, the full $n$ obtained by \acr{ce} is taken.
 	For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on  whether to include it or not is needed.
-	In this thesis
-	recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011}
+	In this thesis recombination order $\Phi = \lambda + 1$ \cite{Shuttle2008d,Credgington2011} AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
 
@@ -682,11 +693,29 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	%	For the interpretation, see \cpageref{interpretation_tpc}; for the implementation, see \cpageref{r_tpc}.
 
 \section{Differential Capacitance (DC)}
-	In the differential capacitance experiment (also known as differential charging)
-	This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experiment \cite{ORegan2005,ORegan2006,Shuttle2008}, sometimes also referred to as "differential capacitance".
 
-	As explained in \cpageref{interpretation_dc}, the electrical capacitance of a solar cell is not a constant (as in most of the commercial capacitors), indeed it depends on the applied voltage bias or light bias.
-	\\
+	\paragraph{Concept}
+	This is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experimental step \cite{ORegan2005,ORegan2006,Shuttle2008}, sometimes also referred to as "differential charging".
+	
+
+	The electrical capacitance of most of the commercial capacitors is independent on the applied voltage, as represented in \cref{fig:cap_voltage_dependence_commercial} where the capacitance was measured with a modified \acr{ce} experiment where the pre-conditioning was done directly applying a voltage instead of applying a light bias.
+	This means that the extracted charge is linearly proportional to the applied voltage.
+	On the contrary, the electrical capacitance of a solar cell does depend on the applied voltage or light bias, as shown in \cref{fig:cap_voltage_dependence_tae1}.
+	
+	\begin{figure}%[!hbtp]%
+		\centering
+		\begin{subfigure}[t]{0.45\textwidth}
+			\includegraphics[width=1\textwidth]{cap_voltage_dependence/reference220nF/reference220nF.pdf}
+			\subcaption{Commercial \SI{220}{\nano\F} capacitor.}\label{fig:cap_voltage_dependence_commercial}
+		\end{subfigure}
+		\qquad
+		\begin{subfigure}[t]{0.45\textwidth}
+			\includegraphics[width=1\textwidth]{cap_voltage_dependence/TAE-1_ig94-1559-1/DC-capacitance-TAE-1_ig94-1559-1.pdf}
+			\subcaption{Perovskite solar cell.}\label{fig:cap_voltage_dependence_tae1}
+		\end{subfigure}
+		\mycaption[Capacitance dependence on applied voltage.]{In (a) the capacitance of a commercial capacitor is reported, it was measured using \acr{ce} with applied voltage bias instead of the classical light bias used for solar cells. The capacitance is obtained as the extracted charge over the applied voltage prior to short circuiting. In (b) the typical capacitance \textit{versus} voltage profile of a \gls{fto}\-/\dTiOtwo\-/\mpTiOtwo\-/\acr{csfamapbibr}\-/\tae1\-/Au device is shown as measured by \acr{dc}. In this case the indicated voltage is originated by various illumination intensities at open circuit prior to short circuiting.}\label{fig:cap_voltage_dependence}
+	\end{figure}
+	
 
 	The charge obtained with the \acr{tpc} (in case the dark and illuminated results were different, the third quartile of all \acr{tpc} measurements was used) is divided by an array of values obtained from \acr{tpv}, one for each illumination intensity.
 	The needed value is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity.
@@ -705,19 +734,22 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	\paragraph{Voltage peak value from \acr{tpv}}\label{tpv_deltaV}
 	%The value of the voltage increase due to the additional illumination is needed for \acr{dc} measurement.
 
-	In our group, the $\Delta V$ value has been extracted  obtained subtracting the steady state \gls{voc} from the maximum voltage point in the measured transient.
+	In our group, the $\Delta V$ value has been extracted obtained subtracting the steady state \gls{voc} from the maximum voltage point in the measured transient.
 	This is obviously heavily affected by the aforementioned noise when a short time window is used.
 
-	The following alternatives were tested:
+	The following methods were tested:
 	\begin{itemize}
-		\item The linear factor in an exponential fit was used, but it can fail if the decay does not have a simple exponential shape (often a bi-exponential, sum of two exponentials, is observed);
-		\item The sum of the two linear factors in a bi-exponential fit, which could work but one have to carefully set boundary values to the fitting parameters for avoiding a fast exponential matching just some noise;
-		\item The maximum value of a \gls{loess} local regression was used, but this underestimates the value, especially when the peak top are just few points (when the measurement time window is large);
-		\item The average of the values registered starting from the maximum voltage point and during a specified time lapse.
+		\item The maximum voltage point.
+		\item The linear factor $\Delta V$ in an exponential fit $V (t) = V_0 + \Delta V \cdot e^{-kt}$ was used, but it can fail if the decay does not have a simple exponential shape (often a bi-exponential, sum of two exponentials, is observed).
+		\item The sum of the two linear factors $\Delta V = \Delta V_1 + \Delta V_2$ in a bi-exponential fit as in \cref{eq:tpv_biexp}, which could work but one have to carefully set boundary values to the fitting parameters for avoiding a fast exponential matching just some noise.
+		\item The maximum value of a \gls{loess} local regression was used, but this underestimates the value, especially when the peak top are just few points (when the measurement time window is large).
+		\item The average of the values registered starting from the maximum voltage point and during a specified time lapse. For selecting the maximum voltage without interferences from the noise, a custom smoothing function is used.
 	\end{itemize}
 
 	This last option is the one currently in place.
-	The average was performed over \SI{50}{ns} after the peak and this allowed us to get a reliable $\Delta V$ value.
+	The average was performed over \SI{50}{\nano\s} after the peak and this allowed us to get a reliable $\Delta V$ value.
+	As an example, we can compare the $\Delta V$ obtained with the aforementioned criteria applied on the \acr{tpv} decay in \cref{fig:tpv_robust}: \SI{16.5}{\mV} from the maximum point; \SI{4.2}{\mV} from the simple mono-exponential fit; \SI{3.3}{\mV} from the robust mono-exponential fit ; \SI{5.9}{\mV} from the simple bi-exponential fit; \SI{6.1}{\mV} from the robust bi-exponential fit (see \cpageref{tpv_robust} for discussion on robust fitting); \SI{4.2}{\mV} from the maximum of the \gls{loess}; \SI{4.6}{\mV} using the average of the first points after the peak.
+	If the object of study is related to the presence of negative peaks, present in non-stabilized solutions as described in \cpageref{tpv_negativePeaks}, the data fitting code should be modified.
 
 	\paragraph{Capacitance from voltage and current increase during the pulse}
 	In case a slow light pulse have to be employed, \textit{e.g.} from a \gls{led} source, the voltage peak is too strongly affected by the ongoing recombination.
