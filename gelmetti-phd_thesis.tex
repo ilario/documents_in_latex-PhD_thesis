@@ -155,7 +155,7 @@
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
 	%\crefdefaultlabelformat{#2\textbf{#1}#3} % bold numbers of references https://tex.stackexchange.com/a/255187/173645
-	\creflabelformat{figure}{#2\textbf{#1}#3} % bold numbers just for figures references
+	\creflabelformat{figure}{#2\textcolor{blue}{#1}#3} % bold numbers just for figures references
 	
 	\usepackage[spacing=true, stretch=40, shrink=40]{microtype} % automagically reduces overfull lines and improves justification
 
@@ -197,6 +197,8 @@
 	\preto\section{\needspace{7\baselineskip}}
 	
 	\usepackage{breqn} % for automatic line breaking in equations with dmath environment
+	
+%	\usepackage{commath} % for upright d in derivatives
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -355,12 +357,6 @@
 \noindent Date:\\
 \rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
 
-\tableofcontents
-\listoffigures
-\listoftables
-\lstlistoflistings
-
-
 %%%%%%%%%%%%
 % ACRONYMS %
 %%%%%%%%%%%%
@@ -429,6 +425,13 @@
 \newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly[bis(4-phen|yl)(2,4,6-tri|methyl|phen|yl)amine}}}
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
+
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+
 \printglossary[type=\acronymtype]
 
 }%here ends openany and starts openright
@@ -441,7 +444,7 @@
 \newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
 
 \chapter[Summary of the Thesis]{\centering Summary of the Thesis}
-	\input{contents_tex/summary.tex}
+%	\input{contents_tex/summary.tex}
 
 
 	\EnableQuotes
@@ -449,7 +452,7 @@
 
 \chapter[Motivation and Aims]{Motivation and Aims}\label{ch:aims}
 	%\addcontentsline{toc}{chapter}{Motivation and Aims}
-	\input{contents_tex/aims.tex}
+%	\input{contents_tex/aims.tex}
 
 
 	\restoregeometry
@@ -465,9 +468,6 @@
 	\mainmatter
 	\pagestyle{headings}
 
-
-
-
 \chapter{Introduction}\label{ch:intro}
 	\graphicspath{ {./contents_img/intro/} }
 	\input{contents_tex/intro.tex}
@@ -482,20 +482,15 @@
 	\graphicspath{ {./contents_img/characterization/} }
 	\input{contents_tex/characterization.tex}
 
-\chapter{Comparison of \gls{htm} in Bottom Cathode \gls{csfamapbibr} Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
+\chapter{Comparison of HTM in Bottom Cathode CsFAMAPbIBr Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
 \chaptermark{Comparing HTM}
 	\graphicspath{ {./contents_img/tae/} }
 	\input{contents_tex/tae.tex}
 
-\chapter{Insights on the Charge Storage via Thickness Variation of Layers in Top Cathode \gls{mapi} Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
+\chapter{Insights on the Charge Storage via Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
 	\graphicspath{ {./contents_img/thicknesses/} }
 	\input{contents_tex/thicknesses.tex}
-
-	%\chapter{Drift-Diffusion Simulation of Stark Spectroscopy (ElectroAbsorption) for Perovskite Solar Cells}\label{ch:electroabsorption}
-	%\chaptermark{Analysis of EA}
-	%	\graphicspath{ {./contents_img/electroabsorption/} }
-	%	\input{contents_tex/electroabsorption.tex}
 
 \chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
 \chaptermark{Impedance Sectroscopy}
@@ -516,25 +511,16 @@
 	\addcontentsline{toc}{chapter}{Overall Conclusions}
 	\input{contents_tex/conclusions.tex}
 
-	%\chapter{Further Work}
-
-
 \chapter*[Acknowledgements]{Acknowledgements}
 	\addcontentsline{toc}{chapter}{Acknowledgements}
 	\input{contents_tex/acknowledgements.tex}
-
-
 
 	\appendix
 
 \chapter{Code}
 	\label{ch:code}
-	%\chaptermark{Code}
 	\graphicspath{ {./contents_img/code/} }
 	\input{contents_tex/code.tex}
-
-
-	%\chapter{List of publications}
 
 
 	\printindex
