@@ -10,26 +10,27 @@
 	This is even more interesting when considering that most of the regions where life quality is seriously affected by economy (represented in \cref{fig:world_map-HDI} by the Human Development Index) have abundance of solar irradiation (represented in \cref{fig:world_map-PVOUT} by the ratio between the photovoltaic electric energy that can be obtained over the nominal power of an installed solar panel).
 
 	\begin{figure}%[!hbtp]%
+			\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
 		\centering
 		\begin{subfigure}[b]{1\textwidth}
-			\includegraphics[width=1\textwidth]{world_map-HDI/world_map-HDI.pdf}
+			\includegraphics[width=0.9\textwidth]{world_map-HDI/world_map-HDI.pdf}
 			\subcaption{Human development index by region}\label{fig:world_map-HDI}
 		\end{subfigure}
 
 		\begin{subfigure}[b]{1\textwidth}
-			\includegraphics[width=1\textwidth]{world_map-PVOUT/world_map-PVOUT.pdf}
+			\includegraphics[width=0.9\textwidth]{world_map-PVOUT/world_map-PVOUT.pdf}
 			\subcaption{Daily photovoltaic electricity potential}\label{fig:world_map-PVOUT}
 		\end{subfigure}
 
 		\begin{subfigure}[b]{1\textwidth}
-			\includegraphics[width=1\textwidth]{world_map-electrical_vs_land/world_map-electrical_vs_land.pdf}
+			\includegraphics[width=0.9\textwidth]{world_map-electrical_vs_land/world_map-electrical_vs_land.pdf}
 			\subcaption{Yearly electricity consumption over region land area}\label{fig:world_map-electrical_vs_land}
 		\end{subfigure}
 		\mycaption[Geographical distribution of development, sunlight and consumption.]{Data in (\textbf{a}) represent the human development index:
 			"a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living"
 			from UNDP\cite{UNDP2018} (missing data in grey); data in (\textbf{b}) represents the photovoltaic electricity potential: considering a photovoltaic module installed in a region, is the ratio between the average daily produced energy, in kWh, and the nominal power, or nameplate capacity, of the installed module;\cite{Solargis2018} data in (\textbf{c}) represents the yearly electricity consumption\cite{CIAa} (comparing total electricity generated annually plus imports and minus exports) on a country scale divided by country land surface,\cite{CIA} expressed in kilowatt-hours per year per square kilometre.}\label{fig:world_map}
-
-
+		}}
 	\end{figure}
 
 	\paragraph{Resilience} Photovoltaic is the electric energy production method that best matches a distributed and decentralized network model, with the only single-point-of-failure being the climate variability.
@@ -86,28 +87,36 @@
 		So this kind of recombination is negligible in perovskite solar cells.
 		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
-		\paragraph{Radiative recombination} This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that all the absorbed thermal photons have to be re-emitted as black body radiation.
+		\paragraph{Radiative recombination}
+		This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that all the absorbed thermal photons have to be re-emitted as black body radiation.
 		From this parallelism it can be understood that it is larger for materials with greater absorptivity \cite{Nelson2003}.
 		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
 		Radiative recombination involves the clash of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
 		The expression used for modelling is: $U_{rad} = k_{rad} (np-n_i^2)$, where $n_i$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
 
-		\paragraph{SRH trap mediated recombination} Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
+		\paragraph{SRH trap mediated recombination}
+		Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
 		Usually both the momentum difference and the chemical energy get released via phonons, so no radiative emission is involved.
 		This recombination type can have reaction order of 1 or of 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}.
 		In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1.
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
 		The expression used for modelling is \cite{Shockley1952}:
-		$$U_{SRH} = k_{SRH} \frac{np-n_i^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}$$
+		\begin{equation}\label{eq:srh}
+		U_{SRH} = k_{SRH} \frac{np-n_i^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
+		\end{equation}
+		
 		where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-		\paragraph{Surface recombination} Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
+		\paragraph{Surface recombination}\label{intro_surface_recombination}
+		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
 		At the interface between a, let's say, p-doped and a close-to-intrinsic material as we consider the perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and the opposite charge in the intrinsic semiconductor.
 		As the doped semiconductor has abundance of majority carriers, the limiting factor will be the concentration of "minority" carriers on the other side of the interface, which will depend on its mobility and on the electric field in the intrinsic.
 		So the reaction order should be 1 for this case.
+		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
 		As we will see below, this is the most important recombination pathway for perovskite solar cells.
 
-		\paragraph{Auger recombination} When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
+		\paragraph{Auger recombination}
+		When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
 		This recombination is important in materials with high free carriers densities or at high photo-generation conditions.
 		Additionally to the two free charges of the same kind, it also requires a free charge of the opposite kind for the decay to be possible, so it can be considered as having a reaction order of three.
 
@@ -146,11 +155,12 @@
 						\includegraphics[width=1\textwidth]{displacement_current/third.pdf}
 						\subcaption{Ionic charges accumulating at interfaces}\label{fig:displacement_current-ionic}
 					\end{subfigure}
-				}
-			}
+
 			\mycaption[Representation of current and displacement current.]{(\textbf{a}) a mixed ionic-electronic conductor material layered between two layers of electronic conductor material.
 				(\textbf{b}) the electronic charge can cross the material's interfaces.
 				(\textbf{c}) ionic charge cannot be transferred to the electrodes, still a displacement current due to the ionic migration is generated and can be measured in the amperometer.}\label{fig:displacement_current}
+							}
+			}
 		\end{figure}
 
 
@@ -175,11 +185,12 @@
 						\includegraphics[height=0.3\textheight]{dipole_plane/double.pdf}
 						\subcaption{Two infinite planes of opposed charges}\label{fig:dipole_plane-double}
 					\end{subfigure}
-				}
-			}
+
 			\mycaption[Electric field by two planes of opposite charges.]{(\textbf{a}) an infinite plane of charged particles is represented, the electric field is constant on the two sides, with a discontinuity in the plane.
 				(\textbf{b}) adding a second plane with the same concentration of charges of the opposite kind, the electric field out of the sandwich cancels out.
 				What is present outside of the sandwich is just an electrostatic potential difference.}\label{fig:dipole_plane}
+							}
+			}
 		\end{figure}
 
 		\paragraph{Continuity equations} The continuity equations have a very intuitive meaning: the concentration of a specie in a specific volume can increase due to generation $G$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
@@ -206,7 +217,7 @@
 	In literature various reports of completely different results obtained from perfectly identical synthesis can be found\cite{Pockett2015,Gottesman2014}.
 	This issue is being addressed recently with the publication of more reliable and complete fabrication procedures \cite{Saliba2018}.
 
-	\paragraph{Recombination mechanisms}
+	\paragraph{Recombination mechanisms}\label{intro_prv_recombination}
 	The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material.
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
 	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime gets dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.

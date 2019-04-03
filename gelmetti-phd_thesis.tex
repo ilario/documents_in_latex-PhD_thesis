@@ -111,7 +111,7 @@
 	
 	% for the table of symbols, this soultion could be used: https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis
 	
-	\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
+	%\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
 	
 	%%%%%%%%%%%
 	%%%%%%%%%%% MULTIROW
@@ -200,6 +200,8 @@
 	
 %	\usepackage{commath} % for upright d in derivatives
 
+	\usepackage{physics} % redefines plenty of things: \Im \Re \sin() \exp()... adds \dd for derivatives, \pdv for partial derivatives, \eval for evaluating the derivative in a point (does not work properly in dmath from breqn)
+
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
 	%\pgfplotsset{compat=newest}
@@ -217,20 +219,36 @@
 	\newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
 	\newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
 	
-	\newcommand{\PbItwo}{\ch{PbI2}\index{lead diiodide}\xspace}
-	\newcommand{\PbBrtwo}{\ch{PbBr2}\index{lead dibromide}\xspace}
-	\newcommand{\PbCltwo}{\ch{PbCl2}\index{lead dichloride}\xspace}
-	\newcommand{\CsI}{\ch{CsI}\index{cesium iodide}\xspace}
-	\newcommand{\TiOtwo}{\ch{TiO2}\index{titanium dioxide}\xspace}
-	\newcommand{\dTiOtwo}{\ch{d-TiO2}\index{titanium dioxide}\xspace}
-	\newcommand{\mpTiOtwo}{\ch{mp-TiO2}\index{titanium dioxide}\xspace}
 	
-	\newcommand{\spiro}{\gls{spiro}\index{\gls{spiro}}\xspace}
-	\newcommand{\Spiro}{\Gls{spiro}\index{\gls{spiro}}\xspace}
-	\newcommand{\tae}[1]{\gls{tae#1}\index{\gls{tae#1}}\xspace} % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
-	\newcommand{\Tae}[1]{\Gls{tae#1}\index{\gls{tae#1}}\xspace}
+	\newcommand{\me}{\mathrm{e}} % for having upright neper number symbol, from https://tex.stackexchange.com/a/19491/173645
+	\newcommand{\voc}{V_\mathrm{OC}} 
+	\newcommand{\jsc}{J_\mathrm{SC}}
 	
-	
+%	\newcommand{\PbItwoS}{\ch{PbI2}\index{lead diiodide} }
+%	\newcommand{\PbBrtwoS}{\ch{PbBr2}\index{lead dibromide} }
+%	\newcommand{\PbCltwoS}{\ch{PbCl2}\index{lead dichloride} }
+%	\newcommand{\CsIS}{\ch{CsI}\index{cesium iodide} }
+%	\newcommand{\TiOtwoS}{\ch{TiO2}\index{titanium dioxide} }
+%	\newcommand{\dTiOtwoS}{\ch{d-TiO2}\index{titanium dioxide} }
+%	\newcommand{\mpTiOtwoS}{\ch{mp-TiO2}\index{titanium dioxide} }
+%	
+%	\newcommand{\spiroS}{\gls{spiro}\index{\gls{spiro}} }
+%	\newcommand{\SpiroS}{\Gls{spiro}\index{\gls{spiro}} }
+%	\newcommand{\taeS}[1]{\gls{tae#1}\index{\gls{tae#1}} } % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
+%	\newcommand{\TaeS}[1]{\Gls{tae#1}\index{\gls{tae#1}} }
+%	
+%	\newcommand{\PbItwo}{\ch{PbI2}\index{lead diiodide}}
+%	\newcommand{\PbBrtwo}{\ch{PbBr2}\index{lead dibromide}}
+%	\newcommand{\PbCltwo}{\ch{PbCl2}\index{lead dichloride}}
+%	\newcommand{\CsI}{\ch{CsI}\index{cesium iodide}}
+%	\newcommand{\TiOtwo}{\ch{TiO2}\index{titanium dioxide}}
+%	\newcommand{\dTiOtwo}{\ch{d-TiO2}\index{titanium dioxide}}
+%	\newcommand{\mpTiOtwo}{\ch{mp-TiO2}\index{titanium dioxide}}
+%	
+%	\newcommand{\spiro}{\gls{spiro}\index{\gls{spiro}}}
+%	\newcommand{\Spiro}{\Gls{spiro}\index{\gls{spiro}}}
+%	\newcommand{\tae}[1]{\gls{tae#1}\index{\gls{tae#1}}} % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
+%	\newcommand{\Tae}[1]{\Gls{tae#1}\index{\gls{tae#1}}}
 	
 	\bibliography{biblio}
 	
