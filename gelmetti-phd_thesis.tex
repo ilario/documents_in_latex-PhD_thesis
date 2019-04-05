@@ -178,6 +178,7 @@
 	% \sectionmark is broken for the page of first appearance
 	% solution from https://tex.stackexchange.com/a/241299/173645
 	% this sets the title for the ToC as the same of the section title, but the title for the header as a shorter alternative
+	% usage: \mysection[header content]{index and title content}
 	\usepackage{ifthen} % provides \ifthenelse test  
 	\newcommand{\mysection}[2][]{
 		\ifthenelse{\equal{#1}{}}%
@@ -268,6 +269,18 @@
 	\renewcommand{\floatpagefraction}{.8}% less likely to have images by their own in a page https://tex.stackexchange.com/questions/68516/avoid-that-figure-gets-its-own-page
 	
 	
+% usually subscripts should be typed in upright font, like with \mathrm{}, unless they're indexes
+% this allows me to use V_|OC| for upright subscripts
+% https://tex.stackexchange.com/a/156963/173645
+\makeatletter
+\begingroup
+\catcode`\_=\active
+\protected\gdef_{\@ifnextchar|\subtextup\sb}
+\endgroup
+\def\subtextup|#1|{\sb{\textup{#1}}}
+\AtBeginDocument{\catcode`\_=12 \mathcode`\_=32768}
+\makeatother
+
 
 	
 	
@@ -414,6 +427,7 @@
 \newacronym{led}{LED}{light emitting diode}
 \newacronym{osc}{OSC}{organic solar cells}
 \newacronym{dssc}{DSSC}{dye sensitized solar cells}
+\newglossaryentry{rctime}{name={RC time}, description={characteristic time of a circuit composed of a resistance in parallel to a capacitance}}
 
 % long non-acronym names and descriptions
 
@@ -443,14 +457,57 @@
 \newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly[bis(4-phen|yl)(2,4,6-tri|methyl|phen|yl)amine}}}
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
+% symbols
+\newglossaryentry{symb:v}{name={$v$}, description={ideality of pseudo first order life-time \textit{versus} light bias}}
+\newglossaryentry{symb:m}{name={$m$}, description={ideality of charge \textit{versus} light bias}}
+\newglossaryentry{symb:mu}{name={$\mu$}, description={internal chemical potential}, sort={mu}}
+\newglossaryentry{symb:barmu}{name={$\bar\mu$}, description={electrons electrochemical potential}, sort={mubar}}
+\newglossaryentry{symb:V}{name={\ensuremath{V}}, description={voltage}}
+\newglossaryentry{symb:P}{name={\ensuremath{P}}, description={electrical power}}
+\newglossaryentry{symb:J}{name={\ensuremath{J}}, description={current or current density}}
+\newglossaryentry{symb:phi}{name={\ensuremath{\phi}}, description={illumination intensity}, sort={phi}}
+\newglossaryentry{symb:nid}{name={\ensuremath{n_{\mathrm{id}}}}, description={ideality factor}}
+\newglossaryentry{symb:kB}{name={\ensuremath{k_{\mathrm{B}}}}, description={Boltzmann constant}}
+\newglossaryentry{symb:T}{name={\ensuremath{T}}, description={temperature}}
+\newglossaryentry{symb:Jph}{name={\ensuremath{J_{\mathrm{ph}}}}, description={photogenerated current}}
+\newglossaryentry{symb:J0}{name={\ensuremath{J_0}}, description={dark diode saturation current}}
+\newglossaryentry{symb:alpha}{name={\ensuremath{\alpha}}, description={power law exponent in current \textit{versus} illumination intensity relationship}, sort={alpha}}
+\newglossaryentry{symb:q}{name={\ensuremath{q}}, description={elementary charge}}
+\newglossaryentry{symb:n}{name={\ensuremath{n}}, description={electrons density}}
+\newglossaryentry{symb:p}{name={\ensuremath{p}}, description={electron holes density}}
+\newglossaryentry{symb:ni}{name={\ensuremath{n_{\mathrm{i}}}}, description={intrinsic carrier density}}
+\newglossaryentry{symb:epsilonzero}{name={\ensuremath{\epsilon_0}}, description={electric constant}, sort={epsilonzero}}
+\newglossaryentry{symb:epsilonr}{name={\ensuremath{\epsilon_{\mathrm{r}}}}, description={relative permittivity}, sort={epsilonr}}
+\newglossaryentry{symb:Eg}{name={\ensuremath{E_{\mathrm{g}}}}, description={band gap}}
+\newglossaryentry{symb:A}{name={\ensuremath{A}}, description={area}}
+\newglossaryentry{symb:d}{name={\ensuremath{d}}, description={distance, thickness}}
+\newglossaryentry{symb:Cg}{name={\ensuremath{C_{\mathrm{g}}}}, description={geometric capacitance}}
+\newglossaryentry{symb:Cion}{name={\ensuremath{C_{\mathrm{ion}}}}, description={ionic capacitance}}
+\newglossaryentry{symb:g}{name={\ensuremath{g}}, description={charges photo-generation rate}}
+\newglossaryentry{symb:U}{name={\ensuremath{U}}, description={charges recombination rate}}
+\newglossaryentry{symb:t}{name={\ensuremath{t}}, description={time}}
+\newglossaryentry{symb:tau}{name={\ensuremath{\tau}}, description={recombination life-time}, sort={tau}}
+\newglossaryentry{symb:Phi}{name={\ensuremath{\Phi}}, description={reaction order}, sort={Phi}}
+\newglossaryentry{symb:C}{name={\ensuremath{C}}, description={capacitance}}
+\newglossaryentry{symb:Z}{name={\ensuremath{Z}}, description={complex impedance}}
+\newglossaryentry{symb:omega}{name={\ensuremath{\omega}}, description={angular frequency}, sort={omega}}
+\newglossaryentry{symb:ux}{name={\ensuremath{u_x}}, description={placeholder for useless constants}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 
 \tableofcontents
 \listoffigures
 \listoftables
 \lstlistoflistings
 
-
-\printglossary[type=\acronymtype]
+\glsaddall
+\printglossary[type=\acronymtype, title={Glossary, Acronyms, and Symbols}]
 
 }%here ends openany and starts openright
 
