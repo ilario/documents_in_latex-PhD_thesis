@@ -37,7 +37,7 @@
 		
 	\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
 	
-	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30]{biblatex}
+	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30, style=numeric-comp]{biblatex}%
 	
 	% from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
 	\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
@@ -63,7 +63,7 @@
 	\usepackage{eso-pic} %background image on titlepage
 	\usepackage{transparent} %transparency for background image on titlepage
 	
-	\usepackage[format=plain, indention=1cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
+	\usepackage[format=plain, indention=0.5cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
 	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}
 	
 
