@@ -47,7 +47,7 @@
 	This very simple difference already hints for the huge conceptual and technological step required by photovoltaics as compared to other electrical energy sources.
 
 	% transducer
-	\mysection[Relevant Physics]{Relevant Physics of Stacked Semiconductor Thin Films}
+\mysection[Relevant Physics]{Relevant Physics of Stacked Semiconductor Thin Films}
 
 	\subsection{Energy Levels and Occupancy}
 
@@ -83,20 +83,22 @@
 
 		\paragraph{Primary geminate recombination} \label{intro_geminate} This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
 		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
-		Lead halide perovskite have quite a high static permittivity CITE IMPEDANCE and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_BT$ \cite{Miyata2015,Galkowski2016} and the direct generation of free charges occurs.
+		Lead halide perovskite have quite a high static permittivity CITE IMPEDANCE and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_BT$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
 		So this kind of recombination is negligible in perovskite solar cells.
 		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
 		\paragraph{Radiative recombination}
-		This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that all the absorbed thermal photons have to be re-emitted as black body radiation.
-		From this parallelism it can be understood that it is larger for materials with greater absorptivity \cite{Nelson2003}.
+		This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that, at steady state, all the absorbed thermal photons, coming from the surroundings of the cell, have to be re-emitted as black body radiation.
+		From this parallelism it can be understood that this recombination is larger for materials with greater absorptivity \cite{Nelson2003} like the ones used for thin film solar cells \cite{Tvingstedt2015}.
 		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
 		Radiative recombination involves the clash of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
 		The expression used for modelling is: $U_{rad} = k_{rad} (np-n_i^2)$, where $n_i$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
 
 		\paragraph{SRH trap mediated recombination}
 		Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
-		Usually both the momentum difference and the chemical energy get released \textit{via} phonons, so no radiative emission is involved.
+		As aforementioned, in an indirect band gap material the radiative recombination is disfavoured, but the presence of a trap state can divide in two easier steps the charge recombination process.
+%		In an indirect band gap material (where the momentum difference between the starting and final state is large) band-to-band bimolecular radiative recombination is disfavoured, but the presence of a localized trap state can catalyse the transition 
+		Usually both the momentum difference and the chemical energy is released \textit{via} phonons, so no radiative emission is involved.
 		This recombination type can have reaction order of 1 or of 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}.
 		In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1.
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
@@ -104,7 +106,6 @@
 		\begin{equation}\label{eq:srh}
 		U_{SRH} = k_{SRH} \frac{np-n_i^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
 		\end{equation}
-		
 		where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 		\paragraph{Surface recombination}\label{intro_surface_recombination}
@@ -117,8 +118,8 @@
 
 		\paragraph{Auger recombination}
 		When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
-		This recombination is important in materials with high free carriers densities or at high photo-generation conditions.
 		Additionally to the two free charges of the same kind, it also requires a free charge of the opposite kind for the decay to be possible, so it can be considered as having a reaction order of three.
+		This recombination is important in materials with high free carriers densities or at high photo-generation conditions, very unlikely to happen in perovskite solar cells.
 
 	\subsection{PhotoVoltaic Effect}
 
@@ -218,7 +219,7 @@ Cesium introduction \cite{Bi2016,Saliba2016}
 
 	\paragraph{Perovskite Absorber Synthesis}
 	The preparation of this hybrid semiconductor \textit{via} spin coating and annealing at low temperature is extremely easy and convenient for small-scale research purposes.
-	From my point of view, what most affects the perovskite research is the lack of reproducibility, likely caused by the extremely sensible crystallization during the annealing phase.
+	From my point of view, a point that heavily affects the research in perovskite solar cells is the low reproducibility, likely caused by the sensibility of the crystallization happening during the thermal annealing.
 	In literature various reports of completely different results obtained from perfectly identical synthesis can be found \cite{Pockett2015,Gottesman2014}.
 	This issue is being addressed recently with the publication of more reliable and complete fabrication procedures \cite{Saliba2018}.
 
@@ -246,7 +247,11 @@ Cesium introduction \cite{Bi2016,Saliba2016}
 	These charged species can migrate inside the material either by diffusion or when drifted by an electric field \cite{Xiao2014}.
 
 	\paragraph{Field free absorber}
-	Thanks to the abundance of the ionic specie CITATION, the electric field inside the absorber is completely shielded \cite{Tress2015}
+	Thanks to the abundance of the ionic specie CITATION, the electric field inside the absorber is completely shielded \cite{Tress2015}.
+	
+	diffusive transport vs drift transport
+	
+	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
 
 	\paragraph{Diffusion as the main transport mechanism}(due to the built-in voltage being the workfunction difference of the selective contacts)(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
 
@@ -263,7 +268,7 @@ Cesium introduction \cite{Bi2016,Saliba2016}
 	The characterization techniques for perovskite solar cells and the relative interpretation evolved from the techniques and theory built around \gls{osc} and \gls{dssc} \cite{Barnes2013}.
 	This pre-existing framework has been widely used in literature for perovskite solar cells by various research groups \cite{ORegan2015b,Shao2016,Gelmetti2019,Kiermasch2018,Carnie2015}.
 	Unfortunately, perovskite solar cells are different enough from \gls{osc} and \gls{dssc} to doom the utility of most of these observations.
-	Moreover, while in \gls{osc} a good agreement between different characterization techniques was observed \cite{Clarke2015}, in perovskite solar cells we often observe hard-to-explain discrepancies.
+	Moreover, while an acceptable agreement between different characterization techniques was often observed in \gls{osc} \cite{Clarke2015,Maurano2011} and \gls{dssc} \cite{Barnes2013}, in perovskite solar cells we often observe hard-to-explain discrepancies \cite{Kiermasch2018}.
 	In the past few years, the theoretical framework has been expanded and should finally enable the perovskite community to re-interpret and re-design the solar cells characterization techniques.
 	In \cref{ch:interpretation} the reader can find some of the accepted concepts and some novel proposals about the interpretation of the classical characterization techniques when used on perovskite solar cells.
 
