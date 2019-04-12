@@ -410,16 +410,20 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		With the introduction of selective contacts, a linear contribution starts to grow in importance summing up to the exponential part.
 		It has been observed both in \gls{osc} \cite{Ryan2017a,Credgington2014} and in perovskite solar cells \cite{Gelmetti2017,Wheeler2017,Du2018}.
 		This linear trend accounts for the accumulation in the selective contacts' depletion layers and in the electrodes, in a parallel plate capacitor fashion: $n = C_|g| \cdot V = \frac{\epsilon_0 \epsilon_|r| A}{d} \cdot V$ where $C_|g|$ is the geometric capacitance, $A$ is the active area, and $d$ is the thickness of the dielectric.
-		More exactly, $d$ is the distance between the regions where the opposed charges are getting accumulated, which is the space charge layers (usually depletion layers) in the electrodes.
-		So this value can be somewhat wider than just the distance separating the two electrodes interfaces.
-		By consequence, $\epsilon_|r|$ should be considered as a thickness-weighted mean of the relative permittivities of each material between the two accumulation zones.
 		This carriers accumulation in the contacts can be visualized with the simulation reported in \cref{fig:ce_single_dd_charge-1sun}.
 		Extending \cref{eq:ce_osc}, the complete equation becomes:
 		\begin{equation}\label{eq:ce_full}
 			n_|CE| = C_|g| \cdot V + n_|pre| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
 		\end{equation}
 		where the $-1$ was introduced for forcing the curve to cross the origin, as in steady state dark conditions both the \gls{voc} and the extracted charge are defined as zero.
-		A voltage dependent geometric capacitance (as mentioned, it could change due to the widening-shrinking of the depletion layers) can be obtained from dark \acr{ce} measurements applying reverse voltage biases \cite{Kiermasch2018} or \textit{via} impedance spectroscopy in dark with a constant voltage bias \cite{Brus2016}.
+		
+		\paragraph{Charge \textit{versus} light bias trend -- Geometric capacitance voltage dependency}
+		More exactly, $d$ is the distance between the regions where the opposed charges are getting accumulated, which is the space charge layers (usually depletion layers) in the electrodes.
+		So this value can be somewhat wider than just the distance separating the two electrodes interfaces.
+		By consequence, $\epsilon_|r|$ should be considered as a thickness-weighted mean of the relative permittivities of each material between the two accumulation zones.
+		Moreover, as the depletion layers fill up they widen and shrink, so this capacitance can vary as happens for the transition capacitance of a $p$-$n$ junction.
+		A voltage dependent geometric capacitance can be obtained from dark \acr{ce} measurements applying reverse voltage biases \cite{Kiermasch2018} or \textit{via} impedance spectroscopy in dark with a constant voltage bias \cite{Brus2016,Pockett2015}.
+		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$ materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion layers thickness, happening in the contacts, is negligible when summed to the perovskite layer thickness.
 
 		\paragraph{Charge \textit{versus} light bias trend -- Energy levels point of view}\label{ce_energy_levels}
 		As we mentioned, the linear trend is related to the accumulation in the contacts depletion layers (or, generically, space charge layers), this can be seen from the decrease of the perovskite-contacts conduction band offset between \cref{fig:ce_single_dd_levels-dark,,fig:ce_single_dd_levels-1sun}.
@@ -664,12 +668,11 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 	The slow decay component at very low background light intensity has been assigned to the electronic recombination.
 	In drift-diffusion simulations, the life-time does not show a maximum value and grows as the light intensity is decreased.
 	But in the actual experiment setup, decays life-times are limited at long times by the discharge of the through the oscilloscope resistance and through the device shunt resistance, whatever is the fastest.
-	The former happens with an RC time of the circuit composed by the capacitance of the device (which can be obtained \textit{via} a \acr{dc} experiment) and the \SI{1}{\Mohm} resistance of the oscilloscope or the internal device shunt resistance \cite{Tvingstedt2017} while the latter happens with a non-exponential and less commonly considered diode-capacitor discharge \cite{Tvingstedt2017,Hellen2003}.
+	This happens with an RC time of the circuit composed by the capacitance of the device (which can be obtained \textit{via} a \acr{dc} experiment) and the \SI{1}{\Mohm} resistance of the oscilloscope or the internal device shunt resistance \cite{Tvingstedt2017}.
 	The oscilloscope resistance could be varied using an attenuating probe (usually 10X or 100X) or a high impedance amplifier.
 	This limit is often observed at low light intensities as a plateau in the \acr{tpv} life-time \textit{versus} light bias graph \cite{Tvingstedt2017}.
 	Indeed, in \authoryear{Kiermasch2018}, where a \SI{1}{\tera\ohm} input impedance amplifier is used, the plateau is observable from \SIrange{1E-1}{1}{\s}, \textit{i.e.} three orders of magnitude higher than what we observe with our \SI{1}{\Mohm} oscilloscope.
 	This affirmation is corroborated by the correlation observable in \cref{fig:tpv_RCtime}.
-	This limitation has to taken in consideration also when performing full signal Open Circuit Voltage Decay dynamics measurement (OCVD) \cite{Tvingstedt2017,Lederhandler1955,Mahan1981} which has not been performed in this thesis.
 	For mid-illumination intensities, the measured life-time can be corrected considering the contribution from the RC time \cite{Credgington2014}.
 
 	\begin{SCfigure}
@@ -688,11 +691,19 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 %		For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
 %	This "chemical" charge (charge stored in the perovskite layer) is represented as the exponential part of \cref{eq:ce_full}, so we obtain:
 	\begin{dmath}\label{eq:tpv_tau_vs_intensity}
-		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = u_8\left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx u_8\exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = u_8\exp(-\frac{q\voc}{vk_|B|T})
+		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = \frac{n_|pre|^{1-\Phi}}{\Phi k_\Phi} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|pre|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|pre|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{q\voc}{vk_|B|T})
 	\end{dmath}
 	where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
-	So the life-time typically decreases exponentially with the light bias with an ideality modifier of $v = m/(\Phi-1)$.
+	The pre-factor $n_|pre|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life-time.
+	As shown, the life-time typically decreases exponentially with the light bias with an ideality modifier of $v = m/(\Phi-1)$.
 	This relation is in accordion with equivalent studies on \gls{osc} \cite{Shuttle2008,Shuttle2008d,Credgington2011}.
+
+\paragraph{Diode-capacitor discharge could be the limiting time}
+Similarly to the example we just considered, where RC times put a cap to the slow observable life-times, \authoryear{Kiermasch2018} underlines that also the often-neglected diode-capacitor discharge could have the same effect \cite{Tvingstedt2017,Hellen2003}.
+The relevant capacitance would be the geometric capacitance of the generated charges accumulating in the depletion layers and the diode would be the perovskite-contacts interfaces with the relative dark saturation current.
+The life-time observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981} and gain importance at low light intensity for thin devices (high capacitance) \cite{Kiermasch2018}.
+
+Also when performing full signal Open Circuit Voltage Decay dynamics measurement (OCVD) \cite{Lederhandler1955,Mahan1981}, which has not been performed in this thesis, this limitation has to taken in consideration \cite{Tvingstedt2017,Pockett2017.Pockett2015,Kiermasch2018}.
 
 \mysection[TPV-CE]{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{tpvce}
 
@@ -948,7 +959,7 @@ where we neglected $-1$ addend for non-dark cases, inverting the equation we obt
 The \cref{eq:reconstruction_voc} now contains just parameters which can be obtained from our photophysical measurements \cite{Wheeler2015,Wheeler2017,Du2018,Barnes2011a}.
 
 \section{Impedance Spectroscopy}
-\epigraph{\textit{"One does not simply understand impedance spectroscopy data"}}{Boromir}
+\epigraph{\textit{"No, I never used this technique, I tried but I couldn't understand it."}}
 
 \paragraph{Frequency domain}
 Thanks to Kramers-Kronig relation, from frequency domain techniques we should be able to extract the same information as from time-domain techniques, as the aforementioned ones.
