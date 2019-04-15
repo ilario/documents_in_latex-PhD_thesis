@@ -459,7 +459,7 @@
 
 % symbols
 \newglossaryentry{symb:v}{name={$v$}, description={ideality of pseudo first order life-time \textit{versus} light bias}}
-\newglossaryentry{symb:m}{name={$m$}, description={ideality of charge \textit{versus} light bias}}
+\newglossaryentry{symb:m}{name={$m$}, description={ideality of charge density \textit{versus} light bias}}
 \newglossaryentry{symb:mu}{name={$\mu$}, description={internal chemical potential}, sort={mu}}
 \newglossaryentry{symb:barmu}{name={$\bar\mu$}, description={electrons electrochemical potential}, sort={mubar}}
 \newglossaryentry{symb:V}{name={\ensuremath{V}}, description={voltage}}
@@ -486,12 +486,27 @@
 \newglossaryentry{symb:g}{name={\ensuremath{g}}, description={charges photo-generation rate}}
 \newglossaryentry{symb:U}{name={\ensuremath{U}}, description={charges recombination rate}}
 \newglossaryentry{symb:t}{name={\ensuremath{t}}, description={time}}
-\newglossaryentry{symb:tau}{name={\ensuremath{\tau}}, description={recombination life-time}, sort={tau}}
+\newglossaryentry{symb:tau}{name={\ensuremath{\tau}}, description={small perturbation recombination life-time}, sort={tau}}
+\newglossaryentry{symb:taupfo}{name={\ensuremath{\tau_{\mathrm{pfo}}}}, description={pseudo first order recombination life-time}, sort={taupfo}}
 \newglossaryentry{symb:Phi}{name={\ensuremath{\Phi}}, description={reaction order}, sort={Phi}}
 \newglossaryentry{symb:C}{name={\ensuremath{C}}, description={capacitance}}
-\newglossaryentry{symb:Z}{name={\ensuremath{Z}}, description={complex impedance}}
+\newglossaryentry{symb:Zre}{name={\ensuremath{Z'}}, description={real component of complex impedance}}
+\newglossaryentry{symb:Zim}{name={\ensuremath{Z''}}, description={imaginary component of complex impedance}}
 \newglossaryentry{symb:omega}{name={\ensuremath{\omega}}, description={angular frequency}, sort={omega}}
 \newglossaryentry{symb:ux}{name={\ensuremath{u_x}}, description={placeholder for useless constants}}
+\newglossaryentry{symb:VE}{name={\ensuremath{V_{\mathrm{E}}}}, description={electrostatic potential}}
+\newglossaryentry{symb:Rs}{name={\ensuremath{R_{\mathrm{s}}}}, description={series resistance}}
+\newglossaryentry{symb:Rsh}{name={\ensuremath{R_{\mathrm{sh}}}}, description={shunt resistance}}
+\newglossaryentry{symb:nCE}{name={\ensuremath{n_{\mathrm{CE}}}}, description={excess charge observable \textit{via} charge extraction}}
+\newglossaryentry{symb:nDOS}{name={\ensuremath{n_{\mathrm{DOS}}}}, description={density of states}}
+\newglossaryentry{symb:VBI}{name={\ensuremath{V_{\mathrm{BI}}}}, description={built-in voltage}}
+\newglossaryentry{symb:ECB}{name={\ensuremath{E_{\mathrm{CB}}}}, description={conduction band energy}}
+\newglossaryentry{symb:EVB}{name={\ensuremath{E_{\mathrm{VB}}}}, description={valence band energy}}
+\newglossaryentry{symb:npre}{name={\ensuremath{n_{\mathrm{pre}}}}, description={equilibrium carrier concentration}}
+\newglossaryentry{symb:kx}{name={\ensuremath{k_x}}, description={recombination rate constant}}
+\newglossaryentry{symb:Jrec}{name={\ensuremath{J_{\mathrm{rec}}}}, description={recombination current}}
+\newglossaryentry{symb:nu}{name={\ensuremath{\nu}}, description={frequency}, sort={frequency}}
+\newglossaryentry{symb:f}{name={\ensuremath{f}}, description={mathematical function}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
@@ -500,6 +515,14 @@
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+
+
+
 
 \tableofcontents
 \listoffigures
@@ -595,7 +618,7 @@
 \chapter{Code}
 	\label{ch:code}
 	\graphicspath{ {./contents_img/code/} }
-	%\input{contents_tex/code.tex}
+	\input{contents_tex/code.tex}
 
 
 	\printindex

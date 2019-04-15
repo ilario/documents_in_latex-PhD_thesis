@@ -11,7 +11,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	\subsection{Sign Convention and Parameters Definitions}
 
 		\paragraph{Fermi level} The electrons electrochemical potential, also known as Fermi level, is defined as the energy required for adding an electron in a specified position.
-		Its value depends on the electrostatic potential $V_E$ in that position and on the internal chemical potential $\mu$ which in our case depends mainly on the concentration of electrons (not related to their electric charge, similarly to the density of a gas).
+		Its value depends on the electrostatic potential $V_|E|$ in that position and on the internal chemical potential $\mu$ which in our case depends mainly on the concentration of electrons (not related to their electric charge, similarly to the density of a gas).
 		As the Fermi level is going to be used mainly for comparisons, its zero is not going to be defined thesis-wide, instead it will be defined to a convenient reference just where needed.
 
 		\paragraph{Cathode and anode} Considering a solar cell device at steady state under illumination and in open circuit conditions, its cathode is defined as the contact where the electrons electrochemical potential $\bar\mu$  is the highest.
@@ -208,6 +208,14 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 		According to \authoryear{Calado2018b} and \authoryear{Kirchartz2012}, the ideality factor, once obtained in the correct way, is 1 when studying most of the recombination types and 2 for mid-gap trap mediated recombination in regions where the electrons and holes concentrations are similar, $n \approx p$.
 
 \section{Charge Extraction (\glsentryshort{ce})}
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{ce_scheme/ce_scheme.pdf}
+	\mycaption[Scheme of CE experiment]{
+		A device is illuminated in open circuit conditions, then simultaneously the illumination is switched off and the circuit is closed through a small resistance. The current flowing gets integrated to obtain the extracted charge. Then the illumination is switched on at a different intensity and the measurement is repeated.}\label{fig:ce_scheme}
+\end{SCfigure}
+
 
 	\paragraph{Concept} The charge extraction experiment has been designed to quantify the free charges available in a device \cite{Duffy2000,Barnes2011}.
 	After stabilization of a device at a light intensity and an applied voltage (in our case always at \gls{voc}), the illumination is switched off and the electrodes of the device are short circuited.
@@ -423,11 +431,11 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		By consequence, $\epsilon_|r|$ should be considered as a thickness-weighted mean of the relative permittivities of each material between the two accumulation zones.
 		Moreover, as the depletion layers fill up they widen and shrink, so this capacitance can vary as happens for the transition capacitance of a $p$-$n$ junction.
 		A voltage dependent geometric capacitance can be obtained from dark \acr{ce} measurements applying reverse voltage biases \cite{Kiermasch2018} or \textit{via} impedance spectroscopy in dark with a constant voltage bias \cite{Brus2016,Pockett2015}.
-		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$ materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion layers thickness, happening in the contacts, is negligible when summed to the perovskite layer thickness.
+		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$-type materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion layers thickness, happening in the contacts, is negligible when summed to the perovskite layer thickness.
 
 		\paragraph{Charge \textit{versus} light bias trend -- Energy levels point of view}\label{ce_energy_levels}
 		As we mentioned, the linear trend is related to the accumulation in the contacts depletion layers (or, generically, space charge layers), this can be seen from the decrease of the perovskite-contacts conduction band offset between \cref{fig:ce_single_dd_levels-dark,,fig:ce_single_dd_levels-1sun}.
-		Increasing the light illumination at open circuit conditions, the quasi-Fermi levels splitting approaches the built-in voltage represented by the contacts' band edges: $V_|bi| = E_|CB|^{\mathrm{ETM}} - E_|VB|^{\mathrm{HTM}}$.
+		Increasing the light illumination at open circuit conditions, the quasi-Fermi levels splitting approaches the built-in voltage represented by the contacts' band edges: $V_|BI| = E_|CB|^{\mathrm{ETM}} - E_|VB|^{\mathrm{HTM}}$.
 		This means the depletion layers are close to saturation, like in \cref{fig:ce_single_dd_levels-1000suns} where \SI{1000}{suns} illumination was simulated, and the charge accumulates in the perovskite layer, as shown in \cref{fig:ce_single_dd_charge-1000suns}, and the exponential trend gains importance.
 
 					\begin{figure}
@@ -456,7 +464,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		\end{figure}
 
 		\paragraph{Charge \textit{versus} light bias trend -- Linear part with mobile ions}
-		The presence of mobile ions in perovskite materials which can accumulate at the perovskite/contacts interfaces, adds an additional capacitance $C_{ion}$, which sums up to the geometric capacitance $C_|g|$ increasing the weight of the linear component, as we showed in \authoryear{Moia2019}.
+		The presence of mobile ions in perovskite materials which can accumulate at the perovskite/contacts interfaces, adds an additional capacitance $C_|ion|$, which sums up to the geometric capacitance $C_|g|$ increasing the weight of the linear component, as we showed in \authoryear{Moia2019}.
 		Nevertheless, as pointed out in \cpageref{ce_limitations_perovskite}, the \acr{ce} measurements are never carried on for long enough to include the ionic migration, and so also the ionic accumulation capacitance gets ignored in our experiments.
 		This can be visualized with the simulation reported in \cref{fig:ce_full_dd} where the long timescale (where the current is monitored until complete stabilization) and the short timescale (few tens of microseconds) \acr{ce} experiment are compared.
 		The difference between the short and long timescale extracted charges is the linear contribution by the ionic capacitance discharge, observable as electronic current thanks to the relative displacement current.
@@ -473,7 +481,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 					The green crosses simulates the experimentally utilised conditions: the charge gets integrated over few microseconds, while the mobile ions didn't have enough time to start migrating.
 					The orange pluses considers the charge integrated until the device stabilization, over various seconds, including also the ionic displacement current.
 					The purple circles simulates a mobile-ions free device.
-					The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n = C_|g| V + n_|pre| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|pre|$, and $m$ are free fitting parameters.}\label{fig:ce_full_dd}
+					The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n_|CE| = C_|g| V + n_|pre| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|pre|$, and $m$ are free fitting parameters whose meaning is described in the text.}\label{fig:ce_full_dd}
 			}
 		}
 	\end{figure}
@@ -488,12 +496,20 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 \section{Transient PhotoVoltage (TPV)}
 	\epigraph{\textit{"Imma firin mah lazor\\pewpew pewpewpew"}}
 
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{tpv_scheme/tpv_scheme.pdf}
+	\mycaption[Scheme of TPV experiment]{
+		A pulsed illumination sums on the constant background illumination, the measured open circuit voltage dynamic shows an increase and a relaxation. }\label{fig:tpv_scheme}
+\end{SCfigure}
+
 	\paragraph{Concept}
 	While a complete device is kept open circuit under constant illumination, a small extra illumination is added \textit{via} a short laser pulse.
 	The \gls{voc}, originally at its steady state value, will be perturbed due to the greater generation rate during the laser pulse.
 	From the \gls{voc} \textit{versus} illumination relation for photodiodes reported in \cref{eq:voc_vs_phi} follows that the \gls{voc}, at this new higher illumination, increases (this is not always the case, as for non-stabilized perovskite solar cells \cite{Calado2016}).
 	After the short pulse the \gls{voc} will slowly go back to the steady state value relative to the constant illumination.
 	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments (also known as PhotoVoltage Decay experiments) which has been applied to \gls{osc} \cite{Shuttle2008}, to \gls{dssc} \cite{ORegan2005,ORegan2004,ORegan2006}, and recently also to perovskite solar cells \cite{Roiati2014a,Marin-Beloqui2014}.
+	From this kinetic profile, a charge life-time can be obtained and plotted against the light bias due to the constant background illumination, as in the example of \cref{fig:tpv-monoexp}.
 
 	\paragraph{Procedure}
 	The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached.
@@ -502,7 +518,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 	Then an additional illumination pulse is provided by a nitrogen laser.
 	The pulse duration (\SI{\approx 1.5}{\ns}) is shorter than the oscilloscope resolution we usually employ, so we assume that the measurement happens when the pulse is already over.
 	In the literature, this is not always the case as other research groups use a \gls{led} diode for the pulsed illumination \cite{Calado2016}.
-	Usually a wavelength of \SI{650}{\nm} is selected using a Rhodamine B solution\cite{RadiantDyesLaser}, this wavelength illuminates in depth the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material \cite{Bi2016,Tress2016}).
+	Usually a wavelength of \SI{590}{\nm} is selected using a Rhodamine 6G solution \cite{RadiantDyesLaser}, this wavelength illuminates in depth the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material \cite{Bi2016,Tress2016}).
 	During all the process, the device is connected to an oscilloscope, registering the open circuit voltage profile (the \SI{1}{\Mohm} resistance of the oscilloscope is a good approximation of open circuit).
 	The voltage profile gets averaged over a few tens of pulses in order to increase the signal to noise ratio.
 	Then the background light intensity is slightly decreased and, after the stabilization to the new steady state, the new  \gls{voc} is registered and more transients are registered.
@@ -595,7 +611,7 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 
 	
 	\paragraph{Bi-exponential decays -- high background illumination}
-	For some devices, rather than an exponential decay, a bi-exponential decay is observed.
+	For some devices, rather than an exponential decay, a bi-exponential voltage decay is observed, like the one reported in \cref{fig:tpv-biexp_single}.
 	This is more frequent in bottom cathode devices including mesoporous titania layers \cite{Carnie2015,ORegan2015b} but has also been reported for silicon solar cells \cite{Kiermasch2018}.
 	With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
 	\begin{equation}\label{eq:tpv_biexp}
@@ -627,7 +643,7 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 	These considerations are key for drift-driven \gls{osc} with low doping level materials \cite{Deledalle2015,Deledalle2014} but should be of smaller impact for the diffusion-driven, field free perovskite solar cells, at least at steady state when the internal electric field is mostly shielded by the ionic accumulation at the interfaces.
 	
 	\paragraph{Bi-exponential decays at low background illumination -- large perturbations}
-	While bi-exponential decays at high background illumination are often not observed, these are quite always present at lower background illumination.
+	While bi-exponential decays at high background illumination are often not observed, these are quite always present at lower background illumination, as in for the example reported in \cref{fig:tpv-biexp_full}.
 	Clearly, the aforementioned explanation for bi-exponential decays at high illumination are still valid for the low illumination case.
 	Additionally, when studying a decay measured at lower background light intensity, we have to remember that, at least for our group's \acr{tpv} procedure, we're out of the small perturbation regime and this could justify non-exponential decays in various ways.
 
@@ -651,10 +667,12 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 					\includegraphics[width=1\textwidth]{tpv_full_dd/tpv_full_dd_ions-crop.pdf}
 					\subcaption{With mobile ions}\label{fig:tpv_full_dd_ions}
 				\end{subfigure}
-				\mycaption[Simulated \glsentryshort{tpv} without and with mobile ions.]{The \gls{tpv} of a homojunction solar cell is simulated, with background illumination from \SIrange{1e-10}{1}{suns} (respectively the leftmost and the rightmost points) with 3 points per decade.
+				\mycaption[Simulated \glsentryshort{tpv} without and with mobile ions.]{
+					The \gls{tpv} of a homojunction solar cell is simulated, with background illumination from \SIrange{1e-10}{1}{suns} (respectively the leftmost and the rightmost points) with 3 points per decade.
 					The pulse intensity was regulated in order to not exceed \SI{8}{\mV} of perturbation.
 					In (\textbf{a}) a device without mobile ions is simulated, the resulting decay is a simple exponential, so the life-time of an exponential fit is reported.
-					In (\textbf{b}) a device with mobile ions in the absorber layer is reported, the resulting decay is a simple exponential at high light biases but a bi-exponential at lower background illuminations, so the two life-times from a bi-exponential fitting are reported.}\label{fig:tpv_full_dd}
+					In (\textbf{b}) a device with mobile ions in the absorber layer is reported, the resulting decay is a simple exponential at high light biases but a bi-exponential at lower background illuminations, so the two life-times from a bi-exponential fitting are reported.
+				}\label{fig:tpv_full_dd}
 			}}
 	\end{figure}
 
@@ -695,7 +713,7 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 	\end{dmath}
 	where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
 	The pre-factor $n_|pre|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life-time.
-	As shown, the life-time typically decreases exponentially with the light bias with an ideality modifier of $v = m/(\Phi-1)$.
+	As shown, the life-time typically decreases exponentially with the light bias, as experimentally observed in the example of \cref{fig:tpv-monoexp}, with an ideality modifier of $v = m/(\Phi-1)$.
 	This relation is in accordion with equivalent studies on \gls{osc} \cite{Shuttle2008,Shuttle2008d,Credgington2011}.
 
 \paragraph{Diode-capacitor discharge could be the limiting time}
@@ -774,6 +792,13 @@ thin undoped films dependency on thickness Deledalle2015 Deledalle2014
 
 \section{Transient PhotoCurrent (\glsentryshort{tpc})}\label{characterization_tpc}
 
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{ce_scheme/ce_scheme.pdf}
+	\mycaption[Scheme of TPC experiment]{
+		A device is illuminated while short circuited through a small resistance, then a short light pulse is added and the additional flowing current is integrated to give the photo-generated charge. The constant illumination intensity is changed and the measurement is repeated.}\label{fig:tpc_scheme}
+\end{SCfigure}
+
 	\paragraph{Concept}
 	This technique, applied to a solar cell at short circuit conditions, allows us to study the dependence of \gls{eqe} on the light illumination intensity \cite{ORegan2004}.
 	It gives approximatively the same information of the \gls{jsc} \textit{versus} light intensity experiment explained in \cpageref{jsc-phi}.
@@ -795,7 +820,7 @@ thin undoped films dependency on thickness Deledalle2015 Deledalle2014
 	1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 	Then an additional illumination pulse is provided \textit{via} a nitrogen laser and the voltage across the resistor is monitored using an oscilloscope connected in parallel.
 %	The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor.
-	This allows us to measure a potential drop across the resistor and the related current via Ohm's law $J = V / \Omega$.
+	This allows us to measure a potential drop across the resistor and the related current via Ohm's law $J = V / R$.
 	Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge generated by the laser pulse.
 	This process is repeated at 1~sun and at dark background illumination conditions.
 	For each illumination intensity, the reported decay is the result of averaging around 30 transients in order to decrease the electronic noise.
@@ -959,7 +984,8 @@ where we neglected $-1$ addend for non-dark cases, inverting the equation we obt
 The \cref{eq:reconstruction_voc} now contains just parameters which can be obtained from our photophysical measurements \cite{Wheeler2015,Wheeler2017,Du2018,Barnes2011a}.
 
 \section{Impedance Spectroscopy}
-\epigraph{\textit{"No, I never used this technique, I tried but I couldn't understand it."}}
+%\epigraph{\textit{"No, I never used this technique, I tried but I couldn't understand it."}}
+\epigraph{\textit{"One does not simply have a look at impedance spectroscopy data"}}{Boromir}
 
 \paragraph{Frequency domain}
 Thanks to Kramers-Kronig relation, from frequency domain techniques we should be able to extract the same information as from time-domain techniques, as the aforementioned ones.
@@ -968,17 +994,17 @@ On the other hand this also implies a much longer measurement, for which the dev
 
 \paragraph{Concept}
 Impedance spectroscopy can be performed with easily available equipment: most of the electrochemical units used in the research labs for measuring cyclic voltammetry include this technique.
-An alternated voltage at frequency $f$ is applied to the two electrodes of the device and the resulting alternated current is observed in amplitude and phase.
+An alternated voltage at frequency $\nu = \omega / (2 \pi)$ is applied to the two electrodes of the device and the resulting alternated current is observed in amplitude and phase.
 For an accurate phase estimation usually a lock-in amplifier is used.
-The in-phase component can be taken for calculating a resistance $Z'(f)$ and the quadrature component for calculating the reactance $Z''(f)$.
-The sum of these two components give the complex impedance: $Z(f) = Z'(f) + iZ''(f)$.
+The in-phase component can be taken for calculating a resistance $Z'(\nu)$ and the quadrature component for calculating the reactance $Z''(\nu)$.
+The sum of these two components give the complex impedance: $Z(\nu) = Z'(\nu) + iZ''(\nu)$.
 The voltage oscillation should be large enough for measuring a current profile without too much noise, usually amplitudes from \SIrange{20}{200}{\mV} are employed.
 Repeating this on different alternating voltage frequencies, often from \SIrange{1e-2}{1e7}{\Hz}, the spectra of impedance can be obtained.
-The impedance spectroscopy can be represented in various shapes: Nyquist plots where $-Z''$ is plotted against $Z'$, Bode plots of phase, $|Z|$, $Z''$, or $Z'$ are plotted against the frequency $f$ or, as a capacitance (or apparent capacitance, as we will see in \cref{ch:impedance}) defined as $\omega^{-1}\Im(Z^{-1})$.
+The impedance spectroscopy can be represented in various shapes: Nyquist plots where $-Z''$ is plotted against $Z'$, Bode plots of phase, $|Z|$, $Z''$, or $Z'$ are plotted against the frequency $\nu$ or, as a capacitance (or apparent capacitance, as we will see in \cref{ch:impedance}) defined as $\omega^{-1}\Im(Z^{-1})$.
 
 \paragraph{Stability}
 As the measurement of a complete impedance spectra is very time demanding, the device stability is of paramount importance.
-Moreover, degradation processes or stabilization happening within the studied $1/f$ time span (between hundreds of seconds and microseconds) will result in glitches which can be easily mistaken for interesting data \cite{Jacobs2018,Moia2019}.
+Moreover, degradation processes or stabilization happening within the studied $1/\nu$ time span (between hundreds of seconds and microseconds) will result in glitches which can be easily mistaken for interesting data \cite{Jacobs2018,Moia2019}.
 
 \paragraph{Interpretation}
 Due to the large amount of extracted data and the complex features usually observed when studying perovskite solar cells (\textit{e.g.} multiple arcs in the Nyquist plot), the parameters extraction is usually done \textit{via} fitting with an equivalent electrical circuit.
