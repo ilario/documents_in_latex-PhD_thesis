@@ -64,11 +64,15 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 		where $J_|ph|$ is the total photo-generated current (negative sign), $J_0$ is the dark diode saturation current (the current flowing in dark when applying a reverse bias, negative sign), $q$ is the elementary charge, $k_|B|$ is the Boltzmann constant, and $T$ is the temperature.
 		If recombination losses at short circuit are negligible (which can be measured either with $\jsc$ \textit{versus} $\phi$, see \cpageref{jsc-phi}, or with \gls{tpc}, see \cpageref{characterization_tpc}), the photo-generated current can be approximated with the short circuit current $J_|ph|(\phi) \approx \jsc(\phi)$.
 		Clearly the reported equation just offers a simplified model.
-		For example, it can be improved adding the contribution from the series resistance $R_|s|$ and would become
-		$$J = J_|ph|(\phi) - J_0\left[\exp(\frac{q(V+JR_|s|)}{n_|id|k_|B|T})-1\right]$$
+		For example, it can be improved adding the contribution from the series resistance $R_|s|$ and would become:
+		\begin{equation}
+		J = J_|ph|(\phi) - J_0\left[\exp(\frac{q(V+JR_|s|)}{n_|id|k_|B|T})-1\right]
+		\end{equation}
 		The function is now an implicit one, requiring numerical solving even for obtaining $\jsc$.
-		Additionally, we can include the leakage current due to the internal shunt resistance $R_|sh|$ \cite{Tvingstedt2017}:
-		$$J = J_|ph|(\phi) - J_0\left[\exp(\frac{q(V+JR_|s|)}{n_|id|k_|B|T})-1\right] + \frac{V+JR_|s|}{R_|sh|}$$
+		Additionally, we can include the leakage current due to the internal shunt resistance $R_|sh|$ \cite{Nelson2003}:
+		\begin{equation}
+		J = J_|ph|(\phi) - J_0\left[\exp(\frac{q(V+JR_|s|)}{n_|id|k_|B|T})-1\right] + \frac{V+JR_|s|}{R_|sh|}
+		\end{equation}
 		
 		\paragraph{Top and bottom of devices} The point of view of the manufacturer is used for defining the physical top and bottom of a device: the bottom is the glass substrate and the top is the last deposited layer.
 		This is opposite with the usage of a solar cell in the real world and with most of the solar simulators (but not all of them, for example Paios from Fluxim has an illumination from below, more convenient for contacting the electrodes without a samples holder \cite{Fluxim}).
@@ -77,15 +81,15 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 
 		\begin{SCfigure}
 			\centering
-			\includegraphics[width=0.5\textwidth]{shadowing_mask/shadowing_mask.pdf}
+			\includegraphics[width=0.35\textwidth]{shadowing_mask/shadowing_mask.pdf}
 			\mycaption[Illuminated area after a shadowing mask.]{This schema is just for explaining the concept described in the text, its dimensions are not realistic.}\label{fig:shadowing_mask}
 		\end{SCfigure}
 
 		In literature is generally suggested to use a shadowing mask when measuring the solar cell devices in order to better define the illuminated area (as in the broken \cite{Brinser2017} form from Nature publisher \cite{NatureResearch2017}).
-		In our case the active area is just \SI{0.09}{\square\cm} so the mask aperture should be extremely small and its exact positioning troublesome.
-		Additionally, the fact that the illumination reaches the mask from a wide angle (the illuminating source dimension, which is not just the lamp as the illumination passes through spread lenses, is not small compared to the lamp-cell distance) allows the light to spread through the substrate glass (\SI{2.2}{\mm} for \gls{fto} substrates, other groups use even thicker glass substrates) reaching a significantly larger area on the active layer at the other side of the glass, as represented in \cref{fig:shadowing_mask}.
+		Our active area is just \SI{0.09}{\square\cm} so the mask aperture should be extremely small and its positioning troublesome.
+		Additionally, the fact that the illumination reaches the mask from a wide angle (the illumination passes through spread lenses, whose size is not small compared to the lamp-cell distance) allows the light to spread through the substrate glass (\SI{2.2}{\mm} for our \gls{fto} substrates) illuminating a large area on the active layer, as represented in \cref{fig:shadowing_mask}.
 		In our solar simulator a linear widening of 8~\% over \SI{2}{\mm} was estimated, this makes an illuminated area 16~\% larger than the mask aperture.
-		Even if the total incident power is still determined from the mask aperture, the illumination intensity is not 1~sun any more, compromising the validity of a measurement done with a shadowing mask.
+		Even if the total incident power is determined from the mask aperture, the incident intensity is not 1~sun any more, compromising the validity of the measurement.
 
 
 	\subsection{Stability During the Measurement and Small/Large Perturbations}
@@ -105,18 +109,13 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 		In this case, the light pulse is not only probing the recombination, but it is adding some, so a large perturbation has to be avoided.
 		This effect has been reported for \gls{dssc} in \authoryear{Barnes2013}.
 
-		\paragraph{Large perturbations -- impedance}
-		Another example: a too wide sinusoidal voltage oscillation amplitude in impedance measurements can cause a non-sinusoidal current output.
-		This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation.
-		But artefacts could arise and cause misinterpretations, as explained in \cpageref{impedance-large_perturbations}.
-
 		\paragraph{Large perturbations -- \gls{trpl}}
 		Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer.
 		This pulse induces a the migration of the ionic defects to a new profile depending on the pulse intensity \cite{Levine2018}, by a small extent due to its short duration.
 		The fact that the relaxation time of the ionic migration is usually much larger than the laser repetition rate (\si{\ms} to seconds for the ions \cite{Jacobs2018} and \si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse.
 		As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care.
 		An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016} and elsewhere \cite{Chen2015,Chen2017}.
-		This should also be considered when comparing life-times from different laser fluences \cite{Manser2014}.
+%		This should also be considered when comparing life-times from different laser fluences \cite{Manser2014}.
 
 \section{Current-Voltage Sweeps}
 
@@ -151,7 +150,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	\end{SCfigure}
 	We wanted to underline that due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one.
 	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result.
-	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena\cite{Jacobs2018,Du2018}.
+	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena \cite{Jacobs2018,Du2018}.
 
 	\paragraph{Noise} The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}.
 	For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted \textit{via} a parabolic fitting.
@@ -160,9 +159,11 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current-time derivative falls below a threshold (\textit{e.g.}\ \SI{0.2}{\%\per\minute}) \cite{Dunbar2017,Dunbar2017a}.
 	In this thesis, these techniques have not been used.
 
-	\paragraph{Shunt and series resistances} \label{resistances} In our group the shunt and series resistances are evaluated by the current \textit{versus} voltage derivative of a dark current-voltage sweep respectively at zero and at high-enough voltage.
-	This methodology is inherited from organic solar cells and, as is easy to foresee, is unreliable on hysteretic devices: in the case of perovskite solar cells a measurement of the stabilised current at a few points have better chances to produce a useful result.
-	The measurement of the current at a voltage close to zero is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
+	\paragraph{Shunt and series resistances} \label{resistances}
+	The shunt and series resistances can be evaluated by the current \textit{versus} voltage derivative of a dark current-voltage sweep respectively at zero and at high-enough voltage.
+	Perovskite solar cell hysteretic behaviour can affect this measurement.
+	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
+	Still, the ionic profile would be different for the different applied voltages, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2018b} and explained in \cpageref{transient_suns_voc} should be implemented.
 
 \section{V\textsubscript{OC} and J\textsubscript{SC} Dependence on Light Intensity}
 	The solar simulator illumination intensity $\phi$ is reduced \textit{via} neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter).
@@ -175,7 +176,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 		\begin{equation} \label{eq:jsc-phi}
 			\jsc \propto \phi^\alpha
 		\end{equation}
-		giving $\alpha$ values usually from 0.95 to 1.
+		where $\alpha$ is a free fitting parameter. Its values usually range from 0.95 to 1.
 
 		\paragraph{Interpretation} 
 		An $\alpha$ value lower than 1 indicates that not all the photo-generated charges get extracted, neither at short circuit conditions.
@@ -183,56 +184,95 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 
 	\subsection{\Glsentryshort{voc} \textit{versus} $\phi$ and the Ideality Factor $m$}
 		Setting $J=0$, which corresponds to open circuit conditions, in \cref{eq:photodiode} (without considering the series resistance correction) we can obtain a relation between \gls{jsc} and \gls{voc}:
-		$$\jsc(\phi) = J_0\left[\exp(\frac{q\voc (\phi)}{n_|id|k_|B|T})-1\right]$$
+		\begin{equation}
+		\jsc(\phi) = J_0\left[\exp(\frac{q\voc (\phi)}{n_|id|k_|B|T})-1\right]
+		\end{equation}
 		This equation can already be used for obtaining the $n_|id|$ and $J_0$ values fitting the \gls{jsc} and \gls{voc} measured at different light intensities $\phi$ (also varying the temperature could be used for fitting the values, but it was not done during this thesis \cite{Tvingstedt2016}).
 		Solving for \gls{voc} we obtain:
-		$$\voc = \frac{n_|id|k_|B|T}{q}\cdot\ln\left(\frac{\jsc}{J_0} + 1\right)$$
+		\begin{equation}\voc = \frac{n_|id|k_|B|T}{q}\cdot\ln\left(\frac{\jsc}{J_0} + 1\right)\end{equation}
 		Considering that the saturation current $J_0$ (current in dark under reverse bias) is much smaller than $\jsc$ for the light intensities we usually employ (down to \SI{0.05}{suns}), we can approximate to:
-		$$\voc \approx u_1 + \frac{n_|id|k_|B|T}{q}\cdot\ln(\jsc)$$
+		\begin{equation}
+		\voc \approx u_1 + \frac{n_|id|k_|B|T}{q}\cdot\ln(\jsc)
+		\end{equation}
 		where $u_1$ is a useless constant.
 		Then if the $\alpha$ value is close enough to~1, we can use \cref{eq:jsc-phi} and further approximate for plotting against light intensity $\phi$:
 		\begin{equation}\label{eq:voc_vs_phi}
 			\voc (\phi) \approx u_2 + \frac{n_|id|k_|B|T}{q}\cdot\ln(\phi)
 		\end{equation}
-		This is the equation we commonly employ for fitting and obtaining ideality factors \cite{Nelson2003}.
-		In some cases this latest expression is used as ideality factor definition as it conveniently uses a zero current measurement (\gls{voc}) so that series resistance can be completely ignored \cite{Kirchartz2012}.
+		This is the equation we commonly employ for fitting and obtaining an ideality factor value \cite{Nelson2003} as it conveniently uses a zero current measurement (\gls{voc}) so that series resistance can be completely ignored \cite{Kirchartz2012}.
+%		In some cases this latest expression is used as ideality factor definition 
 		The shunt resistance will still affect the measurement \cite{Tvingstedt2017}.
 		The so-obtained ideality factor $n_|id|$ is usually from 1 to 2.
-		A voltage dependent ideality factor can also be measured either from a derivative form of \cref{eq:voc_vs_phi} \cite{Tvingstedt2017} or from a current-voltage sweeps in dark.
-		The latter method has not been tested in this thesis as it would be affected by hysteresis.
-		A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method (employing a pre-biassing for flattening the ionic profile) can be found in \authoryear{Calado2018b}.
+		A light bias/illumination dependent ideality factor can also be measured either from a current-voltage sweeps in dark (which would be influenced by hysteretic behaviour) or from a derivative form of \cref{eq:voc_vs_phi} \cite{Calado2018b}:
+		\begin{equation}
+		n_|id|(\phi_0) = \frac{q}{k_|B|T} \eval{\dv{V_|OC|}{\ln(\phi)}}_{\phi=\phi_0}
+		\end{equation}
+%		The latter method has not been tested in this thesis as it would be affected by hysteresis.
+		
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.5\textwidth}
+						\includegraphics[width=1\textwidth]{vapp_builtin/levels_and_ions_dark.pdf}
+						\subcaption{Dark, $V=0$}\label{fig:vapp_builtin-levels_and_ions_dark}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.5\textwidth}
+						\includegraphics[width=1\textwidth]{vapp_builtin/levels_and_ions_dark_vapp_builtin.pdf}
+						\subcaption{Dark, $V=V_|BI|$}\label{fig:vapp_builtin-levels_and_ions_dark_vapp_builtin}
+					\end{subfigure}					
+					\mycaption[Simulated effect on the ionic profile of the application of a voltage equal to the built-in voltage.]{A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) homojunction device is simulated, above the energy levels are reported and below the ionic density profile is reported. In (\textbf{a}) the device is at equilibrium in dark. In (\textbf{b}) the device is in steady state in dark with an applied voltage equal to the built-in voltage $V=V_|BI| = E_|CB|^{\mathrm{ETM}} - E_|VB|^{\mathrm{HTM}}$.}\label{fig:vapp_builtin}
+				}
+			}
+		\end{figure}
+		
+		\paragraph{Transient Suns-\gls{voc}}\label{transient_suns_voc}
+		A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2018b}.
+		In their work the authors propose to precondition the device in dark at an applied voltage bias roughly equal to the built-in voltage.
+		After this stabilization step the needed measurement conditions are applied (illumination is switched on and open circuit conditions are set) and the interesting quantity measured within a few milliseconds.
+		The preconditioning step can increase the filling of the depletion layers in the contacts, which makes the ionic accumulation at the interface vanish through diffusion, or at least decrease.
+		This is illustrated in \cref{fig:vapp_builtin} where a simulation of an homojunction device is reported.
+		While the ionic profile is flat through the perovskite layer, the electronic properties of the cell can be studied using the theory from \gls{osc} \textit{i.e.} without the influence of ionic accumulation.
+		Please notice that in the real case of a heterojunction device, where the two selective contacts have different band gaps, this flattening of the ionic profile could be impossible.
 
 		\paragraph{Interpretation} %\The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $m$. 
 		\authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells \textit{via} stabilized \gls{voc} obtaining, for some cases, values as high as 5.
 		Also in organic \cite{Kirchartz2011,Kirchartz2012} and silicon solar cells \cite{Breitenstein2006} ideality factors greater than 2 has been observed and explained.
 		According to \authoryear{Calado2018b} and \authoryear{Kirchartz2012}, the ideality factor, once obtained in the correct way, is 1 when studying most of the recombination types and 2 for mid-gap trap mediated recombination in regions where the electrons and holes concentrations are similar, $n \approx p$.
 
+\FloatBarrier
+\newpage
 \section{Charge Extraction (\glsentryshort{ce})}
 
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{ce_scheme/ce_scheme.pdf}
-	\mycaption[Scheme of CE experiment]{
+	\mycaption[Scheme of CE experiment.]{
 		A device is illuminated in open circuit conditions, then simultaneously the illumination is switched off and the circuit is closed through a small resistance. The current flowing gets integrated to obtain the extracted charge. Then the illumination is switched on at a different intensity and the measurement is repeated.}\label{fig:ce_scheme}
 \end{SCfigure}
 
 
 	\paragraph{Concept} The charge extraction experiment has been designed to quantify the free charges available in a device \cite{Duffy2000,Barnes2011}.
-	After stabilization of a device at a light intensity and an applied voltage (in our case always at \gls{voc}), the illumination is switched off and the electrodes of the device are short circuited.
-	The transient current flowing through the short circuiting circuit can be measured and integrated to estimate the available charge.
-	The integrated charge has to be considered as a lower bound to the actually present excess charge, as part of it could recombine inside the device during the extraction time \cite{ORegan2005}.
+%	After stabilization of a device at a light intensity and an applied voltage (in our case always at \gls{voc}), the illumination is switched off and the electrodes of the device are short circuited.
+%	The transient current flowing through the short circuiting circuit can be measured and integrated to estimate the available charge.
+	The measured charge has to be considered as a lower bound to the actually present excess charge, as part of it could recombine inside the device during the extraction time \cite{ORegan2005}.
 
 \paragraph{Procedure}
 The device is kept under 1~sun equivalent illumination by a white \gls{led} at open circuit conditions until stabilization is reached.
-1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
-The \gls{led}-solar spectral mismatch affects slightly the measurement, but in no case a \gls{pce} is reported from any \gls{led}-illuminated experiment.
-After stabilization the illumination is switched off and, at the exactly same moment, the device is short circuited through a small and known resistance of \SI{50}{\ohm}.
-This is repeated decreasing the light intensity from 1~sun down to dark (in dark no signal should be observed, indeed some residual charge can usually be seen, the reason of this could be ionic profile updating or an insufficient darkness) and a single decay is measured for each illumination point, over approximatively 30 illumination points.
-The equipment includes two transistors (in a home made circuit by Dr.\ Javier Pérez Hernández) connected to a pulse generator providing a square pulse long at least as the measurement window.
+After stabilization, the illumination is suddenly switched off and, at the exactly same moment, the device is short circuited through a small and known resistance of \SI{50}{\ohm}.
+In the first microseconds, most of the free charge flows through the resistor generating a voltage drop across it.
+An oscilloscope in parallel to this resistance measures the transient voltage indicative of a current flowing through it.
+%This potential drop can be converted to current using the Ohm's law, which, integrated over time, gives the amount of extracted charge.
+The current flowing at any moment can be obtained from the measured voltage \textit{via} Ohm's law: $J=V/R$ where $R$ is \SI{50}{\ohm}.
+This transient current can be integrated over time to obtain the extracted charge.
+This is repeated decreasing the light intensity from 1~sun down to dark (in dark no signal should be observed) and a single decay is measured for each illumination point, over a few tens of different illumination intensities.
+%, indeed some residual charge can usually be seen, the reason of this could be ionic profile updating or an insufficient darkness
+The illumination and short circuiting switching equipment includes two transistors (in a home made circuit by Dr.\ Javier Pérez Hernández) connected to a pulse generator which provides a square pulse long at least as the measurement window.
 From my experience, I recommend to use a short dark period in order to save time for the following stabilization step.
-The measurement is carried out with an oscilloscope in parallel to the known small resistance.
-In the first microseconds, most of the free charge flows through the resistor generating a voltage drop across it which is measured by the oscilloscope.
-This potential drop can be converted to current using the Ohm's law, which, integrated over time, gives the amount of extracted charge.
+
+1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
+The \gls{led}-solar spectral mismatch affects slightly the measurement, but in no case a \gls{pce} is reported from any \gls{led}-illuminated experiment.
 
 \paragraph{Noise sources} \label{ce_noise}
 The lack of complete stabilization of the device before the extraction of charge can introduce both an error in the measured \gls{voc} and in the extracted charge.
@@ -372,15 +412,23 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 				The green line indicates the 1 to 1 relationship.}\label{fig:ce_1sun_time_vs_tpv_1sun_time}
 		\end{SCfigure}
 
-		\paragraph{Charge \textit{versus} light bias trend - Exponential part in \gls{osc}}\label{ce_exp_osc}
-		In \gls{osc} literature the charge \textit{versus} light bias voltage trend is described simply as the exponential shape which describes a Maxwell--Boltzmann distribution for a two levels scenario.
+		\paragraph{Charge \textit{versus} light bias trend -- Exponential part in \gls{osc}}\label{ce_exp_osc}
+		In \gls{osc} literature the charge \textit{versus} light bias voltage trend is described simply as the exponential shape which describes a Maxwell-Boltzmann distribution for a two levels scenario.
 		For a common solar cell working conditions, the Maxwell-Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much bigger than $k_|B|T$.
 		This could be false for high applied voltages, where Fermi-Dirac distribution for fermions should be used.
-		$$n_|CE| = n_|DOS| \exp(\frac{qV - E_|g|}{k_|B|T}) = n_|pre| \exp(\frac{qV}{k_|B|T})$$
-		where $n_|pre|$ prefactor is the equilibrium carrier concentration from a Boltzmann distribution of a 2 levels system. %just a pre-factor with no direct physical interpretation.
+		Thus, the expression for the conduction band electronic density $n$ obtained from the mentioned distribution is:
+		\begin{equation}
+		n(V) = n_|DOS| \exp(\frac{qV - E_|g|}{k_|B|T}) = n_|i| \exp(\frac{qV}{k_|B|T})
+		\end{equation}
+		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|i|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the intrinsic carrier concentration from a Boltzmann distribution of a 2 levels system. %just a pre-factor with no direct physical interpretation.
+		As the \acr{ce} can just extract the excess charge $n_|CE|$, what we can measure is:
+		\begin{equation}
+		n_|CE|(V) = n(V)-n(0) = n_|i| \cdot \left[\exp(\frac{qV}{k_|B|T})-1\right]
+		\end{equation}
+		now the expression of $n_|CE|$ evaluated at zero voltage gives zero extra charge as expected.
 		In some cases an ideality factor $m$ is introduced \cite{Kirchartz2012}, which can help to account for the shape of the density of states of the conduction band, so the expression can be found as:
 		\begin{equation}\label{eq:ce_osc}
-			n_|CE| = n_|pre| \exp(\frac{qV}{mk_|B|T})
+			n_|CE| = n_|i| \cdot \left[\exp(\frac{qV}{mk_|B|T})-1\right]
 		\end{equation}
 		For perovskite solar cells, an alternative interpretation can be found indicating that the exponential trend reflects the extraction from exponential subgap states, \textit{i.e.} shallow traps \cite{Du2018}.
 		This can be used for explaining values of $m$ greater than 2, which would be indicative of the exponential tail width as shown for \gls{osc} by \authoryear{Kirchartz2012}.
@@ -417,13 +465,12 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		\paragraph{Charge \textit{versus} light bias trend -- Linear part}
 		With the introduction of selective contacts, a linear contribution starts to grow in importance summing up to the exponential part.
 		It has been observed both in \gls{osc} \cite{Ryan2017a,Credgington2014} and in perovskite solar cells \cite{Gelmetti2017,Wheeler2017,Du2018}.
-		This linear trend accounts for the accumulation in the selective contacts' depletion layers and in the electrodes, in a parallel plate capacitor fashion: $n = C_|g| \cdot V = \frac{\epsilon_0 \epsilon_|r| A}{d} \cdot V$ where $C_|g|$ is the geometric capacitance, $A$ is the active area, and $d$ is the thickness of the dielectric.
+		This linear trend accounts for the accumulation in the selective contacts' depletion layers and in the electrodes, in a parallel plate capacitor fashion: $n = C_|g| \cdot V = \frac{\epsilon_0 \epsilon_|r| A}{d} \cdot V$ where $C_|g|$ is the geometric capacitance, $A$ is the active area, $d$ is the thickness of the dielectric, $\epsilon_0$ is the electric constant, and $\epsilon_|r|$ is the relative permittivity.
 		This carriers accumulation in the contacts can be visualized with the simulation reported in \cref{fig:ce_single_dd_charge-1sun}.
 		Extending \cref{eq:ce_osc}, the complete equation becomes:
 		\begin{equation}\label{eq:ce_full}
-			n_|CE| = C_|g| \cdot V + n_|pre| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
+			n_|CE| = C_|g| \cdot V + n_|i| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
 		\end{equation}
-		where the $-1$ was introduced for forcing the curve to cross the origin, as in steady state dark conditions both the \gls{voc} and the extracted charge are defined as zero.
 		
 		\paragraph{Charge \textit{versus} light bias trend -- Geometric capacitance voltage dependency}
 		More exactly, $d$ is the distance between the regions where the opposed charges are getting accumulated, which is the space charge layers (usually depletion layers) in the contacts.
@@ -474,14 +521,14 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
-				\includegraphics[width=0.9\textwidth]{ce_full_dd/ce_full_dd-crop.pdf}
+				\includegraphics[width=0.9\textwidth]{ce_full_dd/ce_full_dd.pdf}
 				\mycaption[Simulation of a complete CE experiment: charge \textit{versus} light bias with or without mobile ions.]{
 					A simulation for a homo-junction device up to 1000~sun illumination (rightmost point of each set) is reported, with three points for decade.
 					For each set of points, the bigger size one indicates the 1~sun pre-illumination.
 					The green crosses simulates the experimentally utilised conditions: the charge gets integrated over few microseconds, while the mobile ions didn't have enough time to start migrating.
 					The orange pluses considers the charge integrated until the device stabilization, over various seconds, including also the ionic displacement current.
 					The purple circles simulates a mobile-ions free device.
-					The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n_|CE| = C_|g| V + n_|pre| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|pre|$, and $m$ are free fitting parameters whose meaning is described in the text.}\label{fig:ce_full_dd}
+					The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n_|CE| = C_|g| V + n_|i| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|i|$, and $m$ are free fitting parameters whose meaning is described in the text.}\label{fig:ce_full_dd}
 			}
 		}
 	\end{figure}
@@ -493,13 +540,14 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		This allows the simulated ions-free device to store more charge at the same illumination intensity.
 
 		\FloatBarrier
+		\newpage
 \section{Transient PhotoVoltage (TPV)}
 	\epigraph{\textit{"Imma firin mah lazor\\pewpew pewpewpew"}}
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{tpv_scheme/tpv_scheme.pdf}
-	\mycaption[Scheme of TPV experiment]{
+	\includegraphics[width=0.55\textwidth]{tpv_scheme/tpv_scheme.pdf}
+	\mycaption[Scheme of TPV experiment.]{
 		A pulsed illumination sums on the constant background illumination, the measured open circuit voltage dynamic shows an increase and a relaxation. }\label{fig:tpv_scheme}
 \end{SCfigure}
 
@@ -514,7 +562,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 	\paragraph{Procedure}
 	The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached.
 	Failure to reach stabilization of the ionic profile will affect the measurement results \cite{ORegan2015b}.
-	1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
+	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 	Then an additional illumination pulse is provided by a nitrogen laser.
 	The pulse duration (\SI{\approx 1.5}{\ns}) is shorter than the oscilloscope resolution we usually employ, so we assume that the measurement happens when the pulse is already over.
 	In the literature, this is not always the case as other research groups use a \gls{led} diode for the pulsed illumination \cite{Calado2016}.
@@ -547,18 +595,19 @@ Comparison of decay times with different stabilization times can be found in \au
 The intensity of the laser pulse is attenuated using a variable neutral density filter (a partially reflecting wheel with different positions for different transmittivities) so that the voltage perturbation caused by the light pulse does not exceed \SI{10}{\mV} with 1~sun background illumination intensity.
 We consider this a "small-enough" perturbation with regards to the measured \gls{voc} (see \cpageref{perturbation} for a definition of small perturbation).
 For example, comparing the excess charge in a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{spiro}\-/Au solar cell at \gls{voc} and at \gls{voc}~+~\SI{10}{\mV} which can be obtained from the data in \cref{fig:ce_noise-integrateExp} fitted with \cref{eq:ce_full} we can obtain respectively a value of \SI{8.2E-8}{} and \SI{8.9E-8}{\coulomb\per\square\cm}.
-Even if we're not considering the dark charge concentration (not measurable in a \acr{ce} experiment), the smallness of the charge perturbation is arguable.
-Still, we're limited to \SI{> 3}{\mV} perturbations due to the strong noise observed in this transient measurement.
-Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not small any more at lower illumination and definitively cannot be small at dark background conditions.
-We could regulate the pulse intensity depending on the background light intensity, to ensure its smallness, but we \emph{do not} do this in order to be able to use the \acr{tpv} data for calculating \acr{dc}, as explained in \cpageref{dc_perturbation}.
-This does not usually affect the parameter extraction from \acr{tpv} as just the high illumination intensity points are considered, as seen in \cpageref{tpv_tau_vs_intensity}, in order to study the device close to its expected working conditions.
+%Even if we're not considering the dark charge concentration (not measurable in a \acr{ce} experiment), the smallness of the charge perturbation is arguable.
+A smaller perturbation is not practically doable as we're limited to \SI{> 3}{\mV} perturbations due to the strong noise observed in this transient measurement.
+%Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not small any more at lower illumination and definitively cannot be small at dark background conditions.
+Decreasing the background light bias, the laser light pulse intensity is kept constant even when it gets out from small perturbation regime, this is needed in order to be able to use the \acr{tpv} data for calculating \acr{dc}, as explained in \cpageref{dc_perturbation}.
+%We could regulate the pulse intensity depending on the background light intensity, to ensure its smallness, but we \emph{do not} do this in order 
+This does not affect the parameter extraction from \acr{tpv} as just the high illumination intensity points are considered, as seen in \cpageref{tpv_tau_vs_intensity}, in order to study the device close to its expected working conditions.
 
 	\paragraph{Voltage transient and charge concentration relationship}
 	As we assume to be in the small perturbation regime, we can study the \cref{eq:ce_full} up to the first term of its series expansion:
-	\begin{dmath*}
-		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \left.\frac{\partial n}{\partial V}\right\rvert_{V=V_0} = n(V_0) + \Delta V \cdot \left[C_|g| + \frac{n_|pre| q}{mk_|B|T}\exp(\frac{qV_0}{mk_|B|T})\right]
-%		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \eval{\dv{n}{V}}_{V=V_0} = n(V_0) + \Delta V \cdot \left(C_|g| + \frac{n_|pre| q}{mk_|B|T}\exp\left(\frac{qV_0}{mk_|B|T}\right)\right)
-	\end{dmath*}
+	\begin{dmath}
+		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \left.\frac{\partial n}{\partial V}\right\rvert_{V=V_0} = n(V_0) + \Delta V \cdot \left[C_|g| + \frac{n_|i| q}{mk_|B|T}\exp(\frac{qV_0}{mk_|B|T})\right]
+%		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \eval{\dv{n}{V}}_{V=V_0} = n(V_0) + \Delta V \cdot \left(C_|g| + \frac{n_|i| q}{mk_|B|T}\exp\left(\frac{qV_0}{mk_|B|T}\right)\right)
+	\end{dmath}
 	Assigning the last addend to $\Delta n$ we can see that the charge amount variation not only is linear with $\Delta V$ (as we're in the small perturbation regime), but it also depends on the steady state voltage $V_0$.
 	This relation is studied in the differential capacitance (\acr{dc}) experiment, described further in this chapter.
 
@@ -566,23 +615,23 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 	For what concerns a \acr{tpv} experiment, we're just interested in the analysis of the time needed for re-equilibration to steady state conditions.
 	As aforementioned, the relation between $\Delta V$ and $\Delta n$ in small perturbation regime is linear, so the lifetime extracted from a $\Delta V$ decay will have the same lifetime of the underlying $\Delta n$, which is the interesting quantity when speaking of recombination.
 	This means that we can observe the variations in voltage for having a correct kinetic description of the charge amount variation.
-	At steady state conditions, the time derivative of the amount of charge is zero $\partial n_0 / \partial t = g(\phi) - U(n_0) = 0$ where $g$ is the generation and $U$ is the recombination.
-	Considering the situation after the end of the light pulse, so while $g$ is constant but $n$ has been increased by $\Delta n$, and using a simplified expression for the recombination including just two contributions with reaction order 1 and 2 we can write:
-	\begin{dmath*}
+	At steady state conditions, the time derivative of the amount of charge is zero $\partial n_0 / \partial t = g(\phi) - U(n_0) = 0$ where $g$ is the generation rate and $U$ is the recombination rate.
+	Considering the situation after the end of the light pulse, so while $g$ is constant but $n$ has been increased by $\Delta n$, and using a simplified expression for the recombination including just two contributions with reaction order 1 and 2 and rate constants $k_1$ and $k_2$ we can write:
+	\begin{dmath}
 %		\frac{\partial (n_0 + \Delta n)}{\partial t} = g - k_1(n_0 + \Delta n) - k_2(n_0 + \Delta n)^2 = (g - k_1 n_0 - k_2 n_0^2) - (k_1 \Delta n + 2 k_2 n_0 \Delta n) - (k_2 \Delta n ^2) \approx - (k_1 + 2 k_2 n_0 ) \Delta n
-		\pdv{(n_0 + \Delta n)}{t} = g - k_1(n_0 + \Delta n) - k_2(n_0 + \Delta n)^2 = (g - k_1 n_0 - k_2 n_0^2) - (k_1 \Delta n + 2 k_2 n_0 \Delta n) - (k_2 \Delta n ^2) \approx - (k_1 + 2 k_2 n_0 ) \Delta n
-	\end{dmath*}
+		\pdv{(n_0 + \Delta n)}{t} = g - U = g - k_1(n_0 + \Delta n) - k_2(n_0 + \Delta n)^2 = (g - k_1 n_0 - k_2 n_0^2) - (k_1 \Delta n + 2 k_2 n_0 \Delta n) - (k_2 \Delta n ^2) \approx - (k_1 + 2 k_2 n_0 ) \Delta n
+	\end{dmath}
 	where the zeroth order term is the steady state value, so it's zero, and the second order order term can be neglected (if $\Delta n \ll n_0$ then $k_2 \Delta n^2 \ll k_2 n_0 \Delta n$).
 	So the rate equation is a simple pseudo first order reaction, and the kinetic behaviour follows an exponential description like:
 	\begin{equation}\label{eq:tpv_monoexp}
 		n (t) = n_0 + \Delta n_0 \cdot e^{-(k_1 + 2 k_2 n_0) t} = n_0 + \Delta n_0 \cdot e^{-t / \tau}
 	\end{equation}
 	where $\tau = (k_1 + 2 k_2 n_0)^{-1}$ is the small perturbation life-time.
-	For a single recombination with a generic recombination reaction order $\Phi$ we can thus write \cite{Shuttle2008}:
+	For a single recombination with a generic recombination reaction order $\Phi$ we can generalize to \cite{Shuttle2008}:
 	\begin{equation}\label{eq:tpv_tau_order}
 		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1}
 	\end{equation}
-	
+	where $k_\Phi$ is the dominant recombination rate constant.
 	
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -615,17 +664,19 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 	This is more frequent in bottom cathode devices including mesoporous titania layers \cite{Carnie2015,ORegan2015b} but has also been reported for silicon solar cells \cite{Kiermasch2018}.
 	With \emph{bi-exponential} decay we refer to the sum of two exponential decays with two different half-life times, like:
 	\begin{equation}\label{eq:tpv_biexp}
-		V (t) = V_0 + \Delta V_1 \cdot e^{-k_1t} + \Delta V_2 \cdot e^{-k_2t}
+		V (t) = V_0 + \Delta V_a \cdot e^{-t/\tau_a} + \Delta V_b \cdot e^{-t/\tau_b}
 	\end{equation}
+	where $\tau_a$ and $\tau_b$ are two distinct life-times while $\Delta V_a$ and $\Delta V_b$ are the respective amplitudes of the contributions to the measured decay.
 	The presence of two different recombination processes is not enough for justifying a bi-exponential decay.
-	This is clear looking back to \cref{eq:tpv_monoexp}, where even treating two recombination processes with even two different reaction orders we obtained a simple exponential decay.
+	This is clear looking to \cref{eq:tpv_monoexp}, where considering two recombination processes with two different reaction orders we obtained a simple exponential decay.
 	What we have to remember here, is that \cref{eq:tpv_monoexp} was obtained for a zero dimensional case, like what would happen in a homogeneous chemical reaction.
 	In our case, the multiple recombination centres could be spatially separated.
 	If the charge concentration in the two centres is dis-entangled (is not identical at any time), the sum of two exponential decays can be expected rather than a simple exponential.
 	This dis-entanglement is possible if the time needed for the free carriers to migrate from a recombination centre to the other is larger than the shorter recombination life-time.
 	This can happen thanks to a large-enough distance between recombination centres together with a slow free carriers mobility.
 	For example for recombination centres at different depths in the solar cell stack, like at the two perovskite/contacts interfaces.
-	For laterally spaced recombination centres (\textit{e.g.} pinholes \textit{versus} well covered regions) the high mobility in the electrodes is expected to equal the quasi-Fermi levels in the two adjacent recombination centres avoiding bi-exponential decays, nevertheless reports of this phenomena have been reported \cite{Montcada2017}.
+	Also for laterally distanced recombination centres (\textit{e.g.} pinholes \textit{versus} well covered regions) this have been reported \cite{Montcada2017}.
+%	the high mobility in the electrodes is expected to equal the quasi-Fermi levels in the two adjacent recombination centres avoiding bi-exponential decays, nevertheless reports of this phenomena have been reported \cite{Montcada2017}.
 
 	\paragraph{Mobility limited case}\label{tpv_mobility}
 	As we just saw, the mobility is a crucial parameter for the \acr{tpv} experiment.
@@ -645,7 +696,7 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 	\paragraph{Bi-exponential decays at low background illumination -- large perturbations}
 	While bi-exponential decays at high background illumination are often not observed, these are quite always present at lower background illumination, as in for the example reported in \cref{fig:tpv-biexp_full}.
 	Clearly, the aforementioned explanation for bi-exponential decays at high illumination are still valid for the low illumination case.
-	Additionally, when studying a decay measured at lower background light intensity, we have to remember that, at least for our group's \acr{tpv} procedure, we're out of the small perturbation regime and this could justify non-exponential decays in various ways.
+	Additionally, when studying a decay measured at very low background light intensity, we have to remember that we're out of the small perturbation regime and this could justify non-exponential decays in various ways.
 
 	\paragraph{Bi-exponential decays at low background illumination -- ionic migration}\label{tpv_biexp_lowlight_ions}
 	There is another process that can be active at the very long time scale of the recombination at low free carriers density (low background illumination): ionic migration.
@@ -657,14 +708,13 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
-				\begin{subfigure}[t]{0.9\textwidth}
-					\includegraphics[width=1\textwidth]{tpv_full_dd/tpv_full_dd_noions-crop.pdf}
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{tpv_full_dd/tpv_full_dd_noions.pdf}
 					\subcaption{Without mobile ions}\label{fig:tpv_full_dd_noions}
 				\end{subfigure}
-				\bigskip
-
-				\begin{subfigure}[t]{0.9\textwidth}
-					\includegraphics[width=1\textwidth]{tpv_full_dd/tpv_full_dd_ions-crop.pdf}
+				\qquad
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{tpv_full_dd/tpv_full_dd_ions.pdf}
 					\subcaption{With mobile ions}\label{fig:tpv_full_dd_ions}
 				\end{subfigure}
 				\mycaption[Simulated \glsentryshort{tpv} without and with mobile ions.]{
@@ -695,7 +745,7 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 
 	\begin{SCfigure}
 		\centering
-		\includegraphics[width=0.45\textwidth]{tpv_RCtime/TPVdarkTime_vs_RCdarkTime.pdf}
+		\includegraphics[width=0.5\textwidth]{tpv_RCtime/TPVdarkTime_vs_RCdarkTime.pdf}
 		\mycaption[\Glsentryshort{tpv} time has an upper bond due to discharge through oscilloscope.]{
 			Dark \acr{tpv} time (from a robust exponential fit) \textit{versus} RC time derived from the geometric capacitance from \acr{dc} and the \SI{1}{\Mohm} of the oscilloscope.
 			Each point is a different device for a total of 76 devices, including many different structures.
@@ -709,10 +759,10 @@ This does not usually affect the parameter extraction from \acr{tpv} as just the
 %		For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
 %	This "chemical" charge (charge stored in the perovskite layer) is represented as the exponential part of \cref{eq:ce_full}, so we obtain:
 	\begin{dmath}\label{eq:tpv_tau_vs_intensity}
-		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = \frac{n_|pre|^{1-\Phi}}{\Phi k_\Phi} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|pre|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|pre|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{q\voc}{vk_|B|T})
+		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = \frac{n_|i|^{1-\Phi}}{\Phi k_\Phi} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|i|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|i|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{q\voc}{vk_|B|T})
 	\end{dmath}
 	where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
-	The pre-factor $n_|pre|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life-time.
+	The pre-factor $n_|i|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life-time.
 	As shown, the life-time typically decreases exponentially with the light bias, as experimentally observed in the example of \cref{fig:tpv-monoexp}, with an ideality modifier of $v = m/(\Phi-1)$.
 	This relation is in accordion with equivalent studies on \gls{osc} \cite{Shuttle2008,Shuttle2008d,Credgington2011}.
 
@@ -723,6 +773,8 @@ The life-time observed in this regime would also decrease exponentially with the
 
 Also when performing full signal Open Circuit Voltage Decay dynamics measurement (OCVD) \cite{Lederhandler1955,Mahan1981}, which has not been performed in this thesis, this limitation has to taken in consideration \cite{Tvingstedt2017,Pockett2017,Pockett2015,Kiermasch2018}.
 
+\FloatBarrier
+\newpage
 \mysection[TPV-CE]{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{tpvce}
 
 \paragraph{Concept}
@@ -765,7 +817,7 @@ Instead, fitting data with the exponential component of \acr{ce} only, the recom
 				In (\textbf{a}) the charge used for the independent variable is taken from the full charge extracted in the \acr{ce} experiment, including the charge stored in contacts and electrodes.
 				The $\tau_|pfo|$ life-time as obtained from \acr{tpv} is used as dependent variable.
 				In (\textbf{b}) just the charge from chemical capacitance (exponential addend in \cref{eq:ce_full}) is used as independent variable.
-				In (\textbf{c}) the $\tau_|pfo|$ is corrected to obtain the total carriers life-time $\tau = \Phi\tau_|pfo|$.
+				In (\textbf{c}) the $\tau$ is corrected using the fitted recombination order $\Phi$ to obtain the total carriers life-time $\tau_|pfo| = \Phi\tau$.
 				Data from \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/Au solar cells \cite{Gelmetti2019}.
 			}\label{fig:tpvce}
 		}
@@ -774,28 +826,28 @@ Instead, fitting data with the exponential component of \acr{ce} only, the recom
 
 \paragraph{From small perturbations life-time to rate constant -- first-order reaction}
 Let's consider a simple case where just a first order or a second order recombination is present.
-From the \cref{eq:tpv_tau_order} it is clear that for the first-order reaction case it is easy to obtain $k_1 = \tau_|pfo|^{-1}$.
-One fact of \cref{eq:tpv_tau_order} for the $\Phi=1$ case have to be underlined: the small perturbations life-time for a first-order recombination does not depend on the charge density, so it would appear as a plateau in the life-time \textit{versus} charge plot \cite{Kiermasch2018}.
+From the \cref{eq:tpv_tau_order} it is clear that for the first-order reaction case it is easy to obtain $k_1 = \tau^{-1} = \tau_|pfo|^{-1}$.
+One fact of \cref{eq:tpv_tau_order} for the $\Phi=1$ case have to be underlined: the small perturbations life-time for a first-order recombination does not depend on the charge density, so it would appear as a plateau in the life-time \textit{versus} charge plot \cite{Kiermasch2018} which is not usually observed.
 
 \paragraph{From small perturbations life-time to rate constant -- higher order reaction}
-For the second and higher order recombination case, to obtain $k_x$ is non-trivial as it is related to $\tau_|pfo|$ \textit{via} the charge density \cite{ORegan2007} and the reaction order \cite{Shuttle2008,Du2018,Barnes2011,Barnes2011a} as shown in \cref{eq:tpv_tau_order}.
+For the second and higher order recombination case, to obtain $k_x$ is non-trivial as it is related to $\tau$ \textit{via} the charge density \cite{ORegan2007} and the reaction order \cite{Shuttle2008,Du2018,Barnes2011,Barnes2011a} as shown in \cref{eq:tpv_tau_order}.
 From this equation we can notice that correcting the small perturbation life-time $\tau$ we can easily obtain a pseudo first order life-time (total carrier life-time) $\tau_|pfo|$ as:
-$$\tau_|pfo| = \Phi \tau = k_\Phi^{-1} n_0^{1-\Phi}$$
-This simple correction allows us to make a meaningful comparison between recombination rates, as represented in \cref{fig:tpvce-nogeom_total}.
+\begin{equation}
+\tau_|pfo| = \Phi \tau = k_\Phi^{-1} n_0^{1-\Phi}
+\end{equation}
+This simple correction allows us to make a meaningful comparison between recombination rates at a given charge density, as represented in \cref{fig:tpvce-nogeom_total}.
 %Because of this, when an information on underlying rate constants is sought, comparisons of $\tau_|pfo|$ have been performed taking care of having similar charge densities in the devices under study \cite{ORegan2008}, \textit{i.e.} comparing vertically (points at the same charge density) in \cref{fig:tpvce}.
 %\paragraph{Obtaining the recombination reaction order}
 %As shown in \cref{eq:tpv_tau_order}, we can extract the reaction order from a power-law fitting of the $\tau_|pfo|$ \textit{versus} $n$ from chemical capacitance data.
 
-High values: high m with inhomogeneous charge profiles Kirchartz2012
-
-thin undoped films dependency on thickness Deledalle2015 Deledalle2014
-
+\FloatBarrier
+\newpage
 \section{Transient PhotoCurrent (\glsentryshort{tpc})}\label{characterization_tpc}
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{ce_scheme/ce_scheme.pdf}
-	\mycaption[Scheme of TPC experiment]{
+	\includegraphics[width=0.6\textwidth]{tpc_scheme/tpc_scheme.pdf}
+	\mycaption[Scheme of TPC experiment.]{
 		A device is illuminated while short circuited through a small resistance, then a short light pulse is added and the additional flowing current is integrated to give the photo-generated charge. The constant illumination intensity is changed and the measurement is repeated.}\label{fig:tpc_scheme}
 \end{SCfigure}
 
@@ -817,7 +869,7 @@ thin undoped films dependency on thickness Deledalle2015 Deledalle2014
 
 	\paragraph{Procedure}
 	The device is kept either at dark or under 1~sun illumination by a white \gls{led} ring short circuited through a \SI{50}{\ohm} resistor until stabilization is reached.
-	1~sun equivalent illumination is defined as the illumination at which the a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
+	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 	Then an additional illumination pulse is provided \textit{via} a nitrogen laser and the voltage across the resistor is monitored using an oscilloscope connected in parallel.
 %	The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor.
 	This allows us to measure a potential drop across the resistor and the related current via Ohm's law $J = V / R$.
@@ -837,6 +889,8 @@ The \gls{tpc} time can be limited by the RC time constant of the extracting circ
 	Other kind of recombination can affect the extracted charge, even in short circuit conditions, if the charge extraction is not sufficiently quick.
 	For this reason, in case of large discrepancies between the dark and the \SI{1}{sun} background illumination measures, the dark one better describes the photo-generated free-charge (in case the dark and illuminated results were different, the first quartile of all \acr{tpc} measurements was used).
 
+\FloatBarrier
+\newpage
 \section{Differential Capacitance (DC)}
 
 	\paragraph{Concept}
@@ -848,13 +902,16 @@ The \gls{tpc} time can be limited by the RC time constant of the extracting circ
 	We assume that the \gls{eqe} is the same at short and open circuit conditions, which means: the charge measured in \acr{tpc}, at short circuit, will be used for referencing data from \acr{tpv}, at open circuit.
 The needed value of $\Delta V$ is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity.
 	Adapting the definition of capacitance "the ratio of the change in an electric charge in a system to the corresponding change in its electric potential" \cite{WikipediaCapacitance2019} to an applied voltage dependent capacitance, we can write:
-%	$$C(V') = \left.\frac{dn}{dV}\right\rvert_{V=V'}$$
-	$$C(V') = \eval{\dv{n}{V}}_{V=V'}$$
+%	\begin{equation}C(V') = \left.\frac{dn}{dV}\right\rvert_{V=V'}\end{equation}
+	\begin{equation}
+	C(V') = \eval{\dv{n}{V}}_{V=V'}
+	\end{equation}
+	where $C$ is a light bias $V'$ dependent capacitance, $n$ is the perturbed electron density, and $V$ is the perturbed voltage.
 	This allows us to estimate the capacitance of the solar cell device at open circuit with various illumination intensities.
 	Additionally, this technique has been used for estimating the electronic band gap of the perovskite layer in \authoryear{Wheeler2017}, considering that also for \acr{dc} as seen for \acr{ce} in \cpageref{ce_energy_levels}, the exponential trend is expected to gain importance as the quasi-Fermi splitting approaches the built-in voltage.
 	
 	\paragraph{Procedure}
-		The charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases ($\Delta V(V')$) values obtained from \acr{tpv}, one for each illumination intensity.
+		The charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases $\Delta V(V')$ values obtained from \acr{tpv}, one for each illumination intensity.
 		The obtained capacitance value is plotted versus the steady state light bias $V'$.
 		The laser pulse intensity has to be the same for the \acr{tpc} and the \acr{tpv} experiments.
 		Additionally to the assumption from \acr{tpc} of charge generation (\gls{eqe}) being independent from background light illumination in the utilised illumination range, as explained in \cpageref{tpc_intensity}, for \acr{dc} we need to add the same assumption also for the open circuit conditions used for \acr{tpv} experiment.
@@ -899,8 +956,8 @@ The needed value of $\Delta V$ is the \gls{voc} increase due to the laser pulse,
 	The $\Delta V$ value can be obtained in various ways, the following methods were tested:
 	\begin{itemize}
 		\item The maximum voltage point, subtracting the steady state \gls{voc}. This is the classical way to obtain $\Delta V$ but it is heavily affected by the aforementioned noise when a short time window is used.
-		\item The linear factor $\Delta V$ in an exponential fit $V (t) = V_0 + \Delta V \cdot e^{-kt}$ was used, but it can fail if the decay does not have a simple exponential shape (often a bi-exponential, sum of two exponentials, is observed).
-		\item In cases where the \acr{tpv} decays have a bi-exponential behaviour, the sum of the two linear factors $\Delta V = \Delta V_1 + \Delta V_2$ in a bi-exponential fit as in \cref{eq:tpv_biexp} could improve the previous method. One have to carefully set boundary values to the fitting parameters for avoiding a fast exponential matching just some noise.
+		\item The linear factor $\Delta V$ in an exponential fit $V (t) = V_0 + \Delta V \cdot e^{-t/\tau}$ was used, but it can fail if the decay does not have a simple exponential shape (often a bi-exponential, sum of two exponentials, is observed).
+		\item In cases where the \acr{tpv} decays have a bi-exponential behaviour, the sum of the two linear factors $\Delta V = \Delta V_a + \Delta V_b$ in a bi-exponential fit as in \cref{eq:tpv_biexp} could improve the previous method. One have to carefully set boundary values to the fitting parameters for avoiding a fast exponential matching just some noise.
 		\item The maximum value of a \gls{loess} local regression was used, but this underestimates the value, especially when the peak top are just few points (when the measurement time window is large).
 		\item The average of the values registered starting from the maximum voltage point and during a specified time lapse. For selecting the maximum voltage without interferences from the noise, a custom smoothing function is used.
 	\end{itemize}
@@ -958,6 +1015,8 @@ The needed value of $\Delta V$ is the \gls{voc} increase due to the laser pulse,
 	The \acr{dc} experiment has been demonstrated to output a very similar charge \textit{versus} light bias profile as a \acr{ce} experiment when used on \gls{dssc} \cite{ORegan2005,Barnes2013} and on \gls{osc} \cite{Shuttle2008a}.
 	\Acr{dc} started to be employed in perovskite solar cells characterization due to the excessively large charge amount sometimes measured by \acr{ce} \cite{Wheeler2017,ORegan2015b}.
 
+\FloatBarrier
+\newpage
 \section{Voltage and Current Reconstruction}
 As a self consistency check for the photophysics techniques explained and for confirming that no important factor has been neglected, the performance parameters of the devices can be reconstructed from the fitted parameters from \gls{tpv}, \gls{ce}, and \gls{dc}.
 The shown \gls{jsc} and \gls{voc} reconstruction methods can be extended to obtain the whole current-voltage sweep \cite{Maurano2011}.
@@ -972,15 +1031,19 @@ If losses at short circuit are negligible, photo-generated current can be approx
 
 \paragraph{\Gls{voc} reconstruction}
 Expanding $\tau_|pfo| = \Phi \tau$ with \cref{eq:tpv_tau_order} and neglecting the intrinsic charge density (consideration valid for non-dark cases) so that $n_0 \approx n_|CE|$ we get:
-$$\jsc = n_|CE| \cdot k_\Phi n_|CE|^{\Phi-1}$$
-Then considering just the chemical capacitance charge as relevant for recombination processes, using the exponential addend in \cref{eq:ce_full} we obtain:
-$$\jsc = n_|pre|^\Phi k_\Phi \me^{\frac{q \Phi \voc}{m k_|B| T}}$$
-where we neglected $-1$ addend for non-dark cases, inverting the equation we obtain:
+\begin{equation}
+\jsc = n_|CE| \cdot k_\Phi n_|CE|^{\Phi-1}
+\end{equation}
+Then considering just the chemical capacitance charge as relevant for recombination processes, so keeping just the exponential addend in \cref{eq:ce_full} we obtain:
+\begin{equation}
+\jsc = n_|i|^\Phi k_\Phi \me^{\frac{q \Phi \voc}{m k_|B| T}}
+\end{equation}
+again, we neglected $-1$ from the additional intrinsic charge density. Then inverting the equation we obtain:
 \begin{equation}\label{eq:reconstruction_voc}
-	\voc = \frac{m k_|B| T}{q \Phi} \ln( \frac{\jsc}{n_|pre|^\Phi k_\Phi} )
+	\voc = \frac{m k_|B| T}{q \Phi} \ln( \frac{\jsc}{n_|i|^\Phi k_\Phi} )
 \end{equation}
 %Expanding \cref{eq:tpv_tau_order} with the relevant $n_0$ for recombination taken from the chemical capacitance charge represented by the exponential addend in  we obtain:
-%$$\tau_|pfo| = \left\{\Phi k_\Phi n_|pre|^{\Phi-1} [\exp(\frac{q \voc}{m k_|B| T})-1]^{\Phi-1} \right\}^{-1}$$
+%\begin{equation}\tau_|pfo| = \left\{\Phi k_\Phi n_|i|^{\Phi-1} [\exp(\frac{q \voc}{m k_|B| T})-1]^{\Phi-1} \right\}^{-1}\end{equation}
 The \cref{eq:reconstruction_voc} now contains just parameters which can be obtained from our photophysical measurements \cite{Wheeler2015,Wheeler2017,Du2018,Barnes2011a}.
 
 \section{Impedance Spectroscopy}

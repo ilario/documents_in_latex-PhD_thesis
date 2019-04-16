@@ -92,7 +92,7 @@
 		From this parallelism it can be understood that this recombination is larger for materials with greater absorptivity \cite{Nelson2003} like the ones used for thin film solar cells \cite{Tvingstedt2015}.
 		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
 		Radiative recombination involves the clash of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
-		The expression used for modelling is: $U_{rad} = k_{rad} (np-n_i^2)$, where $n_i$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
+		The expression used for modelling is: $U_{rad} = k_{rad} (np-n_|i|^2)$, where $n_|i|$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
 
 		\paragraph{SRH trap mediated recombination}
 		Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
@@ -104,7 +104,7 @@
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
 		The expression used for modelling is \cite{Shockley1952}:
 		\begin{equation}\label{eq:srh}
-		U_{SRH} = k_{SRH} \frac{np-n_i^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
+		U_{SRH} = k_{SRH} \frac{np-n_|i|^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
 		\end{equation}
 		where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
@@ -197,8 +197,10 @@
 		\paragraph{Continuity equations} The continuity equations have a very intuitive meaning: the concentration of a specie in a specific volume can increase due to generation $G$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
 		This last contribution can be understood with the following example: a traffic light stops the cars flow and causes the increase of their concentration.
 		For electron concentration $n$:
-		$$\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_{n,x}$$
-
+		\begin{equation}
+		\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_{n,x}
+		\end{equation}
+		
 \section{Perovskite Solar Cells}
 
 	Perovskite solar cells is a relatively new player in the photovoltaics world, existing just since 2009 (started by the research groups Miyasaka\cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}).
