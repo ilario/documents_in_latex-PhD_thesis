@@ -1,7 +1,4 @@
-\epigraph{\textit{""}}
 
-\paragraph{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
-The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
 
 \section{Conventions and General Remarks}
 
@@ -163,7 +160,8 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	The shunt and series resistances can be evaluated by the current \textit{versus} voltage derivative of a dark current-voltage sweep respectively at zero and at high-enough voltage.
 	Perovskite solar cell hysteretic behaviour can affect this measurement.
 	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
-	Still, the ionic profile would be different for the different applied voltages, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2018b} and explained in \cpageref{transient_suns_voc} should be implemented.
+	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2018b} and explained in \cpageref{transient_suns_voc} should be implemented.
+	In the case of series resistance, as the employed voltages are always larger than the built-in voltage, the depletion layers should be filled anyway and the transient method should not be required.
 
 \section{V\textsubscript{OC} and J\textsubscript{SC} Dependence on Light Intensity}
 	The solar simulator illumination intensity $\phi$ is reduced \textit{via} neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter).
@@ -253,24 +251,28 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \end{SCfigure}
 
 
-	\paragraph{Concept} The charge extraction experiment has been designed to quantify the free charges available in a device \cite{Duffy2000,Barnes2011}.
+	\paragraph{Concept}
+	The charge extraction experiment has been designed to quantify the free charges available in a device \cite{Duffy2000,Barnes2011}.
+	It works \textit{via} the sudden extraction of the free charges present in an solar cell illuminated at open circuit conditions.
 %	After stabilization of a device at a light intensity and an applied voltage (in our case always at \gls{voc}), the illumination is switched off and the electrodes of the device are short circuited.
 %	The transient current flowing through the short circuiting circuit can be measured and integrated to estimate the available charge.
 	The measured charge has to be considered as a lower bound to the actually present excess charge, as part of it could recombine inside the device during the extraction time \cite{ORegan2005}.
+	Performing this experiment at various light intensities, we can obtain a charge density \textit{versus} light bias relationship.
 
 \paragraph{Procedure}
-The device is kept under 1~sun equivalent illumination by a white \gls{led} at open circuit conditions until stabilization is reached.
+The device is kept under constant illumination by a white \gls{led} at open circuit conditions until stabilization is reached.
 After stabilization, the illumination is suddenly switched off and, at the exactly same moment, the device is short circuited through a small and known resistance of \SI{50}{\ohm}.
-In the first microseconds, most of the free charge flows through the resistor generating a voltage drop across it.
-An oscilloscope in parallel to this resistance measures the transient voltage indicative of a current flowing through it.
+In the first microseconds, most of the free charge flows through the resistor generating a current and a voltage drop across it.
+An oscilloscope in parallel to this resistance measures the transient voltage.
 %This potential drop can be converted to current using the Ohm's law, which, integrated over time, gives the amount of extracted charge.
 The current flowing at any moment can be obtained from the measured voltage \textit{via} Ohm's law: $J=V/R$ where $R$ is \SI{50}{\ohm}.
 This transient current can be integrated over time to obtain the extracted charge.
-This is repeated decreasing the light intensity from 1~sun down to dark (in dark no signal should be observed) and a single decay is measured for each illumination point, over a few tens of different illumination intensities.
+Then the light intensity is decreased and the experiment is repeated, from 1~sun down to dark (in dark no signal should be observed).
+A single decay is measured for each illumination point, over a few tens of different illumination intensities.
+The results are plotted as charge density \textit{versus} light bias.
 %, indeed some residual charge can usually be seen, the reason of this could be ionic profile updating or an insufficient darkness
-The illumination and short circuiting switching equipment includes two transistors (in a home made circuit by Dr.\ Javier Pérez Hernández) connected to a pulse generator which provides a square pulse long at least as the measurement window.
+The equipment switching off the illumination and setting the short circuiting includes two transistors (in a home made circuit by Dr.\ Javier Pérez Hernández) and gets activated by a square voltage pulse from a pulse generator, the pulse is, at least, as long as the measurement window.
 From my experience, I recommend to use a short dark period in order to save time for the following stabilization step.
-
 1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 The \gls{led}-solar spectral mismatch affects slightly the measurement, but in no case a \gls{pce} is reported from any \gls{led}-illuminated experiment.
 
@@ -478,7 +480,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		By consequence, $\epsilon_|r|$ should be considered as a thickness-weighted mean of the relative permittivities of each material between the two accumulation zones.
 		Moreover, as the depletion layers fill up they widen and shrink, so this capacitance can vary as happens for the transition capacitance of a $p$-$n$ junction.
 		A voltage dependent geometric capacitance can be obtained from dark \acr{ce} measurements applying reverse voltage biases \cite{Kiermasch2018} or \textit{via} impedance spectroscopy in dark with a constant voltage bias \cite{Brus2016,Pockett2015}.
-		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$-type materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion layers thickness, happening in the contacts, is negligible when summed to the perovskite layer thickness.
+		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$-type materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion layers thickness (Debye length), happening in the contacts, is negligible when summed to the perovskite layer thickness.
 
 		\paragraph{Charge \textit{versus} light bias trend -- Energy levels point of view}\label{ce_energy_levels}
 		As we mentioned, the linear trend is related to the accumulation in the contacts depletion layers (or, generically, space charge layers), this can be seen from the decrease of the perovskite-contacts conduction band offset between \cref{fig:ce_single_dd_levels-dark,,fig:ce_single_dd_levels-1sun}.
@@ -544,6 +546,17 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 \section{Transient PhotoVoltage (TPV)}
 	\epigraph{\textit{"Imma firin mah lazor\\pewpew pewpewpew"}}
 
+	\paragraph{Concept}
+%	While a complete device is kept open circuit under constant illumination, a small extra illumination is added \textit{via} a short laser pulse.
+	This technique allows us to perturb and observe the a solar cell device at open circuit under illumination.
+	We perturb the device photo-generating an additional small amount of charge and we observe the perturbed open circuit voltage dynamics.
+	The \gls{voc}, originally at its steady state value, will increase due to the greater generation rate during the laser pulse.
+%	From the \gls{voc} \textit{versus} illumination relation for photodiodes reported in \cref{eq:voc_vs_phi} follows that the \gls{voc}, at this new higher illumination, increases (this is not always the case, as for non-stabilized perovskite solar cells \cite{Calado2016}).
+	After the end of the short pulse, the \gls{voc} will slowly go back to the steady state value relative to the constant illumination.
+	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments (also known as PhotoVoltage Decay experiments) which has been applied to \gls{osc} \cite{Shuttle2008}, to \gls{dssc} \cite{ORegan2005,ORegan2004,ORegan2006}, and recently also to perovskite solar cells \cite{Roiati2014a,Marin-Beloqui2014}.
+	From this kinetic profile, a charge life-time can be obtained and plotted against the light bias due to the constant background illumination, as in the example of \cref{fig:tpv-monoexp}.
+	This gives us information about the dominant recombination rate and its dependence on the light bias.
+	
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.55\textwidth]{tpv_scheme/tpv_scheme.pdf}
@@ -551,40 +564,38 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		A pulsed illumination sums on the constant background illumination, the measured open circuit voltage dynamic shows an increase and a relaxation. }\label{fig:tpv_scheme}
 \end{SCfigure}
 
-	\paragraph{Concept}
-	While a complete device is kept open circuit under constant illumination, a small extra illumination is added \textit{via} a short laser pulse.
-	The \gls{voc}, originally at its steady state value, will be perturbed due to the greater generation rate during the laser pulse.
-	From the \gls{voc} \textit{versus} illumination relation for photodiodes reported in \cref{eq:voc_vs_phi} follows that the \gls{voc}, at this new higher illumination, increases (this is not always the case, as for non-stabilized perovskite solar cells \cite{Calado2016}).
-	After the short pulse the \gls{voc} will slowly go back to the steady state value relative to the constant illumination.
-	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments (also known as PhotoVoltage Decay experiments) which has been applied to \gls{osc} \cite{Shuttle2008}, to \gls{dssc} \cite{ORegan2005,ORegan2004,ORegan2006}, and recently also to perovskite solar cells \cite{Roiati2014a,Marin-Beloqui2014}.
-	From this kinetic profile, a charge life-time can be obtained and plotted against the light bias due to the constant background illumination, as in the example of \cref{fig:tpv-monoexp}.
-
 	\paragraph{Procedure}
-	The device is kept under 1~sun illumination by a white \gls{led} ring at open circuit until stabilization is reached.
-	Failure to reach stabilization of the ionic profile will affect the measurement results \cite{ORegan2015b}.
-	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
-	Then an additional illumination pulse is provided by a nitrogen laser.
+	The device is kept under constant illumination by a white \gls{led} ring at open circuit until stabilization is reached.
+	Failure to reach stabilization of the ionic profile will affect the measurement results \cite{ORegan2015b} and can cause unexpected negative \acr{tpv} peaks \cite{Calado2016}.
+	Then an additional short illumination pulse is provided using a nitrogen laser.
 	The pulse duration (\SI{\approx 1.5}{\ns}) is shorter than the oscilloscope resolution we usually employ, so we assume that the measurement happens when the pulse is already over.
 	In the literature, this is not always the case as other research groups use a \gls{led} diode for the pulsed illumination \cite{Calado2016}.
 	Usually a wavelength of \SI{590}{\nm} is selected using a Rhodamine 6G solution \cite{RadiantDyesLaser}, this wavelength illuminates in depth the perovskite layer (in contrast to a blue light where the illumination would be absorbed within the first hundreds of nanometres of the material \cite{Bi2016,Tress2016}).
 	During all the process, the device is connected to an oscilloscope, registering the open circuit voltage profile (the \SI{1}{\Mohm} resistance of the oscilloscope is a good approximation of open circuit).
 	The voltage profile gets averaged over a few tens of pulses in order to increase the signal to noise ratio.
-	Then the background light intensity is slightly decreased and, after the stabilization to the new steady state, the new  \gls{voc} is registered and more transients are registered.
-	This process is repeated over a few tens of light illuminations from 1~sun down to dark.
+	Initially the light illumination is set to \SI{1}{sun} and the laser pulse intensity is attenuated using a neutral filter so that the voltage perturbation remains smaller than \SI{10}{\mV} for ensuring the small perturbation regime.
+	The measurement is repeated after decreasing the background light intensity and waiting a stabilization time.
+	The fitted small perturbation life-time is plotted \textit{versus} the light bias.
+	The background illumination is decreased down to dark background illumination over a few tens different intensities.
+	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 
 \paragraph{Noise treatment}\label{tpv_robust}
 Most of the observed noise (\SI{< 2E-7}{\s}) is due to the radiofrequency emitted by the spark in the nitrogen laser which gets received by all the non-coaxial cables (coaxial ones don't) and from the circuitry of the samples holder acting as an antenna.
 On the contrary to what happens for \acr{ce} (see \cpageref{ce_noise}), the short times noise does not follow a constant pattern, so averaging the measurement over a few repetitions (usually 30) manages to reduce the noise.
 This noise can affect the exponential or bi-exponential fitting, for this reason a robust fitting routine has been used, which gives a lower weight to outlier points.
 An example can be seen in \cref{fig:tpv_robust}.
+
 \begin{figure}
+		\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
 	\centering
-	\includegraphics[width=0.9\textwidth]{{tpv_robust/TPV_ig101-1555-1_0.815394_V-monoexp}.pdf}
+	\includegraphics[width=0.8\textwidth]{{tpv_robust/TPV_ig101-1555-1_0.815394_V-monoexp}.pdf}
 	\mycaption[Robust and normal fitting comparison.]{Plot of a voltage profile from a single \gls{tpv} decay.
 		The 12500 voltage points are represented in a 2D histogram for avoiding the overplotting problem.
 		The normal non-linear least squares fitting (in orange) is affected by initial noise (a faster decay if we consider this as a bi-exponential decay), outliers and characteristics not of interest by the model.
 		The non-linear robust fitting (in magenta) manages to reduce the weight of these points.
 		The studied device is a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae4}\-/Au \cite{Gelmetti2019} with 1~sun background illumination.}\label{fig:tpv_robust}
+	}}
 \end{figure}
 
 \paragraph{Importance of stable steady state starting point}\label{tpv_negativePeaks}
@@ -697,12 +708,31 @@ This does not affect the parameter extraction from \acr{tpv} as just the high il
 	While bi-exponential decays at high background illumination are often not observed, these are quite always present at lower background illumination, as in for the example reported in \cref{fig:tpv-biexp_full}.
 	Clearly, the aforementioned explanation for bi-exponential decays at high illumination are still valid for the low illumination case.
 	Additionally, when studying a decay measured at very low background light intensity, we have to remember that we're out of the small perturbation regime and this could justify non-exponential decays in various ways.
+	
+	
+	\begin{figure}
+		\makebox[\textwidth][c]{
+			\parbox{1.1\textwidth}{
+				\centering
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{}
+					\subcaption{}\label{fig:}
+				\end{subfigure}
+				\qquad
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{}
+					\subcaption{}\label{fig:}
+				\end{subfigure}
+				\mycaption[]{Illumination of \SI{1e-8}{suns}, corresponding to a light bias of \SI{50}{\mV}}\label{fig:}
+			}
+		}
+	\end{figure}
 
 	\paragraph{Bi-exponential decays at low background illumination -- ionic migration}\label{tpv_biexp_lowlight_ions}
 	There is another process that can be active at the very long time scale of the recombination at low free carriers density (low background illumination): ionic migration.
-	What has been observed, simulating a \acr{tpv} experiment on a homojunction device with mobile ions in the absorber layer, is that ionic profile can update to the pulse-perturbed cell condition before the extra free charges recombine.
+	What I have observed, simulating a \acr{tpv} experiment on a homojunction device with mobile ions in the absorber layer, is that ionic profile can update to the pulse-perturbed cell condition before the extra free charges recombine, if this is very slow.
 	This causes a first exponential decay of the voltage, followed by a second exponential decay due to the actual recombination of the charges generated by the laser pulse.
-	So in this case, the fast component life-time is linked to the rearrangement time of the ionic profile.
+	So at low background light intensities, the fast component life-time could be linked to the rearrangement time of the ionic profile.
 
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -779,6 +809,10 @@ Also when performing full signal Open Circuit Voltage Decay dynamics measurement
 
 \paragraph{Concept}
 This is a meta experiment which combines the data from \acr{tpv} and \acr{ce} without needing any additional experimental step.
+Joining the information about charge life-time \textit{versus} light bias from \acr{tpv} with the information about charge density \textit{versus} light bias from \acr{ce}, we obtain the relation of the charge life-time \textit{versus} charge density.
+This new relationship is more insightful than the results from bare \acr{tpv}.
+
+\paragraph{Procedure}
 The voltage dependency of the small perturbation life-time $\tau(V)$ obtained from \acr{tpv} gets expanded with the $V(n)$ relation which can be obtained inverting the fitted function of $n(V)$ from a \acr{ce} experiment for obtaining a $\tau(n)$ relation.
 A reaction order $\Phi$ can be obtained fitting the $\tau(n)$, this can be used for correcting the small perturbation life-time to obtain a pseudo first order life-time \textit{i.e.} total carrier life-time $\tau_|pfo|(n)$ which can be compared between devices with different recombination mechanisms.
 
@@ -868,14 +902,15 @@ This simple correction allows us to make a meaningful comparison between recombi
 \end{SCfigure}
 
 	\paragraph{Procedure}
-	The device is kept either at dark or under 1~sun illumination by a white \gls{led} ring short circuited through a \SI{50}{\ohm} resistor until stabilization is reached.
-	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
-	Then an additional illumination pulse is provided \textit{via} a nitrogen laser and the voltage across the resistor is monitored using an oscilloscope connected in parallel.
+	The device is short circuited through a \SI{50}{\ohm} resistor and kept either at dark or under 1~sun illumination by a white \gls{led} ring until stabilization is reached.
+	Failure to reach stabilization of the ionic profile will affect the measurement results \cite{Belisle2017}.
+	Then an additional illumination pulse is provided \textit{via} a nitrogen laser and the voltage across the \SI{50}{\ohm} resistor is monitored using an oscilloscope connected in parallel.
 %	The signal is acquired by an oscilloscope in parallel to the \SI{50}{\ohm} resistor.
-	This allows us to measure a potential drop across the resistor and the related current via Ohm's law $J = V / R$.
-	Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge generated by the laser pulse.
+	This allows us to measure a potential drop across the resistor and to obtain the related current via Ohm's law $J = V / R$.
+	Subtracting the constant current due to the background illumination and integrating the transient over time gives the charge photo-generated by the laser pulse.
 	This process is repeated at 1~sun and at dark background illumination conditions.
-	For each illumination intensity, the reported decay is the result of averaging around 30 transients in order to decrease the electronic noise.
+	For each illumination intensity, the reported decay is the result of averaging around 30 transients in order to increase the signal to noise ratio.
+	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 
 \paragraph{Small resistance}
 The characteristic time of a \acr{tpc} decay is often comparable with the small perturbation life-time from \acr{tpv} experiment at high background illumination.
@@ -894,28 +929,36 @@ The \gls{tpc} time can be limited by the RC time constant of the extracting circ
 \section{Differential Capacitance (DC)}
 
 	\paragraph{Concept}
-	\Acr{dc} allows us to measure the capacitance of the solar cells at different light biases.
-	Integrating this capacitance profile over the voltage we can obtain the extra charge density \textit{versus} light bias profile.
-	This information is equivalent to the results from \acr{ce}, with the advantage that this technique is a small perturbation technique, working on a stabilized device around its steady state conditions.
 	\Acr{dc} is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experimental step \cite{ORegan2005,ORegan2006,Shuttle2008,Credgington2014,Maurano2011}, sometimes also referred to as "differential charging".
 	From \acr{tpc} we obtain how much charge $\Delta n$ has been generated by the laser pulse and from \acr{tpv} we obtain the voltage increase $\Delta V$ due to the additional charge.
-	We assume that the \gls{eqe} is the same at short and open circuit conditions, which means: the charge measured in \acr{tpc}, at short circuit, will be used for referencing data from \acr{tpv}, at open circuit.
-The needed value of $\Delta V$ is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity.
-	Adapting the definition of capacitance "the ratio of the change in an electric charge in a system to the corresponding change in its electric potential" \cite{WikipediaCapacitance2019} to an applied voltage dependent capacitance, we can write:
-%	\begin{equation}C(V') = \left.\frac{dn}{dV}\right\rvert_{V=V'}\end{equation}
-	\begin{equation}
-	C(V') = \eval{\dv{n}{V}}_{V=V'}
-	\end{equation}
-	where $C$ is a light bias $V'$ dependent capacitance, $n$ is the perturbed electron density, and $V$ is the perturbed voltage.
-	This allows us to estimate the capacitance of the solar cell device at open circuit with various illumination intensities.
+	Relating these two quantities, \acr{dc} allows us to measure the capacitance of the solar cells at different light biases.
+%	we can obtain a light bias dependent capacitance.
+	Integrating this capacitance profile over voltage we can obtain the extra charge density \textit{versus} light bias profile.
+	This information is equivalent to the results from \acr{ce}, with the advantage that this technique is a small perturbation technique, working on a stabilized device around its steady state conditions.
 	Additionally, this technique has been used for estimating the electronic band gap of the perovskite layer in \authoryear{Wheeler2017}, considering that also for \acr{dc} as seen for \acr{ce} in \cpageref{ce_energy_levels}, the exponential trend is expected to gain importance as the quasi-Fermi splitting approaches the built-in voltage.
 	
+%	\begin{equation}C(V') = \left.\frac{dn}{dV}\right\rvert_{V=V'}\end{equation}
+%	This allows us to estimate the capacitance of the solar cell device at open circuit with various illumination intensities.
+
 	\paragraph{Procedure}
-		The charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases $\Delta V(V')$ values obtained from \acr{tpv}, one for each illumination intensity.
-		The obtained capacitance value is plotted versus the steady state light bias $V'$.
-		The laser pulse intensity has to be the same for the \acr{tpc} and the \acr{tpv} experiments.
-		Additionally to the assumption from \acr{tpc} of charge generation (\gls{eqe}) being independent from background light illumination in the utilised illumination range, as explained in \cpageref{tpc_intensity}, for \acr{dc} we need to add the same assumption also for the open circuit conditions used for \acr{tpv} experiment.
-	
+	The laser pulse intensity has to be the same for the \acr{tpc} and the \acr{tpv} experiments.
+	The needed value of $\Delta V$ is the \gls{voc} increase due to the laser pulse, prior to the decay to steady state, for each illumination intensity.
+	The amount of charge photo-generated by the laser pulse $\Delta n$ is obtained from \acr{tpc}.
+	In order to use the charge measured in \acr{tpc} at short circuit for referencing the data from \acr{tpv} at open circuit we have to assume that $\Delta n$ is the same at open and short circuit conditions.
+	In other words, we assume that the \gls{eqe} does not depend on the applied voltage.
+	Additionally, we have to assume that the \gls{eqe} does not depend neither on the background illumination intensity for a device at open circuit conditions (used for \acr{tpv}).
+	This point was discussed for \acr{tpc} in \cpageref{tpc_intensity}.
+%	he   the same assumption done for \acr{tpc} and explained in \cpageref{tpc_intensity}: the charge generation (\gls{eqe}) is independent from background light illumination.
+%	We assume that the \gls{eqe} is the same at short and open circuit conditions, which means: the charge measured in \acr{tpc}, at short circuit, will be used for referencing data from \acr{tpv}, at open circuit.
+Adapting the definition of capacitance "the ratio of the change in an electric charge in a system to the corresponding change in its electric potential" \cite{WikipediaCapacitance2019} to an applied voltage dependent capacitance, we can write:
+\begin{equation}
+C(V') = \eval{\dv{n}{V}}_{V=V'}
+\end{equation}
+where $C$ is a light bias $V'$ dependent capacitance, $n$ is the perturbed electron density, and $V$ is the perturbed voltage.
+	So, the charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases $\Delta V(V')$ values obtained from \acr{tpv}, one for each illumination intensity.
+	The obtained capacitance value is plotted versus the steady state light bias $V'$.
+	The capacitance can be integrated over voltage for obtaining a charge density \textit{versus} light bias relationship.
+		
 \paragraph{Capacitance dependence on applied voltage}
 	The electrical capacitance of most of the commercial capacitors is independent on the applied voltage, as represented in \cref{fig:cap_voltage_dependence_commercial} where the capacitance was measured with a modified \acr{ce} experiment where the pre-conditioning was done directly applying a voltage instead of applying a light bias.
 	This means that the extracted charge is linearly proportional to the applied voltage.

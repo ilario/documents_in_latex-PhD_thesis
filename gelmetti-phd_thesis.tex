@@ -11,7 +11,7 @@
 	% pdflatex gelmetti-phd_thesis
 
 	
-	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5
+	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
 	\usepackage[spanish, es-noquoting, italian, english]{babel}
@@ -42,6 +42,22 @@
 	% from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
 	\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
 	%\AtEveryBibitem{\ifentrytype{article}{\togglefalse{bbx:url}}{}}
+	
+	% alternative solution that works also for \fullcite from https://tex.stackexchange.com/a/229505/173645
+%	\DeclareSourcemap{
+%		\maps[datatype=bibtex]{
+%			\map{
+%				\pertype{article}
+%				\pertype{book}
+%				\step[fieldset=urldate, null]
+%				\step[fieldset=url, null]
+%			}
+%		}
+%	}
+
+% shorter alternative that works also for \fullcite from https://tex.stackexchange.com/a/175534/173645
+\AtEveryCitekey{\UseBibitemHook}
+		
 	\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
 	
 	\DeclareBibliographyCategory{mypapers}
@@ -70,6 +86,11 @@
 
 	\usepackage[ragged, centerbody, rightcaption]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
 	\captionsetup[SCfigure]{indention=0cm}
+	
+	% has to be loaded before hyperref https://tex.stackexchange.com/questions/485270/hyperref-and-titletoc-prints-extra-section-1-or-doc-startchapter-1/
+	\usepackage{titletoc} % for adding a TOC at the beginning of each chapter, alternative to minitoc
+%	\dottedcontents{paragraph}[0em]{}{0em}{1pc} % in each chapter toc, also the paragraph is included, but the indentation is too much
+%	\dottedcontents{subsection}[0em]{}{0em}{1pc} % in each chapter toc, also the subsection is included, but the indentation is too much
 	
 	\usepackage{hyperref}
 
@@ -167,12 +188,24 @@
 %\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
 %\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 %\titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+%\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+%\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
+%\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
-% add negative spacing
+% add negative spacing, maybe it could be done with \titlespacing
 \titleformat{\section}{\normalfont\Large\bfseries}{\hspace*{-0.8cm}\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{\hspace*{-0.8cm}\thesubsection}{1em}{}
 \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{\hspace*{-0.8cm}}
 	%\newcommand{\myp}[1]{\paragraph{\hspace*{-0.5cm}#1}}
+	
+	
+% to be used in the specific chapter table of contents, via titletoc
+	\titlecontents{lsection}[0pt]{ \normalfont \small \bfseries }{}{}{}[]
+	\titlecontents{lsubsection}[0pt]{ \normalfont \small \scshape }{}{}{}[]
+	\titlecontents*{lparagraph}[0pt]{\footnotesize \normalfont}{}{}{, \thecontentspage}[ \textbullet\ ][.]
 	
 	\usepackage{etoolbox}
 	% \sectionmark is broken for the page of first appearance
@@ -281,7 +314,8 @@
 \AtBeginDocument{\catcode`\_=12 \mathcode`\_=32768}
 \makeatother
 
-
+% limit main table of content to sections, do not print subsections
+\setcounter{tocdepth}{1}
 	
 	
 	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-lu-mine-scence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile}
@@ -567,43 +601,157 @@
 	\pagestyle{headings}
 
 \chapter{Introduction}\label{ch:intro}
+	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
+	
+	\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[intro]
+
+\printcontents[intro]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/intro/} }
 	\input{contents_tex/intro.tex}
+	\stopcontents[intro]
 
 \chapter{Experimental Methods}\label{ch:methods}
 \chaptermark{Experimental Methods}
+	\epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
+
+\paragraph{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
+Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[methods]
+
+\printcontents[methods]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/methods/} }
 	\input{contents_tex/methods.tex}
+	
+\stopcontents[methods]
 
 \chapter{Characterization Techniques: Description and Interpretation}\label{ch:characterization}
 \chaptermark{Characterization Techniques}
+\epigraph{\textit{""}}
+
+\paragraph{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
+The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[characterization]
+
+\printcontents[characterization]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/characterization/} }
 	\input{contents_tex/characterization.tex}
+	
+\stopcontents[characterization]
 
 \chapter{Comparison of HTM in Bottom Cathode CsFAMAPbIBr Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
 \chaptermark{Comparing HTM}
+\epigraph{\textit{"It's so easy, can't you see the shift?"}}
+
+\paragraph{Abstract} In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm} with the role of extracting respectively the holes and the electrons. Without this asymmetrical extraction of charges, the photogeneration would be of no use. The classical \gls{etm} from \gls{dssc}, mesoporous titania, is slowly getting replaced by planar tin oxide \cite{Jiang2018}. On the contrary, the classical \gls{htm} from solid-state \gls{dssc}, \gls{spiro}, is still present in most of the record structures. The huge explorative work done for finding a more performing \gls{htm} had some success with a few molecules and, for some cases, with \gls{ptaa}. In most of the cases, even if the performances are at par with \gls{spiro}, the price is still too high for wide area applications. A better understanding of the \gls{htm}/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design. In this chapter, the devices fabricated using four different \gls{htm} have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
+
+\paragraph{Publications} Part of this chapter has been published in \fullcite{Gelmetti2019}.
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[tae]
+
+\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/tae/} }
 	%\input{contents_tex/tae.tex}
+	
+\stopcontents[tae]
 
 \chapter{Insights on the Charge Storage \textit{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
+
+\epigraph{\textit{"Let's change as little as possible"}}
+
+\paragraph{Abstract} A series of top cathode perovskite solar cells have been fabricated with slightly different layers thicknesses. We verified that these variations affected as little as possible the rest of the solar cell stack, so that we could unequivocally relate the observations to the changes. The characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
+
+\paragraph{Publications} Part of this chapter has been published in \fullcite{Gelmetti2017}.
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[thicknesses]
+
+\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/thicknesses/} }
 	%\input{contents_tex/thicknesses.tex}
+	
+\stopcontents[thicknesses]
 
 \chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
 \chaptermark{Impedance Sectroscopy}
+\epigraph{\textit{"We don't see that plateau"}}
+
+\paragraph{Abstract}
+
+\paragraph{Publications} Part of this chapter has been published in \fullcite{Moia2019}.
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[impedance]
+
+\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/impedance/} }
 	%\input{contents_tex/impedance.tex}
+	
+\stopcontents[impedance]
 
 \chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
 \chaptermark{Modelling}
+\epigraph{\textit{"GIGO: Garbage In, Garbage Out"}}
+
+\paragraph{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
+
+\paragraph{Publications} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[modelling]
+
+\printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/modelling/} }
 	%\input{contents_tex/modelling.tex}
+	
+\stopcontents[modelling]
 
 \chapter{Software Development for Data Acquisition and Data Analysis}\label{ch:software}
 \chaptermark{Software Development}
+\epigraph{\textit{"Why nobody tried to fix this bug?"}}
+
+\paragraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
+
+\paragraph{Publications} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
+
+\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\startcontents[software]
+
+\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
+
+\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+
 	\graphicspath{ {./contents_img/software/} }
 	%\input{contents_tex/software.tex}
+	
+\stopcontents[software]
 
 \chapter*{Overall Conclusions}\label{ch:conclusions}
 	\addcontentsline{toc}{chapter}{Overall Conclusions}
