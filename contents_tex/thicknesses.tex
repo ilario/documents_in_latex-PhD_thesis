@@ -2,17 +2,70 @@
 
 \section{Introduction}
 
-	\paragraph{Disentangling parameters' impact} Perovskite synthesis is a very easy and very fragile process at the same time. When varying a fabrication parameter, for example during an optimization, it is quite likely to provoke a "butterfly effect" with the resulting device differing from the reference one by much more than the characteristic under study. A principal component analysis of the fabrication parameters would be needed for a rational optimization, but such a complex procedure is further hindered by the difficulty of identifying all relevant contributions.
+	\paragraph{Disentangling parameters' impact}
+	Perovskite synthesis is a very easy and fragile process at the same time. When varying a fabrication parameter, for example during an optimization, it is quite likely to provoke a "butterfly effect" with the resulting device differing from the reference by much more than the characteristic under study.
+	A principal component analysis of the fabrication parameters would be needed for a rational optimization, but such a complex procedure is further hindered by the difficulty of identifying all relevant contributions.
 
-	\paragraph{Varying the thickness} In this study we vary a set of parameters that hopefully have a foreseeable relation with the resulting device structure: The spin coating speed for each layer. The effect of this variation should just affect the layers thicknesses with a minor influence on the other device physical features. This will allow us to univocally relate each layer thickness variation to the characterization results variation. The complete devices were studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
+	\paragraph{Varying the thickness}
+	In this study we vary a set of parameters that hopefully have a foreseeable relation with the resulting device structure: thickness of each layer, through the tuning of the spin coating deposition speed.
+	The effect of this variation should just affect the layers thicknesses, having just a minor influence on the other device physical features.
+	This will allow us to univocally relate the observations to the modifications.
+%	each layer thickness variation to the characterization results variation.
+	The complete devices were studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
 
-	\paragraph{The devices} The chosen architecture was a top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} device (fabrication described in \cpagerefrange{methods_top}{methods_top_end}) and the layers whose thickness was independently varied are the \gls{pedotpss} (\gls{htm}), the \gls{mapi} (absorber), and the \gls{pcbm70} (\gls{etm}).
+	\paragraph{The devices}
+	The chosen architecture was an all-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} device (fabrication described in \cpagerefrange{methods_top}{methods_top_end}).
+	The layers whose thickness was independently varied are the \gls{pedotpss} (\gls{htm}), the \gls{mapi} (absorber), and the \gls{pcbm70} (\gls{etm}).
+All these layers were deposited by spin coating and the thickness was tuned via spin coating speed as described in \cpagerefrange{methods_top}{methods_top_end}.
+The champion device performances of each configuration are listed in \cref{}.
+
+\begin{tabular}{ccc|cccc}
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\hline 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
+\end{tabular} 
+
+
+Different thicknesses for the PCBM-C70, perovskite and PEDOT:PSS layers were explored in order to study the effect in the final device performance, the variation of the charge storage capability and finally the changes in the recombination dynamics.
+
+Table 1. Main performance solar cell parameters in forward scan direction for the most representative devices studied in this work. For parameters from the reverse scan see SI.
+
+* All devices measured under standard conditions (100 mW·cm-2 sun simulated irradiation at AM1.5 G). Average PCEs reported in round brackets. For full statistics see Figures S2, S3, S4.
+
+
+
+
+
+
 
 \section{Interpretation of \glsentryshort{jsc} and \glsentryshort{ff} from Current-Voltage Sweeps}
 
 \section{Interpretation of Transient PhotoVoltage Referenced to Differential Capacitance}\label{interpretation_tpvdc}
 
 \section{Varying \glsentrytext{mapi} Thickness (Absorber Layer)}
+
+Figure 2 illustrates the current-voltage (J-V) characterization for three representative cells with different thicknesses of MAPI. It could be observed that increasing the MAPI thickness leads to an increase of the photocurrent and, thus, the overall solar cell efficiency (see Table 1). The fill factor (FF) is not heavily influenced by MAPI layer thickness increment so that we could assume that resistances are very similar as well as the interfaces with the respective electron transporting material (ETM) and the HTM (Figure S2). In order to ensure that the interfaces with the MAPI are similar using different thicknesses, ESEM imaging has been performed (See Figure S5); we have demonstrated that, even the roughness increase with the MAPI thicknesses, the grain size and distribution of the crystallites are almost identical.
+Regarding the open circuit voltage (VOC), this value also barely changed with thickness. We have to highlight that both PCBM-C70 and PEDOT:PSS layers were likewise deposited to be the same for all the devices and in order to make a fair comparison. Despite this, it could be assumed that the charge losses and the overall resistance of the devices related to the contacts were very similar and, thus, the increase of the short-circuit current (JSC) can only be attributed to the increase of MAPI thickness.36 Using the same solar cells and in order to confirm these assertions, we performed Photo-Induced Differential Charging (PIDC), Photo-Induced Charge Extraction (PICE) and Photo-Induced Transient Photovoltage (PI-TPV) measurements as reported before.33, 37
+
+Figure 2. Photocurrent vs voltage curves for MAPI solar cells with different MAPI thickness: 230 nm (1), 320 nm (2) and 440 nm (3).
+PICE measurements were performed to measure the charge density of devices under working conditions (Figure S10a). There is a mandatory condition that gives reliability to this measurement: Decay from PICE has to be faster than voltage decay from PI-TPV transients.37 In our case, the PICE decay was slightly faster than PI-TPV; this ensures its correct interpretation (Figure S7). Alternatively, when the PICE and PI-TPV VOC decays lifetime were of the same order of magnitude, PIDC were measured giving a more representative calculated geometric capacitance (Cg) of 68, 65 and 41 nFcm-2 for devices 1, 2 and 3 respectively (Figure S10b) that are consistent with the ones obtained using PICE technique (Figure S10a). These results are, both using PICE and PIDC techniques, in perfect agreement to the parallel plate capacitor model where the Cg is inversely proportional to the distance between the two electrodes or, that is the same, the thickness of the device; this assumes that charges are stored, in open circuit conditions, at the contacts.
+Moreover, in order to study the charge storage and recombination in the bulk of the device, close to 1 sun conditions, the Cg was subtracted from the total capacitance; the resulting chemical capacitance was integrated over voltage giving the charge density presumably stored at the bulk of the device at different light intensities.33, 38
+PIDC measurements are depicted in Figure 3a. As can be seen, and despite the difference in thickness, the charge densities measured using PIDC in the three devices were very similar as well as the VOC, no shift in the charge distribution was observed that is in good agreement with the observed VOC from the J-V characterization. Furthermore, carrier recombination processes can be assessed using PI-TPV measurements; this technique allows the measurement of carriers’ lifetime under different light intensities at open circuit conditions. Figure 3b shows the PI-TPV measurement for devices 1, 2 and 3.
+
+
+Figure 3. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at different charge density of devices 1 (230 nm), 2 (320 nm) and 3 (440 nm) using different thickness of MAPI.
+As can be seen, the charge recombination follows same kinetics, in other words the three devices shown the same PI-TPV slope, and then no substantial differences could be considered. Thus, we have demonstrated that the increase of the JSC is directly related to the thickness of MAPI layer, with the VOC being equal for the three devices.
+
 
 
 \section{Varying \glsentrytext{pcbm70} Thickness (\glsentryshort{etm} Layer)}
@@ -28,6 +81,53 @@ change in RC time due to increased PCBM layer resistance \cite{Wheeler2017}
 
 importance of energy disorder in pcbm layer 10.1038/nenergy.2015.1
 
+
+
+
+
+ETM layer was also tested, and in order to ensure good coverage in all devices the thickness of the MAPI devices were slightly reduced to 350 nm, resulting in smoother MAPI and allows the study of the PCBM-C70 with a wider range of thicknesses (see Figure S13). 
+Figure 4 illustrates the measured J-V curves for four representative cells with different thicknesses of PCBM-C70: 40 nm (device 4), 60 nm (device 5), 90 nm (device 6) and 120 nm (device 7).
+
+Figure 4. Photocurrent vs voltage curves for solar cells using 40 nm (4), 60 nm (5) 90 nm (6) and 120 nm (7) of PCBM-C70.
+We could observe that device 4 presents the highest JSC of this set and a progressive decrease of the JSC with the increase in thickness of PCBM-C70, whereas the VOC show minor differences. The FF, on the contrary, drastically decrease as the ETM becomes thicker, that points out to an important resistance to transport, which is in agreement with the increase of the series resistances reflected in the J-V curves and the rise of the S-shape using 120 nm (7) of PCBM-C70.39-40 The mobility of the fullerene has been extensively reported41 being in the order of 10-3 cm2 V-1 s-1 witch is a low mobility value compared to MAPI44 or PEDOT:PSS45 layers, that becomes one of the main limitations for the inverted MAPI devices. Our results are in agreement with the previous publication of Seok et al.36
+For device 7, photo-induced transient measurements have not been measured because of the extremely low performance. PIDC measurements for this set are shown in Figure 5a, in this case the geometric capacitance was calculated to be 57, 48 and 36 nF cm-2 for 40 nm (device 4), 60 nm (device 5) and 90 nm (device 6) thick PCBM-C70 layer respectively (Figure S11b). These differences observed in the Cg (low light intensities) are a direct indication that the system can be modeled as a parallel plate capacitor, as seen for different MAPI thicknesses. Thus, both layers, MAPI and PCBM-C70, are englobed in the semiconductor bulk between the two electrodes of the capacitor. We can determine that this system, far from 1 sun conditions, stores the charges at the Ag electrode. 
+Additionally, and interestingly, we observed a shift on the measured charge distribution, from from PIDC for the thicker PCBM-C70 (Figure 5a). Huang and co-workers25 related the difference in the band tail of the charge distribution to changes in the energy disorder of the fullerene layer due to its lack of crystallinity and random molecular orientation and interaction with the perovskite. The measured exponential curve from PIDC clearly points out to this trend having the thickest devices the most disordered layer. That drove us to think that, close to 1 sun conditions, charges are mainly stored at the MAPI/PCBM-C70 interface.
+
+
+Figure 5. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at their corresponding charge density of devices 4 (40 nm), 5 (60 nm) and 6 (90 nm) using different thickness of PCBM-C70.
+Moreover, PICE was also measured for these devices, and we found that PICE decays were, in all cases, faster than PI-TPV decays. PICE of these devices are shown in the SI (Figure S11a) and a direct relationship is shown between total charges and the experimental JSC from J-V curves. It is clear that thicker PCBM-C70 layers impede the efficient collection of charges at the metal contact.
+
+
+
+
+
 \section{Varying \glsentrytext{pedotpss} Thickness (\glsentryshort{htm} Layer)}
+
+
+
+
+Following same procedure, PEDOT:PSS layer was also studied using different thicknesses maintaining constant the MAPI (300 nm) and PCBM-C70 (40 nm) layers.
+Figure 6 illustrates the J-V curves for a set of solar cells with different PEDOT:PSS layer thicknesses: 27 nm (device 8), 45 nm (device 9) and 65 nm (device 10). The JSC average (see Figure S4) reveals no evident variations due to the variation of PEDOT:PSS layer thickness as well as for the VOC and FF.
+
+Figure 6. Photocurrent vs voltage curves for solar cells using 27 nm (8), 45 nm (9) and 65 nm (10) of PEDOT:PSS 
+
+
+Figure 7. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at their corresponding charge density of devices 8 (27 nm), 9 (45 nm) and 10 (65 nm) using different thickness of PEDOT:PSS.
+Furthermore, it is important to remark that the hole mobility of PEDOT:PSS is one order of magnitude higher (1·10-2 cm2V-1s-1)42 than the PCBM-C70 electron mobility, that means that this layer does not present significant resistance to transport of the holes. 
+Therefore, the thickness does not become a limitation for the device operation. PICE, PIDC and PI-TPV were also performed to study the charge behavior changing PEDOT:PSS thickness. PICE and PIDC (Figure S12a and S12b) demonstrate in both cases very similar charge distribution, specially the Cg of the three devices seem to be identical around 50 nFcm-2 in PIDC and 58 nFcm-2 in PICE.
+Furthermore, after subtracting the Cg from the total charge (Figure 7a), for the different PEDOT:PSS layer thicknesses the obtained charge density vs voltage curve is almost identical. In PI-TPV (Figure 7b) the charge lifetime were very similar for the three cases, device 9 presents quite slower charge recombination rates at 1 sun conditions, but the differences were not as substantial as to be considered a direct consequence of the difference in PEDOT:PSS layer thickness. The conclusion that can be extracted from these results is that PEDOT:PSS thickness does not affect the charge distribution, indicating that holes are mainly stored at the ITO/PEDOT:PSS interface, in other words, PEDOT:PSS does not play any role in the charge accumulation, in contrast to the electrons that are seemed to be stored at PCBM-C70/MAPI interface.
+In conclusion, we have fabricated hybrid perovskite solar cells using inverted structure achieving efficiencies up to 10 % under standard solar simulation conditions. The maximum efficiency was obtained through the optimization of the thickness of selective contact layer for electrons (PCBM-C70) and, on the other hand, the optimization of the photoactive perovskite layer. The optimization was carried out analyzing the carrier accumulation at different light bias and the carrier lifetime between different solar cells. We observed in all cases an extended linear relationship between the measured charge and the light bias for values from 0 V (dark conditions) to 0.8 V. This implies that, under open circuit conditions and far from 1 sun conditions, the charges are mainly accumulated at the selective contact electrodes. An exponential increase, which results from the charge accumulation at the photoactive layer, appeared at potentials close to 1 sun simulated conditions (0.8-1.1 V).
+Moreover, for devices with different MAPI layer thickness all the charge distribution and recombination rates were very similar indicating that the device performance was mainly limited by the organic contacts, PEDOT:PSS and PCBM-C70. In these devices the increase of the measured JSC can be directly related to the increase of the MAPI layer thickness. While modifying the thickness of PCBM-C70 we found an important impact on performance as well as a different charge distribution and recombination. The device with the thinnest PCBM-C70 layer presented the highest JSC and FF due to its low resistance to transport. In addition, the PIDC controversially showed higher charge densities using thicker layers of PCBM-C70 that means greater amount of charges stored at the bulk, however the recombination (at 1 sun conditions) becomes faster due to the mentioned transport losses and the extraction of these charges becomes less efficient. At this point, the geometric capacitance has been strongly influenced by both MAPI and PCBM-C70 thickness layer variation; this is an indication that the charges are mainly stored at the PCBM-C70/MAPI interface.
+Finally, it was demonstrated that modifying PEDOT:PSS layer do not affect the final device performance, and PIDC, PICE and PI-TPV measurements present no evaluable differences. This points out that, due to the great hole mobility of the PEDOT:PSS layer, this organic layer does not limits the performance of the devices, and the holes would be mainly stored at the ITO /PEDOT:PSS interface and thus the thickness of the PEDOT:PSS do not play any role in the storage but in the extraction.
+
+
+
+
+
+
 \section{Conclusions}
 \section{Critical Assessment}
+
+
+
+

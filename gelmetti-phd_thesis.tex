@@ -235,6 +235,8 @@
 %	\usepackage{commath} % for upright d in derivatives
 
 	\usepackage{physics} % redefines plenty of things: \Im \Re \sin() \exp()... adds \dd for derivatives, \pdv for partial derivatives, \eval for evaluating the derivative in a point (does not work properly in dmath from breqn)
+	
+	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -300,7 +302,10 @@
 	
 
 	\renewcommand{\floatpagefraction}{.8}% less likely to have images by their own in a page https://tex.stackexchange.com/questions/68516/avoid-that-figure-gets-its-own-page
-	
+		% N.B.: floatpagefraction MUST be less than topfraction !!
+	\renewcommand{\topfraction}{.9}% default 0.7
+	\renewcommand{\bottomfraction}{.8} % default 0.3
+	\renewcommand{\textfraction}{.1}% default 0.2
 	
 % usually subscripts should be typed in upright font, like with \mathrm{}, unless they're indexes
 % this allows me to use V_|OC| for upright subscripts
@@ -492,8 +497,8 @@
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
 % symbols
-\newglossaryentry{symb:v}{name={$v$}, description={ideality of pseudo first order life-time \textit{versus} light bias}}
-\newglossaryentry{symb:m}{name={$m$}, description={ideality of charge density \textit{versus} light bias}}
+\newglossaryentry{symb:v}{name={$v$}, description={ideality of pseudo first order life-time \textsl{versus} light bias}}
+\newglossaryentry{symb:m}{name={$m$}, description={ideality of charge density \textsl{versus} light bias}}
 \newglossaryentry{symb:mu}{name={$\mu$}, description={internal chemical potential}, sort={mu}}
 \newglossaryentry{symb:barmu}{name={$\bar\mu$}, description={electrons electrochemical potential}, sort={mubar}}
 \newglossaryentry{symb:V}{name={\ensuremath{V}}, description={voltage}}
@@ -505,7 +510,7 @@
 \newglossaryentry{symb:T}{name={\ensuremath{T}}, description={temperature}}
 \newglossaryentry{symb:Jph}{name={\ensuremath{J_{\mathrm{ph}}}}, description={photogenerated current}}
 \newglossaryentry{symb:J0}{name={\ensuremath{J_0}}, description={dark diode saturation current}}
-\newglossaryentry{symb:alpha}{name={\ensuremath{\alpha}}, description={power law exponent in current \textit{versus} illumination intensity relationship}, sort={alpha}}
+\newglossaryentry{symb:alpha}{name={\ensuremath{\alpha}}, description={power law exponent in current \textsl{versus} illumination intensity relationship}, sort={alpha}}
 \newglossaryentry{symb:q}{name={\ensuremath{q}}, description={elementary charge}}
 \newglossaryentry{symb:n}{name={\ensuremath{n}}, description={electrons density}}
 \newglossaryentry{symb:p}{name={\ensuremath{p}}, description={electron holes density}}
@@ -531,7 +536,7 @@
 \newglossaryentry{symb:VE}{name={\ensuremath{V_{\mathrm{E}}}}, description={electrostatic potential}}
 \newglossaryentry{symb:Rs}{name={\ensuremath{R_{\mathrm{s}}}}, description={series resistance}}
 \newglossaryentry{symb:Rsh}{name={\ensuremath{R_{\mathrm{sh}}}}, description={shunt resistance}}
-\newglossaryentry{symb:nCE}{name={\ensuremath{n_{\mathrm{CE}}}}, description={excess charge observable \textit{via} charge extraction}}
+\newglossaryentry{symb:nCE}{name={\ensuremath{n_{\mathrm{CE}}}}, description={excess charge observable \textsl{via} charge extraction}}
 \newglossaryentry{symb:nDOS}{name={\ensuremath{n_{\mathrm{DOS}}}}, description={density of states}}
 \newglossaryentry{symb:VBI}{name={\ensuremath{V_{\mathrm{BI}}}}, description={built-in voltage}}
 \newglossaryentry{symb:ECB}{name={\ensuremath{E_{\mathrm{CB}}}}, description={conduction band energy}}
@@ -656,7 +661,15 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \chaptermark{Comparing HTM}
 \epigraph{\textit{"It's so easy, can't you see the shift?"}}
 
-\paragraph{Abstract} In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm} with the role of extracting respectively the holes and the electrons. Without this asymmetrical extraction of charges, the photogeneration would be of no use. The classical \gls{etm} from \gls{dssc}, mesoporous titania, is slowly getting replaced by planar tin oxide \cite{Jiang2018}. On the contrary, the classical \gls{htm} from solid-state \gls{dssc}, \gls{spiro}, is still present in most of the record structures. The huge explorative work done for finding a more performing \gls{htm} had some success with a few molecules and, for some cases, with \gls{ptaa}. In most of the cases, even if the performances are at par with \gls{spiro}, the price is still too high for wide area applications. A better understanding of the \gls{htm}/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design. In this chapter, the devices fabricated using four different \gls{htm} have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
+\paragraph{Abstract}
+In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm}, with the role of extracting respectively the holes and the electrons.
+Without this asymmetrical extraction of charges, the photogeneration would be of no use.
+The classical \gls{etm} from \gls{dssc}, mesoporous titania, is getting obsoleted by planar tin oxide \cite{Jiang2018}.
+On the contrary, the classical \gls{htm} from solid-state \gls{dssc}, \gls{spiro}, is still present in most of the record structures.
+The huge explorative work done for finding a more performing \gls{htm} managed to find a few good-performances small molecules or polymers (\textsl{e.g.} \gls{ptaa}).
+Still, even if the performances are at par with \gls{spiro}, the price of these alternative \gls{htm} is still too high for wide area applications.
+A better understanding of the \gls{htm}/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
+In this chapter, the devices fabricated using four different \gls{htm} have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
 
 \paragraph{Publications} Part of this chapter has been published in \fullcite{Gelmetti2019}.
 
@@ -672,12 +685,23 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	
 \stopcontents[tae]
 
-\chapter{Insights on the Charge Storage \textit{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
+\chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
 
 \epigraph{\textit{"Let's change as little as possible"}}
 
-\paragraph{Abstract} A series of top cathode perovskite solar cells have been fabricated with slightly different layers thicknesses. We verified that these variations affected as little as possible the rest of the solar cell stack, so that we could unequivocally relate the observations to the changes. The characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
+\paragraph{Abstract}
+A series of top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} perovskite solar cells have been fabricated.
+The thickness of each of the \gls{pedotpss} \gls{htm}, \gls{mapi} absorber, and \gls{pcbm70} \gls{etm} has been independently varied.
+We verified that these different thicknesses affected as little as possible the rest of the solar cell stack, so that we can unequivocally relate the observations to the changes.
+Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
+Specifically, we have measured devices' capacitance under illumination and charge carrier’s life-time using photo-induced time resolved techniques.
+
+REVISE: Capacitive measurements show differences for the devices having different \gls{pcbm70} layer thicknesses in contrast with the measurements on the different \gls{mapi} thickness.
+
+The results show that AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA that makes the control of the fullerene thickness crucial for device optimization.
+%in this kind of devices the limiting layer is the PCBM-C70 due to its relative reduced mobility compared to PEDOT:PSS 
+These give indications about holes and electrons storage and their distribution.
 
 \paragraph{Publications} Part of this chapter has been published in \fullcite{Gelmetti2017}.
 
@@ -689,7 +713,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/thicknesses/} }
-	%\input{contents_tex/thicknesses.tex}
+	\input{contents_tex/thicknesses.tex}
 	
 \stopcontents[thicknesses]
 
