@@ -17,23 +17,114 @@
 	The chosen architecture was an all-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} device (fabrication described in \cpagerefrange{methods_top}{methods_top_end}).
 	The layers whose thickness was independently varied are the \gls{pedotpss} (\gls{htm}), the \gls{mapi} (absorber), and the \gls{pcbm70} (\gls{etm}).
 All these layers were deposited by spin coating and the thickness was tuned via spin coating speed as described in \cpagerefrange{methods_top}{methods_top_end}.
-The champion device performances of each configuration are listed in \cref{}.
+The champion device performances of each configuration are listed in \cref{table:thicknesses_jv}.
 
-\begin{tabular}{ccc|cccc}
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\hline 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-	\rule[-1ex]{0pt}{2.5ex}  &  &  &  &  &  &  \\ 
-\end{tabular} 
+\begin{table}%[h]	
+	\mycaption[Layers thicknesses and related average performances of top cathode cells.]{
+		Explored thicknesses with relative average forward and reverse J-V sweep performances.
+		For each reported result, at least AAAA, 8, and AAAA devices were averaged respectively for \gls{mapi}, \gls{pcbm70}, and \gls{pedotpss} thickness exploration.
+		\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
+		The standard deviation for each value is indicated after the $\pm$ symbol.
+		A boxplot representation of this data can be found in SI of \authoryear{Gelmetti2017}.
+	}\label{table:thicknesses_jv}%\\[\belowcaptionskip]
+\begin{xltabular}[c]{1.1\linewidth}{@{}>{\hsize=1.2\hsize}X|>{\hsize=0.9\hsize}X|>{\hsize=0.9\hsize}X | c | >{\hsize=1.6\hsize}X >{\hsize=0.8\hsize}X >{\hsize=0.8\hsize}X >{\hsize=0.8\hsize}X @{}} % multirow does not get the correct number of rows with tabularx
+\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multirow2{*}{\small Sweep} & \multicolumn4{c}{\small\textbf{J-V sweep parameters}} \\
+%	 \rule[-1ex]{0pt}{2.5ex} \footnotesize\gls{mapi} &  \footnotesize\gls{pcbm70} & \footnotesize\gls{pedotpss} &  & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\ 
+	 \rule[-1ex]{0pt}{2.5ex} \footnotesize\gls{mapi} &  \footnotesize\gls{etm} & \footnotesize\gls{htm} &  & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\ 
+	 \rule[-1ex]{0pt}{2.5ex}  \footnotesize$[\si{\nm}]$ &  \footnotesize$[\si{\nm}]$ &  \footnotesize$[\si{\nm}]$ & - & \footnotesize[\si{\mA\per\square\cm}] &  \footnotesize$[\si{\V}]$ & \% &  \footnotesize$[\si{\%}]$ \\[1mm]
+	\hline
+	\endfirsthead
+	\multicolumn{2}{@{}l}{\ldots\ \small Continues}\\
+	\hline
+	 \rule[-1ex]{0pt}{2.5ex} \gls{mapi} & \gls{pcbm70} & \gls{pedotpss} & Sweep & \gls{jsc} & \gls{voc} & \gls{ff} & \gls{pce} \\ 
+	\hline
+	\endhead
+	\hline
+	\multicolumn{2}{r@{}}{\small Continues\ldots}\\
+	\endfoot
+	\hline
+	\endlastfoot
+\rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex} \multirow3{*}{230} &  		&  		& fwd & 12.8&	1.02&	0.56&	7.3 \\ 
+\rule[-1ex]{0pt}{2.5ex}  	&  		&  		&  rev&	13.0&	1.02&	0.59&	7.7\\ \cline{1-1} \cline{3-8}\rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex} 320 & 40 	& 65 	& fwd & 14.0&	1.03&	0.58&	8.2 \\ 
+\rule[-1ex]{0pt}{2.5ex}  	&  		&  		&  rev&	14.2&	1.04&	0.57&	8.1	\\ \cline{4-8} \rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex} 440 &  		&  		& fwd & 18.6&	0.99&	0.57&	9.5 \\
+\rule[-1ex]{0pt}{2.5ex}  	&  		&  		& rev & 18.6&	1.01&	0.50&	8.1 \\[1mm]
+\hline
+
+\rule[-1ex]{0pt}{2.5ex}  					& 40 	&  						&fwd	&	16.4	$\pm	2.2	$ & 	0.93	$\pm	0.06	$ & 	48	$\pm	8	$ & 	7.4	$\pm	1.8	$ \\
+\rule[-1ex]{0pt}{2.5ex}  					&  		&  						&rev	&	16.1	$\pm	2.1	$ & 	0.95	$\pm	0.06	$ & 	50	$\pm	5	$ & 	7.6	$\pm	1.4	$ \\ \cline{4-8}\rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex} \multirow3{*}{350} 	& 60 	& \multirow{3}{*}{65} 	&fwd	&	13.2	$\pm	1.1	$ & 	0.99	$\pm	0.04	$ & 	47	$\pm	6	$ & 	6.2	$\pm	1.1	$ \\
+\rule[-1ex]{0pt}{2.5ex}  					&  		&  						&rev	&	12.8	$\pm	0.7	$ & 	0.98	$\pm	0.05	$ & 	47	$\pm	5	$ & 	5.9	$\pm	0.8	$ \\ \cline{4-8}\rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex}  					& 90 	&  						&fwd	&	11.1	$\pm	0.6	$ & 	1.03	$\pm	0.03	$ & 	42	$\pm	2	$ & 	4.8	$\pm	0.6	$ \\
+\rule[-1ex]{0pt}{2.5ex}  					&  		&  						&rev	&	11.1	$\pm	0.8	$ & 	1	$\pm	0.04	$ & 	44	$\pm	2	$ & 	4.8	$\pm	0.5	$ \\ \cline{4-8}\rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex}  					& 120 	&  						&fwd	&	7.7	$\pm	1.6	$ & 	1.02	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\
+\rule[-1ex]{0pt}{2.5ex}  					&  		&  						&rev	&	7.6	$\pm	1.6	$ & 	1.01	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\[1mm]
+
+\hline
+\rule[0ex]{-4pt}{3ex}
+\rule[-1ex]{0pt}{2.5ex}  	&  		& 27 & fwd & 10.5&	1.08&	0.59&	6.6 \\ 
+\rule[-1ex]{0pt}{2.5ex} 300 & 40 	& 45 & fwd & 13.0	&1.04&	0.55&	6.8 \\ 
+\rule[-1ex]{0pt}{2.5ex}  	&  		& 65 & fwd & 12.5	&1.07&	0.59&	7.4 \\ 
+\end{xltabular}
+\end{table}
+
+
+%	\begin{table}%[h]
+%	\caption{}
+%	\begin{center}
+%		\begin{tabu} to 1.1\textwidth { *3{c} | *4{X} }
+%	\multicolumn3{c|}{\textbf{Layers thickness}} & \multicolumn4{c}{\textbf{J-V sweep parameters}} \\
+%\rule[-1ex]{0pt}{2.5ex} \gls{mapi} & \gls{pcbm70} & \gls{pedotpss} & \gls{jsc} & \gls{voc} & \gls{ff} & \gls{pce} \\ 
+%\rule[-1ex]{0pt}{2.5ex} $[\si{\nm}]$ & $[\si{\nm}]$ & $[\si{\nm}]$ & $[\si{\mA\per\square\cm}]$ & $[\si{\V}]$ & - & $[\si{\%}]$ \\[1mm]
+%\tabucline-
+%\rule[0ex]{-4pt}{3ex}
+%\rule[-1ex]{0pt}{2.5ex} 230 & \multirow{3}{*}{40} & \multirow{3}{*}{65} & 12.8&	1.02&	0.56&	7.37 (7.3) \\ 
+%\rule[-1ex]{0pt}{2.5ex} 320 &  &  & 14.0&	1.03&	0.58&	8.44 (8.2) \\ 
+%\rule[-1ex]{0pt}{2.5ex} 440 &  &  & 18.6&	0.99&	0.57&	10.4 (9.5) \\[1mm]
+%\hline
+%\rule[0ex]{-4pt}{3ex}
+%\rule[-1ex]{0pt}{2.5ex} \multirow{4}{*}{350} & 40 & \multirow{4}{*}{65} & 18.3&	0.89&	0.54&	8.80 (7.5)   \\ 
+%\rule[-1ex]{0pt}{2.5ex}  & 60 &  & 14.5&	1.00&	0.53&	7.72 (6.2) \\ 
+%\rule[-1ex]{0pt}{2.5ex}  & 90 &  & 12.0	&1.07&	0.44&	5.60 (4.8) \\ 
+%\rule[-1ex]{0pt}{2.5ex}  & 120 &  & 9.60&	1.05&	0.20&	2.02 (1.4) \\[1mm]
+%\hline
+%\rule[0ex]{-4pt}{3ex}
+%\rule[-1ex]{0pt}{2.5ex} \multirow{3}{*}{300} & \multirow{3}{*}{40} & 27 & 10.5&	1.08&	0.59&	6.68 (6.6)	 \\ 
+%\rule[-1ex]{0pt}{2.5ex}  &  & 45 & 13.0	&1.04&	0.55&	7.41 (6.8) \\ 
+%\rule[-1ex]{0pt}{2.5ex}  &  & 65 & 12.5	&1.07&	0.59&	7.89 (7.4) \\ 
+%\tabuphantomline
+%		\end{tabu}
+%		\end{center}
+%\end{table}
+	
+%			\begin{table}%[h]
+%			\caption{}\label{table:thicknesses_jv}
+%			\begin{center}
+%\begin{tabular}{ccc|cccc}
+%	\multicolumn{3}{c|}{\textbf{Layers thickness}} & \multicolumn{4}{c}{\textbf{J-V sweep parameters}} \\
+%	\rule[-1ex]{0pt}{2.5ex} \gls{mapi} & \gls{pcbm70} & \gls{pedotpss} & \gls{jsc} & \gls{voc} & \gls{ff} & \gls{pce} \\ 
+%	\rule[-1ex]{0pt}{2.5ex} $[\si{\nm}]$ & $[\si{\nm}]$ & $[\si{\nm}]$ & $[\si{\mA\per\square\cm}]$ & $[\si{\V}]$ & - & $[\si{\%}]$ \\[1mm]
+%	\hline
+%	\rule[0ex]{-4pt}{3ex}
+%	\rule[-1ex]{0pt}{2.5ex} 230 & \multirow{3}{*}{40} & \multirow{3}{*}{65} & 12.8&	1.02&	0.56&	7.37 (7.34) \\ 
+%	\rule[-1ex]{0pt}{2.5ex} 320 &  &  & 14.0&	1.03&	0.58&	8.44 (8.21) \\ 
+%	\rule[-1ex]{0pt}{2.5ex} 440 &  &  & 18.6&	0.987&	0.57&	10.4 (9.51) \\[1mm]
+%	\hline
+%	\rule[0ex]{-4pt}{3ex}
+%	\rule[-1ex]{0pt}{2.5ex} \multirow{4}{*}{350} & 40 & \multirow{4}{*}{65} & 18.3&	0.892&	0.54&	8.80 (7.45)   \\ 
+%	\rule[-1ex]{0pt}{2.5ex}  & 60 &  & 14.5&	1.00&	0.53&	7.72 (6.18) \\ 
+%	\rule[-1ex]{0pt}{2.5ex}  & 90 &  & 12.0	&1.07&	0.44&	5.60 (4.82) \\ 
+%	\rule[-1ex]{0pt}{2.5ex}  & 120 &  & 9.60&	1.05&	0.20&	2.02 (1.40) \\[1mm]
+%	\hline
+%	\rule[0ex]{-4pt}{3ex}
+%	\rule[-1ex]{0pt}{2.5ex} \multirow{3}{*}{300} & \multirow{3}{*}{40} & 27 & 10.5&	1.08&	0.59&	6.68 (6.55)	 \\ 
+%	\rule[-1ex]{0pt}{2.5ex}  &  & 45 & 13.0	&1.04&	0.55&	7.41 (6.78) \\ 
+%	\rule[-1ex]{0pt}{2.5ex}  &  & 65 & 12.5	&1.07&	0.59&	7.89 (7.42) \\ 
+%\end{tabular} 
+%	\end{center}
+%\end{table}
 
 
 Different thicknesses for the PCBM-C70, perovskite and PEDOT:PSS layers were explored in order to study the effect in the final device performance, the variation of the charge storage capability and finally the changes in the recombination dynamics.

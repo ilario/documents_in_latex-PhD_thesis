@@ -80,7 +80,7 @@
 	\usepackage{transparent} %transparency for background image on titlepage
 	
 	\usepackage[format=plain, indention=0.3cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
-	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}
+	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}% to have also the short version printed, in bold
 	
 
 
@@ -94,7 +94,16 @@
 	
 	\usepackage{hyperref}
 
-	\usepackage{xcolor} % for colors in hyperref links
+	\usepackage{xcolor} % for colors in hyperref links and in thumbs
+	\definecolor{colorone}{HTML}{1B9E77}
+	\definecolor{colortwo}{HTML}{d95f02}
+		\definecolor{colorthree}{HTML}{7570B3}
+		\definecolor{colorfour}{HTML}{E7298A}
+		\definecolor{colorfive}{HTML}{66A61E}
+		\definecolor{colorsix}{HTML}{E6AB02}
+		\definecolor{colorseven}{HTML}{A6761D}
+	\definecolor{coloreight}{HTML}{666666}
+		
 	\hypersetup{
 		colorlinks,
 		linkcolor={red!10!black},
@@ -176,7 +185,7 @@
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
 	%\crefdefaultlabelformat{#2\textbf{#1}#3} % bold numbers of references https://tex.stackexchange.com/a/255187/173645
-	\creflabelformat{figure}{#2\textcolor{blue}{#1}#3} % bold numbers just for figures references
+	\creflabelformat{figure}{#2\textcolor{blue}{#1}#3} % blue numbers just for figures references
 	
 	\usepackage[spacing=true, stretch=40, shrink=40]{microtype} % automagically reduces overfull lines and improves justification
 
@@ -235,8 +244,18 @@
 %	\usepackage{commath} % for upright d in derivatives
 
 	\usepackage{physics} % redefines plenty of things: \Im \Re \sin() \exp()... adds \dd for derivatives, \pdv for partial derivatives, \eval for evaluating the derivative in a point (does not work properly in dmath from breqn)
+
+%	\usepackage{tabu} % like tabular and tabularx. "The package is, and will stay unmaintained unless a new maintainer steps forward."
+	% in case just tabular was used, this can be used for having a line break in a cell
+	\newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 	
+\usepackage{xltabular}	%LaTeX package which combines longtable and tabularx. Loads package ltablex but keeps the current tabularx environment
+% for vertical centering using multirow in combination with tabularx there's basically no good solution https://tex.stackexchange.com/questions/220411/vertically-align-multirow-in-tabularx-environment
+		\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in each X column cell, https://tex.stackexchange.com/a/343329/173645
+
+
 	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
+\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto}]{thumbs}%
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -250,7 +269,7 @@
 	
 	
 	% \cmpd*[cmpd-label = 1S]{ig2-1}
-	\newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
 	%\pgfplotsset{minor grid style={densely dotted,lightgray}}
 	\newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
 	\newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
@@ -514,7 +533,7 @@
 \newglossaryentry{symb:q}{name={\ensuremath{q}}, description={elementary charge}}
 \newglossaryentry{symb:n}{name={\ensuremath{n}}, description={electrons density}}
 \newglossaryentry{symb:p}{name={\ensuremath{p}}, description={electron holes density}}
-\newglossaryentry{symb:ni}{name={\ensuremath{n_{\mathrm{i}}}}, description={intrinsic carrier density}}
+\newglossaryentry{symb:ni}{name={\ensuremath{n_{\mathrm{i}}}}, description={equilibrium carrier density for an intrinsic semiconductor}}
 \newglossaryentry{symb:epsilonzero}{name={\ensuremath{\epsilon_0}}, description={electric constant}, sort={epsilonzero}}
 \newglossaryentry{symb:epsilonr}{name={\ensuremath{\epsilon_{\mathrm{r}}}}, description={relative permittivity}, sort={epsilonr}}
 \newglossaryentry{symb:Eg}{name={\ensuremath{E_{\mathrm{g}}}}, description={band gap}}
@@ -541,7 +560,7 @@
 \newglossaryentry{symb:VBI}{name={\ensuremath{V_{\mathrm{BI}}}}, description={built-in voltage}}
 \newglossaryentry{symb:ECB}{name={\ensuremath{E_{\mathrm{CB}}}}, description={conduction band energy}}
 \newglossaryentry{symb:EVB}{name={\ensuremath{E_{\mathrm{VB}}}}, description={valence band energy}}
-%\newglossaryentry{symb:npre}{name={\ensuremath{n_{\mathrm{pre}}}}, description={equilibrium carrier concentration}}
+\newglossaryentry{symb:neq}{name={\ensuremath{n_{\mathrm{eq}}}}, description={equilibrium carrier density for a two levels system}}
 \newglossaryentry{symb:kx}{name={\ensuremath{k_x}}, description={recombination rate constant}}
 \newglossaryentry{symb:Jrec}{name={\ensuremath{J_{\mathrm{rec}}}}, description={recombination current}}
 \newglossaryentry{symb:nu}{name={\ensuremath{\nu}}, description={frequency}, sort={frequency}}
@@ -608,6 +627,8 @@
 \chapter{Introduction}\label{ch:intro}
 	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
 	
+	\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorone}
+	
 	\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[intro]
 
@@ -622,6 +643,8 @@
 \chapter{Experimental Methods}\label{ch:methods}
 \chaptermark{Experimental Methods}
 	\epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
+	
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colortwo}
 
 \paragraph{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
 Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
@@ -642,6 +665,9 @@ Needless saying, the critical points in fabricating a complex electronic device 
 \chaptermark{Characterization Techniques}
 \epigraph{\textit{""}}
 
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorthree}
+
+
 \paragraph{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
 The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
 
@@ -660,6 +686,8 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \chapter{Comparison of HTM in Bottom Cathode CsFAMAPbIBr Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
 \chaptermark{Comparing HTM}
 \epigraph{\textit{"It's so easy, can't you see the shift?"}}
+
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorfour}
 
 \paragraph{Abstract}
 In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm}, with the role of extracting respectively the holes and the electrons.
@@ -687,8 +715,9 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 
 \chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
-
 \epigraph{\textit{"Let's change as little as possible"}}
+
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorfive}
 
 \paragraph{Abstract}
 A series of top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} perovskite solar cells have been fabricated.
@@ -721,6 +750,8 @@ These give indications about holes and electrons storage and their distribution.
 \chaptermark{Impedance Sectroscopy}
 \epigraph{\textit{"We don't see that plateau"}}
 
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorsix}
+
 \paragraph{Abstract}
 
 \paragraph{Publications} Part of this chapter has been published in \fullcite{Moia2019}.
@@ -737,9 +768,12 @@ These give indications about holes and electrons storage and their distribution.
 	
 \stopcontents[impedance]
 
+
 \chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
 \chaptermark{Modelling}
 \epigraph{\textit{"GIGO: Garbage In, Garbage Out"}}
+
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorseven}
 
 \paragraph{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
 
@@ -761,6 +795,8 @@ These give indications about holes and electrons storage and their distribution.
 \chaptermark{Software Development}
 \epigraph{\textit{"Why nobody tried to fix this bug?"}}
 
+\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{coloreight}
+
 \paragraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
 
 \paragraph{Publications} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
@@ -777,9 +813,13 @@ These give indications about holes and electrons storage and their distribution.
 	
 \stopcontents[software]
 
+
+
 \chapter*{Overall Conclusions}\label{ch:conclusions}
 	\addcontentsline{toc}{chapter}{Overall Conclusions}
 	%\input{contents_tex/conclusions.tex}
+	
+\stopthumb
 
 \chapter*{Acknowledgements}
 	\addcontentsline{toc}{chapter}{Acknowledgements}

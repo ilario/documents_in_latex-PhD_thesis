@@ -48,6 +48,7 @@
 
 		\paragraph{\Glsdesc{ff}} \Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}.
 		This parameter does not have a physical meaning, but it represents how much the series and shunt resistances affect the device efficiency.
+		It can be represented either as a fraction of unity or as a percentage.
 
 		\paragraph{Forward and reverse bias} Forward bias is a device condition where the voltage is positive, reverse bias is the case where the voltage is negative.
 
@@ -94,8 +95,9 @@
 		Most of the reported hybrid lead halide perovskite materials can show rather impressive changes in their structure on long time scales, for example due to ionic migration \cite{Calado2016}, degradation \cite{OKane2019}, and self-healing \cite{Ceratti2018}.
 		This have to be taken into account for all the measurements techniques output which either takes too long time to be measured or employs large perturbations.
 
-		\paragraph{Long lasting measurement} An example of the first case is the impedance spectroscopy where during the long lasting measurement various phenomena can occur, like: a slow current evolution due to perovskite well known hysteretic behaviour prior to stabilization; a degradation process changing the current; the heating of the device changing its properties.
-		This slow current evolution can easily be misinterpreted for capacitive current \cite{Jacobs2018} and introduce artefacts like loops in the Nyquist plots \cite{Moia2019}.
+		\paragraph{Long lasting measurement}
+		An example of the first case is the impedance spectroscopy where during the long lasting measurement various phenomena can occur, like: a slow current evolution due to perovskite well known hysteretic behaviour prior to stabilization; a degradation process changing the current; the heating of the device changing its properties.
+		This slow current evolution can easily be misinterpreted for capacitive current \cite{Jacobs2018}, introduce artefacts like loops in the Nyquist plots \cite{Moia2019}, or even justify negative capacitance observations \cite{Knapp2015}.
 
 		\paragraph{Large perturbations} \label{perturbation}
 		Large perturbations regime means that the independent variable being perturbed is changed by an amount large enough to cause the quantity under study to not follow the approximation given by the first term of its series expansion.
@@ -134,7 +136,7 @@
 	\begin{SCfigure}%[!hbtp]%
 		\centering
 		\includegraphics[width=0.5\textwidth]{autoscale/ig1-3-1-int4.pdf}
-		\mycaption[Kinks in JV sweep due to autoscale.]{A current-voltage sweep of an hysteretic perovskite solar cell with Keithley autoscale active.
+		\mycaption[Kinks in J-V sweep due to autoscale.]{A current-voltage sweep of an hysteretic perovskite solar cell with Keithley autoscale active.
 			Both the forward (dashed) and the reverse (solid line) present small discontinuities around \SI{1}{\mA} and \SI{0.1}{\mA}.}\label{fig:autoscale}
 	\end{SCfigure}
 
@@ -420,17 +422,17 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		This could be false for high applied voltages, where Fermi-Dirac distribution for fermions should be used.
 		Thus, the expression for the conduction band electronic density $n$ obtained from the mentioned distribution is:
 		\begin{equation}
-		n(V) = n_|DOS| \exp(\frac{qV - E_|g|}{k_|B|T}) = n_|i| \exp(\frac{qV}{k_|B|T})
+		n(V) = n_|DOS| \exp(\frac{qV - E_|g|}{k_|B|T}) = n_|eq| \exp(\frac{qV}{k_|B|T})
 		\end{equation}
-		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|i|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the intrinsic carrier concentration from a Boltzmann distribution of a 2 levels system. %just a pre-factor with no direct physical interpretation.
+		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|eq|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the equilibrium carrier concentration from a Boltzmann distribution of a two levels system. %just a pre-factor with no direct physical interpretation.
 		As the \acr{ce} can just extract the excess charge $n_|CE|$, what we can measure is:
 		\begin{equation}
-		n_|CE|(V) = n(V)-n(0) = n_|i| \cdot \left[\exp(\frac{qV}{k_|B|T})-1\right]
+		n_|CE|(V) = n(V)-n(0) = n_|eq| \cdot \left[\exp(\frac{qV}{k_|B|T})-1\right]
 		\end{equation}
 		now the expression of $n_|CE|$ evaluated at zero voltage gives zero extra charge as expected.
 		In some cases an ideality factor $m$ is introduced \cite{Kirchartz2012}, which can help to account for the shape of the density of states of the conduction band, so the expression can be found as:
 		\begin{equation}\label{eq:ce_osc}
-			n_|CE| = n_|i| \cdot \left[\exp(\frac{qV}{mk_|B|T})-1\right]
+			n_|CE| = n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T})-1\right]
 		\end{equation}
 		For perovskite solar cells, an alternative interpretation can be found indicating that the exponential trend reflects the extraction from exponential subgap states, \textsl{i.e.} shallow traps \cite{Du2018}.
 		This can be used for explaining values of $m$ greater than 2, which would be indicative of the exponential tail width as shown for \gls{osc} by \authoryear{Kirchartz2012}.
@@ -471,7 +473,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		This carriers accumulation in the contacts can be visualized with the simulation reported in \cref{fig:ce_single_dd_charge-1sun}.
 		Extending \cref{eq:ce_osc}, the complete equation becomes:
 		\begin{equation}\label{eq:ce_full}
-			n_|CE| = C_|g| \cdot V + n_|i| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
+			n_|CE| = C_|g| \cdot V + n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
 		\end{equation}
 		
 		\paragraph{Charge \textsl{versus} light bias trend -- Geometric capacitance voltage dependency}
@@ -530,7 +532,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 					The green crosses simulates the experimentally utilised conditions: the charge gets integrated over few microseconds, while the mobile ions didn't have enough time to start migrating.
 					The orange pluses considers the charge integrated until the device stabilization, over various seconds, including also the ionic displacement current.
 					The purple circles simulates a mobile-ions free device.
-					The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n_|CE| = C_|g| V + n_|i| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|i|$, and $m$ are free fitting parameters whose meaning is described in the text.}\label{fig:ce_full_dd}
+					The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n_|CE| = C_|g| V + n_|eq| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|eq|$, and $m$ are free fitting parameters whose meaning is described in the text.}\label{fig:ce_full_dd}
 			}
 		}
 	\end{figure}
@@ -616,8 +618,8 @@ This does not affect the parameter extraction from \acr{tpv} as just the high il
 	\paragraph{Voltage transient and charge concentration relationship}
 	As we assume to be in the small perturbation regime, we can study the \cref{eq:ce_full} up to the first term of its series expansion:
 	\begin{dmath}
-		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \left.\frac{\partial n}{\partial V}\right\rvert_{V=V_0} = n(V_0) + \Delta V \cdot \left[C_|g| + \frac{n_|i| q}{mk_|B|T}\exp(\frac{qV_0}{mk_|B|T})\right]
-%		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \eval{\dv{n}{V}}_{V=V_0} = n(V_0) + \Delta V \cdot \left(C_|g| + \frac{n_|i| q}{mk_|B|T}\exp\left(\frac{qV_0}{mk_|B|T}\right)\right)
+		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \left.\frac{\partial n}{\partial V}\right\rvert_{V=V_0} = n(V_0) + \Delta V \cdot \left[C_|g| + \frac{n_|eq| q}{mk_|B|T}\exp(\frac{qV_0}{mk_|B|T})\right]
+%		n(V_0 + \Delta V) \approx n(V_0) + \Delta V \cdot \eval{\dv{n}{V}}_{V=V_0} = n(V_0) + \Delta V \cdot \left(C_|g| + \frac{n_|eq| q}{mk_|B|T}\exp\left(\frac{qV_0}{mk_|B|T}\right)\right)
 	\end{dmath}
 	Assigning the last addend to $\Delta n$ we can see that the charge amount variation not only is linear with $\Delta V$ (as we're in the small perturbation regime), but it also depends on the steady state voltage $V_0$.
 	This relation is studied in the differential capacitance (\acr{dc}) experiment, described further in this chapter.
@@ -820,10 +822,10 @@ This does not affect the parameter extraction from \acr{tpv} as just the high il
 %		For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
 %	This "chemical" charge (charge stored in the perovskite layer) is represented as the exponential part of \cref{eq:ce_full}, so we obtain:
 	\begin{dmath}\label{eq:tpv_tau_vs_intensity}
-		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = \frac{n_|i|^{1-\Phi}}{\Phi k_\Phi} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|i|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|i|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{q\voc}{vk_|B|T})
+		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = \frac{n_|eq|^{1-\Phi}}{\Phi k_\Phi} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|eq|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|eq|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{q\voc}{vk_|B|T})
 	\end{dmath}
 	where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
-	The pre-factor $n_|i|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life-time.
+	The pre-factor $n_|eq|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life-time.
 	As shown, the life-time typically decreases exponentially with the light bias, as experimentally observed in the example of \cref{fig:tpv-monoexp}, with an ideality modifier of $v = m/(\Phi-1)$.
 	This relation is in accordion with equivalent studies on \gls{osc} \cite{Shuttle2008,Shuttle2008d,Credgington2011}.
 
@@ -1110,14 +1112,14 @@ Expanding $\tau_|pfo| = \Phi \tau$ with \cref{eq:tpv_tau_order} and neglecting t
 \end{equation}
 Then considering just the chemical capacitance charge as relevant for recombination processes, so keeping just the exponential addend in \cref{eq:ce_full} we obtain:
 \begin{equation}
-\jsc = n_|i|^\Phi k_\Phi \me^{\frac{q \Phi \voc}{m k_|B| T}}
+\jsc = n_|eq|^\Phi k_\Phi \me^{\frac{q \Phi \voc}{m k_|B| T}}
 \end{equation}
 again, we neglected $-1$ from the additional intrinsic charge density. Then inverting the equation we obtain:
 \begin{equation}\label{eq:reconstruction_voc}
-	\voc = \frac{m k_|B| T}{q \Phi} \ln( \frac{\jsc}{n_|i|^\Phi k_\Phi} )
+	\voc = \frac{m k_|B| T}{q \Phi} \ln( \frac{\jsc}{n_|eq|^\Phi k_\Phi} )
 \end{equation}
 %Expanding \cref{eq:tpv_tau_order} with the relevant $n_0$ for recombination taken from the chemical capacitance charge represented by the exponential addend in  we obtain:
-%\begin{equation}\tau_|pfo| = \left\{\Phi k_\Phi n_|i|^{\Phi-1} [\exp(\frac{q \voc}{m k_|B| T})-1]^{\Phi-1} \right\}^{-1}\end{equation}
+%\begin{equation}\tau_|pfo| = \left\{\Phi k_\Phi n_|eq|^{\Phi-1} [\exp(\frac{q \voc}{m k_|B| T})-1]^{\Phi-1} \right\}^{-1}\end{equation}
 The \cref{eq:reconstruction_voc} now contains just parameters which can be obtained from our photophysical measurements \cite{Wheeler2015,Wheeler2017,Du2018,Barnes2011a}.
 
 \section{Impedance Spectroscopy}
