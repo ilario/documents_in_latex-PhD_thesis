@@ -1,0 +1,69 @@
+\documentclass[b5paper, 12pt, openany, oneside, titlepage]{book} % URV suggests B5	
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
+\usepackage[english]{babel}
+	\usepackage{graphicx}
+		\usepackage{eso-pic} %background image on titlepage
+	\usepackage{transparent} %transparency for background image on titlepage
+%		\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
+\usepackage[top=1in, bottom=1in, outer=1.5cm, inner=1.5cm]{geometry}
+\begin{document}
+	\pagestyle{plain}
+		\graphicspath{ {../contents_img/titlepage/} }
+	
+\begin{titlepage}\begin{center}
+
+
+		\AddToShipoutPicture*{
+			\put(0,0){
+				\parbox[b][\paperheight]{\paperwidth}{%
+					\vfill
+					\centering
+					\transparent{0.04}%stampato risulta randomicamente più scuro o più chiato, on paper this image results much more visible (or less, randomly) than on screen
+					{\includegraphics[width=0.9\paperwidth]{emblem-urv.pdf}}%
+					\vfill
+				}
+			}
+		}
+
+		\makebox[\textwidth]{\centering{\includegraphics[width=.27\textwidth]{logo-urv.pdf}\qquad\includegraphics[width=.27\textwidth]{logo-iciq-notext.pdf}}}\\%
+		\bigskip
+		\large{\textsc{Universitat Rovira i Virgili\\ Institute of Chemical Research of Catalonia}}\\
+		\rule{5cm}{1pt}\\
+		{
+		\bigskip
+		{\textsc{Doctoral Thesis} in \textsc{Electronic Engineering}}}\\
+		\bigskip\bigskip\vfill
+
+		\huge{\textsc{Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells}}\\
+		\bigskip\bigskip\vfill
+		\footnotesize{Author:}\\
+		\large{Ilario Gelmetti}\\
+		\makebox[.2\textwidth]{\rule{0pt}{.02\textheight}}\\
+	\end{center}
+	\begin{small}
+		\makebox{\parbox[b]{.8\textwidth}{
+
+
+
+				\flushleft{\textbf{Supervised by:}}
+				\flushright{\begin{tabular}{r c}
+						{\large Prof. Dr. Emilio Jose Palomares Gil} & \makebox[.4\textwidth]{\dotfill} \\
+					\end{tabular}}
+				\bigskip
+
+				\flushleft{\textbf{Author:}}
+				\flushright{\begin{tabular}{r c}
+						{\large Ilario Gelmetti} & \makebox[.4\textwidth]{\dotfill} \\
+					\end{tabular}}
+
+			}}
+		\bigskip\bigskip\bigskip\bigskip
+
+		\begin{center}
+			\rule{4cm}{1pt}\\
+			Session: July 2019\\
+		\end{center}
+	\end{small}
+\end{titlepage}
+\end{document}

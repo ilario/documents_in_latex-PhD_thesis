@@ -17,7 +17,7 @@
 			\end{subfigure}
 			\bigskip
 
-			\begin{subfigure}[t]{0.5\textwidth}
+			\begin{subfigure}[t]{0.51\textwidth}
 				\includegraphics[width=1\textwidth]{}
 				\subcaption{}\label{fig:}
 			\end{subfigure}
@@ -46,24 +46,34 @@
 	\end{center}
 \end{table}
 
-\begin{table}%[h]
-			\mycaption{}
-	\begin{xltabular}[c]{\linewidth}{@{} l >{\RaggedRight}X @{}}
-%		\caption{}\\[\belowcaptionskip]
-		\hline
-		& \\
-		\hline
-		\endfirsthead
-		\multicolumn{2}{@{}l}{\ldots\ \small Continues}\\
-		\hline
-		& \\
-		\hline
-		\endhead
-		\hline
-		\multicolumn{2}{r@{}}{\small Continues\ldots}\\
-		\endfoot
-		\hline
-		\endlastfoot
-		&  \\
-	\end{xltabular}
-\end{table}
+
+%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+\begin{xltabular}[c]{1\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.9\hsize}Y >{\hsize=0.8\hsize}Y >{\hsize=0.8\hsize}Y @{}}
+	% multirow does not get the correct number of rows with tabularx
+	% mycaption does not work inside xltabular
+	\caption[]{\textbf{}
+	}\label{table:thicknesses_jv}\\[\belowcaptionskip]
+	\multicolumn3{c|}{} & \multicolumn{5}{c}{}
+	\rule[-1ex]{0pt}{3ex} \\
+	 &  &  &  & &   &  &  \\ 
+	\rule[-1ex]{0pt}{2.5ex}   &   &   &  &  &  &  &  \\[1mm]
+	\hline
+	\endfirsthead
+	\multicolumn{2}{@{}l}{\ldots \small continues}\\
+	\hline
+	 &  &  &  & &   &  &  \\ 
+	\hline
+	\endhead
+	\hline
+	\multicolumn{8}{r@{}}{\small continues\ldots}\\
+	\endfoot
+	\hline
+	\endlastfoot
+	\rule[-1ex]{0pt}{3ex}
+	\multirow{3}{*}{230} 	& \multirow{11}{*}{40}	&  \multirow{11}{*}{65}	&fwd	&	13.5	$\pm	0.5	$ & 	1.03	$\pm	0.01	$ & 	53	$\pm	3	$ & 	7.3	$\pm	0.4	$ \\*
+	\rule[-1ex]{0pt}{2.5ex}
+	&  						&  						&rev	&	16.5	$\pm	1.9	$ & 	0.98	$\pm	0.07	$ & 	50	$\pm	5	$ & 	8.1	$\pm	1.4	$ \\[1mm]
+	\hline
+	&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
+\end{xltabular}
+

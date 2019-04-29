@@ -37,7 +37,8 @@
 		
 	\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
 	
-	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30, style=numeric-comp]{biblatex}%
+	% backref introduces the list of pages where the entry was cited, after each bibliography entry https://tex.stackexchange.com/a/211631/173645
+	\usepackage[backend=biber, labelnumber=true, url=true, isbn=false, giveninits=true, sorting=none, maxnames=30, style=numeric-comp, hyperref=auto, backref=true]{biblatex}%
 	
 	% from https://tex.stackexchange.com/questions/278890/biblatex-suppressing-urldate-does-not-work-clearfield
 	\AtEveryBibitem{\ifentrytype{article}{\clearfield{url}\clearfield{urlyear}}{}}
@@ -58,7 +59,9 @@
 % shorter alternative that works also for \fullcite from https://tex.stackexchange.com/a/175534/173645
 \AtEveryCitekey{\UseBibitemHook}
 		
-	\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
+		% seems that year is not nice here, removing
+%	\newcommand{\authoryear}[1]{\citeauthor*{#1}~(\citeyear{#1}, \cite{#1})}
+		\newcommand{\authoryear}[1]{\citeauthor*{#1}~\cite{#1}}
 	
 	\DeclareBibliographyCategory{mypapers}
 	\addtocategory{mypapers}{Moia2019,Gelmetti2019,Gelmetti2017}
@@ -91,7 +94,7 @@
 	\usepackage{titletoc} % for adding a TOC at the beginning of each chapter, alternative to minitoc
 %	\dottedcontents{paragraph}[0em]{}{0em}{1pc} % in each chapter toc, also the paragraph is included, but the indentation is too much
 %	\dottedcontents{subsection}[0em]{}{0em}{1pc} % in each chapter toc, also the subsection is included, but the indentation is too much
-	
+
 	\usepackage{hyperref}
 
 	\usepackage{xcolor} % for colors in hyperref links and in thumbs
@@ -128,6 +131,8 @@
 %			filecolor=magenta,      % color of file links
 %			urlcolor=cyan           % color of external links
 	}
+
+
 	
 	%%%%%%%%%%%
 	%%%%%%%%%%% GLOSSARIES
@@ -244,18 +249,40 @@
 %	\usepackage{commath} % for upright d in derivatives
 
 	\usepackage{physics} % redefines plenty of things: \Im \Re \sin() \exp()... adds \dd for derivatives, \pdv for partial derivatives, \eval for evaluating the derivative in a point (does not work properly in dmath from breqn)
-
+	
 %	\usepackage{tabu} % like tabular and tabularx. "The package is, and will stay unmaintained unless a new maintainer steps forward."
 	% in case just tabular was used, this can be used for having a line break in a cell
 	\newcommand{\tallcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 	
 \usepackage{xltabular}	%LaTeX package which combines longtable and tabularx. Loads package ltablex but keeps the current tabularx environment
 % for vertical centering using multirow in combination with tabularx there's basically no good solution https://tex.stackexchange.com/questions/220411/vertically-align-multirow-in-tabularx-environment
-		\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in each X column cell, https://tex.stackexchange.com/a/343329/173645
+		\renewcommand\tabularxcolumn[1]{m{#1}}% m for vertical centering text in each X column cell, https://tex.stackexchange.com/a/343329/173645
+\newcolumntype{Y}{>{\centering\arraybackslash}X}% horizontal centering https://tex.stackexchange.com/a/89932/173645
+
+% for including titlepage as pdf
+\usepackage{pdfpages} 
+
+% avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
+% https://tex.stackexchange.com/a/52101/173645
+\makeatletter
+\def\@cline#1-#2\@nil{%
+	\omit
+	\@multicnt#1%
+	\advance\@multispan\m@ne
+	\ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
+	\@multicnt#2%
+	\advance\@multicnt-#1%
+	\advance\@multispan\@ne
+	\leaders\hrule\@height\arrayrulewidth\hfill
+	\cr
+	\noalign{\nobreak\vskip-\arrayrulewidth}}
+\makeatother
+
+
 
 
 	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
-\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto}]{thumbs}%
+\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto},width=0.6cm,eventxtindent=-2pt,oddtxtexdent=2pt]{thumbs}%
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -344,9 +371,10 @@
 	
 	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-lu-mine-scence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile}
 	
-	\title{Advanced characterization and modelling of charge transfer in perovskite solar cells.}
+	\title{Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells}
 	\author{Ilario Gelmetti}
-	\date{2018}
+	\date{2019}
+	
 \begin{document}
 % I cite here the papers which should be numbered first	
 \nocite{Gelmetti2017,Moia2019,Gelmetti2019}
@@ -358,68 +386,27 @@
 %\apptocmd{\epigraph}{\nopagebreak}{}{}
 %\AtEndEnvironment{\epigraphflush}{\nopagebreak}
 
-\frontmatter
+% from a conversation with Martin.Muench@Uni-Bonn.de
+%It would be more clear and "save" to just compile the titlepage (you can also compile the whole document, pdfpages just takes the first page) as titlepage.pdf and then use the pdfpages package, use
+%\cleardoublepage%
+%\@mainmatterfalse%
+%from \frontmatter but with pagenumbering "alph" instead of the default "roman", include the titlepage.pdf and an empty page (therefore the "{}" in "pages={1,{}}"), and then start the "roman" pagenumbering.
+%Thus LaTeX internally has pages a, b, i, ii and so on (unique page names). Might be "safer", in case some package relays on unique page names or on correspondence between page name and number. 
+\makeatletter%
+\cleardoublepage%
+%\@mainmatterfalse%
+\pagenumbering{alph}%
+\makeatother%
+% including the title page, compiled as a separate document
+\includepdf[pages={1,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=0.82]{contents_tex/titlepage.pdf}%
+\pagenumbering{roman}%
 
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
+\frontmatter
 
-\begin{titlepage}\begin{center}
+%\addtocounter{page}{-1}
 
-
-		\AddToShipoutPicture*{
-			\put(0,0){
-				\parbox[b][\paperheight]{\paperwidth}{%
-					\vfill
-					\centering
-					\transparent{0.04}%stampato risulta randomicamente più scuro o più chiato, on paper this image results much more visible (or less, randomly) than on screen
-					{\includegraphics[width=0.9\paperwidth]{contents_img/emblem-urv.pdf}}%
-					\vfill
-				}
-			}
-		}
-
-		\makebox[\textwidth]{\centering{\includegraphics[width=.27\textwidth]{contents_img/logo-urv.pdf}}}\\%
-		\bigskip
-		\large{\textsc{Universitat Rovira i Virgili\\ Institute of Chemical Research of Catalonia}}\\
-		\rule{5cm}{1pt}\\
-		{
-		\bigskip
-		{\textsc{Doctoral Thesis} in \textsc{Electronic Engineering}}}\\
-		\bigskip\bigskip\vfill
-
-		\huge{\textsc{Advanced characterization and modelling of charge transfer in perovskite solar cells}}\\
-		\bigskip\bigskip\vfill
-		\footnotesize{Author:}\\
-		\large{Ilario Gelmetti}\\
-		\makebox[.2\textwidth]{\rule{0pt}{.02\textheight}}\\
-	\end{center}
-	\begin{small}
-		\makebox{\parbox[b]{.8\textwidth}{
-
-
-
-				\flushleft{\textbf{Supervised by:}}
-				\flushright{\begin{tabular}{r c}
-						{\large Prof. Dr. Emilio Jose Palomares Gil} & \makebox[.4\textwidth]{\dotfill} \\
-					\end{tabular}}
-				\bigskip
-
-				\flushleft{\textbf{Author:}}
-				\flushright{\begin{tabular}{r c}
-						{\large Ilario Gelmetti} & \makebox[.4\textwidth]{\dotfill} \\
-					\end{tabular}}
-
-			}}
-		\bigskip\bigskip\bigskip\bigskip
-		\begin{center}
-			\rule{3cm}{1pt}\\
-			Session: 2018\\
-		\end{center}
-	\end{small}
-\end{titlepage}
-
-\addtocounter{page}{-1}
-
-\newpage
+%\newpage
 
 \addcontentsline{toc}{chapter}{Statement of Authorship}
 
@@ -590,14 +577,12 @@
 \glsaddall
 \printglossary[type=\acronymtype, title={Glossary, Acronyms, and Symbols}]
 
-}%here ends openany and starts openright
-
 \cleardoublepage \vspace*{12cm}
 \begin{flushright}
 	\large {\it Dedicata a So$\phi$a.}
 \end{flushright}
 
-\newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
+%\newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
 
 \chapter[Summary of the Thesis]{\centering Summary of the Thesis}
 %	\input{contents_tex/summary.tex}
@@ -610,8 +595,9 @@
 	%\addcontentsline{toc}{chapter}{Motivation and Aims}
 %	\input{contents_tex/aims.tex}
 
+}%here ends openany and starts openright
 
-	\restoregeometry
+%	\restoregeometry
 
 	\fancypagestyle{plain}{% chapter pages use style plain
 		\renewcommand{\headrulewidth}{0pt} % no top rule
@@ -627,7 +613,7 @@
 \chapter{Introduction}\label{ch:intro}
 	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
 	
-	\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorone}
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorone}
 	
 	\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[intro]
@@ -644,7 +630,7 @@
 \chaptermark{Experimental Methods}
 	\epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
 	
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colortwo}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colortwo}
 
 \paragraph{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
 Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
@@ -665,7 +651,7 @@ Needless saying, the critical points in fabricating a complex electronic device 
 \chaptermark{Characterization Techniques}
 \epigraph{\textit{""}}
 
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorthree}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorthree}
 
 
 \paragraph{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
@@ -687,7 +673,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \chaptermark{Comparing HTM}
 \epigraph{\textit{"It's so easy, can't you see the shift?"}}
 
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorfour}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfour}
 
 \paragraph{Abstract}
 In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm}, with the role of extracting respectively the holes and the electrons.
@@ -717,7 +703,7 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 \chaptermark{Thickness of Layers}
 \epigraph{\textit{"Let's change as little as possible"}}
 
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorfive}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfive}
 
 \paragraph{Abstract}
 A series of top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} perovskite solar cells have been fabricated.
@@ -750,7 +736,7 @@ These give indications about holes and electrons storage and their distribution.
 \chaptermark{Impedance Sectroscopy}
 \epigraph{\textit{"We don't see that plateau"}}
 
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorsix}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
 
 \paragraph{Abstract}
 
@@ -773,7 +759,7 @@ These give indications about holes and electrons storage and their distribution.
 \chaptermark{Modelling}
 \epigraph{\textit{"GIGO: Garbage In, Garbage Out"}}
 
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{colorseven}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
 
 \paragraph{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
 
@@ -795,7 +781,7 @@ These give indications about holes and electrons storage and their distribution.
 \chaptermark{Software Development}
 \epigraph{\textit{"Why nobody tried to fix this bug?"}}
 
-\addthumb{\thechapter}{\Huge{\textbf{\thechapter}}}{white}{coloreight}
+\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{coloreight}
 
 \paragraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
 
@@ -809,29 +795,34 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/software/} }
-	%\input{contents_tex/software.tex}
+	\input{contents_tex/software.tex}
 	
 \stopcontents[software]
 
 
 
-\chapter*{Overall Conclusions}\label{ch:conclusions}
-	\addcontentsline{toc}{chapter}{Overall Conclusions}
-	%\input{contents_tex/conclusions.tex}
-	
-\stopthumb
-
-\chapter*{Acknowledgements}
-	\addcontentsline{toc}{chapter}{Acknowledgements}
-	%\input{contents_tex/acknowledgements.tex}
-
 	\appendix
+	\stopthumb
+
 
 \chapter{Code}
 	\label{ch:code}
 	\graphicspath{ {./contents_img/code/} }
 	\input{contents_tex/code.tex}
+	
 
+
+\backmatter
+
+\chapter{Overall Conclusions}\label{ch:conclusions}
+\addcontentsline{toc}{chapter}{Overall Conclusions}
+%\input{contents_tex/conclusions.tex}
+
+
+
+\chapter{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+%\input{contents_tex/acknowledgements.tex}
 
 	\printindex
 
