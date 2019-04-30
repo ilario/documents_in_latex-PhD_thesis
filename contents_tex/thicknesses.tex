@@ -30,7 +30,7 @@ The champion device performances of each configuration are listed in \cref{table
 				\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
 				The standard deviation for each value is indicated after the $\pm$ symbol.
 				A boxplot representation of this data can be found in \authoryear{Gelmetti2017}.
-				J-V curve for record devices are reported in AAAAAAAAAAAAAAAAAA%\cref{}.
+				J-V curve for record devices are reported in \cref{fig:jv_champions-mapi,fig:jv_champions-pcbm,fig:jv_champions-pedotpss}.
 			}\label{table:thicknesses_jv}\\[\belowcaptionskip]
 \multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
 \rule[-1ex]{0pt}{3ex} \\
@@ -85,23 +85,17 @@ The champion device performances of each configuration are listed in \cref{table
 
 
 
-Different thicknesses for the PCBM-C70, perovskite and PEDOT:PSS layers were explored in order to study the effect in the final device performance, the variation of the charge storage capability and finally the changes in the recombination dynamics.
-
-Table 1. Main performance solar cell parameters in forward scan direction for the most representative devices studied in this work. For parameters from the reverse scan see SI.
-
-* All devices measured under standard conditions (100 mW·cm-2 sun simulated irradiation at AM1.5 G). Average PCEs reported in round brackets. For full statistics see Figures S2, S3, S4.
-
-
-
-
-
-
 
 \section{Interpretation of \glsentryshort{jsc} and \glsentryshort{ff} from Current-Voltage Sweeps}
 
 \section{Interpretation of Transient PhotoVoltage Referenced to Differential Capacitance}\label{interpretation_tpvdc}
 
 \section{Varying \glsentrytext{mapi} Thickness (Absorber Layer)}
+
+Using different spin coating speeds, devices with various \gls{mapi} thicknesses were obtained, as detailed in \cref{table:mapi_thickness}.
+As a consequence to the different deposition conditions, the \gls{mapi} surface is more rough for the thick device than for the thin one, as can be intuited looking at \cref{fig:thickness-esem-topview}.
+Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so that there's no doubt that the \SI{40}{\nm} \gls{pcbm70} layer is enough for ensuring a complete coverage.
+
 
 
 \begin{figure}
@@ -129,6 +123,17 @@ Table 1. Main performance solar cell parameters in forward scan direction for th
 	}
 \end{figure}
 
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-mapi}
+\end{SCfigure}
+
+
+
+
+
 Figure 2 illustrates the current-voltage (J-V) characterization for three representative cells with different thicknesses of MAPI. It could be observed that increasing the MAPI thickness leads to an increase of the photocurrent and, thus, the overall solar cell efficiency (see Table 1). The fill factor (FF) is not heavily influenced by MAPI layer thickness increment so that we could assume that resistances are very similar as well as the interfaces with the respective electron transporting material (ETM) and the HTM (Figure S2). In order to ensure that the interfaces with the MAPI are similar using different thicknesses, ESEM imaging has been performed (See Figure S5); we have demonstrated that, even the roughness increase with the MAPI thicknesses, the grain size and distribution of the crystallites are almost identical.
 Regarding the open circuit voltage (VOC), this value also barely changed with thickness. We have to highlight that both PCBM-C70 and PEDOT:PSS layers were likewise deposited to be the same for all the devices and in order to make a fair comparison. Despite this, it could be assumed that the charge losses and the overall resistance of the devices related to the contacts were very similar and, thus, the increase of the short-circuit current (JSC) can only be attributed to the increase of MAPI thickness.36 Using the same solar cells and in order to confirm these assertions, we performed Photo-Induced Differential Charging (PIDC), Photo-Induced Charge Extraction (PICE) and Photo-Induced Transient Photovoltage (PI-TPV) measurements as reported before.33, 37
 
@@ -144,6 +149,17 @@ As can be seen, the charge recombination follows same kinetics, in other words t
 
 
 \section{Varying \glsentrytext{pcbm70} Thickness (\glsentryshort{etm} Layer)}
+
+\cref{table:pcbm_thickness}
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{jv_champions-pcbm/pcbm-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pcbm70} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-pcbm}
+\end{SCfigure}
+
+
+
 
 s-shape curve when thick pcbm \cite{Wheeler2017} "build-up of space charge due to the restriction of carriers out of the device due to the slow mobility associated with the PCBM."
 
@@ -177,6 +193,14 @@ Moreover, PICE was also measured for these devices, and we found that PICE decay
 
 
 \section{Varying \glsentrytext{pedotpss} Thickness (\glsentryshort{htm} Layer)}
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{jv_champions-pedotpss/pedotpss-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pedotpss} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-pedotpss}
+\end{SCfigure}
+
+\cref{table:pedotpss_thickness}
 
 
 

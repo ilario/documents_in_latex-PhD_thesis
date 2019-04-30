@@ -11,7 +11,7 @@
 	% pdflatex gelmetti-phd_thesis
 
 	
-	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
+	\documentclass[b5paper, 12pt, openright, draft]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
 	\usepackage[spanish, es-noquoting, italian, english]{babel}
@@ -623,7 +623,7 @@
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/intro/} }
-	\input{contents_tex/intro.tex}
+%	\input{contents_tex/intro.tex}
 	\stopcontents[intro]
 
 \chapter{Experimental Methods}\label{ch:methods}
@@ -665,7 +665,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/characterization/} }
-	\input{contents_tex/characterization.tex}
+%	\input{contents_tex/characterization.tex}
 	
 \stopcontents[characterization]
 
@@ -695,7 +695,7 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/tae/} }
-	%\input{contents_tex/tae.tex}
+%	\input{contents_tex/tae.tex}
 	
 \stopcontents[tae]
 
@@ -750,7 +750,7 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/impedance/} }
-	%\input{contents_tex/impedance.tex}
+%	\input{contents_tex/impedance.tex}
 	
 \stopcontents[impedance]
 
@@ -773,7 +773,7 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/modelling/} }
-	%\input{contents_tex/modelling.tex}
+%	\input{contents_tex/modelling.tex}
 	
 \stopcontents[modelling]
 
@@ -795,7 +795,7 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/software/} }
-	\input{contents_tex/software.tex}
+%	\input{contents_tex/software.tex}
 	
 \stopcontents[software]
 
@@ -808,25 +808,23 @@ These give indications about holes and electrons storage and their distribution.
 \chapter{Code}
 	\label{ch:code}
 	\graphicspath{ {./contents_img/code/} }
-	\input{contents_tex/code.tex}
+%	\input{contents_tex/code.tex}
 	
 
 
 \backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
-\addcontentsline{toc}{chapter}{Overall Conclusions}
 %\input{contents_tex/conclusions.tex}
 
 
 
 \chapter{Acknowledgements}
-\addcontentsline{toc}{chapter}{Acknowledgements}
 %\input{contents_tex/acknowledgements.tex}
 
 	\printindex
 
-\chapter*{List of Oral and Poster Presentations at Conferences}
+\chapter{List of Oral and Poster Presentations at Conferences}
 	\begin{itemize}
 		\item 45 min plenary oral presentation, at \textit{International Krutyn Summer School on Advanced Perovskite, Hybrid and Thin-film Photovoltaics} in Krutyn, Poland on June the 14th, 2016 titled \textit{"How to make efficient perovskite solar cells and charge transfer reactions in perovskite solar cell"}
 		\item 20 min plenary oral presentation at \textit{Workshop on Flexible Electronics} in DEEEA-URV, Tarragona, Spain on June the 29th, 2016 titled \textit{"Photophysical characterization of charge transfer and recombination in hybrid lead halide perovskite solar cells"}
@@ -837,9 +835,9 @@ These give indications about holes and electrons storage and their distribution.
 		\item 15 min oral presentation in \textit{NanoBio Conference 2018} in Heraklion, Crete, Greece on September the 27th, 2018 titled \textit{"Perovskite solar cells impedance spectroscopy explained via 1D time dependent drift-diffusion modelling"}
 	\end{itemize}
 
-	\printbibliography[category=mypapers, title=List of Publications]
+	\printbibliography[category=mypapers, heading=bibintoc, title={Contributions to Scientific Literature}]
 
-	\printbibliography[notcategory=mypapers]
+	\printbibliography[notcategory=mypapers,heading=bibintoc]
 
 
 \end{document}
