@@ -8,7 +8,7 @@
 
 	\paragraph{Varying the thickness}
 	In this study we vary a set of parameters that hopefully have a foreseeable relation with the resulting device structure: thickness of each layer, through the tuning of the spin coating deposition speed.
-	The effect of this variation should just affect the layers thicknesses, having just a minor influence on the other device physical features.
+	This variation should just affect the thickness of one layer, having just a minor influence on the other layers and the rest of the device physical features.
 	This will allow us to univocally relate the observations to the modifications.
 %	each layer thickness variation to the characterization results variation.
 	The complete devices were studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
@@ -21,14 +21,15 @@ The champion device performances of each configuration are listed in \cref{table
 
 
 %\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-\begin{xltabular}[c]{1\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.9\hsize}Y >{\hsize=0.8\hsize}Y >{\hsize=0.8\hsize}Y @{}}
+\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.75\hsize}Y >{\hsize=0.8\hsize}Y @{}}
 	% multirow does not get the correct number of rows with tabularx
 	% mycaption does not work inside xltabular
 	\caption[Layers thicknesses and related average performances of top cathode cells.]{\textbf{Layers thicknesses and related average performances of top cathode cells.}
-				Explored thicknesses with relative average forward and reverse J-V sweep performances.
+				Explored thicknesses with \textit{average} forward and reverse J-V sweep performances.
+				The standard deviation for each value is indicated after the $\pm$ symbol.
 				For each reported result, at least 8, 8, and 4 devices were averaged respectively for \gls{mapi}, \gls{pcbm70}, and \gls{pedotpss} thickness exploration.
 				\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
-				The standard deviation for each value is indicated after the $\pm$ symbol.
+				The measurement conditions were \SI{1}{sun} illumination, no light soaking, \SI{1}{\V\per\s} sweep speed.
 				A boxplot representation of this data can be found in \authoryear{Gelmetti2017}.
 				J-V curve for record devices are reported in \cref{fig:jv_champions-mapi,fig:jv_champions-pcbm,fig:jv_champions-pedotpss}.
 			}\label{table:thicknesses_jv}\\[\belowcaptionskip]
@@ -85,18 +86,7 @@ The champion device performances of each configuration are listed in \cref{table
 
 
 
-
-\section{Interpretation of \glsentryshort{jsc} and \glsentryshort{ff} from Current-Voltage Sweeps}
-
-\section{Interpretation of Transient PhotoVoltage Referenced to Differential Capacitance}\label{interpretation_tpvdc}
-
 \section{Varying \glsentrytext{mapi} Thickness (Absorber Layer)}
-
-Using different spin coating speeds, devices with various \gls{mapi} thicknesses were obtained, as detailed in \cref{table:mapi_thickness}.
-As a consequence to the different deposition conditions, the \gls{mapi} surface is more rough for the thick device than for the thin one, as can be intuited looking at \cref{fig:thickness-esem-topview}.
-Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so that there's no doubt that the \SI{40}{\nm} \gls{pcbm70} layer is enough for ensuring a complete coverage.
-
-
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -114,32 +104,58 @@ Any way, measuring the roughness average with a profilometer, it resulted to be 
 			\bigskip
 			
 			\begin{subfigure}[t]{0.51\textwidth}
-	\includegraphics[width=1\textwidth]{esem-topview/ig87-c34-2000RPM-30k-hv-contrast.png}
-	\subcaption{\SI{2000}{\rpm}, \SI{440}{\nm}}\label{fig:thickness-esem-topview-2000RPM}
-\end{subfigure}
-			
+				\includegraphics[width=1\textwidth]{esem-topview/ig87-c34-2000RPM-30k-hv-contrast.png}
+				\subcaption{\SI{2000}{\rpm}, \SI{440}{\nm}}\label{fig:thickness-esem-topview-2000RPM}
+			\end{subfigure}
 			\mycaption[Top view ESEM images of annealed perovskite layers with various thicknesses.]{The surface of a thin perovskite layer is studied using  FIJI/ImageJ \cite{Schindelin2012} on images of two different devices for each deposition condition (just one reported here for brevity). The average domain diameter and its standard deviation in parenthesis is \SI{182 \pm 25}{\nm} for the thin \SI{230}{\nm} perovskite layer in (\textbf{a}), \SI{190 \pm 34}{\nm} for the medium \SI{320}{\nm} perovskite layer in (\textbf{b}), \SI{189 \pm 23}{\nm} for the thick \SI{440}{\nm} perovskite layer in (\textbf{c}).}\label{fig:thickness-esem-topview}
 		}
 	}
 \end{figure}
 
+\paragraph{Roughness and grain size}
+Using different spin coating speeds, devices with various \gls{mapi} thicknesses were obtained, as detailed in \cref{table:mapi_thickness}.
+As a consequence to the different deposition conditions, the \gls{mapi} surface is more rough for the thick device than for the thin one, as can be intuited looking at \gls{esem} image in \cref{fig:thickness-esem-topview}.
+Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so the \SI{40}{\nm} \gls{pcbm70} layer should be enough for an homogeneous coverage.
+From the same \gls{esem} image, we can measure the grain lateral size, which is not significantly different for the six observed samples (two per each \gls{mapi} thickness, data detailed in \cref{fig:thickness-esem-topview} caption).
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
+	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
 	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-mapi}
 \end{SCfigure}
 
+\paragraph{Current-voltage sweeps}
+In \cref{fig:jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
+
+\paragraph{Current-voltage sweeps -- \gls{ff}}
+The \gls{ff} is not significantly different for the devices with different \gls{mapi} layer thickness.
+The only observable difference is the presence of a higher hysteresis (difference between forward and reverse scan) in this parameter for the thicker \gls{mapi} case.
+This could indicate a small change in the perovskite\-/\gls{pcbm70} interface or just a change in the hysteresis characteristic time due to the increased ionic resistance in the thicker \gls{mapi} layer. 
+
+\paragraph{Current-voltage sweeps -- \gls{voc}}
+Regarding the \gls{voc}, this value also did not change with thickness, indicating that the same recombination processes and dynamics are present disregarding the absorber thickness.
+The higher deviation of this parameter for the thicker perovskite could be due to its higher roughness, causing some devices to have pinholes in the \gls{etm} layer.
+
+\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+What is clear and expected is the \gls{jsc} increase.
+This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far-from-zero transmittance.
+The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
 
+\paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
+From the low and mid background light capacitance obtained from \gls{dc} and from the linear part of \gls{ce} we can obtain a geometric capacitance, as explained in \cref{ch:characterization}.
+This capacitance arises from the accumulation of charges in the selective contacts' depletion layers, considering this as a parallel plates capacitor it's easy to foresee that the increase of \gls{mapi} layer will increase the distance between the "plates" and cause a decrease in the capacitance.
 
+Using the same solar cells and in order to confirm these assertions, we performed Photo-Induced Differential Charging (PIDC), Photo-Induced Charge Extraction (PICE) and Photo-Induced Transient Photovoltage (PI-TPV) measurements as reported before.33, 37
 
-Figure 2 illustrates the current-voltage (J-V) characterization for three representative cells with different thicknesses of MAPI. It could be observed that increasing the MAPI thickness leads to an increase of the photocurrent and, thus, the overall solar cell efficiency (see Table 1). The fill factor (FF) is not heavily influenced by MAPI layer thickness increment so that we could assume that resistances are very similar as well as the interfaces with the respective electron transporting material (ETM) and the HTM (Figure S2). In order to ensure that the interfaces with the MAPI are similar using different thicknesses, ESEM imaging has been performed (See Figure S5); we have demonstrated that, even the roughness increase with the MAPI thicknesses, the grain size and distribution of the crystallites are almost identical.
-Regarding the open circuit voltage (VOC), this value also barely changed with thickness. We have to highlight that both PCBM-C70 and PEDOT:PSS layers were likewise deposited to be the same for all the devices and in order to make a fair comparison. Despite this, it could be assumed that the charge losses and the overall resistance of the devices related to the contacts were very similar and, thus, the increase of the short-circuit current (JSC) can only be attributed to the increase of MAPI thickness.36 Using the same solar cells and in order to confirm these assertions, we performed Photo-Induced Differential Charging (PIDC), Photo-Induced Charge Extraction (PICE) and Photo-Induced Transient Photovoltage (PI-TPV) measurements as reported before.33, 37
+PICE measurements were performed to measure the charge density of devices under working conditions (Figure S10a). 
 
-Figure 2. Photocurrent vs voltage curves for MAPI solar cells with different MAPI thickness: 230 nm (1), 320 nm (2) and 440 nm (3).
-PICE measurements were performed to measure the charge density of devices under working conditions (Figure S10a). There is a mandatory condition that gives reliability to this measurement: Decay from PICE has to be faster than voltage decay from PI-TPV transients.37 In our case, the PICE decay was slightly faster than PI-TPV; this ensures its correct interpretation (Figure S7). Alternatively, when the PICE and PI-TPV VOC decays lifetime were of the same order of magnitude, PIDC were measured giving a more representative calculated geometric capacitance (Cg) of 68, 65 and 41 nFcm-2 for devices 1, 2 and 3 respectively (Figure S10b) that are consistent with the ones obtained using PICE technique (Figure S10a). These results are, both using PICE and PIDC techniques, in perfect agreement to the parallel plate capacitor model where the Cg is inversely proportional to the distance between the two electrodes or, that is the same, the thickness of the device; this assumes that charges are stored, in open circuit conditions, at the contacts.
-Moreover, in order to study the charge storage and recombination in the bulk of the device, close to 1 sun conditions, the Cg was subtracted from the total capacitance; the resulting chemical capacitance was integrated over voltage giving the charge density presumably stored at the bulk of the device at different light intensities.33, 38
+PIDC were measured giving a more representative calculated geometric capacitance (Cg) of 68, 65 and 41 nFcm-2 
+
+These results are, both using PICE and PIDC techniques, in perfect agreement to the parallel plate capacitor model where the Cg is inversely proportional to the distance between the two electrodes or, that is the same, the thickness of the device; this assumes that charges are stored, in open circuit conditions, at the contacts.
+
+\paragraph{Carriers life-time from \gls{tpv} and AAAAAAAAAAAAA \gls{ce}}
+
 PIDC measurements are depicted in Figure 3a. As can be seen, and despite the difference in thickness, the charge densities measured using PIDC in the three devices were very similar as well as the VOC, no shift in the charge distribution was observed that is in good agreement with the observed VOC from the J-V characterization. Furthermore, carrier recombination processes can be assessed using PI-TPV measurements; this technique allows the measurement of carriers’ lifetime under different light intensities at open circuit conditions. Figure 3b shows the PI-TPV measurement for devices 1, 2 and 3.
 
 
@@ -154,7 +170,7 @@ As can be seen, the charge recombination follows same kinetics, in other words t
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{jv_champions-pcbm/pcbm-IVs.pdf}
+	\includegraphics[width=0.8\textwidth]{jv_champions-pcbm/pcbm-IVs.pdf}
 	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pcbm70} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-pcbm}
 \end{SCfigure}
 
@@ -196,7 +212,7 @@ Moreover, PICE was also measured for these devices, and we found that PICE decay
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{jv_champions-pedotpss/pedotpss-IVs.pdf}
+	\includegraphics[width=0.8\textwidth]{jv_champions-pedotpss/pedotpss-IVs.pdf}
 	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pedotpss} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-pedotpss}
 \end{SCfigure}
 

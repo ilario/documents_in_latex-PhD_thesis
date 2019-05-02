@@ -11,7 +11,7 @@
 	% pdflatex gelmetti-phd_thesis
 
 	
-	\documentclass[b5paper, 12pt, openright, draft]{book} % URV suggests B5	
+	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
 	\usepackage[spanish, es-noquoting, italian, english]{babel}
@@ -87,7 +87,7 @@
 	
 
 
-	\usepackage[ragged, centerbody, rightcaption]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
+	\usepackage[ragged, centerbody, rightcaption, wide]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
 	\captionsetup[SCfigure]{indention=0cm}
 	
 	% has to be loaded before hyperref https://tex.stackexchange.com/questions/485270/hyperref-and-titletoc-prints-extra-section-1-or-doc-startchapter-1/
@@ -158,7 +158,20 @@
 	%%%%%%%%%%% FANCYHDR
 	%%%%%%%%%%%
 	\usepackage{fancyhdr}%page headers
-	\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
+%	\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
+\usepackage[
+b5paper,
+bindingoffset=0.3in,
+centering,
+marginparwidth=0.2in,
+textwidth=5.1in,
+marginparsep=1em,
+top=2.5cm,
+bottom=2cm%,
+%showframe
+]{geometry}
+%	\evensidemargin 1.5in
+%	\oddsidemargin 1.5in
 	
 	%%%%%%%%%%%
 	%%%%%%%%%%% MAKEIDX
@@ -685,7 +698,7 @@ Still, even if the performances are at par with \gls{spiro}, the price of these 
 A better understanding of the \gls{htm}/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
 In this chapter, the devices fabricated using four different \gls{htm} have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
 
-\paragraph{Publications} Part of this chapter has been published in \fullcite{Gelmetti2019}.
+\paragraph{Publications} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[tae]
@@ -718,7 +731,7 @@ The results show that AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA that makes the control
 %in this kind of devices the limiting layer is the PCBM-C70 due to its relative reduced mobility compared to PEDOT:PSS 
 These give indications about holes and electrons storage and their distribution.
 
-\paragraph{Publications} Part of this chapter has been published in \fullcite{Gelmetti2017}.
+\paragraph{Publications} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[thicknesses]
@@ -740,7 +753,7 @@ These give indications about holes and electrons storage and their distribution.
 
 \paragraph{Abstract}
 
-\paragraph{Publications} Part of this chapter has been published in \fullcite{Moia2019}.
+\paragraph{Publications} Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[impedance]
@@ -795,7 +808,7 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/software/} }
-%	\input{contents_tex/software.tex}
+	\input{contents_tex/software.tex}
 	
 \stopcontents[software]
 

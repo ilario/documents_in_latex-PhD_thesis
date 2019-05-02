@@ -26,6 +26,15 @@
 		\paragraph{Auto-measure}\label{automeasure}
 
 		\paragraph{Resistances} The shunt and series resistances estimation from current-voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
+		
+		\paragraph{Scan speed calculation} 
+		The scan speed $s[V/s]$ is obtained from the voltage step \texttt{:SENSe:VOLTage:STEP} $V_|step|[V]$, integration time \texttt{:SENSe:VOLTage:NPLCycles} $n_|int|$ measured in power line cycles and the delay time \texttt{:SOURce:DELay} $t_|delay|[s]$ Keithley's parameters with the following \textit{empirical} expression:
+		
+		\begin{equation}
+		s = \frac{V_|step|}{0.003 + t_|delay| + 0.06 \cdot n_|int|}
+		\end{equation}
+		
+		where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions \cite{Keithley2011}.
 
 	\subsection{Limitations}
 
