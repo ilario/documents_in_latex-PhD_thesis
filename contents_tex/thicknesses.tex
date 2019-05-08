@@ -140,7 +140,7 @@ This is most likely due to the low \gls{eqe} in the thin perovskite layer due to
 The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
 %\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.8\hsize}Y|>{\hsize=0.8\hsize}Y | Y >{\hsize=1.5\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.5\hsize}Y >{\hsize=0.6\hsize}Y @{}}
+\begin{xltabular}[c]{1.1\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.75\hsize}Y|>{\hsize=0.75\hsize}Y | Y >{\hsize=1.55\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.55\hsize}Y >{\hsize=0.6\hsize}Y @{}}
 	% multirow does not get the correct number of rows with tabularx
 	% mycaption does not work inside xltabular
 	\caption[Parameters fitted from CE and DC data, from devices with different layers' thicknesses.]{\textbf{Parameters fitted from CE and DC data, from devices with different layers' thicknesses.}
@@ -194,9 +194,10 @@ The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
 
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
-From the low and mid background light capacitance obtained from \gls{dc} and from the linear part of \gls{ce} we can obtain a geometric capacitance, as explained in \cref{ch:characterization}.
+From the low and mid background light capacitance obtained from \gls{dc} and from the linear part of \gls{ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
 This capacitance arises from the accumulation of charges in the selective contacts' depletion layers, considering this as a parallel plates capacitor it's easy to foresee that the increase of \gls{mapi} layer will increase the distance between the "plates" and cause a decrease in the capacitance.
 This can be observed from the tilting of the linear regime of charge \textsl{versus} light bias in \cref{fig:thicknesses-mapi-geometric-ce} or in the constant capacitance regime in \cref{fig:thicknesses-mapi-geometric-dc}.
+The fitted values of $C_|g|$ are reported in \cref{table:thicknesses_photophysics}.
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -224,30 +225,26 @@ Indeed, no change was expected as the energy levels of the layers is identical i
 Additionally, comparing the two techniques' results for the same sample, we can notice that in every case the exponential regimes starts at lower voltages for \gls{dc}.
 This discrepancy between the two techniques is not always observed for perovskite solar cells and its interpretation is pending.
 
-
-
-
-
-\paragraph{Carriers life-time from \gls{tpv} and AAAAAAAAAAAAA \gls{ce}}
-Then we studied the carriers life-time \textsl{via} \gls{tpv} and related these to the chemical charge (subtracting the charges stored in the geometric capacitance) obtained either \textsl{via} \gls{ce} or \textsl{via} \gls{dc} we can confirm 
-
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVCEs-nogeom_total.pdf}
-				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-mapi-tpv-ce}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVDCs-nogeom_total.pdf}
-				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-mapi-tpv-dc}
-			\end{subfigure}
-			\mycaption[Total carrier life-time \textsl{versus} charge of devices with different MAPI thicknesses.]{The small perturbation life-times were obtained \textsl{via} \gls{tpv} and corrected to total carrier life-time as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation life-time \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-mapi-tv}
-		}
-	}
-\end{figure}
+%\paragraph{Carriers life-time}
+%Then we studied the carriers life-time \textsl{via} \gls{tpv} and related these to the chemical charge (subtracting the charges stored in the geometric capacitance) obtained either \textsl{via} \gls{ce} or \textsl{via} \gls{dc} we can confirm 
+%
+%\begin{figure}
+%	\makebox[\textwidth][c]{
+%		\parbox{1.1\textwidth}{
+%			\centering
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVCEs-nogeom_total.pdf}
+%				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-mapi-tpv-ce}
+%			\end{subfigure}
+%			\qquad
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVDCs-nogeom_total.pdf}
+%				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-mapi-tpv-dc}
+%			\end{subfigure}
+%			\mycaption[Total carrier life-time \textsl{versus} charge of devices with different MAPI thicknesses.]{The small perturbation life-times were obtained \textsl{via} \gls{tpv} and corrected to total carrier life-time as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation life-time \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-mapi-tpv}
+%		}
+%	}
+%\end{figure}
 
 Figure 3. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at different charge density of devices 1 (230 nm), 2 (320 nm) and 3 (440 nm) using different thickness of MAPI.
 As can be seen, the charge recombination follows same kinetics, in other words the three devices shown the same PI-TPV slope, and then no substantial differences could be considered. Thus, we have demonstrated that the increase of the JSC is directly related to the thickness of MAPI layer, with the VOC being equal for the three devices.
@@ -305,6 +302,27 @@ This strong influence, together with the higher \gls{ff} results in a much highe
 
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
 
+\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+
+%\paragraph{Carriers life-time}
+%
+%\begin{figure}
+%	\makebox[\textwidth][c]{
+%		\parbox{1.1\textwidth}{
+%			\centering
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{photophysics-pcbm/photophysics-TPVCEs-nogeom_total.pdf}
+%				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-pcbm-tpv-ce}
+%			\end{subfigure}
+%			\qquad
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{photophysics-pcbm/photophysics-TPVDCs-nogeom_total.pdf}
+%				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-pcbm-tpv-dc}
+%			\end{subfigure}
+%			\mycaption[Total carrier life-time \textsl{versus} charge of devices with different \glsentrytext{pcbm70} thicknesses.]{The small perturbation life-times were obtained \textsl{via} \gls{tpv} and corrected to total carrier life-time as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation life-time \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-pcbm-tpv}
+%		}
+%	}
+%\end{figure}
 
 s-shape curve when thick pcbm \cite{Wheeler2017} "build-up of space charge due to the restriction of carriers out of the device due to the slow mobility associated with the PCBM."
 
@@ -357,7 +375,55 @@ The \gls{ff} is
 
 \paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
 
+
+
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-pedotpss/photophysics-CEs.pdf}
+				\subcaption{Charge from \gls{ce}}\label{fig:thicknesses-pedotpss-geometric-ce}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-pedotpss/photophysics-DCs-capacitance.pdf}
+				\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-pedotpss-geometric-dc}
+			\end{subfigure}
+			\mycaption[CE and DC of devices with different \glsentrytext{pedotpss} thicknesses, highlighting the varying geometric capacitance.]{
+				In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+			}\label{fig:thicknesses-pedotpss-geometric}
+		}
+	}
+\end{figure}
+
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
+
+\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+
+%\paragraph{Carriers life-time}
+%
+%\begin{figure}
+%	\makebox[\textwidth][c]{
+%		\parbox{1.1\textwidth}{
+%			\centering
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{photophysics-pedotpss/photophysics-TPVCEs-nogeom_total.pdf}
+%				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-pedotpss-tpv-ce}
+%			\end{subfigure}
+%			\qquad
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{photophysics-pedotpss/photophysics-TPVDCs-nogeom_total.pdf}
+%				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-pedotpss-tpv-dc}
+%			\end{subfigure}
+%			\mycaption[Total carrier life-time \textsl{versus} charge of devices with different \glsentrytext{pedotpss} thicknesses.]{The small perturbation life-times were obtained \textsl{via} \gls{tpv} and corrected to total carrier life-time as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation life-time \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-pedotpss-tpv}
+%		}
+%	}
+%\end{figure}
+
+
+
 
 
 Following same procedure, PEDOT:PSS layer was also studied using different thicknesses maintaining constant the MAPI (300 nm) and PCBM-C70 (40 nm) layers.

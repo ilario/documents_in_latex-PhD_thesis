@@ -233,9 +233,9 @@ bottom=2cm%,
 	
 	
 % to be used in the specific chapter table of contents, via titletoc
-	\titlecontents{lsection}[-2en]{ \normalfont \small \bfseries }{}{}{}[]
-	\titlecontents{lsubsection}[0en]{ \normalfont \small \scshape }{}{}{}[]
-	\titlecontents*{lparagraph}[2en]{\footnotesize \normalfont}{}{}{, \thecontentspage}[ \textbullet\ ][.]
+	\titlecontents{lsection}[-1em]{ \normalfont \footnotesize \bfseries }{}{}{}[]
+	\titlecontents{lsubsection}[1em]{ \normalfont \footnotesize \scshape }{}{}{}[]
+	\titlecontents*{lparagraph}[3em]{\footnotesize \normalfont}{}{}{, \thecontentspage}[ \textbullet\ ][]
 	
 	\usepackage{etoolbox}
 	% \sectionmark is broken for the page of first appearance
@@ -284,6 +284,10 @@ bottom=2cm%,
 % to have line break (hyphenation) also at dashed words using \hyp{} https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
 \usepackage{hyphenat}
 
+% useful for debugging hyphenation problems but it works just 
+%\usepackage{showhyphens} % just for lualatex
+%\usepackage{testhyphens}
+
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
 \makeatletter
@@ -328,32 +332,6 @@ bottom=2cm%,
 	\newcommand{\voc}{V_\mathrm{OC}} 
 	\newcommand{\jsc}{J_\mathrm{SC}}
 	
-%	\newcommand{\PbItwoS}{\ch{PbI2}\index{lead diiodide} }
-%	\newcommand{\PbBrtwoS}{\ch{PbBr2}\index{lead dibromide} }
-%	\newcommand{\PbCltwoS}{\ch{PbCl2}\index{lead dichloride} }
-%	\newcommand{\CsIS}{\ch{CsI}\index{cesium iodide} }
-%	\newcommand{\TiOtwoS}{\ch{TiO2}\index{titanium dioxide} }
-%	\newcommand{\dTiOtwoS}{\ch{d-TiO2}\index{titanium dioxide} }
-%	\newcommand{\mpTiOtwoS}{\ch{mp-TiO2}\index{titanium dioxide} }
-%	
-%	\newcommand{\spiroS}{\gls{spiro}\index{\gls{spiro}} }
-%	\newcommand{\SpiroS}{\Gls{spiro}\index{\gls{spiro}} }
-%	\newcommand{\taeS}[1]{\gls{tae#1}\index{\gls{tae#1}} } % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
-%	\newcommand{\TaeS}[1]{\Gls{tae#1}\index{\gls{tae#1}} }
-%	
-%	\newcommand{\PbItwo}{\ch{PbI2}\index{lead diiodide}}
-%	\newcommand{\PbBrtwo}{\ch{PbBr2}\index{lead dibromide}}
-%	\newcommand{\PbCltwo}{\ch{PbCl2}\index{lead dichloride}}
-%	\newcommand{\CsI}{\ch{CsI}\index{cesium iodide}}
-%	\newcommand{\TiOtwo}{\ch{TiO2}\index{titanium dioxide}}
-%	\newcommand{\dTiOtwo}{\ch{d-TiO2}\index{titanium dioxide}}
-%	\newcommand{\mpTiOtwo}{\ch{mp-TiO2}\index{titanium dioxide}}
-%	
-%	\newcommand{\spiro}{\gls{spiro}\index{\gls{spiro}}}
-%	\newcommand{\Spiro}{\Gls{spiro}\index{\gls{spiro}}}
-%	\newcommand{\tae}[1]{\gls{tae#1}\index{\gls{tae#1}}} % this allows to use \tae1, with a number in the command name. Maybe it's a bad idea, see: https://texfaq.org/FAQ-linmacnames
-%	\newcommand{\Tae}[1]{\Gls{tae#1}\index{\gls{tae#1}}}
-	
 	\bibliography{biblio}
 	
 	\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def for "et al." in italic
@@ -390,8 +368,43 @@ bottom=2cm%,
 % limit main table of content to sections, do not print subsections
 \setcounter{tocdepth}{1}
 	
-	
-	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-lu-mine-scence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile ex-po-nen-tial ex-po-nen-ti-als}
+	% no idea why but this hyphenation gets completely ignored :(
+%	\hyphenation{tetra-hydro-furan
+%		di-chlo-ro-methane
+%		enantio-purity
+%		oxy-methyl-ene
+%		di-chroic
+%		aceto-nitrile
+%		iso-propyl
+%		alk-oxy-amine
+%		poly-thio-phene
+%		di-chloride
+%		inter-chain
+%		photo-lu-mine-scence
+%		supra-molecular
+%		photo-gene-rated
+%		hetero-junction
+%		poly-thio-phenic
+%		di-block
+%		thio-phenic
+%		poly-thio-phene
+%		bi-layer
+%		macro-initiator
+%		poly-vinyl-pyridine
+%		homo-polymer
+%		path-length
+%		intra-molecular
+%		inter-molecular
+%		hydro-chloric
+%		poly-dispersity
+%		poly-disperse
+%		chlo-ro-ben-ze-ne
+%		acetyl-acetone
+%		di-iso-prop-oxide
+%		acetyl-acet-on-ate
+%		aceto-nitrile
+%		ex-po-nen-tial
+%		ex-po-nen-ti-als}
 	
 	\title{Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells}
 	\author{Ilario Gelmetti}
@@ -700,6 +713,8 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfour}
 
+\paragraph{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
+
 \paragraph{Abstract}
 In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm}, with the role of extracting respectively the holes and the electrons.
 Without this asymmetrical extraction of charges, the photogeneration would be of no use.
@@ -710,7 +725,7 @@ Still, even if the performances are at par with \gls{spiro}, the price of these 
 A better understanding of the \gls{htm}/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
 In this chapter, the devices fabricated using four different \gls{htm} have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
 
-\paragraph{Publications} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
+
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[tae]
@@ -730,20 +745,16 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfive}
 
+\paragraph{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
+
 \paragraph{Abstract}
 A series of top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} perovskite solar cells have been fabricated.
 The thickness of each of the \gls{pedotpss} \gls{htm}, \gls{mapi} absorber, and \gls{pcbm70} \gls{etm} has been independently varied.
 We verified that these different thicknesses affected as little as possible the rest of the solar cell stack, so that we can unequivocally relate the observations to the changes.
 Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
-Specifically, we have measured devices' capacitance under illumination and charge carrier’s life-time using photo-induced time resolved techniques.
+Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
 
-REVISE: Capacitive measurements show differences for the devices having different \gls{pcbm70} layer thicknesses in contrast with the measurements on the different \gls{mapi} thickness.
 
-The results show that AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA that makes the control of the fullerene thickness crucial for device optimization.
-%in this kind of devices the limiting layer is the PCBM-C70 due to its relative reduced mobility compared to PEDOT:PSS 
-These give indications about holes and electrons storage and their distribution.
-
-\paragraph{Publications} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[thicknesses]
@@ -763,9 +774,11 @@ These give indications about holes and electrons storage and their distribution.
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
 
+\paragraph{Publication} Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
+
 \paragraph{Abstract}
 
-\paragraph{Publications} Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
+
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[impedance]
@@ -786,9 +799,11 @@ These give indications about holes and electrons storage and their distribution.
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
 
+\paragraph{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
+
 \paragraph{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
 
-\paragraph{Publications} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}
+
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[modelling]
@@ -808,9 +823,11 @@ These give indications about holes and electrons storage and their distribution.
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{coloreight}
 
+\paragraph{Publication} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
+
 \paragraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
 
-\paragraph{Publications} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
+
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[software]
