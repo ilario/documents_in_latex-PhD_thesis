@@ -36,7 +36,7 @@ The champion device performances of each configuration are listed in \cref{table
 \multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
 \rule[-1ex]{0pt}{3ex} \\
 	 \gls{mapi} &  \gls{etm} & \gls{htm} & Sweep & \gls{jsc} &  \gls{voc} & \gls{ff} &  \gls{pce} \\ 
-	 \rule[-1ex]{0pt}{2.5ex}  \footnotesize$[\si{\nm}]$ &  \footnotesize$[\si{\nm}]$ &  \footnotesize$[\si{\nm}]$ & - & \footnotesize[\si{\mA\per\square\cm}] &  \footnotesize$[\si{\V}]$ & \footnotesize$[\si{\%}]$ &  \footnotesize$[\si{\%}]$ \\[1mm]
+	 \rule[-1ex]{0pt}{2.5ex}  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] & - & \footnotesize[\si{\mA\per\square\cm}] &  \footnotesize[\si{\V}] & \footnotesize[\si{\%}] &  \footnotesize[\si{\%}] \\[1mm]
 	\hline
 	\endfirsthead
 	\multicolumn{2}{@{}l}{\ldots \small continues}\\
@@ -84,8 +84,6 @@ The champion device performances of each configuration are listed in \cref{table
 				  		&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
 \end{xltabular}
 
-
-
 \section{Varying \glsentrytext{mapi} Thickness (Absorber Layer)}
 
 \begin{figure}
@@ -94,38 +92,38 @@ The champion device performances of each configuration are listed in \cref{table
 			\centering
 			\begin{subfigure}[t]{0.51\textwidth}
 				\includegraphics[width=1\textwidth]{esem-topview/ig87-c39-8000RPM-30k-hv-contrast.png}
-				\subcaption{\SI{8000}{\rpm}, \SI{230}{\nm}}\label{fig:thickness-esem-topview-8000RPM}
+				\subcaption{\SI{8000}{\rpm}, \SI{230}{\nm}}\label{fig:thicknesses-esem-topview-8000RPM}
 			\end{subfigure}
 			\qquad
 			\begin{subfigure}[t]{0.51\textwidth}
 				\includegraphics[width=1\textwidth]{esem-topview/ig87-b78-4100RPM-30k-hv-contrast.png}
-				\subcaption{\SI{4100}{\rpm}, \SI{320}{\nm}}\label{fig:thickness-esem-topview-4100RPM}
+				\subcaption{\SI{4100}{\rpm}, \SI{320}{\nm}}\label{fig:thicknesses-esem-topview-4100RPM}
 			\end{subfigure}
 			\bigskip
 			
 			\begin{subfigure}[t]{0.51\textwidth}
 				\includegraphics[width=1\textwidth]{esem-topview/ig87-c34-2000RPM-30k-hv-contrast.png}
-				\subcaption{\SI{2000}{\rpm}, \SI{440}{\nm}}\label{fig:thickness-esem-topview-2000RPM}
+				\subcaption{\SI{2000}{\rpm}, \SI{440}{\nm}}\label{fig:thicknesseses-esem-topview-2000RPM}
 			\end{subfigure}
-			\mycaption[Top view ESEM images of annealed perovskite layers with various thicknesses.]{The surface of a thin perovskite layer is studied using  FIJI/ImageJ \cite{Schindelin2012} on images of two different devices for each deposition condition (just one reported here for brevity). The average domain diameter and its standard deviation in parenthesis is \SI{182 \pm 25}{\nm} for the thin \SI{230}{\nm} perovskite layer in (\textbf{a}), \SI{190 \pm 34}{\nm} for the medium \SI{320}{\nm} perovskite layer in (\textbf{b}), \SI{189 \pm 23}{\nm} for the thick \SI{440}{\nm} perovskite layer in (\textbf{c}).}\label{fig:thickness-esem-topview}
+			\mycaption[Top view ESEM images of annealed perovskite layers with various thicknesses.]{The surface of a thin perovskite layer is studied using  FIJI/ImageJ \cite{Schindelin2012} on images of two different devices for each deposition condition (just one reported here for brevity). The average domain diameter and its standard deviation in parenthesis is \SI{182 \pm 25}{\nm} for the thin \SI{230}{\nm} perovskite layer in (\textbf{a}), \SI{190 \pm 34}{\nm} for the medium \SI{320}{\nm} perovskite layer in (\textbf{b}), \SI{189 \pm 23}{\nm} for the thick \SI{440}{\nm} perovskite layer in (\textbf{c}).}\label{fig:thicknesses-esem-topview}
 		}
 	}
 \end{figure}
 
 \paragraph{Roughness and grain size}
 Using different spin coating speeds, devices with various \gls{mapi} thicknesses were obtained, as detailed in \cref{table:mapi_thickness}.
-As a consequence to the different deposition conditions, the \gls{mapi} surface is more rough for the thick device than for the thin one, as can be intuited looking at \gls{esem} image in \cref{fig:thickness-esem-topview}.
+As a consequence to the different deposition conditions, the \gls{mapi} surface is more rough for the thick device than for the thin one, as can be intuited looking at \gls{esem} image in \cref{fig:thicknesses-esem-topview}.
 Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so the \SI{40}{\nm} \gls{pcbm70} layer should be enough for an homogeneous coverage.
-From the same \gls{esem} image, we can measure the grain lateral size, which is not significantly different for the six observed samples (two per each \gls{mapi} thickness, data detailed in \cref{fig:thickness-esem-topview} caption).
+From the same \gls{esem} image, we can measure the grain lateral size, which is not significantly different for the six observed samples (two per each \gls{mapi} thickness, data detailed in \cref{fig:thicknesses-esem-topview} caption).
 
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
-	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-mapi}
+	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
 \end{SCfigure}
 
 \paragraph{Current-voltage sweeps}
-In \cref{fig:jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
+In \cref{fig:thicknesses-jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
 
 \paragraph{Current-voltage sweeps -- \gls{ff}}
 The \gls{ff} is not significantly different for the devices with different \gls{mapi} layer thickness.
@@ -141,23 +139,115 @@ What is clear and expected is the \gls{jsc} increase.
 This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far-from-zero transmittance.
 The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
+%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.8\hsize}Y|>{\hsize=0.8\hsize}Y | Y >{\hsize=1.5\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.5\hsize}Y >{\hsize=0.6\hsize}Y @{}}
+	% multirow does not get the correct number of rows with tabularx
+	% mycaption does not work inside xltabular
+	\caption[Parameters fitted from CE and DC data, from devices with different layers' thicknesses.]{\textbf{Parameters fitted from CE and DC data, from devices with different layers' thicknesses.}
+		 \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric}.
+	}\label{table:thicknesses_photophysics}\\[\belowcaptionskip]
+	\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{3}{c}{\small\textbf{CE}} & \multicolumn{3}{c}{\small\textbf{DC}}
+	\rule[-1ex]{0pt}{3ex} \\
+	\gls{mapi} &  \gls{etm} & \gls{htm} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} \\ 
+	\rule[-1ex]{0pt}{2.5ex}  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] & \footnotesize[\si{\nano\F\per\square\cm}] &  \footnotesize[\si{\coulomb\per\square\cm}] & - &  \footnotesize[\si{\nano\F\per\square\cm}] &  \footnotesize[\si{\coulomb\per\square\cm}] & - \\[1mm]
+	\hline
+	\endfirsthead
+	\multicolumn{2}{@{}l}{\ldots \small continues}\\
+	\hline
+	\gls{mapi} & \gls{etm} & \gls{htm} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} \\ 
+	\hline
+	\endhead
+	\hline
+	\multicolumn{9}{r@{}}{\small continues\ldots}\\
+	\endfoot
+	\hline
+	\endlastfoot
+	\rule[-1ex]{0pt}{4ex}
+	230 	& \multirow{3}{*}{40}	&  \multirow{3}{*}{65}	& \rnum{85.3301567640111}	& \rnum{5.12603766463996e-21}	& \rnum{1.42540882502849}	& \rnum{63.5691599645725}	& \rnum{2.80156436794216e-12}	& \rnum{4.42885311532801} \\
+	\cline{1-1} \cline{4-9}
+\rule[-1ex]{0pt}{4ex}
+	320	&  						& 						& \rnum{77.7280226931573}	& \rnum{4.82359451755698e-27}	& \rnum{0.970504332684817}	& \rnum{55.4099677743798}	& \rnum{9.01531708758845e-13}	& \rnum{4.09817044704697} \\
+	\cline{1-1} \cline{4-9}
+	\rule[-1ex]{0pt}{4ex}
+440	&  						& 						& \rnum{70.7196355753457}	& \rnum{1.1916876016195e-27}	& \rnum{0.912575007143644}	& \rnum{50.42918432699}	& \rnum{8.6536760550073e-15}	& \rnum{2.64532408455481} \\
+	\hline
+	\rule[-1ex]{0pt}{4ex}
+	\multirow{3}{*}{350}	& 40 	&  \multirow{3}{*}{65} & \rnum{76.399963266735} & \rnum{2.59099124009742e-20} & \rnum{1.42377526492346} & \rnum{55.0987488891515} & \rnum{7.87748762963633e-15} & \rnum{2.51025076329765}\\
+	\cline{2-2} \cline{4-9}
+	\rule[-1ex]{0pt}{4ex}
+							& 60 	& 					 	& \rnum{61.3214241914314} & \rnum{9.01470965786247e-25} & \rnum{1.07005213324604} & \rnum{42.8290117954868} & \rnum{9.34331162626908e-13} & \rnum{3.81783541577789} \\
+	\cline{2-2} \cline{4-9}
+	\rule[-1ex]{0pt}{4ex}
+							& 90 	&  						&\rnum{43.8300398524054} & \rnum{5.33438024104082e-29} & \rnum{0.853781763130922} & \rnum{33.9400710508692} & \rnum{4.49280198629451e-11} & \rnum{5.98365652726317}\\
+	\hline
+	\rule[-1ex]{0pt}{4ex}
+	\multirow{3}{*}{300}	& \multirow{3}{*}{40}	& 27 	& \rnum{63.8554990179897} & \rnum{9.74708581977915e-15} & \rnum{2.93729998552211} & \rnum{46.1396721657447} & \rnum{1.63620664547478e-15} & \rnum{2.37232492243424}\\
+
+	\cline{3-9}
+	\rule[-1ex]{0pt}{4ex}
+							&  						& 45	& \rnum{66.7217372609922} & \rnum{6.39620737296978e-21} & \rnum{1.2951381459487} & \rnum{49.8531675841145} & \rnum{4.64793103413763e-16} & \rnum{2.13846267623868} \\
+
+	\cline{3-9}
+	\rule[-1ex]{0pt}{4ex}
+							& 				 		& 65	& \rnum{64.4501923191207} & \rnum{5.44744643856892e-32} & \rnum{0.678974589798595} & \rnum{50.3194494652546} & \rnum{1.34432980262899e-16} & \rnum{2.00044590997543}\\
+\end{xltabular}
+
 
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
 From the low and mid background light capacitance obtained from \gls{dc} and from the linear part of \gls{ce} we can obtain a geometric capacitance, as explained in \cref{ch:characterization}.
 This capacitance arises from the accumulation of charges in the selective contacts' depletion layers, considering this as a parallel plates capacitor it's easy to foresee that the increase of \gls{mapi} layer will increase the distance between the "plates" and cause a decrease in the capacitance.
+This can be observed from the tilting of the linear regime of charge \textsl{versus} light bias in \cref{fig:thicknesses-mapi-geometric-ce} or in the constant capacitance regime in \cref{fig:thicknesses-mapi-geometric-dc}.
 
-Using the same solar cells and in order to confirm these assertions, we performed Photo-Induced Differential Charging (PIDC), Photo-Induced Charge Extraction (PICE) and Photo-Induced Transient Photovoltage (PI-TPV) measurements as reported before.33, 37
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-CEs.pdf}
+				\subcaption{Charge from \gls{ce}}\label{fig:thicknesses-mapi-geometric-ce}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-DCs-capacitance.pdf}
+				\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-mapi-geometric-dc}
+			\end{subfigure}
+			\mycaption[CE and DC of devices with different MAPI thicknesses, highlighting the varying geometric capacitance.]{
+				In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+			}\label{fig:thicknesses-mapi-geometric}
+		}
+	}
+\end{figure}
 
-PICE measurements were performed to measure the charge density of devices under working conditions (Figure S10a). 
+\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+Both from \gls{ce} and from \gls{dc} we can see that the exponential regime in the charge accumulation, assigned to the chemical capacitance of charges accumulating in the perovskite layer, is similar for all the thicknesses.
+Indeed, no change was expected as the energy levels of the layers is identical in all the devices.
+Additionally, comparing the two techniques' results for the same sample, we can notice that in every case the exponential regimes starts at lower voltages for \gls{dc}.
+This discrepancy between the two techniques is not always observed for perovskite solar cells and its interpretation is pending.
 
-PIDC were measured giving a more representative calculated geometric capacitance (Cg) of 68, 65 and 41 nFcm-2 
 
-These results are, both using PICE and PIDC techniques, in perfect agreement to the parallel plate capacitor model where the Cg is inversely proportional to the distance between the two electrodes or, that is the same, the thickness of the device; this assumes that charges are stored, in open circuit conditions, at the contacts.
+
+
 
 \paragraph{Carriers life-time from \gls{tpv} and AAAAAAAAAAAAA \gls{ce}}
+Then we studied the carriers life-time \textsl{via} \gls{tpv} and related these to the chemical charge (subtracting the charges stored in the geometric capacitance) obtained either \textsl{via} \gls{ce} or \textsl{via} \gls{dc} we can confirm 
 
-PIDC measurements are depicted in Figure 3a. As can be seen, and despite the difference in thickness, the charge densities measured using PIDC in the three devices were very similar as well as the VOC, no shift in the charge distribution was observed that is in good agreement with the observed VOC from the J-V characterization. Furthermore, carrier recombination processes can be assessed using PI-TPV measurements; this technique allows the measurement of carriers’ lifetime under different light intensities at open circuit conditions. Figure 3b shows the PI-TPV measurement for devices 1, 2 and 3.
-
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVCEs-nogeom_total.pdf}
+				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-mapi-tpv-ce}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVDCs-nogeom_total.pdf}
+				\subcaption{\Gls{tpv} life-time \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-mapi-tpv-dc}
+			\end{subfigure}
+			\mycaption[Total carrier life-time \textsl{versus} charge of devices with different MAPI thicknesses.]{The small perturbation life-times were obtained \textsl{via} \gls{tpv} and corrected to total carrier life-time as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation life-time \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-mapi-tv}
+		}
+	}
+\end{figure}
 
 Figure 3. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at different charge density of devices 1 (230 nm), 2 (320 nm) and 3 (440 nm) using different thickness of MAPI.
 As can be seen, the charge recombination follows same kinetics, in other words the three devices shown the same PI-TPV slope, and then no substantial differences could be considered. Thus, we have demonstrated that the increase of the JSC is directly related to the thickness of MAPI layer, with the VOC being equal for the three devices.
@@ -165,16 +255,55 @@ As can be seen, the charge recombination follows same kinetics, in other words t
 
 
 \section{Varying \glsentrytext{pcbm70} Thickness (\glsentryshort{etm} Layer)}
-
-\cref{table:pcbm_thickness}
+Using different spin coating speeds, devices with various \gls{pcbm70} thicknesses were obtained, as detailed in \cref{table:pcbm_thickness}.
 
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{jv_champions-pcbm/pcbm-IVs.pdf}
-	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pcbm70} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-pcbm}
+	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pcbm70} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-pcbm}
 \end{SCfigure}
 
+\paragraph{Current-voltage sweeps}
+In \cref{fig:thicknesses-jv_champions-pcbm} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
 
+
+
+\paragraph{Current-voltage sweeps -- \gls{ff}}
+The \gls{ff} is heavily affected by the high series resistance of the thicker \gls{pcbm70} layer.
+
+
+\paragraph{Current-voltage sweeps -- \gls{voc}}
+Interestingly enough, the \gls{voc} slightly increases when the \gls{pcbm70} thickness is increased.
+If confirmed with a stronger statistics, the lower voltage for the thinner layer case could be due to some uncovered perovskite area, causing a leakage current between the perovskite and the silver metal electrode.
+
+\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+As also observed by \authoryear{Seo2014}, decreasing the \gls{pcbm70} layer results in an increase of the \gls{jsc}.
+
+This strong influence, together with the higher \gls{ff} results in a much higher \gls{pce} for devices with a thin \gls{etm}.
+
+
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-pcbm/photophysics-CEs.pdf}
+				\subcaption{Charge from \gls{ce}}\label{fig:thicknesses-pcbm-geometric-ce}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics-pcbm/photophysics-DCs-capacitance.pdf}
+				\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-pcbm-geometric-dc}
+			\end{subfigure}
+			\mycaption[CE and DC of devices with different \glsentrytext{pcbm70} thicknesses, highlighting the varying geometric capacitance.]{
+				In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+			}\label{fig:thicknesses-pcbm-geometric}
+		}
+	}
+\end{figure}
+
+\paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
 
 
 s-shape curve when thick pcbm \cite{Wheeler2017} "build-up of space charge due to the restriction of carriers out of the device due to the slow mobility associated with the PCBM."
@@ -213,12 +342,22 @@ Moreover, PICE was also measured for these devices, and we found that PICE decay
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{jv_champions-pedotpss/pedotpss-IVs.pdf}
-	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pedotpss} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:jv_champions-pedotpss}
+	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{pedotpss} thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-pedotpss}
 \end{SCfigure}
 
-\cref{table:pedotpss_thickness}
+Using different spin coating speeds, devices with various \gls{pedotpss} thicknesses were obtained, as detailed in \cref{table:pedotpss_thickness}.
 
+\paragraph{Current-voltage sweeps}
+In \cref{fig:thicknesses-jv_champions-pedotpss} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
 
+\paragraph{Current-voltage sweeps -- \gls{ff}}
+The \gls{ff} is 
+
+\paragraph{Current-voltage sweeps -- \gls{voc}}
+
+\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+
+\paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
 
 
 Following same procedure, PEDOT:PSS layer was also studied using different thicknesses maintaining constant the MAPI (300 nm) and PCBM-C70 (40 nm) layers.
@@ -241,7 +380,6 @@ Finally, it was demonstrated that modifying PEDOT:PSS layer do not affect the fi
 
 
 \section{Conclusions}
-\section{Critical Assessment}
 
 
 

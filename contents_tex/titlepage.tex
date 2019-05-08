@@ -1,16 +1,25 @@
-\documentclass[b5paper, 12pt, openany, oneside, titlepage]{book} % URV suggests B5	
+\documentclass[b5paper, 12pt, openany, twoside, titlepage]{book} % URV suggests B5	
 \usepackage[utf8]{inputenc}
 %\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
-\usepackage[english]{babel}
+\usepackage[british]{babel}
 	\usepackage{graphicx}
 		\usepackage{eso-pic} %background image on titlepage
 	\usepackage{transparent} %transparency for background image on titlepage
 %		\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
 \usepackage[top=1in, bottom=1in, outer=1.5cm, inner=1.5cm]{geometry}
+% for including titlepage as pdf with includepdf
+\usepackage{pdfpages} 
+
 \begin{document}
 	\pagestyle{plain}
 		\graphicspath{ {../contents_img/titlepage/} }
-	
+		
+		\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{../contents_img/titlepage/B5_coberta_CDEgen2017.pdf}%
+		
+		\phantom{Ciao Mamma!}\thispagestyle{empty}\newpage
+		\phantom{Ciao Mamma!}\thispagestyle{empty}\newpage
+		\phantom{Ciao Mamma!}\thispagestyle{empty}\newpage
+			
 \begin{titlepage}\begin{center}
 
 

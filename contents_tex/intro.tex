@@ -2,12 +2,17 @@
 
 \section{Why Photovoltaic}
 
-	\paragraph{Abundance} The total solar irradiance hitting the outer Earth atmosphere is around \SI{1361}{\watt\per\square\metre},\cite{Kopp2011} which, considering our planet cross section area, makes \SI{1.6e17}{\watt}.
+	\paragraph{Abundance}
+	The total solar irradiance hitting the outer Earth atmosphere is around \SI{1361}{\watt\per\square\metre},\cite{Kopp2011} which, considering our planet cross section area, makes \SI{1.6e17}{\watt}.
 	Nature conveys this energy in plenty of ways, including the generation of every renewable and most of non-renewable energy sources.
-	Solar energy is effectively the primary energy source for our planet's ecosystem, so it's the most interesting source of energy for human usage.
+	Solar energy is effectively the primary energy source for our planet's ecosystem, so it is the most interesting source of energy for human usage.
 
-	\paragraph{Availability} Its ubiquitous availability can be the leverage for some degree of economical power levelling across different regions of the planet.
-	This is even more interesting when considering that most of the regions where life quality is seriously affected by economy (represented in \cref{fig:world_map-HDI} by the Human Development Index) have abundance of solar irradiation (represented in \cref{fig:world_map-PVOUT} by the ratio between the photovoltaic electric energy that can be obtained over the nominal power of an installed solar panel).
+JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
+
+
+	\paragraph{Availability}
+	The ubiquitous availability of solar power can be the leverage for an economical power levelling across different regions of the planet.
+	Indeed, the abundance of solar irradiation (represented in \cref{fig:world_map-PVOUT} by the ratio between the photovoltaic electric energy that can be obtained over the nominal power of an installed solar panel) is quite high in most of the regions where life quality is seriously affected by economical situation (represented in \cref{fig:world_map-HDI} by the Human Development Index).
 
 	\begin{figure}%[!hbtp]%
 			\makebox[\textwidth][c]{
@@ -29,18 +34,21 @@
 		\end{subfigure}
 		\mycaption[Geographical distribution of development, sunlight and consumption.]{Data in (\textbf{a}) represent the human development index:
 			"a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living"
-			from UNDP\cite{UNDP2018} (missing data in grey); data in (\textbf{b}) represents the photovoltaic electricity potential: considering a photovoltaic module installed in a region, is the ratio between the average daily produced energy, in kWh, and the nominal power, or nameplate capacity, of the installed module;\cite{Solargis2018} data in (\textbf{c}) represents the yearly electricity consumption\cite{CIAa} (comparing total electricity generated annually plus imports and minus exports) on a country scale divided by country land surface,\cite{CIA} expressed in kilowatt-hours per year per square kilometre.}\label{fig:world_map}
+			from UNDP\cite{UNDP2018} (missing data in grey); data in (\textbf{b}) represents the photovoltaic electricity potential: considering a photovoltaic module installed in a region, is the ratio between the average daily produced energy, in kWh, and the nominal power, or nameplate capacity, of the installed module;\cite{Solargis2018} data in (\textbf{c}) represents the yearly electricity consumption\cite{CIAa} (comparing total electricity generated annually plus imports and minus exports) on a country scale divided by country land surface,\cite{CIA} expressed in kilowatt-hour per year and per square kilometre.}\label{fig:world_map}
 		}}
 	\end{figure}
 
-	\paragraph{Resilience} Photovoltaic is the electric energy production method that best matches a distributed and decentralized network model, with the only single-point-of-failure being the climate variability.
-	Combined with accumulation (needed for night time usage) and with other energy sources, it can be the pivot of a completely resilient electric energy provisioning system.
+	\paragraph{Resilience}
+	The usage of photovoltaic energy source is compatible with a distributed and decentralized network model.
+	Such a power network can be much more resilient than the fossil fuels based system, with the only single-point-of-failure being the climate variability.
+%	is the electric energy production method that best matches a distributed and decentralized network model, 
+	Combined with accumulation (needed for night time usage) and with other energy sources, it can be the pivot of an extremely reliable electric energy provisioning system.
 
 	\paragraph{More energy is not enough} It is intuitive that increasing the energy production is a high-price solution to the growing energetic demand.
 	Indeed, in some regions a decrease in the electricity consumption has to be included for a long-term solution.
 	For example, a study\cite{Margolis2016} reports that if every rooftop (not considering utility-scale solar facilities) in United States of America was covered with solar panel, just the 39~\% of its nowadays national consumption would be covered.
 	In \cref{fig:world_map-electrical_vs_land} we can see how electricity consumption density is greatly inhomogeneous and comparing with the photovoltaic potential map in \cref{fig:world_map-PVOUT}, it is evident that such a problem is shared with many other poorly insulated but energy eager regions.
-	Both an increase in machinery's efficiency and a change in life-style can be part of the solution, following the example and thinking at life-style, in USA the per capita energy usage is more than twice the European average, and five times the Latin America average.\cite{IEA}
+	Both an increase in machinery's efficiency and a change in life-style can be part of the solution, following the example and thinking at life-style, in USA the \textsl{per capita} energy usage is more than twice the European average, and five times the Latin America average.\cite{IEA}
 
 	\paragraph{And more research is needed} Every source of electrical energy we can think of works \textsl{via} the conversion of motive power (a flow of steam, wind, or water, waves, tides...) to electricity, which relays on the well established electric generator.
 	Except photovoltaic energy.
@@ -83,23 +91,24 @@
 
 		\paragraph{Primary geminate recombination} \label{intro_geminate} This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
 		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
-		Lead halide perovskite have quite a high static permittivity CITE IMPEDANCE and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_BT$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
-		So this kind of recombination is negligible in perovskite solar cells.
+		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_BT$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
+		So this kind of recombination is negligible in perovskite solar cells CITATION NEEDED.
 		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
 		\paragraph{Radiative recombination}
 		This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that, at steady state, all the absorbed thermal photons, coming from the surroundings of the cell, have to be re-emitted as black body radiation.
 		From this parallelism it can be understood that this recombination is larger for materials with greater absorptivity \cite{Nelson2003} like the ones used for thin film solar cells \cite{Tvingstedt2015}.
 		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
-		Radiative recombination involves the clash of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
+		Radiative recombination involves the collision of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
 		The expression used for modelling is: $U_{rad} = k_{rad} (np-n_|i|^2)$, where $n_|i|$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
+		This type of recombination is present in perovskite solar cells, indeed some of the most efficient perovskite solar cells can be used as \gls{led} taking advantage of their radiative recombination \cite{Bi2016}.
 
 		\paragraph{SRH trap mediated recombination}
 		Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
 		As aforementioned, in an indirect band gap material the radiative recombination is disfavoured, but the presence of a trap state can divide in two easier steps the charge recombination process.
 %		In an indirect band gap material (where the momentum difference between the starting and final state is large) band-to-band bimolecular radiative recombination is disfavoured, but the presence of a localized trap state can catalyse the transition 
 		Usually both the momentum difference and the chemical energy is released \textsl{via} phonons, so no radiative emission is involved.
-		This recombination type can have reaction order of 1 or of 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}.
+		This recombination type can have reaction order of 1 or 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}.
 		In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1.
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
 		The expression used for modelling is \cite{Shockley1952}:
@@ -107,19 +116,21 @@
 		U_{SRH} = k_{SRH} \frac{np-n_|i|^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
 		\end{equation}
 		where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
+		For lead halide hybrid perovskite materials, this kind of recombination is or is not important depending on the presence of mid-gap states, which in turn depends on the material composition and stoichiometry CITATION NEEDED.
+		
 		\paragraph{Surface recombination}\label{intro_surface_recombination}
 		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
-		At the interface between a, let's say, p-doped and a close-to-intrinsic material as we consider the perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and the opposite charge in the intrinsic semiconductor.
+		At the interface between a, for example, p-doped and a close-to-intrinsic material as we consider the perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and the opposite charge in the intrinsic semiconductor.
 		As the doped semiconductor has abundance of majority carriers, the limiting factor will be the concentration of "minority" carriers on the other side of the interface, which will depend on its mobility and on the electric field in the intrinsic.
 		So the reaction order should be 1 for this case.
 		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
-		As we will see below, this is the most important recombination pathway for perovskite solar cells.
+		In efficient perovskite solar cells, this is the most important recombination pathway CITATION NEEDED.
 
 		\paragraph{Auger recombination}
 		When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
 		Additionally to the two free charges of the same kind, it also requires a free charge of the opposite kind for the decay to be possible, so it can be considered as having a reaction order of three.
-		This recombination is important in materials with high free carriers densities or at high photo-generation conditions, very unlikely to happen in perovskite solar cells.
+		This recombination is important in materials with high free carriers densities or at high photo-generation conditions.
+		These high charge densities are unlikely to happen in perovskite solar cells at normal working conditions.
 
 	\subsection{PhotoVoltaic Effect}
 
@@ -129,7 +140,7 @@
 
 		%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
 
-	\subsection{Just the Needed Electrodynamics}
+	\subsection{Bits of Electrodynamics}
 
 		\paragraph{Displacement current -- definition}\label{intro_displacement_current} The displacement current $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$.
 		The displacement electric field $D$ includes contributions from the electric field intensity $E$ and the polarization $P$: $D=\epsilon_0 E + P$ which can also be written in terms of relative permittivity $\epsilon_r$ as: $D= \epsilon_0 \epsilon_r E$.
@@ -169,7 +180,7 @@
 		An example is represented in \cref{fig:displacement_current-ionic}: the amperometer can measure a current even if no charge crossed the perovskite/electrode interface, this is a displacement current caused by the creation of a dipole due to the ionic accumulation at the interfaces.
 		One can imagine the resulting current as needed for maintaining the zero potential difference between the two contacts.
 		It is not, as one could erroneously and instinctively think, the effect of an electric field generated in the contacts by the moving charge in the perovskite layer (with related Coulomb force and image charges) as out of the two two-dimensional planes of opposed charges no electric field is present.
-		This can be understood thinking that the electric field intensity generated by an large plate of charges has a constant magnitude at distances much smaller than the plate dimensions (which is always true in our solar cells considering the thickness \SI{\approx 1}{\um} to area \SI{3x3}{\square\mm} ratio, except at electrode edges).
+		This can be understood thinking that the electric field intensity generated by a large plate of charges has a constant magnitude at distances much smaller than the plate dimensions (which is always true in our solar cells considering the thickness \SI{\approx 1}{\um} to area \SI{3x3}{\square\mm} ratio, except at electrode edges).
 		The concept is represented in \cref{fig:dipole_plane}.
 		In \cpageref{displacement_current_ionic} we'll use the displacement current concept for simulating the current caused in the electrodes not by a net flux of charges through a device section but by the rearrangement of charges which not necessarily leave the device, like the ionic migration in perovskite material.
 
@@ -225,17 +236,19 @@ Cesium introduction \cite{Bi2016,Saliba2016}
 
 	\paragraph{Perovskite Absorber Synthesis}
 	The preparation of this hybrid semiconductor \textsl{via} spin coating and annealing at low temperature is extremely easy and convenient for small-scale research purposes.
-	From my point of view, a point that heavily affects the research in perovskite solar cells is the low reproducibility, likely caused by the sensibility of the crystallization happening during the thermal annealing \cite{Pockett2015}.
-	In literature various reports of completely different results obtained from perfectly identical synthesis can be found \cite{Pockett2015,Gottesman2014}.
+%	From my point of view, 
+	Nevertheless, this fabrication process is affected by a low reproducibility, likely due to the sensibility of the drying and crystallization step \cite{Pockett2015}.
+	This factor clearly slows down the research in perovskite solar cells.
+	In literature various reports of completely different results obtained from supposedly identical synthesis can be found \cite{Pockett2015,Gottesman2014}.
 	This issue is being addressed recently with the publication of more reliable and complete fabrication procedures \cite{Saliba2018}.
 
 	\paragraph{Recombination mechanisms}\label{intro_prv_recombination}
 	The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material.
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
-	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime gets dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
+	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime is dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
 	Even if not universally accepted \cite{Valadez-Villalobos2019}, it is often reported that in open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable in the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2018b,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
 %	Considering the perovskite material, traps are more likely to form on the surface of crystal domains, where the bulk symmetry is broken and carrier-phonon coupling, which can ease indirect transitions is more likely due to the easier deformation of the broken structure . 
-	Nevertheless, also reports on the impact of the perovskite material morphology and composition on the \gls{voc} can be found in literature: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes \cite{Lee2015,Montcada2017,Qiu2016}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
+	Nevertheless, also the morphology and composition of perovskite material can have an impact on the \gls{voc}: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes \cite{Lee2015,Montcada2017,Qiu2016}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
 
 	\paragraph{Open circuit voltage}
 	The open circuit voltage of a perovskite solar cell depends on many contributions, one of these is the aforementioned charge recombination velocity.

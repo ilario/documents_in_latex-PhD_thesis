@@ -14,11 +14,14 @@
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
-	\usepackage[spanish, es-noquoting, italian, english]{babel}
+	\usepackage[spanish, es-noquoting, italian, british, english]{babel}
 	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
 	
 	\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
 	% product-units controls if 1 x 1 m or 1 m x 1 m
+	% I could set the rounding settings in the package options, but for having a better control I set a new alias for rounding numbers
+	\newcommand{\rnum}[1]{\num[round-mode = figures, round-precision = 2]{#1}}
+	
 	
 	\DeclareSIUnit\sq{\ensuremath\Box} % for the sheet resistance units https://tex.stackexchange.com/questions/71220/si-units-for-sheet-resistance-using-siunitx
 	\DeclareSIUnit\Molar{M}
@@ -82,7 +85,7 @@
 	\usepackage{eso-pic} %background image on titlepage
 	\usepackage{transparent} %transparency for background image on titlepage
 	
-	\usepackage[format=plain, indention=0.3cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
+	\usepackage[format=plain, indention=-0.4cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
 	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}% to have also the short version printed, in bold
 	
 
@@ -230,9 +233,9 @@ bottom=2cm%,
 	
 	
 % to be used in the specific chapter table of contents, via titletoc
-	\titlecontents{lsection}[0pt]{ \normalfont \small \bfseries }{}{}{}[]
-	\titlecontents{lsubsection}[0pt]{ \normalfont \small \scshape }{}{}{}[]
-	\titlecontents*{lparagraph}[0pt]{\footnotesize \normalfont}{}{}{, \thecontentspage}[ \textbullet\ ][.]
+	\titlecontents{lsection}[-2en]{ \normalfont \small \bfseries }{}{}{}[]
+	\titlecontents{lsubsection}[0en]{ \normalfont \small \scshape }{}{}{}[]
+	\titlecontents*{lparagraph}[2en]{\footnotesize \normalfont}{}{}{, \thecontentspage}[ \textbullet\ ][.]
 	
 	\usepackage{etoolbox}
 	% \sectionmark is broken for the page of first appearance
@@ -272,8 +275,14 @@ bottom=2cm%,
 		\renewcommand\tabularxcolumn[1]{m{#1}}% m for vertical centering text in each X column cell, https://tex.stackexchange.com/a/343329/173645
 \newcolumntype{Y}{>{\centering\arraybackslash}X}% horizontal centering https://tex.stackexchange.com/a/89932/173645
 
-% for including titlepage as pdf
+% for including titlepage as pdf with includepdf
 \usepackage{pdfpages} 
+
+% for having the glossary on two columns
+%\usepackage{glossary-mcols}
+
+% to have line break (hyphenation) also at dashed words using \hyp{} https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
+\usepackage{hyphenat}
 
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
@@ -382,7 +391,7 @@ bottom=2cm%,
 \setcounter{tocdepth}{1}
 	
 	
-	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-lu-mine-scence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile}
+	\hyphenation{tetra-hydro-furan di-chlo-ro-methane enantio-purity oxy-methyl-ene di-chroic aceto-nitrile iso-propyl alk-oxy-amine poly-thio-phene di-chloride inter-chain photo-lu-mine-scence supra-molecular photo-gene-rated hetero-junction poly-thio-phenic di-block thio-phenic poly-thio-phene bi-layer macro-initiator poly-vinyl-pyridine homo-polymer path-length intra-molecular inter-molecular hydro-chloric poly-dispersity poly-disperse chlo-ro-ben-ze-ne acetyl-acetone di-iso-prop-oxide acetyl-acet-on-ate aceto-nitrile ex-po-nen-tial ex-po-nen-ti-als}
 	
 	\title{Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells}
 	\author{Ilario Gelmetti}
@@ -394,7 +403,7 @@ bottom=2cm%,
 
 \pagestyle{plain}
 
-\selectlanguage{english}
+\selectlanguage{british}
 %\apptocmd{\@epitext}{\penalty=500}{}{}
 %\apptocmd{\epigraph}{\nopagebreak}{}{}
 %\AtEndEnvironment{\epigraphflush}{\nopagebreak}
@@ -411,7 +420,7 @@ bottom=2cm%,
 \pagenumbering{alph}%
 \makeatother%
 % including the title page, compiled as a separate document
-\includepdf[pages={1,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=0.82]{contents_tex/titlepage.pdf}%
+\includepdf[pages={1,2,3,4,5,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
 \pagenumbering{roman}%
 
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
@@ -490,29 +499,29 @@ bottom=2cm%,
 % long non-acronym names and descriptions
 
 % molecules and materials
-\newglossaryentry{pcbm60}{name={\ch{PC60BM}}, description={\iupac{[6,6]-phenyl C\textsubscript{61} butyric acid methyl ester}}}
-\newglossaryentry{pcbm70}{name={\ch{PC70BM}}, description={\iupac{[6,6]-phenyl C\textsubscript{71} butyric acid methyl ester}}}
+\newglossaryentry{pcbm60}{name={\ch{PC60BM}}, description={\iupac{[6,|6]-phen|yl C\textsubscript{61} butyric acid meth|yl ester}}}
+\newglossaryentry{pcbm70}{name={\ch{PC70BM}}, description={\iupac{[6,|6]-phen|yl C\textsubscript{71} butyric acid meth|yl ester}}}
 \newglossaryentry{ptfe}{name={\ch{PTFE}}, description={\iupac{poly|tetra|fluoro|ethyl|ene}}}
 \newglossaryentry{fto}{name={\ch{FTO}}, description={fluorine tin oxide}}
 \newglossaryentry{ito}{name={\ch{ITO}}, description={indium tin oxide}}
 \newglossaryentry{pedotpss}{name={\ch{PEDOT:PSS}}, description={\iupac{poly\-(3,4-ethyl|ene|di|oxy|thio|phene) poly|(styr|ene|sulfon|ate)}}}
-\newglossaryentry{mai}{name={\ch{MAI}}, description={methylammonium iodide}}
-\newglossaryentry{mabr}{name={\ch{MABr}}, description={methylammonium bromide}}
-\newglossaryentry{fai}{name={\ch{FAI}}, description={formamidinium iodide}}
-\newglossaryentry{dmso}{name={\ch{DMSO}}, description={dimethyl sulfoxide}}
+\newglossaryentry{mai}{name={\ch{MAI}}, description={\iupac{methyl|ammonium iod|ide}}}
+\newglossaryentry{mabr}{name={\ch{MABr}}, description={\iupac{methyl|ammonium brom|ide}}}
+\newglossaryentry{fai}{name={\ch{FAI}}, description={\iupac{formam|idinium iod|ide}}}
+\newglossaryentry{dmso}{name={\ch{DMSO}}, description={\iupac{di|methyl sulf|oxide}}}
 \newglossaryentry{dmf}{name={\ch{DMF}}, description={\iupac{N,N-di|methyl|form|amide}}}
 \newglossaryentry{pes}{name={\ch{PES}}, description={\iupac{poly|ether|sulf|one}}}
-\newglossaryentry{mapi}{name={\ch{MAPbI3}}, description={\iupac{methyl|ammonium lead iodide}}}
-\newglossaryentry{mapicl}{name={\ch{MAPbI_{3-x}Cl_x}}, description={\iupac{methyl|ammonium lead iodide chloride}}}
-\newglossaryentry{famapbibr}{name={\ch{FAMAPbIBr}}, description={\iupac{formam|idinium methyl|ammonium lead iodide bromide}}}
-\newglossaryentry{csfamapbibr}{name={\ch{CsFAMAPbIBr}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iodide bromide}}}
-\newglossaryentry{csfamapbibr_complete}{name={\ch{Cs_{0.06}FAMA_{0.2}Pb_{1.3}I_{3.2}Br_{0.6}}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iodide bromide}}}
+\newglossaryentry{mapi}{name={\ch{MAPbI3}}, description={\iupac{methyl|ammonium lead iod|ide}}}
+\newglossaryentry{mapicl}{name={\ch{MAPbI_{3-x}Cl_x}}, description={\iupac{methyl|ammonium lead iod|ide chlor|ide}}}
+\newglossaryentry{famapbibr}{name={\ch{FAMAPbIBr}}, description={\iupac{formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
+\newglossaryentry{csfamapbibr}{name={\ch{CsFAMAPbIBr}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
+\newglossaryentry{csfamapbibr_complete}{name={\ch{Cs_{0.06}FAMA_{0.2}Pb_{1.3}I_{3.2}Br_{0.6}}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
 \newglossaryentry{litfsi}{name={\ch{LiTFSI}}, description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
-\newglossaryentry{spiro}{name={\iupac{spiro-OMeTAD}},description={\iupac{N2,N2,N2',N2',N7,N7,N7',N7'-octa|kis|(4-meth|oxy|phenyl)|-9,9'-spiro|bi|[9H-fluor|ene]|-2,2',7,7'-tetr|amine}}}
-\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-|[N,N-|(4,4'-di|meth|oxy|di|phen|yl|amino)]|phen|yl\}|eth|ene}}}
-\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,3',6,6'-tetra|kis|[N,N-bis|(4-meth|oxy|phen|yl)|amino]|-9,9'-bi|fluor|en|yl|id|ene}}}
-\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,3',6,6'-tetra|kis|(3,6-di|meth|oxy-|9H-carba|zol-9-yl)|-9,9'-bi|fluor|en|yl|id|ene}}}
-\newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly[bis(4-phen|yl)(2,4,6-tri|methyl|phen|yl)amine}}}
+\newglossaryentry{spiro}{name={\iupac{spiro-OMeTAD}},description={\iupac{N^{2},|N^{2},|N^{2'},|N^{2'},|N^{7},|N^{7},|N^{7'},|N^{7'}-octa|kis|(4-meth|oxy|phenyl)|-9,|9'-spiro|bi|[9H-fluor|ene]|-2,2',7,7'-tetr|amine}}}
+\newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-[N,N-(4,4'-di|meth|oxy|di|phen|yl|amino)]phen|yl\}|eth|ene}}}
+\newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,|3',|6,|6'-tetra|kis[N,|N-bis|(4-meth|oxy|phen|yl)|amino]-9,|9'-bi|fluor|en|yl|id|ene}}}
+\newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,|3',|6,|6'-tetra|kis(3,|6-di|meth|oxy-|9H-carba|zol-9-yl)-9,|9'-bi|fluor|en|yl|id|ene}}}
+\newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly|[bis(4-phen|yl)(2,|4,|6-tri|methyl|phen|yl)|amine}}}
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
 % symbols
@@ -565,7 +574,7 @@ bottom=2cm%,
 \newglossaryentry{symb:Jrec}{name={\ensuremath{J_{\mathrm{rec}}}}, description={recombination current}}
 \newglossaryentry{symb:nu}{name={\ensuremath{\nu}}, description={frequency}, sort={frequency}}
 \newglossaryentry{symb:f}{name={\ensuremath{f}}, description={mathematical function}}
-%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+\newglossaryentry{symb:CDC}{name={\ensuremath{C_{\mathrm{DC}}}}, description={Voltage dependent capacitance obtained from DC measurements}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
@@ -588,7 +597,10 @@ bottom=2cm%,
 \lstlistoflistings
 
 \glsaddall
+%\setglossarystyle{mcolindex}
+%\renewcommand*{\glsmcols}{2}
 \printglossary[type=\acronymtype, title={Glossary, Acronyms, and Symbols}]
+
 
 \cleardoublepage \vspace*{12cm}
 \begin{flushright}
@@ -636,7 +648,7 @@ bottom=2cm%,
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/intro/} }
-%	\input{contents_tex/intro.tex}
+	\input{contents_tex/intro.tex}
 	\stopcontents[intro]
 
 \chapter{Experimental Methods}\label{ch:methods}
@@ -678,7 +690,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/characterization/} }
-%	\input{contents_tex/characterization.tex}
+	\input{contents_tex/characterization.tex}
 	
 \stopcontents[characterization]
 
@@ -708,7 +720,7 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/tae/} }
-%	\input{contents_tex/tae.tex}
+	\input{contents_tex/tae.tex}
 	
 \stopcontents[tae]
 
@@ -763,7 +775,7 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/impedance/} }
-%	\input{contents_tex/impedance.tex}
+	\input{contents_tex/impedance.tex}
 	
 \stopcontents[impedance]
 
@@ -786,7 +798,7 @@ These give indications about holes and electrons storage and their distribution.
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/modelling/} }
-%	\input{contents_tex/modelling.tex}
+	\input{contents_tex/modelling.tex}
 	
 \stopcontents[modelling]
 
@@ -821,19 +833,19 @@ These give indications about holes and electrons storage and their distribution.
 \chapter{Code}
 	\label{ch:code}
 	\graphicspath{ {./contents_img/code/} }
-%	\input{contents_tex/code.tex}
+	\input{contents_tex/code.tex}
 	
 
 
 \backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
-%\input{contents_tex/conclusions.tex}
+\input{contents_tex/conclusions.tex}
 
 
 
 \chapter{Acknowledgements}
-%\input{contents_tex/acknowledgements.tex}
+\input{contents_tex/acknowledgements.tex}
 
 	\printindex
 
@@ -851,6 +863,10 @@ These give indications about holes and electrons storage and their distribution.
 	\printbibliography[category=mypapers, heading=bibintoc, title={Contributions to Scientific Literature}]
 
 	\printbibliography[notcategory=mypapers,heading=bibintoc]
-
+	
+	\cleardoublepage
+	\phantom{Ciao Mamma!}\newpage
+	% the closing page has to be on an even page
+	\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_img/titlepage/B5_contra.pdf}%
 
 \end{document}
