@@ -46,7 +46,8 @@
 	\end{center}
 \end{table}
 
-
+\afterpage{
+\clearpage
 %\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 \begin{xltabular}[c]{1\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.9\hsize}Y >{\hsize=0.8\hsize}Y >{\hsize=0.8\hsize}Y @{}}
 	% multirow does not get the correct number of rows with tabularx
@@ -76,4 +77,4 @@
 	\hline
 	&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
 \end{xltabular}
-
+}

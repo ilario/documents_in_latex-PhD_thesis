@@ -288,6 +288,10 @@ bottom=2cm%,
 %\usepackage{showhyphens} % just for lualatex
 %\usepackage{testhyphens}
 
+% "implements a command, \afterpage, that causes the commands specified in its argument to be expanded after the current page is output"
+% for making semi-float longtables https://tex.stackexchange.com/a/215443/173645
+\usepackage{afterpage}
+
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
 \makeatletter
@@ -661,7 +665,7 @@ bottom=2cm%,
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/intro/} }
-	\input{contents_tex/intro.tex}
+%	\input{contents_tex/intro.tex}
 	\stopcontents[intro]
 
 \chapter{Experimental Methods}\label{ch:methods}
@@ -681,7 +685,7 @@ Needless saying, the critical points in fabricating a complex electronic device 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/methods/} }
-	\input{contents_tex/methods.tex}
+%	\input{contents_tex/methods.tex}
 	
 \stopcontents[methods]
 
@@ -703,7 +707,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/characterization/} }
-	\input{contents_tex/characterization.tex}
+%	\input{contents_tex/characterization.tex}
 	
 \stopcontents[characterization]
 
@@ -729,13 +733,14 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[tae]
-
 \printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
-
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/tae/} }
-	\input{contents_tex/tae.tex}
+	
+	\clearpage
+	
+%	\input{contents_tex/tae.tex}
 	
 \stopcontents[tae]
 
@@ -758,12 +763,13 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[thicknesses]
-
 \printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
-
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/thicknesses/} }
+	
+	\clearpage
+	
 	\input{contents_tex/thicknesses.tex}
 	
 \stopcontents[thicknesses]
@@ -788,7 +794,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/impedance/} }
-	\input{contents_tex/impedance.tex}
+%	\input{contents_tex/impedance.tex}
 	
 \stopcontents[impedance]
 
@@ -813,7 +819,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/modelling/} }
-	\input{contents_tex/modelling.tex}
+%	\input{contents_tex/modelling.tex}
 	
 \stopcontents[modelling]
 
@@ -837,7 +843,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/software/} }
-	\input{contents_tex/software.tex}
+%	\input{contents_tex/software.tex}
 	
 \stopcontents[software]
 
@@ -850,19 +856,19 @@ Specifically, we have measured devices' capacitance under illumination using pho
 \chapter{Code}
 	\label{ch:code}
 	\graphicspath{ {./contents_img/code/} }
-	\input{contents_tex/code.tex}
+%	\input{contents_tex/code.tex}
 	
 
 
 \backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
-\input{contents_tex/conclusions.tex}
+%\input{contents_tex/conclusions.tex}
 
 
 
 \chapter{Acknowledgements}
-\input{contents_tex/acknowledgements.tex}
+%\input{contents_tex/acknowledgements.tex}
 
 	\printindex
 

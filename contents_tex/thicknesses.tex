@@ -2,6 +2,73 @@
 
 \section{Introduction}
 
+
+\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+	\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.75\hsize}Y >{\hsize=0.8\hsize}Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Layers thicknesses and related average performances of top cathode cells.]{\textbf{Layers thicknesses and related average performances of top cathode cells.}
+			Explored thicknesses with \textit{average} forward and reverse J-V sweep performances.
+			The standard deviation for each value is indicated after the $\pm$ symbol.
+			For each reported result, at least 8, 8, and 4 devices were averaged respectively for \gls{mapi}, \gls{pcbm70}, and \gls{pedotpss} thickness exploration.
+			\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
+			The measurement conditions were \SI{1}{sun} illumination, no light soaking, \SI{1}{\V\per\s} sweep speed.
+			A boxplot representation of this data can be found in \authoryear{Gelmetti2017}.
+			J-V curve for record devices are reported in \cref{fig:jv_champions-mapi,fig:jv_champions-pcbm,fig:jv_champions-pedotpss}.
+		}\label{table:thicknesses_jv}\\[\belowcaptionskip]
+		\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
+		\rule[-1ex]{0pt}{3ex} \\
+		\small\gls{mapi} &  \small\gls{etm} & \small\gls{htm} &\small Sweep & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\ 
+		\rule[-1ex]{0pt}{2.5ex}  \footnotesize\si{\nm} &  \footnotesize\si{\nm} &  \footnotesize\si{\nm} & - & \footnotesize\si{\mA\per\square\cm} &  \footnotesize\si{\V} & \footnotesize\si{\%} &  \footnotesize\si{\%} \\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		\small\gls{mapi} & \small\gls{etm} & \small\gls{htm} &\small Sweep & \small\gls{jsc} & \small\gls{voc} & \small\gls{ff} & \small\gls{pce} \\ 
+		\hline
+		\endhead
+		\hline
+		\multicolumn{8}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{3ex}
+		\multirow{3}{*}{230} 	& \multirow{11}{*}{40}	&  \multirow{11}{*}{65}	&fwd	&	13.5	$\pm	0.5	$ & 	1.03	$\pm	0.01	$ & 	53	$\pm	3	$ & 	7.3	$\pm	0.4	$ \\*
+		\rule[-1ex]{0pt}{2.5ex}
+		&  						& 						&rev	&	13.6	$\pm	0.5	$ & 	1.02	$\pm	0.01	$ & 	55	$\pm	3	$ & 	7.7	$\pm	0.5	$ \\*
+		\cline{1-1} \cline{4-8}
+		\multirow{3}{*}{320}	&  						&  						&fwd	&	13.9	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	57	$\pm	5	$ & 	8.2	$\pm	0.6	$ \\*
+		\rule[-1ex]{0pt}{2.5ex}
+		&  						&  						&rev	&	14.1	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	55	$\pm	4	$ & 	8.1	$\pm	0.5	$ \\*
+		\cline{1-1} \cline{4-8}
+		\multirow{3}{*}{440}	&  						&  						&fwd	&	16.3	$\pm	2.1	$ & 	1.01	$\pm	0.04	$ & 	58	$\pm	2	$ & 	9.5	$\pm	0.8	$ \\*
+		\rule[-1ex]{0pt}{2.5ex}
+		&  						&  						&rev	&	16.5	$\pm	1.9	$ & 	0.98	$\pm	0.07	$ & 	50	$\pm	5	$ & 	8.1	$\pm	1.4	$ \\[1mm]
+		\hline
+		\multirow{15}{*}{350}	& \multirow{3}{*}{40} 	&  \multirow{15}{*}{65} &fwd	&	16.4	$\pm	2.2	$ & 	0.93	$\pm	0.06	$ & 	48	$\pm	8	$ & 	7.4	$\pm	1.8	$ \\*
+		&  						&  						&rev	&	16.1	$\pm	2.1	$ & 	0.95	$\pm	0.06	$ & 	50	$\pm	5	$ & 	7.6	$\pm	1.4	$ \\*
+		\cline{2-2} \cline{4-8}
+		& \multirow{3}{*}{60} 	& 					 	&fwd	&	13.2	$\pm	1.1	$ & 	0.99	$\pm	0.04	$ & 	47	$\pm	6	$ & 	6.2	$\pm	1.1	$ \\*
+		&  						&  						&rev	&	12.8	$\pm	0.7	$ & 	0.98	$\pm	0.05	$ & 	47	$\pm	5	$ & 	5.9	$\pm	0.8	$ \\*
+		\cline{2-2} \cline{4-8}
+		& \multirow{3}{*}{90} 	&  						&fwd	&	11.1	$\pm	0.6	$ & 	1.03	$\pm	0.03	$ & 	42	$\pm	2	$ & 	4.8	$\pm	0.6	$ \\*
+		&  						&  						&rev	&	11.1	$\pm	0.8	$ & 	1.00	$\pm	0.04	$ & 	44	$\pm	2	$ & 	4.8	$\pm	0.5	$ \\*
+		\cline{2-2} \cline{4-8}
+		& \multirow{3}{*}{120} 	&  						&fwd	&	7.7	$\pm	1.6	$ & 	1.02	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\*
+		&  						&  						&rev	&	7.6	$\pm	1.6	$ & 	1.01	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\[1mm]
+		\hline
+		\multirow{11}{*}{300}	& \multirow{11}{*}{40}	& \multirow{3}{*}{27} 	&fwd	&	12.3	$\pm	1.5	$ & 	1.04	$\pm	0.03	$ & 	55	$\pm	9	$ & 	6.9	$\pm	0.8	$ \\*
+		&  						&  						&rev	&	11.9	$\pm	1.7	$ & 	1.03	$\pm	0.04	$ & 	54	$\pm	11	$ & 	6.6	$\pm	0.7	$ \\*
+		\cline{3-8}
+		&  						& \multirow{3}{*}{45} 	&fwd	&	12.2	$\pm	1.7	$ & 	1.04	$\pm	0.01	$ & 	58	$\pm	4	$ & 	7.3	$\pm	1.2	$ \\*
+		&  						&  						&rev	&	11.8	$\pm	1.7	$ & 	1.00	$\pm	0.09	$ & 	53	$\pm	7	$ & 	6.2	$\pm	0.9	$ \\*
+		\cline{3-8}
+		& 				 		& \multirow{3}{*}{65} 	&fwd	&	12.4	$\pm	1.6	$ & 	1.04	$\pm	0.02	$ & 	60	$\pm	3	$ & 	7.7	$\pm	0.6	$ \\*
+		&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
+	\end{xltabular}
+}
+
 	\paragraph{Disentangling parameters' impact}
 	Perovskite synthesis is a very easy and fragile process at the same time. When varying a fabrication parameter, for example during an optimization, it is quite likely to provoke a "butterfly effect" with the resulting device differing from the reference by much more than the characteristic under study.
 	A principal component analysis of the fabrication parameters would be needed for a rational optimization, but such a complex procedure is further hindered by the difficulty of identifying all relevant contributions.
@@ -20,69 +87,6 @@ All these layers were deposited by spin coating and the thickness was tuned via 
 The champion device performances of each configuration are listed in \cref{table:thicknesses_jv}.
 
 
-%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.75\hsize}Y >{\hsize=0.8\hsize}Y @{}}
-	% multirow does not get the correct number of rows with tabularx
-	% mycaption does not work inside xltabular
-	\caption[Layers thicknesses and related average performances of top cathode cells.]{\textbf{Layers thicknesses and related average performances of top cathode cells.}
-				Explored thicknesses with \textit{average} forward and reverse J-V sweep performances.
-				The standard deviation for each value is indicated after the $\pm$ symbol.
-				For each reported result, at least 8, 8, and 4 devices were averaged respectively for \gls{mapi}, \gls{pcbm70}, and \gls{pedotpss} thickness exploration.
-				\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
-				The measurement conditions were \SI{1}{sun} illumination, no light soaking, \SI{1}{\V\per\s} sweep speed.
-				A boxplot representation of this data can be found in \authoryear{Gelmetti2017}.
-				J-V curve for record devices are reported in \cref{fig:jv_champions-mapi,fig:jv_champions-pcbm,fig:jv_champions-pedotpss}.
-			}\label{table:thicknesses_jv}\\[\belowcaptionskip]
-\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
-\rule[-1ex]{0pt}{3ex} \\
-	 \gls{mapi} &  \gls{etm} & \gls{htm} & Sweep & \gls{jsc} &  \gls{voc} & \gls{ff} &  \gls{pce} \\ 
-	 \rule[-1ex]{0pt}{2.5ex}  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] & - & \footnotesize[\si{\mA\per\square\cm}] &  \footnotesize[\si{\V}] & \footnotesize[\si{\%}] &  \footnotesize[\si{\%}] \\[1mm]
-	\hline
-	\endfirsthead
-	\multicolumn{2}{@{}l}{\ldots \small continues}\\
-	 \hline
-	 \gls{mapi} & \gls{etm} & \gls{htm} & Sweep & \gls{jsc} & \gls{voc} & \gls{ff} & \gls{pce} \\ 
-	\hline
-	\endhead
-	\hline
-	\multicolumn{8}{r@{}}{\small continues\ldots}\\
-	\endfoot
-	\hline
-	\endlastfoot
-\rule[-1ex]{0pt}{3ex}
-\multirow{3}{*}{230} 	& \multirow{11}{*}{40}	&  \multirow{11}{*}{65}	&fwd	&	13.5	$\pm	0.5	$ & 	1.03	$\pm	0.01	$ & 	53	$\pm	3	$ & 	7.3	$\pm	0.4	$ \\*
-\rule[-1ex]{0pt}{2.5ex}
-  						&  						& 						&rev	&	13.6	$\pm	0.5	$ & 	1.02	$\pm	0.01	$ & 	55	$\pm	3	$ & 	7.7	$\pm	0.5	$ \\*
-\cline{1-1} \cline{4-8}
-\multirow{3}{*}{320}	&  						&  						&fwd	&	13.9	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	57	$\pm	5	$ & 	8.2	$\pm	0.6	$ \\*
-\rule[-1ex]{0pt}{2.5ex}
-  						&  						&  						&rev	&	14.1	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	55	$\pm	4	$ & 	8.1	$\pm	0.5	$ \\*
-\cline{1-1} \cline{4-8}
-\multirow{3}{*}{440}	&  						&  						&fwd	&	16.3	$\pm	2.1	$ & 	1.01	$\pm	0.04	$ & 	58	$\pm	2	$ & 	9.5	$\pm	0.8	$ \\*
-\rule[-1ex]{0pt}{2.5ex}
- 						&  						&  						&rev	&	16.5	$\pm	1.9	$ & 	0.98	$\pm	0.07	$ & 	50	$\pm	5	$ & 	8.1	$\pm	1.4	$ \\[1mm]
-\hline
-\multirow{15}{*}{350}	& \multirow{3}{*}{40} 	&  \multirow{15}{*}{65} &fwd	&	16.4	$\pm	2.2	$ & 	0.93	$\pm	0.06	$ & 	48	$\pm	8	$ & 	7.4	$\pm	1.8	$ \\*
-  						&  						&  						&rev	&	16.1	$\pm	2.1	$ & 	0.95	$\pm	0.06	$ & 	50	$\pm	5	$ & 	7.6	$\pm	1.4	$ \\*
-\cline{2-2} \cline{4-8}
-  						& \multirow{3}{*}{60} 	& 					 	&fwd	&	13.2	$\pm	1.1	$ & 	0.99	$\pm	0.04	$ & 	47	$\pm	6	$ & 	6.2	$\pm	1.1	$ \\*
-	 					&  						&  						&rev	&	12.8	$\pm	0.7	$ & 	0.98	$\pm	0.05	$ & 	47	$\pm	5	$ & 	5.9	$\pm	0.8	$ \\*
-\cline{2-2} \cline{4-8}
-	  					& \multirow{3}{*}{90} 	&  						&fwd	&	11.1	$\pm	0.6	$ & 	1.03	$\pm	0.03	$ & 	42	$\pm	2	$ & 	4.8	$\pm	0.6	$ \\*
-	  					&  						&  						&rev	&	11.1	$\pm	0.8	$ & 	1.00	$\pm	0.04	$ & 	44	$\pm	2	$ & 	4.8	$\pm	0.5	$ \\*
-\cline{2-2} \cline{4-8}
-  						& \multirow{3}{*}{120} 	&  						&fwd	&	7.7	$\pm	1.6	$ & 	1.02	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\*
-	  					&  						&  						&rev	&	7.6	$\pm	1.6	$ & 	1.01	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\[1mm]
-\hline
-\multirow{11}{*}{300}	& \multirow{11}{*}{40}	& \multirow{3}{*}{27} 	&fwd	&	12.3	$\pm	1.5	$ & 	1.04	$\pm	0.03	$ & 	55	$\pm	9	$ & 	6.9	$\pm	0.8	$ \\*
-  						&  						&  						&rev	&	11.9	$\pm	1.7	$ & 	1.03	$\pm	0.04	$ & 	54	$\pm	11	$ & 	6.6	$\pm	0.7	$ \\*
-\cline{3-8}
-  						&  						& \multirow{3}{*}{45} 	&fwd	&	12.2	$\pm	1.7	$ & 	1.04	$\pm	0.01	$ & 	58	$\pm	4	$ & 	7.3	$\pm	1.2	$ \\*
-				  		&  						&  						&rev	&	11.8	$\pm	1.7	$ & 	1.00	$\pm	0.09	$ & 	53	$\pm	7	$ & 	6.2	$\pm	0.9	$ \\*
-\cline{3-8}
-				  		& 				 		& \multirow{3}{*}{65} 	&fwd	&	12.4	$\pm	1.6	$ & 	1.04	$\pm	0.02	$ & 	60	$\pm	3	$ & 	7.7	$\pm	0.6	$ \\*
-				  		&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
-\end{xltabular}
 
 \section{Varying \glsentrytext{mapi} Thickness (Absorber Layer)}
 
@@ -124,37 +128,35 @@ From the same \gls{esem} image, we can measure the grain lateral size, which is 
 
 \paragraph{Current-voltage sweeps}
 In \cref{fig:thicknesses-jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
-
-\paragraph{Current-voltage sweeps -- \gls{ff}}
+%\paragraph{Current-voltage sweeps -- \gls{ff}}
 The \gls{ff} is not significantly different for the devices with different \gls{mapi} layer thickness.
 The only observable difference is the presence of a higher hysteresis (difference between forward and reverse scan) in this parameter for the thicker \gls{mapi} case.
 This could indicate a small change in the perovskite\-/\gls{pcbm70} interface or just a change in the hysteresis characteristic time due to the increased ionic resistance in the thicker \gls{mapi} layer. 
-
-\paragraph{Current-voltage sweeps -- \gls{voc}}
+%\paragraph{Current-voltage sweeps -- \gls{voc}}
 Regarding the \gls{voc}, this value also did not change with thickness, indicating that the same recombination processes and dynamics are present disregarding the absorber thickness.
 The higher deviation of this parameter for the thicker perovskite could be due to its higher roughness, causing some devices to have pinholes in the \gls{etm} layer.
-
-\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+%\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
 What is clear and expected is the \gls{jsc} increase.
-This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far-from-zero transmittance.
+This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far\hyp{}from\hyp{}zero transmittance.
 The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
-%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-\begin{xltabular}[c]{1.1\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.75\hsize}Y|>{\hsize=0.75\hsize}Y | Y >{\hsize=1.55\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.55\hsize}Y >{\hsize=0.6\hsize}Y @{}}
+\afterpage{
+%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
+\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.1\hsize}Y | >{\hsize=0.7\hsize}Y | >{\hsize=0.7\hsize}Y | Y >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y @{}}
 	% multirow does not get the correct number of rows with tabularx
 	% mycaption does not work inside xltabular
 	\caption[Parameters fitted from CE and DC data, from devices with different layers' thicknesses.]{\textbf{Parameters fitted from CE and DC data, from devices with different layers' thicknesses.}
-		 \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric}.
+		 The experimental data reported in \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric} has been fitted using \cref{eq:ce_full} for \gls{ce} data and \cref{eq:dc_full} for \gls{dc} data.
 	}\label{table:thicknesses_photophysics}\\[\belowcaptionskip]
-	\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{3}{c}{\small\textbf{CE}} & \multicolumn{3}{c}{\small\textbf{DC}}
+	\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{3}{c|}{\small\textbf{CE}} & \multicolumn{3}{c}{\small\textbf{DC}}
 	\rule[-1ex]{0pt}{3ex} \\
-	\gls{mapi} &  \gls{etm} & \gls{htm} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} \\ 
-	\rule[-1ex]{0pt}{2.5ex}  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] &  \footnotesize[\si{\nm}] & \footnotesize[\si{\nano\F\per\square\cm}] &  \footnotesize[\si{\coulomb\per\square\cm}] & - &  \footnotesize[\si{\nano\F\per\square\cm}] &  \footnotesize[\si{\coulomb\per\square\cm}] & - \\[1mm]
+	\small\gls{mapi} &  \small\gls{etm} & \small\gls{htm} & \small\gls{symb:Cg} & \small\gls{symb:neq} &  \small\gls{symb:m} & \small\gls{symb:Cg} & \small\gls{symb:neq} &  \small\gls{symb:m} \\ 
+	\rule[-1ex]{0pt}{2.5ex}  \footnotesize\si{\nm} &  \footnotesize\si{\nm} &  \footnotesize\si{\nm} & \footnotesize\si{\nano\F\per\square\cm} &  \footnotesize\si{\coulomb\per\square\cm} & - &  \footnotesize\si{\nano\F\per\square\cm} &  \footnotesize\si{\coulomb\per\square\cm} & - \\[1mm]
 	\hline
 	\endfirsthead
 	\multicolumn{2}{@{}l}{\ldots \small continues}\\
 	\hline
-	\gls{mapi} & \gls{etm} & \gls{htm} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} & \gls{symb:Cg} & \gls{symb:neq} &  \gls{symb:m} \\ 
+	\small\gls{mapi} & \small\gls{etm} & \small\gls{htm} & \small\gls{symb:Cg} & \small\gls{symb:neq} & \small\gls{symb:m} & \small\gls{symb:Cg} & \small\gls{symb:neq} & \small\gls{symb:m} \\ 
 	\hline
 	\endhead
 	\hline
@@ -163,35 +165,34 @@ The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 	\hline
 	\endlastfoot
 	\rule[-1ex]{0pt}{4ex}
-	230 	& \multirow{3}{*}{40}	&  \multirow{3}{*}{65}	& \rnum{85.3301567640111}	& \rnum{5.12603766463996e-21}	& \rnum{1.42540882502849}	& \rnum{63.5691599645725}	& \rnum{2.80156436794216e-12}	& \rnum{4.42885311532801} \\
+	230 	& \multirow{3}{*}{40}	&  \multirow{3}{*}{65}	& \rnum{85.3301567640111}	& \rnum{5.12603766463996e-21}	& \rnum{1.42540882502849}	& \rnum{63.5691599645725}	& \rnum{2.80156436794216e-12}	& \rnum{4.42885311532801} \\*
 	\cline{1-1} \cline{4-9}
 \rule[-1ex]{0pt}{4ex}
-	320	&  						& 						& \rnum{77.7280226931573}	& \rnum{4.82359451755698e-27}	& \rnum{0.970504332684817}	& \rnum{55.4099677743798}	& \rnum{9.01531708758845e-13}	& \rnum{4.09817044704697} \\
+	320	&  						& 						& \rnum{77.7280226931573}	& \rnum{4.82359451755698e-27}	& \rnum{0.970504332684817}	& \rnum{55.4099677743798}	& \rnum{9.01531708758845e-13}	& \rnum{4.09817044704697} \\*
 	\cline{1-1} \cline{4-9}
 	\rule[-1ex]{0pt}{4ex}
 440	&  						& 						& \rnum{70.7196355753457}	& \rnum{1.1916876016195e-27}	& \rnum{0.912575007143644}	& \rnum{50.42918432699}	& \rnum{8.6536760550073e-15}	& \rnum{2.64532408455481} \\
 	\hline
 	\rule[-1ex]{0pt}{4ex}
-	\multirow{3}{*}{350}	& 40 	&  \multirow{3}{*}{65} & \rnum{76.399963266735} & \rnum{2.59099124009742e-20} & \rnum{1.42377526492346} & \rnum{55.0987488891515} & \rnum{7.87748762963633e-15} & \rnum{2.51025076329765}\\
+	\multirow{3}{*}{350}	& 40 	&  \multirow{3}{*}{65} & \rnum{76.399963266735} & \rnum{2.59099124009742e-20} & \rnum{1.42377526492346} & \rnum{55.0987488891515} & \rnum{7.87748762963633e-15} & \rnum{2.51025076329765}\\*
 	\cline{2-2} \cline{4-9}
 	\rule[-1ex]{0pt}{4ex}
-							& 60 	& 					 	& \rnum{61.3214241914314} & \rnum{9.01470965786247e-25} & \rnum{1.07005213324604} & \rnum{42.8290117954868} & \rnum{9.34331162626908e-13} & \rnum{3.81783541577789} \\
+							& 60 	& 					 	& \rnum{61.3214241914314} & \rnum{9.01470965786247e-25} & \rnum{1.07005213324604} & \rnum{42.8290117954868} & \rnum{9.34331162626908e-13} & \rnum{3.81783541577789} \\*
 	\cline{2-2} \cline{4-9}
 	\rule[-1ex]{0pt}{4ex}
 							& 90 	&  						&\rnum{43.8300398524054} & \rnum{5.33438024104082e-29} & \rnum{0.853781763130922} & \rnum{33.9400710508692} & \rnum{4.49280198629451e-11} & \rnum{5.98365652726317}\\
 	\hline
 	\rule[-1ex]{0pt}{4ex}
-	\multirow{3}{*}{300}	& \multirow{3}{*}{40}	& 27 	& \rnum{63.8554990179897} & \rnum{9.74708581977915e-15} & \rnum{2.93729998552211} & \rnum{46.1396721657447} & \rnum{1.63620664547478e-15} & \rnum{2.37232492243424}\\
-
+	\multirow{3}{*}{300}	& \multirow{3}{*}{40}	& 27 	& \rnum{63.8554990179897} & \rnum{9.74708581977915e-15} & \rnum{2.93729998552211} & \rnum{46.1396721657447} & \rnum{1.63620664547478e-15} & \rnum{2.37232492243424}\\*
 	\cline{3-9}
 	\rule[-1ex]{0pt}{4ex}
-							&  						& 45	& \rnum{66.7217372609922} & \rnum{6.39620737296978e-21} & \rnum{1.2951381459487} & \rnum{49.8531675841145} & \rnum{4.64793103413763e-16} & \rnum{2.13846267623868} \\
-
+							&  						& 45	& \rnum{66.7217372609922} & \rnum{6.39620737296978e-21} & \rnum{1.2951381459487} & \rnum{49.8531675841145} & \rnum{4.64793103413763e-16} & \rnum{2.13846267623868} \\*
 	\cline{3-9}
 	\rule[-1ex]{0pt}{4ex}
 							& 				 		& 65	& \rnum{64.4501923191207} & \rnum{5.44744643856892e-32} & \rnum{0.678974589798595} & \rnum{50.3194494652546} & \rnum{1.34432980262899e-16} & \rnum{2.00044590997543}\\
 \end{xltabular}
-
+%\end{table}
+}
 
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
 From the low and mid background light capacitance obtained from \gls{dc} and from the linear part of \gls{ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
@@ -219,11 +220,11 @@ The fitted values of $C_|g|$ are reported in \cref{table:thicknesses_photophysic
 	}
 \end{figure}
 
-\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
-Both from \gls{ce} and from \gls{dc} we can see that the exponential regime in the charge accumulation, assigned to the chemical capacitance of charges accumulating in the perovskite layer, is similar for all the thicknesses.
-Indeed, no change was expected as the energy levels of the layers is identical in all the devices.
-Additionally, comparing the two techniques' results for the same sample, we can notice that in every case the exponential regimes starts at lower voltages for \gls{dc}.
-This discrepancy between the two techniques is not always observed for perovskite solar cells and its interpretation is pending.
+%\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+%Both from \gls{ce} in \cref{fig:thicknesses-mapi-geometric-ce} and from \gls{dc} in \cref{fig:thicknesses-mapi-geometric-dc} we can see that the exponential regime in the charge accumulation, assigned to the chemical capacitance of charges accumulating in the perovskite layer, is similar for all the thicknesses.
+%Indeed, no change was expected as the energy levels of the layers is identical in all the devices.
+%Additionally, comparing the two techniques' results for the same sample, we can notice that in every case the exponential regimes starts at lower voltages for \gls{dc}.
+%This discrepancy between the two techniques is not always observed for perovskite solar cells and its interpretation is pending.
 
 %\paragraph{Carriers life-time}
 %Then we studied the carriers life-time \textsl{via} \gls{tpv} and related these to the chemical charge (subtracting the charges stored in the geometric capacitance) obtained either \textsl{via} \gls{ce} or \textsl{via} \gls{dc} we can confirm 
@@ -246,13 +247,9 @@ This discrepancy between the two techniques is not always observed for perovskit
 %	}
 %\end{figure}
 
-Figure 3. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at different charge density of devices 1 (230 nm), 2 (320 nm) and 3 (440 nm) using different thickness of MAPI.
-As can be seen, the charge recombination follows same kinetics, in other words the three devices shown the same PI-TPV slope, and then no substantial differences could be considered. Thus, we have demonstrated that the increase of the JSC is directly related to the thickness of MAPI layer, with the VOC being equal for the three devices.
-
-
-
 \section{Varying \glsentrytext{pcbm70} Thickness (\glsentryshort{etm} Layer)}
 Using different spin coating speeds, devices with various \gls{pcbm70} thicknesses were obtained, as detailed in \cref{table:pcbm_thickness}.
+This was deposited on top of a rather thin layer of \SI{350}{\nm} of \gls{mapi}, which resulted to be smooth enough to allow the \gls{pcbm70} to homogeneously cover it.
 
 \begin{SCfigure}
 	\centering
@@ -262,23 +259,18 @@ Using different spin coating speeds, devices with various \gls{pcbm70} thickness
 
 \paragraph{Current-voltage sweeps}
 In \cref{fig:thicknesses-jv_champions-pcbm} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
-
-
-
-\paragraph{Current-voltage sweeps -- \gls{ff}}
+%\paragraph{Current-voltage sweeps -- \gls{ff}}
 The \gls{ff} is heavily affected by the high series resistance of the thicker \gls{pcbm70} layer.
-
-
-\paragraph{Current-voltage sweeps -- \gls{voc}}
+The S-shape observed close to \gls{voc} in the current\hyp{}voltage sweep of devices with thick \gls{etm} layer is due to an accumulation of charges in the perovskite at the charges collection interface \cite{Wheeler2015} due to \gls{pcbm70} poor mobility \cite{VonHauff2005}. 
+%\paragraph{Current-voltage sweeps -- \gls{voc}}
 Interestingly enough, the \gls{voc} slightly increases when the \gls{pcbm70} thickness is increased.
-If confirmed with a stronger statistics, the lower voltage for the thinner layer case could be due to some uncovered perovskite area, causing a leakage current between the perovskite and the silver metal electrode.
+If confirmed with a stronger statistics, the lower voltage for the thinner layer case could be explained by the presence of some uncovered perovskite area, causing a leakage current between the perovskite and the silver metal electrode.
+%\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+As also observed by \authoryear{Seo2014}, increasing the \gls{pcbm70} layer results in a strong decrease of the \gls{jsc}.
+In \authoryear{Shao2016}, the same dependency is observed in disordered \gls{pcbm70} films while it is not present if the layer is solvent annealed.
+Indeed, a very large series resistance, caused by the thick \gls{etm} layer, is expected to affect the short circuit current (this can be seen substituting $V=0$ in the implicit function in \cref{eq:series_resistance}).
 
-\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
-As also observed by \authoryear{Seo2014}, decreasing the \gls{pcbm70} layer results in an increase of the \gls{jsc}.
-
-This strong influence, together with the higher \gls{ff} results in a much higher \gls{pce} for devices with a thin \gls{etm}.
-
-
+This influence, together with the higher \gls{ff} results in a much higher \gls{pce} for devices with a thin \gls{etm}.
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -301,8 +293,15 @@ This strong influence, together with the higher \gls{ff} results in a much highe
 \end{figure}
 
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
+Also in the case of increasing \gls{pcbm70} \gls{etm} thickness, the geometric capacitance diminishes, coherently to what observed by \authoryear{Wheeler2017}.
+Thinking within the parallel plate capacitor model (explained in \cpageref{geometric_capacitance}) where $C_|g| = \frac{\epsilon_0 \epsilon_|r| A}{d}$, this means that the distance $d$ between the two charge storage locations is increasing.
+This is incompatible with what we expected: that the electronic charge gets stored in a thin depletion layer in the \gls{etm} on the perovskite layer side, as in this case the distance $d$ would not change increasing the \gls{pcbm70} layer.
+So, the main electrons storage location is either close to the \gls{etm}\-/\ch{Ag} electrode interface or within the whole \gls{etm} layer due to a Debye length (a.k.a. Thomas–Fermi screening length, is an indication of the depth inside a semiconductor layer at which an external electric field is completely screened, it depends on the permittivity and the doping density of the material, see \cpageref{intro-space_charge}) larger than the \gls{pcbm70} thickness.
+%This is unexpected as one would expect the geometric component of capacitance to be caused by charges accumulated in the two contacts at the interface with the \gls{mapi} layer.
+%Similarly to what observed for the geometric capacitance 
+In first case, easier to model, we can consider the \gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} system as two capacitors in series with comparable capacitances.
 
-\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+%\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
 
 %\paragraph{Carriers life-time}
 %
@@ -324,37 +323,6 @@ This strong influence, together with the higher \gls{ff} results in a much highe
 %	}
 %\end{figure}
 
-s-shape curve when thick pcbm \cite{Wheeler2017} "build-up of space charge due to the restriction of carriers out of the device due to the slow mobility associated with the PCBM."
-
-
-"The physical meaning of a small majority carrier surface-recombination velocity is an extraction barrier that would eventually lead to S-shaped light J-V curves. Experimentally, such S-shaped curves are not observed for the devices studied herein; however, S-shaped J-V curves could be observed in simulations when Smin is reduced and are discussed further in Supplemental Material [39]."
-"Effect of reduced surface recombination velocityBothSmajandSminare predicted to cause S-shaped JV curves when very small, as seen infigure 7.  In the case ofSmaj,  as described by Wagenpfahlet al.,  a lowSmajrestrictsextraction of majority carriers out of the device.  This leads to a build-up of space chargein the device, lowering the VOC.  In the case of a lowSmin, restricting surface recombinationof  minority  carriers  causes  them  to  accumulate  at  the  electrode  around  open-circuit.   Inthe case of electrons at the anode, this causes the conduction band and the Fermi-level tocome closer together.  At open-circuit, by definition the Fermi-level is flat;  this forces theconduction band to bend down.  At voltages just less than VOC where charges still need tobe extracted, there is additional bulk recombination losses as electrons now have to diffuseagainst the electric field over a barrier to get collected at the cathode.  The simulated banddiagrams can be seen in figure 9."
-"S-shaped JV curves as a consequence of a reduced minority surface-recombination velocity." \cite{Wheeler2015}
-
-change in RC time due to increased PCBM layer resistance \cite{Wheeler2017}
-
-importance of energy disorder in pcbm layer 10.1038/nenergy.2015.1
-
-
-
-
-
-ETM layer was also tested, and in order to ensure good coverage in all devices the thickness of the MAPI devices were slightly reduced to 350 nm, resulting in smoother MAPI and allows the study of the PCBM-C70 with a wider range of thicknesses (see Figure S13). 
-Figure 4 illustrates the measured J-V curves for four representative cells with different thicknesses of PCBM-C70: 40 nm (device 4), 60 nm (device 5), 90 nm (device 6) and 120 nm (device 7).
-
-Figure 4. Photocurrent vs voltage curves for solar cells using 40 nm (4), 60 nm (5) 90 nm (6) and 120 nm (7) of PCBM-C70.
-We could observe that device 4 presents the highest JSC of this set and a progressive decrease of the JSC with the increase in thickness of PCBM-C70, whereas the VOC show minor differences. The FF, on the contrary, drastically decrease as the ETM becomes thicker, that points out to an important resistance to transport, which is in agreement with the increase of the series resistances reflected in the J-V curves and the rise of the S-shape using 120 nm (7) of PCBM-C70.39-40 The mobility of the fullerene has been extensively reported41 being in the order of 10-3 cm2 V-1 s-1 witch is a low mobility value compared to MAPI44 or PEDOT:PSS45 layers, that becomes one of the main limitations for the inverted MAPI devices. Our results are in agreement with the previous publication of Seok et al.36
-For device 7, photo-induced transient measurements have not been measured because of the extremely low performance. PIDC measurements for this set are shown in Figure 5a, in this case the geometric capacitance was calculated to be 57, 48 and 36 nF cm-2 for 40 nm (device 4), 60 nm (device 5) and 90 nm (device 6) thick PCBM-C70 layer respectively (Figure S11b). These differences observed in the Cg (low light intensities) are a direct indication that the system can be modeled as a parallel plate capacitor, as seen for different MAPI thicknesses. Thus, both layers, MAPI and PCBM-C70, are englobed in the semiconductor bulk between the two electrodes of the capacitor. We can determine that this system, far from 1 sun conditions, stores the charges at the Ag electrode. 
-Additionally, and interestingly, we observed a shift on the measured charge distribution, from from PIDC for the thicker PCBM-C70 (Figure 5a). Huang and co-workers25 related the difference in the band tail of the charge distribution to changes in the energy disorder of the fullerene layer due to its lack of crystallinity and random molecular orientation and interaction with the perovskite. The measured exponential curve from PIDC clearly points out to this trend having the thickest devices the most disordered layer. That drove us to think that, close to 1 sun conditions, charges are mainly stored at the MAPI/PCBM-C70 interface.
-
-
-Figure 5. a) Charge density from PIDC (integrated chemical capacitance) at different voltages and b) Charge carrier lifetime at their corresponding charge density of devices 4 (40 nm), 5 (60 nm) and 6 (90 nm) using different thickness of PCBM-C70.
-Moreover, PICE was also measured for these devices, and we found that PICE decays were, in all cases, faster than PI-TPV decays. PICE of these devices are shown in the SI (Figure S11a) and a direct relationship is shown between total charges and the experimental JSC from J-V curves. It is clear that thicker PCBM-C70 layers impede the efficient collection of charges at the metal contact.
-
-
-
-
-
 \section{Varying \glsentrytext{pedotpss} Thickness (\glsentryshort{htm} Layer)}
 
 \begin{SCfigure}
@@ -364,16 +332,18 @@ Moreover, PICE was also measured for these devices, and we found that PICE decay
 \end{SCfigure}
 
 Using different spin coating speeds, devices with various \gls{pedotpss} thicknesses were obtained, as detailed in \cref{table:pedotpss_thickness}.
+The \gls{ito} roughness is small enough to make us certain that even the thinner, \SI{27}{\nm}, \gls{pedotpss} layer results in an homogeneous coverage.
 
 \paragraph{Current-voltage sweeps}
 In \cref{fig:thicknesses-jv_champions-pedotpss} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
+None of the current\hyp{}voltage sweep parameters has shown a significant dependency on the \gls{pedotpss} \gls{htm} thickness.
 
-\paragraph{Current-voltage sweeps -- \gls{ff}}
-The \gls{ff} is 
-
-\paragraph{Current-voltage sweeps -- \gls{voc}}
-
-\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+%\paragraph{Current-voltage sweeps -- \gls{ff}}
+%The \gls{ff} is 
+%
+%\paragraph{Current-voltage sweeps -- \gls{voc}}
+%
+%\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
 
 
 
@@ -399,6 +369,11 @@ The \gls{ff} is
 \end{figure}
 
 \paragraph{Geometric capacitance from \gls{dc} and \gls{ce}}
+
+
+
+
+high pedot:pss mobility \cite{Rutledge2013}
 
 \paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
 

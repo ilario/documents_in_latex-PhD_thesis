@@ -70,7 +70,7 @@
 		If recombination losses at short circuit are negligible (which can be measured either with $\jsc$ \textsl{versus} $\phi$, see \cpageref{jsc-phi}, or with \gls{tpc}, see \cpageref{characterization_tpc}), the photo\hyp{}generated current can be approximated with the short circuit current $J_|ph|(\phi) \approx \jsc(\phi)$.
 		Clearly the reported equation just offers a simplified model.
 		For example, it can be improved adding the contribution from the series resistance $R_|s|$ and would become:
-		\begin{equation}
+		\begin{equation}\label{eq:series_resistance}
 		J = J_|ph|(\phi) - J_0\left[\exp(\frac{q(V+JR_|s|)}{n_|id|k_|B|T})-1\right]
 		\end{equation}
 		The function is now an implicit one, requiring numerical solving even for obtaining $\jsc$.
@@ -160,7 +160,7 @@
 	\end{SCfigure}
 	We wanted to underline that due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one.
 	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result.
-	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also have hysteretic phenomena \cite{Jacobs2018,Du2018}.
+	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also present hysteretic phenomena on different time\hyp{}scales \cite{Bryant2015,Jacobs2018,Du2018}.
 
 	\paragraph{Noise}
 	The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}.
@@ -484,7 +484,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 	}
 \end{figure}
 
-		\paragraph{Linear part and geometric capacitance}
+		\paragraph{Linear part and geometric capacitance}\label{geometric_capacitance}
 		With the introduction of selective contacts, a linear contribution starts to grow in importance summing up to the exponential part.
 		It has been observed both in \gls{osc} \cite{Ryan2017a,Credgington2014} and in perovskite solar cells \cite{Gelmetti2017,Wheeler2017,Du2018}.
 		This linear trend accounts for the accumulation in the selective contacts' depletion layers and in the electrodes, in a parallel plate capacitor fashion: $n = C_|g| \cdot V = \frac{\epsilon_0 \epsilon_|r| A}{d} \cdot V$ where $C_|g|$ is the geometric capacitance, $A$ is the active area, $d$ is the thickness of the dielectric, $\epsilon_0$ is the electric constant, and $\epsilon_|r|$ is the relative permittivity.
