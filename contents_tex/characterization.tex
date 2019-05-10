@@ -356,6 +356,8 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 	A simulation with DrIFtFUSION is reported for an homojunction device in \cref{fig:ce_single_dd}, it can be seen that with ionic mobile defects in \cref{fig:ce_single_dd-ions_zoom} a very weak but long lasting current appears and gives a relevant contribution to the integrated charge.
 	This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported \cite{ORegan2015b}.
 	The charge measured in the external circuit due to the ionic displacement current could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
+		
+	INSERT FIGURE OF CONDUCTION BAND VARIATION DURING CHARGE EXTRACTION AT SHORT AND LONG TIMES HERE; WITH CHARGES REPRESENTATION
 
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -374,7 +376,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 				\qquad
 				\begin{subfigure}[t]{0.5\textwidth}
 					\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions_zoom.pdf}
-					\subcaption{With mobile ions, magnified left axis}\label{fig:ce_single_dd-ions_zoom}
+					\subcaption{With mobile ions, magnified current density axis}\label{fig:ce_single_dd-ions_zoom}
 				\end{subfigure}
 
 		\mycaption[Simulation of a CE without or with mobile ions.]{
@@ -498,7 +500,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 		More exactly, $d$ is the distance between the regions where the opposed charges are getting accumulated, which is the space charge layers (usually depletion layers) in the contacts.
 		So this value can be somewhat wider than just the distance separating the two perovskite/contacts interfaces.
 		By consequence, $\epsilon_|r|$ should be considered as a thickness\hyp{}weighted mean of the relative permittivities of each material between the two accumulation zones.
-		Moreover, as the depletion layers fill up they widen and shrink, so this capacitance can vary as happens for the transition capacitance of a $p$-$n$ junction.
+		Moreover, as the depletion layers fill up they widen and shrink, so this capacitance can vary as happens for the junction capacitance (\textsl{i.e.} transition capacitance) of a $p$-$n$ junction.
 		A voltage dependent geometric capacitance can be obtained from dark \acr{ce} measurements applying reverse voltage biases \cite{Kiermasch2018} or \textsl{via} impedance spectroscopy in dark with a constant voltage bias \cite{Brus2016,Pockett2015}.
 		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$-type materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion layers thickness (Debye length), happening in the contacts, is negligible when summed to the perovskite layer thickness.
 
@@ -536,10 +538,12 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 
 		\paragraph{Linear part with mobile ions}
 		The presence of mobile ions in perovskite materials which can accumulate at the perovskite/contacts interfaces, adds an additional capacitance $C_|ion|$, which sums up to the geometric capacitance $C_|g|$ increasing the weight of the linear component, as we showed in \authoryear{Moia2019}.
-		Nevertheless, as pointed out in \cpageref{ce_limitations_perovskite}, the \acr{ce} measurements are never carried on for long enough to include the ionic migration, and so also the ionic accumulation capacitance gets ignored in our experiments.
+		Nevertheless, as pointed out in \cpageref{ce_limitations_perovskite}, the \acr{ce} measurements are never carried on for long enough to include the ionic migration, and so also the ionic accumulation capacitance is not observed in our experiments.
 		This can be visualized with the simulation reported in \cref{fig:ce_full_dd} where the long timescale (where the current is monitored until complete stabilization) and the short timescale (few tens of microseconds) \acr{ce} experiment are compared.
 		The difference between the short and long timescale extracted charges is the linear contribution by the ionic capacitance discharge, observable as electronic current thanks to the relative displacement current.
 		A simulation with frozen ions (the ionic profile was stabilized at open circuit and frozen during the \acr{ce} experiment) was also performed but not reported, the extracted charge is identical to the reported short timescale extraction simulation.
+		
+	EXPLAIN HOW THE SHORT TIME EXTRACTION CORRESPONDS TO A LARGE CAPACITOR WITH ELECTRODES IN THE CONTACTS; SENSITIVE TO THE PEROVSKITE THICKNESS; WHILE THE LONG TIMES ONE IS SENSITIVE TO THE JUNCTION/TRANSITION CAPACITANCE ONLY
 		
 			\begin{figure}%[!hbtp]%
 		\makebox[\textwidth][c]{
@@ -972,10 +976,11 @@ This simple correction allows us to make a meaningful comparison between recombi
 	For each illumination intensity, the reported decay is the result of averaging around 30 transients in order to increase the signal to noise ratio.
 	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 
-\paragraph{Small resistance}
+\paragraph{Small resistance and fast extraction}
 The characteristic time of a \acr{tpc} decay is often comparable with the small perturbation life\hyp{}time from \acr{tpv} experiment at high background illumination.
 This not necessarily invalidate the \gls{tpc} result, as the slow time could be due to the slow transport in the selective contacts.
 The \gls{tpc} time can be limited by the RC time constant of the extracting circuit, in case a faster extraction is needed, a smaller resistance can be employed (clearly, the measure will be more noisy).
+Thanks to the short time of the measurement, both with or without background illumination, we can assume that the ionic migration is never observed in this measurement.
 
 	\paragraph{Dependency on background illumination}\label{tpc_intensity}
 	When measuring \acr{tpc} at various background illumination intensities, a constant pulse\hyp{}generated charge amount can be gathered for low illuminations that starts decreasing as the background illumination exceeds \SI{1}{sun} (as reported for perovskite solar cells in fig.~S5 of \cite{Du2018} and partially in fig.~S9 of \cite{Wheeler2017}).
@@ -995,7 +1000,8 @@ The \gls{tpc} time can be limited by the RC time constant of the extracting circ
 %	we can obtain a light bias dependent capacitance.
 	Integrating this capacitance profile over voltage we can obtain the extra charge density \textsl{versus} light bias profile.
 	This information is equivalent to the results from \acr{ce}, with the advantage that this technique is a small perturbation technique, working on a stabilized device around its steady state conditions.
-	Additionally, this technique has been used for estimating the electronic band gap of the perovskite layer in \authoryear{Wheeler2017}, considering that also for \acr{dc} as seen for \acr{ce} in \cpageref{ce_energy_levels}, the exponential trend is expected to gain importance as the quasi-Fermi splitting approaches the built-in voltage.
+	Differently to \gls{ce}, \gls{dc} is an intrinsically short time\hyp{}scale technique in which the ionic migration should never be observed.
+	This technique has also been used for estimating the electronic band gap of the perovskite layer in \authoryear{Wheeler2017}, considering that also for \acr{dc} as seen for \acr{ce} in \cpageref{ce_energy_levels}, the exponential trend is expected to gain importance as the quasi-Fermi splitting approaches the built-in voltage.
 	
 %	\begin{equation}C(V') = \left.\frac{dn}{dV}\right\rvert_{V=V'}\end{equation}
 %	This allows us to estimate the capacitance of the solar cell device at open circuit with various illumination intensities.
