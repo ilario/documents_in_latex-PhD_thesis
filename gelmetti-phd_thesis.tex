@@ -14,7 +14,7 @@
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
-	\usepackage[spanish, es-noquoting, italian, british, english]{babel}
+	\usepackage[spanish, es-noquoting, italian, british]{babel}
 	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
 	
 	\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
@@ -503,6 +503,7 @@ bottom=2cm%,
 \newacronym{voc}{V\textsubscript{OC}}{open circuit voltage}
 \newacronym{jsc}{J\textsubscript{SC}}{short circuit current}
 \newacronym{eqe}{EQE}{external quantum efficiency}
+\newacronym{dos}{DOS}{density of states}
 
 % other
 \newacronym{rt}{RT}{room temperature}
@@ -512,6 +513,7 @@ bottom=2cm%,
 \newacronym{osc}{OSC}{organic solar cells}
 \newacronym{dssc}{DSSC}{dye sensitized solar cells}
 \newglossaryentry{rctime}{name={RC time}, description={characteristic time of a circuit composed of a resistance in parallel to a capacitance}}
+\newacronym{cpd}{CPD}{contact potential difference}
 
 % long non-acronym names and descriptions
 
@@ -720,16 +722,9 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \paragraph{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
 
 \paragraph{Abstract}
-In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm}, with the role of extracting respectively the holes and the electrons.
-Without this asymmetrical extraction of charges, the photogeneration would be of no use.
-The classical \gls{etm} from \gls{dssc}, mesoporous titania, is getting obsoleted by planar tin oxide \cite{Jiang2018}.
-On the contrary, the classical \gls{htm} from solid-state \gls{dssc}, \gls{spiro}, is still present in most of the record structures.
-The huge explorative work done for finding a more performing \gls{htm} managed to find a few good-performances small molecules or polymers (\textsl{e.g.} \gls{ptaa}).
-Still, even if the performances are at par with \gls{spiro}, the price of these alternative \gls{htm} is still too high for wide area applications.
-A better understanding of the \gls{htm}/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
-In this chapter, the devices fabricated using four different \gls{htm} have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
-
-
+In this chapter, the well known \gls{spiro}, the previously reported \gls{tae1} and two novel molecules \gls{tae3} and \gls{tae4} were employed as \gls{htm} for fabricating perovskite solar cells.
+The discrepancy between expected and measured \gls{voc} motivated us to study the resulting photovoltaic devices by means of transient optoelectronic techniques.
+This allowed us to gain insight into the recombination process and energy alignment at perovskite\-/\gls{htm} interface.
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[tae]
@@ -738,9 +733,8 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 
 	\graphicspath{ {./contents_img/tae/} }
 	
-	\clearpage
-	
-%	\input{contents_tex/tae.tex}
+	\clearpage	
+	\input{contents_tex/tae.tex}
 	
 \stopcontents[tae]
 
@@ -753,13 +747,10 @@ In this chapter, the devices fabricated using four different \gls{htm} have been
 \paragraph{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
 \paragraph{Abstract}
-A series of top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} perovskite solar cells have been fabricated.
-The thickness of each of the \gls{pedotpss} \gls{htm}, \gls{mapi} absorber, and \gls{pcbm70} \gls{etm} has been independently varied.
-We verified that these different thicknesses affected as little as possible the rest of the solar cell stack, so that we can unequivocally relate the observations to the changes.
+All-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} devices were fabricated and studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
+Small variations in each layer thickness were introduced, so that we could compare the effect of this change on the resulting device characteristics.
 Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
 Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
-
-
 
 \paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[thicknesses]
@@ -769,7 +760,6 @@ Specifically, we have measured devices' capacitance under illumination using pho
 	\graphicspath{ {./contents_img/thicknesses/} }
 	
 	\clearpage
-	
 	\input{contents_tex/thicknesses.tex}
 	
 \stopcontents[thicknesses]

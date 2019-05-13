@@ -2,31 +2,79 @@
 
 
 \section{Introduction}
-From Gelmetti2017:
-Nonetheless, other device architectures can be found at the scientific literature that have in common the use of the TCO and the photoactive layer but either a combination of all-inorganic selective contacts (for example TiO2 for electrons and NiOx for holes2) or, acquiring more relevance, from the OPV school, a combination of all-organic selective contacts (for example fullerene derivatives for electrons and PEDOT:PSS for holes, reaching 15 % with iodine perovskite3-4 or 17 % doping the PEDOT:PSS layer5, 18 % for mixed iodine-bromine perovskite6). Comparable efficiencies have reported using an organic selective contact (for example fullerene derivatives for electrons) in combination with doped NiOx for holes, reaching 17 % efficiency.7-10
-On the other hand, the number of semiconductor molecules and materials employed as hole transport contact layer has increased exponentially in order to replace the most commonly used spiro-OMeTAD for alternative hole transporting molecules that can be easily synthesized18-20 or that don’t require the addition of dopants.21-22 In a lesser extent, a number of electron transport layers have also been investigated but extensively ridden by the use of TiO2 in normal structures and fullerene derivatives in inverted devices.23
+In perovskite solar cells, the absorber is usually sandwiched between two different contacts: the \gls{htm} and the \gls{etm}, with the role of extracting respectively the positive and negative free charges.
+Without this asymmetrical extraction of charges, the photogeneration would be of no use.
+The classical \gls{etm} from \gls{dssc}, mesoporous titania, is getting obsoleted by planar tin oxide \cite{Jiang2018}.
+On the contrary, the classical \gls{htm} from solid-state \gls{dssc}, \gls{spiro}, is still present in most of the record structures of \gls{csfamapbibr} based solar cells \cite{Saliba2016,Saliba2018}.
+The huge explorative work done for finding a better performing \gls{htm} managed to find very few good alternatives.% small molecules or polymers (\textsl{e.g.} \gls{ptaa}).
+Still, even if the performances are at par with \gls{spiro}, the commercial price of these alternative \gls{htm} is still too high for wide area applications.
+A better understanding of the \gls{htm}\-/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
+In this chapter, the devices fabricated using four different \gls{htm}, including two novel ones: \gls{tae3} and \gls{tae4}, have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
+The devices have been fabricated by me under the supervision of Dr.\ Nuria F.\ Montcada and Prof.\ Emilio J.\ Palomares Gil (fabrication described in \cpagerefrange{methods_bottom}{methods_bottom_end}).
+The current\hyp{}voltage sweeps characterization was performed by me and NFM.
+The transient electronic characterization was performed and analysed by me using equipment built by Dr.\ Javier Pérez Hernández.
+The electrochemical and optical characterization of the molecules was performed by NFM, Dr.\ Lydia Cabau, Dr.\ Agustín Molina Ontoria, and Dr.\ Inés García\hyp{}Benito.
+Molecular simulations have been performed by Prof.\ Anton Vidal\hyp{}Ferran.
+Dr.\ Agustín Molina Ontoria and Prof. Nazario Martín designed \gls{tae1} (CAS 1802982-22-4, after the first report in \cite{Cabau2015a}, it has been used also by other research groups in \cite{Choi2015b,Labban2016,Wu2016a,Wu2016b}), \gls{tae3} (CAS 2055756-83-5), and \gls{tae4} molecules.
+The synthesis of these has been carried on by Dr.\ Inés García\hyp{}Benito and reported in her PhD thesis \cite{Garcia-Benito2017} (there, \gls{tae3} is labelled as BF-1, and \gls{tae4} as BF-2) and in \cite{Gelmetti2019}.
+Further characterization of the workfunction of the \gls{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm} by Dr.\ Ana Pérez-Rodríguez, Dr.\ Esther Barrena, and Prof.\ Carmen Ocal at ICMAB-CSIC, UAB, Barcelona.
+The measured \gls{cpd} allowed us to study the impact the underlying perovskite layer can have on the \gls{htm} material.
+These measurements have been discussed in Dr.\ Ana Pérez-Rodríguez PhD thesis \cite{Perez-Rodriguez2018}.
 
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+								\includegraphics[scale=0.8]{molecules/spiro.pdf}
+				\subcaption{\gls{spiro}}\label{fig:tae-molecules-spiro}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+								\includegraphics[scale=0.8]{molecules/tae1.pdf}
+				\subcaption{\gls{tae1}}\label{fig:tae-molecules-tae1}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[scale=0.8]{molecules/tae3.pdf}
+				\subcaption{\gls{tae3}}\label{fig:tae-molecules-tae3}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[scale=0.8]{molecules/tae4.pdf}
+				\subcaption{\gls{tae4}}\label{fig:tae-molecules-tae4}
+			\end{subfigure}
+			\mycaption[Chemical structures of HTM utilised for bottom cathode solar cells.]{}\label{fig:tae-molecules}
+		}
+	}
+\end{figure}
 
-different substrate makes different perovskite morphology \cite{Tao2017}
+\section{Design of the Experiment}
+In order to compare different materials for the selective contact layer, we decided to avoid any modification to the layers underlying the absorber one in the solar cell stack, as these could heavily affect the perovskite morphology \cite{Tao2017}.
+%The variation of the upper contact (\textsl{i.e.} the \gls{htm} in bottom cathode solar cells) guarantees that the observed differences will not be due to a different perovskite structure, whose crystallization has been reported to be sensible to the underlying contact 
+Additionally, the \gls{htm} under comparison have been deposited under as similar as possible conditions (partially hindered by a different solubility), employing the same additives and thicknesses.
+For reducing the possible \gls{dos} width differences for different molecules, the chosen \gls{htm} have all very similar chemical structures.
 
-\section{Interpretation of \glsentryshort{voc} from Current-Voltage Sweeps}
-
-
+%
 Solvent annealing of contact Wu2016
 
 Energy disorder Shao2016
 
 HOMO shift measured by CE and DC has been correlated with UPS for OSC Credgington2014
+%
+%Steepness of absorbance onset also indicates the presence/absence of mid-gap states in the HTM, whose presence would favour the surface recombination \cite{Tvingstedt2017}
+%
+%Impact of dopants in HTM on voc \cite{Correa-Baena2017} "Therefore, dopants act as recombination centers at the HSL interface and dominate recombination dynamics over e.g. the energetics of the HTM which is secondary as shown in a recent study by Belisle et al.39"
+%
+%"the often-questionable validity of vacuum level alignment, the importance of interface dipoles, and band bending as the result of interface formation" \cite{Schulz2019}
+%
 
-Steepness of absorbance onset also indicates the presence/absence of mid-gap states in the HTM, whose presence would favour the surface recombination \cite{Tvingstedt2017}
+\section{Stored charge profile analysis}
 
-Impact of dopants in HTM on voc \cite{Correa-Baena2017} "Therefore, dopants act as recombination centers at the HSL interface and dominate recombination dynamics over e.g. the energetics of the HTM which is secondary as shown in a recent study by Belisle et al.39"
+\section{Recombination analysis}
 
-"the often-questionable validity of vacuum level alignment, the importance of interface dipoles, and band bending as the result of interface formation" \cite{Schulz2019}
+%\section{Layers workfunction \textit{via} KPFM}
+%\section{Conclusions}
+%\section{Critical Assessment}
 
-
-\section{Recombination analysis \textit{via} TPV}
-\section{Stored charge profile \textit{via} DC}
-\section{Layers workfunction \textit{via} KPFM}
-\section{Conclusions}
-\section{Critical Assessment}
