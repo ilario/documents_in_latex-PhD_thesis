@@ -347,7 +347,7 @@ bottom=2cm%,
 	{\ifnumgreater{\value{liststop}}{1}
 	{\finalandcomma}
 	{}%
-	\andothersdelim\bibstring[\emph]{andothers}}
+	\andothersdelim\bibstring[\textsl]{andothers}}
 	{}}
 	
 
@@ -495,6 +495,8 @@ bottom=2cm%,
 \newacronym{ac-afm}{AC-AFM}{alternating current atomic force microscopy}
 \newacronym{trpl}{TRPL}{time-resolved photoluminescence}
 \newacronym{ups}{UPS}{ultraviolet photoelectron spectroscopy}
+\newacronym{cpd}{CPD}{contact potential difference}
+\newacronym{dft}{DFT}{density functional theory}
 
 % physical properties
 \newacronym{homo}{HOMO}{highest-energy occupied molecular orbital}
@@ -514,7 +516,7 @@ bottom=2cm%,
 \newacronym{osc}{OSC}{organic solar cells}
 \newacronym{dssc}{DSSC}{dye sensitized solar cells}
 \newglossaryentry{rctime}{name={RC time}, description={characteristic time of a circuit composed of a resistance in parallel to a capacitance}}
-\newacronym{cpd}{CPD}{contact potential difference}
+\newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 
 % long non-acronym names and descriptions
 
@@ -542,7 +544,8 @@ bottom=2cm%,
 \newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,|3',|6,|6'-tetra|kis[N,|N-bis|(4-meth|oxy|phen|yl)|amino]-9,|9'-bi|fluor|en|yl|id|ene}}}
 \newglossaryentry{tae4}{name={TAE-4},description={\iupac{3,|3',|6,|6'-tetra|kis(3,|6-di|meth|oxy-|9H-carba|zol-9-yl)-9,|9'-bi|fluor|en|yl|id|ene}}}
 \newglossaryentry{ptaa}{name={PTAA}, description={\iupac{poly|[bis(4-phen|yl)(2,|4,|6-tri|methyl|phen|yl)|amine}}}
-\newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
+\newglossaryentry{thf}{name={THF}, description={\iupac{tetrahydrofuran}}}
+\newglossaryentry{dcm}{name={DCM}, description={\iupac{dichloromethane}}}
 
 % symbols
 \newglossaryentry{symb:v}{name={$v$}, description={ideality of pseudo first order life-time \textsl{versus} light bias}}
@@ -595,6 +598,7 @@ bottom=2cm%,
 \newglossaryentry{symb:nu}{name={\ensuremath{\nu}}, description={frequency}, sort={frequency}}
 \newglossaryentry{symb:f}{name={\ensuremath{f}}, description={mathematical function}}
 \newglossaryentry{symb:CDC}{name={\ensuremath{C_{\mathrm{DC}}}}, description={Voltage dependent capacitance obtained from DC measurements}}
+%\newglossaryentry{symb:Eox}{name={\ensuremath{E_{\mathrm{ox}}}}, description={Oxidation potential form cyclovoltammetry measurements}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
@@ -660,7 +664,7 @@ bottom=2cm%,
 	
 	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorone}
 	
-	\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[intro]
 
 \printcontents[intro]{l}{1}{\setcounter{tocdepth}{4}}
@@ -668,7 +672,9 @@ bottom=2cm%,
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/intro/} }
-%	\input{contents_tex/intro.tex}
+	
+	\newpage
+	\input{contents_tex/intro.tex}
 	\stopcontents[intro]
 
 \chapter{Experimental Methods}\label{ch:methods}
@@ -677,10 +683,10 @@ bottom=2cm%,
 	
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colortwo}
 
-\paragraph{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
+\paragraph*{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
 Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[methods]
 
 \printcontents[methods]{l}{1}{\setcounter{tocdepth}{4}}
@@ -688,7 +694,9 @@ Needless saying, the critical points in fabricating a complex electronic device 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/methods/} }
-%	\input{contents_tex/methods.tex}
+	
+	\newpage
+	\input{contents_tex/methods.tex}
 	
 \stopcontents[methods]
 
@@ -699,10 +707,10 @@ Needless saying, the critical points in fabricating a complex electronic device 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorthree}
 
 
-\paragraph{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
+\paragraph*{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
 The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[characterization]
 
 \printcontents[characterization]{l}{1}{\setcounter{tocdepth}{4}}
@@ -710,7 +718,9 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/characterization/} }
-%	\input{contents_tex/characterization.tex}
+	
+	\newpage
+	\input{contents_tex/characterization.tex}
 	
 \stopcontents[characterization]
 
@@ -720,21 +730,21 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfour}
 
-\paragraph{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
+\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
 
-\paragraph{Abstract}
+\paragraph*{Abstract}
 In this chapter, the well known \gls{spiro}, the previously reported \gls{tae1} and two novel molecules \gls{tae3} and \gls{tae4} were employed as \gls{htm} for fabricating perovskite solar cells.
 The lack of correlation between the molecules' ionization potentials and the devices measured \gls{voc} motivated us to deepen the investigation on the factors contributing to the cell voltage by means of transient optoelectronic techniques.
 We gained insight into the recombination process and the energy alignment at perovskite\-/\gls{htm} interface.
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[tae]
-\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
+%\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/tae/} }
 	
-	\clearpage	
+	\newpage	
 	\input{contents_tex/tae.tex}
 	
 \stopcontents[tae]
@@ -745,22 +755,22 @@ We gained insight into the recombination process and the energy alignment at per
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfive}
 
-\paragraph{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
+\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
-\paragraph{Abstract}
+\paragraph*{Abstract}
 All-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} devices were fabricated and studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
 Small variations in each layer thickness were introduced, so that we could compare the effect of this change on the resulting device characteristics.
 Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
 Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[thicknesses]
-\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
+%\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/thicknesses/} }
 	
-	\clearpage
+	\newpage
 	\input{contents_tex/thicknesses.tex}
 	
 \stopcontents[thicknesses]
@@ -771,13 +781,13 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
 
-\paragraph{Publication} Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
+\paragraph*{Publication} Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
 
-\paragraph{Abstract}
+\paragraph*{Abstract}
 
 
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[impedance]
 
 \printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
@@ -796,13 +806,13 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
 
-\paragraph{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
+\paragraph*{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
 
-\paragraph{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
+\paragraph*{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
 
 
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[modelling]
 
 \printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
@@ -820,13 +830,13 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{coloreight}
 
-\paragraph{Publication} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
+\paragraph*{Publication} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
 
-\paragraph{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
+\paragraph*{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
 
 
 
-\paragraph{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[software]
 
 \printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
