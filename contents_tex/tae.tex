@@ -11,7 +11,8 @@ Still, even if the performances are at par with \gls{spiro}, the commercial pric
 A better understanding of the \gls{htm}\-/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
 In this chapter, the devices fabricated using four different \gls{htm}, have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
 Specifically we looked for the influence of the \gls{htm} on the device \gls{voc}.
-Some authors observed a weak correlation between the \gls{htm} ionization potential and the cell voltage \cite{Polander2014,Abate2015a} while others suggested a complex interplay of factors where the \gls{htm} \gls{homo} just plays a marginal role \cite{Correa-Baena2017,Belisle2016,Ishida2016,Park2018,Jimenez-Lopez2017}.
+For \gls{osc}, the correlation between the built-in voltage and the \gls{voc} is well established \cite{Kooistra2007,Gadisa2004,Brabec2001,Wilke2012,Chen2009}.
+For perovskite solar cells, some authors observed a weak correlation between the \gls{htm} ionization potential and the cell voltage \cite{Polander2014,Abate2015a,Kwon2014,Rakstys2015} while others suggested a complex interplay of factors where the \gls{htm} \gls{homo} just plays a marginal role \cite{Correa-Baena2017,Belisle2016,Ishida2016,Park2018,Jimenez-Lopez2017}.
 The tested \gls{htm} were: the classic \gls{spiro}, the previously reported \gls{tae1} (CAS 1802982-22-4, after the first report in \cite{Cabau2015a}, it has been used also by other research groups in \cite{Choi2015b,Labban2016,Wu2016a,Wu2016b}) and two novel molecules: \glsdesc{tae3} (\gls{tae3}, CAS 2055756-83-5) and \glsdesc{tae4} (\gls{tae4}).
 
 \begin{figure}
@@ -45,9 +46,9 @@ The tested \gls{htm} were: the classic \gls{spiro}, the previously reported \gls
 
 \paragraph{Design of the Experiment}
 Differently from our previous report on \gls{tae1} \cite{Cabau2015a}, we decided to avoid the mesoporous titania layer in order to decrease the complexity of the stack.
-In order to compare different materials for the selective contact layer, we decided to avoid any modification to the layers underlying the absorber one in the solar cell stack, as these could heavily affect the perovskite morphology \cite{Tao2017}.
+In order to compare different materials for the selective contact layer, we decided to avoid any modification to the layers underlying the absorber one in the solar cell stack, as these could heavily affect the perovskite morphology \cite{Tao2017,Bi2015}.
 %The variation of the upper contact (\textsl{i.e.} the \gls{htm} in bottom cathode solar cells) guarantees that the observed differences will not be due to a different perovskite structure, whose crystallization has been reported to be sensible to the underlying contact 
-Additionally, the \gls{htm} under comparison have been deposited under as similar as possible conditions (partially hindered by a different solubility), employing the same additives and thicknesses.
+Additionally, the \gls{htm} under comparison have been deposited under as similar as possible conditions (partially hindered by a different solubility), employing the same additives (with the same molar ratio with the \gls{htm} concentration) and thicknesses.
 For reducing the possible differences in \gls{dos} width, the chosen \gls{htm} have all very similar chemical structures.
 
 
@@ -116,7 +117,8 @@ The synthesis of these has been carried on by Dr.\ Inés García\hyp{}Benito and
 
 \paragraph{HOMO from cyclic voltammetry}
 The oxidation potential of each \gls{htm} has been measured \textsl{via} cyclic voltammetry in solution.
-Then the energy of \gls{homo}, reported in \cref{table:tae_molecular}, has been obtained from the oxidation potential \textsl{via} the empirical relationship reported in \authoryear{DAndrade2005}.
+Then the energy of \gls{homo}, reported in \cref{table:tae_molecular}, has been obtained from the oxidation potential \textsl{via} the empirical linear relationship reported in \authoryear{DAndrade2005}.
+The value obtained from cyclic voltammetry in solution could be different from the \gls{homo} energy in solid state film.
 
 \begin{SCfigure}
 	\centering
@@ -139,31 +141,195 @@ This situation does not properly describe the final point of an excitation trans
 The energetic difference between the two described configurations is an electron\hyp{}hole interaction energy, which is the origin of the exciton binding energy described in \cpageref{intro_geminate}.
 The experimental direct optical band gap \small$E^{\mathrm{abs}}_|onset|$ can be fairly compared with the value $E^{\mathrm{sim,abs}}_|onset|$ obtained from the onset of a absorption spectra simulated with time\hyp{}dependent \gls{dft}.
 
-\paragraph{Mobility}
+%\paragraph{Mobility}
 
 
 \section{Devices Morphological Characterization}
 
 \paragraph{X--Ray diffraction}
 
+For excluding degradation of the \gls{csfamapbibr} layer due to the contact with the \gls{htm} we performed an \gls{xrd} analysis of complete devices aged for 8 months.
+The usage of a collimator allowed us to observe the diffraction pattern in regions not covered by the gold top electrode.
+
+
+\begin{figure}
+			\centering
+				\includegraphics[width=1\textwidth]{xrd/xrd.pdf}
+			\mycaption[X--Ray diffraction pattern for complete devices with different HTM.]{
+				All of the patterns matches perfectly the Cs5 reference from \authoryear{Saliba2016}.
+				Both the amorphous \gls{htm} and the thin \ch{TiO2} layers are not observable.
+				The gold peaks are not present as the usage of a beam collimator allowe us to avoid gold covered regions. 
+				The peaks marked with $*$ are assigned to \gls{fto}, it can be compared with the reference PDF No.\ 00-003-1114 of \ch{SnO2}.
+			}\label{fig:tae_xrd}
+\end{figure}
+
 
 \section{Devices Performances}
 
-\paragraph{}
+\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+	\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.4\hsize}Y| c Y Y >{\hsize=0.7\hsize}Y >{\hsize=0.9\hsize}Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[HTM and related average performances of bottom cathode cells.]{\textbf{HTM and related average performances of bottom cathode cells.}
+			Tested \gls{htm} with \textit{average} forward and reverse J-V sweep performances.
+			The standard deviation for each value is indicated after the $\pm$ symbol.
+			For each reported result, at least 85, 23, 29 and 21 devices were averaged respectively for \gls{spiro}, \gls{tae1}, \gls{tae3}, and \gls{tae4} containing solar cells.
+			The measurement conditions were \SI{1}{sun} illumination, one minute light soaking, \SI{0.6}{\V\per\s} sweep speed.
+			A boxplot representation of this data can be found in \authoryear{Gelmetti2019}.
+			J-V curve for record devices are reported in \cref{fig:tae-jv_champions}.
+		}\label{table:tae_jv}\\[\belowcaptionskip]
+		\multirow{3}{*}{\small\textbf{\gls{htm}}} 	& \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
+		\rule[-1ex]{0pt}{3ex} \\
+													&  \small Sweep & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\ 
+		\rule[-1ex]{0pt}{2.5ex}  					& - 			& \footnotesize\si{\mA\per\square\cm} &  \footnotesize\si{\V} & \footnotesize\si{\%} &  \footnotesize\si{\%} \\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		\small\gls{htm} &\small Sweep & \small\gls{jsc} & \small\gls{voc} & \small\gls{ff} & \small\gls{pce} \\ 
+		\hline
+		\endhead
+		\hline
+		\multicolumn{6}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{4ex}
+		\multirow{2}{*}{\gls{spiro}}&	fwd	&	21.2	$\pm	1.6	$ &	0.97	$\pm	0.05	$ &	60	$\pm	9	$ &	12.4	$\pm	2.4	$ \\*
+									&	rev	&	21.4	$\pm	1.6	$ &	1.07	$\pm	0.06	$ &	68	$\pm	11	$ &	15.6	$\pm	3.1	$ \\[1mm]
+		\hline
+		\rule[-1ex]{0pt}{4ex}
+		\multirow{2}{*}{\gls{tae1}}	&	fwd	&	20.1	$\pm	0.9	$ &	0.91	$\pm	0.05	$ &	50	$\pm	10	$ &	9.2	$\pm	1.6	$ \\*
+									&	rev	&	20.2	$\pm	0.9	$ &	0.98	$\pm	0.03	$ &	60	$\pm	10	$ &	11.9	$\pm	2.1	$ \\[1mm]
+		\hline
+		\rule[-1ex]{0pt}{4ex}	
+		\multirow{2}{*}{\gls{tae3}}	&	fwd	&	22.4	$\pm	2	$ &	0.76	$\pm	0.02	$ &	63	$\pm	5	$ &	10.7	$\pm	0.9	$ \\*
+									&	rev	&	22.5	$\pm	1.9	$ &	0.89	$\pm	0.04	$ &	71	$\pm	6	$ &	14.1	$\pm	1.4	$ \\[1mm]
+		\hline
+		\rule[-1ex]{0pt}{4ex}
+		\multirow{2}{*}{\gls{tae4}}	&	fwd	&	21	$\pm	1.9	$ &	0.81	$\pm	0.03	$ &	54	$\pm	10	$ &	9.3	$\pm	2.5	$ \\*
+									&	rev	&	21	$\pm	1.8	$ &	0.9	$\pm	0.05	$ &	61	$\pm	9	$ &	11.6	$\pm	2.8	$ \\[1mm]
+	\end{xltabular}
+}
 
-\section{Charge Extraction}
+As can be seen in \cref{table:tae_jv}, the most significant differences in the performances of devices when changing \gls{htm} are observed in the \gls{voc}.
+\Gls{spiro} allowed the devices to achieve the highest \gls{voc}, while \gls{tae3} and \gls{tae4} gave the lowest voltages.
+Some minor correlation can also be observed in the other parameters, with \gls{spiro} and \gls{tae3} giving both slightly higher \gls{jsc} and \gls{ff}.
+For all the measured solar cells, some hysteresis is observed in the \gls{voc} and \gls{ff}.
+Sweeps at different speeds are reported in the supplementary information of \cite{Gelmetti2019}.
 
-\paragraph{}
+
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{jv_champions/IV-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different \glsentrytext{htm}.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:tae-jv_champions}
+\end{SCfigure}
+
+\section{Chemical Capacitance}
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-CEs.pdf}
+				\subcaption{Charge from \gls{ce}}\label{fig:tae_photophysics-ce}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-DCs-capacitance.pdf}
+				\subcaption{Capacitance from \gls{dc}}\label{fig:tae_photophysics-dc}
+			\end{subfigure}
+			\mycaption[CE and DC of devices with different HTM, highlighting the varying chemical capacitance.]{
+				In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. %All the fitted parameters are reported in \cref{table:tae_photophysics}.
+			}\label{fig:tae_photophysics_cedc}
+		}
+	}
+\end{figure}
+
+
+
 
 \section{Transient Life-Time}
 
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1\textwidth}
+							\centering
+				\includegraphics[width=0.51\textwidth]{photophysics/spiro_vs_TAEs-TPVs-robustmonoexp.pdf}
+				\subcaption{Mono\hyp{}exponential life\hyp{}time from \gls{tpv}}\label{fig:tae_photophysics_tpv}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-TPVCEs-nogeom_total.pdf}
+				\subcaption{Life\hyp{}time \textsl{vs} \gls{ce} chemical charge}\label{fig:tae_photophysics_tpvce}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-TPVDCs-nogeom_total.pdf}
+				\subcaption{Life\hyp{}time \textsl{vs} \gls{dc} chemical charge}\label{fig:tae_photophysics_tpvdc}
+			\end{subfigure}	
+			\mycaption[Total carrier life\hyp{}time for devices with different HTM.]{
+				Four devices differing just for the employed \gls{htm} material has been compared by means of transient photophysical techniques.
+				In (\textbf{a}) the plain \gls{tpv} (small perturbation life-time \textsl{versus} light\hyp{}bias) is reported.
+				In (\textbf{b}) the life\hyp{}time is plotted versus the exponential part of the charge from \gls{ce} reported in \cref{fig:tae_photophysics-ce} and corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.
+				In (\textbf{c}) the life\hyp{}time is plotted versus the chemical charge from \gls{dc} obtained subtracting the constant geometric capacitance from the data reported in \cref{fig:tae_photophysics-dc} and integrating it.
+				The life\hyp{}time was corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.}\label{fig:tae_photophysics_tpvdcce}
+		}
+	}
+\end{figure}
+
 \paragraph{}
 
-\section{Workfunction of Stacked Materials}
+\section{Work function of Stacked Materials}
 
-\paragraph{}
+\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+	\begin{xltabular}[c]{1\linewidth}{@{} >{\hsize=2\hsize}Y | Y >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Work function of different HTM when deposited on perovskite.]{\textbf{Work function of different HTM when deposited on perovskite.}
+			The work function in \si{\eV} is reported for the surface of different \gls{htm} either deposited on top of 
+		}\label{table:tae_wf}\\[\belowcaptionskip]
+		\multirow{2}{*}{\textbf{Substrate}} & \multicolumn{5}{c}{\textbf{Surface layer}}
+		\rule[-1ex]{0pt}{3ex} \\
+		& Uncovered & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}  \\[1mm]
+
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+	Substrate	& Uncovered & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}    \\ 
+		\hline
+		\endhead
+		\hline
+		\multicolumn{6}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{4ex}
+		\gls{fto}\-/\ch{TiO2}					&  4.81 & 4.91 &  4.85 & 5.00 & 4.92 \\ 
+		\rule[-1ex]{0pt}{4ex}
+%		\ch{TiO2}/\gls{csfamapbibr}	&  4.24 & 4.28 &  4.20 & 4.44 & 4.29  \\ 
+		\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  4.04 & 4.08 &  4.00 & 4.24 & 4.09  \\ 
+	\end{xltabular}
+}
+
 Further characterization of the workfunction of the \gls{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm}.
 The measured \gls{cpd} allowed us to study the impact the underlying perovskite layer can have on the \gls{htm} material.
+%It has been reported that perovskite Fermi level could depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
+Perovskite Fermi level can depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
+In our case, the different values between the \gls{fto}\-/\ch{TiO2} and the \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} surface workfunctions indicates that perovskite Fermi level is not pinned to the underlying layers.
+The value we observed for the \gls{csfamapbibr} surface work function matches the reported one for \gls{mapi} deposited on \ch{TiO2} \cite{Miller2014}.
+Values for \gls{htm} on top of \gls{fto}\-/\ch{TiO2} have little deviations from the value for the uncovered substrate.
+In the same way, the values measured for the organic layers deposited on top of \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} are close to the value for the uncovered perovskite layer.
+The deviations from the substrate value are in the same direction and similar magnitudes for both substrate types, with the \gls{tae3} showing the larger deviation both on top of \ch{TiO2} or on top of perovskite.
 These measurements have been discussed in Dr.\ Ana Pérez-Rodríguez PhD thesis \cite{Perez-Rodriguez2018}.
 
 %"the often-questionable validity of vacuum level alignment, the importance of interface dipoles, and band bending as the result of interface formation" \cite{Schulz2019}

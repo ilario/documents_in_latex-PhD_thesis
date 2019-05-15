@@ -599,7 +599,7 @@ bottom=2cm%,
 \newglossaryentry{symb:f}{name={\ensuremath{f}}, description={mathematical function}}
 \newglossaryentry{symb:CDC}{name={\ensuremath{C_{\mathrm{DC}}}}, description={Voltage dependent capacitance obtained from DC measurements}}
 %\newglossaryentry{symb:Eox}{name={\ensuremath{E_{\mathrm{ox}}}}, description={Oxidation potential form cyclovoltammetry measurements}}
-%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
+%\newglossaryentry{symb:W}{name={\ensuremath{W}}, description={Work function}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 %\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
@@ -675,6 +675,7 @@ bottom=2cm%,
 	
 	\newpage
 	\input{contents_tex/intro.tex}
+	\clearpage
 	\stopcontents[intro]
 
 \chapter{Experimental Methods}\label{ch:methods}
@@ -697,7 +698,7 @@ Needless saying, the critical points in fabricating a complex electronic device 
 	
 	\newpage
 	\input{contents_tex/methods.tex}
-	
+	\clearpage
 \stopcontents[methods]
 
 \chapter{Characterization Techniques: Description and Interpretation}\label{ch:characterization}
@@ -721,7 +722,7 @@ The presence of ionic migration in the absorber can be a game-changer for which 
 	
 	\newpage
 	\input{contents_tex/characterization.tex}
-	
+	\clearpage
 \stopcontents[characterization]
 
 \chapter{Comparison of HTM in Bottom Cathode CsFAMAPbIBr Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
@@ -746,7 +747,7 @@ We gained insight into the recombination process and the energy alignment at per
 	
 	\newpage	
 	\input{contents_tex/tae.tex}
-	
+	\clearpage
 \stopcontents[tae]
 
 \chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
@@ -772,7 +773,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 	
 	\newpage
 	\input{contents_tex/thicknesses.tex}
-	
+	\clearpage
 \stopcontents[thicknesses]
 
 \chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
@@ -796,7 +797,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 	\graphicspath{ {./contents_img/impedance/} }
 %	\input{contents_tex/impedance.tex}
-	
+	\clearpage
 \stopcontents[impedance]
 
 
@@ -821,7 +822,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 	\graphicspath{ {./contents_img/modelling/} }
 %	\input{contents_tex/modelling.tex}
-	
+	\clearpage
 \stopcontents[modelling]
 
 \chapter{Software Development for Data Acquisition and Data Analysis}\label{ch:software}
@@ -845,7 +846,7 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 	\graphicspath{ {./contents_img/software/} }
 %	\input{contents_tex/software.tex}
-	
+	\clearpage
 \stopcontents[software]
 
 
@@ -858,19 +859,19 @@ Specifically, we have measured devices' capacitance under illumination using pho
 	\label{ch:code}
 	\graphicspath{ {./contents_img/code/} }
 %	\input{contents_tex/code.tex}
-	
+	\clearpage
 
 
 \backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
 %\input{contents_tex/conclusions.tex}
-
+\clearpage
 
 
 \chapter{Acknowledgements}
 %\input{contents_tex/acknowledgements.tex}
-
+\clearpage
 	\printindex
 
 \chapter{List of Oral and Poster Presentations at Conferences}
@@ -889,7 +890,10 @@ Specifically, we have measured devices' capacitance under illumination using pho
 	\printbibliography[notcategory=mypapers,heading=bibintoc]
 	
 	\cleardoublepage
-	\phantom{Ciao Mamma!}\newpage
+	\phantom{Ciao Mamma!}
+	\thispagestyle{empty} % nothing printed on the internal side of the back cover
+	\newpage
+
 	% the closing page has to be on an even page
 	\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_img/titlepage/B5_contra.pdf}%
 
