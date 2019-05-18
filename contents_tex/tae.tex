@@ -118,7 +118,11 @@ The synthesis of these has been carried on by Dr.\ Inés García\hyp{}Benito and
 \paragraph{HOMO from cyclic voltammetry}
 The oxidation potential of each \gls{htm} has been measured \textsl{via} cyclic voltammetry in solution.
 Then the energy of \gls{homo}, reported in \cref{table:tae_molecular}, has been obtained from the oxidation potential \textsl{via} the empirical linear relationship reported in \authoryear{DAndrade2005}.
-The value obtained from cyclic voltammetry in solution could be different from the \gls{homo} energy in solid state film.
+The obtained \gls{homo} value is shallowest for \gls{tae3}, then \gls{spiro} a bit above \gls{tae1} level, and finally \gls{tae4} being the deepest.
+Considering that these \gls{htm} gets doped by exposing the devices to dry air (see fabrication method in \cpageref{methods_bottom}), the Fermi level in these p-type materials should be rather close to the \gls{homo}.
+Considering the built-in voltage, defined as the difference in \gls{etm} (which is \ch{TiO2} in all cases) and \gls{htm} Fermi levels, we expect it to be larger for the devices with \gls{tae4} and smallest for the \gls{tae3} ones.
+Please note that the value obtained from cyclic voltammetry in solution could be different from the \gls{homo} energy in solid state film.
+Moreover, some chemical reactivity or intermixing could happen with the perovskite layer. CITATION NEEDED
 
 \begin{SCfigure}
 	\centering
@@ -134,7 +138,7 @@ A closely related value can be obtained from the photoluminescence peak maximum,
 The shape of the absorbance onset (Urbach tail) of an \gls{htm}, additionally to provide information on its optical band gap, can reveal the presence of mid-gap states which would favour the surface recombination \cite{Tvingstedt2017}.
 
 \paragraph{Simulated energy levels}
-As can be seen in \cref{table:tae_molecular}, the \gls{dft} simulated $E^{\mathrm{sim}}_|HOMO|$ manages to reproduce the trend of the experimental $E^{\mathrm{exp}}_|HOMO|$, being the \gls{tae4} the deepest and \gls{tae3} the shallowest.
+As can be seen in \cref{table:tae_molecular}, the \gls{dft} simulated $E^{\mathrm{sim}}_|HOMO|$ manages to reproduce the trend of the experimental $E^{\mathrm{exp}}_|HOMO|$, being the \gls{tae3} the shallowest and \gls{tae4} the deepest.
 Contrariwise, the simulated $E^{\mathrm{sim}}_|LUMO|$ values are rather distant from the experimental $E^{\mathrm{exp}}_|LUMO|$ ones, even if the trend is correctly reproduced.
 This can be understood considering that the $E^{\mathrm{sim}}_|LUMO|$ is simulated on top of the non\hyp{}excited molecule, which is the molecule with a fully occupied \gls{homo} level.
 This situation does not properly describe the final point of an excitation transition, where the \gls{homo} is not full as one electron have been promoted to \gls{lumo}.
@@ -249,10 +253,47 @@ Sweeps at different speeds are reported in the supplementary information of \cit
 	}
 \end{figure}
 
-
-
+It is interesting to compare the light bias value (open circuit voltage originated by a light intensity) at which the chemical capacitance (exponential addend to the charge \textsl{versus} light bias relation, see \cpageref{ce_exp_osc}) gets relevant for the total charge.
+This growth of the chemical capacitance indicates that the quasi\hyp{}Fermi levels splitting in the perovskite is approaching the built-in voltage of the device (see \cpageref{ce_energy_levels}) and can be used for estimating it.
+Both \gls{ce} and \gls{dc} show that the chemical capacitance gets relevant at lower light biasses for \gls{tae4}, then \gls{tae3}, \gls{tae1} and finally at high light bias for \gls{spiro}.
+This ordering corresponds to the one observed for the \gls{homo} energies except for the \gls{tae3} case.
 
 \section{Transient Life-Time}
+
+\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
+	\begin{xltabular}[c]{1.05\linewidth}{@{} Y | Y | Y Y | Y Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
+			The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:tpv_tau_vs_intensity} for \gls{tpv} data and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
+		}\label{table:tae_photophysics}\\[\belowcaptionskip]
+		\multirow{3}{*}{\textbf{HTM}} & \textbf{\gls{tpv}} & \multicolumn{2}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{2}{c}{\small\textbf{\gls{tpvdc}}}
+		\rule[-1ex]{0pt}{3ex} \\
+	 & \small\gls{symb:v} & \small$k$ & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:Phi}  \\ 
+		\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{} & - &  \footnotesize\si{} &  - \\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-DC|$ \\ 
+		\hline
+		\endhead
+		\hline
+		\multicolumn{6}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{4ex}
+		\gls{spiro}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
+				\gls{tae1}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
+						\gls{tae3}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
+								\gls{tae4}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
+	\end{xltabular}
+	%\end{table}
+}
+
+As can be seen in \cref{fig:tae_photophysics_tpv}, the small perturbation life-times at \SI{1}{sun} illumination (for each device, the point at bottom right in the series) does not differ by much: from \SI{0.3}{\us} for \gls{spiro} to \SI{1.1}{\us} for \gls{tae4}.
 
 
 \begin{figure}
@@ -280,12 +321,11 @@ Sweeps at different speeds are reported in the supplementary information of \cit
 				In (\textbf{a}) the plain \gls{tpv} (small perturbation life-time \textsl{versus} light\hyp{}bias) is reported.
 				In (\textbf{b}) the life\hyp{}time is plotted versus the exponential part of the charge from \gls{ce} reported in \cref{fig:tae_photophysics-ce} and corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.
 				In (\textbf{c}) the life\hyp{}time is plotted versus the chemical charge from \gls{dc} obtained subtracting the constant geometric capacitance from the data reported in \cref{fig:tae_photophysics-dc} and integrating it.
-				The life\hyp{}time was corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.}\label{fig:tae_photophysics_tpvdcce}
+				The life\hyp{}time was corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.}\label{fig:tae_photophysics_tpvcedc}
 		}
 	}
 \end{figure}
 
-\paragraph{}
 
 \section{Work function of Stacked Materials}
 
@@ -297,7 +337,7 @@ Sweeps at different speeds are reported in the supplementary information of \cit
 		\caption[Work function of different HTM when deposited on perovskite.]{\textbf{Work function of different HTM when deposited on perovskite.}
 			The work function in \si{\eV} is reported for the surface of different \gls{htm} either deposited on top of 
 		}\label{table:tae_wf}\\[\belowcaptionskip]
-		\multirow{2}{*}{\textbf{Substrate}} & \multicolumn{5}{c}{\textbf{Surface layer}}
+		\multirow{3}{*}{\textbf{Substrate}} & \multicolumn{5}{c}{\textbf{Work function on top of surface layer}}
 		\rule[-1ex]{0pt}{3ex} \\
 		& Uncovered & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}  \\[1mm]
 

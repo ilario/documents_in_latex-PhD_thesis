@@ -129,14 +129,6 @@
 	After calibrating the light intensity in the solar simulator (see \cpageref{solarsimulator}), the devices were exposed to the illumination at open circuit for some seconds in order to have a stabilized open circuit voltage.
 	Then the curves were measured with the auto-measure function of the PyPV software which measures the reverse scan and then the forward scan (see \cpageref{automeasure}).
 
-	\paragraph{Solar cells parameters extraction from sweeps}
-	For the devices studied in this thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep.
-	This follows the tradition of solar cells reporting; but for hysteretic devices, like perovskite solar cells, a static measurement should be preferred.
-%	\paragraph{Solar cells parameters extraction from sweeps -- \gls{pce}}
-	Regarding the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis).
-	The voltage associated to the maximum power point is drifting and its localization process, \textsl{e.g. via} \gls{mppt}, also affects its evolution.
-%	A proper  system needs to be bought or developed, see \cpageref{software_mppt} for thoughts about possible implementations.
-
 	\paragraph{Auto-scale}\label{autoscale}
 	In literature one can easily find current-voltage curves with discontinuities or "kinks" \cite{Li2016,Snaith2014,Zhang2015} like the one reported in \cref{fig:autoscale}, this is usually left unexplained.
 %	Some even lucubrate about the origin of these in perovskite solar cells.
@@ -166,11 +158,6 @@
 	The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}.
 	For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted \textsl{via} a parabolic fitting.
 
-	\paragraph{Stabilized or dynamic current-voltage sweeps}
-	One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported \cite{Unger2014, Christoforo2015}.
-	An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current\hyp{}time derivative falls below a threshold (\textsl{e.g.}\ \SI{0.2}{\%\per\minute}) \cite{Dunbar2017,Dunbar2017a}.
-%	In this thesis, these techniques have not been used.
-
 	\paragraph{Shunt and series resistances} \label{resistances}
 	The shunt and series resistances can be evaluated by the current \textsl{versus} voltage derivative of a dark current-voltage sweep.
 	The former from the current values at voltages close to zero and the latter from the current at high-enough voltage.
@@ -178,6 +165,20 @@
 	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
 	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2018b} and explained in \cpageref{transient_suns_voc} should be implemented.
 	In the case of series resistance, as the employed voltages are always larger than the built-in voltage, the depletion layers should be filled anyway and the transient method should not be required.
+
+	\paragraph{Solar cells parameters extraction from sweeps}\label{characterization_hysteresis}
+For the devices studied in this thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep.
+This follows the tradition of solar cells reporting; but for hysteretic devices, like perovskite solar cells, a static measurement should be preferred.
+%	\paragraph{Solar cells parameters extraction from sweeps -- \gls{pce}}
+Regarding the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis).
+The voltage associated to the maximum power point is drifting and its localization process, \textsl{e.g. via} \gls{mppt}, also affects its evolution.
+%	A proper  system needs to be bought or developed, see \cpageref{software_mppt} for thoughts about possible implementations.
+
+\paragraph{Stabilized or dynamic current-voltage sweeps}
+One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported \cite{Unger2014, Christoforo2015}.
+An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current\hyp{}time derivative falls below a threshold (\textsl{e.g.}\ \SI{0.2}{\%\per\minute}) \cite{Dunbar2017,Dunbar2017a}.
+%	In this thesis, these techniques have not been used.
+
 
 \section{V\textsubscript{OC} and J\textsubscript{SC} Dependence on Light Intensity}
 	The solar simulator illumination intensity $\phi$ is reduced \textsl{via} neutral density filters with transmittance of 0.05, 0.12, 0.25, 0.51, 0.81 and 1 (no filter).
@@ -436,7 +437,7 @@ In both cases a robust fitting routine was employed \cite{Maechler2018}.
 
 	\subsection{Interpretation of CE \textsl{versus} Light Bias Without Mobile Ions}
 
-		\paragraph{Exponential part in \gls{osc}}\label{ce_exp_osc}
+		\paragraph{Exponential part and chemical capacitance in \gls{osc}}\label{ce_exp_osc}
 		In \gls{osc} literature the charge \textsl{versus} light bias voltage trend is described simply as the exponential shape which describes a Maxwell\hyp{}Boltzmann distribution for a two levels scenario.
 		For a common solar cell working conditions, the Maxwell\hyp{}-Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much bigger than $k_|B|T$.
 		This could be false for high applied voltages, where Fermi\hyp{}Dirac distribution for fermions should be used.
@@ -668,9 +669,9 @@ This does not affect the parameter extraction from \acr{tpv} as just the high il
 	where $\tau = (k_1 + 2 k_2 n_0)^{-1}$ is the small perturbation life\hyp{}time.
 	For a single recombination with a generic recombination reaction order $\Phi$ we can generalize to \cite{Shuttle2008}:
 	\begin{equation}\label{eq:tpv_tau_order}
-		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1}
+		\tau \approx (\Phi k n_0^{\Phi-1})^{-1}
 	\end{equation}
-	where $k_\Phi$ is the dominant recombination rate constant.
+	where $k$ is the dominant recombination rate constant.
 	
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -851,10 +852,10 @@ This does not affect the parameter extraction from \acr{tpv} as just the high il
 %		For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
 %	This "chemical" charge (charge stored in the perovskite layer) is represented as the exponential part of \cref{eq:ce_full}, so we obtain:
 	\begin{dmath}\label{eq:tpv_tau_vs_intensity}
-		\tau \approx (\Phi k_\Phi n_0^{\Phi-1})^{-1} = \frac{n_|eq|^{1-\Phi}}{\Phi k_\Phi} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|eq|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|eq|^{1-\Phi}}{\Phi k_\Phi} \exp(-\frac{q\voc}{vk_|B|T})
+		\tau \approx (\Phi k n_0^{\Phi-1})^{-1} = \frac{n_|eq|^{1-\Phi}}{\Phi k} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|eq|^{1-\Phi}}{\Phi k} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|eq|^{1-\Phi}}{\Phi k} \exp(-\frac{q\voc}{vk_|B|T})
 	\end{dmath}
 	where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
-	The pre\hyp{}factor $n_|eq|^{1-\Phi}/(\Phi k_\Phi)$ represents the thermal equilibrium life\hyp{}time.
+	The pre\hyp{}factor $n_|eq|^{1-\Phi}/(\Phi k)$ represents the thermal equilibrium life\hyp{}time.
 	As shown, the life\hyp{}time typically decreases exponentially with the light bias, as experimentally observed in the example of \cref{fig:tpv-monoexp}, with an ideality modifier of $v = m/(\Phi-1)$.
 	This relation is in accordion with equivalent studies on \gls{osc} \cite{Shuttle2008,Shuttle2008d,Credgington2011}.
 
@@ -867,7 +868,7 @@ Also when performing full signal Open Circuit Voltage Decay dynamics measurement
 
 \FloatBarrier
 \newpage
-\mysection[TPV-CE]{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{tpvce}
+\mysection[TPV-CE]{Transient PhotoVoltage Referenced to Charge Extraction (TPV-CE)}\label{characterization-tpvce}
 
 \paragraph{Concept}
 This is a meta experiment which combines the data from \acr{tpv} and \acr{ce} without needing any additional experimental step.
@@ -911,7 +912,7 @@ Instead, fitting data with the exponential component of \acr{ce} only, the recom
 				\subcaption{Exp.\ charge from \gls{ce} and life\hyp{}time corrected with $\Phi$}\label{fig:tpvce-nogeom_total}
 			\end{subfigure}
 			\mycaption[Example of TPV-CE processed in different ways.]{
-				Solid lines are the power-law fit with the formula $y = k_\Phi^{-1} x^{1-\Phi}$.
+				Solid lines are the power-law fit with the formula $y = k^{-1} x^{1-\Phi}$.
 				In (\textbf{a}) the charge used for the independent variable is taken from the full charge extracted in the \acr{ce} experiment, including the charge stored in contacts and electrodes.
 				The $\tau_|pfo|$ life\hyp{}time as obtained from \acr{tpv} is used as dependent variable.
 				In (\textbf{b}) just the charge from chemical capacitance (exponential addend in \cref{eq:ce_full}) is used as independent variable.
@@ -928,10 +929,10 @@ From the \cref{eq:tpv_tau_order} it is clear that for the first\hyp{}order react
 One fact of \cref{eq:tpv_tau_order} for the $\Phi=1$ case have to be underlined: the small perturbations life\hyp{}time for a first\hyp{}order recombination does not depend on the charge density, so it would appear as a plateau in the life\hyp{}time \textsl{versus} charge plot \cite{Kiermasch2018} which is not usually observed.
 
 \paragraph{From small perturbations life\hyp{}time to rate constant -- higher order reaction}
-For the second and higher order recombination cases, to obtain $k_x$ is non-trivial as it is related to $\tau$ \textsl{via} the charge density \cite{ORegan2007} and the reaction order \cite{Shuttle2008,Du2018,Barnes2011,Barnes2011a} as shown in \cref{eq:tpv_tau_order}.
+For the second and higher order recombination cases, to obtain $k$ is non\hyp{}trivial as it is related to $\tau$ \textsl{via} the charge density \cite{ORegan2007} and the reaction order \cite{Shuttle2008,Du2018,Barnes2011,Barnes2011a} as shown in \cref{eq:tpv_tau_order}.
 From this equation we can notice that correcting the small perturbation life\hyp{}time $\tau$ we can easily obtain a pseudo first order life\hyp{}time (total carrier life\hyp{}time) $\tau_|pfo|$ as:
 \begin{equation}\label{eq:tau_pfo}
-\tau_|pfo| = \Phi \tau = k_\Phi^{-1} n_0^{1-\Phi}
+\tau_|pfo| = \Phi \tau = k^{-1} n_0^{1-\Phi}
 \end{equation}
 This simple correction allows us to make a meaningful comparison between recombination rates at a given charge density, as represented in \cref{fig:tpvce-nogeom_total}.
 %Because of this, when an information on underlying rate constants is sought, comparisons of $\tau_|pfo|$ have been performed taking care of having similar charge densities in the devices under study \cite{ORegan2008}, \textsl{i.e.} comparing vertically (points at the same charge density) in \cref{fig:tpvce}.
@@ -1135,7 +1136,7 @@ where $C$ is a light bias $V'$ dependent capacitance, $n$ is the perturbed elect
 As a self consistency check for the photophysics techniques explained and for confirming that no important factor has been neglected, the performance parameters of the devices can be reconstructed from the fitted parameters from \gls{tpv}, \gls{ce}, and \gls{dc}.
 The shown \gls{jsc} and \gls{voc} reconstruction methods can be extended to obtain the whole current-voltage sweep \cite{Maurano2011}.
 
-\paragraph{\Gls{jsc} reconstruction}
+\paragraph{\Gls{jsc} reconstruction}\label{jsc_reconstruction}
 The recombination current $J_|rec|$ can be described by the total carriers life\hyp{}time (or pseudo first order life\hyp{}time) $\tau_|pfo|$ and by the excess charge $n_|CE|$ with the following expression \cite{Wheeler2017,Du2018}: $J_|rec| = n_|CE| / \tau_|pfo|$.
 At open circuit the photo\hyp{}generated current has to match the recombination current (no external current means that these two, at least in steady state conditions, cancel out), so $J_|rec| = J_|ph|$.
 If losses at short circuit are negligible, photo\hyp{}generated current can be approximated by the short circuit current $J_|ph| \approx \jsc$ obtaining \cite{ORegan2015b}:
@@ -1146,15 +1147,15 @@ If losses at short circuit are negligible, photo\hyp{}generated current can be a
 \paragraph{\Gls{voc} reconstruction}
 Expanding $\tau_|pfo| = \Phi \tau$ with \cref{eq:tpv_tau_order} and neglecting the intrinsic charge density (consideration valid for non-dark cases) so that $n_0 \approx n_|CE|$ we get:
 \begin{equation}
-\jsc = n_|CE| \cdot k_\Phi n_|CE|^{\Phi-1}
+\jsc = n_|CE| \cdot k n_|CE|^{\Phi-1}
 \end{equation}
 Then considering just the chemical capacitance charge as relevant for recombination processes, so keeping just the exponential addend in \cref{eq:ce_full} we obtain:
 \begin{equation}
-\jsc = n_|eq|^\Phi k_\Phi \me^{\frac{q \Phi \voc}{m k_|B| T}}
+\jsc = n_|eq|^\Phi k \exp(\frac{q \Phi \voc}{m k_|B| T})
 \end{equation}
 again, we neglected $-1$ from the additional intrinsic charge density. Then inverting the equation we obtain:
 \begin{equation}\label{eq:reconstruction_voc}
-	\voc = \frac{m k_|B| T}{q \Phi} \ln( \frac{\jsc}{n_|eq|^\Phi k_\Phi} )
+	\voc = \frac{m k_|B| T}{q \Phi} \ln( \frac{\jsc}{n_|eq|^\Phi k} )
 \end{equation}
 %Expanding \cref{eq:tpv_tau_order} with the relevant $n_0$ for recombination taken from the chemical capacitance charge represented by the exponential addend in  we obtain:
 %\begin{equation}\tau_|pfo| = \left\{\Phi k_\Phi n_|eq|^{\Phi-1} [\exp(\frac{q \voc}{m k_|B| T})-1]^{\Phi-1} \right\}^{-1}\end{equation}

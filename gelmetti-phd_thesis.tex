@@ -485,6 +485,8 @@ bottom=2cm%,
 \newacronym{esem}{ESEM}{environmental scanning electron microscopy}
 \newacronym{edx}{EDX}{energy-dispersive X-ray analysis}
 \newacronym{tpv}{TPV}{transient photovoltage}
+\newacronym{tpvce}{TPV-CE}{transient photovoltage referred to charge from charge extraction}
+\newacronym{tpvdc}{TPV-DC}{transient photovoltage referred to charge from differential capacitance}
 \newacronym{tpc}{TPC}{transient photocurrent}
 \newacronym{ce}{CE}{charge extraction}
 \newacronym{dc}{DC}{differential capacitance}
@@ -517,6 +519,7 @@ bottom=2cm%,
 \newacronym{dssc}{DSSC}{dye sensitized solar cells}
 \newglossaryentry{rctime}{name={RC time}, description={characteristic time of a circuit composed of a resistance in parallel to a capacitance}}
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
+\newacronym{gui}{GUI}{graphical user interface}
 
 % long non-acronym names and descriptions
 
@@ -593,7 +596,7 @@ bottom=2cm%,
 \newglossaryentry{symb:ECB}{name={\ensuremath{E_{\mathrm{CB}}}}, description={conduction band energy}}
 \newglossaryentry{symb:EVB}{name={\ensuremath{E_{\mathrm{VB}}}}, description={valence band energy}}
 \newglossaryentry{symb:neq}{name={\ensuremath{n_{\mathrm{eq}}}}, description={equilibrium carrier density for a two levels system}}
-\newglossaryentry{symb:kx}{name={\ensuremath{k_x}}, description={recombination rate constant}}
+\newglossaryentry{symb:k}{name={\ensuremath{k}}, description={recombination rate constant}}
 \newglossaryentry{symb:Jrec}{name={\ensuremath{J_{\mathrm{rec}}}}, description={recombination current}}
 \newglossaryentry{symb:nu}{name={\ensuremath{\nu}}, description={frequency}, sort={frequency}}
 \newglossaryentry{symb:f}{name={\ensuremath{f}}, description={mathematical function}}
@@ -782,16 +785,20 @@ Specifically, we have measured devices' capacitance under illumination using pho
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
 
-\paragraph*{Publication} Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
+\paragraph*{Publication}
+Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
 
 \paragraph*{Abstract}
-
-
+Driftfusion modelling platform allowed me to simulate the current evolution in a perovskite solar cell when applying an oscillating voltage, in presence of constant illumination.
+From this simple simulation we could reproduce the experimentally observed giant or negative capacitance and gain insight on their likely origin.
+The ionic migration in the perovskite layer behaves as a capacitive current of charges accumulating next to the interfaces with the contacts.
+The capacitive origin of this ionic current implies it happens out of phase with the applied oscillating voltage.
+We show that accumulation and depletion of ionic charge at the interfaces modulates surface recombination and charge injection, causing respectively giant capacitance and negative capacitance (\textsl{i.e.} inductance).
 
 \paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[impedance]
 
-\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
+%\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
@@ -800,55 +807,44 @@ Specifically, we have measured devices' capacitance under illumination using pho
 	\clearpage
 \stopcontents[impedance]
 
+%\chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
+%\chaptermark{Modelling}
+%\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
+%\paragraph*{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
+%\paragraph*{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
+%\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+%\startcontents[modelling]
+%\printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
+%\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+%	\graphicspath{ {./contents_img/modelling/} }
+%%	\input{contents_tex/modelling.tex}
+%	\clearpage
+%\stopcontents[modelling]
 
-\chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
-\chaptermark{Modelling}
+\chapter{Software Development for Drift-Diffusion Modelling, Data Acquisition and Data Analysis}\label{ch:software}
+\chaptermark{Software Development}
 \epigraph{\textit{"GIGO: Garbage In, Garbage Out"}}
 
 \addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
 
-\paragraph*{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
+\paragraph*{Publication}
+The source code of software included in this chapter has been released and can be accessed online.
+The drift\hyp{}diffusion Matlab routines have been published on the \texttt{2018-EIS} branch of the Driftfusion repository, directly accessible from \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
+The current\hyp{}voltage sweep acquisition Python software can be downloaded from \url{https://github.com/ilario/PyPV}.
+The data processing R routines can be examined at \url{https://github.com/ilario/photophysics-data-processing-R}.
 
-\paragraph*{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
-
-
-
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[modelling]
-
-\printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
-
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
-
-	\graphicspath{ {./contents_img/modelling/} }
-%	\input{contents_tex/modelling.tex}
-	\clearpage
-\stopcontents[modelling]
-
-\chapter{Software Development for Data Acquisition and Data Analysis}\label{ch:software}
-\chaptermark{Software Development}
-\epigraph{\textit{"Why nobody tried to fix this bug?"}}
-
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{coloreight}
-
-\paragraph*{Publication} The source code of software included in this chapter has been released and can be accessed on \url{https://github.com/ilario/PyPV} and \url{https://github.com/ilario/photophysics-data-processing-R}.
-
-\paragraph*{Abstract} The route to a reliable and efficient device is inevitably a long iterative process. In each optimization step a device is fabricated, evaluated, and the design modified for the next step. Part of the evaluation is just a repetitive process which can be automatized without any loss. I will describe the implementation of a current-voltage sweeps acquisition software, this characterization technique is the most frequently used in our group. Additionally I will describe the routines I developed for the data processing and representation, like fittings, integrations and plots.
-
-
+\paragraph*{Abstract}
+During my PhD thesis I wrote code mainly for three projects: current\hyp{}voltage sweep data acquisition, processing and analysis routines for various kinds of characterization data, physical modelling of perovskite solar cells.
 
 \paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 \startcontents[software]
-
-\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
+%\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
 
 \centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
-
 	\graphicspath{ {./contents_img/software/} }
-%	\input{contents_tex/software.tex}
+	\input{contents_tex/software.tex}
 	\clearpage
 \stopcontents[software]
-
 
 
 	\appendix
@@ -860,7 +856,6 @@ Specifically, we have measured devices' capacitance under illumination using pho
 	\graphicspath{ {./contents_img/code/} }
 %	\input{contents_tex/code.tex}
 	\clearpage
-
 
 \backmatter
 
