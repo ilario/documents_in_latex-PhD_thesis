@@ -637,7 +637,7 @@ bottom=2cm%,
 %\newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
 
 \chapter[Summary of the Thesis]{\centering Summary of the Thesis}
-%	\input{contents_tex/summary.tex}
+	%	\input{contents_tex/summary.tex}
 
 
 	\EnableQuotes
@@ -645,11 +645,11 @@ bottom=2cm%,
 
 \chapter[Motivation and Aims]{Motivation and Aims}\label{ch:aims}
 	%\addcontentsline{toc}{chapter}{Motivation and Aims}
-%	\input{contents_tex/aims.tex}
+	%	\input{contents_tex/aims.tex}
 
-}%here ends openany and starts openright
+	}%here ends openany and starts openright
 
-%	\restoregeometry
+	%	\restoregeometry
 
 	\fancypagestyle{plain}{% chapter pages use style plain
 		\renewcommand{\headrulewidth}{0pt} % no top rule
@@ -664,18 +664,18 @@ bottom=2cm%,
 
 \chapter{Introduction}\label{ch:intro}
 	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
-	
+
 	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorone}
-	
+
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[intro]
+	\startcontents[intro]
 
-\printcontents[intro]{l}{1}{\setcounter{tocdepth}{4}}
+	\printcontents[intro]{l}{1}{\setcounter{tocdepth}{4}}
 
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/intro/} }
-	
+
 	\newpage
 	\input{contents_tex/intro.tex}
 	\clearpage
@@ -684,189 +684,190 @@ bottom=2cm%,
 \chapter{Experimental Methods}\label{ch:methods}
 \chaptermark{Experimental Methods}
 	\epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
-	
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colortwo}
 
-\paragraph*{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
-Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colortwo}
 
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[methods]
+	\paragraph*{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
+	Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
 
-\printcontents[methods]{l}{1}{\setcounter{tocdepth}{4}}
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\startcontents[methods]
 
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\printcontents[methods]{l}{1}{\setcounter{tocdepth}{4}}
+
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/methods/} }
-	
+
 	\newpage
 	\input{contents_tex/methods.tex}
 	\clearpage
-\stopcontents[methods]
+	\stopcontents[methods]
 
 \chapter{Characterization Techniques: Description and Interpretation}\label{ch:characterization}
 \chaptermark{Characterization Techniques}
-\epigraph{\textit{""}}
+	\epigraph{\textit{""}}
 
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorthree}
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorthree}
 
 
-\paragraph*{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
-The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
+	\paragraph*{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
+	The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
 
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[characterization]
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\startcontents[characterization]
 
-\printcontents[characterization]{l}{1}{\setcounter{tocdepth}{4}}
+	\printcontents[characterization]{l}{1}{\setcounter{tocdepth}{4}}
 
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/characterization/} }
-	
+
 	\newpage
 	\input{contents_tex/characterization.tex}
 	\clearpage
-\stopcontents[characterization]
+	\stopcontents[characterization]
 
 \chapter{Comparison of HTM in Bottom Cathode CsFAMAPbIBr Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
 \chaptermark{Comparing HTM}
-\epigraph{\textit{"It's so easy, can't you see the shift?"}}
+	\epigraph{\textit{"It's so easy, can't you see the shift?"}}
 
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfour}
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfour}
 
-\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
+	\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
 
-\paragraph*{Abstract}
-In this chapter, the well known \gls{spiro}, the previously reported \gls{tae1} and two novel molecules \gls{tae3} and \gls{tae4} were employed as \gls{htm} for fabricating perovskite solar cells.
-The lack of correlation between the molecules' ionization potentials and the devices measured \gls{voc} motivated us to deepen the investigation on the factors contributing to the cell voltage by means of transient optoelectronic techniques.
-We gained insight into the recombination process and the energy alignment at perovskite\-/\gls{htm} interface.
+	\paragraph*{Abstract}
+	In this chapter, the well known \gls{spiro}, the previously reported \gls{tae1} and two novel molecules \gls{tae3} and \gls{tae4} were employed as \gls{htm} for fabricating perovskite solar cells.
+	The lack of correlation between the molecules' ionization potentials and the devices measured \gls{voc} motivated us to deepen the investigation on the factors contributing to the cell voltage by means of transient optoelectronic techniques.
+	We gained insight into the recombination process and the energy alignment at perovskite\-/\gls{htm} interface.
 
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[tae]
-%\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\startcontents[tae]
+	%\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/tae/} }
-	
-	\newpage	
+
+	\newpage
 	\input{contents_tex/tae.tex}
 	\clearpage
-\stopcontents[tae]
+	\stopcontents[tae]
 
 \chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
-\epigraph{\textit{"Let's change as little as possible"}}
+	\epigraph{\textit{"Let's change as little as possible"}}
 
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfive}
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfive}
 
-\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
+	\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
-\paragraph*{Abstract}
-All-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} devices were fabricated and studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
-Small variations in each layer thickness were introduced, so that we could compare the effect of this change on the resulting device characteristics.
-Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
-Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
+	\paragraph*{Abstract}
+	All-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} devices were fabricated and studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
+	Small variations in each layer thickness were introduced, so that we could compare the effect of this change on the resulting device characteristics.
+	Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
+	Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
 
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[thicknesses]
-%\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\startcontents[thicknesses]
+	%\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/thicknesses/} }
-	
+
 	\newpage
 	\input{contents_tex/thicknesses.tex}
 	\clearpage
-\stopcontents[thicknesses]
+	\stopcontents[thicknesses]
 
 \chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
 \chaptermark{Impedance Sectroscopy}
-\epigraph{\textit{"We don't see that plateau"}}
+	\epigraph{\textit{"We don't see that plateau"}}
 
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
 
-\paragraph*{Publication}
-Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
+	\paragraph*{Publication}
+	Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
 
-\paragraph*{Abstract}
-Driftfusion modelling platform allowed me to simulate the current evolution in a perovskite solar cell when applying an oscillating voltage, in presence of constant illumination.
-From this simple simulation we could reproduce the experimentally observed giant or negative capacitance and gain insight on their likely origin.
-The ionic migration in the perovskite layer behaves as a capacitive current of charges accumulating next to the interfaces with the contacts.
-The capacitive origin of this ionic current implies it happens out of phase with the applied oscillating voltage.
-We show that accumulation and depletion of ionic charge at the interfaces modulates surface recombination and charge injection, causing respectively giant capacitance and negative capacitance (\textsl{i.e.} inductance).
+	\paragraph*{Abstract}
+	Driftfusion modelling platform allowed me to simulate the current evolution in a perovskite solar cell when applying an oscillating voltage, in presence of constant illumination.
+	From this simple simulation we could reproduce the experimentally observed giant or negative capacitance and gain insight on their likely origin.
+	The ionic migration in the perovskite layer behaves as a capacitive current of charges accumulating next to the interfaces with the contacts.
+	The capacitive origin of this ionic current implies it happens out of phase with the applied oscillating voltage.
+	We show that accumulation and depletion of ionic charge at the interfaces modulates surface recombination and charge injection, causing respectively giant capacitance and negative capacitance (\textsl{i.e.} inductance).
 
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[impedance]
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\startcontents[impedance]
 
-%\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
+	%\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
 
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/impedance/} }
-%	\input{contents_tex/impedance.tex}
+	%	\input{contents_tex/impedance.tex}
 	\clearpage
-\stopcontents[impedance]
+	\stopcontents[impedance]
 
-%\chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
-%\chaptermark{Modelling}
-%\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
-%\paragraph*{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
-%\paragraph*{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
-%\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-%\startcontents[modelling]
-%\printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
-%\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
-%	\graphicspath{ {./contents_img/modelling/} }
-%%	\input{contents_tex/modelling.tex}
-%	\clearpage
-%\stopcontents[modelling]
+	%\chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
+	%\chaptermark{Modelling}
+	%\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
+	%\paragraph*{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
+	%\paragraph*{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
+	%\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	%\startcontents[modelling]
+	%\printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
+	%\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	%	\graphicspath{ {./contents_img/modelling/} }
+	%%	\input{contents_tex/modelling.tex}
+	%	\clearpage
+	%\stopcontents[modelling]
 
 \chapter{Software Development for Drift-Diffusion Modelling, Data Acquisition and Data Analysis}\label{ch:software}
 \chaptermark{Software Development}
-\epigraph{\textit{"GIGO: Garbage In, Garbage Out"}}
+	\epigraph{\textit{"GIGO: Garbage In, Garbage Out"}}
 
-\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
+	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
 
-\paragraph*{Publication}
-The source code of software included in this chapter has been released and can be accessed online.
-The drift\hyp{}diffusion Matlab routines have been published on the \texttt{2018-EIS} branch of the Driftfusion repository, directly accessible from \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
-The current\hyp{}voltage sweep acquisition Python software can be downloaded from \url{https://github.com/ilario/PyPV}.
-The data processing R routines can be examined at \url{https://github.com/ilario/photophysics-data-processing-R}.
+	\paragraph*{Publication}
+	The source code of software included in this chapter has been released and can be accessed online.
+	The drift\hyp{}diffusion Matlab routines have been published on the \texttt{2018-EIS} branch of the Driftfusion repository, directly accessible from \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
+	The current\hyp{}voltage sweep acquisition Python software can be downloaded from \url{https://github.com/ilario/PyPV}.
+	The data processing R routines can be examined at \url{https://github.com/ilario/photophysics-data-processing-R}.
 
-\paragraph*{Abstract}
-During my PhD thesis I wrote code mainly for three projects: current\hyp{}voltage sweep data acquisition, processing and analysis routines for various kinds of characterization data, physical modelling of perovskite solar cells.
+	\paragraph*{Abstract}
+	During my PhD thesis I wrote code mainly for three projects: current\hyp{}voltage sweep data acquisition, processing and analysis routines for various kinds of characterization data, physical modelling of perovskite solar cells.
+	All of this work is intended to be re-used by others, so this chapter will detail how to use it and describe the design choices.
 
-\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-\startcontents[software]
-%\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
+	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\startcontents[software]
+	%\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
 
-\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 	\graphicspath{ {./contents_img/software/} }
 	\input{contents_tex/software.tex}
 	\clearpage
-\stopcontents[software]
+	\stopcontents[software]
 
 
 	\appendix
 	\stopthumb
 
 
-\chapter{Code}
-	\label{ch:code}
-	\graphicspath{ {./contents_img/code/} }
-%	\input{contents_tex/code.tex}
-	\clearpage
+	%\chapter{Code}
+	%	\label{ch:code}
+	%	\graphicspath{ {./contents_img/code/} }
+	%%	\input{contents_tex/code.tex}
+	%	\clearpage
 
-\backmatter
+	\backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
-%\input{contents_tex/conclusions.tex}
-\clearpage
+	%\input{contents_tex/conclusions.tex}
+	\clearpage
 
 
 \chapter{Acknowledgements}
-%\input{contents_tex/acknowledgements.tex}
-\clearpage
+	%\input{contents_tex/acknowledgements.tex}
+	\clearpage
 	\printindex
 
 \chapter{List of Oral and Poster Presentations at Conferences}
@@ -883,7 +884,7 @@ During my PhD thesis I wrote code mainly for three projects: current\hyp{}voltag
 	\printbibliography[category=mypapers, heading=bibintoc, title={Contributions to Scientific Literature}]
 
 	\printbibliography[notcategory=mypapers,heading=bibintoc]
-	
+
 	\cleardoublepage
 	\phantom{Ciao Mamma!}
 	\thispagestyle{empty} % nothing printed on the internal side of the back cover
