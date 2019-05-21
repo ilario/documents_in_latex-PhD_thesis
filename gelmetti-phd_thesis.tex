@@ -181,7 +181,7 @@ bottom=2cm%,
 	%%%%%%%%%%%
 	\usepackage{makeidx} % for alphabetical index, using xindy or makeindex
 	\makeindex
-	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes`
+	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes, and for \enquote
 	\MakeOuterQuote{"}
 	
 	%%%%%%%%%%%
@@ -437,7 +437,7 @@ bottom=2cm%,
 \pagenumbering{alph}%
 \makeatother%
 % including the title page, compiled as a separate document
-\includepdf[pages={1,2,3,4,5,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
+\includepdf[pages={1,2,3,4,5,6,7,8,9,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
 \pagenumbering{roman}%
 
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
@@ -447,30 +447,6 @@ bottom=2cm%,
 
 %\newpage
 
-\addcontentsline{toc}{chapter}{Statement of Authorship}
-
-\makeatletter
-\noindent I, \@author, declare that this thesis titled, \enquote{\@title} and the work presented in it are my own. I confirm that:
-\makeatother
-
-\begin{itemize}
-	\item This work was done wholly or mainly while in candidature for a doctoral degree at this University.
-	\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-	\item Where I have consulted the published work of others, this is always clearly attributed.
-	\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-	\item I have acknowledged all main sources of help.
-	\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.
-\end{itemize}
-
-\bigskip\bigskip
-
-\noindent Signed:\\
-\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
-
-\bigskip
-
-\noindent Date:\\
-\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
 
 %%%%%%%%%%%%
 % ACRONYMS %
@@ -520,6 +496,7 @@ bottom=2cm%,
 \newglossaryentry{rctime}{name={RC time}, description={characteristic time of a circuit composed of a resistance in parallel to a capacitance}}
 \newglossaryentry{loess}{name={LOESS},description={locally estimated scatterplot smoothing}}
 \newacronym{gui}{GUI}{graphical user interface}
+\newacronym{srh}{SRH}{Shockley\hyp{}Read\hyp{}Hall recombination} 
 
 % long non-acronym names and descriptions
 
