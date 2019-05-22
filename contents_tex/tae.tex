@@ -6,7 +6,7 @@
 	Without this asymmetrical extraction of charges, the photogeneration would be of no use.
 	The classical \gls{etm} from \gls{dssc}, mesoporous titania, is getting obsoleted by planar tin oxide \cite{Jiang2018}.
 	On the contrary, the classical \gls{htm} from solid-state \gls{dssc}, \gls{spiro}, is still present in most of the record structures of \gls{csfamapbibr} based solar cells \cite{Saliba2016,Saliba2018}.
-	The huge explorative work done for finding a better performing \gls{htm} managed to find very few good alternatives.% small molecules or polymers (\textsl{e.g.} \gls{ptaa}).
+	The huge explorative work done for finding a better performing \gls{htm} managed to find very few good alternatives.
 	Still, even if the performances are at par with \gls{spiro}, the commercial price of these alternative \gls{htm} is still too high for wide area applications.
 	A better understanding of the \gls{htm}\-/perovskite interaction is needed for pinpointing the key characteristics to be looked for in the next \gls{htm} design.
 	In this chapter, the devices fabricated using four different \gls{htm}, have been compared in order to find a correlation with the \gls{htm}'s chemical properties.
@@ -115,7 +115,7 @@
 		\end{xltabular}
 	\end{table}
 
-	\paragraph{HOMO from cyclic voltammetry}
+	\paragraph{\Glsentryshort{homo} from cyclic voltammetry}
 	The oxidation potential of each \gls{htm} has been measured \textsl{via} cyclic voltammetry in solution.
 	Then the energy of \gls{homo}, reported in \cref{table:tae_molecular}, has been obtained from the oxidation potential \textsl{via} the empirical linear relationship reported in \authoryear{DAndrade2005}.
 	The obtained \gls{homo} value is shallowest for \gls{tae3}, then \gls{spiro} a bit above \gls{tae1} level, and finally \gls{tae4} being the deepest.
@@ -168,7 +168,7 @@
 	\end{figure}
 
 
-\section{Devices Performances}
+\section{Current-Voltage Sweeps}
 
 	\afterpage{
 		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
@@ -223,6 +223,11 @@
 	For all the measured solar cells, some hysteresis is observed in the \gls{voc} and \gls{ff}.
 	Sweeps at different speeds are reported in the supplementary information of \cite{Gelmetti2019}.
 
+\paragraph{Ideality Factors}
+From \gls{voc} \textsl{versus} light intensity we obtained the ideality factor, following the procedure described in \cpageref{characterization_ideality}.
+The obtained values are 1.57 for \gls{spiro}, 1.44 for \gls{tae1}, 1.79 for \gls{tae3}, and 1.83 for \gls{tae4}.
+This data can be used for having some information on the trap level position inside band gap and on the Fermi level of the \gls{htm} \cite{Calado2018b}.
+With some caution (we employed the classical method, not the improved one described in \cpageref{transient_suns_voc}) we can state that trap levels close to the mid gap are present for all of the studied \gls{htm}.
 
 
 	\begin{SCfigure}
@@ -253,6 +258,7 @@
 		}
 	\end{figure}
 
+	Thanks to the very short measurement window (\SI{10}{\us}) we believe that no ionic displacement current (see \cpageref{intro_displacement_current} and \gls{ce_limitations_perovskite}) is included in our \gls{ce} experiments.
 	It is interesting to compare the light bias value (open circuit voltage originated by a light intensity) at which the chemical capacitance (exponential addend to the charge \textsl{versus} light bias relation, see \cpageref{ce_exp_osc}) gets relevant for the total charge.
 	This growth of the chemical capacitance indicates that the quasi\hyp{}Fermi levels splitting in the perovskite is approaching the built-in voltage of the device (see \cpageref{ce_energy_levels}) and can be used for estimating it.
 	Both \gls{ce} and \gls{dc} show that the chemical capacitance gets relevant at lower light biasses for \gls{tae4}, then \gls{tae3}, \gls{tae1} and finally at high light bias for \gls{spiro}.

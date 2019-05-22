@@ -305,8 +305,8 @@ Additionally it verifies that the results satisfies some basic checks.
 
 
 
-
-\section{PyPV: An easy Current-Voltage curves acquisition interface}
+\pagebreak[2]
+\mysection[PyPV]{PyPV: An easy Current-Voltage curves acquisition interface}
 	\epigraph{\textit{"Why nobody tried to fix this bug?"}}
 
 	\subsection{Introduction}
@@ -340,6 +340,31 @@ Additionally it verifies that the results satisfies some basic checks.
 		Python~2, rather than the most recent Python~3, has been chosen for the software development.
 		This apparently stupid choice was motivated by the requirement of running the software on the obsolete Windows~XP machines still used for the data acquisition.
 		
+		\begin{sidewaysfigure}
+								\centering
+			\includegraphics[width=0.9\textwidth]{PyPV/pypv-gui.png}
+			\mycaption[PyPV graphical user interface.]{}\label{fig:pypv-gui}
+		\end{sidewaysfigure}
+
+%		\begin{landscape}
+%							\begin{figure}
+%					\centering
+%					\includegraphics[width=1.1\textwidth]{PyPV/pypv-gui.png}
+%					\mycaption[]{}\label{fig:pypv-gui}
+%						\end{figure}
+%		\end{landscape}
+
+		
+	
+%		\begin{figure}
+%			\makebox[\textwidth][c]{
+%				\parbox{1.1\textwidth}{
+%			\centering
+%			\includegraphics[width=1.1\textwidth]{PyPV/pypv-gui.png}
+%			\mycaption[]{}\label{fig:pypv-gui}
+%		}}
+%		\end{figure}
+		
 		\paragraph{Autoscale} As it was explained in \cpageref{autoscale}, the automatic scale setting of the Keithley is detrimental for perovskite solar cells dynamic measurements.
 
 		\paragraph{Auto-measure}\label{automeasure}
@@ -358,10 +383,41 @@ Additionally it verifies that the results satisfies some basic checks.
 
 		where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions \cite{Keithley2011}.
 
+		\paragraph{Scan speed calculation}
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{PyPV/pypv-plot.png}
+	\mycaption[]{}\label{fig:pypv-plot}
+\end{SCfigure}
+
+\paragraph{Additional output}
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.61\textwidth}
+				\includegraphics[width=1\textwidth]{PyPV/pypv-console.png}
+				\subcaption{}\label{fig:pypv-console}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.41\textwidth}
+				\includegraphics[width=1\textwidth]{PyPV/keithley.jpg}
+				\subcaption{}\label{fig:pypv-keithley}
+			\end{subfigure}
+					\mycaption[]{}\label{fig:pypv-other}
+		}
+	}
+\end{figure}
+
+\paragraph{Last configuration saving}
+
 	\subsection{Limitations}
 
 		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV. This demonstrated to be a big failure in long term development planning.
 
+\pagebreak[2]
 \section{Robust and quick data analysis \textsl{via} R scripts}
 	\epigraph{\textit{"Is there an Origin version for Linux?"\\"No"}}
 
@@ -401,55 +457,57 @@ Additionally it verifies that the results satisfies some basic checks.
 		\paragraph{\texttt{from_ce_to_table.R} -- Converts CE output}
 		The output from \gls{ce} measurement software is rather minimal, as it lacks the time column.
 		This script generates a two column file output which is more convenient for plotting with other commonly employed software.
-		\paragraph{\texttt{ce.R}}
-		\paragraph{\texttt{ce-subtractDark.R}}
-		\paragraph{\texttt{ce-integrateExp.R}}
-		\paragraph{\texttt{ce-from_output_to_graph.R}}
-		\paragraph{\texttt{ce-from_many_output_to_graph.R}}
-		\paragraph{\texttt{ce-time-many.R}}
-		\paragraph{\texttt{ce-with_limits.R}}
+		It works both for the TPV and for the TPC outputs.
+		
+		\paragraph{\texttt{ce.R} -- Integrates CE transients directly}
+		\paragraph{\texttt{ce-subtractDark.R} -- Integrates CE transients after subtracting a transformed noise profile}
+		\paragraph{\texttt{ce-integrateExp.R} -- Integrates a fit to CE transients}
+		\paragraph{\texttt{ce-from_output_to_graph.R} -- Plots the extracted charge \textsl{versus} light bias}
+		\paragraph{\texttt{ce-from_many_output_to_graph.R} -- Compares between CE of various devices}
+		\paragraph{\texttt{ce-time-many.R} -- Compares single CE transients of various devices}
+		\paragraph{\texttt{ce-with_limits.R} -- Compares CE transients with RC decays}
 
 	\subsection{Transient PhotoVoltage (\glsentryshort{tpv})}\label{r_tpv}
 
-		\paragraph{\texttt{from_tpv_tpc_to_table.R}}
-		\paragraph{\texttt{tpv-from_many_output_to_graph.R}}
-		\paragraph{\texttt{tpv-from_output_to_graph.R}}
-		\paragraph{\texttt{tpv-from_output_to_graph-with_limits.R}}
-		\paragraph{\texttt{tpv_onlyDeltaV.R}}
-		\paragraph{\texttt{tpv.R}}
+		\paragraph{\texttt{from_tpv_tpc_to_table.R} -- Converts CE output}
+		Similarly to \texttt{from_ce_to_table.R}, this converts the one column raw file to a two columns text file.
 
+		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
+		
+				\paragraph{\texttt{tpv_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
+				
+		\paragraph{\texttt{tpv-from_output_to_graph.R} -- Plots TPV life\hyp{}times \textsl{versus} light bias}
+		
+		
+\paragraph{\texttt{tpv-from_output_to_graph-with_limits.R} -- Compares life\hyp{}time with RC time}
 
+		\paragraph{\texttt{tpv-from_many_output_to_graph.R} -- Compares between TPV of various devices}
 
 	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
 
-		\paragraph{\texttt{from_tpv_tpc_to_table.R}}
-		\paragraph{\texttt{tpc.R}}
-		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R}}
+		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
+		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
 
 
 	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
 
-		\paragraph{\texttt{dc-from_output_to_graph.R}}
-		\paragraph{\texttt{cedc.R}}
-		\paragraph{\texttt{dc-from_many_output_to_graph_capacitance.R}}
-		\paragraph{\texttt{dc-from_many_output_to_graph_charge.R}}
+		\paragraph{\texttt{dc-from_output_to_graph.R} -- Calculates and plots capacitance and charge from DC}
+		
+		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
+		
+		\paragraph{\texttt{dc-from_many_output_to_graph_capacitance.R} and \texttt{dc-from_many_output_to_graph_charge.R} -- Compares between DC of various devices}
+		
 
 	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
 
 
-		\paragraph{\texttt{tpvce-from_many_output_to_graph.R}}
-		\paragraph{\texttt{tpvce-from_output_to_graph.R}}
-		\paragraph{\texttt{tpvdc-from_many_output_to_graph.R}}
 
-
-	\subsection{Short circuit current reconstruction}
-
-		\cpageref{jsc_reconstruction}
-
-		\paragraph{\texttt{jrec-ce.R} and \texttt{jrec-dc.R}}
+		\paragraph{\texttt{tpvce-from_output_to_graph.R} -- Relate TPV life\hyp{}times to CE charge}
+		
+				\paragraph{\texttt{tpvce-from_many_output_to_graph.R} and \texttt{tpvdc-from_many_output_to_graph.R} -- Compare TPV life\hyp{}times related to either CE or DC charge of various devices}
 
 	\subsection{Current-Voltage Sweeps}
-		\paragraph{\texttt{extractdata-curves-vi-separated_files.R}}
+		\paragraph{\texttt{extractdata-curves-vi-separated_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
 		\paragraph{\texttt{iv-generate_mydata.R} and \texttt{iv-generate_mydata_with_comments.R}}
 		\paragraph{\texttt{iv-generate_images.R}}
 		\paragraph{\texttt{iv-generate_statistics.R}}
@@ -459,11 +517,15 @@ Additionally it verifies that the results satisfies some basic checks.
 		\paragraph{\texttt{jsc-stability.R} and \texttt{voc-stability.R}}
 
 	\subsection{Other}
-		\paragraph{\texttt{mppt_to_graph.R}}
-		\paragraph{\texttt{profilometry.R}}
-		\paragraph{\texttt{tas-downsample.R}}
-		\paragraph{\texttt{tas-graph.R}}
-		\paragraph{\texttt{uvvis-pl.R}}
+	
+				\paragraph{\texttt{jrec-ce.R} and \texttt{jrec-dc.R} -- Reconstructs the \gls{jsc}}
+					\cpageref{jsc_reconstruction}
+					
+		\paragraph{\texttt{mppt_to_graph.R} -- Plots tracking of maximum power point}
+		\paragraph{\texttt{profilometry.R} -- Plots profilometer measurements and fit heights}
+		\paragraph{\texttt{tas-downsample.R} -- Reduces the dimension of TAS decays}
+%		\paragraph{\texttt{tas-graph.R} -- Plots TAS decays}
+		\paragraph{\texttt{uvvis-pl.R} -- Plots absorbance and photoluminescence spectra and fits Tauc plots}
 
 \section{Contributions to mppTracker}\label{software_mppt}
 	\epigraph{\textit{"A student of mine sells a complete system for that, just go and buy it"}}

@@ -14,7 +14,7 @@
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
-	\usepackage[spanish, es-noquoting, italian, british]{babel}
+	\usepackage[spanish, es-noquoting, italian, british, catalan]{babel}
 	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
 	
 	\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
@@ -292,6 +292,16 @@ bottom=2cm%,
 % for making semi-float longtables https://tex.stackexchange.com/a/215443/173645
 \usepackage{afterpage}
 
+
+	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
+\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto},width=0.6cm,eventxtindent=-2pt,oddtxtexdent=2pt]{thumbs}%
+
+% like lscape, implements landscape environment for horizontal pages with normal headers, but also specifies the orientation in the PDF file
+%\usepackage{pdflscape}
+% on the contrary of lscape, rotating has a floating environment for images and tables
+\usepackage{rotating}
+
+
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
 \makeatletter
@@ -308,11 +318,6 @@ bottom=2cm%,
 	\noalign{\nobreak\vskip-\arrayrulewidth}}
 \makeatother
 
-
-
-
-	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
-\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto},width=0.6cm,eventxtindent=-2pt,oddtxtexdent=2pt]{thumbs}%
 
 	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
 	\captionsetup[SCfigure]{format=plain}
@@ -437,7 +442,7 @@ bottom=2cm%,
 \pagenumbering{alph}%
 \makeatother%
 % including the title page, compiled as a separate document
-\includepdf[pages={1,2,3,4,5,6,7,8,9,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
+\includepdf[pages={1,2,3,4,5,6,7,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
 \pagenumbering{roman}%
 
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
@@ -746,7 +751,7 @@ bottom=2cm%,
 
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 	\startcontents[thicknesses]
-	%\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
+%	\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
 	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/thicknesses/} }
@@ -780,7 +785,7 @@ bottom=2cm%,
 	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/impedance/} }
-	%	\input{contents_tex/impedance.tex}
+		\input{contents_tex/impedance.tex}
 	\clearpage
 	\stopcontents[impedance]
 
@@ -838,12 +843,12 @@ bottom=2cm%,
 	\backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
-	%\input{contents_tex/conclusions.tex}
+	\input{contents_tex/conclusions.tex}
 	\clearpage
 
 
 \chapter{Acknowledgements}
-	%\input{contents_tex/acknowledgements.tex}
+	\input{contents_tex/acknowledgements.tex}
 	\clearpage
 	\printindex
 
@@ -868,6 +873,6 @@ bottom=2cm%,
 	\newpage
 
 	% the closing page has to be on an even page
-	\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_img/titlepage/B5_contra.pdf}%
+	\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_img/titlepage/B5_contra_iciq_icl.pdf}%
 
 \end{document}
