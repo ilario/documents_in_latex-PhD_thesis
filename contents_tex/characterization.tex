@@ -1161,14 +1161,9 @@
 	%\begin{equation}\tau_|pfo| = \left\{\Phi k_\Phi n_|eq|^{\Phi-1} [\exp(\frac{q \voc}{m k_|B| T})-1]^{\Phi-1} \right\}^{-1}\end{equation}
 	The \cref{eq:reconstruction_voc} now contains just parameters which can be obtained from our photophysical measurements \cite{Wheeler2015,Wheeler2017,Du2018,Barnes2011a}.
 
-\section{Impedance Spectroscopy}
+\section{Impedance Spectroscopy}\label{characterization_impedance}
 	%\epigraph{\textit{"No, I never used this technique, I tried but I couldn't understand it."}}
 	\epigraph{\textit{"One does not simply have a look at impedance spectroscopy data"}}{Boromir}
-
-	\paragraph{Frequency domain}
-	Thanks to Kramers-Kronig relation, from frequency domain techniques we should be able to extract the same information as from time-domain techniques, as the aforementioned ones.
-	Nevertheless, frequency domain techniques are more convenient for observing one by one all the different processes happening in a solar cell device, working at their characteristic frequency.
-	On the other hand this also implies a much longer measurement, for which the device stability is paramount.
 
 	\paragraph{Concept}
 	Impedance spectroscopy can be performed with easily available equipment: most of the electrochemical units used in the research labs for measuring cyclic voltammetry include this technique.
@@ -1179,6 +1174,11 @@
 	The voltage oscillation should be large enough for measuring a current profile without too much noise, usually amplitudes from \SIrange{20}{200}{\mV} are employed.
 	Repeating this on different alternating voltage frequencies, often from \SIrange{1e-2}{1e7}{\Hz}, the spectra of impedance can be obtained.
 	The impedance spectroscopy can be represented in various shapes: Nyquist plots where $-Z''$ is plotted against $Z'$, Bode plots of phase, $|Z|$, $Z''$, or $Z'$ are plotted against the frequency $\nu$ or, as a capacitance (or apparent capacitance, as we will see in \cref{ch:impedance}) defined as $\omega^{-1}\Im(Z^{-1})$.
+
+	\paragraph{Frequency domain}
+Thanks to Kramers-Kronig relation, from frequency domain techniques we should be able to extract the same information as from time-domain techniques, as the aforementioned ones.
+Nevertheless, frequency domain techniques are more convenient for observing one by one all the different processes happening in a solar cell device, working at their characteristic frequency.
+On the other hand this also implies a much longer measurement, for which the device stability is paramount.
 
 	\paragraph{Stability}
 	As the measurement of a complete impedance spectra is very time demanding, the device stability is of paramount importance.

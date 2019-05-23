@@ -445,6 +445,10 @@ bottom=2cm%,
 \includepdf[pages={1,2,3,4,5,6,7,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
 \pagenumbering{roman}%
 
+\chapter{Acknowledgements}
+\input{contents_tex/acknowledgements.tex}
+\clearpage
+
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
 \frontmatter
 
@@ -623,11 +627,6 @@ bottom=2cm%,
 
 
 	\EnableQuotes
-
-
-\chapter[Motivation and Aims]{Motivation and Aims}\label{ch:aims}
-	%\addcontentsline{toc}{chapter}{Motivation and Aims}
-	%	\input{contents_tex/aims.tex}
 
 	}%here ends openany and starts openright
 
@@ -846,10 +845,6 @@ bottom=2cm%,
 	\input{contents_tex/conclusions.tex}
 	\clearpage
 
-
-\chapter{Acknowledgements}
-	\input{contents_tex/acknowledgements.tex}
-	\clearpage
 	\printindex
 
 \chapter{List of Oral and Poster Presentations at Conferences}
