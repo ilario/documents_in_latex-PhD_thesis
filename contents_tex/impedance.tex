@@ -38,19 +38,311 @@ Dr.\ Michael Stringer, Dr.\ Onkar Game, Yinghong Hu, Dr.\ David Lidzey, and Dr.\
 
 \section{Implementation}
 
-	fromISwaveEAStructToTxt.m
-fromISwaveResultsToTxt.m
-IS_full_analysis_impedance.m
-ISwave_EA_single_demodulation.m
-ISwave_EA_single_exec.m
-ISwave_EA_single_fit.m
-ISwave_full_analysis_nyquist.m
-ISwave_full_analysis_phase.m
-ISwave_full_exec.m
-ISwave_full_exec_nonparallel.m
-ISwave_single_analysis.m
-ISwave_subtracting_analysis.m
 
+
+
+\paragraph{\texttt{ISwave\_EA\_single\_exec} -- Does a single Impedance Spectroscopy experiment}
+
+
+\textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pindrift};
+2) voltage oscillation amplitude in volts;
+3) voltage oscillation frequency;
+4) number of periods to be simulated;
+5) how many time points should the solution have for
+     each period, suggested to use a multiple of 4;
+6) logical, check if the oscillating solution reached a
+     (oscillating) stabilization, otherwise just use the result of the
+     initial simulation. This can be useful when it's known that the
+     starting solution is not stabilized, for example measuring with an
+     unstabilized ionic profile;
+7) logical, set to true when performing ElectroAbsorbance simulation,
+     this will skip the electrical current calculation;
+8) starting relative tolerance of the \texttt{pdepe} solver, for example a
+     value of \num{1e-8} sets for a very precise simulation.
+
+\textit{Outputs:} a structure with a solution being perturbed by an
+     oscillating voltage.
+     
+     \textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}, \texttt{pinana}.
+     
+     \textit{Required by:} 
+     
+   \textit{Example:} using \texttt{asymmetricize} (see \cpageref{asymmetricize}) the symmetric solution at 1 sun illumination and open circuit is broken in halves in order to be able to apply a custom voltage.
+   Then this script simulates an oscillating voltage at \SI{0.1}{\Hz} and \SI{2}{\mV} of half peak to peak voltage amplitude, with a constant voltage bias equal to the device \gls{voc},
+        20 periods and 40 time points per period, taking care of reaching a stable solution,
+        and using a starting relative tolerance of \num{1e-8} and calculates also the electronic current needed by impedance simulations.
+   \begin{lstlisting}[style=Matlab-editor]
+>> asymssol_i_1S_SR_is_100mHz_2mV = ISwave_EA_single_exec(asymmetricize(ssol_i_1S_SR), 2e-3, 1e-2, 20, 40, true, false, 1e-8)
+   \end{lstlisting}
+   
+
+
+
+		
+		\paragraph{\texttt{ISwave\_EA\_single\_demodulation} -- Calculates phase and amplitude demodulating oscillating current data from impedance spectroscopy}
+		The current profile gets multiplied by the voltage profile and,
+		 separately, by the voltage profile with an additional 90 degrees phase.
+		 The integrals of the resulting profiles are related to the phase.
+		 This simulates the working principle of a dual-phase demodulator often
+		 used by lock-in amplifiers.
+		 A phase close to \SI{90}{\degree} results in very small values of
+		 the in-phase integral which can have a wrong sign and result in a wrong phase of
+		 \SI{-90}{\degree}, in that case the simulation should be repeated with smaller \texttt{pdepe}
+		 relative tolerance.
+		
+		\textit{Inputs:} 1) a column with the time mesh;
+		   2) a column with the value to be fitted, which in case of impedance simulation is the current \textsl{versus} time profile;
+		   3) an anonymous function containing a constant bias, the amplitude of
+		     the sinusoid, its phase and the frequency;
+		   4) an array with the parameters used for calculating the applied
+		     oscillating voltage in the provided anonymous function.
+		
+		\textit{Outputs:} an array with the values from the demodulation: constant
+		     bias, sinusoid amplitude, phase shift.
+		
+%		\textit{Requires:} 
+		
+		\textit{Required by:} 
+		
+		
+		\textit{Example:} demodulate the components of the oscillating current.
+		\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_EA_single_demodulation(asymssol_i_1S_SR_is_100mHz_2mV.t', asymssol_i_1S_SR_is_100mHz_2mV.Jn, @(coeff, t) coeff(1) + coeff(2) * sin(coeff(3) + coeff(4) * t), asymssol_i_1S_SR_is_100mHz_2mV.p.Vapp_params)
+		\end{lstlisting}
+		
+		
+\paragraph{\texttt{ISwave\_EA\_single\_fit} -- Calculates phase and amplitude fitting oscillating current data from impedance spectroscopy}
+This is an alternative to \texttt{ISwave\_EA\_single\_demodulation} which can be used to confirm the demodulation results.
+
+\textit{Inputs:} 1) an array with the time mesh;
+   2) an array with the value to be fitted, which in case of impedance simulation is the current \textsl{versus} time profile;
+   3) an anonymous function to be used for the fitting, containing
+     a constant bias, the amplitude of the sinusoid and its phase. The
+     frequency is taken as it is from input, it is not fitted.
+
+\textit{Outputs:} an array with the values from the sinusoidal fit: constant
+     bias, sinusoid amplitude, phase shift.
+
+%\textit{Requires:} 
+
+\textit{Required by:} 
+
+		\textit{Example:} fits the oscillating current \textsl{versus} voltage data for a \SI{200}{\Hz} simulation.
+\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_EA_single_fit(asymssol_i_1S_SR_is_100mHz_2mV.t, asymssol_i_1S_SR_is_100mHz_2mV.Jn, @(coeff, t) coeff(1) + coeff(2) * sin(coeff(3) + 2 * pi * 200 * t))
+\end{lstlisting}
+
+
+
+\paragraph{\texttt{ISwave\_single\_analysis} -- Calculate impedance and phase from impedance spectroscopy data}
+The imaginary and real components of complex impedance (respectively reactance and resistance) are extracted using either \texttt{ISwave\_EA\_single\_demodulation} or \texttt{ISwave\_EA\_single\_fit}.
+
+\textit{Inputs:} 1) a structure with a solution being perturbed by an
+     oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
+   2) logical, when true graphics does not get created and
+     \texttt{ISwave\_subtracting\_analysis} does not get launched, useful when
+     launched under parallelization;
+   3) logical, get phase via demodulation instead of using a fitting.
+
+\textit{Outputs:} 1) array of background current, half peak to peak amplitude of
+     oscillation and phase of total electronic current;
+   2) array of background current, half peak to peak amplitude of
+     oscillation and phase of ionic displacement current;
+   3) array of background current, half peak to peak amplitude of
+     oscillation and phase of recombinating charge per unit time;
+   4) array of background current, half peak to peak amplitude of
+     oscillation and phase of accumulating current, this is the real
+     capacitive current, obtained comparing the free charges profiles at
+     different times;
+   5) array of background current, half peak to peak amplitude of
+     oscillation and phase of non ionic current as obtained via
+     subtraction of ionic current from total electronic current.
+
+\textit{Requires:} \texttt{ISwave\_subtracting\_analysis}, \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}, \texttt{pinana}.
+
+\textit{Required by:} 
+
+\textit{Example:} plot current profile, reference profiles and calculate the phase using demodulation approach.
+\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_single_analysis(asymssol_i_1S_SR_is_100mHz_2mV, false, true)
+\end{lstlisting}
+
+\paragraph{\texttt{ISwave\_subtracting\_analysis} -- Calculates the time derivative of the total charge in the device}
+The charge excess in a device compared with the previous time point gets expressed as a current.
+This is used as a reference for impedance spectroscopy and for separating the ionic contribution.
+
+\textit{Inputs:} a structure with a solution being perturbed by an
+oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec}.
+
+\textit{Outputs:} 1) charge variation over time in the whole device;
+2) charge variation over time in the perovskite layer.
+
+%\textit{Requires:} 
+
+\textit{Required by:} 
+
+\textit{Example:} extract reference values.
+\begin{lstlisting}[style=Matlab-editor]
+>> [subtracting_n_t, subtracting_n_intr_t] = ISwave_subtracting_analysis(asymssol_i_1S_SR_is_100mHz_2mV)
+\end{lstlisting}
+
+\paragraph{\texttt{ISwave\_full\_exec} -- Simulates impedance spectroscopy at various frequencies on many provided solutions}
+A single structure can be provided as steady state solution to start from for simulating impedance spectroscopy.
+Alternatively, a cell containing various structures can be provided.
+For example, if a cell generated using \texttt{gen\-Int\-Structs} (see \cpageref{genIntStructs}) is provided, the impedance at various light intensities can be compared.
+Or, if the provided cell has been generated using \texttt{gen\-Vapp\-Structs} (see \cpageref{genVappStructs}), solutions with different background voltage bias can be compared.
+If Matlab's Parallel Computing Toolbox is available, this scripts runs in parallel on all the available physical CPU cores, otherwise it just runs on one core.
+
+\textit{Inputs:} 1) can be a cell structure containing either symmetrical or asymmetrical structures. Various background
+light intensities can be provided using \texttt{gen\-Int\-Structs} and various applied voltages using \texttt{gen\-Vapp\-Structs}.
+     Otherwise it can be a single structure as created by \texttt{pindrift};
+   2) highest frequency limit;
+   3) lowest frequency limit;
+   4) number of points to simulate between the lowest and
+     the highest frequency;
+   5) voltage oscillation amplitude in volts, \SI{1}{\mV} should be enough but larger values can be employed for reducing the noise or having a large perturbation simulation;
+   6) logical, after stabilization sets the mobility of
+     ionic defects to zero to simulate the impedance with effectively frozen ions;
+   7) logical, determines which method to use for extracting phase and amplitude of the current.
+    If false, always uses fitting \textsl{via} \texttt{ISwave\_EA\_single\_fit}, if true uses demodulation \textsl{via} \texttt{ISwave\_EA\_single\_demodulation}. Anyway if the obtained phase is weird, fit will be used
+     automatically for confirming the result;
+   8) logical, whether to graph the individual solutions and
+     the overall graphics.
+
+\textit{Outputs:} a structure containing the most important results of the simulation.
+
+\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
+   \texttt{ISwave\_single\_analysis}, \texttt{ISwave\_full\_analysis\_nyquist},
+   \texttt{IS\_full\_analysis\_impedance}, \texttt{ISwave\_full\_analysis\_phase}, \texttt{pinana},
+   \texttt{stabilize}.
+
+%\textit{Required by:} 
+
+\textit{Example:} This is the most typical of the performed simulations: calculate on 8 different illumination intensities including dark, do not freeze ions, use a half peak to peak
+     voltage oscillation amplitude of 2 mV, on 23 points from frequencies of 1 GHz to
+     0.01 Hz and plot all graphics, including the ones for each solution.
+\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_oc = ISwave_full_exec(genIntStructs(ssol_i_eq_SR, 1, 1e-3, 7, true), 1e9, 1e-2, 56, 2e-3, false, true, true)
+\end{lstlisting}
+
+\paragraph{\texttt{ISwave\_full\_exec\_nonparallel} -- Non parallelized version of \texttt{ISwave\_full\_exec}}
+The fundamental difference from \texttt{ISwave\_full\_exec} is the lack of \texttt{parfor}
+ for parallel computation. This allows more flexibility at the cost of a
+ more time demanding simulation.
+
+\textit{Inputs:} 1-5) identical to \texttt{ISwave\_full\_exec} 1-5 ones;
+6) logical, if true do not check that the oscillating solution reached a
+     (oscillating) stabilization, instead take always the first solution
+     and use its final time point as the starting point of the next
+     frequency simulation. This can be useful when it's known that the
+     starting solution is not stabilized and a realistic simulation of the
+     solution evolving during the measurement is wanted.
+7-9) identical to \texttt{ISwave\_full\_exec} 6-8 ones;
+10) logic, defines whether to save in volatile base
+    workspace each of the calculated solutions.
+    
+\textit{Outputs:} a structure containing the most important results of the simulation.
+
+\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
+\texttt{ISwave\_single\_analysis}, \texttt{ISwave\_full\_analysis\_nyquist},
+\texttt{IS\_full\_analysis\_impedance}, \texttt{ISwave\_full\_analysis\_phase}, \texttt{pinana},
+\texttt{stabilize}.
+
+%\textit{Required by:} 
+
+\textit{Example:} Identical to the example shown for \texttt{ISwave\_full\_exec} but this also saves to base workspace the single oscillating solutions and starts each simulation from the last time point of the previous, strictly sequentially without reaching stabilization.
+\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_oc_sequential = ISwave_full_exec_nonparallel(genIntStructs(ssol_i_eq_SR, 1, 1e-3, 7, true), 1e9, 1e-2, 56, 2e-3, true, false, true, true, true)
+\end{lstlisting}
+
+		\paragraph{\texttt{ISwave\_full\_analysis\_phase} -- Represents Bode plots of phase from impedance spectroscopy}
+		The phase of the current oscillation with regards to the applied voltage is plotted as obtained from simulations made with \texttt{ISwave\_full\_exec} or \texttt{ISwave\_full\_exec\_nonparallel}.
+		
+		
+		\textit{Inputs:} a structure containing the most important results of the simulation.
+		
+%		\textit{Outputs:} 
+		
+%		\textit{Requires:} 
+		
+		\textit{Required by:} 
+		
+				
+				\textit{Example:} do phase Bode plots.
+				\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_full_analysis_phase(ISwave_oc)
+				\end{lstlisting}
+				
+\paragraph{\texttt{IS\_full\_analysis\_impedance} -- Represents Bode plots of impedance and apparent capacitance from impedance spectroscopy}
+Plot the value of absolute impedance magnitude $|Z|$, resistance $Z'$ (real component), reactance $Z''$ (imaginary component), and apparent capacitance defined as $\omega^{-1}\Im(Z^{-1})$ at various frequencies and various illumination or background voltage bias conditions.
+As a reference, the following currents are also used for plotting the mentioned quantities: ionic displacement current, recombination current, and total charge time derivative as obtained from \texttt{ISwave\_subtracting\_analysis}.
+
+\textit{Inputs:} a structure containing the most important results of the simulation.
+
+%\textit{Outputs:} 
+
+%\textit{Requires:} 
+
+\textit{Required by:} 
+
+\textit{Example:} do impedance and apparent capacitance Bode plots.
+\begin{lstlisting}[style=Matlab-editor]
+>> IS_full_analysis_impedance(ISwave_oc)
+\end{lstlisting}
+
+\paragraph{\texttt{ISwave\_full\_analysis\_nyquist} -- Plots Nyquist graph for impedance spectroscopy}
+Nyquist plot refers the imaginary component of the impedance to its real component.
+A normalized spectra is also plotted and the rescaling factors are indicated in the legend.
+
+\textit{Inputs:} a structure containing the most important results of the simulation.
+
+%\textit{Outputs:} 
+
+%\textit{Requires:} 
+
+\textit{Required by:} 
+
+\textit{Example:} do Nyquist plot.
+\begin{lstlisting}[style=Matlab-editor]
+>> ISwave_full_analysis_nyquist(ISwave_oc)
+\end{lstlisting}
+
+		
+
+				
+\paragraph{\texttt{from\-ISwaveEA\-Struct\-ToTxt} -- Exports single impedance simulation data to text files}
+This helper saves the main data from a oscillating solution created by \texttt{ISwave\_EA\_single\_exec} to text files, for easing the import with Origin (from OriginLab).
+
+\textit{Inputs:} 1) a structure with a solution being perturbed by an oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
+2) char array, prefix to be used for the text files names.
+
+%\textit{Outputs:} 
+
+%\textit{Requires:} 
+
+%\textit{Required by:} 
+
+\textit{Example:} save single simulation data to text files.
+\begin{lstlisting}[style=Matlab-editor]
+>> fromISwaveEAStructToTxt(asymssol_i_1S_SR_is_100mHz_2mV, 'asymssol_i_1S_SR_is_100mHz_2mV')
+\end{lstlisting}
+
+\paragraph{\texttt{from\-ISwave\-Results\-ToTxt} -- Exports data of a set of impedance simulations to text files}
+This helper saves the main data from a complete impedance spectroscopy simulation including various solutions created by \texttt{ISwave\_full\_exec} to text files, for easing the import with Origin (from OriginLab).
+
+\textit{Inputs:} 1) a structure containing the most important results of the simulation;
+2) char array, prefix to be used for the text files names.
+
+%\textit{Outputs:} 
+
+%\textit{Requires:} 
+
+%\textit{Required by:} 
+
+\textit{Example:} save data from a set of simulations to text files.
+\begin{lstlisting}[style=Matlab-editor]
+>> fromISwaveResultsToTxt(ISwave_oc, 'ISwave_oc')
+\end{lstlisting}
 
 \section{Measured and simulated impedance spectra characteristics}
 

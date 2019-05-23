@@ -201,7 +201,8 @@ bottom=2cm%,
 	
 	
 	\usepackage{listings}
-	\usepackage[numbered,framed]{matlab-prettifier}% for Matlab listings highlighting
+%	\usepackage[numbered,framed]{matlab-prettifier}% for Matlab listings highlighting
+\usepackage{matlab-prettifier}% for Matlab listings highlighting
 	\lstset{style=Matlab-editor, basicstyle=\footnotesize}% basicstyle has to be placed after style
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
@@ -282,7 +283,8 @@ bottom=2cm%,
 %\usepackage{glossary-mcols}
 
 % to have line break (hyphenation) also at dashed words using \hyp{} https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
-\usepackage{hyphenat}
+% htt allows hypenation also in typewriter, needed to avoid overfull boxes https://tex.stackexchange.com/a/10378/173645
+\usepackage[htt]{hyphenat}
 
 % useful for debugging hyphenation problems but it works just 
 %\usepackage{showhyphens} % just for lualatex
