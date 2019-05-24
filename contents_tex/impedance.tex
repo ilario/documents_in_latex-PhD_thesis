@@ -35,14 +35,238 @@ Dr.\ Davide Moia and Dr.\ Piers RF Barnes created the formalism and the electric
 William Fisher and Dr. Davide Moia fitted the experimental data using fitting routines developed by Dr.\ Piers RF Barnes.
 Dr.\ Michael Stringer, Dr.\ Onkar Game, Yinghong Hu, Dr.\ David Lidzey, and Dr.\ Pablo Docampo provided excellently stable perovskite solar cells to be studied.
 
+\section{Driftfusion software}
+Driftfusion is a modelling platform for stacked semiconductors, mostly used for solar cells.
+It estimates the profile of electrostatic potential, free electrons, free holes, and mobile ions densities over one dimension (depth into the stack) and over time.
+The semi-classical transport, continuity, and Poisson's equations are solved using Matlab's built-in Partial Differential Equation solver for Parabolic and Elliptic equations \texttt{pdepe}
+The simulation assumes static negative counter ions simulating Schottky defects \cite{Walsh2015} and positively charged mobile ions constrained into the absorber layer.
+This formalism is based on \authoryear{Nelson2003} and described in \authoryear{Calado2016} and \authoryear{Calado2018}.
+All the mentioned functions, helper code and examples of impedance spectroscopy simulations have been released on \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
 
-\section{Implementation}
+\paragraph{Homojunction}
+I employed an homojunction version of Driftfusion, which at the date of September 2017 was the stable and well tested release of Driftfusion.
+This means that in the presented simulations all the materials have the same band gap but can differ by other parameters: doping level (equilibrium Fermi level position), holes and electrons mobilities, permittivity, radiative and trap mediated recombination constants, traps relative energy inside the band gap, and thickness.
+This proved to be enough for simulating the influence of ionic current on the recombination current but was limited for studying their influence on the injection current.
+
+\paragraph{Recombination and generation}
+High rates of recombination in the contact regions are used to simulate surface recombination.
+Even if an optical model was available in Driftfusion, an uniform generation through all the absorber proven to be enough for our purposes.
+
+
+
+\paragraph{Boundary conditions}
+The oscillating voltage is applied with time\hyp{}dependent boundary conditions.
+
+\section{Simulating impedance spectroscopy}
+
+\paragraph{Initial conditions}
+The solution of the charge and electrostatic concentration profiles of the device under steady state operating conditions was determined using Driftfusion core functions to provide initial conditions for the simulated impedance spectroscopy.
+Most importantly, the illumination intensity and the DC voltage $\bar V$ which are the usually explored parameters in each complete simulation.
+
+\paragraph{Applied voltage}
+The impedance spectroscopy simulations were performed by applying an oscillating voltage $v$ superimposed on a background bias voltage $\bar V$ boundary condition:
+
+\begin{equation}
+V = \bar V + v(t) = \bar V + v_|max| \sin(\omega t)
+\end{equation}
+
+Usually, a $v_|max|$ of \SI{2}{\mV} is employed.
+This value is much smaller than the experimentally used one but very similar results are obtained when using larger perturbations (simulations with a $v_|max|$ of \SI{200}{\mV} are mentioned in \cpageref{impedance-large_perturbations}).
+The small value allowed me to obtain a computationally fast simulation without being affected by too much numerical noise.
+
+\paragraph{Position and time grids}
+In order to deal with the high gradients at the interfaces, a linear spatial mesh was used with a spacing of \SI{0.55}{\nm} within the approximate depletion regions of the device and \SI{2.54}{\nm} elsewhere.
+Even if the \texttt{pdepe} solver utilises an internal time grid, it outputs the data at the requested times array.
+All the stabilizations have been performed on a logarithmic time grid (\texttt{tmesh\_type} 2 in \texttt{meshgen_t}) while all the oscillating voltage simulations have been performed on a linear time grid (\texttt{tmesh\_type} 1 in \texttt{meshgen_t}).
+For the impedance simulations, 20 complete periods are simulated with 40 time points for each period.
+
+\paragraph{Oscillating stabilization}
+The change from steady state to oscillating voltage does require some complete periods before reaching a stable oscillation (where the current profile is identical from one period to the next).
+As represented in \cref{fig:impedance_flowchart}, before analysing the oscillating solutions, the stabilization is verified comparing the last time point profiles with the profiles at the half of the current simulation (so at the \nth{10} period).
+In case the stability was absent, the last time point solution has been used as a starting point for 20 more periods, until when stabilization was ensured.
+This is mostly important for large perturbation simulations (large $v_|max|$), where the time\hyp{}averaged profiles are rather different from the steady state ones.
+
+\paragraph{Demodulation}
+The amplitude and phase of the oscillating electronic current density was obtained via
+demodulation, mimicking the working principle of a two-phase lock-in amplifier \cite{WikipediaLockIn}.
+It has been implemented in \texttt{ISwave\_EA\_single\_demodulation} described in \cpageref{ISwave_EA_single_demodulation}.
+The current
+density profile $j(t)$ was point-by-point multiplied by the voltage profile or the \SI{90}{\degree} shifted
+voltage profile normalised by $v_|max|$ and integrated over time (typically 10 periods):
+
+\begin{equation}
+X = \frac{\omega}{m \pi} \int_{t_0}^{t_0+2m\pi / \omega} j(t) \sin(\omega t) \dd t
+\end{equation}
+
+\begin{equation}
+Y = \frac{\omega}{m \pi} \int_{t_0}^{t_0+2m\pi / \omega} j(t) \cos(\omega t) \dd t
+\end{equation}
+
+where $m$ is the number of periods, $t_0$ is the start of the integration time, $\sin(\omega t)$ is the normalised voltage profile, and $\cos(\omega t)$ is the \SI{90}{\degree} shifted one.
+Actually, for avoiding numerical problems (\texttt{e.g.} values close to the double limit) the current profile constant bias is subtracted and the result is normalised.
+Amplitude $j_|max|$ and
+phase $\theta$ are then given via:
+
+
+\begin{equation}
+j_|max| = \sqrt{X^2 + Y^2}
+\end{equation}
+
+\begin{equation}
+\theta = \arctan(\frac{Y}{X})
+\end{equation}
+
+allowing the complex impedance to be determined \textsl{via} $Z = v_|max| / j_|max| \exp(-\mathrm{i}\theta)$.
+The amplitude and phase
+obtained this way were confirmed by fitting j(t) with a sinusoidal function.
+
+\paragraph{Calculation of Ionic Displacement Current}\label{displacement_current_ionic}
+As seen in \cpageref{intro_displacement_current}
+
+\section{Simulated apparent capacitance spectra characteristics}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.1\textwidth]{dd_capacitance/capacitance.pdf}
+	\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-capacitance}
+\end{figure}
+
+\subsection{Very high frequency}
+
+
+
+\subsection{Mid frequency}
+\begin{figure}
+	\centering
+	\includegraphics[width=1.1\textwidth]{dd_capacitance/accumulation.pdf}
+	\mycaption[Simulated accumulation capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-accumulation}
+\end{figure}
+
+\subsection{Low frequency}
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{dd_phase/phase.pdf}
+				\subcaption{Ionic displacement current phase}\label{fig:impedance-ionic-phase}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{dd_capacitance/ionic.pdf}
+				\subcaption{Ionic displacement current capacitance}\label{fig:impedance-ionic-capacitance}
+			\end{subfigure}
+			
+			\mycaption[Simulated ionic capacitance and phase spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-ionic}
+		}
+	}
+\end{figure}
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1.1\textwidth]{dd_capacitance/ionic.pdf}
+%	\mycaption[Simulated ionic capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-ionic}
+%\end{figure}
+
+\paragraph{Dark case}
+The ionic influence on the dark capacitance has already been reported by \authoryear{Yang2015e}.
+
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{dd_nyquist/nyquist_normalised.pdf}
+				\subcaption{Nyquist plot}\label{fig:impedance-nyquist}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{dd_capacitance/recombination.pdf}
+				\subcaption{Apparent capacitance from recombination current}\label{fig:impedance-recombination}
+			\end{subfigure}
+			
+			\mycaption[Simulated apparent capacitance spectra due to recombination current and Nyquist plot of an illuminated perovskite solar cell.]{
+				In (\textbf{a}) the normalised Nyquist plot is reported, the normalisation factor is reported in the legend.
+				The cross markers indicate the even frequency decades (\textsl{i.e.} from right to left \num{0.01}, \num{1}, \SI{100}{\Hz} \dots) so that the mid frequency minimum of 1~sun curve is around \SI{1000}{\Hz}.
+			}\label{fig:impedance-recombination_nyquist}
+		}
+	}
+\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1.1\textwidth]{dd_capacitance/recombination.pdf}
+%	\mycaption[Simulated ionic capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-recombination}
+%\end{figure}
+
+\paragraph{Illuminated or biassed case}
 
 
 
 
-\paragraph{\texttt{ISwave\_EA\_single\_exec} -- Does a single Impedance Spectroscopy experiment}
 
+
+%\section{Ionic-to-electronic current amplification}
+%\section{Capacitor-like and inductor-like behaviour}
+
+
+\subsection{Loops in the positive semi-plane and large perturbations}\label{impedance-large_perturbations}
+In \authoryear{Moia2019} we showed that the failure in stabilizing the device to the measurement conditions (temperature, background voltage, illumination) results in loops in the Nyquist plot positive semi-plane.
+Additionally, a large perturbation measurement, which is a wide sinusoidal voltage oscillation amplitude in impedance measurements, can cause a non-sinusoidal current output.
+This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation.
+This observation comes merely from simulations, no experimental confirmation is available yet.
+%But artefacts could arise and cause misinterpretations.
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{dd_nyquist/nyquist_200mV_normalised.pdf}
+				\subcaption{Nyquist plot with large perturbations}\label{fig:impedance-200mV_nyquist}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{dd_nyquist/nyquist_200mV_normalised_zoom.pdf}
+				\subcaption{Zoom into mid frequency region}\label{fig:impedance-200mV_nyquist-zoom}
+			\end{subfigure}
+			\mycaption[Simulated apparent capacitance spectra due to recombination current and Nyquist plot of an illuminated perovskite solar cell.]{}\label{fig:impedance-200mV}
+		}
+	}
+\end{figure}
+
+
+\section{Comparison of simulated and experimental impedance spectra}
+
+
+\paragraph{Lack of low frequency plateau}
+
+\paragraph{Larger ionic capacitance}
+
+
+\section{Implementation of impedance spectroscopy}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.05\textwidth]{flowchart/flowchart-crop.pdf}
+	\mycaption[Flowchart of impedance simulation modules.]{
+		The representation indicates the logical flow of the simulation, in some parts does not corresponds to the actual calls.
+	Also, some of the secondary pieces have been skipped for simplicity.
+\texttt{equilibrate} is part of Driftfusion core and generates stabilised solutions, while \texttt{gen\-Int\-Structs}, \texttt{gen\-Vapp\-Structs}, and \texttt{verify\-Stabilization} are described in \cpageref{verifyStabilization,genVappStructs}. 
+}\label{fig:impedance_flowchart}
+\end{figure}
+
+I choose to split the implementation in independent modules, so that some of them can be easily re-used for other kinds of simulations.
+The logical flowchart of a complete impedance spectra simulation has been represented in \cref{fig:impedance_flowchart}.
+
+
+\paragraph{\texttt{ISwave\_EA\_single\_exec} -- Does a single impedance spectroscopy simulation}
+Starting from the last time point of the provided solution it applies a time-varying voltage.
+This voltage profile is the background voltage bias from the provided solution summed to a sinusoidally oscillating voltage.
 
 \textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pindrift};
 2) voltage oscillation amplitude in volts;
@@ -74,12 +298,8 @@ Dr.\ Michael Stringer, Dr.\ Onkar Game, Yinghong Hu, Dr.\ David Lidzey, and Dr.\
    \begin{lstlisting}[style=Matlab-editor]
 >> asymssol_i_1S_SR_is_100mHz_2mV = ISwave_EA_single_exec(asymmetricize(ssol_i_1S_SR), 2e-3, 1e-2, 20, 40, true, false, 1e-8)
    \end{lstlisting}
-   
-
-
-
 		
-		\paragraph{\texttt{ISwave\_EA\_single\_demodulation} -- Calculates phase and amplitude demodulating oscillating current data from impedance spectroscopy}
+		\paragraph{\texttt{ISwave\_EA\_single\_demodulation} -- Calculates phase and amplitude demodulating oscillating current data from impedance spectroscopy}\label{ISwave_EA_single_demodulation}
 		The current profile gets multiplied by the voltage profile and,
 		 separately, by the voltage profile with an additional 90 degrees phase.
 		 The integrals of the resulting profiles are related to the phase.
@@ -344,32 +564,6 @@ This helper saves the main data from a complete impedance spectroscopy simulatio
 >> fromISwaveResultsToTxt(ISwave_oc, 'ISwave_oc')
 \end{lstlisting}
 
-\section{Measured and simulated impedance spectra characteristics}
-
-	\subsection{Calculation of Ionic Displacement Current}\label{displacement_current_ionic}
-		As seen in \cpageref{intro_displacement_current}
-
-\subsection{Apparent Capacitance of a Device in Dark}
-\paragraph{High frequency}
-\paragraph{Mid frequency}
-\paragraph{Low frequency}
-The ionic influence on the dark capacitance has already been reported by \authoryear{Yang2015e}.
-
-\subsection{Apparent Capacitance of an Illuminated Device}
-\paragraph{High frequency}
-\paragraph{Mid frequency}
-\paragraph{Low frequency}
-
-%\section{Ionic-to-electronic current amplification}
-%\section{Capacitor-like and inductor-like behaviour}
-
-
-\subsection{Large perturbations}\label{impedance-large_perturbations}
-A too wide sinusoidal voltage oscillation amplitude in impedance measurements can cause a non-sinusoidal current output.
-This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation.
-But artefacts could arise and cause misinterpretations.
-
-
 
 \section{Further development}
 
@@ -378,26 +572,28 @@ But artefacts could arise and cause misinterpretations.
 	\makebox[\textwidth][c]{
 		\parbox{1.1\textwidth}{
 			\centering
-			\begin{subfigure}[t]{0.51\textwidth}
+			\begin{subfigure}[t]{1.1\textwidth}
 				\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_nyquist_norm.png}
 				\subcaption{Illuminated, open circuit, Nyquist}\label{fig:impedance_heterojunction-oc-nyquist}
 			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.51\textwidth}
+%			\qquad
+		\bigskip
+		
+			\begin{subfigure}[t]{1.1\textwidth}
 				\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_cap.png}
 				\subcaption{Illuminated, open circuit, apparent capacitance}\label{fig:impedance_heterojunction-oc-cap}
 			\end{subfigure}
-			\bigskip
-			
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_nyquist_norm.png}
-				\subcaption{Dark, applied voltage, Nyquist}\label{fig:impedance_heterojunction-vapp-nyquist}
-			\end{subfigure}
-						\qquad
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_cap.png}
-				\subcaption{Dark, applied voltage, apparent capacitance}\label{fig:impedance_heterojunction-vapp-cap}
-			\end{subfigure}
+%			\bigskip
+%			
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_nyquist_norm.png}
+%				\subcaption{Dark, applied voltage, Nyquist}\label{fig:impedance_heterojunction-vapp-nyquist}
+%			\end{subfigure}
+%						\qquad
+%			\begin{subfigure}[t]{0.51\textwidth}
+%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_cap.png}
+%				\subcaption{Dark, applied voltage, apparent capacitance}\label{fig:impedance_heterojunction-vapp-cap}
+%			\end{subfigure}
 			\mycaption[Preliminary simulations of impedance on heterojunction model.]{The filled symbols indicate positive capacitance values, the hollow symbols represents negative capacitance which was changed in sign in order to be plotted on the same axis.}\label{fig:impedance_heterojunction}
 		}
 	}
@@ -409,12 +605,8 @@ The simulations shown here are all based on a p-i-n homojunction model, so a pro
 An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{impedance_heterojunction}.
 Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
 
-
-
-
-
-
 \paragraph{ElectroAbsorbance a.k.a. Stark spectroscopy}
+
 
 
 \paragraph{Other similar techniques}

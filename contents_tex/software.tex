@@ -48,7 +48,7 @@ Uses analytical initial conditions and runs to equilibrium and steady state, obt
 
 %\textit{Required by:} 
 
-		\paragraph{\texttt{verify\-Stabilization} -- Verifies if the provided solution has evolved until its steady state}
+		\paragraph{\texttt{verify\-Stabilization} -- Verifies if the provided solution has evolved until its steady state}\label{verifyStabilization}
 Checks if the solution reached a stabilized (\textsl{i.e.} steady state) status comparing the final time point with a manually specified time point. Beware that this can have false positives when the analysed solution had
  has been run over a time which is so small that the ionic movement did not even start.
  For each variable under study, the comparison integrates over the solution thickness the absolute value of the difference in the profile of this variable at two different times in the solution.
@@ -378,7 +378,7 @@ Additionally it verifies that the results satisfies some basic checks.
 			s = \frac{V_|step|}{0.003 + t_|delay| + 0.06 \cdot n_|int|}
 		\end{equation}
 
-		where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions \cite{Keithley2011}.
+		where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions \cite{KeithleyInstruments2011}.
 
 		\paragraph{Scan speed calculation}
 
