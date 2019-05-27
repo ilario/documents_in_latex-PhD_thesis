@@ -2,7 +2,7 @@
 
 \section{Conventions and General Remarks}
 
-	All the characterization on complete devices was performed keeping them in an air-tight holder filled with nitrogen.
+	All the characterisation on complete devices was performed keeping them in an air-tight holder filled with nitrogen.
 	The electrical connection from the cell electrode to the external end of the holder was obtained using gold tips connected \textsl{via} a printed circuit board to a coaxial cable.
 
 	\subsection{Sign Convention and Parameters Definitions}
@@ -702,7 +702,7 @@
 
 		\paragraph{At high background illumination}
 		For some devices, rather than an exponential decay, a bi\hyp{}exponential voltage decay is observed, like the one reported in \cref{fig:tpv-biexp_single}.
-		This is more frequent in bottom cathode devices including mesoporous titania layers \cite{Carnie2015,ORegan2015b} but has also been reported for silicon solar cells \cite{Kiermasch2018}.
+		This is more frequent in bottom cathode devices including mesoporous titania layers \cite{Carnie2015,ORegan2015b,Bertoluzzi2015} but has also been reported for silicon solar cells \cite{Kiermasch2018}.
 		With \emph{bi\hyp{}exponential} decay we refer to the sum of two exponential decays with two different half\hyp{}life times, like:
 		\begin{equation}\label{eq:tpv_biexp}
 			V (t) = V_0 + \Delta V_a \cdot e^{-t/\tau_a} + \Delta V_b \cdot e^{-t/\tau_b}
@@ -714,8 +714,9 @@
 		In our case, the multiple recombination centres could be spatially separated.
 		If the charge concentration in the two centres is dis\hyp{}entangled (is not identical at any time), the sum of two exponential decays can be expected rather than a simple exponential.
 		This dis\hyp{}entanglement is possible if the time needed for the free carriers to migrate from a recombination centre to the other is larger than the shorter recombination life\hyp{}time.
-		This can happen thanks to a large\hyp{}enough distance between recombination centres together with a slow free carriers mobility.
+		This can happen thanks to a large\hyp{}enough distance between recombination centres together with a slow free carriers mobility \cite{Calado2018}.
 		For example for recombination centres at different depths in the solar cell stack, like at the two perovskite/contacts interfaces.
+		The fact that the presence of mesoporous structures are often present when bi\hyp{}exponential decays are observed can be understood by the smaller mobility of perovskite when intercalated in such structures \cite{Leijtens2014}.
 		This have been reported also for laterally distanced recombination centres (\textsl{e.g.} pinholes \textsl{versus} well covered regions) by \authoryear{Montcada2017}.
 		%	the high mobility in the electrodes is expected to equal the quasi-Fermi levels in the two adjacent recombination centres avoiding bi\hyp{}exponential decays, nevertheless reports of this phenomena have been reported \cite{Montcada2017}.
 
@@ -723,6 +724,7 @@
 		As we just saw, the mobility is a crucial parameter for the \acr{tpv} experiment.
 		As a mental exercise we can imagine a case where the mobility is so slow that the free charges take a long time to diffuse (we consider diffusion as perovskite solar cells are assumed to be field\hyp{}free in the absorber layer, but the same concept would hold with charges' drift) from the generation zone (in the absorber) to the recombination centre (\textsl{e.g.} at a contact/absorber interface).
 		In such an extreme case the provisioning of charges to the recombination centres could become a bottleneck rather than the recombination itself.
+		A drift\hyp{}diffusion simulation of this can be found in \authoryear{Calado2018}.
 		In this regime, a \acr{tpv} experiment would be rather insensitive to actual recombination constants and even to light intensity, giving just information about mobility.
 		As the observed \acr{tpv} life\hyp{}times are strongly light\hyp{}intensity dependent, at least at high background illumination, we can exclude to be in this mobility\hyp{}limited regime.
 		This would have to be revised in case a strong illumination\hyp{}dependent mobility in perovskite materials was demonstrated, as has been reported in \gls{osc} \cite{Eng2010,Shuttle2010,Deledalle2014}.
@@ -862,8 +864,10 @@
 		\paragraph{Diode\hyp{}capacitor discharge could be the limiting time}
 		Similarly to the example we just considered, where RC times put a cap to the slow observable life\hyp{}times, \authoryear{Kiermasch2018} underlines that also the often-neglected diode\hyp{}capacitor discharge could have the same effect \cite{Tvingstedt2017,Hellen2003}.
 		The relevant capacitance would be the geometric capacitance of the generated charges accumulating in the depletion layers and the diode would be the perovskite-contacts interfaces with the relative dark saturation current.
-		The life\hyp{}time observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981} and gain importance at low light intensity for thin devices (high capacitance) \cite{Kiermasch2018}.
-		Basically this represents a re\hyp{}injection of the charges from the contacts back to the perovskite, this causes a voltage decrease without actually needing recombination: charges could just diffuse back.
+		Basically this represents a re\hyp{}injection of the majority charges from the contacts back to the perovskite, this causes a voltage decrease without actually needing recombination: charges could just diffuse back.
+				The life\hyp{}time observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981}.
+				In his PhD thesis, also \authoryear{Calado2018} observed and modelled this effect, named "thermionic emission".
+				All the authors agree that this effect is more important at low light intensity for thin devices (high capacitance) \cite{Kiermasch2018} while it could be negligible at high background illuminations.
 		Also when performing full signal Open Circuit Voltage Decay dynamics measurement (OCVD) \cite{Lederhandler1955,Mahan1981}, which has not been performed in this thesis, this limitation has to taken in consideration \cite{Tvingstedt2017,Pockett2017,Pockett2015,Kiermasch2018}.
 
 		\FloatBarrier
@@ -1124,7 +1128,7 @@
 
 	\paragraph{Comparison of charge from DC and from CE}
 	The \acr{dc} experiment has been demonstrated to output a very similar charge \textsl{versus} light bias profile as a \acr{ce} experiment when used on \gls{dssc} \cite{ORegan2005,Barnes2013} and on \gls{osc} \cite{Shuttle2008a}.
-	\Acr{dc} started to be employed in perovskite solar cells characterization due to the excessively large charge amount sometimes measured by \acr{ce} \cite{Wheeler2017,ORegan2015b}.
+	\Acr{dc} started to be employed in perovskite solar cells characterisation due to the excessively large charge amount sometimes measured by \acr{ce} \cite{Wheeler2017,ORegan2015b}.
 	For obtaining the same parameters as when fitting \gls{ce} data with \cref{eq:ce_full} we can either use that equation for fitting the integrated charge or use the following (which is just the voltage derivative of \cref{eq:ce_full}) for fitting the capacitance:
 	\begin{equation}\label{eq:dc_full}
 		C_|DC|(V) = C_|g| + \frac{qn_|eq|}{mk_|B|T} \cdot \exp(\frac{qV}{mk_|B|T})
