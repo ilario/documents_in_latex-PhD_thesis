@@ -71,7 +71,7 @@
 	
 	%\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 	\usepackage{graphicx}
-	\usepackage[textfont={small}]{subcaption} %the subfigure and subfig packages are deprecated
+	\usepackage[textfont={small},format=plain]{subcaption} %the subfigure and subfig packages are deprecated. Specify the format in order to avoid the general caption format to apply also here https://tex.stackexchange.com/a/319870/173645
 	\usepackage{ragged2e} % needed by ragged option of sidecap?
 	
 	
@@ -87,11 +87,13 @@
 	
 	\usepackage[format=plain, indention=-0.4cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
 	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}% to have also the short version printed, in bold
-	
-
 
 	\usepackage[ragged, centerbody, rightcaption, wide]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
 	\captionsetup[SCfigure]{indention=0cm}
+	
+	% add a line below captions https://tex.stackexchange.com/a/14969/173645
+	\DeclareCaptionFormat{myformat}{#1#2#3\vspace{-6pt}	\centerline{\rule[0.5ex]{0.8\linewidth}{1pt}}}%}\hrulefill}
+	\captionsetup[figure]{format=myformat}
 	
 	% has to be loaded before hyperref https://tex.stackexchange.com/questions/485270/hyperref-and-titletoc-prints-extra-section-1-or-doc-startchapter-1/
 	\usepackage{titletoc} % for adding a TOC at the beginning of each chapter, alternative to minitoc
@@ -447,9 +449,7 @@ bottom=2cm%,
 \includepdf[pages={1,2,3,4,5,6,7,{}},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_tex/titlepage.pdf}%
 \pagenumbering{roman}%
 
-\chapter{Acknowledgements}
-\input{contents_tex/acknowledgements.tex}
-\clearpage
+
 
 {\let\cleardoublepage\clearpage % i don't want openright in frontmatter
 \frontmatter
@@ -458,6 +458,9 @@ bottom=2cm%,
 
 %\newpage
 
+\chapter{Acknowledgements}
+\input{contents_tex/acknowledgements.tex}
+\clearpage
 
 %%%%%%%%%%%%
 % ACRONYMS %
@@ -630,6 +633,21 @@ bottom=2cm%,
 
 \chapter[Summary of the Thesis]{\centering Summary of the Thesis}
 \input{contents_tex/summary.tex}
+
+
+	\printbibliography[category=mypapers, heading=bibintoc, title={Contributions to Scientific Literature}]
+
+
+\chapter{Oral and Poster Presentations at Conferences}
+\begin{itemize}
+	\item 45 min plenary oral presentation, at \textit{International Krutyn Summer School on Advanced Perovskite, Hybrid and Thin-film Photovoltaics} in Krutyn, Poland on June the 14th, 2016 titled \textit{"How to make efficient perovskite solar cells and charge transfer reactions in perovskite solar cell"}
+	\item 20 min plenary oral presentation at \textit{Workshop on Flexible Electronics} in DEEEA-URV, Tarragona, Spain on June the 29th, 2016 titled \textit{"Photophysical characterization of charge transfer and recombination in hybrid lead halide perovskite solar cells"}
+	\item 15 min plenary oral presentation at \textit{Stability of Emerging Photovoltaics Conference} (SEPV18) in Barcelona, Spain on February the 20th, 2018 titled \textit{"The Relevance of the Energy Alignment Shift in Organic Semiconductor/Perovskite Interface: Influence in the Open Circuit Voltage"}
+	\item Poster at \textit{International Conference on Hybrid and Organic Photovoltaics} (HOPV17) in Lausanne, Switzerland on May the 22nd, 2017 titled \textit{"Quasi-Fermi Energy Shift for Hole Transport Material in Perovskite Solar Cells"}
+	\item 30 min invited seminar oral presentation in INAM-UJI, Castelló, Spain on June the 26th, 2018 titled \textit{"Simulating Impedance Spectroscopy of Pervoskite-based Devices via Time-Dependent 1D Drift-Diffusion Model"}
+	\item 15 min plenary oral presentation in \textit{Graduate Students Meeting on Electronics Engineering} in DEEEA-URV, Tarragona, Spain on June the 28th, 2018 titled \textit{"Simulating the impedance spectroscopy of an hybrid perovskite solar cells via time-dependent 1D driftdiffusion model"}
+	\item 15 min oral presentation in \textit{NanoBio Conference 2018} in Heraklion, Crete, Greece on September the 27th, 2018 titled \textit{"Perovskite solar cells impedance spectroscopy explained via 1D time dependent drift-diffusion modelling"}
+\end{itemize}
 
 
 	\EnableQuotes
@@ -853,20 +871,8 @@ bottom=2cm%,
 
 	\printindex
 
-\chapter{Oral and Poster Presentations at Conferences}
-	\begin{itemize}
-		\item 45 min plenary oral presentation, at \textit{International Krutyn Summer School on Advanced Perovskite, Hybrid and Thin-film Photovoltaics} in Krutyn, Poland on June the 14th, 2016 titled \textit{"How to make efficient perovskite solar cells and charge transfer reactions in perovskite solar cell"}
-		\item 20 min plenary oral presentation at \textit{Workshop on Flexible Electronics} in DEEEA-URV, Tarragona, Spain on June the 29th, 2016 titled \textit{"Photophysical characterization of charge transfer and recombination in hybrid lead halide perovskite solar cells"}
-		\item 15 min plenary oral presentation at \textit{Stability of Emerging Photovoltaics Conference} (SEPV18) in Barcelona, Spain on February the 20th, 2018 titled \textit{"The Relevance of the Energy Alignment Shift in Organic Semiconductor/Perovskite Interface: Influence in the Open Circuit Voltage"}
-		\item Poster at \textit{International Conference on Hybrid and Organic Photovoltaics} (HOPV17) in Lausanne, Switzerland on May the 22nd, 2017 titled \textit{"Quasi-Fermi Energy Shift for Hole Transport Material in Perovskite Solar Cells"}
-		\item 30 min invited seminar oral presentation in INAM-UJI, Castelló, Spain on June the 26th, 2018 titled \textit{"Simulating Impedance Spectroscopy of Pervoskite-based Devices via Time-Dependent 1D Drift-Diffusion Model"}
-		\item 15 min plenary oral presentation in \textit{Graduate Students Meeting on Electronics Engineering} in DEEEA-URV, Tarragona, Spain on June the 28th, 2018 titled \textit{"Simulating the impedance spectroscopy of an hybrid perovskite solar cells via time-dependent 1D driftdiffusion model"}
-		\item 15 min oral presentation in \textit{NanoBio Conference 2018} in Heraklion, Crete, Greece on September the 27th, 2018 titled \textit{"Perovskite solar cells impedance spectroscopy explained via 1D time dependent drift-diffusion modelling"}
-	\end{itemize}
-
-	\printbibliography[category=mypapers, heading=bibintoc, title={Contributions to Scientific Literature}]
-
-	\printbibliography[notcategory=mypapers,heading=bibintoc]
+%	\printbibliography[notcategory=mypapers,heading=bibintoc]
+	\printbibliography[heading=bibintoc]
 
 	\cleardoublepage
 	\phantom{Ciao Mamma!}
