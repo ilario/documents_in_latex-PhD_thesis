@@ -276,7 +276,7 @@ Additionally it verifies that the results satisfies some basic checks.
 
 
 
-	\subsection{ElectroAbsorption}
+	\subsection{ElectroAbsorption}\label{software_electroabsorbance}
 		\epigraph{First Law of Software Quality:\\
 			errors = more code\textsuperscript{2}\\
 			$e=mc^2$}
@@ -302,7 +302,8 @@ Additionally it verifies that the results satisfies some basic checks.
 
 
 
-\pagebreak[2]
+%\pagebreak[2]
+\newpage
 \mysection[PyPV]{PyPV: An easy Current-Voltage curves acquisition interface}
 	\epigraph{\textit{\enquote{Why nobody tried to fix this bug?}}}
 
@@ -385,7 +386,7 @@ Additionally it verifies that the results satisfies some basic checks.
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{PyPV/pypv-plot.png}
-	\mycaption[]{}\label{fig:pypv-plot}
+	\mycaption[Current\hyp{}voltage plot window of PyPV.]{The plot window includes the main performance data and can be manually saved as an image.}\label{fig:pypv-plot}
 \end{SCfigure}
 
 \paragraph{Additional output}
@@ -396,14 +397,17 @@ Additionally it verifies that the results satisfies some basic checks.
 			\centering
 			\begin{subfigure}[t]{0.61\textwidth}
 				\includegraphics[width=1\textwidth]{PyPV/pypv-console.png}
-				\subcaption{}\label{fig:pypv-console}
+				\subcaption{Console output}\label{fig:pypv-console}
 			\end{subfigure}
 			\qquad
 			\begin{subfigure}[t]{0.41\textwidth}
 				\includegraphics[width=1\textwidth]{PyPV/keithley.jpg}
-				\subcaption{}\label{fig:pypv-keithley}
+				\subcaption{Keithley display output}\label{fig:pypv-keithley}
 			\end{subfigure}
-					\mycaption[]{}\label{fig:pypv-other}
+					\mycaption[Additional output of PyPV.]{In (\textbf{a}) the textual output from console is shown.
+						The printed information is usually not important for normal software usage but can help for debugging.
+						In (\textbf{b}) instructions to the user are delivered \textsl{via} Keithley's display and buzzer.
+				}\label{fig:pypv-other}
 		}
 	}
 \end{figure}
@@ -414,7 +418,8 @@ Additionally it verifies that the results satisfies some basic checks.
 
 		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV. This demonstrated to be a big failure in long term development planning.
 
-\pagebreak[2]
+%\pagebreak[2]
+\newpage
 \section{Robust and quick data analysis \textsl{via} R scripts}
 	\epigraph{\textit{\enquote{Is there an Origin version for Linux?}\\\enquote{No}}}
 
@@ -436,7 +441,7 @@ Additionally it verifies that the results satisfies some basic checks.
 		In this file the samples codes are grouped depending on one or two characteristics.
 		Up to now, this system is just employed by \texttt{iv-generate\_mydata\_with\_comments.R} for adding supplementary information to the extracted parameters and by \texttt{iv-generate\_statistics.R} for plotting the boxplots separating the samples by kind.
 
-		\paragraph{\texttt{run-all-photophysics.R} -- Runs routinely data analysis on one device's data}
+		\paragraph{\texttt{run-all-photophysics.R} -- Runs routine data analysis on one device's data}
 		An extremely basic but multiplatform \gls{gui} has been implemented.
 		Running it, the data folder gets prompted.
 		By default, all the data analysis routinely performed in Palomares group is run.

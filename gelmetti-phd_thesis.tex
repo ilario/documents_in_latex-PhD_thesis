@@ -92,7 +92,7 @@
 	\captionsetup[SCfigure]{indention=0cm}
 	
 	% add a line below captions https://tex.stackexchange.com/a/14969/173645
-	\DeclareCaptionFormat{myformat}{#1#2#3\vspace{-6pt}	\centerline{\rule[0.5ex]{0.8\linewidth}{1pt}}}%}\hrulefill}
+	\DeclareCaptionFormat{myformat}{#1#2#3\vspace{-6pt}	\centerline{\rule[0.5ex]{0.8\linewidth}{0.7pt}}}%}\hrulefill}
 	\captionsetup[figure]{format=myformat}
 	
 	% has to be loaded before hyperref https://tex.stackexchange.com/questions/485270/hyperref-and-titletoc-prints-extra-section-1-or-doc-startchapter-1/
@@ -718,6 +718,8 @@ bottom=2cm%,
 
 	\paragraph*{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
 	The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
+	In this chapter the employed characterisation techniques are described and critically assessed.
+	Taking advantage of drift\hyp{}diffusion simulations, some new hypotheses are thrown about the interpretation of the characterisation output.
 
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 	\startcontents[characterization]

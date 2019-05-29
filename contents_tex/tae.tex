@@ -337,15 +337,15 @@ With some caution (we employed the classical method, not the improved one descri
 
 	\afterpage{
 		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-		\begin{xltabular}[c]{1\linewidth}{@{} >{\hsize=2\hsize}Y | Y >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
+		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=2\hsize}Y | Y | >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
 			% multirow does not get the correct number of rows with tabularx
 			% mycaption does not work inside xltabular
 			\caption[Work function of different HTM when deposited on perovskite.]{\textbf{Work function of different HTM when deposited on perovskite.}
 				The work function in \si{\eV} is reported for the surface of different \gls{htm} either deposited on top of
 			}\label{table:tae_wf}\\[\belowcaptionskip]
-			\multirow{3}{*}{\textbf{Substrate}} & \multicolumn{5}{c}{\textbf{Work function on top of surface layer}}
+			\multirow{3}{*}{\textbf{Substrate}} & \multirow{3}{*}{\textbf{\shortstack{Substrate\\ work\\ function}}} & \multicolumn{4}{c}{\textbf{Work function difference on top of}}
 			\rule[-1ex]{0pt}{3ex} \\
-			& Uncovered & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}  \\[1mm]
+			&  & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}  \\[1mm]
 
 			\hline
 			\endfirsthead
@@ -360,10 +360,14 @@ With some caution (we employed the classical method, not the improved one descri
 			\hline
 			\endlastfoot
 			\rule[-1ex]{0pt}{4ex}
-			\gls{fto}\-/\ch{TiO2}					&  4.81 & 4.91 &  4.85 & 5.00 & 4.92 \\
+%			\gls{fto}\-/\ch{TiO2}					&  4.81 & 4.91 &  4.85 & 5.00 & 4.92 \\
+			\gls{fto}\-/\ch{TiO2}					&  $4.81$ & $+0.10$ &  $+0.04$ & $+0.19$ & $+0.11$ \\
 			\rule[-1ex]{0pt}{4ex}
+			% data from received ppt
 			%		\ch{TiO2}/\gls{csfamapbibr}	&  4.24 & 4.28 &  4.20 & 4.44 & 4.29  \\ 
-			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  4.04 & 4.08 &  4.00 & 4.24 & 4.09  \\
+			% data from received paper graphics
+%			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  4.04 & 4.08 &  4.00 & 4.24 & 4.09  \\
+			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  $4.04$ & $+0.04$ &  $-0.04$ & $+0.20$ & $+0.05$  \\
 		\end{xltabular}
 	}
 

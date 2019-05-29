@@ -57,8 +57,26 @@
 	\mysection[Relevant Physics]{Relevant Physics for Stacked Semiconductor Thin Films}
 
 	\subsection{Energy Levels and Occupancy}
+			
+	\begin{SCfigure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{homo_lumo/homo_lumo.pdf}
+		\mycaption[Representation of HOMO and LUMO levels.]{See description in the text.
+		}\label{fig:homo_lumo}
+	\end{SCfigure}
+		
+		\paragraph{HOMO and LUMO}
+		The energy that an electron can have when it is bound in a nanometric volume (like a molecular bond) is quantized, the possible energies are represented in \cref{fig:homo_lumo}.
+		The lowest levels represent the ones filled with electrons and their energy is defined as the energy that can be provided to a neutral isolated molecule at its ground state which result in one electron being separated from it at an infinite distance.
+		The minimum of these ionization energies, is the \gls{homo}.
+		The highest levels are virtual ones and represent the energies that can be gained when an unbound electron gets bound to a isolated molecule which was neutral and at its ground state.
+		The maximum of these electron affinity energies, is the \gls{lumo}.
+		The difference between \gls{homo} and \gls{lumo} is named band gap.
+		After these processes, the molecule will geometrically change and release some reorganization energy, but this is not included in the \gls{homo} and \gls{lumo} definition (\textsl{i.e.} a vertical transition is considered).
+		
 
 		\paragraph{Valence and conduction bands}
+		
 
 		\paragraph{Boltzmann and Fermi-Dirac statistics}
 
@@ -100,7 +118,7 @@
 					\qquad
 					\begin{subfigure}[t]{0.5\textwidth}
 						\includegraphics[width=1\textwidth]{displacement_current/third.pdf}
-						\subcaption{Ionic charges accumulating at interfaces}\label{fig:displacement_current-ionic}
+						\subcaption{Ions accumulating at interfaces}\label{fig:displacement_current-ionic}
 					\end{subfigure}
 
 					\mycaption[Representation of current and displacement current.]{(\textbf{a}) a mixed ionic-electronic conductor material layered between two layers of electronic conductor material.
@@ -123,12 +141,12 @@
 			\makebox[\textwidth][c]{
 				\parbox{1.1\textwidth}{
 					\centering
-					\begin{subfigure}[t]{0.3\textwidth}
+					\begin{subfigure}[t]{0.41\textwidth}	\centering
 						\includegraphics[height=0.3\textheight]{dipole_plane/single.pdf}
 						\subcaption{Infinite plane of charges}\label{fig:dipole_plane-single}
 					\end{subfigure}
 					\qquad
-					\begin{subfigure}[t]{0.3\textwidth}
+					\begin{subfigure}[t]{0.61\textwidth}	\centering
 						\includegraphics[height=0.3\textheight]{dipole_plane/double.pdf}
 						\subcaption{Two infinite planes of opposed charges}\label{fig:dipole_plane-double}
 					\end{subfigure}
@@ -236,18 +254,18 @@
 	\makebox[\textwidth][c]{
 		\parbox{1.1\textwidth}{
 			\centering
-			\begin{subfigure}[t]{0.44\textwidth}
+			\begin{subfigure}[t]{0.45\textwidth}
 				\includegraphics[width=1\textwidth]{crystal_perovskite_edvin_fako/ilario2-crop.jpg}
 				\subcaption{}\label{fig:crystal-single}
 			\end{subfigure}
 			\qquad
-			\begin{subfigure}[t]{0.58\textwidth}
+			\begin{subfigure}[t]{0.57\textwidth}
 				\includegraphics[width=1\textwidth]{crystal_perovskite_edvin_fako/ilario1-crop.jpg}
 				\subcaption{}\label{fig:crystal-bulk}
 			\end{subfigure}
 			\mycaption[Crystal structure of \glsentrytext{mapi} perovskite.]{In (\textbf{a}) the methylammonium cation is between \ch{PbI6} octahedra.
 			In (\textbf{b}) the bulk structure is represented.
-		These graphics are courtesy of Edvin Fako \texttt{<efako@iciq.es>}.
+		These graphics, created with Vasp and Blender software, are courtesy of Edvin Fako \texttt{<efako@iciq.es>}.
 	}\label{fig:crystal}
 		}
 	}
@@ -314,7 +332,7 @@
 	Considering that the recombination and collection of free charges is affected by the ions-modulated electric field \cite{Pockett2017}, this is enough to explain the presence of hysteresis \cite{Tress2015,Calado2016} \textsl{via} the modulation of interfacial energy barriers \cite{Moia2019}.
 	Additionally, adsorption or chemical reaction of perovskite ionic defects with the selective contact surface (\textsl{e.g.}\ with titanium oxide \cite{Yu2016,Beilsten-Edmands2015,Carrillo2016} or tin oxide CITATION NEEDED) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis while top cathode with all-organic contacts usually does not.
 
-	\paragraph{Intrinsic or doped semiconductor}
+%	\paragraph{Intrinsic or doped semiconductor}
 
 
 	\paragraph{Characterization}
@@ -342,15 +360,15 @@
 
 	Influence of contacts on Voc \cite{CorreaBaena2015} WU2016A
 
-\section{Background and Related Work}\label{sec:background}
-
-	\subsection{Perovskite Solar Cells}
-
-	\subsection{Hole Transporting Materials}
-
-	\subsection{PhotoPhysical Studies and Techniques}
-
-	\subsection{Modelling and Relevant Physics}
+%\section{Background and Related Work}\label{sec:background}
+%
+%	\subsection{Perovskite Solar Cells}
+%
+%	\subsection{Hole Transporting Materials}
+%
+%	\subsection{PhotoPhysical Studies and Techniques}
+%
+%	\subsection{Modelling and Relevant Physics}
 
 \section{Motivation and Aims}\label{sec:aims}
 \epigraph{\textit{\enquote{To begin with, we want everything.}}}{autistici / inventati}
@@ -362,7 +380,7 @@ The objectives of this thesis are:\nolinebreak
 	\item fabricate solar cells with different structures (\textsl{e.g.} top and bottom cathode);
 	\item test different materials for selective contacts, either known (\textsl{e.g.} flat or mesoporous titania, \gls{pcbm70} or plain fullerene) or novel materials obtained \textsl{via} collaborations (\textsl{e.g.} \gls{tae1}, \gls{tae3}, \gls{tae4});
 	\item optimisation of the devices fabrication in order to get close to the state of the art devices;
-	\item characterisation of the prepared devices using the existing routinely techniques (\textsl{e.g.} current\hyp{}voltage sweeps);
+	\item characterisation of the prepared devices using the existing routine techniques (\textsl{e.g.} current\hyp{}voltage sweeps);
 	\item characterisation using advanced small perturbation techniques;
 	\item optimisation of the characterisation methods, data acquisition, and data processing;
 	\item obtain information on the charge accumulation and charge dynamics from the characterisation output;

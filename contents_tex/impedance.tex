@@ -15,7 +15,7 @@ In May 2018 we uploaded to ArXiv a pre-print which was then published in \author
 This effect does not involve an accumulation of an enormous amount of charge, as it was expected by a giant capacitance, so it cannot be described by a capacitor in the equivalent electrical circuit.
 For the inductive behaviour we proposed that the same influence can affect the charge injection causing a negative apparent capacitance.
 More or less at the same time, other research groups published similar interpretations \cite{Ebadi2019,Jacobs2018}.
-We proposed that both of the effects (apparent capacitance and inductance) can be described by transistors element in the circuit.
+We proposed that both of the effects (apparent capacitance and inductance) can be described by transistors element in the circuit, as represented in \cref{fig:diode_transistor-transistor}.
 This allows the charge to flow through an interface to not only depend on the applied voltage, like in a common diode, but also on an external influence: the ionic density close to the interface.
 The influence of ionic migration on electronic transfer can be thought as an amplification of electronic current by ionic current.
 Our model not only works in the small perturbation regime employed in impedance spectroscopy, but can also explain data from hysteretic current\hyp{}voltage sweeps.
@@ -86,12 +86,18 @@ As represented in \cref{fig:impedance_flowchart}, before analysing the oscillati
 In case the stability was absent, the last time point solution has been used as a starting point for 20 more periods, until when stabilization was ensured.
 This is mostly important for large perturbation simulations (large $v_|max|$), where the time\hyp{}averaged profiles are rather different from the steady state ones.
 
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{demodulation/demod-result.png}
+	\mycaption[Example of demodulation on a large perturbation simulation.]{}\label{fig:demodulation}
+\end{SCfigure}
+
 \paragraph{Demodulation}
 The amplitude and phase of the oscillating electronic current density was obtained via
 demodulation, mimicking the working principle of a two-phase lock-in amplifier \cite{WikipediaLockIn}.
+As can be seen in \cref{fig:demodulation}, this method works both with sinusoidal profiles obtained from small perturbation simulations and also for large perturbation signals including distortion by higher harmonics.
 It has been implemented in \texttt{ISwave\_EA\_single\_demodulation} described in \cpageref{ISwave_EA_single_demodulation}.
-The current
-density profile $j(t)$ was point-by-point multiplied by the voltage profile or the \SI{90}{\degree} shifted
+The current density profile $j(t)$ was point-by-point multiplied by the voltage profile or the \SI{90}{\degree} shifted
 voltage profile normalised by $v_|max|$ and integrated over time (typically 10 periods):
 
 \begin{equation}
@@ -139,6 +145,24 @@ As seen in \cpageref{intro_displacement_current}
 	\centering
 	\includegraphics[width=1.1\textwidth]{dd_capacitance/accumulation.pdf}
 	\mycaption[Simulated accumulation capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-accumulation}
+\end{figure}
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{cap_scheme_hi_low_freq/capacitance_no_ions.png}
+				\subcaption{Capacitance at mid frequencies}\label{fig:cap_scheme_hi_freq}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{cap_scheme_hi_low_freq/capacitance_with_ions.png}
+				\subcaption{Capacitance at low frequencies}\label{fig:cap_scheme_low_freq}
+			\end{subfigure}
+			\mycaption[Capacitance representation with or without mobile ions.]{}\label{fig:cap_scheme_hi_low_freq}
+		}
+	}
 \end{figure}
 
 \subsection{Low frequency}
@@ -200,6 +224,47 @@ The ionic influence on the dark capacitance has already been reported by \author
 %	\includegraphics[width=1.1\textwidth]{dd_capacitance/recombination.pdf}
 %	\mycaption[Simulated ionic capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-recombination}
 %\end{figure}
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{diode_transistor/band_diagram_hifreq.png}
+				\subcaption{Conduction band at mid frequency}\label{fig:diode_transistor-band_diagram_hifreq}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{diode_transistor/band_diagram_lowfreq.png}
+				\subcaption{Conduction band at low frequency}\label{fig:diode_transistor-band_diagram_lowfreq}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.51\textwidth}\centering
+				\includegraphics[width=0.7\textwidth]{diode_transistor/diode_scheme.png}
+				\subcaption{Energy barrier in a diode}\label{fig:diode_transistor-diode_scheme}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}\centering
+				\includegraphics[width=0.8\textwidth]{diode_transistor/transistor_scheme.png}
+				\subcaption{Energy barrier in a transistor}\label{fig:diode_transistor-transistor_scheme}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{diode_transistor/diode.png}
+				\subcaption{Equivalent circuit with diode}\label{fig:diode_transistor-diode}
+			\end{subfigure}
+						\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{diode_transistor/transistor.png}
+				\subcaption{Equivalent circuit with transistor}\label{fig:diode_transistor-transistor}
+			\end{subfigure}
+			\mycaption[Band diagram, energy barriers, and circuit representation of a diode or a transistor.]{}\label{fig:diode_transistor}
+		}
+	}
+\end{figure}
+
 
 \paragraph{Illuminated or biassed case}
 
@@ -604,12 +669,11 @@ The simulations shown here are all based on a p-i-n homojunction model, so a pro
 An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{impedance_heterojunction}.
 Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
 
-\paragraph{ElectroAbsorbance a.k.a. Stark spectroscopy}
-
-
-
-\paragraph{Other similar techniques}
-Using some modules already implemented for impedance spectroscopy simulation, it should be easy to implement also other characterization techniques like Intensity-Modulated Photovoltage/Photocurrent Spectroscopy (IMVS, IMPS) \cite{Pockett2015,Guillen2014} and Mott-Schottky capacitance analysis \cite{Almora2016}.
+\paragraph{Implement other similar techniques}
+We refer with the names of ElectroAbsorbance or Stark spectroscopy to the absorbance variation caused by an oscillating applied voltage.
+This effect stems from the higher absorptivity of a material in presence of an electric field.
+This simulation has already been implemented but the code release is waiting for the publication of the related work; the description of the modules is already available in \cpageref{software_electroabsorbance}.
+Using some of the modules already implemented for impedance spectroscopy simulation, it should be easy to implement also other characterization techniques like Intensity-Modulated Photovoltage/Photocurrent Spectroscopy (IMVS, IMPS) \cite{Pockett2015,Guillen2014} and Mott-Schottky capacitance analysis \cite{Almora2016}.
 
 
 
