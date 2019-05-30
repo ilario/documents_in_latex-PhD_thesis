@@ -88,8 +88,12 @@ This is mostly important for large perturbation simulations (large $v_|max|$), w
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{demodulation/demod-result.png}
-	\mycaption[Example of demodulation on a large perturbation simulation.]{}\label{fig:demodulation}
+	\includegraphics[width=0.65\textwidth]{demodulation/demod-result.png}
+	\mycaption[Example of demodulation on a large perturbation simulation.]{
+		The applied voltage is not shown, it was a sinusoidal wave with frequency \SI{1}{\Hz}.
+		Black line is the simulated oscillating current, the non sinusoidal shape is due to the large amplitude of the applied oscillating voltage.
+		Pink lines are the output of the demodulation routine.
+	}\label{fig:demodulation}
 \end{SCfigure}
 
 \paragraph{Demodulation}
@@ -131,10 +135,31 @@ As seen in \cpageref{intro_displacement_current}
 \mysection[Simulated apparent capacitance]{Simulated apparent capacitance spectra characteristics}
 
 \begin{figure}
-	\centering
-	\includegraphics[width=1.1\textwidth]{dd_capacitance/capacitance.pdf}
-	\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-capacitance}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{dd_capacitance/capacitance-small.pdf}
+				\subcaption{Illuminated, open circuit}\label{fig:impedance-capacitance-oc}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{dd_capacitance/vapp-cap-small.pdf}
+				\subcaption{Dark, applied voltage}\label{fig:impedance-capacitance-vapp}
+			\end{subfigure}
+			\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell at open circuit and dark applied voltage.]{
+				In (\textbf{a}) the simulation oscillates the voltage around the \gls{voc} value induced by different light intensities at open circuit (light bias).
+				In (\textbf{b}) the voltages from (\textbf{a}) are applied as constant voltage biases around which the applied voltage oscillates, in dark.
+		}\label{fig:impedance-capacitance}
+		}
+	}
 \end{figure}
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1.1\textwidth]{dd_capacitance/capacitance.pdf}
+%	\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell at open circuit.]{}\label{fig:impedance-capacitance}
+%\end{figure}
 
 \subsection{Very high frequency}
 
@@ -144,20 +169,20 @@ As seen in \cpageref{intro_displacement_current}
 \begin{figure}
 	\centering
 	\includegraphics[width=1.1\textwidth]{dd_capacitance/accumulation.pdf}
-	\mycaption[Simulated accumulation capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-accumulation}
+	\mycaption[Simulated accumulation capacitance spectra compared with capacitance due to charge accumulation.]{}\label{fig:impedance-accumulation}
 \end{figure}
 
 \begin{figure}
 	\makebox[\textwidth][c]{
 		\parbox{1.1\textwidth}{
 			\centering
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{cap_scheme_hi_low_freq/capacitance_no_ions.png}
+			\begin{subfigure}[t]{0.51\textwidth}\centering
+				\includegraphics[width=0.8\textwidth]{cap_scheme_hi_low_freq/capacitance_no_ions.png}
 				\subcaption{Capacitance at mid frequencies}\label{fig:cap_scheme_hi_freq}
 			\end{subfigure}
 			\qquad
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{cap_scheme_hi_low_freq/capacitance_with_ions.png}
+			\begin{subfigure}[t]{0.51\textwidth}\centering
+				\includegraphics[width=0.8\textwidth]{cap_scheme_hi_low_freq/capacitance_with_ions.png}
 				\subcaption{Capacitance at low frequencies}\label{fig:cap_scheme_low_freq}
 			\end{subfigure}
 			\mycaption[Capacitance representation with or without mobile ions.]{}\label{fig:cap_scheme_hi_low_freq}
@@ -172,17 +197,20 @@ As seen in \cpageref{intro_displacement_current}
 		\parbox{1.1\textwidth}{
 			\centering
 			\begin{subfigure}[t]{1.1\textwidth}
-				\includegraphics[width=1\textwidth]{dd_phase/phase.pdf}
+				\includegraphics[width=1.05\textwidth]{dd_phase/phase.pdf}
 				\subcaption{Ionic displacement current phase}\label{fig:impedance-ionic-phase}
 			\end{subfigure}
 			\bigskip
 			
 			\begin{subfigure}[t]{1.1\textwidth}
-				\includegraphics[width=1\textwidth]{dd_capacitance/ionic.pdf}
+				\includegraphics[width=1.05\textwidth]{dd_capacitance/ionic.pdf}
 				\subcaption{Ionic displacement current capacitance}\label{fig:impedance-ionic-capacitance}
 			\end{subfigure}
 			
-			\mycaption[Simulated ionic capacitance and phase spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-ionic}
+			\mycaption[Simulated apparent capacitance and phase spectra compared with capacitance due to ionic migration.]{
+				In (\textbf{a}) the phase of the impedance (solid lines, it is the same as the oscillating current phase but with the opposite sign) is plotted and compared with the phase of the ionic current (dashed lines, changed of sign for easing the comparison).
+			In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out of phase ionic current (dashed lines).
+		}\label{fig:impedance-ionic}
 		}
 	}
 \end{figure}
@@ -202,40 +230,38 @@ The ionic influence on the dark capacitance has already been reported by \author
 		\parbox{1.1\textwidth}{
 			\centering
 			\begin{subfigure}[t]{1.1\textwidth}
-				\includegraphics[width=1\textwidth]{dd_nyquist/nyquist_normalised.pdf}
+				\includegraphics[width=1.05\textwidth]{dd_nyquist/nyquist_normalised.pdf}
 				\subcaption{Nyquist plot}\label{fig:impedance-nyquist}
 			\end{subfigure}
 			\bigskip
 			
 			\begin{subfigure}[t]{1.1\textwidth}
-				\includegraphics[width=1\textwidth]{dd_capacitance/recombination.pdf}
+				\includegraphics[width=1.05\textwidth]{dd_capacitance/recombination.pdf}
 				\subcaption{Apparent capacitance from recombination current}\label{fig:impedance-recombination}
 			\end{subfigure}
 			
-			\mycaption[Simulated apparent capacitance spectra due to recombination current and Nyquist plot of an illuminated perovskite solar cell.]{
+			\mycaption[Simulated apparent capacitance spectra and Nyquist plot compared with capacitance due to recombination current.]{
 				In (\textbf{a}) the normalised Nyquist plot is reported, the normalisation factor is reported in the legend.
 				The cross markers indicate the even frequency decades (\textsl{i.e.} from right to left \num{0.01}, \num{1}, \SI{100}{\Hz} \dots) so that the mid frequency minimum of 1~sun curve is around \SI{1000}{\Hz}.
+				In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out of phase recombination flux (dotted lines).
 			}\label{fig:impedance-recombination_nyquist}
 		}
 	}
 \end{figure}
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=1.1\textwidth]{dd_capacitance/recombination.pdf}
-%	\mycaption[Simulated ionic capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-recombination}
-%\end{figure}
+
+
 
 \begin{figure}
 	\makebox[\textwidth][c]{
 		\parbox{1.1\textwidth}{
 			\centering
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{diode_transistor/band_diagram_hifreq.png}
-				\subcaption{Conduction band at mid frequency}\label{fig:diode_transistor-band_diagram_hifreq}
+				\includegraphics[width=1\textwidth]{diode_transistor/CB-high_freq.pdf}
+				\subcaption{Conduction band at high frequency}\label{fig:diode_transistor-band_diagram_hifreq}
 			\end{subfigure}
 			\qquad
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{diode_transistor/band_diagram_lowfreq.png}
+				\includegraphics[width=1\textwidth]{diode_transistor/CB-low_freq.pdf}
 				\subcaption{Conduction band at low frequency}\label{fig:diode_transistor-band_diagram_lowfreq}
 			\end{subfigure}
 			\bigskip
@@ -257,10 +283,17 @@ The ionic influence on the dark capacitance has already been reported by \author
 			\end{subfigure}
 						\qquad
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[width=1\textwidth]{diode_transistor/transistor.png}
+				\includegraphics[width=0.9\textwidth]{diode_transistor/transistor.png}
 				\subcaption{Equivalent circuit with transistor}\label{fig:diode_transistor-transistor}
 			\end{subfigure}
-			\mycaption[Band diagram, energy barriers, and circuit representation of a diode or a transistor.]{}\label{fig:diode_transistor}
+			\mycaption[Band diagram, energy barriers, and circuit representation of a diode or a transistor.]{
+			The conduction band (solid lines) and electron quasi\hyp{}Fermi level (dashed lines) of a \gls{htm} (left) perovskite (centre) \gls{etm} (right) solar cell is represented as varied by an oscillating voltage at mid and high frequencies in (\textbf{a}) and at low frequencies in (\textbf{b}).
+			In (\textbf{c}) the energy barrier (black line) in a diode with applied voltage $V$ is represented.
+			In (\textbf{d}) the energy barrier in a transistor is represented, with contributions from the applied voltage $V$ and an external voltage $V_1$.
+			Pink rectangles indicating the barrier for the non-biassed case are added as graphical reference.
+			In (\textbf{e}) a classical circuit including the ionic capacitance and the Schottky junction diode is represented.
+			In (\textbf{f}) the influence of ionic accumulation on the interfacial diode is made explicit by the inclusion of a transistor where the potential in ionic branch acts as a gate.
+		}\label{fig:diode_transistor}
 		}
 	}
 \end{figure}
@@ -289,16 +322,20 @@ This observation comes merely from simulations, no experimental confirmation is 
 		\parbox{1.1\textwidth}{
 			\centering
 			\begin{subfigure}[t]{1.1\textwidth}
-				\includegraphics[width=1\textwidth]{dd_nyquist/nyquist_200mV_normalised.pdf}
+				\includegraphics[width=1.05\textwidth]{dd_nyquist/nyquist_200mV_normalised.pdf}
 				\subcaption{Nyquist plot with large perturbations}\label{fig:impedance-200mV_nyquist}
 			\end{subfigure}
 			\bigskip
 			
 			\begin{subfigure}[t]{1.1\textwidth}
-				\includegraphics[width=1\textwidth]{dd_nyquist/nyquist_200mV_normalised_zoom.pdf}
+				\includegraphics[width=1.05\textwidth]{dd_nyquist/nyquist_200mV_normalised_zoom.pdf}
 				\subcaption{Zoom into mid frequency region}\label{fig:impedance-200mV_nyquist-zoom}
 			\end{subfigure}
-			\mycaption[Simulated apparent capacitance spectra due to recombination current and Nyquist plot of an illuminated perovskite solar cell.]{}\label{fig:impedance-200mV}
+			\mycaption[Simulated Nyquist plot for large perturbations simulation.]{
+			In (\textbf{a}) the normalised Nyquist plot of a simulation with \SI{200}{\mV} wide oscillating applied voltage is represented.
+			Normalisation factor is indicated in the legend.
+			In (\textbf{b}) zoom at mid frequencies region of the same Nyquist plot, where loops can be observed in the high intensity curves.
+		}\label{fig:impedance-200mV}
 		}
 	}
 \end{figure}
@@ -307,9 +344,44 @@ This observation comes merely from simulations, no experimental confirmation is 
 \mysection[Comparison of simulation and experiment]{Comparison of simulated and experimental impedance spectra}
 
 
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{experimental/Zabs-experimental.pdf}
+				\subcaption{Impedance module}\label{fig:experimental-Zabs}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{experimental/phase-experimental.pdf}
+				\subcaption{Impedance phase}\label{fig:experimental-phase}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.71\textwidth}
+				\includegraphics[width=1\textwidth]{experimental/cap-experimental.pdf}
+				\subcaption{Apparent capacitance}\label{fig:experimental-cap}
+			\end{subfigure}
+			
+			\mycaption[Experimental data from impedance spectroscopy of an illuminated perovskite solar cell at open circuit conditions.]{
+				In (\textbf{a}) the absolute value of the experimental impedance is reported.
+			In (\textbf{b}) the phase of the experimental impedance is reported, it can be compared with simulated data in \cref{fig:impedance-ionic-phase}.
+			In (\textbf{c}) the experimental apparent capacitance is reported, it can be compared with simulated data in \cref{fig:impedance-capacitance}.
+		}\label{fig:experimental}
+		}
+	}
+\end{figure}
+
 \paragraph{Lack of low frequency plateau}
+At low frequency we observe 
 
 \paragraph{Larger ionic capacitance}
+
+\paragraph{Short circuit}
+Both the simulation at open circuit with illumination or at dark with applied background voltage bias matches quite nicely the experimental data.
+On the contrary, the simulation at short circuit with illumination showed a low frequency apparent capacitance increase of just 30 times from dark to 1~sun, while experimentally a giant capacitance is also observed.
+This discrepancy is left unexplained, a closer look is needed in order to understand which physical phenomena is not implemented in the model or, more simply, which variable is far from the realistic value.
 
 
 \section{Implementation of impedance spectroscopy}

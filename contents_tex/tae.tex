@@ -150,11 +150,52 @@
 
 \section{Devices Morphological Characterization}
 
+	\paragraph{Atomic force microscopy}
+	In order to verify that the various \gls{htm} gave an homogeneous coverage of the underlying layer, we performed alternated current \gls{afm}.
+	As can be seen in \cref{fig:tae-afm}, all the layers have irregularities but seems that the coverage is complete.
+	\Gls{tae4} surface is the most rough one, showing grains which could represent some degree of crystallisation.
+	The elemental analysis of the small features observed in \gls{spiro} in \cref{fig:tae-afm-spiro} were further studied with ESEM-EDX, resulting in a composition no significantly different from the rest of the surface.
+	
+	
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{afm/1538_spiro_190130_154619_topography.jpg}
+				\subcaption{\gls{spiro}}\label{fig:tae-afm-spiro}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{afm/1518_tae1_190201_142020_topography.jpg}
+				\subcaption{\gls{tae1}}\label{fig:tae-afm-tae1}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{afm/1579_tae3_190201_165210_topography.jpg}
+				\subcaption{\gls{tae3}}\label{fig:tae-afm-tae3}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[width=1\textwidth]{afm/1626_tae4_190201_174638_topography.jpg}
+				\subcaption{\gls{tae4}}\label{fig:tae-afm-tae4}
+			\end{subfigure}
+			\mycaption[Topography of HTM layered on top of perovskite, measured \textsl{via} AFM.]{
+			Morphology of the surface of different \gls{htm} deposited \textsl{via} spin coating on top of \gls{csfamapbibr} perovskite layers.
+			Larger scale images and phase data can be found in the supplementary information of \cite{Gelmetti2019}.
+		}\label{fig:tae-afm}
+		}
+	}
+\end{figure}
+
+
 	\paragraph{X--Ray diffraction}
-
-	For excluding degradation of the \gls{csfamapbibr} layer due to the contact with the \gls{htm} we performed an \gls{xrd} analysis of complete devices aged for 8 months.
-	The usage of a collimator allowed us to observe the diffraction pattern in regions not covered by the gold top electrode.
-
+For excluding degradation of the \gls{csfamapbibr} layer due to the contact with the \gls{htm} we performed an \gls{xrd} analysis of complete devices aged for 8 months in a nitrogen filled glovebox.
+The usage of a collimator allowed us to observe the diffraction pattern in regions not covered by the gold top electrode.
+The diffraction patterns are shown in \cref{fig:tae_xrd} and no difference can be observed between the pristine and the covered perovskite layers structure.
+Due to the penetration of the beam, also the peaks from \gls{fto} and the bump from the glass are observed.
+The patterns perfectly match the reference Cs5 pattern from \authoryear{Saliba2016}.
 
 	\begin{figure}
 		\centering
@@ -223,7 +264,7 @@
 	For all the measured solar cells, some hysteresis is observed in the \gls{voc} and \gls{ff}.
 	Sweeps at different speeds are reported in the supplementary information of \cite{Gelmetti2019}.
 
-\paragraph{Ideality Factors}
+\paragraph{Ideality Factor}
 From \gls{voc} \textsl{versus} light intensity we obtained the ideality factor, following the procedure described in \cpageref{characterization_ideality}.
 The obtained values are 1.57 for \gls{spiro}, 1.44 for \gls{tae1}, 1.79 for \gls{tae3}, and 1.83 for \gls{tae4}.
 This data can be used for having some information on the trap level position inside band gap and on the Fermi level of the \gls{htm} \cite{Calado2018b}.
@@ -263,7 +304,9 @@ With some caution (we employed the classical method, not the improved one descri
 	This growth of the chemical capacitance indicates that the quasi\hyp{}Fermi levels splitting in the perovskite is approaching the built-in voltage of the device (see \cpageref{ce_energy_levels}) and can be used for estimating it.
 	Both \gls{ce} and \gls{dc} show that the chemical capacitance gets relevant at lower light biasses for \gls{tae4}, then \gls{tae3}, \gls{tae1} and finally at high light bias for \gls{spiro}.
 	This ordering corresponds to the one observed for the \gls{homo} energies except for the \gls{tae3} case.
-
+	The incoherence of the results from \gls{ce} and \gls{dc} for the \gls{tae4} device have been confirmed on another device (not shown).
+	Currently no explanation is available for explaining the deviation happening just when using this \gls{htm}.
+	
 \section{Transient Life-Time}
 
 	\afterpage{
@@ -300,6 +343,11 @@ With some caution (we employed the classical method, not the improved one descri
 	}
 
 	As can be seen in \cref{fig:tae_photophysics_tpv}, the small perturbation life-times at \SI{1}{sun} illumination (for each device, the point at bottom right in the series) does not differ by much: from \SI{0.3}{\us} for \gls{spiro} to \SI{1.1}{\us} for \gls{tae4}.
+	This is exactly opposed to the expected trend, where \gls{spiro} giving the best performances should have shown the longest (small perturbation) life-times at 1~sun which would mean less recombination.
+	A much more meaningful result can be obtained referencing the small perturbation life-times obtained from \gls{tpv} to the chemical charge concentration (the charge stored in the perovskite layer, estimated from the exponential parts of \cref{fig:tae_photophysics_cedc}), and correcting the resulting data with the recombination order, as explained in \cpageref{characterization-tpvce}.
+	This way, the data points get closer indicating very similar recombination constants being present for all the cases which thus are of no help for explaining the observed \gls{voc} differences.
+	The difference in life-times in \gls{tae4} devices when referencing to \gls{ce} or \gls{dc} is due to the large incoherence of \gls{ce} or \gls{dc} for this device, as shown in \cref{fig:tae_photophysics_cedc}.
+	
 
 
 	\begin{figure}
@@ -335,15 +383,15 @@ With some caution (we employed the classical method, not the improved one descri
 
 \section{Work function of Stacked Materials}
 
-	\afterpage{
+%	\afterpage{
 		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=2\hsize}Y | Y | >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
+		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=2\hsize}Y | Y  >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
 			% multirow does not get the correct number of rows with tabularx
 			% mycaption does not work inside xltabular
 			\caption[Work function of different HTM when deposited on perovskite.]{\textbf{Work function of different HTM when deposited on perovskite.}
 				The work function in \si{\eV} is reported for the surface of different \gls{htm} either deposited on top of
 			}\label{table:tae_wf}\\[\belowcaptionskip]
-			\multirow{3}{*}{\textbf{Substrate}} & \multirow{3}{*}{\textbf{\shortstack{Substrate\\ work\\ function}}} & \multicolumn{4}{c}{\textbf{Work function difference on top of}}
+			\multirow{3}{*}{\textbf{Substrate}} & \multirow{3}{*}{\textbf{\shortstack{Substrate\\ work\\ function}}} & \multicolumn{4}{c}{\textbf{Work function difference of}}
 			\rule[-1ex]{0pt}{3ex} \\
 			&  & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}  \\[1mm]
 
@@ -362,6 +410,7 @@ With some caution (we employed the classical method, not the improved one descri
 			\rule[-1ex]{0pt}{4ex}
 %			\gls{fto}\-/\ch{TiO2}					&  4.81 & 4.91 &  4.85 & 5.00 & 4.92 \\
 			\gls{fto}\-/\ch{TiO2}					&  $4.81$ & $+0.10$ &  $+0.04$ & $+0.19$ & $+0.11$ \\
+\hline
 			\rule[-1ex]{0pt}{4ex}
 			% data from received ppt
 			%		\ch{TiO2}/\gls{csfamapbibr}	&  4.24 & 4.28 &  4.20 & 4.44 & 4.29  \\ 
@@ -369,7 +418,7 @@ With some caution (we employed the classical method, not the improved one descri
 %			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  4.04 & 4.08 &  4.00 & 4.24 & 4.09  \\
 			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  $4.04$ & $+0.04$ &  $-0.04$ & $+0.20$ & $+0.05$  \\
 		\end{xltabular}
-	}
+%	}
 
 	Further characterization of the workfunction of the \gls{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm}.
 	The measured \gls{cpd} allowed us to study the impact the underlying perovskite layer can have on the \gls{htm} material.
@@ -377,9 +426,20 @@ With some caution (we employed the classical method, not the improved one descri
 	Perovskite Fermi level can depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
 	In our case, the different values between the \gls{fto}\-/\ch{TiO2} and the \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} surface workfunctions indicates that perovskite Fermi level is not pinned to the underlying layers.
 	The value we observed for the \gls{csfamapbibr} surface work function matches the reported one for \gls{mapi} deposited on \ch{TiO2} \cite{Miller2014}.
-	Values for \gls{htm} on top of \gls{fto}\-/\ch{TiO2} have little deviations from the value for the uncovered substrate.
-	In the same way, the values measured for the organic layers deposited on top of \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} are close to the value for the uncovered perovskite layer.
-	The deviations from the substrate value are in the same direction and similar magnitudes for both substrate types, with the \gls{tae3} showing the larger deviation both on top of \ch{TiO2} or on top of perovskite.
-	These measurements have been discussed in Dr.\ Ana Pérez-Rodríguez PhD thesis \cite{Perez-Rodriguez2018}.
+	Values for \gls{htm} on top of \gls{fto}\-/\ch{TiO2} have little deviations from the value for the uncovered substrate, with the exception of \gls{tae3}.
+	In the same way, the values measured for the organic layers deposited on top of \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} are close to the value for the uncovered perovskite layer, also here with the exception of \gls{tae3}.
+%	The deviations from the substrate value are in the same direction and similar magnitudes for both substrate types, with the \gls{tae3} showing the larger deviation both on top of \ch{TiO2} or on top of perovskite.
+	These measurements have been discussed in Dr.\ Ana Pérez\hyp{}Rodríguez PhD thesis \cite{Perez-Rodriguez2018}.
+	Within the rigid band model, the observation of such a large deviation for \gls{tae3} indicates that the equilibrium Fermi level of the substrate is out of the \gls{htm} band gap.
+	This is expected to cause a strong interfacial dipole (identifiable as depletion layers) and a consequent vacuum level shift.
+%	The much larger deviations observed when using \gls{tae3} indicate a deviation of the vacuum level for this molecule, which in turn indicates the formation of interfacial dipoles or the lack of alignment of the \gls{tae3} \gls{homo} with perovskite valence band.
 
 	%"the often-questionable validity of vacuum level alignment, the importance of interface dipoles, and band bending as the result of interface formation" \cite{Schulz2019}
+	
+	\section{Conclusions}
+	Comparing the \gls{voc} obtained from solar cells having different \gls{htm} with the \gls{homo} values of these, we noticed a discrepancy.
+	For understanding the origin of this incoherence, the electronic band gap (built-in voltage) was measured using \gls{ce} and \gls{dc}, which was in accordion with the observed \gls{voc} with exception of the inversion of \gls{tae3} and \gls{tae4} molecules order.
+	This data indicates that the \gls{homo} value measured in solution \textsl{via} cyclic voltammetry is quite different from the actual energy levels for the molecules in solid thin film.
+	The analysis of the total carrier life-times using \gls{tpv} referenced to chemical charge, has shown that the recombination constants are in the same order of magnitude regardless the employed \gls{htm}.
+	The measurement of the work function of the \gls{htm} when layered on perovskite has shown the formation of a large dipole at the perovskite\-/\gls{htm} interface mainly for the \gls{tae3} case.
+	This shift in the vacuum level could be the cause for the lower \gls{voc} measured using this \gls{htm} and justify the incoherence with the observed electronic band gap in \gls{ce} and \gls{dc}.
