@@ -247,24 +247,24 @@ Additionally it verifies that the results satisfies some basic checks.
 %		\paragraph{Obtains voltage dependent ideality factor from the stabilized current obtained at various voltages -- \texttt{ideality_from_dark_jVpoints}}
 %A voltage dependent ideality factor can also be obtained from a current\hyp{}voltage sweep, or, for avoiding hysteresis, from the stabilized current at different applied voltages, in dark. 
 
-	\subsection{Charge Extraction}
-		Careful stabilization of illuminated solutions is crucial, especially for avoiding glitches appearing at high light illumination (minority charges accumulation at the edges of the symmetric solution).
-		\paragraph{\texttt{CE\_full\_analysis}}
-		\paragraph{\texttt{CE\_full\_exec}}
-		\paragraph{\texttt{CE\_full\_fit}}
-		\paragraph{\texttt{CE\_ISstep\_single\_analysis}}
-		\paragraph{\texttt{CE\_ISstep\_subtracting\_analysis}}
-		\paragraph{\texttt{CE\_single\_exec}}
-
-
-	\subsection{Transient PhotoVoltage}
-
-		\paragraph{\texttt{TPVconst\_full\_exec}}
-		\paragraph{\texttt{TPV\_full\_analysis}}
-		\paragraph{\texttt{TPV\_single\_analysis}}
-		\paragraph{\texttt{TPV\_single\_analysis\_noMultiStart}}
-		\paragraph{\texttt{TPV\_single\_exec}}
-		\paragraph{\texttt{TPVvariab\_full\_exec}}
+%	\subsection{Charge Extraction}
+%		Careful stabilization of illuminated solutions is crucial, especially for avoiding glitches appearing at high light illumination (minority charges accumulation at the edges of the symmetric solution).
+%		\paragraph{\texttt{CE\_full\_analysis}}
+%		\paragraph{\texttt{CE\_full\_exec}}
+%		\paragraph{\texttt{CE\_full\_fit}}
+%		\paragraph{\texttt{CE\_ISstep\_single\_analysis}}
+%		\paragraph{\texttt{CE\_ISstep\_subtracting\_analysis}}
+%		\paragraph{\texttt{CE\_single\_exec}}
+%
+%
+%	\subsection{Transient PhotoVoltage}
+%
+%		\paragraph{\texttt{TPVconst\_full\_exec}}
+%		\paragraph{\texttt{TPV\_full\_analysis}}
+%		\paragraph{\texttt{TPV\_single\_analysis}}
+%		\paragraph{\texttt{TPV\_single\_analysis\_noMultiStart}}
+%		\paragraph{\texttt{TPV\_single\_exec}}
+%		\paragraph{\texttt{TPVvariab\_full\_exec}}
 
 		%
 		%
@@ -276,18 +276,18 @@ Additionally it verifies that the results satisfies some basic checks.
 
 
 
-	\subsection{ElectroAbsorption}\label{software_electroabsorbance}
-		\epigraph{First Law of Software Quality:\\
-			errors = more code\textsuperscript{2}\\
-			$e=mc^2$}
-
-
-		photo induced absorption stark spectroscopy on perovskite solar cells \cite{Roiati2014}
-
-		\paragraph{\texttt{EA\_full\_analysis\_Efield}}
-		\paragraph{\texttt{EA\_full\_analysis\_phase}}
-		\paragraph{\texttt{EA\_full\_exec}}
-		\paragraph{\texttt{EA\_single\_analysis}}
+%	\subsection{ElectroAbsorption}\label{software_electroabsorbance}
+%		\epigraph{First Law of Software Quality:\\
+%			errors = more code\textsuperscript{2}\\
+%			$e=mc^2$}
+%
+%
+%		photo induced absorption stark spectroscopy on perovskite solar cells \cite{Roiati2014}
+%
+%		\paragraph{\texttt{EA\_full\_analysis\_Efield}}
+%		\paragraph{\texttt{EA\_full\_analysis\_phase}}
+%		\paragraph{\texttt{EA\_full\_exec}}
+%		\paragraph{\texttt{EA\_single\_analysis}}
 
 
 		%\subsection{Techniques Which Could Be Implemented}
@@ -296,7 +296,7 @@ Additionally it verifies that the results satisfies some basic checks.
 		%\paragraph{Mott-Schottky}
 		%\url{https://en.wikipedia.org/wiki/Mott-Schottky_plot}
 		%mott-schottky in organics under illumination 10.1103/PhysRevApplied.7.034018
-		%impedance and mott-schottky article in osc \cite{Brus2016}
+		%impedance and mott-schottky article in osc \cite{Brus2016}		
 		%dyakonov sobre mott-shottky 10.1021/acsaem.8b01119
 
 
@@ -373,7 +373,7 @@ Additionally it verifies that the results satisfies some basic checks.
 		\paragraph{Resistances} The shunt and series resistances estimation from current-voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
 
 		\paragraph{Scan speed calculation}
-		The scan speed $s[V/s]$ is obtained from the voltage step \texttt{:SENSe:VOLTage:STEP} $V_|step|[V]$, integration time \texttt{:SENSe:VOLTage:NPLCycles} $n_|int|$ measured in power line cycles and the delay time \texttt{:SOURce:DELay} $t_|delay|[s]$ Keithley's parameters with the following \textit{empirical} expression:
+		The scan speed $s[V/s]$ is obtained from the voltage step \texttt{:SENSe:VOLTage:STEP} $V_|step|[V]$, integration time \texttt{:SENSe:VOLTage:NPLCycles} $n_|int|$ measured in power line cycles and the delay time \texttt{:SOURce:DELay} $t_|delay|[s]$ Keithley's parameters with the following \textit{empirical} expression estimated by Werther Cambarau:
 
 		\begin{equation}
 			s = \frac{V_|step|}{0.003 + t_|delay| + 0.06 \cdot n_|int|}
@@ -381,7 +381,7 @@ Additionally it verifies that the results satisfies some basic checks.
 
 		where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions \cite{KeithleyInstruments2011}.
 
-		\paragraph{Scan speed calculation}
+
 
 \begin{SCfigure}
 	\centering
@@ -389,7 +389,7 @@ Additionally it verifies that the results satisfies some basic checks.
 	\mycaption[Current\hyp{}voltage plot window of PyPV.]{The plot window includes the main performance data and can be manually saved as an image.}\label{fig:pypv-plot}
 \end{SCfigure}
 
-\paragraph{Additional output}
+%\paragraph{Additional output}
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -412,7 +412,7 @@ Additionally it verifies that the results satisfies some basic checks.
 	}
 \end{figure}
 
-\paragraph{Last configuration saving}
+%\paragraph{Last configuration saving}
 
 	\subsection{Limitations}
 
@@ -461,73 +461,73 @@ Additionally it verifies that the results satisfies some basic checks.
 		This script generates a two column file output which is more convenient for plotting with other commonly employed software.
 		It works both for the TPV and for the TPC outputs.
 		
-		\paragraph{\texttt{ce.R} -- Integrates CE transients directly}
-		\paragraph{\texttt{ce-subtractDark.R} -- Integrates CE transients after subtracting a transformed noise profile}
-		\paragraph{\texttt{ce-integrateExp.R} -- Integrates a fit to CE transients}
-		\paragraph{\texttt{ce-from\_output\_to\_graph.R} -- Plots the extracted charge \textsl{versus} light bias}
-		\paragraph{\texttt{ce-from\_many\_output\_to\_graph.R} -- Compares between CE of various devices}
-		\paragraph{\texttt{ce-time-many.R} -- Compares single CE transients of various devices}
-		\paragraph{\texttt{ce-with\_limits.R} -- Compares CE transients with RC decays}
+%		\paragraph{\texttt{ce.R} -- Integrates CE transients directly}
+%		\paragraph{\texttt{ce-subtractDark.R} -- Integrates CE transients after subtracting a transformed noise profile}
+%		\paragraph{\texttt{ce-integrateExp.R} -- Integrates a fit to CE transients}
+%		\paragraph{\texttt{ce-from\_output\_to\_graph.R} -- Plots the extracted charge \textsl{versus} light bias}
+%		\paragraph{\texttt{ce-from\_many\_output\_to\_graph.R} -- Compares between CE of various devices}
+%		\paragraph{\texttt{ce-time-many.R} -- Compares single CE transients of various devices}
+%		\paragraph{\texttt{ce-with\_limits.R} -- Compares CE transients with RC decays}
 
 	\subsection{Transient PhotoVoltage (\glsentryshort{tpv})}\label{r_tpv}
 
 		\paragraph{\texttt{from\_tpv\_tpc\_to\_table.R} -- Converts CE output}
 		Similarly to \texttt{from\_ce\_to\_table.R}, this converts the one column raw file to a two columns text file.
 
-		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
-		
-				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
-				
-		\paragraph{\texttt{tpv-from\_output\_to\_graph.R} -- Plots TPV life\hyp{}times \textsl{versus} light bias}
-		
-		
-\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares life\hyp{}time with RC time}
-
-		\paragraph{\texttt{tpv-from\_many\_output\_to\_graph.R} -- Compares between TPV of various devices}
-
-	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
-
-		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
-		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
-
-
-	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
-
-		\paragraph{\texttt{dc-from\_output\_to\_graph.R} -- Calculates and plots capacitance and charge from DC}
-		
-		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
-		
-		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
-		
-
-	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
-
-
-
-		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV life\hyp{}times to CE charge}
-		
-				\paragraph{\texttt{tpvce-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-from\_many\_output\_to\_graph.R} -- Compare TPV life\hyp{}times related to either CE or DC charge of various devices}
-
-	\subsection{Current-Voltage Sweeps}
-		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
-		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
-		\paragraph{\texttt{iv-generate\_images.R}}
-		\paragraph{\texttt{iv-generate\_statistics.R}}
-		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
-		\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
-
-		\paragraph{\texttt{jsc-stability.R} and \texttt{voc-stability.R}}
-
-	\subsection{Other}
-	
-				\paragraph{\texttt{jrec-ce.R} and \texttt{jrec-dc.R} -- Reconstructs the \gls{jsc}}
-					\cpageref{jsc_reconstruction}
-					
-		\paragraph{\texttt{mppt\_to\_graph.R} -- Plots tracking of maximum power point}
-		\paragraph{\texttt{profilometry.R} -- Plots profilometer measurements and fit heights}
-		\paragraph{\texttt{tas-downsample.R} -- Reduces the dimension of TAS decays}
-%		\paragraph{\texttt{tas-graph.R} -- Plots TAS decays}
-		\paragraph{\texttt{uvvis-pl.R} -- Plots absorbance and photoluminescence spectra and fits Tauc plots}
+%		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
+%		
+%				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
+%				
+%		\paragraph{\texttt{tpv-from\_output\_to\_graph.R} -- Plots TPV life\hyp{}times \textsl{versus} light bias}
+%		
+%		
+%\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares life\hyp{}time with RC time}
+%
+%		\paragraph{\texttt{tpv-from\_many\_output\_to\_graph.R} -- Compares between TPV of various devices}
+%
+%	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
+%
+%		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
+%		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
+%
+%
+%	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
+%
+%		\paragraph{\texttt{dc-from\_output\_to\_graph.R} -- Calculates and plots capacitance and charge from DC}
+%		
+%		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
+%		
+%		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
+%		
+%
+%	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
+%
+%
+%
+%		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV life\hyp{}times to CE charge}
+%		
+%				\paragraph{\texttt{tpvce-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-from\_many\_output\_to\_graph.R} -- Compare TPV life\hyp{}times related to either CE or DC charge of various devices}
+%
+%	\subsection{Current-Voltage Sweeps}
+%		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
+%		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
+%		\paragraph{\texttt{iv-generate\_images.R}}
+%		\paragraph{\texttt{iv-generate\_statistics.R}}
+%		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
+%		\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
+%
+%		\paragraph{\texttt{jsc-stability.R} and \texttt{voc-stability.R}}
+%
+%	\subsection{Other}
+%	
+%				\paragraph{\texttt{jrec-ce.R} and \texttt{jrec-dc.R} -- Reconstructs the \gls{jsc}}
+%					\cpageref{jsc_reconstruction}
+%					
+%		\paragraph{\texttt{mppt\_to\_graph.R} -- Plots tracking of maximum power point}
+%		\paragraph{\texttt{profilometry.R} -- Plots profilometer measurements and fit heights}
+%		\paragraph{\texttt{tas-downsample.R} -- Reduces the dimension of TAS decays}
+%%		\paragraph{\texttt{tas-graph.R} -- Plots TAS decays}
+%		\paragraph{\texttt{uvvis-pl.R} -- Plots absorbance and photoluminescence spectra and fits Tauc plots}
 
 \section{Contributions to mppTracker}\label{software_mppt}
 	\epigraph{\textit{\enquote{A student of mine sells a complete system for that, just go and buy it}}}

@@ -612,7 +612,7 @@ bottom=2cm%,
 \tableofcontents
 \listoffigures
 \listoftables
-\lstlistoflistings
+%\lstlistoflistings
 
 \glsaddall
 %\setglossarystyle{mcolindex}
@@ -654,7 +654,6 @@ bottom=2cm%,
 
 	}%here ends openany and starts openright
 
-	%	\restoregeometry
 
 	\fancypagestyle{plain}{% chapter pages use style plain
 		\renewcommand{\headrulewidth}{0pt} % no top rule
@@ -750,7 +749,7 @@ bottom=2cm%,
 
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 	\startcontents[tae]
-	%\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
+	\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
 	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/tae/} }
@@ -776,7 +775,7 @@ bottom=2cm%,
 
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 	\startcontents[thicknesses]
-%	\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
+	\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
 	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
 	\graphicspath{ {./contents_img/thicknesses/} }
@@ -805,7 +804,7 @@ bottom=2cm%,
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 	\startcontents[impedance]
 
-	%\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
+	\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
 
 	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
 
@@ -813,20 +812,6 @@ bottom=2cm%,
 		\input{contents_tex/impedance.tex}
 	\clearpage
 	\stopcontents[impedance]
-
-	%\chapter{Modelling Common Characterization Techniques with Time-Dependent Drift-Diffusion Model of Perovskite Solar Cells}\label{ch:modelling}
-	%\chaptermark{Modelling}
-	%\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
-	%\paragraph*{Publication} Most of the source code of software described in this chapter has been released and can be accessed on \url{https://github.com/barnesgroupICL/Driftfusion/}.
-	%\paragraph*{Abstract} During my 3-month stay in Dr. Piers R. F. Barnes and Prof. Jenny Nelson groups I utilized and expanded a modelling software developed by Dr. Phil Calado, Dr. Mohammed Azzouzi, Benjamin Hilton, and Piers R. F. Barnes written in Matlab. As the modelling software had already demonstrated a great descriptive power\cite{Belisle2017, Calado2016}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
-	%\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
-	%\startcontents[modelling]
-	%\printcontents[modelling]{l}{1}{\setcounter{tocdepth}{4}}
-	%\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
-	%	\graphicspath{ {./contents_img/modelling/} }
-	%%	\input{contents_tex/modelling.tex}
-	%	\clearpage
-	%\stopcontents[modelling]
 
 \chapter{Software Development for Drift-Diffusion Modelling, Data Acquisition and Data Analysis}\label{ch:software}
 \chaptermark{Software Development}
@@ -846,9 +831,11 @@ bottom=2cm%,
 
 	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
 	\startcontents[software]
-	%\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
+	\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}
 
 	\centerline{\rule[0.5ex]{0.5\linewidth}{1pt}}
+	
+	\newpage
 	\graphicspath{ {./contents_img/software/} }
 	\input{contents_tex/software.tex}
 	\clearpage
@@ -859,12 +846,6 @@ bottom=2cm%,
 	\stopthumb
 
 
-	%\chapter{Code}
-	%	\label{ch:code}
-	%	\graphicspath{ {./contents_img/code/} }
-	%%	\input{contents_tex/code.tex}
-	%	\clearpage
-
 	\backmatter
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
@@ -873,7 +854,6 @@ bottom=2cm%,
 
 	\printindex
 
-%	\printbibliography[notcategory=mypapers,heading=bibintoc]
 	\printbibliography[heading=bibintoc]
 
 	\cleardoublepage

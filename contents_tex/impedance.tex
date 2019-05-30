@@ -77,7 +77,7 @@ The small value allowed me to obtain a computationally fast simulation without b
 \paragraph{Position and time grids}
 In order to deal with the high gradients at the interfaces, a linear spatial mesh was used with a spacing of \SI{0.55}{\nm} within the approximate depletion regions of the device and \SI{2.54}{\nm} elsewhere.
 Even if the \texttt{pdepe} solver utilises an internal time grid, it outputs the data at the requested times array.
-All the stabilizations have been performed on a logarithmic time grid (\texttt{tmesh\_type} 2 in \texttt{meshgen_t}) while all the oscillating voltage simulations have been performed on a linear time grid (\texttt{tmesh\_type} 1 in \texttt{meshgen_t}).
+All the stabilizations have been performed on a logarithmic time grid (\texttt{tmesh\_type}$=2$ in \texttt{meshgen_t}) while all the oscillating voltage simulations have been performed on a linear time grid (\texttt{tmesh\_type}$=1$ in \texttt{meshgen_t}).
 For the impedance simulations, 20 complete periods are simulated with 40 time points for each period.
 
 \paragraph{Oscillating stabilization}
@@ -161,11 +161,12 @@ As seen in \cpageref{intro_displacement_current}
 %	\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell at open circuit.]{}\label{fig:impedance-capacitance}
 %\end{figure}
 
-\subsection{Very high frequency}
+%\subsection{Very high frequency}
 
 
 
-\subsection{Mid frequency}
+%\subsection{Mid frequency}
+
 \begin{figure}
 	\centering
 	\includegraphics[width=1.1\textwidth]{dd_capacitance/accumulation.pdf}
@@ -190,7 +191,7 @@ As seen in \cpageref{intro_displacement_current}
 	}
 \end{figure}
 
-\subsection{Low frequency}
+%\subsection{Low frequency}
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -299,15 +300,13 @@ The ionic influence on the dark capacitance has already been reported by \author
 \end{figure}
 
 
-\paragraph{Illuminated or biassed case}
+%\paragraph{Illuminated or biassed case}
 
 
 
 
 
 
-%\section{Ionic-to-electronic current amplification}
-%\section{Capacitor-like and inductor-like behaviour}
 
 
 \subsection{Loops in the positive semi-plane and large perturbations}\label{impedance-large_perturbations}
@@ -359,7 +358,7 @@ This observation comes merely from simulations, no experimental confirmation is 
 			\end{subfigure}
 			\bigskip
 			
-			\begin{subfigure}[t]{0.71\textwidth}
+			\begin{subfigure}[t]{0.81\textwidth}
 				\includegraphics[width=1\textwidth]{experimental/cap-experimental.pdf}
 				\subcaption{Apparent capacitance}\label{fig:experimental-cap}
 			\end{subfigure}
@@ -373,10 +372,10 @@ This observation comes merely from simulations, no experimental confirmation is 
 	}
 \end{figure}
 
-\paragraph{Lack of low frequency plateau}
-At low frequency we observe 
-
-\paragraph{Larger ionic capacitance}
+%\paragraph{Lack of low frequency plateau}
+%At low frequency we observe 
+%
+%\paragraph{Larger ionic capacitance}
 
 \paragraph{Short circuit}
 Both the simulation at open circuit with illumination or at dark with applied background voltage bias matches quite nicely the experimental data.
@@ -738,7 +737,7 @@ This helper saves the main data from a complete impedance spectroscopy simulatio
 
 \paragraph{Heterojunction}
 The simulations shown here are all based on a p-i-n homojunction model, so a proper injection barrier could not actually be simulated and the negative capacitance has been obtained playing with extreme values of other parameters as aforementioned.
-An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{impedance_heterojunction}.
+An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{fig:impedance_heterojunction}.
 Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
 
 \paragraph{Implement other similar techniques}
