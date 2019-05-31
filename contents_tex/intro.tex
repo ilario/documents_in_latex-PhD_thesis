@@ -61,7 +61,9 @@
 	\begin{SCfigure}
 		\centering
 		\includegraphics[width=0.7\textwidth]{homo_lumo/homo_lumo.pdf}
-		\mycaption[Representation of HOMO and LUMO levels.]{See description in the text.
+		\mycaption[Representation of HOMO and LUMO levels.]{
+			Each horizontal line represents the energy of a molecular orbital in a neutral molecule at ground state.
+			So the bottom group are the occupied orbitals while the upper group are the virtual ones.
 		}\label{fig:homo_lumo}
 	\end{SCfigure}
 		
@@ -73,21 +75,40 @@
 		The maximum of these electron affinity energies, is the \gls{lumo}.
 		The difference between \gls{homo} and \gls{lumo} is named band gap.
 		After these processes, the molecule will geometrically change and release some reorganization energy, but this is not included in the \gls{homo} and \gls{lumo} definition (\textsl{i.e.} a vertical transition is considered).
+
+		\paragraph{Valence and conduction bands in crystalline solids}
+		As we saw, for an isolated molecule the energy levels are discrete values.
+		On the contrary, for materials where electrons are delocalized in a periodic potential (\textsl{e.g.} in a crystal structure) we have continuous bands (ranges) of allowed electronic energies separated by energy gaps \cite{WikipediaPeriodic}.
+		For a 3D crystal, the density of states grows with the square root of the energy, as represented in \cref{fig:DOS} CITATION NEEDED.
+		
+		\paragraph{Valence and conduction bands in amorphous solids}
+		In amorphous solids, the allowed electronic energy is still composed by bands but localised states can appear inside the band gaps and the band edges are less defined.
+		These tails of the edges are usually localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite{Stenzel2005}.
+		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
+		
+		\begin{SCfigure}
+			\centering
+			\includegraphics[width=0.7\textwidth]{DOS/DOS.pdf}
+			\mycaption[Schematic representation of the density of states, Fermi-Dirac distribution, and electronic population for a crystalline intrinsic semiconductor.]{
+				The green line indicates the density of states in a 3D crystalline solid.
+				The orange line is the Fermi\hyp{}Dirac distribution for the electrons population.
+				The grey line is (approximatively) the product of the two aforementioned lines representing the electronic density energy distribution.
+				
+			}\label{fig:DOS}
+		\end{SCfigure}
 		
 
-%		\paragraph{Valence and conduction bands}
-%		
-%
-%		\paragraph{Boltzmann and Fermi-Dirac statistics}
-%
-%		\paragraph{Fermi and quasi-Fermi levels}
-%
-%	\subsection{Electrostatics}
-%
-%		\paragraph{Poisson equation}
-%
-%		\paragraph{Space charge limited layers, Debye length and electric field screening}\label{intro-space_charge}
-%		\cite{WikipediaDebye2019}
+		\paragraph{Boltzmann and Fermi-Dirac statistics}
+		For a generic two 
+
+		\paragraph{Fermi and quasi-Fermi levels}
+
+	\subsection{Electrostatics}
+
+		\paragraph{Poisson equation}
+
+		\paragraph{Space charge limited layers, Debye length and electric field screening}\label{intro-space_charge}
+		\cite{WikipediaDebye2019}
 
 	\subsection{Electrodynamics}
 
