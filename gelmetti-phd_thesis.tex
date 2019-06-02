@@ -11,7 +11,7 @@
 	% pdflatex gelmetti-phd_thesis
 
 	
-	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
+	\documentclass[b5paper, 12pt, openright,draft]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
 	\usepackage[spanish, es-noquoting, italian, british, catalan]{babel}
@@ -545,7 +545,7 @@ bottom=2cm%,
 \newglossaryentry{symb:v}{name={$v$}, description={ideality of pseudo first order life-time \textsl{versus} light bias}}
 \newglossaryentry{symb:m}{name={$m$}, description={ideality of charge density \textsl{versus} light bias}}
 \newglossaryentry{symb:mu}{name={$\mu$}, description={internal chemical potential}, sort={mu}}
-\newglossaryentry{symb:barmu}{name={$\bar\mu$}, description={electrons electrochemical potential}, sort={mubar}}
+\newglossaryentry{symb:barmu}{name={$\bar\mu$}, description={electrons electrochemical potential, the quasi-Fermi level energy of electrons including the local electrostatic potential}, sort={mubar}}
 \newglossaryentry{symb:V}{name={\ensuremath{V}}, description={voltage}}
 \newglossaryentry{symb:P}{name={\ensuremath{P}}, description={electrical power}}
 \newglossaryentry{symb:J}{name={\ensuremath{J}}, description={current or current density}}
@@ -559,7 +559,7 @@ bottom=2cm%,
 \newglossaryentry{symb:q}{name={\ensuremath{q}}, description={elementary charge}}
 \newglossaryentry{symb:n}{name={\ensuremath{n}}, description={electrons density}}
 \newglossaryentry{symb:p}{name={\ensuremath{p}}, description={electron holes density}}
-\newglossaryentry{symb:ni}{name={\ensuremath{n_{\mathrm{i}}}}, description={equilibrium carrier density for an intrinsic semiconductor}}
+\newglossaryentry{symb:ni}{name={\ensuremath{n_{\mathrm{i}}}}, description={equilibrium carrier density (electrons and holes participating in conduction) for an intrinsic (non\hyp{}doped) semiconductor}}
 \newglossaryentry{symb:epsilonzero}{name={\ensuremath{\epsilon_0}}, description={electric constant}, sort={epsilonzero}}
 \newglossaryentry{symb:epsilonr}{name={\ensuremath{\epsilon_{\mathrm{r}}}}, description={relative permittivity}, sort={epsilonr}}
 \newglossaryentry{symb:Eg}{name={\ensuremath{E_{\mathrm{g}}}}, description={band gap}}
@@ -708,7 +708,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/methods/} }
 
 	\newpage
-	\input{contents_tex/methods.tex}
+%	\input{contents_tex/methods.tex}
 	\clearpage
 	\stopcontents[methods]
 
@@ -736,7 +736,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/characterization/} }
 
 	\newpage
-	\input{contents_tex/characterization.tex}
+%	\input{contents_tex/characterization.tex}
 	\clearpage
 	\stopcontents[characterization]
 
@@ -764,7 +764,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/tae/} }
 
 	\newpage
-	\input{contents_tex/tae.tex}
+%	\input{contents_tex/tae.tex}
 	\clearpage
 	\stopcontents[tae]
 
@@ -793,7 +793,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/thicknesses/} }
 
 	\newpage
-	\input{contents_tex/thicknesses.tex}
+%	\input{contents_tex/thicknesses.tex}
 	\clearpage
 	\stopcontents[thicknesses]
 
@@ -854,7 +854,7 @@ bottom=2cm%,
 	
 	\newpage
 	\graphicspath{ {./contents_img/software/} }
-	\input{contents_tex/software.tex}
+%	\input{contents_tex/software.tex}
 	\clearpage
 	\stopcontents[software]
 

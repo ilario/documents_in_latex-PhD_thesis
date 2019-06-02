@@ -6,7 +6,7 @@
 	Nature conveys this energy in plenty of ways, including the generation of every renewable and most of non-renewable energy sources.
 	Solar energy is effectively the primary energy source for our planet's ecosystem, so it is the most interesting source of energy for human usage.
 
-%	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
+	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
 
 
 	\paragraph{Availability}
@@ -84,7 +84,7 @@
 		\paragraph{Valence and conduction bands in amorphous solids}
 		In amorphous solids, the allowed electronic energy is still composed by bands but localised states can appear inside the band gaps and the band edges are less defined.
 		These tails of the edges are usually localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite{Stenzel2005}.
-		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
+%		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
 		
 		\begin{SCfigure}
 			\centering
@@ -99,22 +99,53 @@
 		
 
 		\paragraph{Boltzmann and Fermi-Dirac statistics}
-		For a generic two 
+		For a system with defined temperature and total energy but various possible states at different energies, Boltzmann distribution gives the probability of finding it in a specific state.
+		For example, considering electrons as non interacting particles we can estimate the conduction band population with:
+		\begin{equation}
+			n_|CB| = n_|DOS|\exp[\frac{q(\bar\mu-E_|CB|)}{k_|B|T}]
+		\end{equation}
+		where $n_|DOS|$ is the density of states representing the energy state degeneracy, $q$ is the elementary charge, $\bar\mu$ is the electrons electrochemical potential (quasi-Fermi level energy of electrons including the electrostatic contribution), and $E_|CB|$ is the conduction band energy including the local electrostatic potential.
+		For low temperature or high electron density cases, the interactions between particles cannot be ignored.
+		The inclusion of Pauli exclusion principle for fermions modifies the Boltzmann distribution into the Fermi\hyp{}Dirac distribution, which has not been used for the simulations performed in this thesis:
+		\begin{equation}\label{eq:fermidirac}
+		n_|CB| = \frac{n_|eDOS|}{\exp[\frac{q(\bar\mu-E_|CB|)}{k_|B|T}]+1}
+		\end{equation}
+		where $n_|DOS|$ has been replaced with the effective density of states $n_|eDOS|$ which considers the effective mass for interacting particles.
 
-		\paragraph{Fermi and quasi-Fermi levels}
-
-	\subsection{Electrostatics}
+		\paragraph{Fermi level}
+		Fermi level is an imaginary level (disregarding the actual states present in a system) defined for systems in thermodynamic equilibrium (no macroscopic particles or energy fluxes, neither internal nor from other systems) having an energy such that its occupancy probability is \SI{50}{\%}.
+		For example, considering the 3D crystalline system represented in \cref{fig:DOS} if the Fermi level approaches the conduction band edge, the population at that edge state can be estimated using \cref{eq:fermidirac}: $\frac{n_|eDOS|}{\exp[q(E_|CB|-E_|CB|)/(k_|B|T)]+1} = n_|eDOS|/2$ so half full while the valence band will be close to completely full (many electrons, very few holes).
+		This level is ultimately the relevant potential for the charge carriers for a system in thermodynamic equilibrium, so if carriers can migrate through the system the Fermi level will have the same energy in every location of it.
+		
+		\paragraph{Doping}
+		An non-doped semiconductor is intrinsic, which means that its Fermi level is in the middle of the band gap and that the electron density in the conduction band is equal to the holes density in the valence band.
+		In the example of the previous paragraph, where the Fermi level was close to the conduction band, the concentration of electrons greatly exceeds the holes density.
+		This situation can happen in doped semiconductors, where the presence of, for example, positive ionic Schottky defects or oxidised species can compensate the electrons charge and result in a charge neutral material.
+		It can also happen that the material, or a part of it, is just charged, for example due to the application of an electric field or in a space charge layer as will be seen further.
+		
+		\paragraph{Quasi-Fermi level}
+		For a system at steady state (or where the conditions are varying slowly enough to allow the carriers to thermalise within an energy band) but out of thermodynamic equilibrium (\textsl{e.g.} a constant illumination hitting the system) the Fermi level is not defined any more and we have to use the quasi\hyp{}Fermi level instead.
+		
+		Clearly, at thermodynamic equilibrium both the holes and the electrons quasi\hyp{}Fermi levels coalesce into the Fermi level. 
+		
+\subsection{Electrostatics}
 
 		\paragraph{Poisson equation}
 
-		\paragraph{Space charge limited layers, Debye length and electric field screening}\label{intro-space_charge}
+		\paragraph{Space charge layers, Debye length and electric field screening}\label{intro-space_charge}
 		\cite{WikipediaDebye2019}
 
-	\subsection{Electrodynamics}
+		\paragraph{Charge drift}
+		
+				\paragraph{Charge diffusion}
 
-%		\paragraph{Charge diffusion}
-%
-%		\paragraph{Charge drift}
+	\subsection{Electrodynamics}
+	Contrarily to electrostatics, electrodynamics refer to all the phenomena intrinsically time-dependent, which varies with time.
+
+
+
+
+wikipedia:  The current density for electron flow can be shown to be proportional to the gradient in the electron quasi Fermi level.
 
 		\paragraph{Displacement current -- definition}\label{intro_displacement_current} The displacement current $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$.
 		The displacement electric field $D$ includes contributions from the electric field intensity $E$ and the polarization $P$: $D=\epsilon_0 E + P$ which can also be written in terms of relative permittivity $\epsilon_r$ as: $D= \epsilon_0 \epsilon_r E$.
@@ -233,19 +264,19 @@
 		This recombination is important in materials with high free carriers densities or at high photo-generation conditions.
 		These high charge densities are unlikely to happen in perovskite solar cells at normal working conditions.
 
-%	\subsection{Charge Generation}
-%
-%		\paragraph{Light absorption}
-%
-%		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
-%
-%		\paragraph{Excitons and free charges generation}
-%
-%	\subsection{PhotoVoltaic Effect}
-%
-%		\paragraph{Charge collection}
-%
-%		\paragraph{Electromotive force}
+	\subsection{Charge Generation}
+
+		\paragraph{Light absorption}
+
+		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
+
+		\paragraph{Excitons and free charges generation}
+
+	\subsection{PhotoVoltaic Effect}
+
+		\paragraph{Charge collection}
+
+		\paragraph{Electromotive force}
 
 		%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
 
