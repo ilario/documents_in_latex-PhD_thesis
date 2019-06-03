@@ -88,9 +88,9 @@
 		
 		\begin{SCfigure}
 			\centering
-			\includegraphics[width=0.7\textwidth]{DOS/DOS.pdf}
+			\includegraphics[width=0.6\textwidth]{DOS/DOS.pdf}
 			\mycaption[Schematic representation of the density of states, Fermi-Dirac distribution, and electronic population for a crystalline intrinsic semiconductor.]{
-				The green line indicates the density of states in a 3D crystalline solid.
+				The green line indicates the density of states in a 3D crystalline solid, the two bands have been drawn with the same shape for simplicity, in general this could not be the case.
 				The orange line is the Fermi\hyp{}Dirac distribution for the electrons population.
 				The grey line is (approximatively) the product of the two aforementioned lines representing the electronic density energy distribution.
 				
@@ -101,38 +101,85 @@
 		\paragraph{Boltzmann and Fermi-Dirac statistics}
 		For a system with defined temperature and total energy but various possible states at different energies, Boltzmann distribution gives the probability of finding it in a specific state.
 		For example, considering electrons as non interacting particles we can estimate the conduction band population with:
-		\begin{equation}
+		\begin{equation}\label{eq:boltzmann}
 			n_|CB| = n_|DOS|\exp[\frac{q(\bar\mu-E_|CB|)}{k_|B|T}]
 		\end{equation}
 		where $n_|DOS|$ is the density of states representing the energy state degeneracy, $q$ is the elementary charge, $\bar\mu$ is the electrons electrochemical potential (quasi-Fermi level energy of electrons including the electrostatic contribution), and $E_|CB|$ is the conduction band energy including the local electrostatic potential.
 		For low temperature or high electron density cases, the interactions between particles cannot be ignored.
 		The inclusion of Pauli exclusion principle for fermions modifies the Boltzmann distribution into the Fermi\hyp{}Dirac distribution, which has not been used for the simulations performed in this thesis:
 		\begin{equation}\label{eq:fermidirac}
-		n_|CB| = \frac{n_|eDOS|}{\exp[\frac{q(\bar\mu-E_|CB|)}{k_|B|T}]+1}
+		n_|CB| = \frac{n_|eDOS|}{\exp[q(E_|CB|-\bar\mu)/(k_|B|T)]+1}
 		\end{equation}
 		where $n_|DOS|$ has been replaced with the effective density of states $n_|eDOS|$ which considers the effective mass for interacting particles.
 
 		\paragraph{Fermi level}
 		Fermi level is an imaginary level (disregarding the actual states present in a system) defined for systems in thermodynamic equilibrium (no macroscopic particles or energy fluxes, neither internal nor from other systems) having an energy such that its occupancy probability is \SI{50}{\%}.
-		For example, considering the 3D crystalline system represented in \cref{fig:DOS} if the Fermi level approaches the conduction band edge, the population at that edge state can be estimated using \cref{eq:fermidirac}: $\frac{n_|eDOS|}{\exp[q(E_|CB|-E_|CB|)/(k_|B|T)]+1} = n_|eDOS|/2$ so half full while the valence band will be close to completely full (many electrons, very few holes).
+		For example, considering the 3D crystalline system represented in \cref{fig:DOS} if the Fermi level approaches the conduction band edge, the population at that edge state can be estimated using \cref{eq:fermidirac}: $\frac{n_|eDOS|}{\exp[q(E_|CB|-E_|CB|)/(k_|B|T)]+1} = n_|eDOS|/2$ so half full, while the valence band will be close to completely full (many electrons, very few holes).
 		This level is ultimately the relevant potential for the charge carriers for a system in thermodynamic equilibrium, so if carriers can migrate through the system the Fermi level will have the same energy in every location of it.
 		
 		\paragraph{Doping}
-		An non-doped semiconductor is intrinsic, which means that its Fermi level is in the middle of the band gap and that the electron density in the conduction band is equal to the holes density in the valence band.
+		A perfect crystal semiconductor (no defects, no added dopants) is intrinsic, which means that its Fermi level is in the middle of the band gap and that the electron density in the conduction band is equal to the holes density in the valence band.
 		In the example of the previous paragraph, where the Fermi level was close to the conduction band, the concentration of electrons greatly exceeds the holes density.
-		This situation can happen in doped semiconductors, where the presence of, for example, positive ionic Schottky defects or oxidised species can compensate the electrons charge and result in a charge neutral material.
+		This situation can happen in "extrinsic" or "doped" semiconductors, where the presence of, for example, positive ionic Schottky defects or oxidised species can compensate the charge of the high electrons concentration and result in a charge neutral material, as represented in \cref{fig:homojunction-doping}.
 		It can also happen that the material, or a part of it, is just charged, for example due to the application of an electric field or in a space charge layer as will be seen further.
 		
 		\paragraph{Quasi-Fermi level}
-		For a system at steady state (or where the conditions are varying slowly enough to allow the carriers to thermalise within an energy band) but out of thermodynamic equilibrium (\textsl{e.g.} a constant illumination hitting the system) the Fermi level is not defined any more and we have to use the quasi\hyp{}Fermi level instead.
-		
+		For a system at steady state (or where the conditions are varying slowly enough to allow the carriers to thermalise within an energy band) but out of thermodynamic equilibrium the Fermi level is not defined any more.
+		For example, if a constant illumination hits the system plenty of electrons will be promoted from the valence band to the conduction band and the occupancy described by \cref{eq:boltzmann} or \cref{eq:fermidirac} does not hold.
+		In order to keep using the same convenient concepts, two quasi\hyp{}Fermi levels are introduced, where the electronic population in the conduction band and in the valence band are described separately, with two different electrons electrochemical potentials, as if they pertained to different systems in thermodynamic equilibrium.
+		For simplicity, the quasi-Fermi level relative to the valence band is usually referred to the holes concentration rather than to the electrons.
+		Coherently with the Fermi level, the quasi-Fermi levels are the relevant potentials for the migration of holes in the valence band and electrons in the conduction band, treated separately.
+		As the system is not in thermodynamic equilibrium, macroscopic particle currents, following quasi-Fermi level gradients, can be present and this means that the energy of this level is location dependent, and can also be time dependent.
 		Clearly, at thermodynamic equilibrium both the holes and the electrons quasi\hyp{}Fermi levels coalesce into the Fermi level. 
 		
 \subsection{Electrostatics}
 
-		\paragraph{Poisson equation}
 
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[scale=0.7]{homojunction/doping-pip.pdf}
+				\subcaption{Homojunction before contact}\label{fig:homojunction-doping}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.51\textwidth}
+				\includegraphics[scale=0.7]{homojunction/poisson_and_depletion-pip.pdf}
+				\subcaption{After contact}\label{fig:homojunction-poisson_and_depletion}
+			\end{subfigure}			
+			\mycaption[Schematics of a p-i-p homojunction, with emphasis on depletion layers and representation of Poisson equation.]{
+				In (\textbf{a}) three layers of the same material when doped to be respectively p-type, intrinsic (non doped), and p-type are represented.
+				In order to compensate the fixed charges introduced by dopage and maintain the net charge neutrality, the p-type layers have the valence band rich in holes (clearly also the populations on the conduction band is affected by the doping, but not represented for simplicity).
+				In (\textbf{b}) the three layers are brought in contact forming an homojunction.
+				The holes flow through the interfaces following the Fermi level gradient, until it gets flattened.
+				This generates space charge layers at the interfaces, where a net charge is present.
+				To easily understand the bending direction of the layers due to the net charge, the Poisson equation tells us that a positive charge means a positive vacuum level second derivative.
+			}\label{fig:homojunction}
+		}
+	}
+\end{figure}
+
+
+		\paragraph{Poisson equation}
+		The net charge in a location is related to the "curvature" (second derivative) of the electrostatic potential (\textsl{i.e.} the vacuum level) by the Poisson equation:
+		\begin{equation}
+			\nabla^2 V_|E| = -\frac{\rho}{\epsilon_0 \epsilon_|r|}
+		\end{equation}
+		where $V_|E|$ is the electrostatic potential (defined as the energy for adding a positive elementary charge), $\rho$ is the net charge obtained summing up all the charged particles concentrations in the location, and $\epsilon_0 \epsilon_|r|$ is the permittivity.
+		For easing the understanding of the band diagram, the scheme in \cref{fig:poisson_and_depletion} can be handful.
+		As can be seen, in the zones where a net charge is present (space charge layers, depletion layers in the represented case) the second derivative of the electrostatic potential or of the vacuum level depends on the sign of it.
+		A material with a different permittivity will need a different amount of net charge in order to have the same "curvature" of the vacuum level: the higher the permittivity, the more the charge needed for obtaining the same electrostatic potential profile.
+	
 		\paragraph{Space charge layers, Debye length and electric field screening}\label{intro-space_charge}
+		As represented in \cref{fig:homojunction-poisson_and_depletion}, when two materials with different Fermi levels are brought into contact their free charges migrate until when the Fermi level is flattened.
+		This generates non-neutral zones, where a net charge is present, denominated space charge layers.
+		When this involves the majority carriers (holes for a p-type material) exiting a material and leaving behind the charge from the doping species, this is named a depletion layer and is exactly the case represented in \cref{fig:homojunction-poisson_and_depletion}.
+		This space charge layer generates a strong electric field at the interfaces and the materials' free charges and polarizability (permittivity) arranges so that the non-zero field zone is as thin as possible.
+		The thickness of this non-zero field region is named "Debye length" or "Thomas\hyp{}Fermi screening length" and depends on the concentration of the free carriers (which in turn depends on the doping density) and on the material permittivity.
+
+
 		\cite{WikipediaDebye2019}
 
 		\paragraph{Charge drift}
@@ -374,7 +421,9 @@ wikipedia:  The current density for electron flow can be shown to be proportiona
 
 	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
 
-	\paragraph{Diffusion as the main transport mechanism}(due to the built-in voltage being the workfunction difference of the selective contacts)(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
+	\paragraph{Diffusion as the main transport mechanism}
+	(due to the built-in voltage being the workfunction difference of the selective contacts)
+	(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
 
 
 	\paragraph{Hysteresis}
@@ -396,8 +445,11 @@ wikipedia:  The current density for electron flow can be shown to be proportiona
 	In \cref{ch:characterization} the reader can find some of the accepted concepts and some novel proposals about the interpretation of the classical characterization techniques when used on perovskite solar cells.
 
 	\paragraph{Stability}
-	The stability of the perovskite solar cells is the number one blocker to commercialization.
+	The stability of the perovskite solar cells is the number one blocker to commercialization \cite{Reyna2018}.
 	Its keystone has still to be identified.
+	The inclusion of self\hyp{}assembly mono layers at the materials' interfaces helps the device stability passivating surface states \cite{Lira-Cantu2017,Mingorance2018}.
+	Usage of organic contact layers is also a source of instability, for example due to the slow crystallisation of \gls{spiro} \cite{Malinauskas2015} (due to its low glass transition temperature of \SI{126}{\celsius} \cite{Malinauskas2016}) and metallic oxides might be used instead \cite{Mingorance2018}.
+	Also fine tuning the stoichiometry and using a mix of cations (\textsl{e.g.} adding cesium salts) can lead to a more ordered crystalline phase and reduce ionic defects concentration and mobility, both these contributions helps the stability of the devices \cite{Reyna2018}.
 	An interesting investigation is being carried on by Dr.\ D.\ R.\ Ceratti and Prof.\ D.\ Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus leaving the perovskite crystal structure.
 	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
 

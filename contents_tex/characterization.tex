@@ -92,7 +92,7 @@
 			\mycaption[Illuminated area after a shadowing mask.]{This schema is just for explaining the concept described in the text, its dimensions are not realistic.}\label{fig:shadowing_mask}
 		\end{SCfigure}
 
-		In literature is generally suggested to use a shadowing mask when measuring the solar cell devices in order to better define the illuminated area (\textsl{e.g.} in the obsolete \cite{Brinser2017} form by Nature publisher \cite{NatureResearch2017}).
+		In literature is generally suggested to use a shadowing mask when measuring the solar cell devices in order to better define the illuminated area (\textsl{e.g.} in the obsolete \cite{Brinser2017} form by Nature publisher \cite{NatureResearch2017} or in \cite{Christians2015}).
 		Our active area is just \SI{0.09}{\square\cm} so the mask aperture should be extremely small and its positioning troublesome.
 		Additionally, the fact that the illumination reaches the mask from a wide angle (the illumination passes through spread lenses, whose size is not small compared to the lamp-cell distance) allows the light to spread through the substrate glass (\SI{2.2}{\mm} for our \gls{fto} substrates) illuminating a large area on the active layer, as represented in \cref{fig:shadowing_mask}.
 		In our solar simulator a linear widening of 8~\% over \SI{2}{\mm} was estimated, this makes an illuminated area 16~\% larger than the mask aperture.
@@ -151,7 +151,7 @@
 		\mycaption[Hysteretic current-voltage scan.]{At the employed scan speed, the hysteresis phenomena causes the reverse (solid line) scan to reach currents higher than the \gls{jsc}.}\label{fig:iv_ugly}
 	\end{SCfigure}
 	We wanted to underline that due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one.
-	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result.
+	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result \cite{Zimmermann2016}.
 	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also present hysteretic phenomena on different time\hyp{}scales \cite{Bryant2015,Jacobs2018,Du2018}.
 
 	\paragraph{Noise}
@@ -170,12 +170,15 @@
 	For the devices studied in this thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep.
 	This follows the tradition of solar cells reporting; but for hysteretic devices, like perovskite solar cells, a static measurement should be preferred.
 	%	\paragraph{Solar cells parameters extraction from sweeps -- \gls{pce}}
-	Regarding the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis).
-	The voltage associated to the maximum power point is drifting and its localization process, \textsl{e.g. via} \gls{mppt}, also affects its evolution.
+	For measuring the \gls{voc} or the \gls{jsc} a static measurement is experimentally straightforward.
+	Instead, for the \gls{pce}, and by consequence the \gls{ff}, a proper measurement is made difficult due to the cell evolution over time (hysteresis).
+	This evolution involves a drift of the maximum power point over the time, so a static measurement is suboptimal.
+	A \gls{mppt} system has to be employed in order to track the voltage evolution of this point \cite{Zimmermann2016}.
+	Such a system is not trivial, as the process of localization of the maximum power point involves a varying applied voltage, which can trigger some hysteresis, some attempts to achieve a working \gls{mppt} system are described in \cpageref{software_mppt}.
 	%	A proper  system needs to be bought or developed, see \cpageref{software_mppt} for thoughts about possible implementations.
 
 	\paragraph{Stabilized or dynamic current-voltage sweeps}
-	One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported \cite{Unger2014, Christoforo2015}.
+	One very appealing alternative to current-voltage sweeps are the so-called "stabilized current-voltage sweeps", where at each voltage point a fixed stabilization time is waited and the stabilised current is reported \cite{Unger2014, Christoforo2015, Christians2015}.
 	An improvement of this technique is named "dynamic current-voltage sweeps", here the stabilization step is of variable duration, until the current\hyp{}time derivative falls below a threshold (\textsl{e.g.}\ \SI{0.2}{\%\per\minute}) \cite{Dunbar2017,Dunbar2017a}.
 	%	In this thesis, these techniques have not been used.
 
