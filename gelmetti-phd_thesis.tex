@@ -14,7 +14,7 @@
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
-	\usepackage[spanish, es-noquoting, italian, british, catalan]{babel}
+	\usepackage[spanish, es-noquoting, italian, catalan, british]{babel}
 	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
 	
 	\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
@@ -183,8 +183,7 @@ bottom=2cm%,
 	%%%%%%%%%%%
 	\usepackage{makeidx} % for alphabetical index, using xindy or makeindex
 	\makeindex
-	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes, and for \enquote
-	\MakeOuterQuote{"}
+
 	
 	%%%%%%%%%%%
 	%%%%%%%%%%% AMSSYMB
@@ -305,6 +304,8 @@ bottom=2cm%,
 % on the contrary of lscape, rotating has a floating environment for images and tables
 \usepackage{rotating}
 
+	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes, and for \enquote
+\MakeOuterQuote{"}
 
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
@@ -430,6 +431,7 @@ bottom=2cm%,
 \pagestyle{plain}
 
 \selectlanguage{british}
+\EnableQuotes
 %\apptocmd{\@epitext}{\penalty=500}{}{}
 %\apptocmd{\epigraph}{\nopagebreak}{}{}
 %\AtEndEnvironment{\epigraphflush}{\nopagebreak}
@@ -650,7 +652,6 @@ bottom=2cm%,
 \end{itemize}
 
 
-	\EnableQuotes
 
 	}%here ends openany and starts openright
 
@@ -665,6 +666,7 @@ bottom=2cm%,
 
 	\mainmatter
 	\pagestyle{headings}
+	\EnableQuotes % I didn't understand why, but this command has to be present in some parts of the code
 
 \chapter{Introduction}\label{ch:intro}
 	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
@@ -860,10 +862,13 @@ bottom=2cm%,
 
 
 	\appendix
+		\EnableQuotes % I didn't understand why, but this command has to be present in some parts of the code
+	
 	\stopthumb
 
 
 	\backmatter
+		\EnableQuotes % I didn't understand why, but this command has to be present in some parts of the code
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
 	\input{contents_tex/conclusions.tex}

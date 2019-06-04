@@ -6,7 +6,7 @@
 	Nature conveys this energy in plenty of ways, including the generation of every renewable and most of non-renewable energy sources.
 	Solar energy is effectively the primary energy source for our planet's ecosystem, so it is the most interesting source of energy for human usage.
 
-	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
+%	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
 
 
 	\paragraph{Availability}
@@ -123,30 +123,81 @@
 		This situation can happen in "extrinsic" or "doped" semiconductors, where the presence of, for example, positive ionic Schottky defects or oxidised species can compensate the charge of the high electrons concentration and result in a charge neutral material, as represented in \cref{fig:homojunction-doping}.
 		It can also happen that the material, or a part of it, is just charged, for example due to the application of an electric field or in a space charge layer as will be seen further.
 		
+		\begin{SCfigure}
+			\centering
+			\includegraphics[width=0.5\textwidth]{holes_concentration/hj-holes_concentration.pdf}
+			\mycaption[Representation of the relation between quasi\hyp{}Fermi level distance from respective band and carriers concentration.]{
+				Simulation of an heterojunction.
+				Notice how the $E_|fp|$ (valence band quasi\hyp{}Fermi level) distance from the valence band (top plot) relates to the holes concentration (bottom plot).}\label{fig:holes_concentration}
+		\end{SCfigure}
+	
 		\paragraph{Quasi-Fermi level}
 		For a system at steady state (or where the conditions are varying slowly enough to allow the carriers to thermalise within an energy band) but out of thermodynamic equilibrium the Fermi level is not defined any more.
 		For example, if a constant illumination hits the system plenty of electrons will be promoted from the valence band to the conduction band and the occupancy described by \cref{eq:boltzmann} or \cref{eq:fermidirac} does not hold.
 		In order to keep using the same convenient concepts, two quasi\hyp{}Fermi levels are introduced, where the electronic population in the conduction band and in the valence band are described separately, with two different electrons electrochemical potentials, as if they pertained to different systems in thermodynamic equilibrium.
 		For simplicity, the quasi-Fermi level relative to the valence band is usually referred to the holes concentration rather than to the electrons.
-		Coherently with the Fermi level, the quasi-Fermi levels are the relevant potentials for the migration of holes in the valence band and electrons in the conduction band, treated separately.
-		As the system is not in thermodynamic equilibrium, macroscopic particle currents, following quasi-Fermi level gradients, can be present and this means that the energy of this level is location dependent, and can also be time dependent.
-		Clearly, at thermodynamic equilibrium both the holes and the electrons quasi\hyp{}Fermi levels coalesce into the Fermi level. 
+		As the system is not in thermodynamic equilibrium, macroscopic particle currents can be present and this means that the energy of this level is location dependent, and can also be time dependent.
+		Clearly, at thermodynamic equilibrium both the holes and the electrons quasi\hyp{}Fermi levels coalesce into the Fermi level.
+		
+		\paragraph{Quasi-Fermi level and occupancy}
+		When observing a band diagram, like the one reported in \cref{fig:holes_concentration}, it is very easy to have an idea of the carriers concentrations observing the distance between the quasi\hyp{}Fermi levels and the band edges.
+		For example, in \cref{fig:holes_concentration} we can see that the closer the $E_|fp|$ (quasi\hyp{}Fermi level relative to the valence band) gets to the valence band, the higher the holes concentration in it.
+		
+		\paragraph{Quasi\hyp{}Fermi levels and current}
+		Coherently with the Fermi level concept, quasi-Fermi levels are the relevant potentials for the migration of holes in the valence band and electrons in the conduction band, treated separately.
+		The quasi\hyp{}Fermi level considers both the internal chemical potential $\mu$ and the electrostatic potential $V_|E|$ and, as we will see below, these two quantities determine respectively the diffusion and the drift current.
+		For this reason, a gradient in the valence or conduction band quasi\hyp{}Fermi level ($E_|fp|$ or $E_|fn|$) always indicates the presence of a current respectively of holes or electrons.
 		
 \subsection{Electrostatics}
-
+Electrostatics refers to all electronic phenomena which does not intrinsically require a time varying quantity.
 
 
 \begin{figure}
 	\makebox[\textwidth][c]{
 		\parbox{1.1\textwidth}{
 			\centering
+			\begin{subfigure}[t]{0.36\textwidth}
+				\includegraphics[scale=1.3]{drift_diffusion/drift.pdf}
+				\subcaption{Drift due to electric field}\label{fig:drift_diffusion-drift}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.66\textwidth}
+				\includegraphics[scale=1.3]{drift_diffusion/diffusion-noncharged.pdf}
+				\subcaption{Diffusion of particles}\label{fig:drift_diffusion-diffusion}
+			\end{subfigure}
+			\mycaption[Representation of drift and diffusion of charged particles.]{
+				In (\textbf{a}) the drift of charged particles due to an electric field is represented.
+				In (\textbf{b}) the diffusion of generic particles due to differences in concentration is represented.
+		}\label{fig:drift_diffusion}
+		}
+	}
+\end{figure}
+
+		\paragraph{Charged particles drift}
+		The electric field acts a Lorentz force on the charged particles.
+		The movement of these particles due to the field is named "drift".
+		The velocity is proportional to the electric field intensity and the mobility characteristic of the material and the type of charge.
+		As represented in \cref{fig:drift_diffusion-drift}, in a typical energy diagram electrons drift downhill and holes drift uphill.
+
+\paragraph{Particles diffusion}
+For all the non-fixed particles, part of the thermal energy is translational energy, regardless of their charge.
+This means that the particles move in random directions, like in a Brownian motion for gases or in Drude model for classical description of electrons bouncing around.
+The disordered motion statistically compensate differences in concentrations.
+If the net diffusion flux is considered, this is proportional to the concentration gradient and to the diffusion coefficient (which is proportional to the mobility as described by Einstein relation).
+As represented in \cref{fig:drift_diffusion-diffusion}, particles in highly concentrated zones tend to move towards less densely occupied ones.
+Concentration of particles is the main contribution to the internal chemical potential $\mu$.
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[scale=0.7]{homojunction/doping-pip.pdf}
+				\includegraphics[scale=0.7]{homojunction/doping-ppipp.pdf}
 				\subcaption{Homojunction before contact}\label{fig:homojunction-doping}
 			\end{subfigure}
 			\qquad
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[scale=0.7]{homojunction/poisson_and_depletion-pip.pdf}
+				\includegraphics[scale=0.7]{homojunction/poisson_and_depletion-ppipp.pdf}
 				\subcaption{After contact}\label{fig:homojunction-poisson_and_depletion}
 			\end{subfigure}			
 			\mycaption[Schematics of a p-i-p homojunction, with emphasis on depletion layers and representation of Poisson equation.]{
@@ -154,7 +205,7 @@
 				In order to compensate the fixed charges introduced by dopage and maintain the net charge neutrality, the p-type layers have the valence band rich in holes (clearly also the populations on the conduction band is affected by the doping, but not represented for simplicity).
 				In (\textbf{b}) the three layers are brought in contact forming an homojunction.
 				The holes flow through the interfaces following the Fermi level gradient, until it gets flattened.
-				This generates space charge layers at the interfaces, where a net charge is present.
+				This generates space charge layers at the interfaces, where a net charge is present (the thickness of it is expected to be thicker in the intrinsic layer rather than in the doped ones, as described in \cpageref{intro-debye_length}).
 				To easily understand the bending direction of the layers due to the net charge, the Poisson equation tells us that a positive charge means a positive vacuum level second derivative.
 			}\label{fig:homojunction}
 		}
@@ -172,27 +223,28 @@
 		As can be seen, in the zones where a net charge is present (space charge layers, depletion layers in the represented case) the second derivative of the electrostatic potential or of the vacuum level depends on the sign of it.
 		A material with a different permittivity will need a different amount of net charge in order to have the same "curvature" of the vacuum level: the higher the permittivity, the more the charge needed for obtaining the same electrostatic potential profile.
 	
-		\paragraph{Space charge layers, Debye length and electric field screening}\label{intro-space_charge}
+		\paragraph{Space charge layers and electric field screening}\label{intro-space_charge}
 		As represented in \cref{fig:homojunction-poisson_and_depletion}, when two materials with different Fermi levels are brought into contact their free charges migrate until when the Fermi level is flattened.
 		This generates non-neutral zones, where a net charge is present, denominated space charge layers.
-		When this involves the majority carriers (holes for a p-type material) exiting a material and leaving behind the charge from the doping species, this is named a depletion layer and is exactly the case represented in \cref{fig:homojunction-poisson_and_depletion}.
-		This space charge layer generates a strong electric field at the interfaces and the materials' free charges and polarizability (permittivity) arranges so that the non-zero field zone is as thin as possible.
-		The thickness of this non-zero field region is named "Debye length" or "Thomas\hyp{}Fermi screening length" and depends on the concentration of the free carriers (which in turn depends on the doping density) and on the material permittivity.
-
-
-		\cite{WikipediaDebye2019}
-
-		\paragraph{Charge drift}
+		When this involves the majority carriers (holes for a p-type material) exiting a material and leaving behind the charge from the doping species, this is named a depletion layer and is the case represented in \cref{fig:homojunction-poisson_and_depletion}.
+		This space charge layer generates a strong electric field at the interfaces.
+		A space charge layer can also arise due to the presence of an external electric field, simply because of the force that this field exerts on the mobile charges.
+		These space charge layers will cause an opposite electric field which will completely eliminate the field in the bulk of the material.
+		Extending this concept to the aforementioned example of semiconductors in contact, it is easy to see that far from the interfaces the electric field is zero, or "screened" by the charged layers, as represented in \cref{fig:homojunction-poisson_and_depletion}.
+		% and the materials' free charges and polarizability (permittivity) arranges so that the non-zero field zone is as thin as possible.
 		
-				\paragraph{Charge diffusion}
-
+		\paragraph{Debye length}\label{intro-debye_length}
+		In each layer, the thickness of this space charge region is named "Debye length" or "Thomas\hyp{}Fermi screening length".
+The density profile and thickness of the space charge layer depends on the establishment of a dynamic equilibrium of drifting and diffusing charges in this region.
+Taking as a reference the charges shown in \cref{fig:homojunction-poisson_and_depletion}, the holes in the bulk of the p-type material (leftmost and rightmost) will diffuse towards the interface, just because of the concentration gradient (close to the interface the material is depleted of holes).
+In the opposite direction, the holes in the intrinsic material (in the middle) will drift towards the p-type material due to the electric field.
+The steady state of this equilibrium, and so also the Debye length, depends upon the carriers concentration (which in turn depends on the doping density) and the material permittivity \cite{WikipediaDebye2019}.
+		For example, in a material with high permittivity the polarization will decrease the efficacy of the charges and a thicker layer will be needed.
+		Another example, in an intrinsic material there are few free charges and the space charge layer will be much thicker, as in \cref{fig:homojunction-poisson_and_depletion}.
+If the material layer is thinner than the Debye length, the electric field will be screened just partially and no region will be completely field free.
+		
 	\subsection{Electrodynamics}
-	Contrarily to electrostatics, electrodynamics refer to all the phenomena intrinsically time-dependent, which varies with time.
-
-
-
-
-wikipedia:  The current density for electron flow can be shown to be proportional to the gradient in the electron quasi Fermi level.
+	Electrodynamics refer to all the phenomena intrinsically time-dependent, which varies with time.
 
 		\paragraph{Displacement current -- definition}\label{intro_displacement_current} The displacement current $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$.
 		The displacement electric field $D$ includes contributions from the electric field intensity $E$ and the polarization $P$: $D=\epsilon_0 E + P$ which can also be written in terms of relative permittivity $\epsilon_r$ as: $D= \epsilon_0 \epsilon_r E$.
@@ -312,8 +364,55 @@ wikipedia:  The current density for electron flow can be shown to be proportiona
 		These high charge densities are unlikely to happen in perovskite solar cells at normal working conditions.
 
 	\subsection{Charge Generation}
+	Thanks to microscopic reversibility, each of the mentioned recombination processes has an identical but opposed generation process \cite{Nelson2003}.
+	These generation processes require some energy in input, which can be thermal (phonons, lattice vibrations) for the generation associated to the non radiative processes or radiative for the reverse of the radiative recombination.
+	This last case, named photogeneration, is the most interesting for photovoltaics.
 
-		\paragraph{Light absorption}
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.2\textwidth}
+				\includegraphics[scale=0.8]{generation/initial.pdf}
+				\subcaption{}\label{fig:generation-initial}
+			\end{subfigure}
+			\qquad
+						\begin{subfigure}[t]{0.14\textwidth}
+				\includegraphics[scale=0.8]{generation/exciton_hot.pdf}
+				\subcaption{}\label{fig:generation-exciton_hot}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.22\textwidth}
+	\includegraphics[scale=0.8]{generation/exciton.pdf}
+	\subcaption{}\label{fig:generation-exciton}
+\end{subfigure}
+						\qquad
+			\begin{subfigure}[t]{0.22\textwidth}
+				\includegraphics[scale=0.8]{generation/free_charges.pdf}
+				\subcaption{}\label{fig:generation-free_charges}
+			\end{subfigure}
+			\mycaption[]{}\label{fig:generation}
+		}
+	}
+\end{figure}
+
+		\paragraph{Light absorption and exciton}
+		Photons entering a material can be absorbed depending on their energy.
+		This is closely related to the material polarizability (permittivity): imagine a molecule like a metallic stick and the incoming photon as its associated electric field wave.
+		The electric field would cause the electrons and the holes inside the metallic stick to accumulate at its two opposite extremities, increasing its internal energy.
+		The energy gained by the stick would absorb all the energy of the incoming electric field, causing the annihilation of the photon.
+		Passing to consider a molecule, the photon would be absorbed just if it matches the energy difference between an occupied and a virtual electronic states and just if the dipole vector of the starting state is not identical to the final state (and more selection rules).
+		After the photon absorption, the previously occupied energy level is now missing one electron which has been promoted to the previously virtual state.
+		This is represented in \cref{fig:generation-exciton_hot} for a high energy photon generating a hot exciton \textsf{M1\textsuperscript{*h}} or in \cref{fig:generation-exciton} for a photon with just enough energy to generate an exciton \textsf{M1\textsuperscript{*}}.
+		
+		\paragraph{Exciton binding energy}
+		
+		The starting state of the electron involved in the radiative excitation is the \gls{homo} of the molecule \textsf{M1}, marked in \cref{fig:generation-initial} with $\alpha$.
+		The \gls{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in \cref{fig:generation-exciton}.
+		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
+		
+		Photons with energy smaller than the optical band gap can also be absorbed by different processes like valence band to empty mid gap localised state, occupied mid gap localised state (trapped charge) to conduction band but they will not be considered in this thesis.
+%		Also localised states (charges in mid gap traps) can be involved in optical excitation, in that case
 
 		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
 
