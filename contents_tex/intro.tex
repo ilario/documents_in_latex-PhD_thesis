@@ -157,7 +157,7 @@ Electrostatics refers to all electronic phenomena which does not intrinsically r
 		\parbox{1.1\textwidth}{
 			\centering
 			\begin{subfigure}[t]{0.36\textwidth}
-				\includegraphics[scale=1.3]{drift_diffusion/drift.pdf}
+				\includegraphics[scale=1.3]{drift_diffusion/drift_twobands.pdf}
 				\subcaption{Drift due to electric field}\label{fig:drift_diffusion-drift}
 			\end{subfigure}
 			\qquad
@@ -166,20 +166,20 @@ Electrostatics refers to all electronic phenomena which does not intrinsically r
 				\subcaption{Diffusion of particles}\label{fig:drift_diffusion-diffusion}
 			\end{subfigure}
 			\mycaption[Representation of drift and diffusion of charged particles.]{
-				In (\textbf{a}) the drift of charged particles due to an electric field is represented.
+				In (\textbf{a}) the drift of holes in the valence band and electrons in the conduction band due to an electric field is represented.
 				In (\textbf{b}) the diffusion of generic particles due to differences in concentration is represented.
 		}\label{fig:drift_diffusion}
 		}
 	}
 \end{figure}
 
-		\paragraph{Charged particles drift}
+		\paragraph{Charged particles drift}\label{intro_drift}
 		The electric field acts a Lorentz force on the charged particles.
 		The movement of these particles due to the field is named "drift".
 		The velocity is proportional to the electric field intensity and the mobility characteristic of the material and the type of charge.
 		As represented in \cref{fig:drift_diffusion-drift}, in a typical energy diagram electrons drift downhill and holes drift uphill.
 
-\paragraph{Particles diffusion}
+\paragraph{Particles diffusion}\label{intro_diffusion}
 For all the non-fixed particles, part of the thermal energy is translational energy, regardless of their charge.
 This means that the particles move in random directions, like in a Brownian motion for gases or in Drude model for classical description of electrons bouncing around.
 The disordered motion statistically compensate differences in concentrations.
@@ -320,9 +320,10 @@ If the material layer is thinner than the Debye length, the electric field will 
 
 	\subsection{Charge Recombination}
 
-		\paragraph{Primary geminate recombination} \label{intro_geminate} This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
+		\paragraph{Primary geminate recombination} \label{intro_geminate}
+		This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
 		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
-		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy is even smaller than $k_|B|T$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
+		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy (described in \cpageref{intro_exciton}) is even smaller than $k_|B|T$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
 		So this kind of recombination is negligible in perovskite solar cells CITATION NEEDED.
 		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
@@ -368,61 +369,112 @@ If the material layer is thinner than the Debye length, the electric field will 
 	These generation processes require some energy in input, which can be thermal (phonons, lattice vibrations) for the generation associated to the non radiative processes or radiative for the reverse of the radiative recombination.
 	This last case, named photogeneration, is the most interesting for photovoltaics.
 
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.2\textwidth}
-				\includegraphics[scale=0.8]{generation/initial.pdf}
-				\subcaption{}\label{fig:generation-initial}
-			\end{subfigure}
-			\qquad
-						\begin{subfigure}[t]{0.14\textwidth}
-				\includegraphics[scale=0.8]{generation/exciton_hot.pdf}
-				\subcaption{}\label{fig:generation-exciton_hot}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.22\textwidth}
-	\includegraphics[scale=0.8]{generation/exciton.pdf}
-	\subcaption{}\label{fig:generation-exciton}
-\end{subfigure}
-						\qquad
-			\begin{subfigure}[t]{0.22\textwidth}
-				\includegraphics[scale=0.8]{generation/free_charges.pdf}
-				\subcaption{}\label{fig:generation-free_charges}
-			\end{subfigure}
-			\mycaption[]{}\label{fig:generation}
-		}
-	}
-\end{figure}
 
-		\paragraph{Light absorption and exciton}
+
+		\paragraph{Light absorption}
 		Photons entering a material can be absorbed depending on their energy.
 		This is closely related to the material polarizability (permittivity): imagine a molecule like a metallic stick and the incoming photon as its associated electric field wave.
 		The electric field would cause the electrons and the holes inside the metallic stick to accumulate at its two opposite extremities, increasing its internal energy.
 		The energy gained by the stick would absorb all the energy of the incoming electric field, causing the annihilation of the photon.
 		Passing to consider a molecule, the photon would be absorbed just if it matches the energy difference between an occupied and a virtual electronic states and just if the dipole vector of the starting state is not identical to the final state (and more selection rules).
 		After the photon absorption, the previously occupied energy level is now missing one electron which has been promoted to the previously virtual state.
-		This is represented in \cref{fig:generation-exciton_hot} for a high energy photon generating a hot exciton \textsf{M1\textsuperscript{*h}} or in \cref{fig:generation-exciton} for a photon with just enough energy to generate an exciton \textsf{M1\textsuperscript{*}}.
-		
-		\paragraph{Exciton binding energy}
-		
-		The starting state of the electron involved in the radiative excitation is the \gls{homo} of the molecule \textsf{M1}, marked in \cref{fig:generation-initial} with $\alpha$.
-		The \gls{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in \cref{fig:generation-exciton}.
-		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
-		
+		This is represented in \cref{fig:generation-excited_hot} for a high energy photon generating a hot excitation \ch{M^{*h}} (which later can result in a hot exciton and a hot carrier, not treated in this thesis) or in \cref{fig:generation-excited} for a photon with just enough energy to generate an excitation \ch{M^{*}}.
 		Photons with energy smaller than the optical band gap can also be absorbed by different processes like valence band to empty mid gap localised state, occupied mid gap localised state (trapped charge) to conduction band but they will not be considered in this thesis.
+		
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.25\textwidth}
+						\includegraphics[scale=0.8]{generation/initial.pdf}
+						\subcaption{\\Initial state}\label{fig:generation-initial}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.2\textwidth}
+						\includegraphics[scale=0.8]{generation/excited_hot.pdf}
+						\subcaption{\\Hot excitation}\label{fig:generation-excited_hot}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.2\textwidth}
+						\includegraphics[scale=0.8]{generation/excited.pdf}
+						\subcaption{\\Excitation}\label{fig:generation-excited}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.22\textwidth}
+						\includegraphics[scale=0.8]{generation/exciton.pdf}
+						\subcaption{\\Exciton}\label{fig:generation-exciton}
+					\end{subfigure}
+					\mycaption[Representation of absorption and generation of an exciton.]{
+						In (\textbf{a}) the fundamental molecular electronic configuration is represented, for the meaning of the levels refer to \cref{fig:homo_lumo}.
+						In (\textbf{b}) a photon with high energy excited an electron from the \gls{homo} to the \gls{lumo}$+2$, equivalently also other levels can be involved \textsl{e.g.} \gls{homo}$-1$.
+						In (\textbf{c}) a photon with just enough energy has promoted an electron.
+						Please note that the final state of the electron (a \gls{somo}) has a lower energy than the \gls{lumo}, as explained in the text.
+						In (\textbf{d}) the excited electron in the \gls{somo} has been transferred to the \gls{lumo} of an adjacent molecule. 
+					}\label{fig:generation}
+				}
+ 			}
+		\end{figure}
+	
+		\paragraph{Exciton and exciton binding energy}\label{intro_exciton}
+		The starting state of the electron involved in the radiative excitation is the \gls{homo} of the molecule \ch{M}, marked in \cref{fig:generation-initial} with $\alpha$.
+		When an electron is removed from the \gls{homo}, the energy of the \gls{lumo} decreases, as it now refers to a different electronic configuration, where the underlying orbitals are not fully balancing the nuclei positive charges any more.
+		So the arrival state of the excited electron, marked with $\gamma$ in \cref{fig:generation-excited}, is at a lower energy than the initial state \gls{lumo} ($\beta$) and the optical band gap (which can be measured from absorbance spectrum \textsl{via} a Tauc plot) is smaller than the band gap (difference between the electron affinity and the ionization potential represented in \cref{fig:homo_lumo}).
+%		The \gls{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in .
+%		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
+		Next to the excitation, an electron can either go back (recombine) or start getting apart from the original location, as represented in \cref{fig:generation-exciton} where it has been transferred to an adjacent molecule.
+		As a final step for generating a free carrier, the Coulomb force caused by the electron on \ch{M-} and the "hole" on \ch{M+}.
+		Both the aforementioned energy difference between $\gamma$ (upper \gls{somo} of the excited molecule) and $\delta$ (\gls{lumo}), and the energy needed for taking the charges apart breaking the electrostatic attraction of the exciton contribute to the exciton binding energy.
+		For most of the crystalline materials with delocalized orbitals, electron binding energy is smaller than the ambient thermal energy $k_|B|T$ so a direct generation of free charges moving independently is observed.
 %		Also localised states (charges in mid gap traps) can be involved in optical excitation, in that case
 
-		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
+%		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
 
-		\paragraph{Excitons and free charges generation}
+%		\paragraph{Excitons and free charges generation}
 
 	\subsection{PhotoVoltaic Effect}
+	The charge generation causes an increase of the concentration of both electrons in the conduction band and of holes in the valence band.
+	This can be represented with the position of the quasi\hyp{}Fermi levels as their approach to the respective band edge ($E_|fn|$ towards conduction band and $E_|fp|$ towards valence band).
+	
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{collection/OC_noions_loweppAbsorber-annotated.pdf}
+		\mycaption[Simulation of a p-i-n homojunction device illuminated at open circuit.]{
+			From left to right: p-type material, intrinsic semiconductor where generation occurs, n-type material.
+			Low permittivity in the central layer was employed in order to represent also an electric field free zone.
+			In top figure, the band diagram is represented.
+			Single arrows indicate drift due to the field.
+			The observable gradients of the quasi-Fermi levels just represent the minority carriers recombination current.
+			The values of $E_|fp|$ in the location marked with $\alpha$ and of $E_|fn|$ in $\beta$ are the relevant ones for the open circuit voltage.
+			In bottom figure: the charges' concentrations.
+			Double arrows represent charge diffusion.
+		}\label{fig:collection}
+	\end{figure}
+	
+		\paragraph{Charges reaching the interfaces \textsl{via} diffusion}
+		In the absorber layer (the material where light gets absorbed), the charges concentration increases thanks to the generation, this causes a gradient of concentration that drives a diffusion current (see \cpageref{intro_diffusion}) towards the non\hyp{}absorbing layers.
+		At the interface with the contacts, the carriers' concentration is often smaller than in the bulk and this keeps up the diffusion current.
+		This happens either due to recombination processes at the interfaces (e.g. when an electron reaches the holes rich p-type \gls{htm}) or to the charges collection through the interfaces as described in the next paragraph.
+		As we will see, in perovskite solar cells the electric field in the bulk is mostly screened, and the transport \textsl{via} diffusion is very important.
+		In the exampled reported in \cref{fig:collection}, the gradients in the charges' concentrations cause diffusion currents.
+		
+		\paragraph{Charge collection due to drift}
+		In regions where an electric field is present, \textsl{e.g.} close to the interfaces in a perovskite solar cells, the free charges are pulled by the Lorentz force as seen in \cpageref{intro_drift}.
+		In the exampled reported in \cref{fig:collection}, the curvature of the bands indicates the presence of electric field driving the charges' drift.
 
-		\paragraph{Charge collection}
-
-		\paragraph{Electromotive force}
+		\paragraph{Current}
+		As seen above, the photogenerated electrons gets collected in the \gls{etm} and the holes in the \gls{htm} contacts.
+		If an external electrical connects the two electrodes of our solar cell, optionally including a load, the accumulated carriers will discharge through this circuit and we will be able to measure a current.
+		
+		\paragraph{Voltage}
+		The quasi-Fermi splitting induced by the photogeneration of charges gets reflected in a splitting of these levels also in the contacts.
+		In the doped contacts, the concentration of the minority carrier becomes negligible due to the recombination with the abundant majority carrier.
+		So the quasi\hyp{}Fermi level related to the majority carrier coalesce
+		
+		
+		
+		 
+		For this reason the relevant energy level at the left end of \gls{htm} is the valence band quasi\hyp{}Fermi level $E_|fp|$ 
 
 		%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
 

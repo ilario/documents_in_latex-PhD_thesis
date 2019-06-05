@@ -34,9 +34,9 @@
 	
 	\usepackage{upgreek} % for avoiding the warning "Package chemmacros Warning: You haven't loaded any package for upright Greek"
 	\usepackage{chemmacros} 		% for \ch{} and \iupac{}
-	%\chemsetup{formula={chemformula}}
+	\chemsetup{formula={chemformula}}
 	%\chemsetup[chemformula]{font-shape=sf}
-	%\chemsetup[chemformula]{format=\sffamily}
+	\chemsetup[chemformula]{format=\sffamily}
 		
 	\usepackage{verbatim} % for using curly braces inside \iupac of chemmacros
 	
@@ -323,8 +323,26 @@ bottom=2cm%,
 	\noalign{\nobreak\vskip-\arrayrulewidth}}
 \makeatother
 
+%for lighter sans serif https://tex.stackexchange.com/a/94589/173645
+%\usepackage{pdftexcmds}
+%\renewcommand{\sfdefault}{SourceSansPro-LF}
+%\makeatletter
+%\def\curr@fontshape{%
+%	\f@encoding/\f@family/%
+%	\ifnum\pdf@strcmp{\f@series}{\mddefault}=\z@
+%	\ifnum\pdf@strcmp{\f@family}{\sfdefault}=\z@
+%	l%
+%	\else
+%	\f@series
+%	\fi
+%	\else
+%	\f@series
+%	\fi/\f@shape}
+%\makeatother
 
-	\renewcommand{\sfdefault}{cmbr}%for lighter sans serif
+
+
+
 	\captionsetup[SCfigure]{format=plain}
 	%\pgfplotsset{compat=newest}
 	%\counterwithout{footnote}{chapter} % not resetting footnote counter at chapter end
@@ -495,6 +513,7 @@ bottom=2cm%,
 % physical properties
 \newacronym{homo}{HOMO}{highest-energy occupied molecular orbital}
 \newacronym{lumo}{LUMO}{lowest-energy unoccupied molecular orbital}
+\newacronym{somo}{SOMO}{singly occupied molecular orbital}
 \newacronym{ff}{FF}{fill factor}
 \newacronym{pce}{PCE}{power conversion efficiency}
 \newacronym{voc}{V\textsubscript{OC}}{open circuit voltage}
