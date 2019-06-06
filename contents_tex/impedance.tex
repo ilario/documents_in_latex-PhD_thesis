@@ -86,7 +86,7 @@
 	In case the stability was absent, the last time point solution has been used as a starting point for 20 more periods, until when stabilization was ensured.
 	This is mostly important for large perturbation simulations (large $v_|max|$), where the time\hyp{}averaged profiles are rather different from the steady state ones.
 
-	\begin{SCfigure}
+	\begin{SCfigure}%demodulation
 		\centering
 		\includegraphics[width=0.65\textwidth]{demodulation/demod-result.png}
 		\mycaption[Example of demodulation on a large perturbation simulation.]{
@@ -117,7 +117,6 @@
 	Amplitude $j_|max|$ and
 	phase $\theta$ are then given via:
 
-
 	\begin{equation}
 		j_|max| = \sqrt{X^2 + Y^2}
 	\end{equation}
@@ -134,7 +133,7 @@
 
 	\mysection[Simulated apparent capacitance]{Simulated apparent capacitance spectra characteristics}
 
-	\begin{figure}
+	\begin{figure}%impedance-capacitance
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
@@ -167,13 +166,13 @@
 
 	%\subsection{Mid frequency}
 
-	\begin{figure}
+	\begin{figure}%impedance-accumulation
 		\centering
 		\includegraphics[width=1.1\textwidth]{dd_capacitance/accumulation.pdf}
 		\mycaption[Simulated accumulation capacitance spectra compared with capacitance due to charge accumulation.]{}\label{fig:impedance-accumulation}
 	\end{figure}
 
-	\begin{figure}
+	\begin{figure}%cap_scheme_hi_low_freq
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
@@ -193,7 +192,7 @@
 
 	%\subsection{Low frequency}
 
-	\begin{figure}
+	\begin{figure}%impedance-ionic
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
@@ -223,10 +222,11 @@
 	%\end{figure}
 
 	\paragraph{Dark case}
-	The ionic influence on the dark capacitance has already been reported by \authoryear{Yang2015e}.
+	An feature at frequencies \SI{< 100}{\Hz} is often observed in impedance of perovskite solar cells in dark \cite{Pockett2015,Juarez-Perez2014}.
+	This feature has been interpreted as a ionic influence on the dark capacitance by \authoryear{Yang2015e}.
 
 
-	\begin{figure}
+	\begin{figure}%impedance-recombination_nyquist
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
@@ -252,7 +252,7 @@
 
 
 
-	\begin{figure}
+	\begin{figure}%diode_transistor
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
@@ -300,8 +300,8 @@
 	\end{figure}
 
 
-	%\paragraph{Illuminated or biassed case}
-
+	\paragraph{Illuminated or biassed case}
+Juarez-Perez2014
 
 
 	\paragraph{Loops in the positive semi-plane and large perturbations}\label{impedance-large_perturbations}
@@ -311,7 +311,7 @@
 		This observation comes merely from simulations, no experimental confirmation is available yet.
 		%But artefacts could arise and cause misinterpretations.
 
-		\begin{figure}
+		\begin{figure}%impedance-200mV
 			\makebox[\textwidth][c]{
 				\parbox{1.1\textwidth}{
 					\centering
@@ -339,7 +339,7 @@
 		
 
 
-		\begin{figure}
+		\begin{figure}%experimental
 			\makebox[\textwidth][c]{
 				\parbox{1.1\textwidth}{
 					\centering
@@ -368,9 +368,9 @@
 			}
 		\end{figure}
 
-		%\paragraph{Lack of low frequency plateau}
-		%At low frequency we observe 
-		%
+		\paragraph{Lack of low frequency plateau}
+		At low frequency we observe 
+		
 		%\paragraph{Larger ionic capacitance}
 
 		\paragraph{Short circuit}
@@ -381,7 +381,7 @@
 
 \section{Implementation of impedance spectroscopy}
 
-	\begin{figure}
+	\begin{figure}%impedance_flowchart
 		\centering
 		\includegraphics[width=1.05\textwidth]{flowchart/flowchart-crop.pdf}
 		\mycaption[Flowchart of impedance simulation modules.]{

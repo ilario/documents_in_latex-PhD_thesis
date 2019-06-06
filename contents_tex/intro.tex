@@ -323,7 +323,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		\paragraph{Primary geminate recombination} \label{intro_geminate}
 		This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
 		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
-		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass (high free carriers mobility) \cite{Herz2017}, this means that, at room temperature, the exciton binding energy (described in \cpageref{intro_exciton}) is even smaller than $k_|B|T$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
+		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass \cite{Herz2017} which means a high holes and electrons mobility \cite{Leijtens2014}, this means that, at room temperature, the exciton binding energy (described in \cpageref{intro_exciton}) is even smaller than $k_|B|T$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
 		So this kind of recombination is negligible in perovskite solar cells CITATION NEEDED.
 		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
@@ -468,32 +468,28 @@ If the material layer is thinner than the Debye length, the electric field will 
 		
 		\paragraph{Voltage}
 		The quasi-Fermi splitting induced by the photogeneration of charges gets reflected in a splitting of these levels also in the contacts.
-		In the doped contacts, the concentration of the minority carrier becomes negligible due to the recombination with the abundant majority carrier.
-		So the quasi\hyp{}Fermi level related to the majority carrier coalesce
-		
-		
-		
-		 
-		For this reason the relevant energy level at the left end of \gls{htm} is the valence band quasi\hyp{}Fermi level $E_|fp|$ 
+		In the doped contacts, the concentration of the minority carrier should become negligible due to the recombination with the abundant majority carrier.
+		Further, as in the metallic contacts there is no conduction nor valence band (and very fast recombination), the quasi\hyp{}Fermi level related to the majority carrier ($E_|fp|$ in the \gls{htm} or $E_|fn|$ in the \gls{etm}) is the one determining the Fermi level in the metal.
+		So the difference between the $E_|fp|$ at the \gls{htm}/electrode interface ($\alpha$ in \cref{fig:collection}) and the $E_|fn|$ at the \gls{etm}/electrode interface ($\beta$ in \cref{fig:collection}) gets reflected into the electrodes Fermi level, which ultimately can be measured as a voltage.
+			 
+%		For this reason the relevant energy level at the left end of \gls{htm} is the valence band quasi\hyp{}Fermi level $E_|fp|$ 
 
 		%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
 
 \section{Perovskite Solar Cells}
 	\epigraph{\textit{\enquote{That's yogurt science!}}}
 
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{nrel_chart/pv-efficiencies-2019-01-03.pdf}
+	\mycaption[NREL chart of "Best Research-Cell Efficiencies"]{Just the perovskite solar cells (not stabilized) results have been reported.}\label{fig:nrel_chart}
+\end{SCfigure}
+
 	Perovskite solar cells is a relatively new player in the photovoltaics world, existing just since 2009 (started by the research groups Miyasaka \cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}).
 	This type of solar cells evolved from the \gls{dssc} tradition, where an absorber dye is in contact with a titania \gls{etm} and an organic \gls{htm}.
 	Here the absorber dye is substituted by a hybrid organic-inorganic lead halide perovskite semiconductor and both the \gls{etm} and the \gls{htm} can be composed of various, either organic or inorganic, materials.
 	Thanks to the enormous research effort, these kind of devices reached a record stabilized efficiency of 20.9~\% \cite{Green2019} with reports of even higher non-stabilized efficiencies (23.7~\% \cite{Green2019,Jiang2017}); all this in relatively short time as represented in \cref{fig:nrel_chart}.
 
-
-
-
-	\begin{SCfigure}
-		\centering
-		\includegraphics[width=0.5\textwidth]{nrel_chart/pv-efficiencies-2019-01-03.pdf}
-		\mycaption[NREL chart of "Best Research-Cell Efficiencies"]{Just the perovskite solar cells (not stabilized) results have been reported.}\label{fig:nrel_chart}
-	\end{SCfigure}
 
 %	\paragraph{Composition}
 %
@@ -534,7 +530,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 	The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material.
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
 	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime is dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
-	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2018b,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
+	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2018b,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
 	%	Considering the perovskite material, traps are more likely to form on the surface of crystal domains, where the bulk symmetry is broken and carrier-phonon coupling, which can ease indirect transitions is more likely due to the easier deformation of the broken structure . 
 	Nevertheless, also the morphology and composition of perovskite material can have an impact on the \gls{voc}: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes \cite{Lee2015,Montcada2017,Qiu2016}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
 
@@ -557,26 +553,45 @@ If the material layer is thinner than the Debye length, the electric field will 
 	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
 	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015} and for blockage CITE SOMETHING.
 
+\paragraph{Ionic defects}
+	A Schottky defect is the lack of a ion and its counter ion from an otherwise perfect crystal structure.
+	This is commonly observed in ionic solids with weak lattice energy.
+	Taking as an example the \gls{mapi} lead halide perovskite, the formation of the Schottky defect \ch[kroeger-vink=true]{V'_{MA} + V^._{I}} (a methylammonium cation and a iodine anion leaving the crystal) is expected to be rather easy as these ions leaves behind vacancies with just charge $\pm 1$ and the product, \ch{CH3NH3I} can further decompose in volatile compounds like methylamine and hydrogen iodide.
+	Indeed, the enthalpy of formation of this defect has been calculated to be only \SI{0.08}{\eV}, which at room temperature means that \SI{\approx 4}{\%} of the \ch{MA+} and \ch{I-} sites in \gls{mapi} are vacant \cite{Walsh2015,Yin2014}.
+	This specific defect can be avoided with small variations of the stoichiometry but other kind of defects will become more likely (\textsl{e.g.} \ch[kroeger-vink=true]{V''_{Pb} + 2V^._{I}}), and the minimum defects concentration achievable with \gls{mapi} perovskite has been reported to be around \SI{\approx 8e17}{\per\cubic\cm} (\SI{\approx 0.02}{\%}) \cite{Walsh2015}.
+	A iodine vacancy can also be originated by a Frenkel defect where a iodine migrates from its site to an interstitial one \ch[kroeger-vink=true]{V^._{I} + I'_{i}} and some studies support this as the origin of defects in perovskite materials \cite{Birkhold2018,Birkhold2018a,Minns2017,Mosconi2016}.
+	Frenkel defects are expected to constitute shallow or deep traps in the perovskite band gap while Schottky defects should not present energies inside the band gap \cite{Kim2014h,Yin2014,Buin2014,Du2015}.
+%	For a halide perovskite, when compared with an oxide perovskite where \ch{X} is oxygen, the formation of ionic defects is easier thanks to the lower charge of the ionic species which means a lower lattice energy.
+
 	\paragraph{Ionic migration}
-	Ionic conductivity in halide perovskite materials has been pointed out more than 35 years \cite{Mizusaki1983,Yamada1995,Yamada1998}.
-	More recently, the presence of mobile ionic species has been confirmed also for hybrid lead halide perovskites, using \gls{kpfm} \cite{Birkhold2018},  XXXXXXXXXXXXXXXXXX
+	Ionic conductivity in halide perovskite materials has been pointed out more than 35 years ago \cite{Mizusaki1983,Yamada1995,Yamada1998}.
+	In \gls{mapi}, the presence of mobile ionic species has been directly observed from the slowly evolving work function or a lateral device using \gls{kpfm} \cite{Birkhold2018,Birkhold2018a}.
+	In a generic \ch{ABX3} perovskite, it has been shown that both the \ch{A} cation and the \ch{X} anion can migrate through the crystal \cite{SaifulIslam2000}.
+	For \gls{mapi} perovskite, the majoritarian mobile species has been identified as iodine vacancy \ch[kroeger-vink=true]{V^._{I}} \cite{Yang2015e,Senocrate2017} and this is supported by a small simulated migration activation energy \cite{Eames2015,Meloni2016,Haruyama2015,Azpiroz2015}.
+	Instead, a significant contribution from methylammonium ions migration has been excluded \cite{Senocrate2018,Senocrate2017,Meloni2016}.
+	In complete perovskite solar cells, the ionic migration is one of the factors causing hysteretic low frequency current\hyp{}voltage behaviour \cite{Unger2014,Xiao2015,Meloni2016,Tress2015}.
+	Still, the presence of ionic motion has been demonstrated even in non\hyp{}hysteretic devices \cite{Calado2016,Jacobs2018,Bryant2015}.
+
+	
+%	The fact that in the  materials the charge of the ionic species is low, $+1$, $+2$, or $-1$, allows the crystal to form defects easily
+%	The ionic defect concentration in these materials can be very high due to the weak lattice energy 
+
+
 	%	The presence of and mobile ionic species have been demonstrated in various kind of hybrid lead halide perovskite materials.
-	In complete perovskite solar cells, it has been observed even for devices not showing any current-voltage hysteretic behaviour \cite{Calado2016,Jacobs2018,Bryant2015}.
-	For \gls{mapi} perovskite, the majoritarian mobile species has been identified as iodine vacancy XXXXXXXXXXXXXXXX \cite{Yang2015e,Senocrate2017} while a significant contribution from methylammonium ions migration has been excluded \cite{Senocrate2018,Senocrate2017}.
-	These charged species can migrate inside the material either by diffusion or when drifted by an electric field \cite{Xiao2015}.
+%	These charged species can migrate inside the material either by diffusion or when drifted by an electric field \cite{Xiao2015}.
 
 	\paragraph{Field free absorber}
-	Thanks to the abundance of the ionic specie CITATION, the free charge concentration is low \cite{Walsh2015} and the electric field inside the absorber is completely shielded \cite{Tress2015}.
+	The high density of ionic defects causes the equilibrium free charge concentration to be low \cite{Walsh2015} and the electric field inside the absorber to be completely shielded within few nanometres from the interfaces \cite{Tress2015}.
 
-	diffusive transport vs drift transport
-
-	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
+%	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
 
 	\paragraph{Diffusion as the main transport mechanism}
-	(due to the built-in voltage being the workfunction difference of the selective contacts)
-	(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
-
-
+	As we saw, most of the perovskite absorber layer in a perovskite solar cell will be electric field free.
+	In this region, no drift will help with the charge separation and the photogenerated free charges will have to approach the contacts \textsl{via} diffusion.
+	This is possible in perovskite thanks to its excellent electron and holes mobility \cite{Leijtens2014,Herz2017} making possible diffusion lengths in the micrometre scale \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014,Liu2017}.
+	
+%	(due to the built-in voltage being the workfunction difference of the selective contacts)
+%	(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
 	\paragraph{Hysteresis}
 	Hysteretic behaviour in current-voltage sweeps, while not often observed in other kind of solar cells, it is frequent in perovskite solar cells.
 	Still, many reports of hysteresis-free perovskite solar cells can be found, especially for top cathode or for high performances bottom cathode devices.
@@ -603,13 +618,11 @@ If the material layer is thinner than the Debye length, the electric field will 
 	Also fine tuning the stoichiometry and using a mix of cations (\textsl{e.g.} adding cesium salts) can lead to a more ordered crystalline phase and reduce ionic defects concentration and mobility, both these contributions helps the stability of the devices \cite{Reyna2018}.
 	An interesting investigation is being carried on by Dr.\ D.\ R.\ Ceratti and Prof.\ D.\ Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus leaving the perovskite crystal structure.
 	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
-
-
-	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
-
-
+	Additionally, various other reactions can happen inside the material or at its interfaces, for example the formation of metallic lead \cite{Birkhold2018a,Sadoughi2015}, of molecular iodine \cite{Minns2017}, of lead iodide \cite{Buin2015,Walsh2015}, of methylammonium iodide \cite{Walsh2015}, of hydrogen iodide
 	Formation of HI in contact with water which reacts with silver 10.1039/C5TA00358J 10.1002/admi.201500195
-	Reaction with other contact materials 10.1021/acsnano.5b03687
+Reaction with other contact materials 10.1021/acsnano.5b03687
+
+%	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
 
 	Influence of perovskite material on Voc \cite{Wheeler2017,Eperon2014,Noh2013a}
 
