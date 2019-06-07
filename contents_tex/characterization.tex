@@ -330,7 +330,7 @@
 				\end{subfigure}
 
 				\mycaption[Strategies for reducing the instrumental noise in a single \glsentryshort{ce} integration.]{
-					On the left, single \gls{ce} decays from a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae3}\-/Au device \cite{Gelmetti2019} is integrated without noise reduction in (\textbf{a}), adapting the noise profile from the dark measurement and subtracting it in (\textbf{b}), or fitting the decay and integrating the fit in (\textbf{c}).
+					On the left, single \gls{ce} decays from a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae3}\-/\ch{Au} device \cite{Gelmetti2019} is integrated without noise reduction in (\textbf{a}), adapting the noise profile from the dark measurement and subtracting it in (\textbf{b}), or fitting the decay and integrating the fit in (\textbf{c}).
 					On the right, the charge \textsl{versus} voltage trends obtained applying the respective noise reduction methods.}\label{fig:ce_noise}
 			}
 		}
@@ -625,7 +625,7 @@
 					The 12500 voltage points are represented in a 2D histogram for avoiding the overplotting problem.
 					The normal non\hyp{}linear least squares fitting (in orange) is affected by initial noise (a faster decay if we consider this as a bi\hyp{}exponential decay), outliers and characteristics not of interest by the model.
 					The non\hyp{}linear robust fitting (in magenta) manages to reduce the weight of these points.
-					The studied device is a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae4}\-/Au \cite{Gelmetti2019} with 1~sun background illumination.}\label{fig:tpv_robust}
+					The studied device is a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae4}\-/\ch{Au} \cite{Gelmetti2019} with 1~sun background illumination.}\label{fig:tpv_robust}
 			}}
 	\end{figure}
 
@@ -636,7 +636,7 @@
 	\paragraph{Small perturbations regime}\label{tpv_perturbation}
 	The intensity of the laser pulse is attenuated using a variable neutral density filter (a partially reflecting wheel with different positions for different transmittivities) so that the voltage perturbation caused by the light pulse does not exceed \SI{10}{\mV} with 1~sun background illumination intensity.
 	We consider this a "small\hyp{}enough" perturbation with regards to the measured \gls{voc} (see \cpageref{perturbation} for a definition of small perturbation).
-	For example, comparing the excess charge in a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{spiro}\-/Au solar cell at \gls{voc} and at \gls{voc}~+~\SI{10}{\mV} which can be obtained from the data in \cref{fig:ce_noise-integrateExp} fitted with \cref{eq:ce_full} we can obtain respectively a value of \SI{8.2E-8}{} and \SI{8.9E-8}{\coulomb\per\square\cm}.
+	For example, comparing the excess charge in a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{spiro}\-/\ch{Au} solar cell at \gls{voc} and at \gls{voc}~+~\SI{10}{\mV} which can be obtained from the data in \cref{fig:ce_noise-integrateExp} fitted with \cref{eq:ce_full} we can obtain respectively a value of \SI{8.2E-8}{} and \SI{8.9E-8}{\coulomb\per\square\cm}.
 	%Even if we're not considering the dark charge concentration (not measurable in a \acr{ce} experiment), the smallness of the charge perturbation is arguable.
 	A smaller perturbation is not practically doable as we are limited to \SI{> 3}{\mV} perturbations due to the strong noise observed in this transient measurement.
 	%Clearly, the pulse intensity which could be considered a "small-enough" perturbation at high background illumination is not small any more at lower illumination and definitively cannot be small at dark background conditions.
@@ -697,7 +697,7 @@
 						\subcaption{Single bi\hyp{}exponential decay}\label{fig:tpv-biexp_single}
 					\end{subfigure}
 
-					\mycaption[Example of life\hyp{}times \textsl{versus} light bias plot obtained from a TPV experiment.]{In (\textbf{a}) the small perturbation life\hyp{}times obtained from robust mono\hyp{}exponential fitting are plotted against light bias for \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/Au devices \cite{Gelmetti2019}. In (\textbf{b}) the life\hyp{}times of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{famapbibr}\-/\gls{spiro}\-/Au device as obtained from a robust bi\hyp{}exponential fitting for low light bias, where the decays are clearly biphasic, and mono\hyp{}exponential for higher illuminations. In (\textbf{c}) the full data for the point at \SI{0.42}{V} from (\textbf{b}) is reported.}\label{fig:tpv}
+					\mycaption[Example of life\hyp{}times \textsl{versus} light bias plot obtained from a TPV experiment.]{In (\textbf{a}) the small perturbation life\hyp{}times obtained from robust mono\hyp{}exponential fitting are plotted against light bias for \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/\ch{Au} devices \cite{Gelmetti2019}. In (\textbf{b}) the life\hyp{}times of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{famapbibr}\-/\gls{spiro}\-/\ch{Au} device as obtained from a robust bi\hyp{}exponential fitting for low light bias, where the decays are clearly biphasic, and mono\hyp{}exponential for higher illuminations. In (\textbf{c}) the full data for the point at \SI{0.42}{V} from (\textbf{b}) is reported.}\label{fig:tpv}
 				}
 			}
 		\end{figure}
@@ -925,7 +925,7 @@
 						The $\tau_|pfo|$ life\hyp{}time as obtained from \acr{tpv} is used as dependent variable.
 						In (\textbf{b}) just the charge from chemical capacitance (exponential addend in \cref{eq:ce_full}) is used as independent variable.
 						In (\textbf{c}) the $\tau$ is corrected using the fitted recombination order $\Phi$ to obtain the total carriers life\hyp{}time $\tau_|pfo| = \Phi\tau$.
-						Data from \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/Au solar cells \cite{Gelmetti2019}.
+						Data from \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/\ch{Au} solar cells \cite{Gelmetti2019}.
 					}\label{fig:tpvce}
 				}
 			}
@@ -968,7 +968,7 @@
 		\centering
 		\includegraphics[width=0.5\textwidth]{tpc/tpc_vs_tpc-TAE-4_ig101-1555-1.pdf}
 		\mycaption[Example of TPC experiment at dark and 1 sun background illumination.]{
-			The current profile of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae4}\-/Au solar cell \cite{Gelmetti2019} short circuited through a small resistance either in dark or illuminated with \SI{1}{sun} and perturbed with a laser pulse.
+			The current profile of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae4}\-/\ch{Au} solar cell \cite{Gelmetti2019} short circuited through a small resistance either in dark or illuminated with \SI{1}{sun} and perturbed with a laser pulse.
 			The voltage axis can easily be converted to the current axis dividing by the known small resistance of \SI{50}{\ohm}.
 			The integrated peak resulted in \SI{0.17}{\nano\coulomb} for the dark case and \SI{0.14}{\nano\coulomb} for the \SI{1}{sun} one.
 		}\label{fig:tpc}
@@ -1055,7 +1055,7 @@
 				\mycaption[Capacitance dependence on applied voltage.]{
 					In (\textbf{a}) the capacitance of a commercial capacitor is reported, it was measured using \acr{ce} with applied voltage bias instead of the classical light bias used for solar cells.
 					The capacitance is obtained as the extracted charge over the applied voltage prior to short circuiting.
-					In (\textbf{b}) the typical capacitance \textsl{versus} voltage profile of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae1}\-/Au device \cite{Gelmetti2019} is shown as measured by \acr{dc}.
+					In (\textbf{b}) the typical capacitance \textsl{versus} voltage profile of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{tae1}\-/\ch{Au} device \cite{Gelmetti2019} is shown as measured by \acr{dc}.
 					In this case the indicated voltage is originated by various illumination intensities at open circuit prior to short circuiting.}\label{fig:cap_voltage_dependence}
 			}}
 	\end{figure}
@@ -1120,7 +1120,7 @@
 				\end{subfigure}
 
 				\mycaption[Comparison of methods for obtaining \glsentryshort{dc} experiments.]{
-					The capacitance obtained from \gls{dc} experiment on \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/Au devices using different methods for extracting $\Delta V$ value, as detailed in \cpageref{tpv_deltaV}.
+					The capacitance obtained from \gls{dc} experiment on \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/\ch{Au} devices using different methods for extracting $\Delta V$ value, as detailed in \cpageref{tpv_deltaV}.
 				}\label{fig:dc_deltaV}
 			}
 		}
