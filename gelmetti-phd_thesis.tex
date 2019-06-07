@@ -592,6 +592,7 @@ bottom=2cm%,
 \newglossaryentry{symb:U}{name={\ensuremath{U}}, description={charges recombination rate}}
 \newglossaryentry{symb:t}{name={\ensuremath{t}}, description={time}}
 \newglossaryentry{symb:tau}{name={\ensuremath{\tau}}, description={small perturbation recombination life-time}, sort={tau}}
+\newglossaryentry{symb:taunp}{name={\ensuremath{\tau_{(n|p)}}}, description={traps mediated recombination constants for electrons or holes}, sort={taunp}}
 \newglossaryentry{symb:taupfo}{name={\ensuremath{\tau_{\mathrm{pfo}}}}, description={pseudo first order recombination life-time}, sort={taupfo}}
 \newglossaryentry{symb:Phi}{name={\ensuremath{\Phi}}, description={reaction order}, sort={Phi}}
 \newglossaryentry{symb:C}{name={\ensuremath{C}}, description={capacitance}}
@@ -757,7 +758,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/characterization/} }
 
 	\newpage
-%	\input{contents_tex/characterization.tex}
+	\input{contents_tex/characterization.tex}
 	\clearpage
 	\stopcontents[characterization]
 
@@ -785,7 +786,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/tae/} }
 
 	\newpage
-%	\input{contents_tex/tae.tex}
+	\input{contents_tex/tae.tex}
 	\clearpage
 	\stopcontents[tae]
 
@@ -814,7 +815,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/thicknesses/} }
 
 	\newpage
-%	\input{contents_tex/thicknesses.tex}
+	\input{contents_tex/thicknesses.tex}
 	\clearpage
 	\stopcontents[thicknesses]
 
@@ -875,7 +876,7 @@ bottom=2cm%,
 	
 	\newpage
 	\graphicspath{ {./contents_img/software/} }
-%	\input{contents_tex/software.tex}
+	\input{contents_tex/software.tex}
 	\clearpage
 	\stopcontents[software]
 
@@ -894,7 +895,10 @@ bottom=2cm%,
 	\clearpage
 
 	\printindex
-
+	
+	% for having a smaller font in bibliography (less pages) https://tex.stackexchange.com/a/1441/173645
+	\renewcommand*{\bibfont}{\small} 
+	
 	\printbibliography[heading=bibintoc]
 
 	\cleardoublepage

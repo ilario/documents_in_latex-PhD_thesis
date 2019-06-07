@@ -79,11 +79,11 @@
 		\paragraph{Valence and conduction bands in crystalline solids}
 		As we saw, for an isolated molecule the energy levels are discrete values.
 		On the contrary, for materials where electrons are delocalized in a periodic potential (\textsl{e.g.} in a crystal structure) we have continuous bands (ranges) of allowed electronic energies separated by energy gaps \cite{WikipediaPeriodic}.
-		For a 3D crystal, the density of states grows with the square root of the energy, as represented in \cref{fig:DOS} CITATION NEEDED.
+		For a 3D crystal, the density of states can be approximated to be the \gls{dos} of a free electrons gas where it grows with the square root of the energy, as represented in \cref{fig:DOS} \cite[140]{Kittel2004}.
 		
 		\paragraph{Valence and conduction bands in amorphous solids}
 		In amorphous solids, the allowed electronic energy is still composed by bands but localised states can appear inside the band gaps and the band edges are less defined.
-		These tails of the edges are usually localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite{Stenzel2005}.
+		These tails of the edges are usually localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite[213]{Stenzel2005}.
 %		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
 		
 		\begin{SCfigure}
@@ -316,15 +316,13 @@ If the material layer is thinner than the Debye length, the electric field will 
 			\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_{n,x}
 		\end{equation}
 
-
-
 	\subsection{Charge Recombination}
 
 		\paragraph{Primary geminate recombination} \label{intro_geminate}
 		This kind of recombination happens with the annihilation of a photo-generated exciton prior to the free charges separation.
 		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
 		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass \cite{Herz2017} which means a high holes and electrons mobility \cite{Leijtens2014}, this means that, at room temperature, the exciton binding energy (described in \cpageref{intro_exciton}) is even smaller than $k_|B|T$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
-		So this kind of recombination is negligible in perovskite solar cells CITATION NEEDED.
+		So this kind of recombination is negligible in perovskite solar cells \cite{Wehrenfennig2014}.
 		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
 		\paragraph{Radiative recombination}
@@ -332,31 +330,46 @@ If the material layer is thinner than the Debye length, the electric field will 
 		From this parallelism it can be understood that this recombination is larger for materials with greater absorptivity \cite{Nelson2003} like the ones used for thin film solar cells \cite{Tvingstedt2015}.
 		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
 		Radiative recombination involves the collision of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
-		The expression used for modelling is: $U_|rad| = k_|rad| (np-n_|i|^2)$, where $n_|i|$ is the intrinsic carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
+		The expression used for modelling is:
+		 \begin{equation}
+		U_|rad| = k_|rad| (np-n_|i|^2)
+				\end{equation}
+		where $n_|i|$ is the equilibrium carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
+		The dependency from $np$ indicates that this recombination type depends on the quasi\hyp{}Fermi levels splitting.
 		This type of recombination is present in perovskite solar cells, indeed some of the most efficient perovskite solar cells can be used as \gls{led} taking advantage of their radiative recombination \cite{Bi2016}.
 
-		\paragraph{SRH trap mediated recombination}
+		\paragraph{\gls{srh} trap mediated recombination}
 		Also known as Shockley-Read-Hall recombination \cite{Shockley1952}, this recombination happens in two steps: a free charge from the respective band decays into an empty localized state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
 		As aforementioned, in an indirect band gap material the radiative recombination is disfavoured, but the presence of a trap state can divide in two easier steps the charge recombination process.
 		%		In an indirect band gap material (where the momentum difference between the starting and final state is large) band-to-band bimolecular radiative recombination is disfavoured, but the presence of a localized trap state can catalyse the transition 
 		Usually both the momentum difference and the chemical energy is released \textsl{via} phonons, so no radiative emission is involved.
-		This recombination type can have reaction order of 1 or 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2018b}.
+		This recombination type can have reaction order of 1 or 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2019}.
 		In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1.
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
-		The expression used for modelling is \cite{Shockley1952}:
+		The expression used for modelling is \cite{Shockley1952,Nelson2003}:
 		\begin{equation}\label{eq:srh}
-			U_{SRH} = k_{SRH} \frac{np-n_|i|^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
+			U_{SRH} = \frac{np-n_|i|^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
 		\end{equation}
-		where $n_t$ and $p_t$ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-		For lead halide hybrid perovskite materials, this kind of recombination is or is not important depending on the presence of mid-gap states, which in turn depends on the material composition and stoichiometry CITATION NEEDED.
+		where $\tau_n$ and $\tau_p$ are constants describing the trap capture cross section (which can be different for electrons and holes) and the traps density while $n_t$ and $p_t$ are the carrier densities that would be present with a the Fermi level equal to the traps energy.
+		For a doped semiconductor with similar $\tau_n$ and $\tau_p$, the expression can be simplified, for example in a p-type material we can use \cite[108]{Nelson2003}:
+		\begin{equation}
+		U_{SRH} \approx \frac{n-n_0}{\tau_n}
+		\end{equation}
+		so, the more the material is densely doped, the smaller the minority carriers density and the less important is this kind of recombination.
+		For lead halide hybrid perovskite materials, this kind of recombination is or is not important depending on the presence of mid-gap states, which in turn depends on the material composition and stoichiometry.
 
 		\paragraph{Surface recombination}\label{intro_surface_recombination}
-		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
-		At the interface between a, for example, p-doped and a close-to-intrinsic material as we consider the perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and the opposite charge in the intrinsic semiconductor.
+%		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
+		Also known as interfacial recombination, refers to the annihilation of two opposite charges happening at the boundary of a material block: an interface.
+		An interface can form between grains of the same material or between different materials.
+		At the boundary of a crystal, the well ordered structure is interrupted creating various localised states which can act as traps for \gls{srh} recombination.
+		Additionally, the impurities tend to accumulate to the crystalline grain surface, external contamination is likely to occur at the material surface, chemical reactivity can vary the composition of two materials' interface, and mid-gap states could be already present in one of the two interfacing materials.
+%		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
+		In this thesis, I will consider the surface recombination as a case of \gls{srh} recombination.
+		Considering the interface between two different materials, for example, p-doped \gls{htm} and close-to-intrinsic perovskite, the surface recombination will involve the majority carrier, holes, in the doped material and electrons in the intrinsic semiconductor.
 		As the doped semiconductor has abundance of majority carriers, the limiting factor will be the concentration of "minority" carriers on the other side of the interface, which will depend on its mobility and on the electric field in the intrinsic.
 		So the reaction order should be 1 for this case.
-		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
-		In efficient perovskite solar cells, this is the most important recombination pathway CITATION NEEDED.
+		In efficient perovskite solar cells, this is the most important recombination pathway \cite{Calado2019,Carnie2015,Stolterfoht2018a}, at least for aged devices \cite{Tress2018,Correa-Baena2017a}.
 
 		\paragraph{Auger recombination}
 		When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
@@ -365,7 +378,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		These high charge densities are unlikely to happen in perovskite solar cells at normal working conditions.
 
 	\subsection{Charge Generation}
-	Thanks to microscopic reversibility, each of the mentioned recombination processes has an identical but opposed generation process \cite{Nelson2003}.
+	Thanks to microscopic reversibility, each of the mentioned recombination processes has an identical but opposed generation process \cite[81]{Nelson2003}.
 	These generation processes require some energy in input, which can be thermal (phonons, lattice vibrations) for the generation associated to the non radiative processes or radiative for the reverse of the radiative recombination.
 	This last case, named photogeneration, is the most interesting for photovoltaics.
 
@@ -426,10 +439,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		Both the aforementioned energy difference between $\gamma$ (upper \gls{somo} of the excited molecule) and $\delta$ (\gls{lumo}), and the energy needed for taking the charges apart breaking the electrostatic attraction of the exciton contribute to the exciton binding energy.
 		For most of the crystalline materials with delocalized orbitals, electron binding energy is smaller than the ambient thermal energy $k_|B|T$ so a direct generation of free charges moving independently is observed.
 %		Also localised states (charges in mid gap traps) can be involved in optical excitation, in that case
-
 %		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
-
-%		\paragraph{Excitons and free charges generation}
 
 	\subsection{PhotoVoltaic Effect}
 	The charge generation causes an increase of the concentration of both electrons in the conduction band and of holes in the valence band.
@@ -474,8 +484,6 @@ If the material layer is thinner than the Debye length, the electric field will 
 			 
 %		For this reason the relevant energy level at the left end of \gls{htm} is the valence band quasi\hyp{}Fermi level $E_|fp|$ 
 
-		%https://en.wikipedia.org/wiki/Electromotive_force#Solar_cell
-
 \section{Perovskite Solar Cells}
 	\epigraph{\textit{\enquote{That's yogurt science!}}}
 
@@ -485,14 +493,13 @@ If the material layer is thinner than the Debye length, the electric field will 
 	\mycaption[NREL chart of "Best Research-Cell Efficiencies"]{Just the perovskite solar cells (not stabilized) results have been reported.}\label{fig:nrel_chart}
 \end{SCfigure}
 
-	Perovskite solar cells is a relatively new player in the photovoltaics world, existing just since 2009 (started by the research groups Miyasaka \cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}).
-	This type of solar cells evolved from the \gls{dssc} tradition, where an absorber dye is in contact with a titania \gls{etm} and an organic \gls{htm}.
+	Lead perovskites are known since long time, both inorganic \cite{Møller1958} and hybrid inorganic\hyp{}organic \cite{Weber1978}.
+	Just recently, in 2009, it has started to be used as absorber for solar cells (started by the research groups Miyasaka \cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}).
+	Perovskite solar cells evolved from the \gls{dssc} tradition, where an absorber dye is in contact with a titania \gls{etm} and an organic \gls{htm}.
 	Here the absorber dye is substituted by a hybrid organic-inorganic lead halide perovskite semiconductor and both the \gls{etm} and the \gls{htm} can be composed of various, either organic or inorganic, materials.
 	Thanks to the enormous research effort, these kind of devices reached a record stabilized efficiency of 20.9~\% \cite{Green2019} with reports of even higher non-stabilized efficiencies (23.7~\% \cite{Green2019,Jiang2017}); all this in relatively short time as represented in \cref{fig:nrel_chart}.
 
-
 %	\paragraph{Composition}
-%
 %	Cesium introduction \cite{Bi2016,Saliba2016}
 
 
@@ -530,28 +537,33 @@ If the material layer is thinner than the Debye length, the electric field will 
 	The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material.
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
 	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime is dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
-	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2018b,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
+	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2019,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
+%		This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
+This recombination is important in perovskite solar cells also due to the high minority carriers concentration close to the contacts, which is a result of the screening of the electric field in the bulk of the perovskite material.
+%This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
 	%	Considering the perovskite material, traps are more likely to form on the surface of crystal domains, where the bulk symmetry is broken and carrier-phonon coupling, which can ease indirect transitions is more likely due to the easier deformation of the broken structure . 
-	Nevertheless, also the morphology and composition of perovskite material can have an impact on the \gls{voc}: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes \cite{Lee2015,Montcada2017,Qiu2016}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
 
 	\paragraph{Open circuit voltage}
-	The open circuit voltage of a perovskite solar cell depends on many contributions.
-	As we will see in \cref{ch:characterization}, the aforementioned charge recombination rate is one of these.
-	This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
+	The open circuit voltage of a perovskite solar cell depends on many contributions and has a hard upper limit dictated by the perovskite band gap and the radiative recombination \cite{Tress2017,Tress2015a}.
+	This recombination is unavoidable as it originates by the detailed balance for a strongly absorbing material \cite[24]{Nelson2003}
+	As we will see in \cref{ch:characterization}, the aforementioned surface recombination rate is one of the other contributions.
+	Such non\hyp{}radiative recombination has been predicted to have influence on the \gls{voc} of perovskite solar cells when the relative life time is smaller than \SI{10}{\us} \cite{Tress2017}.
 	A contact material having mid-gap states will favour the surface recombination, but also its additives (\textsl{e.g.} dopants, dispersants\dots) can introduce such trap states \cite{Correa-Baena2017}.
-	Additionally, a different material employed as \gls{etm} and \gls{htm} will result in a different built-in voltage (difference in contacts' Fermi levels energies), which is often regarded as a limit for the the open circuit voltage \cite{Gelmetti2019,Wu2016}.
+	Additionally, a different material employed as \gls{etm} and \gls{htm} will result in a different built-in voltage (difference in contacts' Fermi levels energies), which constitutes a limit for the the open circuit voltage \cite{Gelmetti2019,Wu2016} in case the surface recombination is the main loss mechanism \cite{Tress2017}.
 	The presence of ionic accumulation in perovskite solar cells have been reported to reduce the influence of the \gls{voc} from the built-in voltage \cite{Belisle2016}.
 	Even a different molecular ordering in the selective contacts can influence the \gls{voc} through the variation of the \gls{dos} width, and by consequence the energetics of the band edges \cite{Shao2016}.
-	Rather than a hard limit, the built-in voltage represents the applied voltage that saturates the depletion layers in the contacts, which implies a large charge density at the materials interface and an important surface recombination CITATION NEEDED.
-	Indeed, it has been shown that suppressing the surface recombination can allow a device to give a voltage higher than the built-in voltage. CITATION NEEDED
+	Rather than a hard limit, the built-in voltage represents the applied voltage that saturates the depletion layers in the contacts, which implies a large charge density at the materials interface and an important surface recombination \cite{Gelmetti2019,Kirchartz2019}.
+	Indeed, it has been predicted that suppressing the surface recombination can allow a device to give a voltage higher than the built-in voltage \cite{Kirchartz2019}.
 	A large absorber band gap will have the excited charges thermally relaxing to a more energetic band, allowing the solar cell to achieve a higher \gls{voc}.
 	The perovskite band gap can be easily tuned changing its stoichiometry, for example partially replacing iodine with bromine \cite{McMeekin2016,Noh2013a,Wheeler2017} or using different organic cations \cite{Eperon2014}.
 	For perovskite solar cells, the record reported \textit{bandgap\hyp{}voltage offset} are already much smaller than the voltage losses reported for \gls{osc} \cite{Tvingstedt2015}.
-	If we consider the possibility of having the injection of hot carriers (free charges generated by a photon with energy larger than the band gap) into the contacts before their thermal relaxation to the band edge, also a \gls{voc} larger than the absorber band gap is possible CITATION NEEDED and could, at least theoretically, make possible to break the Shockley\hyp{}Queisser limit \cite{WikipediaSQlimit}.
-
-	\paragraph{Charge extraction and charge blocking}
-	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
-	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015} and for blockage CITE SOMETHING.
+	Also the morphology and composition of perovskite material can have an impact on the \gls{voc}: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes and direct recombination between the two contacts \cite{Lee2015,Montcada2017,Qiu2016,Marchioro2014}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies can be reduced modifying the perovskite composition \cite{Bi2016}.
+	If we consider the possibility of stabilising the hot carriers (free charges generated by a photon with energy larger than the band gap, can be stabilised hindering the generation of phonons needed for their thermalisation) and of collecting them to the contacts before their thermal relaxation to the band edge, also a \gls{voc} larger than the absorber band gap could be achieved and could, at least theoretically, break the Shockley\hyp{}Queisser efficiency limit \cite{WikipediaSQlimit}.
+	
+%	\paragraph{Charge extraction and charge blocking}
+%	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
+%	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015}
+%	% and for blockage CITE SOMETHING.
 
 \paragraph{Ionic defects}
 	A Schottky defect is the lack of a ion and its counter ion from an otherwise perfect crystal structure.
@@ -567,7 +579,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 	Ionic conductivity in halide perovskite materials has been pointed out more than 35 years ago \cite{Mizusaki1983,Yamada1995,Yamada1998}.
 	In \gls{mapi}, the presence of mobile ionic species has been directly observed from the slowly evolving work function or a lateral device using \gls{kpfm} \cite{Birkhold2018,Birkhold2018a}.
 	In a generic \ch{ABX3} perovskite, it has been shown that both the \ch{A} cation and the \ch{X} anion can migrate through the crystal \cite{SaifulIslam2000}.
-	For \gls{mapi} perovskite, the majoritarian mobile species has been identified as iodine vacancy \ch[kroeger-vink=true]{V^._{I}} \cite{Yang2015e,Senocrate2017} and this is supported by a small simulated migration activation energy \cite{Eames2015,Meloni2016,Haruyama2015,Azpiroz2015}.
+	For \gls{mapi} perovskite, the majoritarian mobile species has been identified as iodine vacancy \ch[kroeger-vink=true]{V^._{I}} \cite{Yang2015e,Senocrate2017} and this is supported by a small simulated migration activation energy \cite{Eames2015,Meloni2016,Haruyama2015,Azpiroz2015,Mosconi2016a}.
 	Instead, a significant contribution from methylammonium ions migration has been excluded \cite{Senocrate2018,Senocrate2017,Meloni2016}.
 	In complete perovskite solar cells, the ionic migration is one of the factors causing hysteretic low frequency current\hyp{}voltage behaviour \cite{Unger2014,Xiao2015,Meloni2016,Tress2015}.
 	Still, the presence of ionic motion has been demonstrated even in non\hyp{}hysteretic devices \cite{Calado2016,Jacobs2018,Bryant2015}.
@@ -575,10 +587,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 	
 %	The fact that in the  materials the charge of the ionic species is low, $+1$, $+2$, or $-1$, allows the crystal to form defects easily
 %	The ionic defect concentration in these materials can be very high due to the weak lattice energy 
-
-
 	%	The presence of and mobile ionic species have been demonstrated in various kind of hybrid lead halide perovskite materials.
-%	These charged species can migrate inside the material either by diffusion or when drifted by an electric field \cite{Xiao2015}.
 
 	\paragraph{Field free absorber}
 	The high density of ionic defects causes the equilibrium free charge concentration to be low \cite{Walsh2015} and the electric field inside the absorber to be completely shielded within few nanometres from the interfaces \cite{Tress2015}.
@@ -597,7 +606,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 	Still, many reports of hysteresis-free perovskite solar cells can be found, especially for top cathode or for high performances bottom cathode devices.
 	As we saw above, the presence of mobile ionic species is widely accepted for most of the hybrid lead perovskite materials and this has been indicated as one of the causes of the hysteresis \cite{Unger2014,Xiao2015}.
 	Considering that the recombination and collection of free charges is affected by the ions-modulated electric field \cite{Pockett2017}, this is enough to explain the presence of hysteresis \cite{Tress2015,Calado2016} \textsl{via} the modulation of interfacial energy barriers \cite{Moia2019}.
-	Additionally, adsorption or chemical reaction of perovskite ionic defects with the selective contact surface (\textsl{e.g.}\ with titanium oxide \cite{Yu2016,Beilsten-Edmands2015,Carrillo2016} or tin oxide CITATION NEEDED) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis while top cathode with all-organic contacts usually does not.
+	Additionally, adsorption or chemical reaction of perovskite ionic defects with the selective contact surface (\textsl{e.g.}\ with titanium oxide \cite{Yu2016,Beilsten-Edmands2015,Carrillo2016}) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis while top cathode with all-organic contacts usually does not.
 
 %	\paragraph{Intrinsic or doped semiconductor}
 
@@ -616,17 +625,12 @@ If the material layer is thinner than the Debye length, the electric field will 
 	The inclusion of self\hyp{}assembly mono layers at the materials' interfaces helps the device stability passivating surface states \cite{Lira-Cantu2017,Mingorance2018}.
 	Usage of organic contact layers is also a source of instability, for example due to the slow crystallisation of \gls{spiro} \cite{Malinauskas2015} (due to its low glass transition temperature of \SI{126}{\celsius} \cite{Malinauskas2016}) and metallic oxides might be used instead \cite{Mingorance2018}.
 	Also fine tuning the stoichiometry and using a mix of cations (\textsl{e.g.} adding cesium salts) can lead to a more ordered crystalline phase and reduce ionic defects concentration and mobility, both these contributions helps the stability of the devices \cite{Reyna2018}.
-	An interesting investigation is being carried on by Dr.\ D.\ R.\ Ceratti and Prof.\ D.\ Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus leaving the perovskite crystal structure.
+	An interesting investigation is being carried on by Dr.\ D.\ R.\ Ceratti and Prof.\ D.\ Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus methylamine can leave the perovskite crystal structure.
 	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
-	Additionally, various other reactions can happen inside the material or at its interfaces, for example the formation of metallic lead \cite{Birkhold2018a,Sadoughi2015}, of molecular iodine \cite{Minns2017}, of lead iodide \cite{Buin2015,Walsh2015}, of methylammonium iodide \cite{Walsh2015}, of hydrogen iodide
-	Formation of HI in contact with water which reacts with silver 10.1039/C5TA00358J 10.1002/admi.201500195
-Reaction with other contact materials 10.1021/acsnano.5b03687
+	Additionally, various other reactions can happen inside the material or at its interfaces, for example the formation of metallic lead \cite{Birkhold2018a,Sadoughi2015}, of molecular iodine \cite{Minns2017}, of lead iodide \cite{Buin2015,Walsh2015}, of methylammonium iodide \cite{Walsh2015}.
+Some of these degradation pathways are further favoured by contact with moisture \cite{Jong2018,Schlipf2019,Hu2017,Han2015a} (which if not too much, can be reversed \cite{Leguy2015}), with oxygen in combination with light \cite{Senocrate2018a,Aristidou2017} (as described in \cpageref{methods_degradation}), with UV light \cite{Lee2016}, with temperature \cite{Philippe2015,Conings2015}, with \gls{spiro} \cite{Carrillo2016}, with \gls{pcbm60} \cite{DeBastiani2016}, with the metallic electrodes due to chemical reactivity \cite{Kato2015,Guerrero2016a,Back2016,Zhao2016,DeBastiani2016} or intermixing \cite{Domanski2016}.
 
 %	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
-
-	Influence of perovskite material on Voc \cite{Wheeler2017,Eperon2014,Noh2013a}
-
-	Influence of contacts on Voc \cite{CorreaBaena2015} WU2016A
 
 %\section{Background and Related Work}\label{sec:background}
 %

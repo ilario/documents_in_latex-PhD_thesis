@@ -62,7 +62,7 @@
 		\paragraph{Forward and reverse scan} In current-voltage sweeps, a scan where the voltage is increasing over time is a forward scan, while a voltage variation in the opposite direction constitutes a reverse scan.
 
 		\paragraph{Ideality factor} An ideality factor $n_|id|$ different from 1 describes deviations from the ideal photo-diode.
-		The Shockley diode equation adapted for photogeneration becomes \cite{Calado2018b}:
+		The Shockley diode equation adapted for photogeneration becomes \cite{Calado2019}:
 		\begin{equation} \label{eq:photodiode}
 			J(V,\phi) = J_|ph|(\phi) - J_0\left[\exp(\frac{qV}{n_|id|k_|B|T})-1\right]
 		\end{equation}
@@ -143,7 +143,7 @@
 	\end{SCfigure}
 
 	\paragraph{Scan speed}
-	The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly} (seldom reported in literature, like in figure~S3 of \cite{Du2018} and simulated with drift-diffusion in \cite{Walter2018}).
+	The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly} (seldom reported in literature, like in figure~S3 of \cite{Du2018} or for different speeds in \cite{CorreaBaena2015,Tress2015} and simulated with drift-diffusion in \cite{Walter2018}).
 	Our arbitrary choice allowed us to make fair comparisons between devices, but the absolute values should be considered as approximations.
 	\begin{SCfigure}%[!hbtp]%
 		\centering
@@ -152,7 +152,7 @@
 	\end{SCfigure}
 	We wanted to underline that due to hysteresis phenomena, no scan speed, direction, or precondition is the correct one.
 	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result \cite{Zimmermann2016}.
-	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also present hysteretic phenomena on different time\hyp{}scales \cite{Bryant2015,Jacobs2018,Du2018}.
+	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also present hysteretic phenomena on different time\hyp{}scales \cite{Jacobs2018,Du2018} or temperatures \cite{Bryant2015}.
 
 	\paragraph{Noise}
 	The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}.
@@ -163,7 +163,7 @@
 	The former from the current values at voltages close to zero and the latter from the current at high-enough voltage.
 	Perovskite solar cell hysteretic behaviour can affect this measurement.
 	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
-	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2018b} and explained in \cpageref{transient_suns_voc} should be implemented.
+	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2019} and explained in \cpageref{transient_suns_voc} should be implemented.
 	In the case of series resistance, as the employed voltages are always larger than the built-in voltage, the depletion layers should be filled anyway and the transient method should not be required.
 
 	\paragraph{Solar cells parameters extraction from sweeps}\label{characterization_hysteresis}
@@ -221,7 +221,7 @@
 		%		In some cases this latest expression is used as ideality factor definition 
 		The shunt resistance will still affect the measurement \cite{Tvingstedt2017}.
 		The so-obtained ideality factor $n_|id|$ is usually from 1 to 2.
-		A light bias/illumination dependent ideality factor can also be measured either from a current-voltage sweeps in dark (which would be influenced by hysteretic behaviour) or from a derivative form of \cref{eq:voc_vs_phi} \cite{Calado2018b}:
+		A light bias/illumination dependent ideality factor can also be measured either from a current-voltage sweeps in dark (which would be influenced by hysteretic behaviour) or from a derivative form of \cref{eq:voc_vs_phi} \cite{Calado2019}:
 		\begin{equation}
 			n_|id|(\phi_0) = \frac{q}{k_|B|T} \eval{\dv{V_|OC|}{\ln(\phi)}}_{\phi=\phi_0}
 		\end{equation}
@@ -246,7 +246,7 @@
 		\end{figure}
 
 		\paragraph{Transient Suns-\gls{voc}}\label{transient_suns_voc}
-		A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2018b}.
+		A critical analysis of these methods and the proposal of a new "Transient Suns-\gls{voc}" method can be found in \authoryear{Calado2019}.
 		In their work the authors propose to precondition the device in dark at an applied voltage bias roughly equal to the built-in voltage.
 		After this stabilization step the needed measurement conditions are applied (illumination is switched on and open circuit conditions are set) and the interesting quantity measured within a few milliseconds.
 		The preconditioning step can increase the filling of the depletion layers in the contacts, which makes the ionic accumulation at the interface vanish through diffusion, or at least decrease.
@@ -257,7 +257,7 @@
 		\paragraph{Interpretation} %\The \gls{voc} dependency on the light intensity $\phi$ can be fitted with a natural logarithmic dependence obtaining the ideality factor $m$. 
 		\authoryear{Pockett2015} measured ideality factors of planar perovskite solar cells \textsl{via} stabilized \gls{voc} obtaining, for some cases, values as high as 5.
 		Also in organic \cite{Kirchartz2011,Kirchartz2012} and silicon solar cells \cite{Breitenstein2006} ideality factors greater than 2 has been observed and explained.
-		According to \authoryear{Calado2018b} and \authoryear{Kirchartz2012}, the ideality factor, once obtained in the correct way, is 1 when studying most of the recombination types and 2 for mid-gap trap mediated recombination in regions where the electrons and holes concentrations are similar, $n \approx p$.
+		According to \authoryear{Calado2019} and \authoryear{Kirchartz2012}, the ideality factor, once obtained in the correct way, is 1 when studying most of the recombination types and 2 for mid-gap trap mediated recombination in regions where the electrons and holes concentrations are similar, $n \approx p$.
 
 		\FloatBarrier
 		\newpage
@@ -442,7 +442,8 @@
 
 		\paragraph{Exponential part and chemical capacitance in \gls{osc}}\label{ce_exp_osc}
 		In \gls{osc} literature the charge \textsl{versus} light bias voltage trend is described simply as the exponential shape which describes a Maxwell\hyp{}Boltzmann distribution for a two levels scenario.
-		For a common solar cell working conditions, the Maxwell\hyp{}-Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much bigger than $k_|B|T$.
+		In a few publications, the shape if fitted to an error function \cite{Ajuria2011}.
+		For a common solar cell working conditions, the Maxwell\hyp{}Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much bigger than $k_|B|T$.
 		This could be false for high applied voltages, where Fermi\hyp{}Dirac distribution for fermions should be used.
 		Thus, the expression for the conduction band electronic density $n$ obtained from the mentioned distribution is:
 		\begin{equation}
@@ -492,7 +493,7 @@
 
 		\paragraph{Linear part and geometric capacitance}\label{geometric_capacitance}
 		With the introduction of selective contacts, a linear contribution starts to grow in importance summing up to the exponential part.
-		It has been observed both in \gls{osc} \cite{Ryan2017a,Credgington2014} and in perovskite solar cells \cite{Gelmetti2017,Wheeler2017,Du2018}.
+		It has been observed both in \gls{osc} \cite{Ryan2017a,Credgington2014,Credgington2012} and in perovskite solar cells \cite{Gelmetti2017,Wheeler2017,Du2018}.
 		This linear trend accounts for the accumulation in the selective contacts' depletion layers and in the electrodes, in a parallel plate capacitor fashion: $n = C_|g| \cdot V = \frac{\epsilon_0 \epsilon_|r| A}{d} \cdot V$ where $C_|g|$ is the geometric capacitance, $A$ is the active area, $d$ is the thickness of the dielectric, $\epsilon_0$ is the electric constant, and $\epsilon_|r|$ is the relative permittivity.
 		This carriers accumulation in the contacts can be visualized with the simulation reported in \cref{fig:ce_single_dd_charge-1sun}.
 		Extending \cref{eq:ce_osc}, the complete equation becomes:
