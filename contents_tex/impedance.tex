@@ -52,10 +52,11 @@
 	High rates of recombination in the contact regions are used to simulate surface recombination.
 	Even if an optical model was available in Driftfusion, an uniform generation through all the absorber proven to be enough for our purposes.
 
-
-
 	\paragraph{Boundary conditions}
-	The oscillating voltage is applied with time\hyp{}dependent boundary conditions.
+	An arbitrary time dependent voltage can be applied with time\hyp{}dependent boundary conditions.
+	
+	
+	
 
 \section{Simulating impedance spectroscopy}
 
@@ -70,6 +71,7 @@
 		V = \bar V + v(t) = \bar V + v_|max| \sin(\omega t)
 	\end{equation}
 
+	$\bar V$ was set equal to the steady state voltage of the provided input solution (\textsl{e.g.} \gls{voc} for the simulations at open circuit).
 	Usually, a $v_|max|$ of \SI{2}{\mV} is employed.
 	This value is much smaller than the experimentally used one but very similar results are obtained when using larger perturbations (simulations with a $v_|max|$ of \SI{200}{\mV} are mentioned in \cpageref{impedance-large_perturbations}).
 	The small value allowed me to obtain a computationally fast simulation without being affected by too much numerical noise.
@@ -127,9 +129,65 @@
 	allowing the complex impedance to be determined \textsl{via} $Z = v_|max| / j_|max| \exp(-\mathrm{i}\theta)$.
 	The amplitude and phase
 	obtained this way were confirmed by fitting j(t) with a sinusoidal function.
+	
+	
 
 	\paragraph{Calculation of Ionic Displacement Current}\label{displacement_current_ionic}
-	As seen in \cpageref{intro_displacement_current}
+	Various approaches have been tested in order to estimate the ionic migration contribution to the apparent capacitance.
+	The most meaningful method is the calculation of the displacement current (see \cpageref{intro_displacement_current}) induced in the contacts by the changes in the ionic profile.
+	The ionic accumulation at the interfaces will give a contribution $E_|ion|$ to the electric field inside the perovskite material.
+	This contribution can be calculated from the ionic profile $a(x,t)$ with:
+	\begin{equation}
+		E_|ion|(x,t) = \frac{q}{\epsilon_0 \epsilon_|r|^{\mathrm{prv}}} \int_{x_1}^{x_1 + x} a(x',t) \dd x'
+	\end{equation}
+	where $x_1$ is the position of the \gls{htm}\-/perovskite interface.
+	Actually, we are interested to the electrostatic potential $V_|Eion|$ caused by this electric field, rather than in $E_|ion|$ itself:
+		\begin{equation}
+		V_|Eion|(t) = \int_{x_1}^{x_2} E_|ion|(x,t) \dd x
+		\end{equation}
+		where $x_2$ is the position of the perovskite\-/\gls{etm} interface.
+		As the voltage of the device does not vary, this electrostatic potential variation caused by the ionic movement will have to be compensated by an accumulation of free carriers in the contacts (we will ignore the free carriers in the intrinsic, which for the dark and unbiased case is low).
+		So the compensating potential $V_|Edisp|$ will be:
+				\begin{equation}
+				V_|Edisp|(t) = -V_|Eion|(t) = \frac{Q_|disp|(t) \cdot (p_2-p_1)}{\epsilon_0 \bar\epsilon_|r|}
+				\end{equation}
+				where $Q_|disp|(t)$ is the free charge per area accumulating at the contacts, $p_1$ and $p_2$ are the positions of the depletion layers where the charges get accumulated, and $\bar\epsilon_|r|$ is the average permittivity between $p_1$ and $p_2$.
+		If we consider the depletion layers to be thin, $p_1 \approx x_1$ and $p_2 \approx x_2$ we can also consider just the perovskite permittivity and write:
+						\begin{equation}
+		J_|disp|(t) = \eval{\dv{Q_|disp|(t')}{t'}}_{t'=t} = -\frac{\epsilon_0 \epsilon_|r|^{\mathrm{prv}}}{x_2-x_1} \eval{\dv{V_|Eion|(t')}{t'}}_{t'=t}
+						\end{equation}
+						which is equivalent to the expression derived in \cpageref{intro_displacement_current} if we consider that $V_|Eion|(t)/(x_2-x_1)$ is the average electric field in the perovskite due to the ionic accumulation.
+%	separately from the field due to the other kind of charges 
+	
+	\paragraph{Calculation of Recombination Current}
+	The recombination current is the flow of charges getting annihilated due to the implemented recombination processes.
+	It is evaluated simply calculating the radiative and the trap assisted recombination flux from the electrons and holes concentration in each position and integrating this over the whole device thickness.
+	\begin{equation}
+	J_|rec|(t) = q \int_{x_0}^{x_3} U_{x,t} \dd x
+	\end{equation}
+	where $x_0$ and $x_3$ are the position of the beginning and the end of the simulated device.
+	
+	\paragraph{Calculation of Accumulation Current}
+	We refer with "accumulation current" to what is commonly considered the capacitive current: a flow of particles accumulating in the device rather than crossing it. 
+	As the aforementioned displacement current due to ionic movement is contributing to the accumulation of charges, it will also be included in this accumulation current.
+	It can be calculated from the continuity equation \cref{eq_continuity} integrated over the whole device thickness:
+\begin{equation}
+				J_|acc|(t) = J(t) + qg \cdot (x_2-x_1) - J_|rec|(t)
+\end{equation}
+	where we considered a constant photogeneration homogeneous through the whole absorber layer.
+	Actually, it was implemented as the time derivative of the total electrons amount present in the device:
+	\begin{equation}
+	J_|acc|(t) = q\eval{\dv{\int_{x_0}^{x_3} n(x,t') \dd x}{t'}}_{t'=t}
+	\end{equation}
+	which gives the same information.
+
+	
+	
+	
+	
+	
+	
+	
 
 	\mysection[Simulated apparent capacitance]{Simulated apparent capacitance spectra characteristics}
 
@@ -369,7 +427,9 @@ Juarez-Perez2014
 		\end{figure}
 
 		\paragraph{Lack of low frequency plateau}
-		At low frequency we observe 
+		Going down to very low frequency we observe a plateau in the apparent capacitance, which experimentally is not usually observed \cite{Juarez-Perez2014} with a few exceptions \cite{Ebadi2019}.
+		The lack of a plateau has been interpreted by \authoryear{Jacobs2018} with the presence of more than one mobile ionic specie, which is quite likely as seen in \cpageref{intro_ionic_migration}.
+		Additionally, we hypothesized \cite{Moia2019} that this effect could arise from the different ionic mobility in perovskite when infiltrated in mesoporous layers; dispersive transport in disordered material regions \cite{Schwarz1998} where the mobility varies over time and position; or mostly diffusive transport of ions in the mesoporous layers which could be better described by a Warburg diffusion element in the equivalent electrical circuit.
 		
 		%\paragraph{Larger ionic capacitance}
 
@@ -377,6 +437,56 @@ Juarez-Perez2014
 		Both the simulation at open circuit with illumination or at dark with applied background voltage bias matches quite nicely the experimental data.
 		On the contrary, the simulation at short circuit with illumination showed a low frequency apparent capacitance increase of just 30 times from dark to 1~sun, while experimentally a giant capacitance is also observed.
 		This discrepancy is left unexplained, a closer look is needed in order to understand which physical phenomena is not implemented in the model or, more simply, which variable is far from the realistic value.
+		Indeed, when using the more advanced heterojunction version of Driftfusion, an increase of \num{\approx 50000} times has been observed between the dark and the \SI{1}{sun} case at low frequency (and no negative capacitance), which is closer to the experimental observation.
+
+
+
+\section{Further development}
+
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_nyquist_norm.png}
+				\subcaption{Illuminated, open circuit, Nyquist}\label{fig:impedance_heterojunction-oc-nyquist}
+			\end{subfigure}
+			%			\qquad
+			\bigskip
+			
+			\begin{subfigure}[t]{1.1\textwidth}
+				\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_cap.png}
+				\subcaption{Illuminated, open circuit, apparent capacitance}\label{fig:impedance_heterojunction-oc-cap}
+			\end{subfigure}
+			%			\bigskip
+			%			
+			%			\begin{subfigure}[t]{0.51\textwidth}
+			%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_nyquist_norm.png}
+			%				\subcaption{Dark, applied voltage, Nyquist}\label{fig:impedance_heterojunction-vapp-nyquist}
+			%			\end{subfigure}
+			%						\qquad
+			%			\begin{subfigure}[t]{0.51\textwidth}
+			%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_cap.png}
+			%				\subcaption{Dark, applied voltage, apparent capacitance}\label{fig:impedance_heterojunction-vapp-cap}
+			%			\end{subfigure}
+			\mycaption[Preliminary simulations of impedance on heterojunction model.]{The filled symbols indicate positive capacitance values, the hollow symbols represents negative capacitance which was changed in sign in order to be plotted on the same axis.}\label{fig:impedance_heterojunction}
+		}
+	}
+\end{figure}
+
+
+\paragraph{Heterojunction}
+The simulations shown here are all based on a p-i-n homojunction model, so a proper injection barrier could not actually be simulated and the negative capacitance has been obtained playing with extreme values of other parameters as aforementioned.
+An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{fig:impedance_heterojunction}.
+Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
+
+\paragraph{Implement other similar techniques}
+We refer with the names of ElectroAbsorbance or Stark spectroscopy to the absorbance variation caused by an oscillating applied voltage.
+This effect stems from the higher absorptivity of a material in presence of an electric field.
+This simulation has already been implemented but the code release is waiting for the publication of the related work; the description of the modules is already available in \cpageref{software_electroabsorbance}.
+Using some of the modules already implemented for impedance spectroscopy simulation, it should be easy to implement also other characterization techniques like Intensity-Modulated Photovoltage/Photocurrent Spectroscopy (IMVS, IMPS) \cite{Pockett2015,Guillen2014} and Mott-Schottky capacitance analysis \cite{Almora2016}.
+
 
 
 \section{Implementation of impedance spectroscopy}
@@ -695,52 +805,6 @@ Juarez-Perez2014
 >> fromISwaveResultsToTxt(ISwave_oc, 'ISwave_oc')
 \end{lstlisting}
 
-
-\section{Further development}
-
-
-	\begin{figure}
-		\makebox[\textwidth][c]{
-			\parbox{1.1\textwidth}{
-				\centering
-				\begin{subfigure}[t]{1.1\textwidth}
-					\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_nyquist_norm.png}
-					\subcaption{Illuminated, open circuit, Nyquist}\label{fig:impedance_heterojunction-oc-nyquist}
-				\end{subfigure}
-				%			\qquad
-				\bigskip
-
-				\begin{subfigure}[t]{1.1\textwidth}
-					\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_cap.png}
-					\subcaption{Illuminated, open circuit, apparent capacitance}\label{fig:impedance_heterojunction-oc-cap}
-				\end{subfigure}
-				%			\bigskip
-				%			
-				%			\begin{subfigure}[t]{0.51\textwidth}
-				%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_nyquist_norm.png}
-				%				\subcaption{Dark, applied voltage, Nyquist}\label{fig:impedance_heterojunction-vapp-nyquist}
-				%			\end{subfigure}
-				%						\qquad
-				%			\begin{subfigure}[t]{0.51\textwidth}
-				%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_cap.png}
-				%				\subcaption{Dark, applied voltage, apparent capacitance}\label{fig:impedance_heterojunction-vapp-cap}
-				%			\end{subfigure}
-				\mycaption[Preliminary simulations of impedance on heterojunction model.]{The filled symbols indicate positive capacitance values, the hollow symbols represents negative capacitance which was changed in sign in order to be plotted on the same axis.}\label{fig:impedance_heterojunction}
-			}
-		}
-	\end{figure}
-
-
-	\paragraph{Heterojunction}
-	The simulations shown here are all based on a p-i-n homojunction model, so a proper injection barrier could not actually be simulated and the negative capacitance has been obtained playing with extreme values of other parameters as aforementioned.
-	An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{fig:impedance_heterojunction}.
-	Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
-
-	\paragraph{Implement other similar techniques}
-	We refer with the names of ElectroAbsorbance or Stark spectroscopy to the absorbance variation caused by an oscillating applied voltage.
-	This effect stems from the higher absorptivity of a material in presence of an electric field.
-	This simulation has already been implemented but the code release is waiting for the publication of the related work; the description of the modules is already available in \cpageref{software_electroabsorbance}.
-	Using some of the modules already implemented for impedance spectroscopy simulation, it should be easy to implement also other characterization techniques like Intensity-Modulated Photovoltage/Photocurrent Spectroscopy (IMVS, IMPS) \cite{Pockett2015,Guillen2014} and Mott-Schottky capacitance analysis \cite{Almora2016}.
 
 
 

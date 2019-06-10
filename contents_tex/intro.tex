@@ -219,7 +219,7 @@ Concentration of particles is the main contribution to the internal chemical pot
 			\nabla^2 V_|E| = -\frac{\rho}{\epsilon_0 \epsilon_|r|}
 		\end{equation}
 		where $V_|E|$ is the electrostatic potential (defined as the energy for adding a positive elementary charge), $\rho$ is the net charge obtained summing up all the charged particles concentrations in the location, and $\epsilon_0 \epsilon_|r|$ is the permittivity.
-		For easing the understanding of the band diagram, the scheme in \cref{fig:poisson_and_depletion} can be handful.
+		For easing the understanding of the band diagram, the scheme in \cref{fig:homojunction-poisson_and_depletion} can be handful.
 		As can be seen, in the zones where a net charge is present (space charge layers, depletion layers in the represented case) the second derivative of the electrostatic potential or of the vacuum level depends on the sign of it.
 		A material with a different permittivity will need a different amount of net charge in order to have the same "curvature" of the vacuum level: the higher the permittivity, the more the charge needed for obtaining the same electrostatic potential profile.
 	
@@ -309,10 +309,11 @@ If the material layer is thinner than the Debye length, the electric field will 
 			}
 		\end{figure}
 
-		\paragraph{Continuity equations} The continuity equations have a very intuitive meaning: the concentration of a specie in a specific volume can increase due to generation $G$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
+		\paragraph{Continuity equation}
+		The continuity equation has a very intuitive meaning: the concentration of a specie in a specific volume can increase due to generation $G$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
 		This last contribution can be understood with the following example: a traffic light stops the cars flow and causes the increase of their concentration.
 		For electron concentration $n$:
-		\begin{equation}
+		\begin{equation}\label{eq_continuity}
 			\frac{\partial n_x}{\partial t} = \frac{1}{q}\nabla_x \cdot J_n + G_{n,x} - U_{n,x}
 		\end{equation}
 
@@ -575,7 +576,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	Frenkel defects are expected to constitute shallow or deep traps in the perovskite band gap while Schottky defects should not present energies inside the band gap \cite{Kim2014h,Yin2014,Buin2014,Du2015}.
 %	For a halide perovskite, when compared with an oxide perovskite where \ch{X} is oxygen, the formation of ionic defects is easier thanks to the lower charge of the ionic species which means a lower lattice energy.
 
-	\paragraph{Ionic migration}
+	\paragraph{Ionic migration}\label{intro_ionic_migration}
 	Ionic conductivity in halide perovskite materials has been pointed out more than 35 years ago \cite{Mizusaki1983,Yamada1995,Yamada1998}.
 	In \gls{mapi}, the presence of mobile ionic species has been directly observed from the slowly evolving work function or a lateral device using \gls{kpfm} \cite{Birkhold2018,Birkhold2018a}.
 	In a generic \ch{ABX3} perovskite, it has been shown that both the \ch{A} cation and the \ch{X} anion can migrate through the crystal \cite{SaifulIslam2000}.
