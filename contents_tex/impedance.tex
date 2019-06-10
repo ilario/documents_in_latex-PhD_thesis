@@ -60,9 +60,53 @@
 
 \section{Simulating impedance spectroscopy}
 
+	
+\afterpage{
+	\clearpage
+	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+	\begin{xltabular}[c]{1\linewidth}{@{} >{\hsize=1.6\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.8\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=1\hsize}Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Drift-diffusion simulation parameters.]{\textbf{Drift-diffusion simulation parameters.}
+			These parameters were used for all the data simulated with the homojunction model.
+			The meaning of each is described in detail in \authoryear{Calado2016}.
+			The 1 sun equivalent \gls{voc} resulting from this parameters set is \SI{0.931}{\V}, the resulting \gls{jsc} is \SI{20.3}{\mA\per\square\cm}.
+		}\label{table:impedance_parameters}\\[\belowcaptionskip]
+		Parameter name & Symbol & p-type & Intrinsic & n-type & Unit\\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		Parameter name & Symbol & p-type & Intrinsic & n-type & Unit \\ 
+		\hline
+		\endhead
+		\hline
+		\multicolumn{6}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		Layer thickness \rule[-2ex]{0pt}{4.5ex}&			\gls{symb:d}&			200&			500&			200&			\si{\nm}			 \\
+		Band gap \rule[-2ex]{0pt}{3.5ex}&	\gls{symb:Eg}&	1.6	&1.6&	1.6&	\si{\eV}\\
+		Built in voltage \rule[-2ex]{0pt}{3.5ex}&	\gls{symb:VBI}&	1.3	&1.3&	1.3&	\si{\V}\\
+		Relative dielectric constant \rule[-2ex]{0pt}{3.5ex}&	\gls{symb:epsilonr}&	20&	20&	20&	/ \\
+		Mobile ionic defect density \rule[-2ex]{0pt}{3.5ex}&	$N_|ion|$&	0&	\num{1e19}&	0&	\si{\per\cubic\cm}\\
+		Ion mobility \rule[-2ex]{0pt}{3.5ex}&	$\mu_|a|$&	/	&\num{1e-10}&	/&	\si{\square\cm\per\V\per\s}\\
+		Electron mobility \rule[-2ex]{0pt}{3.5ex}&	$\mu_|n|$	&0.02&	20&	20&	\si{\square\cm\per\V\per\s}\\
+		Hole mobility \rule[-2ex]{0pt}{3.5ex}&	$\mu_|p|$&	20&	20&	0.02&	\si{\square\cm\per\V\per\s}\\
+		Donor doping density \rule[-2ex]{0pt}{3.5ex}&	$N_|A|$&	\num{3e17}&	/& /&	\si{\per\cubic\cm}\\
+		Acceptor doping density \rule[-2ex]{0pt}{3.5ex}&	$N_|D|$&	/&	/&\num{3e17}	&	\si{\per\cubic\cm}\\
+		Effective density of states \rule[-2ex]{0pt}{3.5ex}& \gls{symb:nDOS}	&	\num{1e20}&\num{1e20}&\num{1e20}&	\si{\per\cubic\cm}\\
+		Band-to-band recombination rate coefficient \rule[-2ex]{0pt}{3.5ex}&	$k_|rad|$&\num{1e-12}	&\num{1e-12}&\num{1e-12}&	\si{\cubic\cm\per\s} \\
+		SRH trap energy \rule[-2ex]{0pt}{3.5ex}&	$E_|t|$&	$E_|CB|-0.8$& /&	$E_|CB|-0.8$&	\si{\eV}\\
+		SRH time constants \rule[-2ex]{0pt}{3.5ex}&\gls{symb:taunp}	&	\num{5e-10}&	/&	\num{5e-10}&	\si{\s}\\
+		Generation rate & \gls{symb:g}&	/&	\num{2.5e21}&	/&	\si{\per\cubic\cm\per\s}\\
+	\end{xltabular}
+}
+
 	\paragraph{Initial conditions}
-	The solution of the charge and electrostatic concentration profiles of the device under steady state operating conditions was determined using Driftfusion core functions to provide initial conditions for the simulated impedance spectroscopy.
-	Most importantly, the illumination intensity and the DC voltage $\bar V$ which are the usually explored parameters in each complete simulation.
+	The solution of the electrons, holes, ions density and electrostatic concentration profiles of the device under steady state operating conditions was determined using Driftfusion core functions and the parameters listed in \cref{table:impedance_parameters}.
+	This solution provided the initial conditions for the simulated impedance spectroscopy.
+	Most importantly, at this step we set the illumination intensity and the DC voltage $\bar V$, which usually are the explored parameters.
 
 	\paragraph{Applied voltage}
 	The impedance spectroscopy simulations were performed by applying an oscillating voltage $v$ superimposed on a background bias voltage $\bar V$ boundary condition:
@@ -146,7 +190,7 @@
 		V_|Eion|(t) = \int_{x_1}^{x_2} E_|ion|(x,t) \dd x
 		\end{equation}
 		where $x_2$ is the position of the perovskite\-/\gls{etm} interface.
-		As the voltage of the device does not vary, this electrostatic potential variation caused by the ionic movement will have to be compensated by an accumulation of free carriers in the contacts (we will ignore the free carriers in the intrinsic, which for the dark and unbiased case is low).
+		As the voltage of the device does not vary, this electrostatic potential variation caused by the ionic movement will have to be compensated by an accumulation of free carriers in the contacts (we will ignore the free carriers in the intrinsic, which for the dark and unbiased case has low density).
 		So the compensating potential $V_|Edisp|$ will be:
 				\begin{equation}
 				V_|Edisp|(t) = -V_|Eion|(t) = \frac{Q_|disp|(t) \cdot (p_2-p_1)}{\epsilon_0 \bar\epsilon_|r|}
@@ -181,15 +225,11 @@
 	\end{equation}
 	which gives the same information.
 
-	
-	
-	
-	
-	
-	
-	
 
 	\mysection[Simulated apparent capacitance]{Simulated apparent capacitance spectra characteristics}
+
+As we can see comparing \cref{fig:impedance-capacitance-oc,fig:impedance-capacitance-vapp}, when oscillating the voltage around \gls{voc} on an illuminated solution or around the same values for a dark solution, the result is very similar.
+This behaviour is also observed experimentally
 
 	\begin{figure}%impedance-capacitance
 		\makebox[\textwidth][c]{
@@ -212,17 +252,13 @@
 		}
 	\end{figure}
 
-	%\begin{figure}
-	%	\centering
-	%	\includegraphics[width=1.1\textwidth]{dd_capacitance/capacitance.pdf}
-	%	\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell at open circuit.]{}\label{fig:impedance-capacitance}
-	%\end{figure}
-
-	%\subsection{Very high frequency}
 
 
+	\subsection{Very high frequency}
+At frequencies above \SI{1e8}{\Hz} we can observe in the simulation
 
-	%\subsection{Mid frequency}
+
+	\subsection{Mid frequency}
 
 	\begin{figure}%impedance-accumulation
 		\centering
@@ -248,7 +284,7 @@
 		}
 	\end{figure}
 
-	%\subsection{Low frequency}
+	\subsection{Low frequency}
 
 	\begin{figure}%impedance-ionic
 		\makebox[\textwidth][c]{
@@ -273,11 +309,7 @@
 		}
 	\end{figure}
 
-	%\begin{figure}
-	%	\centering
-	%	\includegraphics[width=1.1\textwidth]{dd_capacitance/ionic.pdf}
-	%	\mycaption[Simulated ionic capacitance spectra of an illuminated perovskite solar cell.]{}\label{fig:impedance-ionic}
-	%\end{figure}
+
 
 	\paragraph{Dark case}
 	An feature at frequencies \SI{< 100}{\Hz} is often observed in impedance of perovskite solar cells in dark \cite{Pockett2015,Juarez-Perez2014}.
