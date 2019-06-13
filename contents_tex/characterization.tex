@@ -143,7 +143,7 @@
 	\end{SCfigure}
 
 	\paragraph{Scan speed}
-	The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly} (seldom reported in literature, like in figure~S3 of \cite{Du2018} or for different speeds in \cite{CorreaBaena2015,Tress2015} and simulated with drift-diffusion in \cite{Walter2018}).
+	The used sweep speed is \SI{500}{\mV\per\s}, which was arbitrarily chosen for avoiding bumps leading to currents higher than \gls{jsc}, like the one in \cref{fig:iv_ugly} (seldom reported in literature, like in figure~S3 of \cite{Du2018} or for different speeds in \cite{CorreaBaena2015,Tress2015,Unger2014} and simulated with drift-diffusion in \cite{Walter2018}).
 	Our arbitrary choice allowed us to make fair comparisons between devices, but the absolute values should be considered as approximations.
 	\begin{SCfigure}%[!hbtp]%
 		\centering
@@ -501,7 +501,7 @@
 			n_|CE| = C_|g| \cdot V + n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
 		\end{equation}
 
-		\paragraph{Geometric capacitance voltage dependency}
+		\paragraph{Geometric capacitance voltage dependency}\label{geometric_capacitance_and_voltage}
 		More exactly, $d$ is the distance between the regions where the opposed charges are getting accumulated, which is the space charge layers (usually depletion layers) in the contacts.
 		So this value can be somewhat wider than just the distance separating the two perovskite/contacts interfaces.
 		By consequence, $\epsilon_|r|$ should be considered as a thickness\hyp{}weighted mean of the relative permittivities of each material between the two accumulation zones.
@@ -826,7 +826,7 @@
 		\paragraph{At low background illumination -- fast life\hyp{}time plateau}
 		Both the fast and the slow component of bi\hyp{}exponential decays hit a maximum value (plateau) at very low light intensities.
 		Looking at the fast component, assigned to the rearrangement of the ionic profile, we usually observe a constant life\hyp{}time.
-		This points to a background light insensitive ionic rearrangement time constant, which implies a constant ionic mobility.
+		This suggests the presence of a background light insensitive ionic rearrangement time constant, which implies a light insensitive ionic mobility.
 		This should be further studied considering the report of illumination-dependent ionic mobility by Maier's group in \authoryear{Kim2018}.
 
 		\paragraph{At low background illumination -- slow life\hyp{}time plateau}
@@ -1183,9 +1183,10 @@
 	Repeating this on different alternating voltage frequencies, often from \SIrange{1e-2}{1e7}{\Hz}, the spectra of impedance can be obtained.
 	The impedance spectroscopy can be represented in various shapes: Nyquist plots where $-Z''$ is plotted against $Z'$, Bode plots of phase, $|Z|$, $Z''$, or $Z'$ are plotted against the frequency $\nu$ or, as a capacitance (or apparent capacitance, as we will see in \cref{ch:impedance}) defined as $\omega^{-1}\Im(Z^{-1})$.
 
-	\paragraph{Frequency domain}
-Thanks to Kramers-Kronig relation, from frequency domain techniques we should be able to extract the same information as from time-domain techniques, as the aforementioned ones.
-Nevertheless, frequency domain techniques are more convenient for observing one by one all the different processes happening in a solar cell device, working at their characteristic frequency.
+	\paragraph{Frequency\hyp{}domain}
+%Thanks to Kramers-Kronig relation, from frequency domain techniques we should be able to extract the same information as from time-domain techniques, as the aforementioned ones.
+The frequency\hyp{}domain results should be related to the time\hyp{}domain by the Fourier transform, so from frequency\hyp{}domain techniques we should be able to extract the same information as from time\hyp{}domain techniques, as the aforementioned ones.
+Nevertheless, frequency\hyp{}domain techniques are more convenient for observing one by one all the different processes happening in a solar cell device, working at their characteristic frequency.
 On the other hand this also implies a much longer measurement, for which the device stability is paramount.
 
 	\paragraph{Stability}

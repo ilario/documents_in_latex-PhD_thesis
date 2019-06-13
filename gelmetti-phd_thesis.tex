@@ -85,7 +85,7 @@
 	\usepackage{eso-pic} %background image on titlepage
 	\usepackage{transparent} %transparency for background image on titlepage
 	
-	\usepackage[format=plain, indention=-0.4cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
+	\usepackage[format=plain, indention=0cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
 	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}% to have also the short version printed, in bold
 
 	\usepackage[ragged, centerbody, rightcaption, wide]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
@@ -297,7 +297,8 @@ bottom=2cm%,
 
 
 	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
-\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto},width=0.6cm,eventxtindent=-2pt,oddtxtexdent=2pt]{thumbs}%
+%\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto},width=0.95cm,eventxtindent=2.6mm,oddtxtexdent=2.4mm]{thumbs}%
+\usepackage[distance={1cm},width=0.95cm,eventxtindent=2.6mm,oddtxtexdent=2.4mm]{thumbs}%
 
 % like lscape, implements landscape environment for horizontal pages with normal headers, but also specifies the orientation in the PDF file
 %\usepackage{pdflscape}
@@ -306,6 +307,8 @@ bottom=2cm%,
 
 	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes, and for \enquote
 \MakeOuterQuote{"}
+
+\usepackage{bookmark}
 
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
@@ -442,6 +445,17 @@ bottom=2cm%,
 	\author{Ilario Gelmetti}
 	\date{2019}
 	
+	\usepackage{hyperref}
+	\hypersetup{
+		pdftitle={Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells},
+%		pdfsubject={Your PDF subject},
+		pdfauthor={Ilario Gelmetti}
+%		pdfkeywords={Your PDF keywords}
+	}
+	
+	
+	
+	
 \begin{document}
 % I cite here the papers which should be numbered first	
 \nocite{Gelmetti2017,Moia2019,Gelmetti2019}
@@ -536,24 +550,24 @@ bottom=2cm%,
 % long non-acronym names and descriptions
 
 % molecules and materials
-\newglossaryentry{pcbm60}{name={\ch{PC60BM}}, description={\iupac{[6,|6]-phen|yl C\textsubscript{61} butyric acid meth|yl ester}}}
-\newglossaryentry{pcbm70}{name={\ch{PC70BM}}, description={\iupac{[6,|6]-phen|yl C\textsubscript{71} butyric acid meth|yl ester}}}
+\newglossaryentry{pcbm60}{name={PC\textsubscript{60}BM}, description={\iupac{[6,|6]-phen|yl C\textsubscript{61} butyric acid meth|yl ester}}}
+\newglossaryentry{pcbm70}{name={PC\textsubscript{70}BM}, description={\iupac{[6,|6]-phen|yl C\textsubscript{71} butyric acid meth|yl ester}}}
 \newglossaryentry{ptfe}{name={PTFE}, description={\iupac{poly|tetra|fluoro|ethyl|ene}}}
 \newglossaryentry{fto}{name={FTO}, description={fluorine tin oxide}}
 \newglossaryentry{ito}{name={ITO}, description={indium tin oxide}}
 \newglossaryentry{pedotpss}{name={PEDOT:PSS}, description={\iupac{poly\-(3,4-ethyl|ene|di|oxy|thio|phene) poly|(styr|ene|sulfon|ate)}}}
-\newglossaryentry{mai}{name={\ch{MAI}}, description={\iupac{methyl|ammonium iod|ide}}}
-\newglossaryentry{mabr}{name={\ch{MABr}}, description={\iupac{methyl|ammonium brom|ide}}}
-\newglossaryentry{fai}{name={\ch{FAI}}, description={\iupac{formam|idinium iod|ide}}}
+\newglossaryentry{mai}{name={MAI}, description={\iupac{methyl|ammonium iod|ide}}}
+\newglossaryentry{mabr}{name={MABr}, description={\iupac{methyl|ammonium brom|ide}}}
+\newglossaryentry{fai}{name={FAI}, description={\iupac{formam|idinium iod|ide}}}
 \newglossaryentry{dmso}{name={DMSO}, description={\iupac{di|methyl sulf|oxide}}}
 \newglossaryentry{dmf}{name={DMF}, description={\iupac{N,N-di|methyl|form|amide}}}
 \newglossaryentry{pes}{name={PES}, description={\iupac{poly|ether|sulf|one}}}
-\newglossaryentry{mapi}{name={\ch{MAPbI3}}, description={\iupac{methyl|ammonium lead iod|ide}}}
-\newglossaryentry{mapicl}{name={\ch{MAPbI_{3-x}Cl_x}}, description={\iupac{methyl|ammonium lead iod|ide chlor|ide}}}
-\newglossaryentry{famapbibr}{name={\ch{FAMAPbIBr}}, description={\iupac{formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
-\newglossaryentry{csfamapbibr}{name={\ch{CsFAMAPbIBr}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
-\newglossaryentry{csfamapbibr_complete}{name={\ch{Cs_{0.06}FAMA_{0.2}Pb_{1.3}I_{3.2}Br_{0.6}}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
-\newglossaryentry{litfsi}{name={\ch{LiTFSI}}, description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
+\newglossaryentry{mapi}{name={MAPbI\textsubscript{3}}, description={\iupac{methyl|ammonium lead iod|ide}}}
+\newglossaryentry{mapicl}{name={MAPbI\textsubscript{3-x}Cl\textsubscript{x}}, description={\iupac{methyl|ammonium lead iod|ide chlor|ide}}}
+\newglossaryentry{famapbibr}{name={FAMAPbIBr}, description={\iupac{formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
+\newglossaryentry{csfamapbibr}{name={CsFAMAPbIBr}, description={\iupac{cesium formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
+%\newglossaryentry{csfamapbibr_complete}{name={\ch{Cs_{0.06}FAMA_{0.2}Pb_{1.3}I_{3.2}Br_{0.6}}}, description={\iupac{cesium formam|idinium methyl|ammonium lead iod|ide brom|ide}}}
+\newglossaryentry{litfsi}{name={LiTFSI}, description={\iupac{bis|(tri|fluoro|methane)|sulfon|imide lithium salt}}}
 \newglossaryentry{spiro}{name={\iupac{spiro-OMeTAD}},description={\iupac{N^{2},|N^{2},|N^{2'},|N^{2'},|N^{7},|N^{7},|N^{7'},|N^{7'}-octa|kis|(4-meth|oxy|phenyl)|-9,|9'-spiro|bi|[9H-fluor|ene]|-2,2',7,7'-tetr|amine}}}
 \newglossaryentry{tae1}{name={TAE-1},description={\iupac{tetra|\{4-[N,N-(4,4'-di|meth|oxy|di|phen|yl|amino)]phen|yl\}|eth|ene}}}
 \newglossaryentry{tae3}{name={TAE-3},description={\iupac{3,|3',|6,|6'-tetra|kis[N,|N-bis|(4-meth|oxy|phen|yl)|amino]-9,|9'-bi|fluor|en|yl|id|ene}}}
@@ -632,8 +646,11 @@ bottom=2cm%,
 
 
 
-
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
+
 \listoffigures
 \listoftables
 %\lstlistoflistings
@@ -643,10 +660,12 @@ bottom=2cm%,
 %\renewcommand*{\glsmcols}{2}
 \printglossary[type=\acronymtype, title={Glossary, Acronyms, and Symbols}]
 
+\clearpage
+%\stopthumb
 
 \cleardoublepage \vspace*{12cm}
 \begin{flushright}
-	\large {\it Dedicata a So$\phi$a.}
+	 {\itshape \large Dedicata a So$\phi$a.}
 \end{flushright}
 
 %\newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
@@ -692,8 +711,8 @@ bottom=2cm%,
 
 \chapter{Introduction}\label{ch:intro}
 	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
-
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorone}
+	
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorone}
 
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
@@ -707,7 +726,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/intro/} }
 
 	\newpage
-%	\input{contents_tex/intro.tex}
+	\input{contents_tex/intro.tex}
 	\clearpage
 	\stopcontents[intro]
 
@@ -715,7 +734,7 @@ bottom=2cm%,
 \chaptermark{Experimental Methods}
 	\epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
 
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colortwo}
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colortwo}
 
 	\paragraph*{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
 	Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
@@ -732,7 +751,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/methods/} }
 
 	\newpage
-%	\input{contents_tex/methods.tex}
+	\input{contents_tex/methods.tex}
 	\clearpage
 	\stopcontents[methods]
 
@@ -740,7 +759,7 @@ bottom=2cm%,
 \chaptermark{Characterization Techniques}
 	\epigraph{\textit{\enquote{If I made it, I think everybody can do it.}}}
 
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorthree}
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorthree}
 
 
 	\paragraph*{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
@@ -760,7 +779,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/characterization/} }
 
 	\newpage
-%	\input{contents_tex/characterization.tex}
+	\input{contents_tex/characterization.tex}
 	\clearpage
 	\stopcontents[characterization]
 
@@ -768,7 +787,7 @@ bottom=2cm%,
 \chaptermark{Comparing HTM}
 	\epigraph{\textit{"It's so easy, can't you see the shift?"}}
 
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfour}
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorfour}
 
 	\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2019}: \fullcite{Gelmetti2019}.
 
@@ -788,7 +807,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/tae/} }
 
 	\newpage
-%	\input{contents_tex/tae.tex}
+	\input{contents_tex/tae.tex}
 	\clearpage
 	\stopcontents[tae]
 
@@ -796,7 +815,7 @@ bottom=2cm%,
 \chaptermark{Thickness of Layers}
 	\epigraph{\textit{"Let's change as little as possible"}}
 
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorfive}
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorfive}
 
 	\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
@@ -817,7 +836,7 @@ bottom=2cm%,
 	\graphicspath{ {./contents_img/thicknesses/} }
 
 	\newpage
-%	\input{contents_tex/thicknesses.tex}
+	\input{contents_tex/thicknesses.tex}
 	\clearpage
 	\stopcontents[thicknesses]
 
@@ -825,7 +844,7 @@ bottom=2cm%,
 \chaptermark{Impedance Sectroscopy}
 	\epigraph{\textit{"We don't see that plateau"}}
 
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorsix}
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorsix}
 
 	\paragraph*{Publication}
 	Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
@@ -855,7 +874,7 @@ bottom=2cm%,
 \chaptermark{Software Development}
 	\epigraph{\textit{\enquote{GIGO: Garbage In, Garbage Out}}}
 
-	\addthumb{\thechapter}{\LARGE{\textbf{\thechapter}}}{white}{colorseven}
+	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorseven}
 
 	\paragraph*{Publication}
 	The source code of software included in this chapter has been released and can be accessed online.
@@ -892,17 +911,26 @@ bottom=2cm%,
 	\backmatter
 		\EnableQuotes % I didn't understand why, but this command has to be present in some parts of the code
 
+
+\newpage\phantom{Ciao Mamma!}\cleardoublepage
+
 \chapter{Overall Conclusions}\label{ch:conclusions}
 	\input{contents_tex/conclusions.tex}
-	\clearpage
+	
+\newpage\phantom{Ciao Mamma!}\cleardoublepage
 
 	\printindex
 	
 	% for having a smaller font in bibliography (less pages) https://tex.stackexchange.com/a/1441/173645
 	\renewcommand*{\bibfont}{\small} 
+
+	\addthumb{\thechapter}{}{white}{coloreight}
 	
 	\printbibliography[heading=bibintoc]
-
+	
+	\clearpage
+	\stopthumb
+	
 	\cleardoublepage
 	\phantom{Ciao Mamma!}
 	\thispagestyle{empty} % nothing printed on the internal side of the back cover

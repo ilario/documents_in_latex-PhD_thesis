@@ -6,7 +6,7 @@
 		During my 3-month stay in Dr.\ Piers R.\ F.\ Barnes and Prof.\ Jenny Nelson groups in Imperial College London, I utilized and expanded a modelling software developed by Dr.\ Phil Calado, Dr.\ Mohammed Azzouzi, Benjamin Hilton, and Piers R.\ F.\ Barnes.
 		As the modelling software had already demonstrated a great descriptive power \cite{Belisle2017,Calado2016,Calado2019}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
 		The impedance spectroscopy simulation is not included here as it has been treated in \cref{ch:impedance}.
-		Driftfusion CITE AAAAAAAAAAAAAAUTHORS is a time resolved, one dimensional, drift\hyp{}diffusion modelling platform.
+		Driftfusion \cite{Calado2018a,Calado2016} is a time resolved, one dimensional, drift\hyp{}diffusion modelling platform.
 		It takes advantage of Matlab \texttt{pdepe} solver for partial differential equations with boundary conditions in time and one spatial dimension.
 		%Solve initial-boundary value problems for parabolic-elliptic PDEs in 1-D.
 		Currently, it can simulate the electrostatic potential, and the density of electrons, holes and one ionic specie at specified depths in a multi\hyp{}layered electronic device and at specified time points.
@@ -46,7 +46,7 @@ Uses analytical initial conditions and runs to equilibrium and steady state, obt
 
 \textit{Requires:} \texttt{pindrift}, \texttt{pinParams}, \texttt{stabilize}.
 
-%\textit{Required by:} 
+\textit{Required by:} \texttt{examples\_unit\_test}.
 
 		\paragraph{\texttt{verify\-Stabilization} -- Verifies if the provided solution has evolved until its steady state}\label{verifyStabilization}
 Checks if the solution reached a stabilized (\textsl{i.e.} steady state) status comparing the final time point with a manually specified time point. Beware that this can have false positives when the analysed solution had
@@ -70,7 +70,7 @@ Checks if the solution reached a stabilized (\textsl{i.e.} steady state) status 
 
 %\textit{Requires:} nothing.
 
-\textit{Required by:} 
+\textit{Required by:} \texttt{CE\_full\_exec}, \texttt{CE\_single\_exec}, \texttt{find\-Optim\-Voc}, \texttt{ISwave\_EA\_single\_exec}, \texttt{stabilize}, \texttt{TPVconst\_full\_exec}, \texttt{TPV\_single\_exec}.
 
 		\paragraph{\texttt{stabilize} -- Evolves a solution until its steady state}
 Simulates the solution increasing the maximum time until when steady state is reached. 
@@ -86,7 +86,7 @@ For all the simulations including transients, the stabilization of the starting 
 
 \textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
 
-\textit{Required by:} 
+\textit{Required by:} \texttt{CE\_full\_exec}, \texttt{change\-Light}, \texttt{equilibrate}, \texttt{equilibrate\_minimal}, \texttt{find\-Optim\-Voc}, \texttt{gen\-Int\-Structs\-Real\-Voc}, \texttt{gen\-Vapp\-Structs}, \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ISwave\_EA\_single\_exec}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{TPV\_single\_exec}.
 
 		\paragraph{\texttt{asymmetricize} -- Break a symmetrical solution}\label{asymmetricize}
 		Break a symmetrical solution (a symmetrical solution it's a repeated p-i-n-n-i-p stack, mainly used for simulating open circuit conditions, so that no boundary condition has to be set for the cathode) in two halves. Has the opposite use of the \texttt{symmetricize} function.
@@ -100,27 +100,31 @@ For all the simulations including transients, the stabilization of the starting 
 		     
 	\textit{Requires:} \texttt{pindrift}
 	
-	\textit{Required by:} 
+	\textit{Required by:} \texttt{CE\_full\_exec}, \texttt{gen\-Int\-Structs\-Real\-Voc}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
 
 		\paragraph{\texttt{change\-Light} -- Change the illumination intensity of a solution}
 		Generate solutions at a new light intensity.
+		
 		\textit{Inputs:} 1) a solution structure as created by \texttt{pindrift};
 		2) the requested light intensity, zero is not supported as it is
 		    much more robust to obtain a dark solution directly from equilibrate;
 		3) the initial stabilization time, can be zero for an automatic
 		     guess.
+		     
 		\textit{Outputs:} a solution structure at the new light intensity.
-		\textit{Requires:} \texttt{pindrift}, \texttt{stabilize}
-			\textit{Required by:} 
+		
+		\textit{Requires:} \texttt{pindrift}, \texttt{stabilize}.
+		
+			\textit{Required by:} \texttt{equilibrate\_minimal}, \texttt{gen\-Int\-Structs}.
 			
 		\paragraph{\texttt{gen\-Int\-Structs} -- Generates a list of solutions at various light intensities}\label{genIntStructs}
 Generates a cell containing structures of solutions at logarithmically spaced light intensities, starting from the one at lower light illumination. Can be used for both symmetrical (for obtaining open circuit solutions) or asymmetrical solutions.
 
-		\textit{Inputs:} 1) a solution struct as created by \texttt{pindrift} in dark conditions, or a logic false for not having the dark; 
+		\textit{Inputs:} 1) a solution structure as created by \texttt{pindrift} in dark conditions; 
 		2) highest requested illumination;
 		3) lowest requested illumination;
 		4) number of illumination requested between the lowest and the highest illumination points, including extrema, except dark;
-		5) logical, whether to include the dark solution in the output     structure
+		5) logical, whether to include the dark solution in the output structure
 		
 \textit{Outputs:} 1) a cell containing structures of solutions at various light
      intensities;
@@ -131,7 +135,7 @@ Generates a cell containing structures of solutions at logarithmically spaced li
  
 \textit{Requires:} \texttt{change\-Light}, \texttt{pindrift}, \texttt{pinana}.
 
-\textit{Required by:} 
+\textit{Required by:} \texttt{examples\_unit\_test}, \texttt{gen\-Int\-Structs\-Real\-Voc}.
 
 		\paragraph{\texttt{gen\-Vapp\-Structs} -- Generates a list of solutions at various applied voltages}\label{genVappStructs}
 Generates a cell containing asymmetric structures of solutions at various applied voltages.
@@ -145,7 +149,7 @@ Differently from \texttt{gen\-Int\-Structs} case, here the voltage array has to 
      
 \textit{Requires:} \texttt{pindrift}, \texttt{pinana}, \texttt{stabilize}.
 
-\textit{Required by:} 
+\textit{Required by:} \texttt{examples\_unit\_test}.
 
 		\paragraph{\texttt{find\-Optim\-Voc} -- Find the exact \gls{voc} minimizing the current output}
 Stabilize an asymmetric solution to the real open circuit voltage
@@ -169,7 +173,7 @@ For this reason, the search for an applied voltage that minimizes the residual c
 
 \textit{Requires:} \texttt{pindrift}, \texttt{pinana}, \texttt{stabilize}.
 
-\textit{Required by:} 
+\textit{Required by:} \texttt{gen\-Int\-Structs\-Real\-Voc}.
 
 		\paragraph{\texttt{gen\-Int\-Structs\-Real\-Voc} -- Generates a list of solutions at various light intensities ensuring open circuit}
 		Generates a cell containing structures of asymmetric solutions at various light intensities at an accurate \gls{voc}.
@@ -191,7 +195,7 @@ For this reason, the search for an applied voltage that minimizes the residual c
 		\textit{Requires:} \texttt{change\-Light}, \texttt{pindrift}, \texttt{gen\-Int\-Structs},
 		   \texttt{asymmetricize}, \texttt{find\-Optim\-Voc}, \texttt{stabilize}.
 		   
-		\textit{Required by:} 
+%		\textit{Required by:} 
 		
 		\paragraph{\texttt{fromSteadyStateStructToTxt} -- Exports stabilized solutions data to text for plotting externally}
 		Save the main data from a stabilized solution created by \texttt{pindrift} to text files, using a format easy to import with Origin (from OriginLab).
@@ -217,19 +221,8 @@ Plot free charges and ions densities, and energy levels over device thickness an
 %\textit{Requires:} 
 %\textit{Required by:} 
 
-		\paragraph{\texttt{examples\_unit\_test} -- Runs unit testing on all the implemented experiments}
-Runs various simulations in order to test the functioning of pindrift and many other implemented functions.
-Additionally it verifies that the results satisfies some basic checks.
- For profiling the time spent running each function run \texttt{profile on} before running the tests and \texttt{profile viewer} after.
- Using Matlab's Coverage Reports, the unused code can be easily spotted.
-
-%		\textit{Inputs:} 
-%\textit{Outputs:} 
-\textit{Requires:} \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ideality\_from\_Voc}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{equilibrate\_minimal}, \texttt{gen\-Int\-Structs}, \texttt{gen\-Vapp\-Structs}.
-%\textit{Required by:} 
-
 %	\subsection{Ideality Factor}
-			\paragraph{\texttt{ideality\_from\_Voc} -- Obtains ideality factor from voltage versus illumination intensity relation}\label{dd_ideality}
+			\paragraph{\texttt{ideality\_from\_Voc} -- Obtains ideality factor from voltage \textsl{versus} illumination intensity relation}\label{dd_ideality}
 	As explained in \cpageref{characterization_ideality}, the ideality factor can be obtained relating \gls{voc} to the light intensity.
 	%		 data of a device illuminated at various illumination intensities
 	
@@ -241,30 +234,216 @@ Additionally it verifies that the results satisfies some basic checks.
 	\textit{Outputs:} the numeric ideality factor.
 	
 	\textit{Requires:} \texttt{pinana}.
-	%\textit{Required by:} 
 	
+	\textit{Required by:} \texttt{examples\_unit\_test}.
 	
-		\paragraph{Obtains voltage dependent ideality factor from the stabilized current obtained at various voltages -- \texttt{ideality_from_dark_jVpoints}}
-A voltage dependent ideality factor can also be obtained from a current\hyp{}voltage sweep, or, for avoiding hysteresis, from the stabilized current at different applied voltages, in dark. 
+				\paragraph{\texttt{ideality\_from\_dark\_jVpoints} -- Obtains voltage dependent ideality factor from the stabilised current at different voltages}
+	A voltage dependent ideality factor can be obtained from a dark current\hyp{}voltage sweep (or stabilised points in the case of hysteretic devices) \cite{Honsberg2019}.
+	%		 data of a device illuminated at various illumination intensities
+	
+	\textit{Inputs:} 1) an asymmetric solution structure as created by \texttt{pindrift} in dark conditions;
+	2) the maximum voltage point;
+	3) the distance between voltage points.
+	
+	\textit{Outputs:} an array of ideality factor at different applied voltages.
+	
+	\textit{Requires:} \texttt{pindrift}, \texttt{pinana}, \texttt{stabilize}.
+	
+	\textit{Required by:} \texttt{examples\_unit\_test}.
+
 
 	\subsection{Charge Extraction}
 		Careful stabilization of illuminated solutions is crucial, especially for avoiding glitches appearing at high light illumination (minority charges accumulation at the edges of the symmetric solution).
-		\paragraph{\texttt{CE\_full\_analysis}}
-		\paragraph{\texttt{CE\_full\_exec}}
-		\paragraph{\texttt{CE\_full\_fit}}
-		\paragraph{\texttt{CE\_ISstep\_single\_analysis}}
-		\paragraph{\texttt{CE\_ISstep\_subtracting\_analysis}}
-		\paragraph{\texttt{CE\_single\_exec}}
+		\paragraph{\texttt{CE\_full\_analysis} -- Plot Charge Extraction in a range of background light intensity \textsl{versus} open circuit voltage}
+		
+		
+			\textit{Inputs:} a structure containing the most important results of the CE simulation.
+		
+%		\textit{Outputs:} .
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{CE\_full\_exec}.
+		
+		\paragraph{\texttt{CE\_full\_exec} -- Do Charge Extraction in a range of background light intensities}		
+		
+		\textit{Inputs:} 1) can be a cell structure containing structures at various background light intensities.
+			This can be generated using \texttt{gen\-Int\-Structs}.
+		    Otherwise it can be a single structure as created by \texttt{pindrift};
+		   2) logical, whether to graph the individual solutions and
+		     the overall graphics;
+		   3) logical, whether to assign in volatile base
+		     workspace the calculated solutions of single CE decays.
+		
+		\textit{Outputs:} a structure containing the most important results of the simulation.
+		
+		\textit{Requires:} \texttt{CE\_single\_exec}, \texttt{CE\_ISstep\_single\_analysis},   \texttt{CE\_ISstep\_subtracting\_analysis}, \texttt{CE\_full\_fit}, \texttt{CE\_full\_analysis},  \texttt{asymmetricize}, \texttt{pinana}.
+		
+%		\textit{Required by:} \texttt{}.
+		\paragraph{\texttt{CE\_full\_fit} -- Calculate geometric and chemical capacitance from CE data}		
+		
+		\textit{Inputs:} 1) an array containing the voltage drops which were
+		     imposed in the CE experiments. As usually the CE experiments goes from
+		     open circuit to short circuit, the voltage drop is equal to the \gls{voc};
+		   2) an array with the extracted charges from CE at various light
+		     intensities.
+		
+		\textit{Outputs:} an array with the values from the linear + exponential fit:
+		     linear gradient, exponential function linear factor, exponent.
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{CE\_full\_exec}.
+		
+		\paragraph{\texttt{CE\_ISstep\_single\_analysis} -- Calculate charge extracted by Charge Extraction integrating the current}		
+		
+		\textit{Inputs:} 1) a structure with a solution being perturbed by CE;
+		   2) original light intensity is needed in input as the solution provided
+		     in input for CE is in dark;
+		   3) logical, whether the residual current should
+		     be subtracted, usually false for CE;
+		   4) logical, whether to calculate the ionic contribution and graph the solution.
+		
+		\textit{Outputs:} 1) array of cumulative charge extracted at each time point;
+		2) index of the previous array indicating the end of the early extraction, time at which the electronic charge have been extracted but the ionic defects did not move yet.
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{CE\_full\_exec}.
+		
+		\paragraph{\texttt{CE\_ISstep\_subtracting\_analysis} -- Calculate the charge excess in device under illumination}
+			The carriers density profile in the illuminated steady state solution is subtracted from the profiles
+			 at all time points of the solution evolving during the charge extraction experiment.
+			 These profiles are integrated over the device thickness, obtaining a time resolved excess charge amount.
+			This is used as a reference for Charge Extraction.
+		
+		\textit{Inputs:} 1) structure of the stable solution before the CE experiment, to be used as a reference;
+		2) structure of the solution perturbed by CE.
+		
+		\textit{Outputs:} 1) array of excess charges in the whole device versus time;
+		2) array of excess charges in the intrinsic layer versus time.
+		
+%		\textit{Requires:} \texttt{}.
+		\textit{Required by:} \texttt{CE\_full\_exec}.
+		
+		\paragraph{\texttt{CE\_single\_exec} -- Do a single Charge Extraction experiment}		
+		
+		\textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pindrift};
+		2) a first guess for maximum time which should be enough for registering the full extraction.
+		
+		\textit{Outputs:} a structure with a solution evolving after the start of the CE experiment.
+		
+		\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
+		
+		\textit{Required by:} \texttt{CE\_full\_exec}.
 
 
 	\subsection{Transient PhotoVoltage}
 
-		\paragraph{\texttt{TPVconst\_full\_exec}}
-		\paragraph{\texttt{TPV\_full\_analysis}}
-		\paragraph{\texttt{TPV\_single\_analysis}}
-		\paragraph{\texttt{TPV\_single\_analysis\_noMultiStart}}
-		\paragraph{\texttt{TPV\_single\_exec}}
-		\paragraph{\texttt{TPVvariab\_full\_exec}}
+		\paragraph{\texttt{TPVconst\_full\_exec} -- Simulate Transient PhotoVoltage in a range of background light intensities without varying the pulse intensity}	
+The pulse intensity is tuned to be a small perturbation compared to the 1
+ sun background illumination, then the \gls{tpv} is simulated for all the
+ provided solutions without changing the chosen pulse intensity.
+ 
+		\textit{Inputs:} 1) can be a cell structure containing structures at various background
+		     light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
+		     Otherwise it can be a single structure as created by \texttt{pindrift};
+		   2) logical, whether to assign in volatile base
+		     workspace the calculated solutions of single \gls{tpv} decays.
+				
+		\textit{Outputs:} a structure containing the most important results of the simulation.
+		
+		\textit{Requires:} \texttt{TPV\_single\_exec}, \texttt{TPV\_single\_analysis}.
+		
+%		\textit{Required by:} \texttt{}.
+		
+		
+				\paragraph{\texttt{TPVvariab\_full\_exec} -- Simulate Transient PhotoVoltage in a range of background light intensities adapting the pulse intensity for each simulation}
+				For each of the provided solutions, the pulse intensity is tuned to be a small perturbation compared to the background illumination intensity, then the \gls{tpv} is simulated.
+				
+				\textit{Inputs:} 1) can be a cell structure containing structures at various background
+				light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
+				Otherwise it can be a single struct as created by \texttt{pindrift};
+				2) logical, whether to assign in volatile base
+				workspace the calculated solutions of single \gls{tpv} decays.
+				
+				\textit{Outputs:} a structure containing the most important results of the simulation.
+				
+				\textit{Requires:} \texttt{TPV\_single\_exec}, \texttt{TPV\_single\_analysis}.
+		
+
+		
+%		\textit{Required by:} \texttt{}.
+		
+		\paragraph{\texttt{TPV\_full\_analysis -- Plot TPV}
+			Both mono and bi exponential fitting results are plotted \textsl{versus} light-bias.
+			
+				\textit{Inputs:} a structure containing the most important results of the \gls{tpv} simulation.
+		
+%		\textit{Outputs:} .
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{TPVconst\_full\_exec}, \texttt{TPVvariab\_full\_exec}.
+		
+		\paragraph{\texttt{TPV\_single\_analysis} -- Fit voltage decays from single TPV solutions using MultiStart and do graphics}
+		Fit the voltage \textsl{versus} time profile of the provided perturbed solution with a mono\hyp{}exponential and a bi\hyp{}exponential formula.
+		Use Matlab's MultiStart from Global Optimization Toolbox in order to find the best bi\hyp{}exponential fitting avoiding local minima.
+		An initial guess from a previous fitting can be provided in input.
+		
+		\textit{Inputs:} 1) a structure with a solution being perturbed by a light pulse;
+		2) optional, initial guess for linear factor of fast decay of bi-exponential fit;
+		3) optional, initial guess for life-time of fast decay of bi-exponential fit;
+		4) optional, initial guess for linear factor of slow decay of bi-exponential fit;
+		5) optional, initial guess for life-time of slow decay of bi-exponential fit.
+		
+		\textit{Outputs:} 1) steady state voltage being present before the pulse;
+		   2) maximum voltage variation due to the pulse;
+		   3) linear factor of mono-exponential fit;
+		   4) life-time of mono-exponential fit;
+		   5) linear factor of fast decay of bi-exponential fit;
+		   6) life-time of fast decay of bi-exponential fit;
+		   7) linear factor of slow decay of bi-exponential fit;
+		   8) life-time of slow decay of bi-exponential fit.
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{TPVconst\_full\_exec}, \texttt{TPVvariab\_full\_exec}.
+		
+		\paragraph{\texttt{TPV\_single\_analysis\_noMultiStart} -- Fit voltage decays from single TPV solutions and do graphics}
+		Fit the voltage \textsl{versus} time profile of the provided perturbed solution with a mono\hyp{}exponential and a bi\hyp{}exponential formula.
+		Try various starting point for helping the convergence of bi\hyp{}exponential fitting.
+		An initial guess from a previous fitting can be provided in input.
+		
+		\textit{Inputs:} 1) a structure with a solution being perturbed by a light pulse;
+2) optional, initial guess for linear factor of fast decay of bi-exponential fit;
+3) optional, initial guess for life-time of fast decay of bi-exponential fit;
+4) optional, initial guess for linear factor of slow decay of bi-exponential fit;
+5) optional, initial guess for life-time of slow decay of bi-exponential fit.
+
+\textit{Outputs:} 1) steady state voltage being present before the pulse;
+2) maximum voltage variation due to the pulse;
+3) linear factor of mono-exponential fit;
+4) life-time of mono-exponential fit;
+5) linear factor of fast decay of bi-exponential fit;
+6) life-time of fast decay of bi-exponential fit;
+7) linear factor of slow decay of bi-exponential fit;
+8) life-time of slow decay of bi-exponential fit.
+		
+%		\textit{Required by:} \texttt{}.
+		
+		\paragraph{\texttt{TPV\_single\_exec} -- Perform a single TPV simulation}
+		
+		\textit{Inputs:} 1) a single symmetric (\textsl{i.e.} open circuit) structure as created by \texttt{pindrift};
+		2) a first guess for maximum time which should be enough for simulating the full decay, if zero is provided a value of \SI{1e-5}{\s} is used and no further exploration of the simulation time is performed (this is useful when we are just interested in the amount of voltage variation, rather than in the full decay);
+		3) intensity of the perturbing light pulse.
+		
+		\textit{Outputs:} a structure with a solution being perturbed by a light pulse.
+		
+		\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
+		
+		\textit{Required by:} \texttt{TPVconst\_full\_exec}, \texttt{TPVvariab\_full\_exec}.
+		
 
 		%
 		%
@@ -281,13 +460,105 @@ A voltage dependent ideality factor can also be obtained from a current\hyp{}vol
 			errors = more code\textsuperscript{2}\\
 			$e=mc^2$}
 
+The public release of these routines is waiting for the publication of the related work.
+We refer to ElectroAbsorption or Stark spectroscopy as the study of the dependency of the absorbance on the oscillating voltage applied on a complete device with semi\hyp{}transparent electrodes.
+We simulate the whole $p$-$i$-$n$ stack but consider the absorption just in the intrinsic layer.
+Clearly, the Stark effect has to be evaluated locally at any position through the perovskite layer.
+The attention has been focussed on the first and the second harmonic effects, respectively with the same and the double frequency as the applied voltage.
+
+The first harmonic component is driven by the product of the steady state electric field $E_|DC|(x)$ and the amplitude of the first harmonic of the oscillating electric field $|E_|AC||$ at each spatial point.
+The second harmonic component is related to the square of the oscillating electric field amplitude $|E_|AC|^2|$ at each spatial point.
 
 %		photo induced absorption stark spectroscopy on perovskite solar cells \cite{Roiati2014,Li2016}
 
-		\paragraph{\texttt{EA\_full\_analysis\_Efield}}
-		\paragraph{\texttt{EA\_full\_analysis\_phase}}
-		\paragraph{\texttt{EA\_full\_exec}}
-		\paragraph{\texttt{EA\_single\_analysis}}
+		\paragraph{\texttt{EA\_full\_analysis\_Efield} -- Plot electric field amplitude from ElectroAbsorption in a range of background light intensities or applied DC voltages}
+		The amplitude of the spatially averaged electric field first harmonic $(x_2-x_1)^-1 \int_{x_1}{x_2}E_|DC|(x) \cdot E_|AC|(x) \dd x$ and second harmonic $(x_2-x_1)^-1 \int_{x_1}{x_2} E_|AC|^2(x) \dd x$ are plotted \textsl{versus} the applied voltage frequency.
+		
+				\textit{Inputs:} a structure containing the most important results of the EA simulation.
+		
+%		\textit{Outputs:} .
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{EA\_full\_exec}.
+		
+		
+		\paragraph{\texttt{EA\_full\_analysis\_phase} -- Plot phase Bode plots from EA in a range of background light intensities or applied DC voltages}
+		Plots the first and second harmonic phase shift with regards to the applied voltage.
+		
+		\textit{Inputs:} a structure containing the most important results of the EA simulation.
+		
+%		\textit{Outputs:} .
+		
+%		\textit{Requires:} \texttt{}.
+		
+		\textit{Required by:} \texttt{EA\_full\_exec}.
+		
+		\paragraph{\texttt{EA\_full\_exec} -- Perform ElectroAbsorption simulation on all the provided solutions}
+		Similarly to the impedance simulation performed with \texttt{ISwave\_full\_exec}, this routine applies an oscillating voltage on all the provided solutions.
+		One relevant difference is the fact that the current calculation is disabled, making the analysis faster.
+If Matlab's Parallel Computing Toolbox is available, this scripts runs in parallel on all the available physical CPU cores, otherwise it just runs on one core.
+		
+		\textit{Inputs:} 1) can be a cell structure containing structures at various background
+		     light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
+		     Otherwise it can be a single structure as created by \texttt{pindrift};
+		   2) higher frequency limit;
+		   3) lower frequency limit;
+		   4) number of frequency points to simulate;
+		   5) voltage oscillation amplitude in volts, one mV should be enough;
+		   6) logical, after stabilization sets the mobility of
+		     ionic defects to zero;
+		   7) logical, whether to graph the individual solutions and
+		     the overall graphics.
+		
+		\textit{Outputs:} a structure containing the most important results of the simulation.
+		
+		\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
+			  \texttt{EA\_single\_analysis}, \texttt{EA\_full\_analysis\_phase}, \texttt{pinana}, \texttt{EA\_full\_analysis\_Efield}.
+		
+%		\textit{Required by:} \texttt{}.
+		
+		\paragraph{\texttt{EA\_single\_analysis} -- Calculate ElectroAbsorbance and phase}
+		The first and second harmonics are locally calculated and averaged over the device thickness.
+		
+		\textit{Inputs:} 1) a structure where a solution has been perturbed by an
+		     oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
+		   2) logical, when true graphics does not get created, useful when
+		     launched under parallelization (where graphics does not work anyway);
+		   3) logical, whether to fit the position resolved data;
+		   4) logical, get phase via demodulation instead of using a fitting;
+		   5) string, set the directory where to save \texttt{.fig} and \texttt{.png}
+		     image files for second harmonic versus position.
+		     To save in the current directory set the dot directory \texttt{"."}.
+		     To disable saving set \texttt{"missing"} value.
+		
+		\textit{Outputs:} 1) an array of bias, amplitude and phase of the first
+		     harmonic;
+		   2) a matrix of bias, amplitude and phase of the first
+		     harmonic, each column is a space point;
+		   3) an array of bias, amplitude and phase of the first
+		     harmonic for ionic profile;
+		   4) a matrix of bias, amplitude and phase of the first
+		     harmonic for ionic profile, each column is a space point;
+		   5) an array of bias, amplitude and phase of the second
+		     harmonic;
+		   6) a matrix of bias, amplitude and phase of the second
+		     harmonic, each column is a space point;
+		   7) an array of bias, amplitude and phase of the second
+		     harmonic for ionic profile;
+		   8) a matrix of bias, amplitude and phase of the second
+		     harmonic for ionic profile, each column is a space point;
+		   9) the value of the average squared amplitude of the
+		     AC electric field. It would be identical to the amplitude of the
+		     second harmonic if the contributions from each spatial point was in
+		     phase;
+		   10) a matrix of bias, amplitude and phase of the AC electric
+		     field, each column is a space point.
+		
+		\textit{Requires:} \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}.
+		
+%		\textit{Required by:} \texttt{}.
+		
 
 
 		\subsection{Techniques Which Could Be Implemented}

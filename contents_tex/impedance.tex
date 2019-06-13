@@ -106,16 +106,16 @@
 	\paragraph{Initial conditions}
 	The solution of the electrons, holes, ions density and electrostatic concentration profiles of the device under steady state operating conditions was determined using Driftfusion core functions and the parameters listed in \cref{table:impedance_parameters}.
 	This solution provided the initial conditions for the simulated impedance spectroscopy.
-	Most importantly, at this step we set the illumination intensity and the DC voltage $\bar V$, which usually are the explored parameters.
+	Most importantly, at this step we set the illumination intensity and the DC voltage $V_|DC|$, which usually are the explored parameters.
 
 	\paragraph{Applied voltage}
-	The impedance spectroscopy simulations were performed by applying an oscillating voltage $v$ superimposed on a background bias voltage $\bar V$ boundary condition:
+	The impedance spectroscopy simulations were performed by applying an oscillating voltage $v$ superimposed on a background bias voltage $V_|DC|$ boundary condition:
 
 	\begin{equation}
-		V = \bar V + v(t) = \bar V + v_|max| \sin(\omega t)
+		V = V_|DC| + v(t) = V_|DC| + v_|max| \sin(\omega t)
 	\end{equation}
 
-	$\bar V$ was set equal to the steady state voltage of the provided input solution (\textsl{e.g.} \gls{voc} for the simulations at open circuit).
+	$V_|DC|$ was set equal to the steady state voltage of the provided input solution (\textsl{e.g.} \gls{voc} for the simulations at open circuit).
 	Usually, a $v_|max|$ of \SI{2}{\mV} is employed.
 	This value is much smaller than the experimentally used one but very similar results are obtained when using larger perturbations (simulations with a $v_|max|$ of \SI{200}{\mV} are mentioned in \cpageref{impedance-large_perturbations}).
 	The small value allowed me to obtain a computationally fast simulation without being affected by too much numerical noise.
@@ -123,7 +123,7 @@
 	\paragraph{Position and time grids}
 	In order to deal with the high gradients at the interfaces, a linear spatial mesh was used with a spacing of \SI{0.55}{\nm} within the approximate depletion regions of the device and \SI{2.54}{\nm} elsewhere.
 	Even if the \texttt{pdepe} solver utilises an internal time grid, it outputs the data at the requested times array.
-	All the stabilizations have been performed on a logarithmic time grid (\texttt{tmesh\_type}$=2$ in \texttt{meshgen_t}) while all the oscillating voltage simulations have been performed on a linear time grid (\texttt{tmesh\_type}$=1$ in \texttt{meshgen_t}).
+	All the stabilizations have been performed on a logarithmic time grid (\texttt{tmesh\_type}=2 in \texttt{meshgen_t}) while all the oscillating voltage simulations have been performed on a linear time grid (\texttt{tmesh\_type}=1 in \texttt{meshgen_t}).
 	For the impedance simulations, 20 complete periods are simulated with 40 time points for each period.
 
 	\paragraph{Oscillating stabilization}
@@ -159,9 +159,8 @@
 	\end{equation}
 
 	where $m$ is the number of periods, $t_0$ is the start of the integration time, $\sin(\omega t)$ is the normalised voltage profile, and $\cos(\omega t)$ is the \SI{90}{\degree} shifted one.
-	Actually, for avoiding numerical problems (\texttt{e.g.} values close to the double limit) the current profile constant bias is subtracted and the result is normalised.
-	Amplitude $j_|max|$ and
-	phase $\theta$ are then given via:
+	Actually, for avoiding numerical problems (\textsl{e.g.} values close to the single\hyp{}precision accuracy) the current profile constant bias is subtracted and the result is normalised.
+	Amplitude $j_|max|$ and current phase $\theta$ (which is the same as the impedance phase but with the opposite sign) are then given via:
 
 	\begin{equation}
 		j_|max| = \sqrt{X^2 + Y^2}
@@ -171,12 +170,24 @@
 		\theta = \arctan(\frac{Y}{X})
 	\end{equation}
 	allowing the complex impedance to be determined \textsl{via} $Z = v_|max| / j_|max| \exp(-\mathrm{i}\theta)$.
-	The amplitude and phase
-	obtained this way were confirmed by fitting j(t) with a sinusoidal function.
+	The amplitude and phase	obtained this way were confirmed by fitting $j(t)$ with a sinusoidal function.
 	
 	
+	\paragraph{Calculation of apparent capacitance}
+	The apparent capacitance $C(\omega,\phi,V_|DC|)$ can be calculated in a few different ways, maybe the most intuitive is from the amplitude of the out\hyp{}of\hyp{}phase (quadrature) component of the current $Y$:
+	\begin{equation}\label{eq:impedance_cap_1}
+		C = \frac{Y}{2 v_|max| \omega}
+	\end{equation}
+	The commonly reported formula is \cite{Moia2019,Guerrero2016}:
+		\begin{equation}
+	C = \frac{\Im(Z^{-1})}{\omega}
+	\end{equation}
+	But it was finally implemented as:
+			\begin{equation}
+	C = \frac{\sin(\theta)}{\omega |Z|}
+	\end{equation}
 
-	\paragraph{Calculation of Ionic Displacement Current}\label{displacement_current_ionic}
+	\paragraph{Calculation of ionic displacement current}\label{displacement_current_ionic}
 	Various approaches have been tested in order to estimate the ionic migration contribution to the apparent capacitance.
 	The most meaningful method is the calculation of the displacement current (see \cpageref{intro_displacement_current}) induced in the contacts by the changes in the ionic profile.
 	The ionic accumulation at the interfaces will give a contribution $E_|ion|$ to the electric field inside the perovskite material.
@@ -203,7 +214,7 @@
 						which is equivalent to the expression derived in \cpageref{intro_displacement_current} if we consider that $V_|Eion|(t)/(x_2-x_1)$ is the average electric field in the perovskite due to the ionic accumulation.
 %	separately from the field due to the other kind of charges 
 	
-	\paragraph{Calculation of Recombination Current}
+	\paragraph{Calculation of recombination current}\label{impedance_recombination}
 	The recombination current is the flow of charges getting annihilated due to the implemented recombination processes.
 	It is evaluated simply calculating the radiative and the trap assisted recombination flux from the electrons and holes concentration in each position and integrating this over the whole device thickness.
 	\begin{equation}
@@ -211,7 +222,7 @@
 	\end{equation}
 	where $x_0$ and $x_3$ are the position of the beginning and the end of the simulated device.
 	
-	\paragraph{Calculation of Accumulation Current}
+	\paragraph{Calculation of accumulation current}\label{impedance_accumulation}
 	We refer with "accumulation current" to what is commonly considered the capacitive current: a flow of particles accumulating in the device rather than crossing it. 
 	As the aforementioned displacement current due to ionic movement is contributing to the accumulation of charges, it will also be included in this accumulation current.
 	It can be calculated from the continuity equation \cref{eq_continuity} integrated over the whole device thickness:
@@ -229,7 +240,11 @@
 	\mysection[Simulated apparent capacitance]{Simulated apparent capacitance spectra characteristics}
 
 As we can see comparing \cref{fig:impedance-capacitance-oc,fig:impedance-capacitance-vapp}, when oscillating the voltage around \gls{voc} on an illuminated solution or around the same values for a dark solution, the result is very similar.
-This behaviour is also observed experimentally
+This behaviour is also observed experimentally, as reported in \cref{fig:experimental-vapp}.
+All the parameters reported in \cref{table:impedance_parameters} are a very rough estimation of the reality.
+Because of this, some results can greatly diverge from the experimentally observed ones, for example all the time scales are expected to be incorrect.
+What we were looking for, was a qualitative description of the perovskite solar cell behaviour.
+In the newest versions of heterojunction Driftfusion, a better match to the actual solar cell characteristics is sought.
 
 	\begin{figure}%impedance-capacitance
 		\makebox[\textwidth][c]{
@@ -247,6 +262,8 @@ This behaviour is also observed experimentally
 				\mycaption[Simulated apparent capacitance spectra of an illuminated perovskite solar cell at open circuit and dark applied voltage.]{
 					In (\textbf{a}) the simulation oscillates the voltage around the \gls{voc} value induced by different light intensities at open circuit (light bias).
 					In (\textbf{b}) the voltages from (\textbf{a}) are applied as constant voltage biases around which the applied voltage oscillates, in dark.
+					Due to some unidentified numerical, in the dark case at \SI{0}{\V} there is a residual current.
+					For eliminating this current, a voltage bias of \SI{0.0068}{V} has been applied to the dark solution in (\textbf{b}).
 				}\label{fig:impedance-capacitance}
 			}
 		}
@@ -255,90 +272,150 @@ This behaviour is also observed experimentally
 
 
 	\subsection{Very high frequency}
-At frequencies above \SI{1e8}{\Hz} we can observe in the simulation
+	\paragraph{Dark case}
+In the simulation at frequencies above \SI{1e7}{\Hz} in dark, the voltage change is too fast for the charges to migrate from the electrodes (in our simulation, the boundaries) to the depletion layers in the contacts.
+This can be seen in \cref{fig:impedance-delta_charge-highFreq} from the presence of net charge out of the depletion layers, at the electrodes\-/contacts interface (left and right simulation boundaries).
+This happens because the oscillation period is shorter than the \gls{rctime} composed by the geometric capacitance of the device (a parallel plate capacitor having the imaginary plates at the depletion layers and the perovskite layer as dielectric) and the transport resistance in the \gls{htm} and \gls{etm} contacts.
+We can see this as a non~\SI{90}{\degree} phase in the extremely high frequency region of \cref{fig:impedance-ionic-phase} and as a decrease of the apparent capacitance in \cref{fig:impedance-capacitance-oc}.
+Experimentally, this is observed some times but lies close to the instrumental frequency limit (usually \SI{1e6}{\Hz}).
 
+	\paragraph{Illuminated case}
+	Looking at the phase in the high frequency region for \SI{1}{sun} illuminated case in \cref{fig:impedance-ionic-phase}, we can see a trend similar to the one observed for the dark case.
+	One small difference is represented by a bump at \SI{1e8}{\Hz}, representing the characteristic time for the movement of the free charges in the perovskite layer.
+	At frequencies lower than this point, the electrons and holes in the perovskite layer contribute to the screening of the electric field.
+
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.35\textwidth}
+				\includegraphics[scale=0.2]{delta_charge/delta_charge-highFreq-crop.pdf}
+				\subcaption{Dark, high freq.}\label{fig:impedance-delta_charge-highFreq}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.29\textwidth}
+				\includegraphics[scale=0.2]{delta_charge/delta_charge-midFreq_dark-crop.pdf}
+				\subcaption{Dark, mid freq.}\label{fig:impedance-delta_charge-midFreq_dark}
+			\end{subfigure}
+\qquad
+			\begin{subfigure}[t]{0.29\textwidth}
+				\includegraphics[scale=0.2]{delta_charge/delta_charge-midFreq_1sun-crop.pdf}
+				\subcaption{1 sun, mid freq.}\label{fig:impedance-delta_charge-midFreq_1sun}
+			\end{subfigure}
+			
+			\mycaption[Net charge profile variation in a period of oscillating voltage at high and mid frequencies.]{
+				A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) homojunction device is simulated.
+				The space charge layers in the device (\textsl{e.g.} depletion layers in the contacts) have a net charge (unbalanced positive and negative charge densities).
+			The net charge profile is obtained with $\rho(x,t) = -n(x,t) + p(x,t) + a(x,t) + n_|stat|(x)$ where $n$, $p$, and $a$ are the electrons, holes, and ions density profiles and $n_|stat|$ are the fixed charges profile, including the doping in the contacts and the fixed counter ions in the perovskite layer.
+			The represented net charge variation is obtained as $\Delta \rho (x,t) = \rho(x,t) - \rho(x,0)$.
+			The green line indicates the additional net charge when the oscillating voltage is at its maximum, while the orange line indicates the situation at the voltage minimum.
+			In (\textbf{a}) the device is in dark and the voltage oscillates at \SI{1e9}{\Hz}; in (\textbf{b}) it is also in dark but the frequency is lower: \SI{1e6}{\Hz}; in (\textbf{c}) the frequency is also \SI{1e6}{\Hz} but the device is at \SI{1}{sun} illumination and at open circuit conditions.
+		}\label{fig:impedance-delta_charge}
+		}
+	}
+\end{figure}
 
 	\subsection{Mid frequency}
+	At mid frequencies, approximatively from \SIrange{1e3}{1e7}{\Hz}, a plateau can be observed in the apparent capacitance.
+	In this region, the frequency is slow enough for the contacts' depletion layers population/depopulation and for the migration of the free carriers in the perovskite layer, as represented in \cref{fig:impedance-delta_charge-midFreq_dark}.
+	
+	\paragraph{Dark case}
+	For the dark case, the observed capacitance of \SI{2.83e-8}{\farad\per\square\cm} is just the geometric capacitance of the device.
+	As explained in \cpageref{geometric_capacitance_and_voltage}, the parallel plate capacitor giving rise to this geometric capacitance has an inter plate distance slightly larger than the perovskite thickness (\SI{500}{\nm}).
+	The correct position of this imaginary plate is indeed in the contact's depletion layer, more precisely where the charge concentration varies when applying the oscillating voltage.
+	This distance can be estimated from the distance of the peaks in \cref{fig:impedance-delta_charge-midFreq_dark} as \SI{625}{\nm}.
+	From this and from the materials' permittivity (\gls{symb:epsilonr} $20$ for all the layers, see \cref{table:impedance_parameters}) we can predict a geometric capacitance of \SI{2.83e-8}{\farad\per\square\cm} which is in accordion with the value obtained from the impedance.
+	
+%	electric constant =
+%	8.85418782 × 10-12 m-3 kg-1 s4 A2
+
+		\paragraph{Illuminated case}
+		As can be seen in \cref{fig:impedance-accumulation}, with the illumination, the apparent capacitance of the mid frequency plateau increases up to \SI{7.60e-8}{\farad\per\square\cm} at \SI{1}{sun}.
+		This is caused by the large amount of free carriers in the perovskite due to the illumination (or due to the voltage bias for the dark case reported in \cref{fig:impedance-capacitance-vapp}).
+		As shown in \cref{fig:impedance-delta_charge-midFreq_1sun}, the free carriers drift inside of the perovskite layer causing a dipole.
+		This partially screens the electric field allowing the device to accumulate more charges and effectively increasing its capacitance.
+		From the parallel plate capacitor model point of view, these charges in the dielectric layer effectively increase its permittivity.
 
 	\begin{figure}%impedance-accumulation
 		\centering
-		\includegraphics[width=1.1\textwidth]{dd_capacitance/accumulation.pdf}
-		\mycaption[Simulated accumulation capacitance spectra compared with capacitance due to charge accumulation.]{}\label{fig:impedance-accumulation}
+		\includegraphics[width=1\textwidth]{dd_capacitance/accumulation2.pdf}
+		\mycaption[Simulated accumulation capacitance spectra compared with capacitance due to charge accumulation.]{
+		Solid lines with dot markers represent the apparent capacitance, dash dotted lines with plus markers represent the capacitance calculated from the accumulation current calculated as explained in \cpageref{impedance_accumulation}.
+		For the dark case, the apparent and the accumulation capacitances correspond at any frequency.
+		With illumination, the high and mid frequency regions matches while the apparent capacitance is much larger for the low frequencies.
+	}\label{fig:impedance-accumulation}
 	\end{figure}
 
-	\begin{figure}%cap_scheme_hi_low_freq
+
+
+	\subsection{Low frequency}
+	
+		\begin{figure}%cap_scheme_hi_low_freq
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}\centering
-					\includegraphics[width=0.8\textwidth]{cap_scheme_hi_low_freq/capacitance_no_ions.png}
+					\includegraphics[width=0.7\textwidth]{cap_scheme_hi_low_freq/capacitance_no_ions.png}
 					\subcaption{Capacitance at mid frequencies}\label{fig:cap_scheme_hi_freq}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}\centering
-					\includegraphics[width=0.8\textwidth]{cap_scheme_hi_low_freq/capacitance_with_ions.png}
+					\includegraphics[width=0.7\textwidth]{cap_scheme_hi_low_freq/capacitance_with_ions.png}
 					\subcaption{Capacitance at low frequencies}\label{fig:cap_scheme_low_freq}
 				\end{subfigure}
-				\mycaption[Capacitance representation with or without mobile ions.]{}\label{fig:cap_scheme_hi_low_freq}
+				\mycaption[Capacitance representation with or without mobile ions.]{
+				The area in pink indicates the \gls{htm} and the one in blue the \gls{etm}.
+				In (\textbf{a}) the geometric capacitance observable at mid frequencies is represented, where the charges accumulate in the contacts close to the perovskite interface.
+				In (\textbf{b}) the ionic accumulation observable at low frequencies is represented as two additional capacitor plates and the ionic transport as a resistance between them.
+			}\label{fig:cap_scheme_hi_low_freq}
 			}
 		}
 	\end{figure}
 
-	\subsection{Low frequency}
 
-	\begin{figure}%impedance-ionic
-		\makebox[\textwidth][c]{
-			\parbox{1.1\textwidth}{
-				\centering
-				\begin{subfigure}[t]{1.1\textwidth}
-					\includegraphics[width=1.05\textwidth]{dd_phase/phase.pdf}
-					\subcaption{Ionic displacement current phase}\label{fig:impedance-ionic-phase}
-				\end{subfigure}
-				\bigskip
-
-				\begin{subfigure}[t]{1.1\textwidth}
-					\includegraphics[width=1.05\textwidth]{dd_capacitance/ionic.pdf}
-					\subcaption{Ionic displacement current capacitance}\label{fig:impedance-ionic-capacitance}
-				\end{subfigure}
-
-				\mycaption[Simulated apparent capacitance and phase spectra compared with capacitance due to ionic migration.]{
-					In (\textbf{a}) the phase of the impedance (solid lines, it is the same as the oscillating current phase but with the opposite sign) is plotted and compared with the phase of the ionic current (dashed lines, changed of sign for easing the comparison).
-					In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out of phase ionic current (dashed lines).
-				}\label{fig:impedance-ionic}
-			}
+\begin{figure}%impedance-ionic
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1.1\textwidth}\centering
+				\includegraphics[width=0.9\textwidth]{dd_phase/phase.pdf}
+				\subcaption{Ionic displacement current phase}\label{fig:impedance-ionic-phase}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{1.1\textwidth}\centering
+				\includegraphics[width=0.9\textwidth]{dd_capacitance/ionic.pdf}
+				\subcaption{Ionic displacement current capacitance}\label{fig:impedance-ionic-capacitance}
+			\end{subfigure}
+			
+			\mycaption[Simulated apparent capacitance and phase spectra compared with capacitance due to ionic migration.]{
+				In (\textbf{a}) the phase of the impedance (solid lines, it is the same as the oscillating current phase but with the opposite sign) is plotted and compared with the phase of the ionic current (dashed lines, changed of sign for easing the comparison).
+				In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out\hyp{}of\hyp{}phase ionic current (dashed lines).
+			}\label{fig:impedance-ionic}
 		}
-	\end{figure}
+	}
+\end{figure}
+
+
+	Up to now, we observed the charging and discharging of a geometric capacitance with the charge accumulation in the contacts and, in some cases, in the perovskite layer.
+	This is represented by the capacitor in \cref{fig:cap_scheme_hi_freq}.
+	We did not consider yet the ionic motion as at mid and high frequencies it was effectively frozen: the slow ions did not have time to migrate.
+	The activation of the ionic movement can be seen in the phase of ionic displacement current represented in \cref{fig:impedance-ionic-phase}.
+	As we can see, once the ionic migration is active, the related current is purely capacitive (\SI{+90}{\degree}).
+	This is expected as the ionic species can just accumulate or deplete at the interfaces of the perovskite layer with the contacts (simulations where ions could penetrate in the contacts have been performed but will not be reported in this thesis) screening the electric field, like in the capacitor represented in \cref{fig:cap_scheme_low_freq}.
+	
 
 
 
 	\paragraph{Dark case}
-	An feature at frequencies \SI{< 100}{\Hz} is often observed in impedance of perovskite solar cells in dark \cite{Pockett2015,Juarez-Perez2014}.
+	Experimentally, a feature at frequencies \SI{< 100}{\Hz} is often observed in impedance of perovskite solar cells in dark \cite{Pockett2015,Juarez-Perez2014,Kim2015c,Guerrero2016,Zarazua2016}.
 	This feature has been interpreted as a ionic influence on the dark capacitance by \authoryear{Yang2015e}.
+	Indeed, calculating an apparent capacitance value from the ionic displacement current (see \cpageref{displacement_current_ionic,intro_displacement_current}) we can see that it matches the apparent capacitance value in dark, reported in \cref{fig:impedance-ionic-capacitance}.
+	Differently from the geometric capacitance observed at mid frequencies, this low frequency capacitance value is independent from the perovskite layer thickness, as it relates just to the interfacial region, neglecting any contribution from the perovskite bulk.
+	In case the ionic capacitance is smaller than the geometric capacitance (\textsl{e.g.} if the ionic concentration is not high enough for screening the electric field or with a very thin device), no bump can be seen and just the geometric capacitance is observed at low frequency.
+	As a concept, this ionic capacitance is similar to the "junction capacitance" or "transition capacitance" of the interface between a $p$-type and a $n$-type material but in this case one of the materials has ions rather than electrons or holes.
 
-
-	\begin{figure}%impedance-recombination_nyquist
-		\makebox[\textwidth][c]{
-			\parbox{1.1\textwidth}{
-				\centering
-				\begin{subfigure}[t]{1.1\textwidth}
-					\includegraphics[width=1.05\textwidth]{dd_nyquist/nyquist_normalised.pdf}
-					\subcaption{Nyquist plot}\label{fig:impedance-nyquist}
-				\end{subfigure}
-				\bigskip
-
-				\begin{subfigure}[t]{1.1\textwidth}
-					\includegraphics[width=1.05\textwidth]{dd_capacitance/recombination.pdf}
-					\subcaption{Apparent capacitance from recombination current}\label{fig:impedance-recombination}
-				\end{subfigure}
-
-				\mycaption[Simulated apparent capacitance spectra and Nyquist plot compared with capacitance due to recombination current.]{
-					In (\textbf{a}) the normalised Nyquist plot is reported, the normalisation factor is reported in the legend.
-					The cross markers indicate the even frequency decades (\textsl{i.e.} from right to left \num{0.01}, \num{1}, \SI{100}{\Hz} \dots) so that the mid frequency minimum of 1~sun curve is around \SI{1000}{\Hz}.
-					In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out of phase recombination flux (dotted lines).
-				}\label{fig:impedance-recombination_nyquist}
-			}
-		}
-	\end{figure}
 
 
 
@@ -347,12 +424,12 @@ At frequencies above \SI{1e8}{\Hz} we can observe in the simulation
 			\parbox{1.1\textwidth}{
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[width=1\textwidth]{diode_transistor/CB-high_freq.pdf}
+					\includegraphics[width=1\textwidth]{diode_transistor/CB-high_freq-arrows.pdf}
 					\subcaption{Conduction band at high frequency}\label{fig:diode_transistor-band_diagram_hifreq}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[width=1\textwidth]{diode_transistor/CB-low_freq.pdf}
+					\includegraphics[width=1\textwidth]{diode_transistor/CB-low_freq-arrows.pdf}
 					\subcaption{Conduction band at low frequency}\label{fig:diode_transistor-band_diagram_lowfreq}
 				\end{subfigure}
 				\bigskip
@@ -369,7 +446,7 @@ At frequencies above \SI{1e8}{\Hz} we can observe in the simulation
 				\bigskip
 
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[width=1\textwidth]{diode_transistor/diode.png}
+					\includegraphics[width=1\textwidth]{diode_transistor/diode_noions.png}
 					\subcaption{Equivalent circuit with diode}\label{fig:diode_transistor-diode}
 				\end{subfigure}
 				\qquad
@@ -379,40 +456,105 @@ At frequencies above \SI{1e8}{\Hz} we can observe in the simulation
 				\end{subfigure}
 				\mycaption[Band diagram, energy barriers, and circuit representation of a diode or a transistor.]{
 					The conduction band (solid lines) and electron quasi\hyp{}Fermi level (dashed lines) of a \gls{htm} (left) perovskite (centre) \gls{etm} (right) solar cell is represented as varied by an oscillating voltage at mid and high frequencies in (\textbf{a}) and at low frequencies in (\textbf{b}).
+					The electrons recombination barrier is indicated in green for the minimum applied voltage and orange for the maximum one.
 					In (\textbf{c}) the energy barrier (black line) in a diode with applied voltage $V$ is represented.
 					In (\textbf{d}) the energy barrier in a transistor is represented, with contributions from the applied voltage $V$ and an external voltage $V_1$.
 					Pink rectangles indicating the barrier for the non-biassed case are added as graphical reference.
-					In (\textbf{e}) a classical circuit including the ionic capacitance and the Schottky junction diode is represented.
-					In (\textbf{f}) the influence of ionic accumulation on the interfacial diode is made explicit by the inclusion of a transistor where the potential in ionic branch acts as a gate.
+					In (\textbf{e}) a classical circuit including the geometric capacitance and the Schottky junction diode is represented, it matches the perovskite solar cells behaviour at mid and high frequencies.
+					In (\textbf{f}) the ionic accumulation is represented as a ionic capacitor, ionic transport as a resistance, the influence of ionic accumulation on the interfacial diode is made explicit by the inclusion of a transistor where the potential in ionic branch acts as a gate.
 				}\label{fig:diode_transistor}
 			}
 		}
 	\end{figure}
 
 
-	\paragraph{Illuminated or biassed case}
-Juarez-Perez2014
+	\paragraph{Illuminated case -- Observation}
+Under illumination or dark but with constant voltage bias, the mentioned low frequency feature has been observed to become giant, increasing linearly with the light intensity \cite{Juarez-Perez2014,Kim2015c,Zarazua2016,Zarazua2016a,Almora2018}.
+The available explanations in literature relied on a very large accumulation of free charges at the interfaces caused by the ionic accumulation in the same zone.
+We were able to reproduce this behaviour without observing the expected huge charge concentration.
+The origin of our observation was the influence of the ionic accumulation on the interface energetics and, specifically, on the recombination barrier.
+
+	\paragraph{Illuminated case -- Recombination barriers without ions}
+Let me go back to a "normal" solar cell with no mobile ions.
+In most of the solar cells and in the ions free systems, the recombination flux (the current of particles entering the device and annihilating either \textsl{via} radiative or trap mediated recombination) is expected to vary coherently with the applied voltage.
+In these cases, the device interfaces are usually considered like a $p$-$n$ junction diode, where the energy barrier just depends on the voltage across it as represented in \cref{fig:diode_transistor-diode_scheme}.
+When we simulate a perovskite solar cell at mid and high frequency we are in this same situation:
+the applied voltage is experienced as an electric field in the intrinsic layer and the recombination barrier represented in \cref{fig:diode_transistor-band_diagram_hifreq} vary by the same amount and in the same moment as the applied voltage.
+So the recombination current (which depends on the recombination energy barrier) varies in\hyp{}phase with the oscillating voltage.
+The equivalent electrical circuit for this regime is represented in \cref{fig:diode_transistor-diode}.
+
+	\begin{figure}%impedance-recombination_nyquist
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{1.1\textwidth}\centering
+				\includegraphics[width=0.9\textwidth]{dd_nyquist/nyquist_normalised.pdf}
+				\subcaption{Nyquist plot}\label{fig:impedance-nyquist}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{1.1\textwidth}\centering
+				\includegraphics[width=0.9\textwidth]{dd_capacitance/recombination.pdf}
+				\subcaption{Apparent capacitance from recombination current}\label{fig:impedance-recombination}
+			\end{subfigure}
+			
+			\mycaption[Simulated apparent capacitance spectra and Nyquist plot compared with capacitance due to recombination current.]{
+				In (\textbf{a}) the normalised Nyquist plot is reported, the normalisation factor is reported in the legend.
+				The cross markers indicate the even frequency decades (\textsl{i.e.} from right to left \num{0.01}, \num{1}, \SI{100}{\Hz}\dots) so that the mid frequency minimum of 1~sun curve is around \SI{1000}{\Hz}.
+				In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out\hyp{}of\hyp{}phase recombination flux (dotted lines).
+			}\label{fig:impedance-recombination_nyquist}
+		}
+	}
+\end{figure}
+
+	\paragraph{Illuminated case -- Recombination barriers with ions}
+When we simulate in the low frequency regime, the ions accumulate and deplete close to the interface in a capacitive manner, as described in the previous paragraph.
+In our simulation, the ionic concentration was enough to screen the electric field inside the perovskite layer within a few tens of nanometres from the material's interfaces.
+In the low frequency, the ions have time for continuously screening the field induced by the varying voltage, as represented in \cref{fig:diode_transistor-band_diagram_lowfreq}.
+Contrariwise to what happened at mid and high frequencies in \cref{fig:diode_transistor-band_diagram_hifreq}, we can see how at low frequency the variation of the recombination energy barrier is not just the applied voltage.
+The electrostatic contribution by the high concentration of ionic charge also contributes to this barrier.
+Checking the energy barrier in a transistor, as represented in \cref{fig:diode_transistor-transistor_scheme}, we can see how this circuit element can include the contribution of two different potentials: the applied voltage $V$ and the ionic electrostatic potential $V_1$.
+In the equivalent electrical circuit, we can include the ionic capacitance as in \cref{fig:cap_scheme_low_freq} and replace the interfacial diode with a transistor having the ionic potential as the gating potential, as represented in \cref{fig:diode_transistor-transistor}.
+So, now we know that the recombination current will depend both on the applied voltage and on the capacitive ionic current.
+The latter contribution, being capacitive, happens \SI{90}{\degree} out\hyp{}of\hyp{}phase with regards to the oscillating applied voltage.
+This key point means that the, otherwise in-phase, recombination current gains an out\hyp{}of\hyp{}phase component due to the ionic motion.
+This out\hyp{}of\hyp{}phase current, as pointed out in \cref{eq:impedance_cap_1}, contributes to the apparent capacitance.
+Indeed, if we use the recombination current, calculated as described in \cpageref{impedance_recombination}, for calculating an impedance and the relative apparent capacitance, we can see that this matches perfectly the simulated apparent capacitance, as reported in \cref{fig:impedance-recombination}.
+This low frequency feature accounts for the arch on the right of the Nyquist plot represented in \cref{fig:impedance-nyquist}.
+
+	\paragraph{Illuminated case -- Minority carriers density point of view}
+The same concept can also be understood thinking about carriers concentrations rather than energy barriers.
+As represented in \cref{fig:holes_concentration}, the distance of the quasi\hyp{}Fermi level from the corresponding band level indicates the density of the corresponding carrier.
+In \cref{fig:diode_transistor-band_diagram_hifreq,fig:diode_transistor-band_diagram_lowfreq} the vertical arrows indicate the distance of conduction band quasi\hyp{}Fermi level from conduction band, the closer the higher the electrons concentration.
+The position of the arrows is the interface between the p-type and the perovskite layer, so it is the region where the surface recombination annihilates electrons in the perovskite with the holes majority carriers in the \gls{htm}.
+As we saw in \cpageref{intro_surface_recombination}, the surface recombination is driven by the amount of "minority" carriers, that in this case are the electrons.
+The variation of the ionic species accumulation at the interface, simply due to ions electrostatic effect attracts or repels the electronic charges changing their concentration and ultimately modulating the surface recombination.
+It is important to remember that the recombination flux is always present, especially when no current is measured as it counterbalances the photogeneration.
+The ions accumulate and deplete at the interfaces following the applied voltage but with a delay, and this induces an out\hyp{}of\hyp{}phase component to the aforementioned recombination flux.
+So if the recombination flux is large, due to a high illumination intensity or a high applied voltage, also this component will be large and, if mistaken for a capacitive current, can explain the reports about giant capacitance.
+	
+
 
 
 	\paragraph{Loops in the positive semi-plane and large perturbations}\label{impedance-large_perturbations}
-		In \authoryear{Moia2019} we showed that the failure in stabilizing the device to the measurement conditions (temperature, background voltage, illumination) results in loops in the Nyquist plot positive semi-plane.
-		Additionally, a large perturbation measurement, which is a wide sinusoidal voltage oscillation amplitude in impedance measurements, can cause a non-sinusoidal current output.
-		This is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract the amplitude and the phase of the signal first harmonic, ignoring the higher harmonics caused by the too large perturbation.
+		In \authoryear{Moia2019} we showed that the failure in stabilizing the device to the measurement conditions (temperature, background voltage, illumination) results in loops in the Nyquist plot positive semi\hyp{}plane.
+		Additionally, a large perturbation measurement, which is a wide sinusoidal voltage oscillation amplitude in impedance measurements, has been simulated to also cause loops in the Nyquist plot positive semi\hyp{}plane, as represented in \cref{fig:impedance-200mV}.
 		This observation comes merely from simulations, no experimental confirmation is available yet.
 		%But artefacts could arise and cause misinterpretations.
+The fact that a large voltage perturbation causes a non\hyp{}sinusoidal current output is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract amplitude and phase of the signal's first harmonic (as shown in \cref{fig:demodulation}), ignoring the higher harmonics.
 
 		\begin{figure}%impedance-200mV
 			\makebox[\textwidth][c]{
 				\parbox{1.1\textwidth}{
 					\centering
-					\begin{subfigure}[t]{1.1\textwidth}
-						\includegraphics[width=1.05\textwidth]{dd_nyquist/nyquist_200mV_normalised.pdf}
+					\begin{subfigure}[t]{1.1\textwidth}\centering
+						\includegraphics[width=0.8\textwidth]{dd_nyquist/nyquist_200mV_normalised.pdf}
 						\subcaption{Nyquist plot with large perturbations}\label{fig:impedance-200mV_nyquist}
 					\end{subfigure}
 					\bigskip
 
-					\begin{subfigure}[t]{1.1\textwidth}
-						\includegraphics[width=1.05\textwidth]{dd_nyquist/nyquist_200mV_normalised_zoom.pdf}
+					\begin{subfigure}[t]{1.1\textwidth}\centering
+						\includegraphics[width=0.8\textwidth]{dd_nyquist/nyquist_200mV_normalised_zoom.pdf}
 						\subcaption{Zoom into mid frequency region}\label{fig:impedance-200mV_nyquist-zoom}
 					\end{subfigure}
 					\mycaption[Simulated Nyquist plot for large perturbations simulation.]{
@@ -433,26 +575,32 @@ Juarez-Perez2014
 			\makebox[\textwidth][c]{
 				\parbox{1.1\textwidth}{
 					\centering
-					\begin{subfigure}[t]{0.51\textwidth}
-						\includegraphics[width=1\textwidth]{experimental/Zabs-experimental.pdf}
+					\begin{subfigure}[t]{0.51\textwidth}\centering
+						\includegraphics[width=0.9\textwidth]{experimental/Zabs-experimental.pdf}
 						\subcaption{Impedance module}\label{fig:experimental-Zabs}
 					\end{subfigure}
 					\qquad
-					\begin{subfigure}[t]{0.51\textwidth}
-						\includegraphics[width=1\textwidth]{experimental/phase-experimental.pdf}
+					\begin{subfigure}[t]{0.51\textwidth}\centering
+						\includegraphics[width=0.9\textwidth]{experimental/phase-experimental.pdf}
 						\subcaption{Impedance phase}\label{fig:experimental-phase}
 					\end{subfigure}
 					\bigskip
 
-					\begin{subfigure}[t]{0.81\textwidth}
+					\begin{subfigure}[t]{0.6\textwidth}\centering
 						\includegraphics[width=1\textwidth]{experimental/cap-experimental.pdf}
 						\subcaption{Apparent capacitance}\label{fig:experimental-cap}
 					\end{subfigure}
-
-					\mycaption[Experimental data from impedance spectroscopy of an illuminated perovskite solar cell at open circuit conditions.]{
-						In (\textbf{a}) the absolute value of the experimental impedance is reported.
-						In (\textbf{b}) the phase of the experimental impedance is reported, it can be compared with simulated data in \cref{fig:impedance-ionic-phase}.
-						In (\textbf{c}) the experimental apparent capacitance is reported, it can be compared with simulated data in \cref{fig:impedance-capacitance}.
+					\qquad
+\begin{subfigure}[t]{0.42\textwidth}\centering
+	\includegraphics[width=1\textwidth]{experimental/eis-light_bias_vs_vapp2.png}
+	\subcaption{Impedance phase}\label{fig:experimental-vapp}
+\end{subfigure}
+					\mycaption[Experimental data from impedance spectroscopy.]{
+						In (\textbf{a}) the absolute value of the experimental impedance of an illuminated perovskite solar cell at open circuit conditions is reported.
+						In (\textbf{b}), for the same conditions, the phase of the experimental impedance is reported, it can be compared with simulated data in \cref{fig:impedance-ionic-phase}.
+						In (\textbf{c}), for the same conditions, the experimental apparent capacitance is reported, it can be compared with simulated data in \cref{fig:impedance-capacitance}.
+						In (\textbf{d}) the apparent capacitance measured in the mentioned conditions is compared to the measurement performed in dark applying a voltage bias $V_|DC|$ equal to the measured light bias.
+						These experimental data are courtesy of Dr.\ Davide Moia and Dr.\ Piers Barnes.
 					}\label{fig:experimental}
 				}
 			}
@@ -507,10 +655,17 @@ Juarez-Perez2014
 	}
 \end{figure}
 
+\paragraph{Faster simulation with voltage step}
+The preliminary implementation of the impedance spectroscopy simulation did not employ the complete description of the oscillating voltage.
+Just a voltage step was applied and the resulting current evolution was used for obtaining a rough approximation of the apparent capacitance spectrum.
+This approach is computationally much faster than a complete oscillating simulation and can give exactly the same results if properly treated for converting the time\hyp{}domain data to frequency\hyp{}domain using a Fourier transform.
+In the publication by \authoryear{Jacobs2018}, they used this approach for simulating impedance spectroscopy in perovskite solar cells.
+Our preliminary implementation needs to be refined and at this stage is not ready for being published.
 
 \paragraph{Heterojunction}
-The simulations shown here are all based on a p-i-n homojunction model, so a proper injection barrier could not actually be simulated and the negative capacitance has been obtained playing with extreme values of other parameters as aforementioned.
+The simulations shown here are all based on a p-i-n homojunction model, so a proper injection barrier could not actually be simulated and the negative capacitance we reported in \authoryear{Moia2019} has been obtained playing with extreme values of the mobility and recombination parameters.
 An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{fig:impedance_heterojunction}.
+This confirms that our hypothesis of the ionically modulated injection barrier can be used for explaining the experimentally observed negative capacitance \cite{Guerrero2016,Moia2019,Ghahremanirad2017,Sanchez2014}
 Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
 
 \paragraph{Implement other similar techniques}
@@ -562,7 +717,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}, \texttt{pinana}.
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} using \texttt{asymmetricize} (see \cpageref{asymmetricize}) the symmetric solution at 1 sun illumination and open circuit is broken in halves in order to be able to apply a custom voltage.
 	Then this script simulates an oscillating voltage at \SI{0.1}{\Hz} and \SI{2}{\mV} of half peak to peak voltage amplitude, with a constant voltage bias equal to the device \gls{voc},
@@ -574,7 +729,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	\paragraph{\texttt{ISwave\_EA\_single\_demodulation} -- Calculates phase and amplitude demodulating oscillating current data from impedance spectroscopy}\label{ISwave_EA_single_demodulation}
 	The current profile gets multiplied by the voltage profile and,
-	separately, by the voltage profile with an additional 90 degrees phase.
+	separately, by the voltage profile with an additional \SI{90}{\degree} phase.
 	The integrals of the resulting profiles are related to the phase.
 	This simulates the working principle of a dual-phase demodulator often
 	used by lock-in amplifiers.
@@ -595,7 +750,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%		\textit{Requires:} 
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{ISwave\_single\_analysis}.
 
 
 	\textit{Example:} demodulate the components of the oscillating current.
@@ -618,7 +773,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%\textit{Requires:} 
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{ISwave\_single\_analysis}.
 
 	\textit{Example:} fits the oscillating current \textsl{versus} voltage data for a \SI{200}{\Hz} simulation.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -653,7 +808,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	\textit{Requires:} \texttt{ISwave\_subtracting\_analysis}, \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}, \texttt{pinana}.
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{from\-ISwaveEA\-Struct\-ToTxt}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} plot current profile, reference profiles and calculate the phase using demodulation approach.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -672,7 +827,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%\textit{Requires:} 
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{from\-ISwaveEA\-Struct\-ToTxt}, \texttt{ISwave\_single\_analysis}.
 
 	\textit{Example:} extract reference values.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -709,7 +864,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 	\texttt{IS\_full\_analysis\_impedance}, \texttt{ISwave\_full\_analysis\_phase}, \texttt{pinana},
 	\texttt{stabilize}.
 
-	%\textit{Required by:} 
+	\textit{Required by:} \texttt{examples\_unit\_test}.
 
 	\textit{Example:} This is the most typical of the performed simulations: calculate on 8 different illumination intensities including dark, do not freeze ions, use a half peak to peak
 	voltage oscillation amplitude of 2 mV, on 23 points from frequencies of 1 GHz to
@@ -741,7 +896,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 	\texttt{IS\_full\_analysis\_impedance}, \texttt{ISwave\_full\_analysis\_phase}, \texttt{pinana},
 	\texttt{stabilize}.
 
-	%\textit{Required by:} 
+	\textit{Required by:} \texttt{examples\_unit\_test}.
 
 	\textit{Example:} Identical to the example shown for \texttt{ISwave\_full\_exec} but this also saves to base workspace the single oscillating solutions and starts each simulation from the last time point of the previous, strictly sequentially without reaching stabilization.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -758,7 +913,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%		\textit{Requires:} 
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
 
 
 	\textit{Example:} do phase Bode plots.
@@ -776,7 +931,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%\textit{Requires:} 
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} do impedance and apparent capacitance Bode plots.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -793,7 +948,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%\textit{Requires:} 
 
-	\textit{Required by:}
+	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} do Nyquist plot.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -838,5 +993,21 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 \end{lstlisting}
 
 
+		\paragraph{\texttt{examples\_unit\_test} -- Runs unit testing on all the implemented experiments}
+Runs various simulations in order to test the functioning of pindrift and many other implemented functions.
+Additionally it verifies that the results satisfies some basic checks.
+For profiling the time spent running each function run \texttt{profile on} before running the tests and \texttt{profile viewer} after.
+Using Matlab's Coverage Reports, the unused code can be easily spotted.
 
+%		\textit{Inputs:} 
+%\textit{Outputs:} 
+\textit{Requires:} \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ideality\_from\_Voc}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{equilibrate\_minimal}, \texttt{gen\-Int\-Structs}, \texttt{gen\-Vapp\-Structs}.
+%\textit{Required by:} 
+
+
+\section{Conclusions}
+We simulated the output of impedance spectroscopy on illuminated and biassed perovskite solar cell in frequency\hyp{}domain \textsl{via} drift\hyp{}diffusion modelling.
+The code has been released as open source and has been designed to ease the simulation of other frequency\hyp{}domain characterisation techniques for electronic devices composed of stacked semiconductors with the possibility to consider the presence of mobile ionic species.
+From the outcome of this model we serendipitously found the likely origin of giant (and negative) capacitance in perovskite solar cells.
+These phenomena are explained in detail considering the influence of ionic migration on the recombination (and injection) current.
 
