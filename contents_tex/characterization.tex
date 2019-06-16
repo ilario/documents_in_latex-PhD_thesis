@@ -42,26 +42,34 @@
 				The ratio between the small and the large rectangles areas is the \gls{ff}.}\label{fig:iv_params}
 		\end{SCfigure}
 
-		\paragraph{\Glsdesc{voc}} \Gls{voc} parameter is defined as the voltage $V$ at which the current is zero while the solar cell device is illuminated at 1~sun conditions and in steady state (positive by its own definition).
+		\paragraph{\Glsdesc{voc}}
+		\Gls{voc} parameter is defined as the voltage $V$ at which the current is zero while the solar cell device is illuminated at 1~sun conditions and in steady state (positive by its own definition).
 
-		\paragraph{\Glsdesc{jsc}} \Gls{jsc} parameter is defined as the unsigned value of the current density flowing in an external circuit short circuiting (zero resistance) the solar cell device's contacts while illuminated at 1~sun and in steady state.
+		\paragraph{\Glsdesc{jsc}}
+		\Gls{jsc} parameter is defined as the unsigned value of the current density flowing in an external circuit short circuiting (zero resistance) the solar cell device's contacts while illuminated at 1~sun and in steady state.
 		It is usually reported in current (milli Amperes) over active area (square centimetre) unit.
 
-		\paragraph{Maximum power density} The maximum power density is defined as the unsigned minimum of electrical power density which can be obtained by $P(V) = J(V) \cdot V$.
+		\paragraph{Maximum power density}
+		The maximum power density is defined as the unsigned minimum of electrical power density which can be obtained by $P(V) = J(V) \cdot V$.
 		It is usually reported using power (Watt) over active area (square centimetre) unit.
 
-		\paragraph{\Glsdesc{pce}} \Gls{pce} parameter is defined as the maximum power density over the illuminating power density, which at 1~sun AM 1.5G is defined to \SI{100}{\mW\per\square\cm}.
+		\paragraph{\Glsdesc{pce}}
+		\Gls{pce} parameter is defined as the maximum power density over the illuminating power density, which at 1~sun AM 1.5G is defined to \SI{100}{\mW\per\square\cm}.
 		It is usually reported as a percentage.
 
-		\paragraph{\Glsdesc{ff}} \Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}.
+		\paragraph{\Glsdesc{ff}}
+		\Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}.
 		This parameter does not have a physical meaning, but it represents how much the series and shunt resistances affect the device efficiency.
 		It can be represented either as a fraction of unity or as a percentage.
 
-		\paragraph{Forward and reverse bias} Forward bias is a device condition where the voltage is positive, reverse bias is the case where the voltage is negative.
+		\paragraph{Forward and reverse bias}
+		Forward bias is a device condition where the voltage is positive, reverse bias is the case where the voltage is negative.
 
-		\paragraph{Forward and reverse scan} In current-voltage sweeps, a scan where the voltage is increasing over time is a forward scan, while a voltage variation in the opposite direction constitutes a reverse scan.
+		\paragraph{Forward and reverse scan}\label{characterization_fwdrev}
+		In current-voltage sweeps, a scan where the voltage is increasing over time is a forward scan, while a voltage variation in the opposite direction constitutes a reverse scan.
 
-		\paragraph{Ideality factor} An ideality factor $n_|id|$ different from 1 describes deviations from the ideal photo-diode.
+		\paragraph{Ideality factor}
+		An ideality factor $n_|id|$ different from 1 describes deviations from the ideal photo-diode.
 		The Shockley diode equation adapted for photogeneration becomes \cite{Calado2019}:
 		\begin{equation} \label{eq:photodiode}
 			J(V,\phi) = J_|ph|(\phi) - J_0\left[\exp(\frac{qV}{n_|id|k_|B|T})-1\right]
@@ -79,7 +87,8 @@
 			J = J_|ph|(\phi) - J_0\left[\exp(\frac{q(V+JR_|s|)}{n_|id|k_|B|T})-1\right] + \frac{V+JR_|s|}{R_|sh|}
 		\end{equation}
 
-		\paragraph{Top and bottom of devices} The point of view of the manufacturer is used for defining the physical top and bottom of a device: the bottom is the glass substrate and the top is the last deposited layer.
+		\paragraph{Top and bottom of devices}
+		The point of view of the manufacturer is used for defining the physical top and bottom of a device: the bottom is the glass substrate and the top is the last deposited layer.
 		This is opposite with the usage of a solar cell in the real world and with most of the solar simulators (but not all of them
 		%, for example Paios from Fluxim has an illumination from below, more convenient for contacting the electrodes without a samples holder
 		\cite{Fluxim}).

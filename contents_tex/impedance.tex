@@ -717,7 +717,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}, \texttt{pinana}.
 
-	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
+	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{EA\_full\_exec}.
 
 	\textit{Example:} using \texttt{asymmetricize} (see \cpageref{asymmetricize}) the symmetric solution at 1 sun illumination and open circuit is broken in halves in order to be able to apply a custom voltage.
 	Then this script simulates an oscillating voltage at \SI{0.1}{\Hz} and \SI{2}{\mV} of half peak to peak voltage amplitude, with a constant voltage bias equal to the device \gls{voc},
@@ -750,7 +750,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%		\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_single\_analysis}.
+	\textit{Required by:} \texttt{ISwave\_single\_analysis}, \texttt{EA\_single\_analysis}.
 
 
 	\textit{Example:} demodulate the components of the oscillating current.
@@ -773,7 +773,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 
 	%\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_single\_analysis}.
+	\textit{Required by:} \texttt{ISwave\_single\_analysis}, \texttt{EA\_single\_analysis}.
 
 	\textit{Example:} fits the oscillating current \textsl{versus} voltage data for a \SI{200}{\Hz} simulation.
 	\begin{lstlisting}[style=Matlab-editor]

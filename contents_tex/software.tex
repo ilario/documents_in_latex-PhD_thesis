@@ -100,7 +100,7 @@ For all the simulations including transients, the stabilization of the starting 
 		     
 	\textit{Requires:} \texttt{pindrift}
 	
-	\textit{Required by:} \texttt{CE\_full\_exec}, \texttt{gen\-Int\-Structs\-Real\-Voc}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
+	\textit{Required by:} \texttt{CE\_full\_exec}, \texttt{gen\-Int\-Structs\-Real\-Voc}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{EA\_full\_exec}.
 
 		\paragraph{\texttt{change\-Light} -- Change the illumination intensity of a solution}
 		Generate solutions at a new light intensity.
@@ -254,17 +254,7 @@ Plot free charges and ions densities, and energy levels over device thickness an
 
 	\subsection{Charge Extraction}
 		Careful stabilization of illuminated solutions is crucial, especially for avoiding glitches appearing at high light illumination (minority charges accumulation at the edges of the symmetric solution).
-		\paragraph{\texttt{CE\_full\_analysis} -- Plot Charge Extraction in a range of background light intensity \textsl{versus} open circuit voltage}
-		
-		
-			\textit{Inputs:} a structure containing the most important results of the CE simulation.
-		
-%		\textit{Outputs:} .
-		
-%		\textit{Requires:} \texttt{}.
-		
-		\textit{Required by:} \texttt{CE\_full\_exec}.
-		
+
 		\paragraph{\texttt{CE\_full\_exec} -- Do Charge Extraction in a range of background light intensities}		
 		
 		\textit{Inputs:} 1) can be a cell structure containing structures at various background light intensities.
@@ -280,6 +270,32 @@ Plot free charges and ions densities, and energy levels over device thickness an
 		\textit{Requires:} \texttt{CE\_single\_exec}, \texttt{CE\_ISstep\_single\_analysis},   \texttt{CE\_ISstep\_subtracting\_analysis}, \texttt{CE\_full\_fit}, \texttt{CE\_full\_analysis},  \texttt{asymmetricize}, \texttt{pinana}.
 		
 %		\textit{Required by:} \texttt{}.
+
+
+\paragraph{\texttt{CE\_single\_exec} -- Do a single Charge Extraction experiment}		
+
+\textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pindrift};
+2) a first guess for maximum time which should be enough for registering the full extraction.
+
+\textit{Outputs:} a structure with a solution evolving after the start of the CE experiment.
+
+\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
+
+\textit{Required by:} \texttt{CE\_full\_exec}.
+
+
+		\paragraph{\texttt{CE\_full\_analysis} -- Plot Charge Extraction in a range of background light intensity \textsl{versus} open circuit voltage}
+
+
+\textit{Inputs:} a structure containing the most important results of the CE simulation.
+
+%		\textit{Outputs:} .
+
+%		\textit{Requires:} \texttt{}.
+
+\textit{Required by:} \texttt{CE\_full\_exec}.
+
+
 		\paragraph{\texttt{CE\_full\_fit} -- Calculate geometric and chemical capacitance from CE data}		
 		
 		\textit{Inputs:} 1) an array containing the voltage drops which were
@@ -326,17 +342,6 @@ Plot free charges and ions densities, and energy levels over device thickness an
 %		\textit{Requires:} \texttt{}.
 		\textit{Required by:} \texttt{CE\_full\_exec}.
 		
-		\paragraph{\texttt{CE\_single\_exec} -- Do a single Charge Extraction experiment}		
-		
-		\textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pindrift};
-		2) a first guess for maximum time which should be enough for registering the full extraction.
-		
-		\textit{Outputs:} a structure with a solution evolving after the start of the CE experiment.
-		
-		\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
-		
-		\textit{Required by:} \texttt{CE\_full\_exec}.
-
 
 	\subsection{Transient PhotoVoltage}
 
@@ -371,11 +376,25 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 				
 				\textit{Requires:} \texttt{TPV\_single\_exec}, \texttt{TPV\_single\_analysis}.
 		
+		
+		\paragraph{\texttt{TPV\_single\_exec} -- Perform a single TPV simulation}
+		
+		\textit{Inputs:} 1) a single symmetric (\textsl{i.e.} open circuit) structure as created by \texttt{pindrift};
+		2) a first guess for maximum time which should be enough for simulating the full decay, if zero is provided a value of \SI{1e-5}{\s} is used and no further exploration of the simulation time is performed (this is useful when we are just interested in the amount of voltage variation, rather than in the full decay);
+		3) intensity of the perturbing light pulse.
+		
+		\textit{Outputs:} a structure with a solution being perturbed by a light pulse.
+		
+		\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
+		
+		\textit{Required by:} \texttt{TPVconst\_full\_exec}, \texttt{TPVvariab\_full\_exec}.
+		
+		
 
 		
 %		\textit{Required by:} \texttt{}.
 		
-		\paragraph{\texttt{TPV\_full\_analysis -- Plot TPV}
+		\paragraph{\texttt{TPV\_full\_analysis} -- Plot TPV}
 			Both mono and bi exponential fitting results are plotted \textsl{versus} light-bias.
 			
 				\textit{Inputs:} a structure containing the most important results of the \gls{tpv} simulation.
@@ -432,19 +451,6 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 		
 %		\textit{Required by:} \texttt{}.
 		
-		\paragraph{\texttt{TPV\_single\_exec} -- Perform a single TPV simulation}
-		
-		\textit{Inputs:} 1) a single symmetric (\textsl{i.e.} open circuit) structure as created by \texttt{pindrift};
-		2) a first guess for maximum time which should be enough for simulating the full decay, if zero is provided a value of \SI{1e-5}{\s} is used and no further exploration of the simulation time is performed (this is useful when we are just interested in the amount of voltage variation, rather than in the full decay);
-		3) intensity of the perturbing light pulse.
-		
-		\textit{Outputs:} a structure with a solution being perturbed by a light pulse.
-		
-		\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}.
-		
-		\textit{Required by:} \texttt{TPVconst\_full\_exec}, \texttt{TPVvariab\_full\_exec}.
-		
-
 		%
 		%
 		%\subsection{Impedance Spectroscopy in Time Domain}
@@ -471,6 +477,74 @@ The second harmonic component is related to the square of the oscillating electr
 
 %		photo induced absorption stark spectroscopy on perovskite solar cells \cite{Roiati2014,Li2016}
 
+
+\paragraph{\texttt{EA\_full\_exec} -- Perform ElectroAbsorption simulation on all the provided solutions}
+Similarly to the impedance simulation performed with \texttt{ISwave\_full\_exec}, this routine applies an oscillating voltage on all the provided solutions.
+One relevant difference is the fact that the current calculation is disabled, making the analysis faster.
+If Matlab's Parallel Computing Toolbox is available, this scripts runs in parallel on all the available physical CPU cores, otherwise it just runs on one core.
+
+\textit{Inputs:} 1) can be a cell structure containing structures at various background
+light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
+Otherwise it can be a single structure as created by \texttt{pindrift};
+2) higher frequency limit;
+3) lower frequency limit;
+4) number of frequency points to simulate;
+5) voltage oscillation amplitude in volts, one mV should be enough;
+6) logical, after stabilization sets the mobility of
+ionic defects to zero;
+7) logical, whether to graph the individual solutions and
+the overall graphics.
+
+\textit{Outputs:} a structure containing the most important results of the simulation.
+
+\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
+\texttt{EA\_single\_analysis}, \texttt{EA\_full\_analysis\_phase}, \texttt{pinana}, \texttt{EA\_full\_analysis\_Efield}.
+
+%		\textit{Required by:} \texttt{}.
+
+\paragraph{\texttt{EA\_single\_analysis} -- Calculate ElectroAbsorbance and phase}
+The first and second harmonics are locally calculated and averaged over the device thickness.
+
+\textit{Inputs:} 1) a structure where a solution has been perturbed by an
+oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
+2) logical, when true graphics does not get created, useful when
+launched under parallelization (where graphics does not work anyway);
+3) logical, whether to fit the position resolved data;
+4) logical, get phase via demodulation instead of using a fitting;
+5) string, set the directory where to save \texttt{.fig} and \texttt{.png}
+image files for second harmonic versus position.
+To save in the current directory set the dot directory \texttt{"."}.
+To disable saving set \texttt{"missing"} value.
+
+\textit{Outputs:} 1) an array of bias, amplitude and phase of the first
+harmonic;
+2) a matrix of bias, amplitude and phase of the first
+harmonic, each column is a space point;
+3) an array of bias, amplitude and phase of the first
+harmonic for ionic profile;
+4) a matrix of bias, amplitude and phase of the first
+harmonic for ionic profile, each column is a space point;
+5) an array of bias, amplitude and phase of the second
+harmonic;
+6) a matrix of bias, amplitude and phase of the second
+harmonic, each column is a space point;
+7) an array of bias, amplitude and phase of the second
+harmonic for ionic profile;
+8) a matrix of bias, amplitude and phase of the second
+harmonic for ionic profile, each column is a space point;
+9) the value of the average squared amplitude of the
+AC electric field. It would be identical to the amplitude of the
+second harmonic if the contributions from each spatial point was in
+phase;
+10) a matrix of bias, amplitude and phase of the AC electric
+field, each column is a space point.
+
+\textit{Requires:} \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}.
+
+\textit{Required by:} \texttt{EA\_full\_exec}.
+
+
+
 		\paragraph{\texttt{EA\_full\_analysis\_Efield} -- Plot electric field amplitude from ElectroAbsorption in a range of background light intensities or applied DC voltages}
 		The amplitude of the spatially averaged electric field first harmonic $(x_2-x_1)^-1 \int_{x_1}{x_2}E_|DC|(x) \cdot E_|AC|(x) \dd x$ and second harmonic $(x_2-x_1)^-1 \int_{x_1}{x_2} E_|AC|^2(x) \dd x$ are plotted \textsl{versus} the applied voltage frequency.
 		
@@ -494,77 +568,11 @@ The second harmonic component is related to the square of the oscillating electr
 		
 		\textit{Required by:} \texttt{EA\_full\_exec}.
 		
-		\paragraph{\texttt{EA\_full\_exec} -- Perform ElectroAbsorption simulation on all the provided solutions}
-		Similarly to the impedance simulation performed with \texttt{ISwave\_full\_exec}, this routine applies an oscillating voltage on all the provided solutions.
-		One relevant difference is the fact that the current calculation is disabled, making the analysis faster.
-If Matlab's Parallel Computing Toolbox is available, this scripts runs in parallel on all the available physical CPU cores, otherwise it just runs on one core.
-		
-		\textit{Inputs:} 1) can be a cell structure containing structures at various background
-		     light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
-		     Otherwise it can be a single structure as created by \texttt{pindrift};
-		   2) higher frequency limit;
-		   3) lower frequency limit;
-		   4) number of frequency points to simulate;
-		   5) voltage oscillation amplitude in volts, one mV should be enough;
-		   6) logical, after stabilization sets the mobility of
-		     ionic defects to zero;
-		   7) logical, whether to graph the individual solutions and
-		     the overall graphics.
-		
-		\textit{Outputs:} a structure containing the most important results of the simulation.
-		
-		\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
-			  \texttt{EA\_single\_analysis}, \texttt{EA\_full\_analysis\_phase}, \texttt{pinana}, \texttt{EA\_full\_analysis\_Efield}.
-		
-%		\textit{Required by:} \texttt{}.
-		
-		\paragraph{\texttt{EA\_single\_analysis} -- Calculate ElectroAbsorbance and phase}
-		The first and second harmonics are locally calculated and averaged over the device thickness.
-		
-		\textit{Inputs:} 1) a structure where a solution has been perturbed by an
-		     oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
-		   2) logical, when true graphics does not get created, useful when
-		     launched under parallelization (where graphics does not work anyway);
-		   3) logical, whether to fit the position resolved data;
-		   4) logical, get phase via demodulation instead of using a fitting;
-		   5) string, set the directory where to save \texttt{.fig} and \texttt{.png}
-		     image files for second harmonic versus position.
-		     To save in the current directory set the dot directory \texttt{"."}.
-		     To disable saving set \texttt{"missing"} value.
-		
-		\textit{Outputs:} 1) an array of bias, amplitude and phase of the first
-		     harmonic;
-		   2) a matrix of bias, amplitude and phase of the first
-		     harmonic, each column is a space point;
-		   3) an array of bias, amplitude and phase of the first
-		     harmonic for ionic profile;
-		   4) a matrix of bias, amplitude and phase of the first
-		     harmonic for ionic profile, each column is a space point;
-		   5) an array of bias, amplitude and phase of the second
-		     harmonic;
-		   6) a matrix of bias, amplitude and phase of the second
-		     harmonic, each column is a space point;
-		   7) an array of bias, amplitude and phase of the second
-		     harmonic for ionic profile;
-		   8) a matrix of bias, amplitude and phase of the second
-		     harmonic for ionic profile, each column is a space point;
-		   9) the value of the average squared amplitude of the
-		     AC electric field. It would be identical to the amplitude of the
-		     second harmonic if the contributions from each spatial point was in
-		     phase;
-		   10) a matrix of bias, amplitude and phase of the AC electric
-		     field, each column is a space point.
-		
-		\textit{Requires:} \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}.
-		
-%		\textit{Required by:} \texttt{}.
-		
 
-
-		\subsection{Techniques Which Could Be Implemented}
-		\paragraph{IMVS}
-		\paragraph{IMPS}
-		\paragraph{Mott-Schottky}
+%		\subsection{Techniques Which Could Be Implemented}
+%		\paragraph{IMVS}
+%		\paragraph{IMPS}
+%		\paragraph{Mott-Schottky}
 		%\url{https://en.wikipedia.org/wiki/Mott-Schottky_plot}
 		%mott-schottky in organics under illumination 10.1103/PhysRevApplied.7.034018
 		%impedance and mott-schottky article in osc \cite{Brus2016}		
@@ -601,7 +609,7 @@ If Matlab's Parallel Computing Toolbox is available, this scripts runs in parall
 		%I received a proof-of-concept software developed by  and decided to continue the development. At that point the software had an interface with few buttons and a working Keithley communication library.
 
 		\paragraph{User's requests}
-		The feedback from the new users of the software helped me improving PyPV in the following fields: solar simulator shutter control, more robust connection to the GPIB-USB-HS adapter, better installation instructions.
+		The feedback from the new users of the software helped me improving PyPV with the following features: solar simulator shutter control, more robust connection to the GPIB-USB-HS adapter, better installation instructions.
 
 	\subsection{Implementation and user interface}
 		\epigraph{\textit{\enquote{Ok, I finally completed it, by the way, why did you start developing this?}\\\enquote{Well, it was just a proof of concept, but it's nice you worked on it}}}
@@ -615,26 +623,62 @@ If Matlab's Parallel Computing Toolbox is available, this scripts runs in parall
 			\mycaption[PyPV graphical user interface.]{}\label{fig:pypv-gui}
 		\end{sidewaysfigure}
 
-%		\begin{landscape}
-%							\begin{figure}
-%					\centering
-%					\includegraphics[width=1.1\textwidth]{PyPV/pypv-gui.png}
-%					\mycaption[]{}\label{fig:pypv-gui}
-%						\end{figure}
-%		\end{landscape}
+		\paragraph{Organisation of the main user interface}
+		The components of the graphical user interface are organised with the following order (from top left to bottom right):
+		\begin{itemize}
+			\item user and experiment identification;
+			\item experiment setup;
+			\item quick screening buttons;
+			\item sample identification and single measurement setup;
+			\item single measurement output;
+			\item measurement buttons;
+			\item saved measurements log, from newest to oldest.
+		\end{itemize}
+		
+		
+		\paragraph{User and experiment identification data}
+		The user name is prompted, this will be stored in the savings header and, if the "AutoSave" or "AutoMeasure" function is used, a directory named after the user name will be created.
+		The experiment codename is prompted for being prepended in the savings suggested and automatic filenames.
+		The active area is also prompted at this point.
 
+		\paragraph{Voltage range and step}
+		Then, the lowest and highest voltage limits ((\textsl{i.e.} \texttt{:SOURce:VOLTage:STARt} or \texttt{:SOURce:VOLTage:STOP}) are prompted, together with the voltage step (\textsl{i.e.} \texttt{:SOURce:VOLTage:STEP}).
+		The number of measured points (used for the buffer size in \texttt{:TRACe:POINts} and for the trigger count in \texttt{:TRIGger:COUNt}) can be calculated dividing the voltage range by the voltage step.
 		
-	
-%		\begin{figure}
-%			\makebox[\textwidth][c]{
-%				\parbox{1.1\textwidth}{
-%			\centering
-%			\includegraphics[width=1.1\textwidth]{PyPV/pypv-gui.png}
-%			\mycaption[]{}\label{fig:pypv-gui}
-%		}}
-%		\end{figure}
+		\paragraph{Compliance}
+		This introduces a maximum limit to the current that can flow in the connected device, in order to avoid overheating and related damages to the solar cell.
+		In order to respect this limit, Keithley equipment reduces the applied voltage (this does not get reflected in the saved output, where the capped regions appears simply as a plateau).
+		The compliance value (\textsl{i.e.} \texttt{:SENSe:CURRent:PROTection}) has to be smaller than the chosen scale.
 		
-		\paragraph{Autoscale} As it was explained in \cpageref{autoscale}, the automatic scale setting of the Keithley is detrimental for perovskite solar cells dynamic measurements.
+		\paragraph{Scale and "Auto Scale"}
+		As it was explained in \cpageref{autoscale}, the "automatic scale" feature of the Keithley is detrimental for perovskite solar cells dynamic (like a current\hyp{}voltage sweep) measurements.
+		For this reason a check and a combo box have been added for enabling\-/disabling automatic scale and setting the manual scale (\textsl{i.e.} \texttt{:SOURce:CURRent:RANGe}).
+		
+		\paragraph{Integration time, delay time, and scan speed calculation}
+		Integration time (\textsl{i.e.} \texttt{:SENSe:VOLTage:NPLCycles}) is the number of power line cycles during which each current point is measured \cite{KeithleyInstruments2011}.
+		For example, on a \SI{50}{\Hz} electrical network, an integration time of 1 means that the current is measured during \SI{20}{\ms} for each voltage point.
+		Delay time (\textsl{i.e.} \texttt{:SOURce:DELay}) is the time waited for the current stabilisation after the voltage step.
+The scan speed $s[V/s]$ is obtained from the voltage step \texttt{:SENSe:VOLTage:STEP} $V_|step|[V]$, integration time $i$ and the delay time \texttt{:SOURce:DELay} $t_|delay|[s]$ Keithley's parameters with the following \textit{empirical} expression estimated by Werther Cambarau:
+
+\begin{equation}
+s = \frac{V_|step|}{0.003 + t_|delay| + 0.06 \cdot i}
+\end{equation}
+
+where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions.
+
+\paragraph{Shutter control}
+If the employed solar simulator has a remotely controlled shutter, this should be possible to connect to the RS-232 serial port on Keithley.
+Two parameters control the opening and closing of the illumination shutter: "pre-delay off" and "pre-delay on".
+The former indicates how long the illumination should be off, after this, the shutter gets opened and the latter time is waited before running the sweep.
+The off time is mainly useful when using the "AutoMeasure" feature, which will be mentioned further in the text.
+During all these steps, the device is kept at open circuit.
+If the parameters are set to zero, the shutter control is disabled.
+
+\paragraph{Quick screening buttons}
+Open circuit voltage real time measurement is available.
+This helps the user to have a quick idea of which diodes are worth measuring.
+
+\paragraph{Irradiance, device, and diode identification}
 
 		\paragraph{Auto-measure}\label{automeasure}
 		The devices are kept under illumination at open circuit conditions, then a reverse sweep is measured and, immediately after this, the forward sweep is measured.
@@ -643,16 +687,8 @@ If Matlab's Parallel Computing Toolbox is available, this scripts runs in parall
 
 		\paragraph{Resistances} The shunt and series resistances estimation from current-voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
 
-		\paragraph{Scan speed calculation}
-		The scan speed $s[V/s]$ is obtained from the voltage step \texttt{:SENSe:VOLTage:STEP} $V_|step|[V]$, integration time \texttt{:SENSe:VOLTage:NPLCycles} $n_|int|$ measured in power line cycles and the delay time \texttt{:SOURce:DELay} $t_|delay|[s]$ Keithley's parameters with the following \textit{empirical} expression estimated by Werther Cambarau:
 
-		\begin{equation}
-			s = \frac{V_|step|}{0.003 + t_|delay| + 0.06 \cdot n_|int|}
-		\end{equation}
-
-		where $t_|delay|$ is \SI{1}{\ms} for our measurement conditions \cite{KeithleyInstruments2011}.
-
-
+Numeric up-down
 
 \begin{SCfigure}
 	\centering
@@ -660,7 +696,7 @@ If Matlab's Parallel Computing Toolbox is available, this scripts runs in parall
 	\mycaption[Current\hyp{}voltage plot window of PyPV.]{The plot window includes the main performance data and can be manually saved as an image.}\label{fig:pypv-plot}
 \end{SCfigure}
 
-%\paragraph{Additional output}
+\paragraph{Additional output}
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -683,7 +719,25 @@ If Matlab's Parallel Computing Toolbox is available, this scripts runs in parall
 	}
 \end{figure}
 
-%\paragraph{Last configuration saving}
+\paragraph{Directories and files naming}
+When using the "AutoSave" of the "AutoMeasure" functions, the following directory structure is created, if not already existing: \texttt{user name\-/YYYY-MM-DD} where the subdirectory is the measurement date in little endian format.
+Inside this directory, the measurements are named with the following schema: \texttt{experiment name-device name-\textit{<diode>}-\textit{<direction>}.txt} where \textit{\texttt{<diode>}} is the identification number of the specific diode under measurement, in case there is more than one per substrate (\textsl{e.g.} in our case, each device has four independent diodes, as can be seen in \cref{fig:device}) and \texttt{\textit{<direction>}} can be either \texttt{forward} or \texttt{reverse}, as explained in \cpageref{characterization_fwdrev} for the sweep scan direction.
+In order to improve the compatibility with different file systems, the accents in the user name, experiment name, and device name fields are removed using \texttt{unicode\-data.\-normalize} function.
+
+\paragraph{Files content}
+In the txt files, the first 22 lines include some information about: user, date and time, experiment name, device name, diode number, scan direction, lowest and highest sweep voltage, voltage step size, compliance (maximum current), scale, calculated voltage and current density of maximum power point, integration time and the related scan speed, delay time for each measured point, pre-delays for closed and opened illumination shutter, calculated series resistance (from the high voltage points) and shunt resistance (from close\hyp{}to\hyp{}zero voltage points), active area, irradiance (illumination intensity in \si{\mW\per\square\cm}), calculated \gls{jsc}, \gls{voc}, fill factor, and \gls{pce}.
+The \nth{23} row include the header for the data.
+From the \nth{24} row on, two columns with applied voltage and measured current follow, separated by a tabulation.
+The rows are terminated by a \texttt{\n} newline, following the Unix standard.
+
+\paragraph{Configuration saving}
+Usually, the setup does not change between experiment and experiment.
+To reduce the risk of setting wrongly some parameters, some of them are saved in the \texttt{last\_configuration.lnk} file at the program's closing and restored at its opening.
+The parameters which get saved are: user name, experiment name, lower and higher voltages, voltage step size, compliance value, scale, integration time, and cell area.
+
+\paragraph{Logging and recovery files}
+The software execution dates and the main parameters of all the performed measurements are stored in a log file: \texttt{measurements\_log.txt}.
+In case the user closes the software forgetting to save the last measurement, the data is also saved in two temporary files: \texttt{last\_measurement\_raw.txt} and \texttt{last\_measurement.txt} containing respectively the raw and the processed measurement output.
 
 	\subsection{Limitations}
 
