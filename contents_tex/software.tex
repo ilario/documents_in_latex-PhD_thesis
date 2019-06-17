@@ -23,7 +23,7 @@
 
 
 \paragraph{\texttt{equilibrate\_minimal} -- Generate a reduced set of solutions at standard conditions}
-It's a reduced version of \texttt{equilibrate}. 
+It is a reduced version of \texttt{equilibrate}. 
 Uses analytical initial conditions and runs to equilibrium and steady state, obtaining just the most important solutions
  Takes the parameters from \texttt{pinParams.m} file and tries
  to obtain a steady state solution (as if the device has been left for
@@ -89,7 +89,7 @@ For all the simulations including transients, the stabilization of the starting 
 \textit{Required by:} \texttt{CE\_full\_exec}, \texttt{change\-Light}, \texttt{equilibrate}, \texttt{equilibrate\_minimal}, \texttt{find\-Optim\-Voc}, \texttt{gen\-Int\-Structs\-Real\-Voc}, \texttt{gen\-Vapp\-Structs}, \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ISwave\_EA\_single\_exec}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{TPV\_single\_exec}.
 
 		\paragraph{\texttt{asymmetricize} -- Break a symmetrical solution}\label{asymmetricize}
-		Break a symmetrical solution (a symmetrical solution it's a repeated p-i-n-n-i-p stack, mainly used for simulating open circuit conditions, so that no boundary condition has to be set for the cathode) in two halves. Has the opposite use of the \texttt{symmetricize} function.
+		Break a symmetrical solution (a symmetrical solution it is a repeated p-i-n-n-i-p stack, mainly used for simulating open circuit conditions, so that no boundary condition has to be set for the cathode) in two halves. Has the opposite use of the \texttt{symmetricize} function.
 		Please note that further stabilization could be required.
 		
 		\textit{Inputs:} a symmetric structure as created by \texttt{pindrift} using the OC parameter set to 1.
@@ -611,11 +611,41 @@ field, each column is a space point.
 		\paragraph{User's requests}
 		The feedback from the new users of the software helped me improving PyPV with the following features: solar simulator shutter control, more robust connection to the GPIB-USB-HS adapter, better installation instructions.
 
-	\subsection{Implementation and user interface}
+	\subsection{Implementation}
 		\epigraph{\textit{\enquote{Ok, I finally completed it, by the way, why did you start developing this?}\\\enquote{Well, it was just a proof of concept, but it's nice you worked on it}}}
-
-		Python~2, rather than the most recent Python~3, has been chosen for the software development.
-		This apparently stupid choice was motivated by the requirement of running the software on the obsolete Windows~XP machines still used for the data acquisition.
+		
+				\paragraph{Coding language}
+				Python~2, rather than the most recent Python~3, has been chosen for the software development.
+				This apparently stupid choice was motivated by the requirement of running the software on the obsolete Windows~XP machines still used for the data acquisition.
+				Anyway, the usage of Python has two paramount advantages: it can be used without the need of commercial licenses (which was not the case for the previous software relying on LabView) and it is one of the most popular and easy to read coding languages, which will help the future development by other researchers.
+				
+				\paragraph{Files structure}
+				The software is distributed with the following files:
+				\begin{itemize}
+					\item \texttt{PyPV.py} -- launcher;
+					\item \texttt{mainwindow.py} -- main file where quite everything happens;
+					\item \texttt{Keithley2400.py} -- library for communicating with the hardware;
+					\item \texttt{VICurves.py} -- where the parameters are extracted from the raw data;
+					\item \texttt{mainwindow.ui} -- Qt4 graphical interface.
+				\end{itemize}
+				
+				\paragraph{\Gls{voc} and \gls{jsc} estimation}
+				The data point respectively closer to zero current or to zero voltage is taken as a first rough approximation.
+				Then, the preceding and following 3 data points are selected, if available.
+				The set of 7 data points is fitted with a parabolic curve and the final \gls{voc} and \gls{jsc} values are obtained from the result of the fit.
+				
+				\paragraph{\Gls{pce} estimation}
+				Instead, for obtaining the maximum power point no fitting is performed and the data point having the maximum $J\cdot V$ value is returned.
+				From this point and the aforementioned \gls{voc} and \gls{jsc} points, the fill factor is calculated (see \cpageref{characterization_ff}).
+				
+				\paragraph{Series and shunt resistances}
+				The resistances estimation from current\hyp{}voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
+				Series resistance is obtained from a linear fit of 6 current points at the highest applied voltage.
+				In order to avoid including points affected by the compliance limit, a check of strict monotonicity for the considered current points is included.
+				Shunt resistance is obtained from the linear fit of 12 current points close to zero applied voltage, if available.
+				
+				
+		\subsection{User interface}
 		
 		\begin{sidewaysfigure}
 								\centering
@@ -678,17 +708,48 @@ If the parameters are set to zero, the shutter control is disabled.
 Open circuit voltage real time measurement is available.
 This helps the user to have a quick idea of which diodes are worth measuring.
 
-\paragraph{Irradiance, device, and diode identification}
+\paragraph{Irradiance, device and diode identification, scan direction}
+Here the user can find the parameters which most likely will vary within an experiment: the illumination intensity, the device identification string (substrate codename), the identification number of the diode in the substrate (with a numeric up-down, in case there are more than one, see \cref{fig:device}), and the sweep scan direction (with a check box, see \cpageref{characterization_fwdrev}).
 
-		\paragraph{Auto-measure}\label{automeasure}
-		The devices are kept under illumination at open circuit conditions, then a reverse sweep is measured and, immediately after this, the forward sweep is measured.
-		The reason for measuring the reverse sweep first, is that the reverse sweep starts from a high voltage point which is closer to the stabilized condition of the devices prior to the measurement (illuminated and open circuit).
+\paragraph{Latest measured parameters output}
+At the end of each measurement, the calculated performance parameters are printed in four large boxes.
+
+\paragraph{Unsaved results indicator}
+Just after each measurement, a red "Not saved" text remembers to the user that the data needs to be saved, or it will be lost when the next measurement is performed.
+A green "Saved" text confirms to the user that the latest measurement has been saved.
+
+\paragraph{"Run IV" button}
+
+\paragraph{"Save As\dots" button}
+
+\paragraph{"AutoSave" button}
+
+\paragraph{"AutoMeasure" button}\label{automeasure}
+The devices are kept under illumination at open circuit conditions, then a reverse sweep is measured and, immediately after this, the forward sweep is measured.
+The reason for measuring the reverse sweep first, is that the reverse sweep starts from a high voltage point which is closer to the stabilized condition of the devices prior to the measurement (illuminated and open circuit).
 
 
-		\paragraph{Resistances} The shunt and series resistances estimation from current-voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
+\paragraph{"Run a List\dots" button}
 
+\paragraph{"AutoSave Images" check}
 
-Numeric up-down
+\paragraph{Previous saved measurements table}
+
+\paragraph{Warnings and pop-up dialogs}
+In a few cases, a small window appears warning the user of some problem or asking confirmations:
+\begin{itemize}
+	\item no data to save, if the "Save as\dots" or the "AutoSave" buttons are pressed before any measurement was performed;
+	\item data already saved, when the same measurement is getting saved twice, usually means that one of the two files needs to be deleted, warn the user;
+	\item overwrite, when using "AutoSave", if a file with the same name is already present ask confirmation for overwriting;
+	\item saving problem, if the file cannot be saved, for example due to invalid characters in the file name, warn the user;
+	\item unsaved data, whether to run another measurement without saving previous measurement data;
+	\item invalid user, experiment, device, diode, active area, or irradiance, warn the user if these fields cannot be read;
+	\item zero voltage point not crossed, if the requested lowest and highest voltages does not include the zero voltage point, the \gls{jsc} will not be measured, a question asks confirmation to the user;
+	\item zero current point not crossed, usually the user is interested to have information also about the \gls{voc}, for this reason a warning is summoned when the sweep did not measure both negative and positive currents;
+	\item when using "Run a List\dots" button, user handled checkpoints can be introduced and this spawns a question of whether to continue with the measurement;
+	\item when using the "AutoMeasure" button, a warning tells the user that the measured \gls{voc} is out of the requested range.
+\end{itemize}
+ 
 
 \begin{SCfigure}
 	\centering
@@ -696,7 +757,7 @@ Numeric up-down
 	\mycaption[Current\hyp{}voltage plot window of PyPV.]{The plot window includes the main performance data and can be manually saved as an image.}\label{fig:pypv-plot}
 \end{SCfigure}
 
-\paragraph{Additional output}
+\paragraph{Additional visual output}
 
 \begin{figure}
 	\makebox[\textwidth][c]{
@@ -719,6 +780,8 @@ Numeric up-down
 	}
 \end{figure}
 
+\subsection{Output files}
+	
 \paragraph{Directories and files naming}
 When using the "AutoSave" of the "AutoMeasure" functions, the following directory structure is created, if not already existing: \texttt{user name\-/YYYY-MM-DD} where the subdirectory is the measurement date in little endian format.
 Inside this directory, the measurements are named with the following schema: \texttt{experiment name-device name-\textit{<diode>}-\textit{<direction>}.txt} where \textit{\texttt{<diode>}} is the identification number of the specific diode under measurement, in case there is more than one per substrate (\textsl{e.g.} in our case, each device has four independent diodes, as can be seen in \cref{fig:device}) and \texttt{\textit{<direction>}} can be either \texttt{forward} or \texttt{reverse}, as explained in \cpageref{characterization_fwdrev} for the sweep scan direction.
@@ -737,7 +800,7 @@ The parameters which get saved are: user name, experiment name, lower and higher
 
 \paragraph{Logging and recovery files}
 The software execution dates and the main parameters of all the performed measurements are stored in a log file: \texttt{measurements\_log.txt}.
-In case the user closes the software forgetting to save the last measurement, the data is also saved in two temporary files: \texttt{last\_measurement\_raw.txt} and \texttt{last\_measurement.txt} containing respectively the raw and the processed measurement output.
+In case the user closes the software forgetting to save the last measurement, the data is also saved in two temporary files: \texttt{last\_measurement\_raw.txt} and \texttt{last\_measurement.txt} containing respectively the latest raw and processed measurement output.
 
 	\subsection{Limitations}
 
@@ -861,6 +924,6 @@ In case the user closes the software forgetting to save the last measurement, th
 	The hysteretic phenomena in perovskite solar cells requires new procedures for \gls{mppt} \cite{Cimaroli2017,Pellet2017} and a few commercial systems are already available for that \cite{CicciResearchsrl2019,CandlelightSystems}.
 	An interesting project for having robust \gls{mppt} measurable with Tektronix Keithley 2400 is mppTracker \cite{AFMD2017}.
 	I made a few contributions which are accessible on \url{https://github.com/AFMD/mppTracker/pulls?q=is%3Apr}.
-	As the effort in this project were very limited on my side, I'll not further describe that.
+	As the effort in this project were very limited on my side, I will not further describe that.
 	If confirmed, recent reports on "bistable short circuit current" in perovskite solar cells by \authoryear{Calado2018} would further complicate the implementation of a \gls{mppt}.
 %	introduce local maxima making the \gls{mppt} system design even more complex.

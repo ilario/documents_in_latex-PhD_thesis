@@ -1,8 +1,8 @@
 
-\section{Why Photovoltaic}
+\section{Photovoltaic Energy}
 
 	\paragraph{Abundance}
-	The total solar irradiance hitting the outer Earth atmosphere is around \SI{1361}{\watt\per\square\metre},\cite{Kopp2011} which, considering our planet cross section area, makes \SI{1.6e17}{\watt}.
+	The total solar irradiance hitting the outer Earth atmosphere is around \SI{1361}{\watt\per\square\metre} \cite{Kopp2011}, which, considering our planet cross section area, makes \SI{1.6e17}{\watt}.
 	Nature conveys this energy in plenty of ways, including the generation of every renewable and most of non-renewable energy sources.
 	Solar energy is effectively the primary energy source for our planet's ecosystem, so it is the most interesting source of energy for human usage.
 
@@ -11,43 +11,46 @@
 
 	\paragraph{Availability}
 	The ubiquitous availability of solar power can be the leverage for an economical power levelling across different regions of the planet.
-	Indeed, the abundance of solar irradiation (represented in \cref{fig:world_map-PVOUT} by the ratio between the photovoltaic electric energy that can be obtained over the nominal power of an installed solar panel) is quite high in most of the regions where life quality is seriously affected by economical situation (represented in \cref{fig:world_map-HDI} by the Human Development Index).
+	Indeed, the abundance of solar irradiation (represented in \cref{fig:world_map-PVOUT}) is quite high in most of the regions where life quality is seriously affected by economical situation (represented in \cref{fig:world_map-HDI} by the Human Development Index).
 
 	\begin{figure}%[!hbtp]%
 		\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
 				\centering
 				\begin{subfigure}[b]{1\textwidth}
-					\includegraphics[width=0.9\textwidth]{world_map-HDI/world_map-HDI.pdf}
-					\subcaption{Human development index by region}\label{fig:world_map-HDI}
-				\end{subfigure}
+	\includegraphics[width=0.9\textwidth]{world_map-PVOUT/world_map-PVOUT.pdf}
+	\subcaption{Daily photovoltaic electricity potential}\label{fig:world_map-PVOUT}
+\end{subfigure}	
 
-				\begin{subfigure}[b]{1\textwidth}
-					\includegraphics[width=0.9\textwidth]{world_map-PVOUT/world_map-PVOUT.pdf}
-					\subcaption{Daily photovoltaic electricity potential}\label{fig:world_map-PVOUT}
-				\end{subfigure}
+			\begin{subfigure}[b]{1\textwidth}
+				\includegraphics[width=0.9\textwidth]{world_map-HDI/world_map-HDI.pdf}
+				\subcaption{Human development index by region}\label{fig:world_map-HDI}
+			\end{subfigure}
 
 				\begin{subfigure}[b]{1\textwidth}
 					\includegraphics[width=0.9\textwidth]{world_map-electrical_vs_land/world_map-electrical_vs_land.pdf}
 					\subcaption{Yearly electricity consumption over region land area}\label{fig:world_map-electrical_vs_land}
 				\end{subfigure}
-				\mycaption[Geographical distribution of development, sunlight and consumption.]{Data in (\textbf{a}) represent the human development index:
+				\mycaption[Geographical distribution of development, sunlight and consumption.]{
+					Data in (\textbf{a}) represents the photovoltaic electricity potential: considering a photovoltaic module installed in a region, is the ratio between the average daily produced energy, in kWh, and the nominal power, or nameplate capacity, of the installed module \cite{Solargis2018};
+					data in (\textbf{b}) represent the human development index:
 					"a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and have a decent standard of living"
-					from UNDP\cite{UNDP2018} (missing data in grey); data in (\textbf{b}) represents the photovoltaic electricity potential: considering a photovoltaic module installed in a region, is the ratio between the average daily produced energy, in kWh, and the nominal power, or nameplate capacity, of the installed module;\cite{Solargis2018} data in (\textbf{c}) represents the yearly electricity consumption\cite{CIAa} (comparing total electricity generated annually plus imports and minus exports) on a country scale divided by country land surface,\cite{CIA} expressed in kilowatt-hour per year and per square kilometre.}\label{fig:world_map}
+					from UNDP \cite{UNDP2018} (missing data in grey);
+					data in (\textbf{c}) represents the yearly electricity consumption \cite{CIAa} (comparing total electricity generated annually plus imports and minus exports) on a country scale divided by country land surface \cite{CIA}, expressed in kilowatt-hour per year and per square kilometre.}\label{fig:world_map}
 			}}
 	\end{figure}
 
 	\paragraph{Resilience}
-	The usage of photovoltaic energy source is compatible with a distributed and decentralized network model.
+	The usage of photovoltaic energy is compatible with a distributed and decentralized network model.
 	Such a power network can be much more resilient than the fossil fuels based system, with the only single-point-of-failure being the climate variability.
 	%	is the electric energy production method that best matches a distributed and decentralized network model, 
 	Combined with accumulation (needed for night time usage) and with other energy sources, it can be the pivot of an extremely reliable electric energy provisioning system.
 
 	\paragraph{More energy is not enough} It is intuitive that increasing the energy production is a high-price solution to the growing energetic demand.
 	Indeed, in some regions a decrease in the electricity consumption has to be included for a long-term solution.
-	For example, a study\cite{Margolis2016} reports that if every rooftop (not considering utility-scale solar facilities) in United States of America was covered with solar panel, just the 39~\% of its nowadays national consumption would be covered.
+	For example, a study \cite{Margolis2016} reports that if every rooftop (not considering utility-scale solar facilities) in United States of America was covered with solar panels, just the 39~\% of its nowadays national consumption would be covered.
 	In \cref{fig:world_map-electrical_vs_land} we can see how electricity consumption density is greatly inhomogeneous and comparing with the photovoltaic potential map in \cref{fig:world_map-PVOUT}, it is evident that such a problem is shared with many other poorly insulated but energy eager regions.
-	Both an increase in machinery's efficiency and a change in life-style can be part of the solution, following the example and thinking at life-style, in USA the \textsl{per capita} energy usage is more than twice the European average, and five times the Latin America average.\cite{IEA}
+	Both an increase in machinery's efficiency and a change in life-style can be part of the solution, following the example and thinking at life-style, in USA the \textsl{per capita} energy usage is more than twice the European average, and five times the Latin America average \cite{IEA}.
 
 	\paragraph{And more research is needed} Every source of electrical energy we can think of works \textsl{via} the conversion of motive power (a flow of steam, wind, or water, waves, tides...) to electricity, which relays on the well established electric generator.
 	Except photovoltaic energy.
@@ -69,12 +72,12 @@
 		
 		\paragraph{HOMO and LUMO}
 		The energy that an electron can have when it is bound in a nanometric volume (like a molecular bond) is quantized, the possible energies are represented in \cref{fig:homo_lumo}.
-		The lowest levels represent the ones filled with electrons and their energy is defined as the energy that can be provided to a neutral isolated molecule at its ground state which result in one electron being separated from it at an infinite distance.
-		The minimum of these ionization energies, is the \gls{homo}.
-		The highest levels are virtual ones and represent the energies that can be gained when an unbound electron gets bound to a isolated molecule which was neutral and at its ground state.
-		The maximum of these electron affinity energies, is the \gls{lumo}.
-		The difference between \gls{homo} and \gls{lumo} is named band gap.
-		After these processes, the molecule will geometrically change and release some reorganization energy, but this is not included in the \gls{homo} and \gls{lumo} definition (\textsl{i.e.} a vertical transition is considered).
+		The lowest levels represent the ones actually occupied with electrons and their energy is defined as the energy that can be provided to a neutral isolated molecule at its ground state which result in one electron being separated from it at an infinite distance and zero kinetic energy.
+		The minimum of these ionization energies, is the \gls{homo} energy.
+		The upper levels are virtual ones and represent the energies that can be released when an unbound electron gets bound to a isolated molecule which was neutral and at its ground state.
+		The maximum of these electron affinity energies, is the \gls{lumo} energy.
+		The difference between \gls{homo} and \gls{lumo} energies is named band gap.
+		After these electronic processes, the molecule will geometrically change and release some reorganization energy, but this is not included in the \gls{homo} and \gls{lumo} definition (\textsl{i.e.} a vertical transition is considered).
 
 		\paragraph{Valence and conduction bands in crystalline solids}
 		As we saw, for an isolated molecule the energy levels are discrete values.
@@ -83,13 +86,13 @@
 		
 		\paragraph{Valence and conduction bands in amorphous solids}
 		In amorphous solids, the allowed electronic energy is still composed by bands but localised states can appear inside the band gaps and the band edges are less defined.
-		These tails of the edges are usually localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite[213]{Stenzel2005}.
+		These tails of the edges are usually composed by localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite[213]{Stenzel2005}.
 %		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
 		
 		\begin{SCfigure}
 			\centering
 			\includegraphics[width=0.6\textwidth]{DOS/DOS.pdf}
-			\mycaption[Schematic representation of the density of states, Fermi-Dirac distribution, and electronic population for a crystalline intrinsic semiconductor.]{
+			\mycaption[Schematic representation of the density of states, Fermi\hyp{}Dirac distribution, and electronic population for a crystalline intrinsic semiconductor.]{
 				The green line indicates the density of states in a 3D crystalline solid, the two bands have been drawn with the same shape for simplicity, in general this could not be the case.
 				The orange line is the Fermi\hyp{}Dirac distribution for the electrons population.
 				The grey line is (approximatively) the product of the two aforementioned lines representing the electronic density energy distribution.
@@ -98,23 +101,23 @@
 		\end{SCfigure}
 		
 
-		\paragraph{Boltzmann and Fermi-Dirac statistics}
+		\paragraph{Boltzmann and Fermi-Dirac statistics}\label{intro_statistics}
 		For a system with defined temperature and total energy but various possible states at different energies, Boltzmann distribution gives the probability of finding it in a specific state.
 		For example, considering electrons as non interacting particles we can estimate the conduction band population with:
 		\begin{equation}\label{eq:boltzmann}
-			n_|CB| = n_|DOS|\exp[\frac{q(\bar\mu-E_|CB|)}{k_|B|T}]
+			n_|CB| = n_|DOS|\exp[\frac{\bar\mu-E_|CB|}{k_|B|T}]
 		\end{equation}
-		where $n_|DOS|$ is the density of states representing the energy state degeneracy, $q$ is the elementary charge, $\bar\mu$ is the electrons electrochemical potential (quasi-Fermi level energy of electrons including the electrostatic contribution), and $E_|CB|$ is the conduction band energy including the local electrostatic potential.
+		where $n_|DOS|$ is the density of states representing the energy state degeneracy, $q$ is the elementary charge, $\bar\mu$ is the electrons electrochemical potential (Fermi or quasi\hyp{}Fermi level energy of electrons including the electrostatic contribution), and $E_|CB|$ is the conduction band energy including the local electrostatic potential.
 		For low temperature or high electron density cases, the interactions between particles cannot be ignored.
-		The inclusion of Pauli exclusion principle for fermions modifies the Boltzmann distribution into the Fermi\hyp{}Dirac distribution, which has not been used for the simulations performed in this thesis:
+		The consideration of Pauli exclusion principle for fermions modifies the Boltzmann distribution into the Fermi\hyp{}Dirac distribution, which has not been used for the simulations performed in this thesis:
 		\begin{equation}\label{eq:fermidirac}
-		n_|CB| = \frac{n_|eDOS|}{\exp[q(E_|CB|-\bar\mu)/(k_|B|T)]+1}
+		n_|CB| = \frac{n_|eDOS|}{\exp[(E_|CB|-\bar\mu)/(k_|B|T)]+1}
 		\end{equation}
 		where $n_|DOS|$ has been replaced with the effective density of states $n_|eDOS|$ which considers the effective mass for interacting particles.
 
 		\paragraph{Fermi level}
 		Fermi level is an imaginary level (disregarding the actual states present in a system) defined for systems in thermodynamic equilibrium (no macroscopic particles or energy fluxes, neither internal nor from other systems) having an energy such that its occupancy probability is \SI{50}{\%}.
-		For example, considering the 3D crystalline system represented in \cref{fig:DOS} if the Fermi level approaches the conduction band edge, the population at that edge state can be estimated using \cref{eq:fermidirac}: $\frac{n_|eDOS|}{\exp[q(E_|CB|-E_|CB|)/(k_|B|T)]+1} = n_|eDOS|/2$ so half full, while the valence band will be close to completely full (many electrons, very few holes).
+		For example, considering the 3D crystalline system represented in \cref{fig:DOS} if the Fermi level approaches the conduction band edge, the population at that edge state can be estimated using \cref{eq:fermidirac}: $\frac{n_|eDOS|}{\exp[(E_|CB|-E_|CB|)/(k_|B|T)]+1} = n_|eDOS|/2$ so half full, while the valence band will be close to completely full (many electrons, very few holes).
 		This level is ultimately the relevant potential for the charge carriers for a system in thermodynamic equilibrium, so if carriers can migrate through the system the Fermi level will have the same energy in every location of it.
 		
 		\paragraph{Doping}
@@ -144,7 +147,7 @@
 		For example, in \cref{fig:holes_concentration} we can see that the closer the $E_|fp|$ (quasi\hyp{}Fermi level relative to the valence band) gets to the valence band, the higher the holes concentration in it.
 		
 		\paragraph{Quasi\hyp{}Fermi levels and current}
-		Coherently with the Fermi level concept, quasi-Fermi levels are the relevant potentials for the migration of holes in the valence band and electrons in the conduction band, treated separately.
+		Coherent with the Fermi level concept, quasi-Fermi levels are the relevant potentials for the migration of holes in the valence band and electrons in the conduction band, treated separately.
 		The quasi\hyp{}Fermi level considers both the internal chemical potential $\mu$ and the electrostatic potential $V_|E|$ and, as we will see below, these two quantities determine respectively the diffusion and the drift current.
 		For this reason, a gradient in the valence or conduction band quasi\hyp{}Fermi level ($E_|fp|$ or $E_|fn|$) always indicates the presence of a current respectively of holes or electrons.
 		
@@ -192,12 +195,12 @@ Concentration of particles is the main contribution to the internal chemical pot
 		\parbox{1.1\textwidth}{
 			\centering
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[scale=0.7]{homojunction/doping-ppipp.pdf}
+				\includegraphics[scale=0.65]{homojunction/doping-ppipp.pdf}
 				\subcaption{Homojunction before contact}\label{fig:homojunction-doping}
 			\end{subfigure}
 			\qquad
 			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[scale=0.7]{homojunction/poisson_and_depletion-ppipp.pdf}
+				\includegraphics[scale=0.65]{homojunction/poisson_and_depletion-ppipp.pdf}
 				\subcaption{After contact}\label{fig:homojunction-poisson_and_depletion}
 			\end{subfigure}			
 			\mycaption[Schematics of a p-i-p homojunction, with emphasis on depletion layers and representation of Poisson equation.]{
@@ -250,7 +253,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		The displacement current $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$.
 		The displacement electric field $D$ includes contributions from the electric field intensity $E$ and the polarization $P$: $D=\epsilon_0 E + P$ which can also be written in terms of relative permittivity $\epsilon_r$ as: $D= \epsilon_0 \epsilon_r E$.
 		So its time derivative defining the displacement current is: $\frac{\partial D}{\partial t} = \epsilon_0 (\epsilon_r\frac{\partial E}{\partial t} + E\frac{\partial \epsilon_r}{\partial t})$.
-		For the scope of this thesis we're interested in the first term and we're going to ignore the second one considering the relative permittivity as a material dependent constant.
+		For the scope of this thesis we are interested in the first term and we are going to ignore the second one considering the relative permittivity as a material dependent constant.
 
 
 		\begin{figure}
@@ -273,9 +276,9 @@ If the material layer is thinner than the Debye length, the electric field will 
 						\subcaption{Ions accumulating at interfaces}\label{fig:displacement_current-ionic}
 					\end{subfigure}
 
-					\mycaption[Representation of current and displacement current.]{(\textbf{a}) a mixed ionic-electronic conductor material layered between two layers of electronic conductor material.
-						(\textbf{b}) the electronic charge can cross the material's interfaces.
-						(\textbf{c}) ionic charge cannot be transferred to the electrodes, still a displacement current due to the ionic migration is generated and can be measured in the amperometer.}\label{fig:displacement_current}
+					\mycaption[Representation of current and displacement current.]{In (\textbf{a}), a mixed ionic-electronic conductor material layered between two layers of electronic conductor material.
+						In (\textbf{b}), the electronic charge can cross the material's interfaces.
+						In (\textbf{c}), ionic charge cannot be transferred to the electrodes, still a displacement current due to the ionic migration is generated and can be measured in the amperometer.}\label{fig:displacement_current}
 				}
 			}
 		\end{figure}
@@ -287,7 +290,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		It is not, as one could erroneously and instinctively think, the effect of an electric field generated in the contacts by the moving charge in the perovskite layer (with related Coulomb force and image charges) as out of the two two-dimensional planes of opposed charges no electric field is present.
 		This can be understood thinking that the electric field intensity generated by a large plate of charges has a constant magnitude at distances much smaller than the plate dimensions (which is always true in our solar cells considering the thickness \SI{\approx 1}{\um} to area \SI{3x3}{\square\mm} ratio, except at electrode edges).
 		The concept is represented in \cref{fig:dipole_plane}.
-		In \cpageref{displacement_current_ionic} we'll use the displacement current concept for simulating the current caused in the electrodes not by a net flux of charges through a device section but by the rearrangement of charges which not necessarily leave the device, like the ionic migration in perovskite material.
+		In \cpageref{displacement_current_ionic} we will use the displacement current concept for simulating the current caused in the electrodes not by a net flux of charges through a device section but by the rearrangement of charges which not necessarily leave the device, like the ionic migration in perovskite material.
 
 		\begin{figure}
 			\makebox[\textwidth][c]{
@@ -572,7 +575,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	This is commonly observed in ionic solids with weak lattice energy.
 	Taking as an example the \gls{mapi} lead halide perovskite, the formation of the Schottky defect \ch[kroeger-vink=true]{V'_{MA} + V^._{I}} (a methylammonium cation and a iodine anion leaving the crystal) is expected to be rather easy as these ions leaves behind vacancies with just charge $\pm 1$ and the product, \ch{CH3NH3I} can further decompose in volatile compounds like methylamine and hydrogen iodide.
 	Indeed, the enthalpy of formation of this defect has been calculated to be only \SI{0.08}{\eV}, which at room temperature means that \SI{\approx 4}{\%} of the \ch{MA+} and \ch{I-} sites in \gls{mapi} are vacant \cite{Walsh2015,Yin2014}.
-	This specific defect can be avoided with small variations of the stoichiometry but other kind of defects will become more likely (\textsl{e.g.} \ch[kroeger-vink=true]{V''_{Pb} + 2V^._{I}}), and the minimum defects concentration achievable with \gls{mapi} perovskite has been reported to be around \SI{\approx 8e17}{\per\cubic\cm} (\SI{\approx 0.02}{\%}) \cite{Walsh2015}.
+	This specific defect can be avoided with small variations of the stoichiometry but other kind of defects will become more likely (\textsl{e.g.} \ch[kroeger-vink=true]{V''_{Pb} + 2 V^._{I}}), and the minimum defects concentration achievable with \gls{mapi} perovskite has been reported to be around \SI{\approx 8e17}{\per\cubic\cm} (\SI{\approx 0.02}{\%}) \cite{Walsh2015}.
 	A iodine vacancy can also be originated by a Frenkel defect where a iodine migrates from its site to an interstitial one \ch[kroeger-vink=true]{V^._{I} + I'_{i}} and some studies support this as the origin of defects in perovskite materials \cite{Birkhold2018,Birkhold2018a,Minns2017,Mosconi2016}.
 	Frenkel defects are expected to constitute shallow or deep traps in the perovskite band gap while Schottky defects should not present energies inside the band gap \cite{Kim2014h,Yin2014,Buin2014,Du2015}.
 %	For a halide perovskite, when compared with an oxide perovskite where \ch{X} is oxygen, the formation of ionic defects is easier thanks to the lower charge of the ionic species which means a lower lattice energy.

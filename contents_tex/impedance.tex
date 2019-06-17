@@ -44,7 +44,7 @@
 	All the mentioned functions, helper code and examples of impedance spectroscopy simulations have been released on \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
 
 	\paragraph{Homojunction}
-	I employed an homojunction version of Driftfusion, which at the date of September 2017 was the stable and well tested release of Driftfusion.
+	We employed the homojunction version of Driftfusion, which at the date of September 2017 was the stable and well tested release of Driftfusion.
 	This means that in the presented simulations all the materials have the same band gap but can differ by other parameters: doping level (equilibrium Fermi level position), holes and electrons mobilities, permittivity, radiative and trap mediated recombination constants, traps relative energy inside the band gap, and thickness.
 	This proved to be enough for simulating the influence of ionic current on the recombination current but was limited for studying their influence on the injection current.
 
@@ -201,7 +201,8 @@
 		V_|Eion|(t) = \int_{x_1}^{x_2} E_|ion|(x,t) \dd x
 		\end{equation}
 		where $x_2$ is the position of the perovskite\-/\gls{etm} interface.
-		As the voltage of the device does not vary, this electrostatic potential variation caused by the ionic movement will have to be compensated by an accumulation of free carriers in the contacts (we will ignore the free carriers in the intrinsic, which for the dark and unbiased case has low density).
+		For the sake of clarity, we consider the case in which the applied voltage does not vary, the obtained equation would be valid also for the case with varying voltage.
+		So, for keeping the device voltage constant, this electrostatic potential variation caused by the ionic movement will have to be compensated by an accumulation of free carriers in the contacts (we will ignore the free carriers in the intrinsic, which for the dark and unbiased case has low density).
 		So the compensating potential $V_|Edisp|$ will be:
 				\begin{equation}
 				V_|Edisp|(t) = -V_|Eion|(t) = \frac{Q_|disp|(t) \cdot (p_2-p_1)}{\epsilon_0 \bar\epsilon_|r|}
@@ -408,7 +409,7 @@ Experimentally, this is observed some times but lies close to the instrumental f
 
 
 
-	\paragraph{Dark case}
+	\paragraph{Dark case}\label{impedance_lowf_dark}
 	Experimentally, a feature at frequencies \SI{< 100}{\Hz} is often observed in impedance of perovskite solar cells in dark \cite{Pockett2015,Juarez-Perez2014,Kim2015c,Guerrero2016,Zarazua2016}.
 	This feature has been interpreted as a ionic influence on the dark capacitance by \authoryear{Yang2015e}.
 	Indeed, calculating an apparent capacitance value from the ionic displacement current (see \cpageref{displacement_current_ionic,intro_displacement_current}) we can see that it matches the apparent capacitance value in dark, reported in \cref{fig:impedance-ionic-capacitance}.
@@ -577,7 +578,7 @@ The fact that a large voltage perturbation causes a non\hyp{}sinusoidal current 
 					\centering
 					\begin{subfigure}[t]{0.51\textwidth}\centering
 						\includegraphics[width=0.9\textwidth]{experimental/Zabs-experimental.pdf}
-						\subcaption{Impedance module}\label{fig:experimental-Zabs}
+						\subcaption{Impedance absolute value}\label{fig:experimental-Zabs}
 					\end{subfigure}
 					\qquad
 					\begin{subfigure}[t]{0.51\textwidth}\centering
@@ -704,7 +705,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 	each period, suggested to use a multiple of 4;
 	6) logical, check if the oscillating solution reached a
 	(oscillating) stabilization, otherwise just use the result of the
-	initial simulation. This can be useful when it's known that the
+	initial simulation. This can be useful when it is known that the
 	starting solution is not stabilized, for example measuring with an
 	unstabilized ionic profile;
 	7) logical, set to true when performing ElectroAbsorbance simulation,
@@ -882,7 +883,7 @@ Using some of the modules already implemented for impedance spectroscopy simulat
 	6) logical, if true do not check that the oscillating solution reached a
 	(oscillating) stabilization, instead take always the first solution
 	and use its final time point as the starting point of the next
-	frequency simulation. This can be useful when it's known that the
+	frequency simulation. This can be useful when it is known that the
 	starting solution is not stabilized and a realistic simulation of the
 	solution evolving during the measurement is wanted.
 	7-9) identical to \texttt{ISwave\_full\_exec} 6-8 ones;

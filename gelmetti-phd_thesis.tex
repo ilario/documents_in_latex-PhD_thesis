@@ -14,7 +14,7 @@
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
 	\usepackage[utf8]{inputenc}
 	%\usepackage[T1]{fontenc}% for using Bera Mono in Matlab listings
-	\usepackage[spanish, es-noquoting, italian, catalan, british]{babel}
+	\usepackage[spanish, es-noquoting, italian, catalan, english]{babel}
 	% es-noquoting is needed for using < and > in siunitx https://github.com/josephwright/siunitx/issues/355#issuecomment-452731339
 	
 	\usepackage[product-units = single, list-units = single, range-units = single]{siunitx} % Typesetting quantities in a consistent way.
@@ -71,7 +71,7 @@
 	
 	%\usepackage{chemnum}			% Package used to manage index of compounds and schemes
 	\usepackage{graphicx}
-	\usepackage[textfont={small},format=plain]{subcaption} %the subfigure and subfig packages are deprecated. Specify the format in order to avoid the general caption format to apply also here https://tex.stackexchange.com/a/319870/173645
+	\usepackage[textfont={color=darkgray,small},labelfont={color=darkgray,small,bf},format=plain]{subcaption} %the subfigure and subfig packages are deprecated. Specify the format in order to avoid the general caption format to apply also here https://tex.stackexchange.com/a/319870/173645
 	\usepackage{ragged2e} % needed by ragged option of sidecap?
 	
 	
@@ -85,14 +85,14 @@
 	\usepackage{eso-pic} %background image on titlepage
 	\usepackage{transparent} %transparency for background image on titlepage
 	
-	\usepackage[format=plain, indention=0cm, labelfont={small,bf}, textfont=small]{caption}%personalize figure and table captions
+	\usepackage[format=plain, indention=0cm, textfont={color=darkgray,small},labelfont={color=darkgray,small,bf}]{caption}%personalize figure and table captions
 	\newcommand{\mycaption}[2][]{\caption[#1]{\textbf{#1} #2}}% to have also the short version printed, in bold
 
 	\usepackage[ragged, centerbody, rightcaption, wide]{sidecap}%wide does not work neither setting marginparwidth in geometry, I have no idea why. centerbody is undocumented, I'm not sure it works.
 	\captionsetup[SCfigure]{indention=0cm}
 	
 	% add a line below captions https://tex.stackexchange.com/a/14969/173645
-	\DeclareCaptionFormat{myformat}{#1#2#3\vspace{-6pt}	\centerline{\rule[0.5ex]{0.8\linewidth}{0.7pt}}}%}\hrulefill}
+	\DeclareCaptionFormat{myformat}{#1#2#3\vspace{-4pt}	\centerline{\textcolor{darkgray}{\rule[0.5ex]{0.8\linewidth}{0.5pt}}}}%}\hrulefill}
 	\captionsetup[figure]{format=myformat}
 	
 	% has to be loaded before hyperref https://tex.stackexchange.com/questions/485270/hyperref-and-titletoc-prints-extra-section-1-or-doc-startchapter-1/
@@ -113,10 +113,11 @@
 	\definecolor{coloreight}{HTML}{666666}
 		
 	\hypersetup{
-		colorlinks,
-		linkcolor={red!10!black},
-		citecolor={black},
-		urlcolor={blue!80!black},
+%		colorlinks,
+		hidelinks,
+%		linkcolor={red!10!black},
+%		citecolor={black},
+%		urlcolor={blue!80!black},
 %			bookmarks=true,         % show bookmarks bar?
 %			unicode=false,          % non-Latin characters in Acrobat’s bookmarks
 %			pdftoolbar=true,        % show Acrobat’s toolbar?
@@ -305,10 +306,18 @@ bottom=2cm%,
 % on the contrary of lscape, rotating has a floating environment for images and tables
 \usepackage{rotating}
 
-	\usepackage[strict=true,autostyle=true, english = british]{csquotes} % for automatic direction of quotes, and for \enquote
+	\usepackage[strict=true,autostyle=true]{csquotes} % for automatic direction of quotes, and for \enquote
 \MakeOuterQuote{"}
 
+% better electronic pdf bookmark, no change in the printed version
 \usepackage{bookmark}
+
+% avoid widow or orphan lines: lines by their own https://tex.stackexchange.com/a/30409/173645
+% but it does not work together with breqn https://tex.stackexchange.com/questions/442329/error-when-using-breqn-and-nowidow
+%\usepackage[all]{nowidow}
+% an alternative to nowidow
+\widowpenalty=1000
+\clubpenalty=1000
 
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
@@ -462,7 +471,7 @@ bottom=2cm%,
 
 \pagestyle{plain}
 
-\selectlanguage{british}
+\selectlanguage{english}
 \EnableQuotes
 %\apptocmd{\@epitext}{\penalty=500}{}{}
 %\apptocmd{\epigraph}{\nopagebreak}{}{}
@@ -580,7 +589,7 @@ bottom=2cm%,
 \newglossaryentry{symb:v}{name={\ensuremath{v}}, description={ideality of pseudo first order life-time \textsl{versus} light bias}}
 \newglossaryentry{symb:m}{name={\ensuremath{m}}, description={ideality of charge density \textsl{versus} light bias}}
 \newglossaryentry{symb:mu}{name={\ensuremath{\mu}}, description={internal chemical potential}, sort={mu}}
-\newglossaryentry{symb:barmu}{name={\ensuremath{\bar\mu}}, description={electrons electrochemical potential, the quasi-Fermi level energy of electrons including the local electrostatic potential}, sort={mubar}}
+\newglossaryentry{symb:barmu}{name={\ensuremath{\bar\mu}}, description={electrons electrochemical potential, the Fermi or quasi-Fermi level energy of electrons including the local electrostatic potential}, sort={mubar}}
 \newglossaryentry{symb:munpa}{name={\ensuremath{\mu_{(\mathrm{n}|\mathrm{p}|\mathrm{a})}}}, description={mobility of electrons or holes or ions}, sort={munp}}
 \newglossaryentry{symb:V}{name={\ensuremath{V}}, description={voltage}}
 \newglossaryentry{symb:P}{name={\ensuremath{P}}, description={electrical power}}
@@ -713,10 +722,11 @@ bottom=2cm%,
 	\epigraph{\textit{"It's good, unless you have vertigo."\\"\dots are you talking about PhD?"}}
 	
 	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorone}
-
+	
+	\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[intro]
 	\printcontents[intro]{l}{1}{\setcounter{tocdepth}{4}}
@@ -735,13 +745,15 @@ bottom=2cm%,
 	\epigraph{\textit{"When it's a humid day, we don't fabricate cells"\\"But\dots  don't you fabricate them in a glovebox?"\\"Of course."}}
 
 	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colortwo}
+	
 
 	\paragraph*{Abstract} The experimental methods are described here in detail, mixed with comments and warnings to the reader, trying to underline the critical points spotted over my PhD.
 	Needless saying, the critical points in fabricating a complex electronic device such as a perovskite solar cells are many and neither a proper description can assure reproducibility.
-
+	
+\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[methods]
 	\printcontents[methods]{l}{1}{\setcounter{tocdepth}{4}}
@@ -766,10 +778,11 @@ bottom=2cm%,
 	The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
 	In this chapter the employed characterisation techniques are described and critically assessed.
 	Taking advantage of drift\hyp{}diffusion simulations, some new hypotheses are thrown about the interpretation of the characterisation output.
-
+	
+\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[characterization]
 	\printcontents[characterization]{l}{1}{\setcounter{tocdepth}{4}}
@@ -783,7 +796,7 @@ bottom=2cm%,
 	\clearpage
 	\stopcontents[characterization]
 
-\chapter{Comparison of HTM in Bottom Cathode CsFAMAPbIBr Solar Cells by Means of PhotoPhysical and Chemical Characterization}\label{ch:tae}
+\chapter{Comparison of HTMs in Bottom Cathode CsFAMAPbIBr Solar Cells}\label{ch:tae}
 \chaptermark{Comparing HTM}
 	\epigraph{\textit{"It's so easy, can't you see the shift?"}}
 
@@ -796,9 +809,10 @@ bottom=2cm%,
 	The lack of correlation between the molecules' ionization potentials and the devices measured \gls{voc} motivated us to deepen the investigation on the factors contributing to the cell voltage by means of transient optoelectronic techniques.
 	We gained insight into the recombination process and the energy alignment at perovskite\-/\gls{htm} interface.
 
+\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[tae]
 	\printcontents[tae]{l}{1}{\setcounter{tocdepth}{4}}
@@ -811,7 +825,7 @@ bottom=2cm%,
 	\clearpage
 	\stopcontents[tae]
 
-\chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells by Means of PhotoPhysical Characterization}\label{ch:thicknesses}
+\chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
 	\epigraph{\textit{"Let's change as little as possible"}}
 
@@ -827,7 +841,7 @@ bottom=2cm%,
 
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[thicknesses]
 	\printcontents[thicknesses]{l}{1}{\setcounter{tocdepth}{4}}
@@ -858,7 +872,7 @@ bottom=2cm%,
 
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[impedance]
 	\printcontents[impedance]{l}{1}{\setcounter{tocdepth}{4}}
@@ -888,7 +902,7 @@ bottom=2cm%,
 
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
-	\paragraph*{Table of Contents} \rule[0.5ex]{0.5\linewidth}{1pt}
+	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
 	
 	\startcontents[software]
 	\printcontents[software]{l}{1}{\setcounter{tocdepth}{4}}

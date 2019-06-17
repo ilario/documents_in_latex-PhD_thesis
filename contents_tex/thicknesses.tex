@@ -1,5 +1,73 @@
 
 \section{Introduction}
+
+
+	\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+	\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.75\hsize}Y >{\hsize=0.8\hsize}Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Layers thicknesses and related average performances of top cathode cells.]{\textbf{Layers thicknesses and related average performances of top cathode cells.}
+			Explored thicknesses with \textit{average} forward and reverse J-V sweep performances.
+			The standard deviation for each value is indicated after the $\pm$ symbol.
+			For each reported result, at least 8, 8, and 4 devices were averaged respectively for \gls{mapi}, \gls{pcbm70}, and \gls{pedotpss} thickness exploration.
+			\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
+			The measurement conditions were \SI{1}{sun} illumination, no light soaking, \SI{1}{\V\per\s} sweep speed.
+			A boxplot representation of this data can be found in \authoryear{Gelmetti2017}.
+			J-V curve for record devices are reported in \cref{fig:thicknesses-jv_champions-mapi,fig:thicknesses-jv_champions-pcbm,fig:thicknesses-jv_champions-pedotpss}.
+		}\label{table:thicknesses_jv}\\[\belowcaptionskip]
+		\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
+		\rule[-1ex]{0pt}{3ex} \\
+		\small\gls{mapi} &  \small\gls{etm} & \small\gls{htm} &\small Sweep & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\
+		\rule[-1ex]{0pt}{2.5ex}  \footnotesize\si{\nm} &  \footnotesize\si{\nm} &  \footnotesize\si{\nm} & - & \footnotesize\si{\mA\per\square\cm} &  \footnotesize\si{\V} & \footnotesize\si{\%} &  \footnotesize\si{\%} \\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		\small\gls{mapi} & \small\gls{etm} & \small\gls{htm} &\small Sweep & \small\gls{jsc} & \small\gls{voc} & \small\gls{ff} & \small\gls{pce} \\
+		\hline
+		\endhead
+		\hline
+		\multicolumn{8}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{3ex}
+		\multirow{3}{*}{230} 	& \multirow{11}{*}{40}	&  \multirow{11}{*}{65}	&fwd	&	13.5	$\pm	0.5	$ & 	1.03	$\pm	0.01	$ & 	53	$\pm	3	$ & 	7.3	$\pm	0.4	$ \\*
+		\rule[-1ex]{0pt}{2.5ex}
+		&  						& 						&rev	&	13.6	$\pm	0.5	$ & 	1.02	$\pm	0.01	$ & 	55	$\pm	3	$ & 	7.7	$\pm	0.5	$ \\*
+		\cline{1-1} \cline{4-8}
+		\multirow{3}{*}{320}	&  						&  						&fwd	&	13.9	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	57	$\pm	5	$ & 	8.2	$\pm	0.6	$ \\*
+		\rule[-1ex]{0pt}{2.5ex}
+		&  						&  						&rev	&	14.1	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	55	$\pm	4	$ & 	8.1	$\pm	0.5	$ \\*
+		\cline{1-1} \cline{4-8}
+		\multirow{3}{*}{440}	&  						&  						&fwd	&	16.3	$\pm	2.1	$ & 	1.01	$\pm	0.04	$ & 	58	$\pm	2	$ & 	9.5	$\pm	0.8	$ \\*
+		\rule[-1ex]{0pt}{2.5ex}
+		&  						&  						&rev	&	16.5	$\pm	1.9	$ & 	0.98	$\pm	0.07	$ & 	50	$\pm	5	$ & 	8.1	$\pm	1.4	$ \\[1mm]
+		\hline
+		\multirow{15}{*}{350}	& \multirow{3}{*}{40} 	&  \multirow{15}{*}{65} &fwd	&	16.4	$\pm	2.2	$ & 	0.93	$\pm	0.06	$ & 	48	$\pm	8	$ & 	7.4	$\pm	1.8	$ \\*
+		&  						&  						&rev	&	16.1	$\pm	2.1	$ & 	0.95	$\pm	0.06	$ & 	50	$\pm	5	$ & 	7.6	$\pm	1.4	$ \\*
+		\cline{2-2} \cline{4-8}
+		& \multirow{3}{*}{60} 	& 					 	&fwd	&	13.2	$\pm	1.1	$ & 	0.99	$\pm	0.04	$ & 	47	$\pm	6	$ & 	6.2	$\pm	1.1	$ \\*
+		&  						&  						&rev	&	12.8	$\pm	0.7	$ & 	0.98	$\pm	0.05	$ & 	47	$\pm	5	$ & 	5.9	$\pm	0.8	$ \\*
+		\cline{2-2} \cline{4-8}
+		& \multirow{3}{*}{90} 	&  						&fwd	&	11.1	$\pm	0.6	$ & 	1.03	$\pm	0.03	$ & 	42	$\pm	2	$ & 	4.8	$\pm	0.6	$ \\*
+		&  						&  						&rev	&	11.1	$\pm	0.8	$ & 	1.00	$\pm	0.04	$ & 	44	$\pm	2	$ & 	4.8	$\pm	0.5	$ \\*
+		\cline{2-2} \cline{4-8}
+		& \multirow{3}{*}{120} 	&  						&fwd	&	7.7	$\pm	1.6	$ & 	1.02	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\*
+		&  						&  						&rev	&	7.6	$\pm	1.6	$ & 	1.01	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\[1mm]
+		\hline
+		\multirow{11}{*}{300}	& \multirow{11}{*}{40}	& \multirow{3}{*}{27} 	&fwd	&	12.3	$\pm	1.5	$ & 	1.04	$\pm	0.03	$ & 	55	$\pm	9	$ & 	6.9	$\pm	0.8	$ \\*
+		&  						&  						&rev	&	11.9	$\pm	1.7	$ & 	1.03	$\pm	0.04	$ & 	54	$\pm	11	$ & 	6.6	$\pm	0.7	$ \\*
+		\cline{3-8}
+		&  						& \multirow{3}{*}{45} 	&fwd	&	12.2	$\pm	1.7	$ & 	1.04	$\pm	0.01	$ & 	58	$\pm	4	$ & 	7.3	$\pm	1.2	$ \\*
+		&  						&  						&rev	&	11.8	$\pm	1.7	$ & 	1.00	$\pm	0.09	$ & 	53	$\pm	7	$ & 	6.2	$\pm	0.9	$ \\*
+		\cline{3-8}
+		& 				 		& \multirow{3}{*}{65} 	&fwd	&	12.4	$\pm	1.6	$ & 	1.04	$\pm	0.02	$ & 	60	$\pm	3	$ & 	7.7	$\pm	0.6	$ \\*
+		&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
+	\end{xltabular}
+}
+
 	Many top cathode \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} perovskite solar cells have been fabricated.
 	The thickness of each of \gls{pedotpss} (\gls{htm}), \gls{mapi} (absorber), and \gls{pcbm70} (\gls{etm}) has been independently varied.
 	All these layers were deposited by spin coating and the thickness was tuned via spin coating speed.
@@ -7,72 +75,6 @@
 	%	\paragraph{The devices}
 	%The layers whose thickness was independently varied are the \gls{pedotpss} (\gls{htm}), the \gls{mapi} (absorber), and the \gls{pcbm70} (\gls{etm}).
 	The champion device performances of each configuration are listed in \cref{table:thicknesses_jv}.
-
-	\afterpage{
-		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
-		\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.75\hsize}Y >{\hsize=0.8\hsize}Y @{}}
-			% multirow does not get the correct number of rows with tabularx
-			% mycaption does not work inside xltabular
-			\caption[Layers thicknesses and related average performances of top cathode cells.]{\textbf{Layers thicknesses and related average performances of top cathode cells.}
-				Explored thicknesses with \textit{average} forward and reverse J-V sweep performances.
-				The standard deviation for each value is indicated after the $\pm$ symbol.
-				For each reported result, at least 8, 8, and 4 devices were averaged respectively for \gls{mapi}, \gls{pcbm70}, and \gls{pedotpss} thickness exploration.
-				\Gls{etm} column indicates the \gls{pcbm70} thickness, while \gls{htm} one refers to \gls{pedotpss} thickness.
-				The measurement conditions were \SI{1}{sun} illumination, no light soaking, \SI{1}{\V\per\s} sweep speed.
-				A boxplot representation of this data can be found in \authoryear{Gelmetti2017}.
-				J-V curve for record devices are reported in \cref{fig:thicknesses-jv_champions-mapi,fig:thicknesses-jv_champions-pcbm,fig:thicknesses-jv_champions-pedotpss}.
-			}\label{table:thicknesses_jv}\\[\belowcaptionskip]
-			\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
-			\rule[-1ex]{0pt}{3ex} \\
-			\small\gls{mapi} &  \small\gls{etm} & \small\gls{htm} &\small Sweep & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\
-			\rule[-1ex]{0pt}{2.5ex}  \footnotesize\si{\nm} &  \footnotesize\si{\nm} &  \footnotesize\si{\nm} & - & \footnotesize\si{\mA\per\square\cm} &  \footnotesize\si{\V} & \footnotesize\si{\%} &  \footnotesize\si{\%} \\[1mm]
-			\hline
-			\endfirsthead
-			\multicolumn{2}{@{}l}{\ldots \small continues}\\
-			\hline
-			\small\gls{mapi} & \small\gls{etm} & \small\gls{htm} &\small Sweep & \small\gls{jsc} & \small\gls{voc} & \small\gls{ff} & \small\gls{pce} \\
-			\hline
-			\endhead
-			\hline
-			\multicolumn{8}{r@{}}{\small continues\ldots}\\
-			\endfoot
-			\hline
-			\endlastfoot
-			\rule[-1ex]{0pt}{3ex}
-			\multirow{3}{*}{230} 	& \multirow{11}{*}{40}	&  \multirow{11}{*}{65}	&fwd	&	13.5	$\pm	0.5	$ & 	1.03	$\pm	0.01	$ & 	53	$\pm	3	$ & 	7.3	$\pm	0.4	$ \\*
-			\rule[-1ex]{0pt}{2.5ex}
-			&  						& 						&rev	&	13.6	$\pm	0.5	$ & 	1.02	$\pm	0.01	$ & 	55	$\pm	3	$ & 	7.7	$\pm	0.5	$ \\*
-			\cline{1-1} \cline{4-8}
-			\multirow{3}{*}{320}	&  						&  						&fwd	&	13.9	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	57	$\pm	5	$ & 	8.2	$\pm	0.6	$ \\*
-			\rule[-1ex]{0pt}{2.5ex}
-			&  						&  						&rev	&	14.1	$\pm	0.3	$ & 	1.04	$\pm	0.01	$ & 	55	$\pm	4	$ & 	8.1	$\pm	0.5	$ \\*
-			\cline{1-1} \cline{4-8}
-			\multirow{3}{*}{440}	&  						&  						&fwd	&	16.3	$\pm	2.1	$ & 	1.01	$\pm	0.04	$ & 	58	$\pm	2	$ & 	9.5	$\pm	0.8	$ \\*
-			\rule[-1ex]{0pt}{2.5ex}
-			&  						&  						&rev	&	16.5	$\pm	1.9	$ & 	0.98	$\pm	0.07	$ & 	50	$\pm	5	$ & 	8.1	$\pm	1.4	$ \\[1mm]
-			\hline
-			\multirow{15}{*}{350}	& \multirow{3}{*}{40} 	&  \multirow{15}{*}{65} &fwd	&	16.4	$\pm	2.2	$ & 	0.93	$\pm	0.06	$ & 	48	$\pm	8	$ & 	7.4	$\pm	1.8	$ \\*
-			&  						&  						&rev	&	16.1	$\pm	2.1	$ & 	0.95	$\pm	0.06	$ & 	50	$\pm	5	$ & 	7.6	$\pm	1.4	$ \\*
-			\cline{2-2} \cline{4-8}
-			& \multirow{3}{*}{60} 	& 					 	&fwd	&	13.2	$\pm	1.1	$ & 	0.99	$\pm	0.04	$ & 	47	$\pm	6	$ & 	6.2	$\pm	1.1	$ \\*
-			&  						&  						&rev	&	12.8	$\pm	0.7	$ & 	0.98	$\pm	0.05	$ & 	47	$\pm	5	$ & 	5.9	$\pm	0.8	$ \\*
-			\cline{2-2} \cline{4-8}
-			& \multirow{3}{*}{90} 	&  						&fwd	&	11.1	$\pm	0.6	$ & 	1.03	$\pm	0.03	$ & 	42	$\pm	2	$ & 	4.8	$\pm	0.6	$ \\*
-			&  						&  						&rev	&	11.1	$\pm	0.8	$ & 	1.00	$\pm	0.04	$ & 	44	$\pm	2	$ & 	4.8	$\pm	0.5	$ \\*
-			\cline{2-2} \cline{4-8}
-			& \multirow{3}{*}{120} 	&  						&fwd	&	7.7	$\pm	1.6	$ & 	1.02	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\*
-			&  						&  						&rev	&	7.6	$\pm	1.6	$ & 	1.01	$\pm	0.04	$ & 	18	$\pm	2	$ & 	1.4	$\pm	0.4	$ \\[1mm]
-			\hline
-			\multirow{11}{*}{300}	& \multirow{11}{*}{40}	& \multirow{3}{*}{27} 	&fwd	&	12.3	$\pm	1.5	$ & 	1.04	$\pm	0.03	$ & 	55	$\pm	9	$ & 	6.9	$\pm	0.8	$ \\*
-			&  						&  						&rev	&	11.9	$\pm	1.7	$ & 	1.03	$\pm	0.04	$ & 	54	$\pm	11	$ & 	6.6	$\pm	0.7	$ \\*
-			\cline{3-8}
-			&  						& \multirow{3}{*}{45} 	&fwd	&	12.2	$\pm	1.7	$ & 	1.04	$\pm	0.01	$ & 	58	$\pm	4	$ & 	7.3	$\pm	1.2	$ \\*
-			&  						&  						&rev	&	11.8	$\pm	1.7	$ & 	1.00	$\pm	0.09	$ & 	53	$\pm	7	$ & 	6.2	$\pm	0.9	$ \\*
-			\cline{3-8}
-			& 				 		& \multirow{3}{*}{65} 	&fwd	&	12.4	$\pm	1.6	$ & 	1.04	$\pm	0.02	$ & 	60	$\pm	3	$ & 	7.7	$\pm	0.6	$ \\*
-			&  						&  						&rev	&	12.6	$\pm	1.4	$ & 	1.00	$\pm	0.10	$ & 	60	$\pm	4	$ & 	7.5	$\pm	0.4	$ \\[1mm]
-		\end{xltabular}
-	}
 
 
 	\paragraph{Design of the Experiment}
@@ -196,7 +198,7 @@
 
 	\paragraph{Geometric capacitance from DC and CE}
 	From the low and mid background light capacitance obtained from \gls{dc} in \cref{fig:thicknesses-mapi-geometric-dc} and from the linear part of \gls{ce} in \cref{fig:thicknesses-mapi-geometric-ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
-	This capacitance arises from the accumulation of charges in the selective contacts' depletion layers, considering this as a parallel plates capacitor it's easy to foresee that the increase of \gls{mapi} layer will increase the distance between the "plates" and cause a decrease in the capacitance.
+	This capacitance arises from the accumulation of charges in the selective contacts' depletion layers, considering this as a parallel plates capacitor it is easy to foresee that the increase of \gls{mapi} layer will increase the distance between the "plates" and cause a decrease in the capacitance.
 	Please note that this is valid just if the \gls{ce} is integrated over short times, so that the ionic displacement is negligible.
 	Otherwise, as explained in \cpageref{ce_ions_linear}, the measured geometric capacitance would regard charges (ionic and electronic) accumulating on the two sides of each perovskite\-/contact interface (a junction capacitance rather than a geometric capacitance), being insensitive to the \gls{mapi} thickness.
 	%This can be observed from the tilting of the linear regime of charge \textsl{versus} light bias  or in the constant capacitance regime .
@@ -216,7 +218,7 @@
 					\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-mapi-geometric-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different MAPI thicknesses, highlighting the varying geometric capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
 				}\label{fig:thicknesses-mapi-geometric}
 			}
 		}
@@ -287,7 +289,10 @@
 					\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-pcbm-geometric-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different \glsentrytext{pcbm70} thicknesses, highlighting the varying geometric capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported.
+					The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance.
+					In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. 
+					The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
 				}\label{fig:thicknesses-pcbm-geometric}
 			}
 		}
@@ -300,7 +305,7 @@
 	So, the main electrons storage location is either close to the \gls{etm}\-/\ch{Ag} interface or within the whole \gls{etm} layer due to a Debye length (a.k.a. Thomas–Fermi screening length, is an indication of the depth inside a semiconductor layer at which an external electric field is completely screened, it depends on the permittivity and the doping density of the material, see \cpageref{intro-space_charge}) larger than the \gls{pcbm70} thickness.
 	%This is unexpected as one would expect the geometric component of capacitance to be caused by charges accumulated in the two contacts at the interface with the \gls{mapi} layer.
 	%Similarly to what observed for the geometric capacitance 
-	In first case, easier to model, we can consider the \gls{mapi}\-/\gls{pcbm70} stack as the inter\hyp{}electrodes material of a capacitor.
+	So we can consider the \gls{mapi}\-/\gls{pcbm70} stack as the inter\hyp{}electrodes material of a capacitor.
 
 	%\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
 
@@ -365,7 +370,7 @@
 					\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-pedotpss-geometric-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different \glsentrytext{pedotpss} thicknesses, highlighting the varying geometric capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
 				}\label{fig:thicknesses-pedotpss-geometric}
 			}
 		}
@@ -385,6 +390,7 @@ We measured the geometrical capacitance of this set of devices using two indepen
 From the obtained results, we gained insight on the storage location of the photogenerated charge at open circuit conditions.
 In our solar cell architecture, the holes are stored close to the \gls{pedotpss}\-/\gls{mapi} interface, likely in a thin depletion layer in the \gls{htm}.
 Instead, the electrons does not get stored close to the \gls{mapi}\-/\gls{pcbm70} interface but either through the whole \gls{etm} layer or at the \gls{pcbm70}\-/\ch{Ag} interface.
+Likely, this is simply caused by a Debye length (space charge layer width) larger than the \gls{etm} layer, due to the low doping of the \gls{pcbm70}. 
 %Knowing where the charge concentration varies more with illumination is a useful information which indicates the 
 
 

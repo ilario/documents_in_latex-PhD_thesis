@@ -20,23 +20,23 @@
 			\parbox{1.1\textwidth}{
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[scale=0.8]{molecules/spiro.pdf}
+					\includegraphics[scale=0.6]{molecules/spiro.pdf}
 					\subcaption{\gls{spiro}}\label{fig:tae-molecules-spiro}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[scale=0.8]{molecules/tae1.pdf}
+					\includegraphics[scale=0.6]{molecules/tae1.pdf}
 					\subcaption{\gls{tae1}}\label{fig:tae-molecules-tae1}
 				\end{subfigure}
 				\bigskip
 
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[scale=0.8]{molecules/tae3.pdf}
+					\includegraphics[scale=0.6]{molecules/tae3.pdf}
 					\subcaption{\gls{tae3}}\label{fig:tae-molecules-tae3}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[scale=0.8]{molecules/tae4.pdf}
+					\includegraphics[scale=0.6]{molecules/tae4.pdf}
 					\subcaption{\gls{tae4}}\label{fig:tae-molecules-tae4}
 				\end{subfigure}
 				\mycaption[Chemical structures of HTM utilised for bottom cathode solar cells.]{}\label{fig:tae-molecules}
@@ -148,7 +148,7 @@
 	%\paragraph{Mobility}
 
 
-\section{Devices Morphological Characterization}
+\section{Thin Films Morphological Characterization}
 
 	\paragraph{Atomic force microscopy}
 	In order to verify that the various \gls{htm} gave an homogeneous coverage of the underlying layer, we performed alternated current \gls{afm}.
@@ -227,7 +227,7 @@ The patterns perfectly match the reference Cs5 pattern from \authoryear{Saliba20
 			\multirow{3}{*}{\small\textbf{\gls{htm}}} 	& \multicolumn{5}{c}{\small\textbf{J-V sweep parameters}}
 			\rule[-1ex]{0pt}{3ex} \\
 			&  \small Sweep & \small\gls{jsc} &  \small\gls{voc} & \small\gls{ff} &  \small\gls{pce} \\
-			\rule[-1ex]{0pt}{2.5ex}  					& - 			& \footnotesize\si{\mA\per\square\cm} &  \footnotesize\si{\V} & \footnotesize\si{\%} &  \footnotesize\si{\%} \\[1mm]
+			\rule[-1ex]{0pt}{2.5ex}  					& / 			& \footnotesize\si{\mA\per\square\cm} &  \footnotesize\si{\V} & \footnotesize\si{\%} &  \footnotesize\si{\%} \\[1mm]
 			\hline
 			\endfirsthead
 			\multicolumn{2}{@{}l}{\ldots \small continues}\\
@@ -284,16 +284,16 @@ With some caution (we employed the classical method, not the improved one descri
 			\parbox{1.1\textwidth}{
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-CEs.pdf}
+					\includegraphics[width=1.1\textwidth]{photophysics/spiro_vs_TAEs-CEs.pdf}
 					\subcaption{Charge from \gls{ce}}\label{fig:tae_photophysics-ce}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
-					\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-DCs-capacitance.pdf}
+					\includegraphics[width=1.1\textwidth]{photophysics/spiro_vs_TAEs-DCs-capacitance.pdf}
 					\subcaption{Capacitance from \gls{dc}}\label{fig:tae_photophysics-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different HTM, highlighting the varying chemical capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line reports just its exponential addend, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. %All the fitted parameters are reported in \cref{table:tae_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. %All the fitted parameters are reported in \cref{table:tae_photophysics}.
 				}\label{fig:tae_photophysics_cedc}
 			}
 		}
@@ -307,7 +307,7 @@ With some caution (we employed the classical method, not the improved one descri
 	The incoherence of the results from \gls{ce} and \gls{dc} for the \gls{tae4} device have been confirmed on another device (not shown).
 	Currently no explanation is available for explaining the deviation happening just when using this \gls{htm}.
 	
-\section{Transient Life-Time}
+\section{Small Perturbation Transient Voltage Dynamics}
 
 	\afterpage{
 		%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
@@ -391,7 +391,7 @@ With some caution (we employed the classical method, not the improved one descri
 			\caption[Work function of different HTM when deposited on perovskite.]{\textbf{Work function of different HTM when deposited on perovskite.}
 				The work function in \si{\eV} is reported for the surface of different \gls{htm} either deposited on top of
 			}\label{table:tae_wf}\\[\belowcaptionskip]
-			\multirow{3}{*}{\textbf{Substrate}} & \multirow{3}{*}{\textbf{\shortstack{Substrate\\ work\\ function}}} & \multicolumn{4}{c}{\textbf{Work function difference of}}
+			\multirow{3}{*}{\textbf{Substrate}} & \multirow{3}{*}{\textbf{\shortstack{Substrate\\ work\\ function}}} & \multicolumn{4}{c}{\textbf{Work function difference on top of}}
 			\rule[-1ex]{0pt}{3ex} \\
 			&  & \gls{spiro} & \gls{tae1} & \gls{tae3} & \gls{tae4}  \\[1mm]
 
