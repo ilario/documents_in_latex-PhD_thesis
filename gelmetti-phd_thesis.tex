@@ -21,6 +21,7 @@
 	% product-units controls if 1 x 1 m or 1 m x 1 m
 	% I could set the rounding settings in the package options, but for having a better control I set a new alias for rounding numbers
 	\newcommand{\rnum}[1]{\num[round-mode = figures, round-precision = 2]{#1}}
+	\newcommand{\rsnum}[1]{\num[round-mode = figures, round-precision = 2,scientific-notation = true]{#1}}
 	
 	
 	\DeclareSIUnit\sq{\ensuremath\Box} % for the sheet resistance units https://tex.stackexchange.com/questions/71220/si-units-for-sheet-resistance-using-siunitx
@@ -316,8 +317,8 @@ bottom=2cm%,
 % but it does not work together with breqn https://tex.stackexchange.com/questions/442329/error-when-using-breqn-and-nowidow
 %\usepackage[all]{nowidow}
 % an alternative to nowidow
-\widowpenalty=1000
-\clubpenalty=1000
+\widowpenalty=10000
+\clubpenalty=10000
 
 % avoiding pagebreaks with \\* does not work if cline (tabular environment) is just after, this solves
 % https://tex.stackexchange.com/a/52101/173645
@@ -839,6 +840,7 @@ bottom=2cm%,
 	Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
 	Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
 
+\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
 	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
@@ -854,7 +856,8 @@ bottom=2cm%,
 	\clearpage
 	\stopcontents[thicknesses]
 
-\chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
+%\chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
+\chapter{Modelling the Influence of Ionic Migration on Impedance Spectroscopy}\label{ch:impedance}
 \chaptermark{Impedance Sectroscopy}
 	\epigraph{\textit{"We don't see that plateau"}}
 
@@ -870,6 +873,7 @@ bottom=2cm%,
 	The capacitive origin of this ionic current implies it happens out of phase with the applied oscillating voltage.
 	We show that accumulation and depletion of ionic charge at the interfaces modulates surface recombination and charge injection, causing respectively giant capacitance and negative capacitance (\textsl{i.e.} inductance).
 
+\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
 	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}
@@ -884,7 +888,7 @@ bottom=2cm%,
 	\clearpage
 	\stopcontents[impedance]
 
-\chapter{Software Development for Drift-Diffusion Modelling, Data Acquisition and Data Analysis}\label{ch:software}
+\chapter{Software Development for Drift-Diffusion Modelling, Data Acquisition, and Data Analysis}\label{ch:software}
 \chaptermark{Software Development}
 	\epigraph{\textit{\enquote{GIGO: Garbage In, Garbage Out}}}
 
@@ -900,6 +904,7 @@ bottom=2cm%,
 	During my PhD thesis I wrote code mainly for three projects: current\hyp{}voltage sweep data acquisition, processing and analysis routines for various kinds of characterisation data, physical modelling of perovskite solar cells.
 	All of this work is intended to be re-used by others, so this chapter will detail how to use it and describe the design choices.
 
+\newpage
 %Important to finish this paragraph, for example with an empty line for avoiding the following error:
 % .ptc Something's wrong--perhaps a missing \item. ...rline {4.1}Introduction}{89}{section.4.1}
 	\centerline{\rule[0.5ex]{0.2\linewidth}{1pt} \textbf{Table of Contents} \rule[0.5ex]{0.2\linewidth}{1pt}}

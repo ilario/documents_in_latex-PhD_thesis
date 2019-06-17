@@ -309,38 +309,6 @@ With some caution (we employed the classical method, not the improved one descri
 	
 \section{Small Perturbation Transient Voltage Dynamics}
 
-	\afterpage{
-		%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
-		\begin{xltabular}[c]{1.05\linewidth}{@{} Y | Y | Y Y | Y Y @{}}
-			% multirow does not get the correct number of rows with tabularx
-			% mycaption does not work inside xltabular
-			\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
-				The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:tpv_tau_vs_intensity} for \gls{tpv} data and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
-			}\label{table:tae_photophysics}\\[\belowcaptionskip]
-			\multirow{3}{*}{\textbf{HTM}} & \textbf{\gls{tpv}} & \multicolumn{2}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{2}{c}{\small\textbf{\gls{tpvdc}}}
-			\rule[-1ex]{0pt}{3ex} \\
-			& \small\gls{symb:v} & \small$k$ & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:Phi}  \\
-			\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{} & - &  \footnotesize\si{} &  - \\[1mm]
-			\hline
-			\endfirsthead
-			\multicolumn{2}{@{}l}{\ldots \small continues}\\
-			\hline
-			\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-DC|$ \\
-			\hline
-			\endhead
-			\hline
-			\multicolumn{6}{r@{}}{\small continues\ldots}\\
-			\endfoot
-			\hline
-			\endlastfoot
-			\rule[-1ex]{0pt}{4ex}
-			\gls{spiro}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
-			\gls{tae1}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
-			\gls{tae3}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
-			\gls{tae4}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{}	& \rnum{} \\
-		\end{xltabular}
-		%\end{table}
-	}
 
 	As can be seen in \cref{fig:tae_photophysics_tpv}, the small perturbation life-times at \SI{1}{sun} illumination (for each device, the point at bottom right in the series) does not differ by much: from \SI{0.3}{\us} for \gls{spiro} to \SI{1.1}{\us} for \gls{tae4}.
 	This is exactly opposed to the expected trend, where \gls{spiro} giving the best performances should have shown the longest (small perturbation) life-times at 1~sun which would mean less recombination.
@@ -348,6 +316,39 @@ With some caution (we employed the classical method, not the improved one descri
 	This way, the data points get closer indicating very similar recombination constants being present for all the cases which thus are of no help for explaining the observed \gls{voc} differences.
 	The difference in life-times in \gls{tae4} devices when referencing to \gls{ce} or \gls{dc} is due to the large incoherence of \gls{ce} or \gls{dc} for this device, as shown in \cref{fig:tae_photophysics_cedc}.
 	
+	
+	%	\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
+	\begin{xltabular}[c]{1.05\linewidth}{@{} Y | Y | Y Y | Y Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
+			The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:eq_tpv_tau_vs_intensity} for \gls{tpv} data (using a $T$ of \SI{300}{\celsius}) and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
+		}\label{table:tae_photophysics}\\[\belowcaptionskip]
+		\multirow{3}{*}{\textbf{HTM}} & \textbf{\gls{tpv}} & \multicolumn{2}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{2}{c}{\small\textbf{\gls{tpvdc}}}
+		\rule[-1ex]{0pt}{3ex} \\
+		& \small\gls{symb:v} & \small$k$ & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:Phi}  \\
+		\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{} & - &  \footnotesize\si{} &  - \\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-DC|$ \\
+		\hline
+		\endhead
+		\hline
+		\multicolumn{6}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{4ex}
+		\gls{spiro}	& \rnum{2.07090585704198274280}	& \rsnum{185540681086}	& \rnum{1.65526}	& \rsnum{248756218905472636.81592039800995024876}	& \rnum{2.39888} \\
+		\gls{tae1}	& \rnum{1.69834635792333172897}	& \rsnum{220431917728005}	& \rnum{2.07791}	& \rsnum{57688495457156566631170924}	& \rnum{3.4511} \\
+		\gls{tae3}	& \rnum{2.60358060992170656706}	& \rsnum{3577194679210}	& \rnum{1.7992}	& \rsnum{388533596500089.36272719502055342725}	& \rnum{2.1104} \\
+		\gls{tae4}	& \rnum{1.21543176059352121997}	& \rsnum{45968589491447146715}	& \rnum{2.63246}	& \rsnum{8854711580563434818607468954981642986410188991391331220236}	& \rnum{8.3677} \\
+	\end{xltabular}
+	%\end{table}
+	%	}
 
 
 	\begin{figure}
