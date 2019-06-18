@@ -656,26 +656,28 @@ The fact that a large voltage perturbation causes a non\hyp{}sinusoidal current 
 	}
 \end{figure}
 
-\paragraph{Faster simulation with voltage step}
-The preliminary implementation of the impedance spectroscopy simulation did not employ the complete description of the oscillating voltage.
-Just a voltage step was applied and the resulting current evolution was used for obtaining a rough approximation of the apparent capacitance spectrum.
-This approach is computationally much faster than a complete oscillating simulation and can give exactly the same results if properly treated for converting the time\hyp{}domain data to frequency\hyp{}domain using a Fourier transform.
-In the publication by \authoryear{Jacobs2018}, they used this approach for simulating impedance spectroscopy in perovskite solar cells.
-Our preliminary implementation needs to be refined and at this stage is not ready for being published.
-
 \paragraph{Heterojunction}
 The simulations shown here are all based on a p-i-n homojunction model, so a proper injection barrier could not actually be simulated and the negative capacitance we reported in \authoryear{Moia2019} has been obtained playing with extreme values of the mobility and recombination parameters.
 An attempt of adapting the impedance scripts to the most recent heterojunction version of Driftfusion confirmed the presence of negative capacitance due to injection barrier modulation by ionic charge, as shown in \cref{fig:impedance_heterojunction}.
 This confirms that our hypothesis of the ionically modulated injection barrier can be used for explaining the experimentally observed negative capacitance \cite{Guerrero2016,Moia2019,Ghahremanirad2017,Sanchez2014}
 Further work is needed for completely adapting the impedance scripts to the upstream heterojunction core code.
 
-\paragraph{Implement other similar techniques}
-We refer with the names of ElectroAbsorbance or Stark spectroscopy to the absorbance variation caused by an oscillating applied voltage.
+\paragraph{Complete simulation of ElectroAbsorbance}
+We refer with the names of ElectroAbsorbance or Stark spectroscopy to the absorbance variation caused by an oscillating applied voltage, as described by the Franz\hyp{}Keldysh effect.
 This effect stems from the higher absorptivity of a material in presence of an electric field.
 This simulation has already been implemented but the code release is waiting for the publication of the related work; the description of the modules is already available in \cpageref{software_electroabsorbance}.
+
+\paragraph{Implement other similar techniques}
 Using some of the modules already implemented for impedance spectroscopy simulation, it should be easy to implement also other characterization techniques like Intensity-Modulated Photovoltage/Photocurrent Spectroscopy (IMVS, IMPS) \cite{Pockett2015,Guillen2014} and Mott-Schottky capacitance analysis \cite{Almora2016}.
 
-
+\paragraph{Faster simulation with voltage step}
+The preliminary implementation of the impedance spectroscopy simulation did not employ the complete description of the oscillating voltage.
+Just a voltage step was applied and the resulting current evolution was used for obtaining a rough approximation of the apparent capacitance spectrum.
+This approach is computationally much faster than a complete oscillating simulation and can give exactly the same results if properly treated for converting the time\hyp{}domain data to frequency\hyp{}domain using a Fourier transform.
+In the publication by \authoryear{Jacobs2018}, they used this approach for simulating impedance spectroscopy in perovskite solar cells.
+Our preliminary implementation needs to be refined and at this stage is not ready for being published.
+Following this approach, we can obtain frequency domain simulations for IMVS, IMPS, and impedance spectroscopy respectively from \gls{tpv}, \gls{tpc}, and current\hyp{}voltage step transient simulations in time domain.
+For example, converting a bi-exponential decay in \gls{tpv} to frequency domain through Fourier transform, we can obtain two arches in the IMVS Nyquist plot (preliminary simulation performed by Dr.\ Piers Barnes).
 
 \section{Implementation of impedance spectroscopy}
 

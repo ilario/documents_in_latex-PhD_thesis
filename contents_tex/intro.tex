@@ -380,7 +380,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		When a free charge gets in contact with another of the same kind, it is possible that one of these decays and the other absorbs the just released energy as kinetic energy.
 		Additionally to the two free charges of the same kind, it also requires a free charge of the opposite kind for the decay to be possible, so it can be considered as having a reaction order of three.
 		This recombination is important in materials with high free carriers densities or at high photo-generation conditions.
-		These high charge densities are unlikely to happen in perovskite solar cells at normal working conditions.
+		These high charge densities are unlikely to happen in perovskite solar cells at maximum power point working conditions while they could happen at open circuit under illumination.
 
 	\subsection{Charge Generation}
 	Thanks to microscopic reversibility, each of the mentioned recombination processes has an identical but opposed generation process \cite[81]{Nelson2003}.
@@ -397,7 +397,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		Passing to consider a molecule, the photon would be absorbed just if it matches the energy difference between an occupied and a virtual electronic states and just if the dipole vector of the starting state is not identical to the final state (and more selection rules).
 		After the photon absorption, the previously occupied energy level is now missing one electron which has been promoted to the previously virtual state.
 		This is represented in \cref{fig:generation-excited_hot} for a high energy photon generating a hot excitation \ch{M^{*h}} (which later can result in a hot exciton and a hot carrier, not treated in this thesis) or in \cref{fig:generation-excited} for a photon with just enough energy to generate an excitation \ch{M^{*}}.
-		Photons with energy smaller than the optical band gap can also be absorbed by different processes like valence band to empty mid gap localised state, occupied mid gap localised state (trapped charge) to conduction band but they will not be considered in this thesis.
+		Photons with energy smaller than the optical band gap can also be absorbed by different processes like valence band to empty mid gap localised state, occupied mid gap localised state (trapped charge) to conduction band, localised states caused by structural disorder or thermal motion in crystals (Urbach tails) but they will not be considered in this thesis.
 		
 		\begin{figure}
 			\makebox[\textwidth][c]{
@@ -437,6 +437,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		The starting state of the electron involved in the radiative excitation is the \gls{homo} of the molecule \ch{M}, marked in \cref{fig:generation-initial} with $\alpha$.
 		When an electron is removed from the \gls{homo}, the energy of the \gls{lumo} decreases, as it now refers to a different electronic configuration, where the underlying orbitals are not fully balancing the nuclei positive charges any more.
 		So the arrival state of the excited electron, marked with $\gamma$ in \cref{fig:generation-excited}, is at a lower energy than the initial state \gls{lumo} ($\beta$) and the optical band gap (which can be measured from absorbance spectrum \textsl{via} a Tauc plot) is smaller than the band gap (difference between the electron affinity and the ionization potential represented in \cref{fig:homo_lumo}).
+		Additionally, depending on the polarizability AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 %		The \gls{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in .
 %		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
 		Next to the excitation, an electron can either go back (recombine) or start getting apart from the original location, as represented in \cref{fig:generation-exciton} where it has been transferred to an adjacent molecule.
@@ -552,7 +553,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	The open circuit voltage of a perovskite solar cell depends on many contributions and has a hard upper limit dictated by the perovskite band gap and the radiative recombination \cite{Tress2017,Tress2015a}.
 	This recombination is unavoidable as it originates by the detailed balance for a strongly absorbing material \cite[24]{Nelson2003}
 	As we will see in \cref{ch:characterization}, the aforementioned surface recombination rate is one of the other contributions.
-	Such non\hyp{}radiative recombination has been predicted to have influence on the \gls{voc} of perovskite solar cells when the relative life time is smaller than \SI{10}{\us} \cite{Tress2017}.
+	Such non\hyp{}radiative recombination has been predicted to have influence on the \gls{voc} of perovskite solar cells when the relative life time is smaller than \SI{10}{\us} \cite{Tress2017,Kirchartz2019}.
 	A contact material having mid-gap states will favour the surface recombination, but also its additives (\textsl{e.g.} dopants, dispersants\dots) can introduce such trap states \cite{Correa-Baena2017}.
 	Additionally, a different material employed as \gls{etm} and \gls{htm} will result in a different built-in voltage (difference in contacts' Fermi levels energies), which constitutes a limit for the the open circuit voltage \cite{Gelmetti2019,Wu2016} in case the surface recombination is the main loss mechanism \cite{Tress2017}.
 	The presence of ionic accumulation in perovskite solar cells have been reported to reduce the influence of the \gls{voc} from the built-in voltage \cite{Belisle2016}.
@@ -633,7 +634,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	An interesting investigation is being carried on by Dr.\ D.\ R.\ Ceratti and Prof.\ D.\ Cahen (unpublished) regarding the release of a proton by methylammonium cation when in contact with non-acidic materials, and thus methylamine can leave the perovskite crystal structure.
 	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
 	Additionally, various other reactions can happen inside the material or at its interfaces, for example the formation of metallic lead \cite{Birkhold2018a,Sadoughi2015}, of molecular iodine \cite{Minns2017}, of lead iodide \cite{Buin2015,Walsh2015}, of methylammonium iodide \cite{Walsh2015}.
-Some of these degradation pathways are further favoured by contact with moisture \cite{Jong2018,Schlipf2019,Hu2017,Han2015a} (which if not too much, can be reversed \cite{Leguy2015}), with oxygen in combination with light \cite{Senocrate2018a,Aristidou2017} (as described in \cpageref{methods_degradation}), with UV light \cite{Lee2016}, with temperature \cite{Philippe2015,Conings2015}, with \gls{spiro} \cite{Carrillo2016}, with \gls{pcbm60} \cite{DeBastiani2016}, with the metallic electrodes due to chemical reactivity \cite{Kato2015,Guerrero2016a,Back2016,Zhao2016,DeBastiani2016} or intermixing \cite{Domanski2016}.
+Some of these degradation pathways are further favoured by contact with moisture \cite{Jong2018,Schlipf2019,Hu2017,Han2015a} (which if not too much, can be reversed \cite{Leguy2015}), with oxygen in combination with light \cite{Senocrate2018a,Aristidou2017} (as described in \cpageref{methods_degradation}), with UV light \cite{Lee2016}, with temperature \cite{Philippe2015,Conings2015}, with \gls{spiro} \cite{Carrillo2016,Kim2017,Kim2016a}, with \gls{pcbm60} \cite{DeBastiani2016}, with the metallic electrodes due to chemical reactivity \cite{Kato2015,Guerrero2016a,Back2016,Zhao2016,DeBastiani2016} or intermixing \cite{Domanski2016}.
 
 %	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
 

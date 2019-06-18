@@ -173,7 +173,7 @@
 	For reducing the noise impact on the \gls{jsc} and \gls{voc} parameters extraction, these values were extracted \textsl{via} a parabolic fitting.
 
 	\paragraph{Shunt and series resistances} \label{resistances}
-	The shunt and series resistances can be evaluated by the current \textsl{versus} voltage derivative of a dark current-voltage sweep.
+	The shunt and series resistances can be evaluated by the current \textsl{versus} voltage derivative of a dark current-voltage sweep \cite{Pysch2007}.
 	The former from the current values at voltages close to zero and the latter from the current at high-enough voltage.
 	Perovskite solar cell hysteretic behaviour can affect this measurement.
 	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
@@ -275,7 +275,7 @@
 
 		\FloatBarrier
 		\newpage
-\section{Charge Extraction (\glsentryshort{ce})}
+\section{Charge Extraction (\glsentryshort{ce})}\label{characterization_ce}
 
 	\begin{SCfigure}
 		\centering
@@ -357,7 +357,7 @@
 	The noise can be ignored in some cases, but it is a problem if the charge \textsl{versus} light bias (\gls{voc} generated at a given illumination intensity) profile, reported on the right hand column of \cref{fig:ce_noise}, has to be studied in detail, as in \cref{ch:tae}.
 	In the mentioned case, just the exponential part of its linear plus exponential behaviour, reported in the bottom of each right hand figure, was of interest and it is evident that the employed noise\hyp{}reduction method influences it heavily.
 
-	\paragraph{Reduction of instrumental noise -- subtraction of dark noise}
+	\paragraph{Reduction of instrumental noise -- subtraction of dark noise}\label{characterization_subtractDark}
 	Annoyingly, the noise profile is characteristic of the cell and of the circuitry, so a simple average over many decays does not help in cancelling it.
 	Based on this consideration, we tried to subtract a pure noise profile as obtained from a dark measurement (without any light bias).
 	The operation was made more difficult by the slight variations of the noise profile with the light bias.
@@ -365,7 +365,7 @@
 	Then $u_6$ was set to zero and the resulting profile was subtracted from the data and the result integrated.
 	As can be seen in \cref{fig:ce_noise-subtractDark}, this technique is working for most of the cases but it can fail if the noise profile changes in a more complex fashion.
 
-	\paragraph{Reduction of instrumental noise -- integration of a fitting}
+	\paragraph{Reduction of instrumental noise -- integration of a fitting}\label{characterization_integrateExp}
 	Finally the decays were fitted with a bi\hyp{}exponential formula (sum of two exponential) or, if the bi\hyp{}exponential fitting was not converging, by a simple exponential and the integral of this fit was used.
 	In both cases a robust fitting routine was employed \cite{Maechler2018}.
 
@@ -881,7 +881,7 @@
 		This carrier density is related to the chemical capacitance represented as the exponential component in \cref{eq:ce_full}, so expanding $n_0$ from \cref{eq:tpv_tau_order} we obtain:
 		%		For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
 		%	This "chemical" charge (charge stored in the perovskite layer) is represented as the exponential part of \cref{eq:ce_full}, so we obtain:
-		\begin{dmath}\label{eq:eq_tpv_tau_vs_intensity}
+		\begin{dmath}\label{eq:tpv_tau_vs_intensity}
 			\tau \approx (\Phi k n_0^{\Phi-1})^{-1} = \frac{n_|eq|^{1-\Phi}}{\Phi k} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|eq|^{1-\Phi}}{\Phi k} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|eq|^{1-\Phi}}{\Phi k} \exp(-\frac{q\voc}{vk_|B|T})
 		\end{dmath}
 		where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
@@ -1018,7 +1018,7 @@
 	\paragraph{Dependency on background illumination}\label{tpc_intensity}
 	When measuring \acr{tpc} at various background illumination intensities, a constant pulse\hyp{}generated charge amount can be gathered for low illuminations that starts decreasing as the background illumination exceeds \SI{1}{sun} (as reported for perovskite solar cells in fig.~S5 of \cite{Du2018} and partially in fig.~S9 of \cite{Wheeler2017}).
 	In \gls{osc} this was assigned to primary geminate recombination, which, as seen in \cpageref{intro_geminate}, is negligible in perovskite materials.
-	The influence of the different electric field intensity on the absorption, explained in \cpageref{intro_electroabsorbance}, can be neglected as the field is screened in most of the absorber and anyway the electro absorbance phenomena should have just a small contribution.
+	The influence of the different electric field intensity on the absorption, explained in \cpageref{software_electroabsorbance}, can be neglected as the field is screened in most of the absorber and anyway the electro\hyp{}absorbance phenomena (Franz\hyp{}Keldysh effect) should have just a small contribution.
 	Other kind of recombination can affect the extracted charge, even in short circuit conditions, if the charge extraction is not sufficiently quick.
 	For this reason, in case of large discrepancies between the dark and the \SI{1}{sun} background illumination measures, the dark one better describes the photo\hyp{}generated free\hyp{}charge (in case the dark and illuminated results were different, the first quartile of all \acr{tpc} measurements was used).
 

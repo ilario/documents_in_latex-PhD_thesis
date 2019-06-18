@@ -467,11 +467,10 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 			$e=mc^2$}
 
 The public release of these routines is waiting for the publication of the related work.
-We refer to ElectroAbsorption or Stark spectroscopy as the study of the dependency of the absorbance on the oscillating voltage applied on a complete device with semi\hyp{}transparent electrodes.
+We refer to ElectroAbsorption or Stark spectroscopy as the study of the dependency of the absorbance on the oscillating voltage applied on a complete device with semi\hyp{}transparent electrodes, caused by Franz\hyp{}Keldysh effect.
 We simulate the whole $p$-$i$-$n$ stack but consider the absorption just in the intrinsic layer.
 Clearly, the Stark effect has to be evaluated locally at any position through the perovskite layer.
 The attention has been focussed on the first and the second harmonic effects, respectively with the same and the double frequency as the applied voltage.
-
 The first harmonic component is driven by the product of the steady state electric field $E_|DC|(x)$ and the amplitude of the first harmonic of the oscillating electric field $|E_|AC||$ at each spatial point.
 The second harmonic component is related to the square of the oscillating electric field amplitude $|E_|AC|^2|$ at each spatial point.
 
@@ -584,7 +583,7 @@ field, each column is a space point.
 %\pagebreak[2]
 \newpage
 \mysection[PyPV]{PyPV: An easy Current-Voltage curves acquisition interface}
-	\epigraph{\textit{\enquote{Why nobody tried to fix this bug?}}}
+	\epigraph{\textit{\enquote{So this bug is 7 years old, right? Why nobody tried to fix it?}}}
 
 	\subsection{Introduction}
 		The route to a reliable and efficient device is inevitably a long iterative process.
@@ -640,7 +639,7 @@ field, each column is a space point.
 				
 				\paragraph{Series and shunt resistances}
 				The resistances estimation from current\hyp{}voltage sweeps have been implemented but should not be considered for measurements on hysteretic devices, as explained in \cpageref{resistances}.
-				Series resistance is obtained from a linear fit of 6 current points at the highest applied voltage.
+				Series resistance is obtained from a linear fit of 6 current points at the highest applied voltage and should be taken in consideration just for measurements in dark \cite{Pysch2007}.
 				In order to avoid including points affected by the compliance limit, a check of strict monotonicity for the considered current points is included.
 				Shunt resistance is obtained from the linear fit of 12 current points close to zero applied voltage, if available.
 				
@@ -719,21 +718,50 @@ Just after each measurement, a red "Not saved" text remembers to the user that t
 A green "Saved" text confirms to the user that the latest measurement has been saved.
 
 \paragraph{"Run IV" button}
+After closing and opening the illumination shutter, it starts a single current\hyp{}voltage scan, then updates the parameters shown in the large boxes and spawns a plot window like the one in \cref{fig:pypv-plot}.
+
+\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{PyPV/pypv-plot.png}
+	\mycaption[Current\hyp{}voltage plot window of PyPV.]{
+		The plot window includes the main performance data and can be manually resized, zoomed, and saved as an image.
+	}\label{fig:pypv-plot}
+\end{SCfigure}
 
 \paragraph{"Save As\dots" button}
+Opens a prompt for choosing the saving directory and file name.
+A suggested file name is provided, as described in \cpageref{pypv_naming_files}, but can be changed.
+This also adds a line in the saved measurements table on the right side of \gls{gui}.
 
 \paragraph{"AutoSave" button}
-
-\paragraph{"AutoMeasure" button}\label{automeasure}
-The devices are kept under illumination at open circuit conditions, then a reverse sweep is measured and, immediately after this, the forward sweep is measured.
-The reason for measuring the reverse sweep first, is that the reverse sweep starts from a high voltage point which is closer to the stabilized condition of the devices prior to the measurement (illuminated and open circuit).
-
+Alike the "Save As\dots" button but it directly employs the directory and the file name obtained from the user name, date, experiment codename, device codename, diode number, illumination intensity, and scan direction as described in \cpageref{pypv_naming_directories,pypv_naming_files}.
+Then adds an entry in the saved measurements table.
+If the "AutoSave Images" check is active, this also saves a PNG image of the plot in the same directory and with the same base name as the text file but with extension \texttt{.png}.
 
 \paragraph{"Run a List\dots" button}
+This function allows the user to select a CSV file in which a series of measurements is specified and runs all of these required sweeps.
+This can be used for saving time in setting up every day the same set of measurements.
 
-\paragraph{"AutoSave Images" check}
+\paragraph{"AutoMeasure" button}\label{automeasure}
+This runs a pre-defined list of sweeps, like the "Run a List\dots" functions but without asking for an input file.
+Currently, the measurement steps for AutoMeasure is hard-coded in \texttt{mainwindow.py} file.
+Hopefully I will change this feature to relay on an external file, like for the aforementioned "Run a List\dots" button.
+In the current configuration, the measurement procedure is: 
+%the device is kept under illumination at open circuit conditions, then a reverse sweep is measured and, immediately after this, the forward sweep is measured.
+\begin{enumerate}
+	\item tells the user (using Keithley's display and buzzer) to select the diode number 1 in the device under measurement;
+	\item after waiting for the shutter delays, the illumination shutter is opened;
+	\item the steady state \gls{voc} is measured;
+	\item a reverse sweep is measured from \gls{voc}~+~\SI{0.2}{\V} to the lowest voltage set in the \gls{gui} (the highest voltage setting is ignored);
+	\item a plot window is spawned and the AutoSave function is called;
+	\item a forward sweep is measured from the lowest voltage to \gls{voc}~+~\SI{0.2}{\V};
+	\item a plot window is spawned and the AutoSave function is called;
+ 	\item tells the user to select the next diode and repeats the steps from step \#2 on.
+\end{enumerate} 
+%The reason for measuring the reverse sweep first, is that the reverse sweep starts from a high voltage point which is closer to the stabilized condition of the devices prior to the measurement (illuminated and open circuit).
 
-\paragraph{Previous saved measurements table}
+\paragraph{Saved measurements table}
+In this table on the right side of the software (see \cref{fig:pypv-gui}), the saved measurement identification and parameters are displayed.
 
 \paragraph{Warnings and pop-up dialogs}
 In a few cases, a small window appears warning the user of some problem or asking confirmations:
@@ -747,44 +775,44 @@ In a few cases, a small window appears warning the user of some problem or askin
 	\item zero voltage point not crossed, if the requested lowest and highest voltages does not include the zero voltage point, the \gls{jsc} will not be measured, a question asks confirmation to the user;
 	\item zero current point not crossed, usually the user is interested to have information also about the \gls{voc}, for this reason a warning is summoned when the sweep did not measure both negative and positive currents;
 	\item when using "Run a List\dots" button, user handled checkpoints can be introduced and this spawns a question of whether to continue with the measurement;
-	\item when using the "AutoMeasure" button, a warning tells the user that the measured \gls{voc} is out of the requested range.
+	\item when using the "AutoMeasure" button, a warning tells the user that the measured steady state \gls{voc} is out of the requested range.
 \end{itemize}
  
-
-\begin{SCfigure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{PyPV/pypv-plot.png}
-	\mycaption[Current\hyp{}voltage plot window of PyPV.]{The plot window includes the main performance data and can be manually saved as an image.}\label{fig:pypv-plot}
-\end{SCfigure}
-
-\paragraph{Additional visual output}
-
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.61\textwidth}
-				\includegraphics[width=1\textwidth]{PyPV/pypv-console.png}
-				\subcaption{Console output}\label{fig:pypv-console}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.41\textwidth}
-				\includegraphics[width=1\textwidth]{PyPV/keithley.jpg}
-				\subcaption{Keithley display output}\label{fig:pypv-keithley}
-			\end{subfigure}
-					\mycaption[Additional output of PyPV.]{In (\textbf{a}) the textual output from console is shown.
-						The printed information is usually not important for normal software usage but can help for debugging.
-						In (\textbf{b}) instructions to the user are delivered \textsl{via} Keithley's display and buzzer.
-				}\label{fig:pypv-other}
-		}
-	}
-\end{figure}
+ \begin{figure}
+ 	\makebox[\textwidth][c]{
+ 		\parbox{1.1\textwidth}{
+ 			\centering
+ 			\begin{subfigure}[t]{0.61\textwidth}
+ 				\includegraphics[width=1\textwidth]{PyPV/pypv-console.png}
+ 				\subcaption{Console output}\label{fig:pypv-console}
+ 			\end{subfigure}
+ 			\qquad
+ 			\begin{subfigure}[t]{0.41\textwidth}
+ 				\includegraphics[width=1\textwidth]{PyPV/keithley.jpg}
+ 				\subcaption{Keithley display output}\label{fig:pypv-keithley}
+ 			\end{subfigure}
+ 			\mycaption[Additional output of PyPV.]{In (\textbf{a}) the textual output from console is shown.
+ 				The printed information is usually not important for normal software usage but can help for debugging.
+ 				In (\textbf{b}) instructions to the user are delivered \textsl{via} Keithley's display and buzzer.
+ 			}\label{fig:pypv-other}
+ 		}
+ 	}
+ \end{figure}
+ 
+\paragraph{Additional output}
+Python console in \cref{fig:pypv-console} is used mainly for reporting additional data \textsl{e.g.} where the files got saved or each of the measured steady state \gls{voc} points.
+Keithley's display in \cref{fig:pypv-keithley} is used for communicating to the user which diode has to be measured during the "AutoMeasure".
+Moreover, the same information is also outputted using Keithley's buzzer as a number of beeps.
 
 \subsection{Output files}
 	
-\paragraph{Directories and files naming}
+\paragraph{Directories naming}\label{pypv_naming_directories}
 When using the "AutoSave" of the "AutoMeasure" functions, the following directory structure is created, if not already existing: \texttt{user name\-/YYYY-MM-DD} where the subdirectory is the measurement date in little endian format.
-Inside this directory, the measurements are named with the following schema: \texttt{experiment name-device name-\textit{<diode>}-\textit{<direction>}.txt} where \textit{\texttt{<diode>}} is the identification number of the specific diode under measurement, in case there is more than one per substrate (\textsl{e.g.} in our case, each device has four independent diodes, as can be seen in \cref{fig:device}) and \texttt{\textit{<direction>}} can be either \texttt{forward} or \texttt{reverse}, as explained in \cpageref{characterization_fwdrev} for the sweep scan direction.
+
+\paragraph{Files naming}\label{pypv_naming_files}
+When using the "AutoSave" of the "AutoMeasure" functions, inside the aforementioned directory the measurements are named with the following schema: \texttt{experiment name-device name-\textit{<diode>}-\textit{<direction>}.txt} where \textit{\texttt{<diode>}} is the identification number of the specific diode under measurement, in case there is more than one per substrate (\textsl{e.g.} in our case, each device has four independent diodes, as can be seen in \cref{fig:device}) and \texttt{\textit{<direction>}} can be either \texttt{forward} or \texttt{reverse}, as explained in \cpageref{characterization_fwdrev} for the sweep scan direction.
+In case an illumination different from \SI{100}{\mW\per\square\cm} was used, a field is added specifying it in the file name.
+For example, a typical path and file name could be: \texttt{ilario/\-2019-06-18/\-ig79-c26-2-0.25sun-reverse.txt}.
 In order to improve the compatibility with different file systems, the accents in the user name, experiment name, and device name fields are removed using \texttt{unicode\-data.\-normalize} function.
 
 \paragraph{Files content}
@@ -804,7 +832,8 @@ In case the user closes the software forgetting to save the last measurement, th
 
 	\subsection{Limitations}
 
-		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV. This demonstrated to be a big failure in long term development planning.
+		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV.
+		This demonstrated to be a failure in long term development planning.
 
 %\pagebreak[2]
 \newpage
@@ -843,17 +872,36 @@ In case the user closes the software forgetting to save the last measurement, th
 
 
 	\subsection{Charge Extraction (\glsentryshort{ce})}\label{r_ce}
+	For details on \gls{ce} technique, see \cpageref{characterization_ce}.
 
 		\paragraph{\texttt{from\_ce\_to\_table.R} -- Converts CE output}
 		The output from \gls{ce} measurement software is rather minimal, as it lacks the time column.
 		This script generates a two column file output which is more convenient for plotting with other commonly employed software.
 		It works both for the TPV and for the TPC outputs.
 		
-%		\paragraph{\texttt{ce.R} -- Integrates CE transients directly}
-%		\paragraph{\texttt{ce-subtractDark.R} -- Integrates CE transients after subtracting a transformed noise profile}
-%		\paragraph{\texttt{ce-integrateExp.R} -- Integrates a fit to CE transients}
-%		\paragraph{\texttt{ce-from\_output\_to\_graph.R} -- Plots the extracted charge \textsl{versus} light bias}
-%		\paragraph{\texttt{ce-from\_many\_output\_to\_graph.R} -- Compares between CE of various devices}
+		\paragraph{\texttt{ce.R} -- Integrates CE transients directly}
+		Subtracts a base line from the voltage profile (a line joining the first voltage points to the last ones, so it could result in a slightly tilted base line) and divides it by the known instrumental resistance of \SI{50}{\ohm} in order to obtain the current.
+		Then it integrates the current profile over time starting from time zero, which is the moment when circuit gets closed but due to some delay induced by the transistors the current flows just a few tenths of microsecond after, as shown in \cref{fig:ce_noise-normal}.
+
+		\paragraph{\texttt{ce-subtractDark.R} -- Integrates CE transients after subtracting a transformed noise profile}
+		Uses a pure noise signal obtained for each sample from a measurement in dark (no extracted charge, just instrumental noise due to transistors closing/opening) for fitting the noise profile in the illuminated solutions.
+		Then subtracts the transformed noise profile and integrates the result over time.
+		See \cpageref{characterization_subtractDark} and \cref{fig:ce_noise-subtractDark} for a more complete description.
+		
+		\paragraph{\texttt{ce-integrateExp.R} -- Integrates a fit to CE transients}
+		Determines the start of the \gls{ce} decay from the last zero before the voltage maximum, then fits the decay with an exponential function.
+		The fit is performed using a robust fitting routine (as implemented in \texttt{robustbase} \cite{Maechler2018}) in order to avoid the influence from the voltage rise points.
+		The integral function of the fitted exponential function is plotted and its value at infinite time is taken for the extracted charge.
+				See \cpageref{characterization_integrateExp} and \cref{fig:ce_noise-integrateExp} for a more complete description.
+				
+		\paragraph{\texttt{ce-from\_output\_to\_graph.R} -- Plots the extracted charge \textsl{versus} light bias}
+		Plots the output of a series of extracted charges \textsl{versus} light bias voltages.
+		Then it fits the trend using \cref{eq:ce_full}.
+		
+		\paragraph{\texttt{ce-from\_many\_output\_to\_graph.R} -- Compares between CE of various devices}
+		Plots the charge \textsl{versus} light bias trends of all the devices' data in the current directory.
+		This is used for comparisons like the one in the right column of \cref{fig:ce_noise}.
+		
 %		\paragraph{\texttt{ce-time-many.R} -- Compares single CE transients of various devices}
 %		\paragraph{\texttt{ce-with\_limits.R} -- Compares CE transients with RC decays}
 
@@ -862,47 +910,49 @@ In case the user closes the software forgetting to save the last measurement, th
 		\paragraph{\texttt{from\_tpv\_tpc\_to\_table.R} -- Converts CE output}
 		Similarly to \texttt{from\_ce\_to\_table.R}, this converts the one column raw file to a two columns text file.
 
-%		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
+		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
+		
 %		
 %				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
 %				
-%		\paragraph{\texttt{tpv-from\_output\_to\_graph.R} -- Plots TPV life\hyp{}times \textsl{versus} light bias}
+		\paragraph{\texttt{tpv-from\_output\_to\_graph.R} -- Plots TPV life\hyp{}times \textsl{versus} light bias}
 %		
 %		
 %\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares life\hyp{}time with RC time}
 %
-%		\paragraph{\texttt{tpv-from\_many\_output\_to\_graph.R} -- Compares between TPV of various devices}
+		\paragraph{\texttt{tpv-from\_many\_output\_to\_graph.R} -- Compares between TPV of various devices}
 %
-%	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
+	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
 %
-%		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
+		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
 %		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
 %
 %
-%	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
+	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
 %
-%		\paragraph{\texttt{dc-from\_output\_to\_graph.R} -- Calculates and plots capacitance and charge from DC}
+		\paragraph{\texttt{dc-from\_output\_to\_graph.R} -- Calculates and plots capacitance and charge from DC}
 %		
 %		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
 %		
-%		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
+		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
 %		
 %
-%	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
+	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
 %
 %
 %
-%		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV life\hyp{}times to CE charge}
+		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV life\hyp{}times to CE charge}
 %		
-%				\paragraph{\texttt{tpvce-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-from\_many\_output\_to\_graph.R} -- Compare TPV life\hyp{}times related to either CE or DC charge of various devices}
+				\paragraph{\texttt{tpvce-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-from\_many\_output\_to\_graph.R} -- Compare TPV life\hyp{}times related to either CE or DC charge of various devices}
 %
-%	\subsection{Current-Voltage Sweeps}
-%		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
-%		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
-%		\paragraph{\texttt{iv-generate\_images.R}}
-%		\paragraph{\texttt{iv-generate\_statistics.R}}
-%		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
-%		\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
+	\subsection{Current-Voltage Sweeps}
+		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
+		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
+		\paragraph{\texttt{iv-generate\_images.R}}
+				\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
+		\paragraph{\texttt{iv-generate\_statistics.R}}
+		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
+
 %
 %		\paragraph{\texttt{jsc-stability.R} and \texttt{voc-stability.R}}
 %
@@ -917,13 +967,42 @@ In case the user closes the software forgetting to save the last measurement, th
 %%		\paragraph{\texttt{tas-graph.R} -- Plots TAS decays}
 %		\paragraph{\texttt{uvvis-pl.R} -- Plots absorbance and photoluminescence spectra and fits Tauc plots}
 
+\newpage
 \section{Contributions to mppTracker}\label{software_mppt}
 	\epigraph{\textit{\enquote{A student of mine sells a complete system for that, just go and buy it}}}
+	
 
 	As seen in \cpageref{characterization_hysteresis}, a \gls{mppt} system ensures to obtain a \gls{pce} value closer to the real world working conditions \cite{Zimmermann2016}.
-	The hysteretic phenomena in perovskite solar cells requires new procedures for \gls{mppt} \cite{Cimaroli2017,Pellet2017} and a few commercial systems are already available for that \cite{CicciResearchsrl2019,CandlelightSystems}.
+	The hysteretic phenomena in perovskite solar cells requires new procedures for \gls{mppt} \cite{Cimaroli2017,Pellet2017,Rakocevic2019} and a few commercial systems are already available for that \cite{CicciResearchsrl2019,CandlelightSystems}.
 	An interesting project for having robust \gls{mppt} measurable with Tektronix Keithley 2400 is mppTracker \cite{AFMD2017}.
 	I made a few contributions which are accessible on \url{https://github.com/AFMD/mppTracker/pulls?q=is%3Apr}.
-	As the effort in this project were very limited on my side, I will not further describe that.
+	As the effort in this project were very limited on my side, I will not further describe that but an example of the output is reported in \cref{fig:mppt}.
 	If confirmed, recent reports on "bistable short circuit current" in perovskite solar cells by \authoryear{Calado2018} would further complicate the implementation of a \gls{mppt}.
-%	introduce local maxima making the \gls{mppt} system design even more complex.
+	\begin{figure}[H]
+			\makebox[\textwidth][c]{
+			\parbox{1.1\textwidth}{
+		\centering
+		\includegraphics[width=0.9\textwidth]{mppt/ig92-spiro-1456-1-led437penta.png}
+		\mycaption[Example of maximum power tracking measurement.]{
+			A perovskite solar cell has been measured with an improved version of mppTracker.
+			The black line is the applied voltage and refers to the left axis.
+			The red line is the measured current and refers to the right axis.
+			Te resulting \gls{pce} is the green line and is also on the right axis.
+		}\label{fig:mppt}
+	}}
+	\end{figure}
+
+%	\begin{minipage}{\linewidth}
+%		\begin{center}
+%	\includegraphics[width=1\textwidth]{mppt/ig92-spiro-1456-1-led437penta.png}
+%			\captionof{figure}[Example of maximum power tracking measurement.]{\textbf{Example of maximum power tracking measurement.}
+%					The reported measurement has been performed with an improved version of mppTracker on a \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{spiro}\-/\ch{Au} solar cell.
+%			The black line indicates the applied voltage and refers to the left axis.
+%			The red line represents the measured current and refers to the right axis.
+%			Te resulting power conversion efficiency is the green line and is also on the right axis.
+%		}\label{fig:mppt}
+%		\end{center}
+%	\end{minipage}
+	
+
+
