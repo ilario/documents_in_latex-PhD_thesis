@@ -54,9 +54,9 @@
 
 	\paragraph{Author contributions}
 	The devices have been fabricated by me under the supervision of Dr.\ Nuria F.\ Montcada and Prof.\ Emilio J.\ Palomares Gil (fabrication described in \cpagerefrange{methods_bottom}{methods_bottom_end}).
-	The current\hyp{}voltage sweeps characterization was performed by me and NFM.
-	The transient electronic characterization was performed and analysed by me using equipment built by Dr.\ Javier Pérez Hernández.
-	The electrochemical and optical characterization (cyclic voltammetry, \gls{sclc}, absorbance in solution, photoluminescence in solution) of the molecules was performed by NFM, Dr.\ Lydia Cabau, Dr.\ Agustín Molina Ontoria, and Dr.\ Inés García\hyp{}Benito.
+	The current\hyp{}voltage sweeps characterisation was performed by me and NFM.
+	The transient electronic characterisation was performed and analysed by me using equipment built by Dr.\ Javier Pérez Hernández.
+	The electrochemical and optical characterisation (cyclic voltammetry, \gls{sclc}, absorbance in solution, photoluminescence in solution) of the molecules was performed by NFM, Dr.\ Lydia Cabau, Dr.\ Agustín Molina Ontoria, and Dr.\ Inés García\hyp{}Benito.
 	These same co-authors calculated \gls{homo} energies from cyclic voltammetry and hole mobilities from \gls{sclc}.
 	Optical band gaps was calculated by me from absorbance in solution.
 	Molecular simulations have been performed by Prof.\ Anton Vidal\hyp{}Ferran.
@@ -70,7 +70,7 @@
 
 	%
 	%
-\section{Molecular Characterization}
+\section{Molecular Characterisation}
 
 	%\afterpage{
 	\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
@@ -155,7 +155,7 @@
 	%\paragraph{Mobility}
 
 
-\section{Thin Films Morphological Characterization}
+\section{Thin Films Morphological Characterisation}
 
 	\paragraph{Atomic force microscopy}
 	In order to verify that the various \gls{htm} gave an homogeneous coverage of the underlying layer, we performed alternated current \gls{afm}.
@@ -300,7 +300,8 @@ With some caution (we employed the classical method, not the improved one descri
 					\subcaption{Capacitance from \gls{dc}}\label{fig:tae_photophysics-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different HTM, highlighting the varying chemical capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. %All the fitted parameters are reported in \cref{table:tae_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. 
+					%All the fitted parameters are reported in \cref{table:tae_photophysics}.
 				}\label{fig:tae_photophysics_cedc}
 			}
 		}
@@ -314,14 +315,14 @@ With some caution (we employed the classical method, not the improved one descri
 	The incoherence of the results from \gls{ce} and \gls{dc} for the \gls{tae4} device have been confirmed on another device (not shown).
 	Currently no explanation is available for explaining the deviation happening just when using this \gls{htm}.
 	
-\section{Small Perturbation Transient Voltage Dynamics}
+\section{Transient Lifetime}
 
 
-	As can be seen in \cref{fig:tae_photophysics_tpv}, the small perturbation life-times at \SI{1}{sun} illumination (for each device, the point at bottom right in the series) does not differ by much: from \SI{0.3}{\us} for \gls{spiro} to \SI{1.1}{\us} for \gls{tae4}.
-	This is exactly opposed to the expected trend, where \gls{spiro} giving the best performances should have shown the longest (small perturbation) life-times at 1~sun which would mean less recombination.
-	A much more meaningful result can be obtained referencing the small perturbation life-times obtained from \gls{tpv} to the chemical charge concentration (the charge stored in the perovskite layer, estimated from the exponential parts of \cref{fig:tae_photophysics_cedc}), and correcting the resulting data with the recombination order, as explained in \cpageref{characterization-tpvce}.
+	As can be seen in \cref{fig:tae_photophysics_tpv}, the small perturbation lifetimes at \SI{1}{sun} illumination (for each device, the point at bottom right in the series) does not differ by much: from \SI{0.3}{\us} for \gls{spiro} to \SI{1.1}{\us} for \gls{tae4}.
+	This is exactly opposed to the expected trend, where \gls{spiro} giving the best performances should have shown the longest (small perturbation) lifetimes at 1~sun which would mean less recombination.
+	A much more meaningful result can be obtained referencing the small perturbation lifetimes obtained from \gls{tpv} to the chemical charge concentration (the charge stored in the perovskite layer, estimated from the exponential parts of \cref{fig:tae_photophysics_cedc}), and correcting the resulting data with the recombination order, as explained in \cpageref{characterization_tpvce}.
 	This way, the data points get closer indicating very similar recombination constants being present for all the cases which thus are of no help for explaining the observed \gls{voc} differences.
-	The difference in life-times in \gls{tae4} devices when referencing to \gls{ce} or \gls{dc} is due to the large incoherence of \gls{ce} or \gls{dc} for this device, as shown in \cref{fig:tae_photophysics_cedc}.
+	The difference in lifetimes in \gls{tae4} devices when referencing to \gls{ce} or \gls{dc} is due to the large incoherence of \gls{ce} or \gls{dc} for this device, as shown in \cref{fig:tae_photophysics_cedc}.
 	
 	
 	%	\afterpage{
@@ -365,25 +366,25 @@ With some caution (we employed the classical method, not the improved one descri
 				\begin{subfigure}[t]{1\textwidth}
 					\centering
 					\includegraphics[width=0.51\textwidth]{photophysics/spiro_vs_TAEs-TPVs-robustmonoexp.pdf}
-					\subcaption{Mono\hyp{}exponential life\hyp{}time from \gls{tpv}}\label{fig:tae_photophysics_tpv}
+					\subcaption{Mono\hyp{}exponential lifetime from \gls{tpv}}\label{fig:tae_photophysics_tpv}
 				\end{subfigure}
 				\bigskip
 
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-TPVCEs-nogeom_total.pdf}
-					\subcaption{Life\hyp{}time \textsl{vs} \gls{ce} chemical charge}\label{fig:tae_photophysics_tpvce}
+					\subcaption{Lifetime \textsl{vs} \gls{ce} chemical charge}\label{fig:tae_photophysics_tpvce}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1\textwidth]{photophysics/spiro_vs_TAEs-TPVDCs-nogeom_total.pdf}
-					\subcaption{Life\hyp{}time \textsl{vs} \gls{dc} chemical charge}\label{fig:tae_photophysics_tpvdc}
+					\subcaption{Lifetime \textsl{vs} \gls{dc} chemical charge}\label{fig:tae_photophysics_tpvdc}
 				\end{subfigure}
-				\mycaption[Total carrier life\hyp{}time for devices with different HTM.]{
+				\mycaption[Total carrier lifetime for devices with different HTM.]{
 					Four devices differing just for the employed \gls{htm} material has been compared by means of transient photophysical techniques.
-					In (\textbf{a}) the plain \gls{tpv} (small perturbation life-time \textsl{versus} light\hyp{}bias) is reported.
-					In (\textbf{b}) the life\hyp{}time is plotted versus the exponential part of the charge from \gls{ce} reported in \cref{fig:tae_photophysics-ce} and corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.
-					In (\textbf{c}) the life\hyp{}time is plotted versus the chemical charge from \gls{dc} obtained subtracting the constant geometric capacitance from the data reported in \cref{fig:tae_photophysics-dc} and integrating it.
-					The life\hyp{}time was corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.}\label{fig:tae_photophysics_tpvcedc}
+					In (\textbf{a}) the plain \gls{tpv} (small perturbation lifetime \textsl{versus} light\hyp{}bias) is reported.
+					In (\textbf{b}) the lifetime is plotted versus the exponential part of the charge from \gls{ce} reported in \cref{fig:tae_photophysics-ce} and corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.
+					In (\textbf{c}) the lifetime is plotted versus the chemical charge from \gls{dc} obtained subtracting the constant geometric capacitance from the data reported in \cref{fig:tae_photophysics-dc} and integrating it.
+					The lifetime was corrected using \cref{eq:tau_pfo} with the recombination order obtained from the power\hyp{}law fit of the same graph.}\label{fig:tae_photophysics_tpvcedc}
 			}
 		}
 	\end{figure}
@@ -428,7 +429,7 @@ With some caution (we employed the classical method, not the improved one descri
 		\end{xltabular}
 %	}
 
-	Further characterization of the workfunction of the \gls{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm}.
+	Further characterisation of the workfunction of the \gls{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm}.
 	The measured \gls{cpd} allowed us to study the impact the underlying perovskite layer can have on the \gls{htm} material.
 	%It has been reported that perovskite Fermi level could depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
 	Perovskite Fermi level can depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
@@ -448,6 +449,6 @@ With some caution (we employed the classical method, not the improved one descri
 	Comparing the \gls{voc} obtained from solar cells having different \gls{htm} with the \gls{homo} values of these, we noticed a discrepancy.
 	For understanding the origin of this incoherence, the electronic band gap was measured using \gls{ce} and \gls{dc}, which was in accordion with the observed \gls{voc} with exception of the inversion of \gls{tae3} and \gls{tae4} molecules order.
 	This data indicates that the \gls{homo} value measured in solution \textsl{via} cyclic voltammetry is quite different from the actual energy levels for the molecules in solid thin film.
-	The analysis of the total carrier life-times using \gls{tpv} referenced to chemical charge, has shown that the recombination constants are in the same order of magnitude regardless the employed \gls{htm}.
+	The analysis of the total carrier lifetimes using \gls{tpv} referenced to chemical charge, has shown that the recombination constants are in the same order of magnitude regardless the employed \gls{htm}.
 	The measurement of the work function of the \gls{htm} when layered on perovskite has shown the formation of a large dipole at the perovskite\-/\gls{htm} interface mainly for the \gls{tae3} case.
 	This shift in the vacuum level could be the cause for the lower \gls{voc} measured using this \gls{htm} and justify the incoherence with the observed electronic band gap in \gls{ce} and \gls{dc}.

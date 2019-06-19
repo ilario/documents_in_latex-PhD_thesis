@@ -130,7 +130,7 @@
 %			pdfsubject={Subject},   % subject of the document
 %			pdfcreator={Creator},   % creator of the document
 %			pdfproducer={Producer}, % producer of the document
-			pdfkeywords={perovskite, solar cells, photovoltaics, photophysics, modelling, characterization, drift-diffusion, fabrication, hole transporting materials, recombination, simulation, ion migration, halide perovskite, hybrid perovskite, perovskite solar cells, impedance spectroscopy, solar energy, optical transients, electrical transients, data acquisition, data analysis, open circuit voltage, spin coating, hole transport layer, charge transfer, semiconductor, time resolved spectroscopy} % list of keywords
+			pdfkeywords={perovskite, solar cells, photovoltaics, photophysics, modelling, characterisation, drift-diffusion, fabrication, hole transporting materials, recombination, simulation, ion migration, halide perovskite, hybrid perovskite, perovskite solar cells, impedance spectroscopy, solar energy, optical transients, electrical transients, data acquisition, data analysis, open circuit voltage, spin coating, hole transport layer, charge transfer, semiconductor, time resolved spectroscopy} % list of keywords
 %			pdfnewwindow=true,      % links in new PDF window
 %			colorlinks=false,       % false: boxed links; true: colored links
 %			linkcolor=red,          % color of internal links (change box color with linkbordercolor)
@@ -480,13 +480,13 @@ bottom=2cm%,
 %		ex-po-nen-tial
 %		ex-po-nen-ti-als}
 	
-	\title{Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells}
+	\title{Advanced Characterisation and Modelling of Charge Transfer in Perovskite Solar Cells}
 	\author{Ilario Gelmetti}
 	\date{2019}
 	
 	\usepackage{hyperref}
 	\hypersetup{
-		pdftitle={Advanced Characterization and Modelling of Charge Transfer in Perovskite Solar Cells},
+		pdftitle={Advanced Characterisation and Modelling of Charge Transfer in Perovskite Solar Cells},
 %		pdfsubject={Your PDF subject},
 		pdfauthor={Ilario Gelmetti}
 %		pdfkeywords={Your PDF keywords}
@@ -524,7 +524,7 @@ bottom=2cm%,
 
 
 
-{\let\cleardoublepage\clearpage % i don't want openright in frontmatter
+
 \frontmatter
 
 %\addtocounter{page}{-1}
@@ -686,11 +686,13 @@ bottom=2cm%,
 
 
 
-\newpage% or \cleardoublepage
+%\newpage
+\cleardoublepage
 % \pdfbookmark[<level>]{<title>}{<dest>}
 \pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
 
+{\let\cleardoublepage\clearpage % i don't want openright in frontmatter
 \listoffigures
 \listoftables
 %\lstlistoflistings
@@ -805,7 +807,7 @@ bottom=2cm%,
 	\addthumb{\thechapter}{\LARGE{\textbf{\textrm{\thechapter}}}}{white}{colorthree}
 
 
-	\paragraph*{Abstract} Characterization of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
+	\paragraph*{Abstract} Characterisation of perovskite solar cells is a non-trivial subject, the techniques researchers successfully employed for \gls{osc} and \gls{dssc} needs to be re-validated for this new kind of solar cells.
 	The presence of ionic migration in the absorber can be a game-changer for which special care has to be taken.
 	In this chapter the employed characterisation techniques are described and critically assessed.
 	Taking advantage of drift\hyp{}diffusion simulations, some new hypotheses are thrown about the interpretation of the characterisation output.
@@ -856,7 +858,7 @@ bottom=2cm%,
 	\clearpage
 	\stopcontents[tae]
 
-\chapter{Insights on the Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells}\label{ch:thicknesses}
+\chapter{Insights into Charge Storage \textsl{via} Thickness Variation of Layers in Top Cathode MAPI Solar Cells}\label{ch:thicknesses}
 \chaptermark{Thickness of Layers}
 	\epigraph{\textit{"Let's change as little as possible"}}
 
@@ -986,6 +988,6 @@ bottom=2cm%,
 	\newpage
 
 	% the closing page has to be on an even page
-	\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_img/titlepage/B5_contra_iciq_icl.pdf}%
+	\includepdf[pages={1},offset=0mm 0mm,frame=false,noautoscale=true,scale=1]{contents_img/titlepage/B5_contra_iciq_icl_highRes.pdf}%
 
 \end{document}

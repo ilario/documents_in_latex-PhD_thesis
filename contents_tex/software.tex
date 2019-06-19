@@ -4,12 +4,12 @@
 
 	\subsection{Introduction}
 		During my 3-month stay in Dr.\ Piers R.\ F.\ Barnes and Prof.\ Jenny Nelson groups in Imperial College London, I utilized and expanded a modelling software developed by Dr.\ Phil Calado, Dr.\ Mohammed Azzouzi, Benjamin Hilton, and Piers R.\ F.\ Barnes.
-		As the modelling software had already demonstrated a great descriptive power \cite{Belisle2017,Calado2016,Calado2019}, I implemented a few more characterization techniques with the objective of reproducing and understanding real-world data.
+		As the modelling software had already demonstrated a great descriptive power \cite{Belisle2017,Calado2016,Calado2019}, I implemented a few more characterisation techniques with the objective of reproducing and understanding real-world data.
 		The impedance spectroscopy simulation is not included here as it has been treated in \cref{ch:impedance}.
 		Driftfusion \cite{Calado2018a,Calado2016} is a time resolved, one dimensional, drift\hyp{}diffusion modelling platform.
 		It takes advantage of Matlab \texttt{pdepe} solver for partial differential equations with boundary conditions in time and one spatial dimension.
 		%Solve initial-boundary value problems for parabolic-elliptic PDEs in 1-D.
-		Currently, it can simulate the electrostatic potential, and the density of electrons, holes and one ionic specie at specified depths in a multi\hyp{}layered electronic device and at specified time points.
+		Currently, it can simulate the electrostatic potential, and the density of electrons, holes and one ionic species at specified depths in a multi\hyp{}layered electronic device and at specified time points.
 		Even if an heterojunction version of the code is available, I implemented functions for the homojunction (every material has the same bandgap) release, which is much more stable and tested.
 		All the described scripts can be obtained from \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
 
@@ -412,18 +412,18 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 		
 		\textit{Inputs:} 1) a structure with a solution being perturbed by a light pulse;
 		2) optional, initial guess for linear factor of fast decay of bi-exponential fit;
-		3) optional, initial guess for life-time of fast decay of bi-exponential fit;
+		3) optional, initial guess for lifetime of fast decay of bi-exponential fit;
 		4) optional, initial guess for linear factor of slow decay of bi-exponential fit;
-		5) optional, initial guess for life-time of slow decay of bi-exponential fit.
+		5) optional, initial guess for lifetime of slow decay of bi-exponential fit.
 		
 		\textit{Outputs:} 1) steady state voltage being present before the pulse;
 		   2) maximum voltage variation due to the pulse;
 		   3) linear factor of mono-exponential fit;
-		   4) life-time of mono-exponential fit;
+		   4) lifetime of mono-exponential fit;
 		   5) linear factor of fast decay of bi-exponential fit;
-		   6) life-time of fast decay of bi-exponential fit;
+		   6) lifetime of fast decay of bi-exponential fit;
 		   7) linear factor of slow decay of bi-exponential fit;
-		   8) life-time of slow decay of bi-exponential fit.
+		   8) lifetime of slow decay of bi-exponential fit.
 		
 %		\textit{Requires:} \texttt{}.
 		
@@ -436,18 +436,18 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 		
 		\textit{Inputs:} 1) a structure with a solution being perturbed by a light pulse;
 2) optional, initial guess for linear factor of fast decay of bi-exponential fit;
-3) optional, initial guess for life-time of fast decay of bi-exponential fit;
+3) optional, initial guess for lifetime of fast decay of bi-exponential fit;
 4) optional, initial guess for linear factor of slow decay of bi-exponential fit;
-5) optional, initial guess for life-time of slow decay of bi-exponential fit.
+5) optional, initial guess for lifetime of slow decay of bi-exponential fit.
 
 \textit{Outputs:} 1) steady state voltage being present before the pulse;
 2) maximum voltage variation due to the pulse;
 3) linear factor of mono-exponential fit;
-4) life-time of mono-exponential fit;
+4) lifetime of mono-exponential fit;
 5) linear factor of fast decay of bi-exponential fit;
-6) life-time of fast decay of bi-exponential fit;
+6) lifetime of fast decay of bi-exponential fit;
 7) linear factor of slow decay of bi-exponential fit;
-8) life-time of slow decay of bi-exponential fit.
+8) lifetime of slow decay of bi-exponential fit.
 		
 %		\textit{Required by:} \texttt{}.
 		
@@ -473,6 +473,7 @@ Clearly, the Stark effect has to be evaluated locally at any position through th
 The attention has been focussed on the first and the second harmonic effects, respectively with the same and the double frequency as the applied voltage.
 The first harmonic component is driven by the product of the steady state electric field $E_|DC|(x)$ and the amplitude of the first harmonic of the oscillating electric field $|E_|AC||$ at each spatial point.
 The second harmonic component is related to the square of the oscillating electric field amplitude $|E_|AC|^2|$ at each spatial point.
+Thanks to the modularity of the developed routines, some of the functions coded for the impedance spectroscopy modelling are called by ElectroAbsorption routines, specifically: \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}, and \texttt{ISwave\_EA\_single\_exec}.
 
 %		photo induced absorption stark spectroscopy on perovskite solar cells \cite{Roiati2014,Li2016}
 
@@ -589,7 +590,7 @@ field, each column is a space point.
 		The route to a reliable and efficient device is inevitably a long iterative process.
 		In each optimization step a device is fabricated, measured, and the design modified for the next step.
 		Part of the evaluation is just a repetitive process which can be automatized without any loss.
-		Current-voltage sweeps is the most frequently employed characterization technique for solar cells, for this reason a fast and easy data acquisition software has been developed.
+		Current-voltage sweeps is the most frequently employed characterisation technique for solar cells, for this reason a fast and easy data acquisition software has been developed.
 		The complete software can be downloaded from \url{https://github.com/ilario/PyPV}.
 
 		\begin{SCfigure}%[!hbtp]%
@@ -617,6 +618,7 @@ field, each column is a space point.
 				Python~2, rather than the most recent Python~3, has been chosen for the software development.
 				This apparently stupid choice was motivated by the requirement of running the software on the obsolete Windows~XP machines still used for the data acquisition.
 				Anyway, the usage of Python has two paramount advantages: it can be used without the need of commercial licenses (which was not the case for the previous software relying on LabView) and it is one of the most popular and easy to read coding languages, which will help the future development by other researchers.
+				In order to further ease the future development, PEP8 coding style guide was respected \cite{Rossum2017}.
 				
 				\paragraph{Files structure}
 				The software is distributed with the following files:
@@ -841,11 +843,12 @@ In case the user closes the software forgetting to save the last measurement, th
 	\epigraph{\textit{\enquote{Is there an Origin version for Linux?}\\\enquote{No}}}
 
 	\subsection{Introduction}
-		To process the large amount of data which can be obtained using multiple techniques during the characterization of solar cells can be a very tedious and repetitive work.
-		I developed routines for data processing and representation, like fittings, integrations and plots.
+		To process the large amount of data which can be obtained using multiple techniques during the characterisation of solar cells can be a very tedious and repetitive work.
+		We developed routines for data processing and representation, like fittings, integrations and plots.
 		I am describing the routines here in order to allow others to use and modify them.
 		The described routines have been tested to work on Linux and Windows systems.
 		All of the described functions can be downloaded from \url{https://github.com/ilario/photophysics-data-processing-R}.
+		Just the scripts which are relevant for the data published in this thesis will be reported, while many others (\textsl{e.g.} parameter extraction from current\hyp{}voltage sweeps, statistics on the performance parameters, Tauc plot fitting, logarithmic smoothing of transient absorption spectroscopy data\dots) can be found online.
 
 	\subsection{Helpers}
 		\paragraph{\texttt{limits\_for\_graphics.R} -- Set graphical parameters}
@@ -866,7 +869,7 @@ In case the user closes the software forgetting to save the last measurement, th
 		
 		\paragraph{\texttt{run-all-photophysics-comparisons.R} -- Plots comparisons between devices}
 		This basic \gls{gui} prompts the user for the directories containing the data of each of the devices to be compared.
-		Then it plots the characterization data of all the selected devices in single plots, in order to help the visual comparison of the results.
+		Then it plots the characterisation data of all the selected devices in single plots, in order to help the visual comparison of the results.
 		
 		%\subsection{Photophysical Characterization \textsl{via} Optical and Electrical Transients}
 
@@ -906,57 +909,85 @@ In case the user closes the software forgetting to save the last measurement, th
 %		\paragraph{\texttt{ce-with\_limits.R} -- Compares CE transients with RC decays}
 
 	\subsection{Transient PhotoVoltage (\glsentryshort{tpv})}\label{r_tpv}
-
+	For details on \gls{tpv} technique, see \cpageref{characterization_tpv}.
+	
 		\paragraph{\texttt{from\_tpv\_tpc\_to\_table.R} -- Converts CE output}
 		Similarly to \texttt{from\_ce\_to\_table.R}, this converts the one column raw file to a two columns text file.
 
 		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
+		This rather large routine fits the single \gls{tpv} decays.
+		The following features can be activated or deactivated editing the script header:
+		bi-exponential fitting, robust fitting \cite{Maechler2018}, save the plots to PNG or PDF files, plot all the data points or use a 2D histogram for reducing the overplotting problem (see \cref{fig:tpv_robust}), additionally plot with abscissa and/or ordinate axis in logarithmic scale, plot residuals, allow the fitting to match negative peaks.
+		In order to successfully perform the bi-exponential fits using \cref{eq:tpv_biexp}, a good initial guess is provided at first and then, if convergence is not obtained, random initial guesses.
+		If cases where this is not enough, some data points from the beginning of the decay (the most noisy part of the decay) are removed until when the fit converges.
+		Additionally, the voltage increase value $\Delta V$ is also calculated here and will be used by \gls{dc} scripts, as explained in \cpageref{characterization_dc}.
 		
 %		
 %				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
 %				
-		\paragraph{\texttt{tpv-from\_output\_to\_graph.R} -- Plots TPV life\hyp{}times \textsl{versus} light bias}
+		\paragraph{\texttt{tpv-from\_output\_to\_graph.R} -- Plots TPV lifetimes \textsl{versus} light bias}
+		This script plots the lifetimes obtained from mono or bi exponential fits in \texttt{tpv.R} \textsl{versus} light bias voltage.
+		Additionally, it fits the high voltage points using \cref{eq:tpv_tau_vs_intensity}.
 %		
-%		
-%\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares life\hyp{}time with RC time}
+%\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares lifetime with RC time}
 %
 		\paragraph{\texttt{tpv-from\_many\_output\_to\_graph.R} -- Compares between TPV of various devices}
+		Similarly to the aforementioned \texttt{tpv-from\_output\_to\_graph.R} script, this plots the mono\hyp{}exponential lifetime \textsl{versus} light bias data for various devices in the same plot, allowing the user to make a graphical comparison.
 %
 	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
-%
+	For details on \gls{tpc} technique, see \cpageref{characterization_tpc}.
+
 		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
+		Similarly to what \texttt{ce.R} does for integrating the \gls{ce} voltage transient, also this script directly integrates the voltage transients \textsl{versus} time after subtracting a baseline.
+		
 %		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
 %
 %
 	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
-%
+	For details on \gls{dc} technique, see \cpageref{characterization_dc}.
+
 		\paragraph{\texttt{dc-from\_output\_to\_graph.R} -- Calculates and plots capacitance and charge from DC}
+		This script takes the photogenerated charge $\Delta n$ output from \texttt{tpc.R} and the voltage increase $\Delta V$ output from \texttt{tpv.R} and obtains the voltage dependent capacitance using \cref{eq:dc}.
+		In case the values from different \gls{tpc} measures differs, for example due to the presence of background illumination, the first quartile of all the measured $\Delta n$ is used.
+		The value of the geometric capacitance is obtained fitting the capacitance using \cref{eq:dc_full} and then taking the $C_|g|$ parameter value.
+		The chemical capacitance profile is obtained subtracting $C_|g|$ to the calculated capacitance profile.
+		The obtained capacitance \textsl{versus} light bias discrete profiles are converted to a continuous profile using R's \texttt{Vectorize} function and integrated over voltage (see \cref{eq:dc_charge}) for obtaining the excess charge \textsl{versus} light bias trends with or without geometric capacitance.
+
 %		
 %		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
 %		
 		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
-%		
-%
+		The comparison of capacitance and charge from \gls{dc} is plotted for various devices and fitted using \cref{eq:dc_full}.
+		The data to be plotted is taken from the output of \texttt{dc-from\_output\_to\_graph.R} script.
+
 	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
+		For details on \gls{tpv}-CE and \gls{tpv}-DC techniques, see \cpageref{characterization_tpvce}.
 %
 %
 %
-		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV life\hyp{}times to CE charge}
-%		
-				\paragraph{\texttt{tpvce-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-from\_many\_output\_to\_graph.R} -- Compare TPV life\hyp{}times related to either CE or DC charge of various devices}
-%
-	\subsection{Current-Voltage Sweeps}
-		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
-		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
-		\paragraph{\texttt{iv-generate\_images.R}}
-				\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
-		\paragraph{\texttt{iv-generate\_statistics.R}}
-		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
+%		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV lifetimes to CE charge}
+		
+				\paragraph{\texttt{tpvce-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-from\_many\_output\_to\_graph.R} -- Compare TPV lifetimes related to either CE or DC charge of various devices}
+The mono\hyp{}exponential lifetimes from \texttt{tpv.R} are plotted \textsl{versus} various charge profiles obtained from \gls{ce} or \gls{dc}.
+In order to squash the light bias axes from the different techniques, the \gls{ce} or \gls{dc} charge \textsl{versus} voltage profiles are fitted and the employed charge value at the \gls{tpv} light biases is obtained from the fit.
+The charge profiles employed are: complete charge including geometric capacitance, chemical charge subtracting $C_|g|$ obtained either with \cref{eq:ce_full} for \gls{ce} or with \cref{eq:dc_full} for \gls{dc}.
+Fitting the small perturbation lifetimes \textsl{versus} chemical charge using \cref{eq:tau_pfo}, the recombination order $\Phi$ is obtained.
+This $\Phi$ is used for correcting the small perturbation lifetimes to total carrier lifetimes (pseudo first order lifetimes) using \cref{eq:tau_pfo} and is plotted again \textsl{versus} chemical charge.
+An example of all the mentioned plots can be observed in \cref{fig:tpvce,fig:tae_photophysics_tpvcedc}.
+
+%	\subsection{Current-Voltage Sweeps}
+%		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
+%		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
+%		\paragraph{\texttt{iv-generate\_images.R}}
+%				\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
+%		\paragraph{\texttt{iv-generate\_statistics.R}}
+%		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
 
 %
 %		\paragraph{\texttt{jsc-stability.R} and \texttt{voc-stability.R}}
 %
 %	\subsection{Other}
+%	Not all the scripts are described in this chapter, two of the most interesting others will be reported here:
 %	
 %				\paragraph{\texttt{jrec-ce.R} and \texttt{jrec-dc.R} -- Reconstructs the \gls{jsc}}
 %					\cpageref{jsc_reconstruction}

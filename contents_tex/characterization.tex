@@ -133,7 +133,7 @@
 		The fact that the relaxation time of the ionic migration (\si{\ms} to seconds for the ions \cite{Jacobs2018}) is usually much larger than the laser repetition rate (\si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse.
 		As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care.
 		An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016} and elsewhere \cite{Chen2015,Chen2017}.
-		%		This should also be considered when comparing life\hyp{}times from different laser fluences \cite{Manser2014}.
+		%		This should also be considered when comparing lifetimes from different laser fluences \cite{Manser2014}.
 
 \section{Current-Voltage Sweeps}
 
@@ -465,7 +465,8 @@
 		\begin{equation}
 			n(V) = n_|DOS| \exp(\frac{qV - E_|g|}{k_|B|T}) = n_|eq| \exp(\frac{qV}{k_|B|T})
 		\end{equation}
-		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|eq|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the equilibrium carrier concentration from a Boltzmann distribution of a two levels system. %just a pre\hyp{}factor with no direct physical interpretation.
+		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|eq|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the equilibrium carrier concentration from a Boltzmann distribution of a two levels system. 
+		%just a pre\hyp{}factor with no direct physical interpretation.
 		As the \acr{ce} can just extract the excess charge $n_|CE|$, what we can measure is:
 		\begin{equation}
 			n_|CE|(V) = n(V)-n(0) = n_|eq| \cdot \left[\exp(\frac{qV}{k_|B|T})-1\right]
@@ -473,7 +474,7 @@
 		now the expression of $n_|CE|$ evaluated at zero voltage gives zero extra charge as expected.
 		In some cases an ideality factor $m$ is introduced \cite{Kirchartz2012}, which can help to account for the shape of the density of states of the conduction band, so the expression can be found as:
 		\begin{equation}\label{eq:ce_osc}
-			n_|CE| = n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T})-1\right]
+			n_|CE|(V) = n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T})-1\right]
 		\end{equation}
 		For perovskite solar cells, an alternative interpretation can be found indicating that the exponential trend reflects the extraction from exponential subgap states, \textsl{i.e.} shallow traps \cite{Du2018}.
 		This can be used for explaining values of $m$ greater than 2, which would be indicative of the exponential tail width as shown for \gls{osc} by \authoryear{Kirchartz2012}.
@@ -514,7 +515,7 @@
 		This carriers accumulation in the contacts can be visualized with the simulation reported in \cref{fig:ce_single_dd_charge-1sun}.
 		Extending \cref{eq:ce_osc}, the complete equation becomes:
 		\begin{equation}\label{eq:ce_full}
-			n_|CE| = C_|g| \cdot V + n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
+			n_|CE|(V) = C_|g| \cdot V + n_|eq| \cdot \left[\exp(\frac{qV}{mk_|B|T}) - 1\right]
 		\end{equation}
 
 		\paragraph{Geometric capacitance voltage dependency}\label{geometric_capacitance_and_voltage}
@@ -591,7 +592,7 @@
 
 		\FloatBarrier
 		\newpage
-\section{Transient PhotoVoltage (TPV)}
+\section{Transient PhotoVoltage (TPV)}\label{characterization_tpv}
 	\epigraph{\textit{\enquote{Imma firin mah lazor\\pewpew pewpewpew}}}
 
 	\paragraph{Concept}
@@ -602,7 +603,7 @@
 	%	From the \gls{voc} \textsl{versus} illumination relation for photodiodes reported in \cref{eq:voc_vs_phi} follows that the \gls{voc}, at this new higher illumination, increases (this is not always the case, as for non-stabilized perovskite solar cells \cite{Calado2016}).
 	After the end of the short pulse, the \gls{voc} will slowly go back to the steady state value relative to the constant illumination.
 	The dynamics of this \gls{voc} relaxation back to the steady state value is the focus of Transient PhotoVoltage experiments (also known as PhotoVoltage Decay experiments) which has been applied to \gls{osc} \cite{Shuttle2008}, to \gls{dssc} \cite{ORegan2005,ORegan2004,ORegan2006}, and recently also to perovskite solar cells \cite{Roiati2014a,Marin-Beloqui2014}.
-	From this kinetic profile, a charge life\hyp{}time can be obtained and plotted against the light bias due to the constant background illumination, as in the example of \cref{fig:tpv-monoexp}.
+	From this kinetic profile, a charge lifetime can be obtained and plotted against the light bias due to the constant background illumination, as in the example of \cref{fig:tpv-monoexp}.
 	This gives us information about the dominant recombination rate and its dependence on the light bias.
 
 	\begin{SCfigure}
@@ -623,7 +624,7 @@
 	The voltage profile gets averaged over a few tens of pulses in order to increase the signal to noise ratio.
 	Initially the light illumination is set to \SI{1}{sun} and the laser pulse intensity is attenuated using a neutral filter so that the voltage perturbation remains smaller than \SI{10}{\mV} for ensuring the small perturbation regime.
 	The measurement is repeated after decreasing the background light intensity and waiting a stabilization time.
-	The fitted small perturbation life\hyp{}time is plotted \textsl{versus} the light bias.
+	The fitted small perturbation lifetime is plotted \textsl{versus} the light bias.
 	The background illumination is decreased down to dark background illumination over a few tens different intensities.
 	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 
@@ -687,7 +688,7 @@
 		\begin{equation}\label{eq:tpv_monoexp}
 			n (t) = n_0 + \Delta n_0 \cdot e^{-(k_1 + 2 k_2 n_0) t} = n_0 + \Delta n_0 \cdot e^{-t / \tau}
 		\end{equation}
-		where $\tau = (k_1 + 2 k_2 n_0)^{-1}$ is the small perturbation life\hyp{}time.
+		where $\tau = (k_1 + 2 k_2 n_0)^{-1}$ is the small perturbation lifetime.
 		For a single recombination with a generic recombination reaction order $\Phi$ we can generalize to \cite{Shuttle2008}:
 		\begin{equation}\label{eq:tpv_tau_order}
 			\tau \approx (\Phi k n_0^{\Phi-1})^{-1}
@@ -700,12 +701,12 @@
 					\centering
 					\begin{subfigure}[t]{0.5\textwidth}
 						\includegraphics[width=1\textwidth]{tpv/monoexp/spiro_vs_TAEs-TPVs-robustmonoexp-crop.pdf}
-						\subcaption{Mono\hyp{}exponential life\hyp{}times \textsl{versus} light bias}\label{fig:tpv-monoexp}
+						\subcaption{Mono\hyp{}exponential lifetimes \textsl{versus} light bias}\label{fig:tpv-monoexp}
 					\end{subfigure}
 					\qquad
 					\begin{subfigure}[t]{0.5\textwidth}
 						\includegraphics[width=1\textwidth]{tpv/biexp/tpv-tpv-mixedbimono-crop.pdf}
-						\subcaption{Bi\hyp{}exponential life\hyp{}times \textsl{versus} light bias for a \gls{famapbibr} device}\label{fig:tpv-biexp_full}
+						\subcaption{Bi\hyp{}exponential lifetimes \textsl{versus} light bias for a \gls{famapbibr} device}\label{fig:tpv-biexp_full}
 					\end{subfigure}
 					\bigskip
 
@@ -714,7 +715,7 @@
 						\subcaption{Single bi\hyp{}exponential decay}\label{fig:tpv-biexp_single}
 					\end{subfigure}
 
-					\mycaption[Example of life\hyp{}times \textsl{versus} light bias plot obtained from a TPV experiment.]{In (\textbf{a}) the small perturbation life\hyp{}times obtained from robust mono\hyp{}exponential fitting are plotted against light bias for \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/\ch{Au} devices \cite{Gelmetti2019}. In (\textbf{b}) the life\hyp{}times of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{famapbibr}\-/\gls{spiro}\-/\ch{Au} device as obtained from a robust bi\hyp{}exponential fitting for low light bias, where the decays are clearly biphasic, and mono\hyp{}exponential for higher illuminations. In (\textbf{c}) the full data for the point at \SI{0.42}{V} from (\textbf{b}) is reported.}\label{fig:tpv}
+					\mycaption[Example of lifetimes \textsl{versus} light bias plot obtained from a TPV experiment.]{In (\textbf{a}) the small perturbation lifetimes obtained from robust mono\hyp{}exponential fitting are plotted against light bias for \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/\ch{Au} devices \cite{Gelmetti2019}. In (\textbf{b}) the lifetimes of a \gls{fto}\-/\ch{d-TiO2}\-/\acr{famapbibr}\-/\gls{spiro}\-/\ch{Au} device as obtained from a robust bi\hyp{}exponential fitting for low light bias, where the decays are clearly biphasic, and mono\hyp{}exponential for higher illuminations. In (\textbf{c}) the full data for the point at \SI{0.42}{V} from (\textbf{b}) is reported.}\label{fig:tpv}
 				}
 			}
 		\end{figure}
@@ -728,13 +729,13 @@
 		\begin{equation}\label{eq:tpv_biexp}
 			V (t) = V_0 + \Delta V_a \cdot e^{-t/\tau_a} + \Delta V_b \cdot e^{-t/\tau_b}
 		\end{equation}
-		where $\tau_a$ and $\tau_b$ are two distinct life\hyp{}times while $\Delta V_a$ and $\Delta V_b$ are the respective amplitudes of the contributions to the measured decay.
+		where $\tau_a$ and $\tau_b$ are two distinct lifetimes while $\Delta V_a$ and $\Delta V_b$ are the respective amplitudes of the contributions to the measured decay.
 		The presence of two different recombination processes is not enough for justifying a bi\hyp{}exponential decay.
 		This is clear looking to \cref{eq:tpv_monoexp}, where considering two recombination processes with two different reaction orders we obtained a simple exponential decay.
 		What we have to remember here, is that \cref{eq:tpv_monoexp} was obtained for a zero dimensional case, like what would happen in a homogeneous chemical reaction.
 		In our case, the multiple recombination centres could be spatially separated.
 		If the charge concentration in the two centres is dis\hyp{}entangled (is not identical at any time), the sum of two exponential decays can be expected rather than a simple exponential.
-		This dis\hyp{}entanglement is possible if the time needed for the free carriers to migrate from a recombination centre to the other is larger than the shorter recombination life\hyp{}time.
+		This dis\hyp{}entanglement is possible if the time needed for the free carriers to migrate from a recombination centre to the other is larger than the shorter recombination lifetime.
 		This can happen thanks to a large\hyp{}enough distance between recombination centres together with a slow free carriers mobility \cite{Calado2018}.
 		For example for recombination centres at different depths in the solar cell stack, like at the two perovskite/contacts interfaces.
 		The fact that the presence of mesoporous structures are often present when bi\hyp{}exponential decays are observed can be understood by the smaller mobility of perovskite when intercalated in such structures \cite{Leijtens2014}.
@@ -747,7 +748,7 @@
 		In such an extreme case the provisioning of charges to the recombination centres could become a bottleneck rather than the recombination itself.
 		A drift\hyp{}diffusion simulation of this can be found in \authoryear{Calado2018}.
 		In this regime, a \acr{tpv} experiment would be rather insensitive to actual recombination constants and even to light intensity, giving just information about mobility.
-		As the observed \acr{tpv} life\hyp{}times are strongly light\hyp{}intensity dependent, at least at high background illumination, we can exclude to be in this mobility\hyp{}limited regime.
+		As the observed \acr{tpv} lifetimes are strongly light\hyp{}intensity dependent, at least at high background illumination, we can exclude to be in this mobility\hyp{}limited regime.
 		This would have to be revised in case a strong illumination\hyp{}dependent mobility in perovskite materials was demonstrated, as has been reported in \gls{osc} \cite{Eng2010,Shuttle2010,Deledalle2014}.
 		Also a slow trapping and de\hyp{}trapping of the carriers can result in a reduced and illumination\hyp{}dependent mobility \cite{Du2018}.
 
@@ -834,35 +835,35 @@
 					\mycaption[Simulated \glsentryshort{tpv} without and with mobile ions.]{
 						The \gls{tpv} of a homojunction solar cell is simulated, with background illumination from \SIrange{1e-10}{1}{suns} (respectively the leftmost and the rightmost points) with 3 points per decade.
 						The pulse intensity was regulated in order to not exceed \SI{8}{\mV} of perturbation.
-						In (\textbf{a}) a device without mobile ions is simulated, the resulting decay is a simple exponential, so the life\hyp{}time of an exponential fit is reported.
-						In (\textbf{b}) a device with mobile ions in the absorber layer is reported, the resulting decay is a simple exponential at high light biases but a bi\hyp{}exponential at lower background illuminations, so the two life\hyp{}times from a bi\hyp{}exponential fitting are reported.
+						In (\textbf{a}) a device without mobile ions is simulated, the resulting decay is a simple exponential, so the lifetime of an exponential fit is reported.
+						In (\textbf{b}) a device with mobile ions in the absorber layer is reported, the resulting decay is a simple exponential at high light biases but a bi\hyp{}exponential at lower background illuminations, so the two lifetimes from a bi\hyp{}exponential fitting are reported.
 					}\label{fig:tpv_full_dd}
 				}}
 		\end{figure}
 
-		\paragraph{At low background illumination -- fast life\hyp{}time plateau}
+		\paragraph{At low background illumination -- fast lifetime plateau}
 		Both the fast and the slow component of bi\hyp{}exponential decays hit a maximum value (plateau) at very low light intensities.
-		Looking at the fast component, assigned to the rearrangement of the ionic profile, we usually observe a constant life\hyp{}time.
+		Looking at the fast component, assigned to the rearrangement of the ionic profile, we usually observe a constant lifetime.
 		This suggests the presence of a background light insensitive ionic rearrangement time constant, which implies a light insensitive ionic mobility.
 		This should be further studied considering the report of illumination-dependent ionic mobility by Maier's group in \authoryear{Kim2018}.
 		
 		\paragraph{At low background illumination -- calculating ionic resistance}
-		We can consider this fast component's life-time as a RC time due to ionic motion.
+		We can consider this fast component's lifetime as a RC time due to ionic motion.
 		So, from this time and from the ionic capacitance (easy to obtain from impedance spectroscopy, see \cpageref{impedance_lowf_dark}), we can obtain the ionic resistance (which is proportional to ionic mobility and to ionic concentration) as:
 		\begin{equation}
 			R_|ion| = \frac{\tau_|ion|}{C_|ion|}
 		\end{equation}
 
-		\paragraph{At low background illumination -- slow life\hyp{}time plateau}
+		\paragraph{At low background illumination -- slow lifetime plateau}
 		The slow decay component at very low background light intensity has been assigned to the electronic recombination.
-		In drift-diffusion simulations, the life\hyp{}time does not show a maximum value and grows as the light intensity is decreased.
-		But in the actual experiment setup, decays life\hyp{}times are limited at long times by the discharge of the through the oscilloscope resistance and through the device shunt resistance, whatever is the fastest.
+		In drift-diffusion simulations, the lifetime does not show a maximum value and grows as the light intensity is decreased.
+		But in the actual experiment setup, decays lifetimes are limited at long times by the discharge of the through the oscilloscope resistance and through the device shunt resistance, whatever is the fastest.
 		This happens with an RC time of the circuit composed by the capacitance of the device (which can be obtained \textsl{via} a \acr{dc} experiment) and the \SI{1}{\Mohm} resistance of the oscilloscope or the internal device shunt resistance \cite{Tvingstedt2017}.
 		The oscilloscope resistance could be varied using an attenuating probe (usually 10X or 100X) or a high impedance amplifier.
-		This limit is often observed at low light intensities as a plateau in the \acr{tpv} life\hyp{}time \textsl{versus} light bias graph \cite{Tvingstedt2017}.
+		This limit is often observed at low light intensities as a plateau in the \acr{tpv} lifetime \textsl{versus} light bias graph \cite{Tvingstedt2017}.
 		Indeed, in \authoryear{Kiermasch2018}, where a \SI{1}{\tera\ohm} input impedance amplifier is used, the plateau is observable from \SIrange{1E-1}{1}{\s}, \textsl{i.e.} three orders of magnitude higher than what we observe with our \SI{1}{\Mohm} oscilloscope.
 		This affirmation is corroborated by the correlation observable in \cref{fig:tpv_RCtime}.
-		For mid-illumination intensities, the measured life\hyp{}time can be corrected considering the contribution from the RC time \cite{Credgington2014}.
+		For mid-illumination intensities, the measured lifetime can be corrected considering the contribution from the RC time \cite{Credgington2014}.
 
 		\begin{SCfigure}
 			\centering
@@ -875,8 +876,8 @@
 
 	\subsection{Interpretation of TPV \textsl{versus} Light Bias Trend}
 
-		\paragraph{Life\hyp{}time \textsl{versus} light bias dependence}\label{tpv_tau_vs_intensity}
-		Considering the small perturbation life\hyp{}time dependency from charge concentration due to a single dominant recombination mechanism from \cref{eq:tpv_tau_order} and substituting the charge with the expression for the charge from \cref{eq:ce_full} we can obtain a relation between the life\hyp{}time and the \gls{voc}.
+		\paragraph{Lifetime \textsl{versus} light bias dependence}\label{tpv_tau_vs_intensity}
+		Considering the small perturbation lifetime dependency from charge concentration due to a single dominant recombination mechanism from \cref{eq:tpv_tau_order} and substituting the charge with the expression for the charge from \cref{eq:ce_full} we can obtain a relation between the lifetime and the \gls{voc}.
 		The main recombination mechanism in perovskite solar cells at open circuit conditions is the surface recombination (see \cpageref{intro_prv_recombination}) which, as described in \cpageref{intro_surface_recombination}, can be considered as a first\hyp{}order reaction with regards to the carriers \label{tpv_chemical_charge}in the perovskite layer.
 		This carrier density is related to the chemical capacitance represented as the exponential component in \cref{eq:ce_full}, so expanding $n_0$ from \cref{eq:tpv_tau_order} we obtain:
 		%		For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
@@ -885,31 +886,31 @@
 			\tau \approx (\Phi k n_0^{\Phi-1})^{-1} = \frac{n_|eq|^{1-\Phi}}{\Phi k} \left[\exp(\frac{q\voc}{mk_|B|T}) - 1\right]^{1-\Phi} \approx \frac{n_|eq|^{1-\Phi}}{\Phi k} \exp(-\frac{(\Phi-1)q\voc}{mk_|B|T}) = \frac{n_|eq|^{1-\Phi}}{\Phi k} \exp(-\frac{q\voc}{vk_|B|T})
 		\end{dmath}
 		where we used that $qV \gg k_|B|T$ for all non-dark cases in order to neglect the $-1$ addend.
-		The pre\hyp{}factor $n_|eq|^{1-\Phi}/(\Phi k)$ represents the thermal equilibrium life\hyp{}time.
-		As shown, the life\hyp{}time typically decreases exponentially with the light bias, as experimentally observed in the example of \cref{fig:tpv-monoexp}, with an ideality modifier of $v = m/(\Phi-1)$.
+		The pre\hyp{}factor $n_|eq|^{1-\Phi}/(\Phi k)$ represents the thermal equilibrium lifetime.
+		As shown, the lifetime typically decreases exponentially with the light bias, as experimentally observed in the example of \cref{fig:tpv-monoexp}, with an ideality modifier of $v = m/(\Phi-1)$.
 		This relation is in accordion with equivalent studies on \gls{osc} \cite{Shuttle2008,Shuttle2008d,Credgington2011}.
 
 		\paragraph{Diode\hyp{}capacitor discharge could be the limiting time}
-		Similarly to the example we just considered, where RC times put a cap to the slow observable life\hyp{}times, \authoryear{Kiermasch2018} underlines that also the often-neglected diode\hyp{}capacitor discharge could have the same effect \cite{Tvingstedt2017,Hellen2003}.
+		Similarly to the example we just considered, where RC times put a cap to the slow observable lifetimes, \authoryear{Kiermasch2018} underlines that also the often-neglected diode\hyp{}capacitor discharge could have the same effect \cite{Tvingstedt2017,Hellen2003}.
 		The relevant capacitance would be the geometric capacitance of the generated charges accumulating in the depletion layers and the diode would be the perovskite-contacts interfaces with the relative dark saturation current.
 		Basically this represents a re\hyp{}injection of the majority charges from the contacts back to the perovskite, this causes a voltage decrease without actually needing recombination: charges could just diffuse back.
-				The life\hyp{}time observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981}.
+				The lifetime observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981}.
 				In his PhD thesis, also \authoryear{Calado2018} observed and modelled this effect, named "thermionic emission".
 				All the authors agree that this effect is more important at low light intensity for thin devices (high capacitance) \cite{Kiermasch2018} while it could be negligible at high background illuminations.
 		Also when performing full signal Open Circuit Voltage Decay dynamics measurement (OCVD) \cite{Lederhandler1955,Mahan1981}, which has not been performed in this thesis, this limitation has to taken in consideration \cite{Tvingstedt2017,Pockett2017,Pockett2015,Kiermasch2018}.
 
 		\FloatBarrier
 		\newpage
-		\mysection[TPV-CE]{Transient PhotoVoltage Referenced to Charge Density (TPV-CE)}\label{characterization-tpvce}
+		\mysection[TPV-CE]{Transient PhotoVoltage Referenced to Charge Density (TPV-CE)}\label{characterization_tpvce}
 
 		\paragraph{Concept}
 		This is a meta experiment which combines the data from \acr{tpv} and \acr{ce} without needing any additional experimental step.
-		Joining the information about charge life\hyp{}time \textsl{versus} light bias from \acr{tpv} with the information about charge density \textsl{versus} light bias from \acr{ce}, we obtain the relation of the charge life\hyp{}time \textsl{versus} charge density.
+		Joining the information about charge lifetime \textsl{versus} light bias from \acr{tpv} with the information about charge density \textsl{versus} light bias from \acr{ce}, we obtain the relation of the charge lifetime \textsl{versus} charge density.
 		This new relationship is more useful than the results from bare \acr{tpv}, as it allows us to make a fair comparison between different devices.
 
 		\paragraph{Procedure}
-		The voltage dependency of the small perturbation life\hyp{}time $\tau(V)$ obtained from \acr{tpv} gets expanded with the $V(n)$ relation which can be obtained inverting the fitted function of $n(V)$ from a \acr{ce} experiment for obtaining a $\tau(n)$ relation.
-		A reaction order $\Phi$ can be obtained fitting the $\tau(n)$, this can be used for correcting the small perturbation life\hyp{}time to obtain a pseudo first order life\hyp{}time \textsl{i.e.} total carrier life\hyp{}time $\tau_|pfo|(n)$ which can be compared between devices with different recombination mechanisms.
+		The voltage dependency of the small perturbation lifetime $\tau(V)$ obtained from \acr{tpv} gets expanded with the $V(n)$ relation which can be obtained inverting the fitted function of $n(V)$ from a \acr{ce} experiment for obtaining a $\tau(n)$ relation.
+		A reaction order $\Phi$ can be obtained fitting the $\tau(n)$, this can be used for correcting the small perturbation lifetime to obtain a pseudo first order lifetime \textsl{i.e.} total carrier lifetime $\tau_|pfo|(n)$ which can be compared between devices with different recombination mechanisms.
 
 		\paragraph{Which charge from \gls{ce}}
 		In \gls{osc} literature, where a simple exponential charge \textsl{versus} voltage is usually observed, the full $n$ obtained by \acr{ce} is taken.
@@ -919,7 +920,7 @@
 		%, with the same ordering of the legend respectively $5.4$, $3.2$, $9.8$, and $16.0$).
 		Instead, fitting data with the exponential component of \acr{ce} only, the recombination orders obtained are between 1 and 2, which are the expected values (reported in \cref{fig:tpvce-nogeom,,fig:tpvce-nogeom_total}).
 		% with the same ordering of the legend, respectively $1.6$, $1.5$, $1.9$, and $1.8$).
-		%  information on the recombination processes, it is more useful to relate the recombination life\hyp{}time to the charge concentration, rather than to the light bias, as in a pure \acr{tpv} experiment.
+		%  information on the recombination processes, it is more useful to relate the recombination lifetime to the charge concentration, rather than to the light bias, as in a pure \acr{tpv} experiment.
 		%	One way to obtain this is taking the $\tau (V)$ relation from \acr{tpv} and substituting $V$ with the inverse of $n(V)$ obtainable from \acr{ce} experiments, obtaining the $\tau (n)$ relationship.
 		%	For perovskite solar cells, the linear part of $n(V)$ related to the geometric capacitance of charges accumulating in the selective contacts cannot be ignored and a discussion on whether to include it or not is needed.
 		%	In this thesis recombination order $\Phi = \lambda + 1$  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -941,28 +942,28 @@
 					\qquad
 					\begin{subfigure}[t]{0.5\textwidth}
 						\includegraphics[width=1\textwidth]{tpvce/spiro_vs_TAEs-TPVCEs-nogeom_total.pdf}
-						\subcaption{Exp.\ charge from \gls{ce} and life\hyp{}time corrected with $\Phi$}\label{fig:tpvce-nogeom_total}
+						\subcaption{Exp.\ charge from \gls{ce} and lifetime corrected with $\Phi$}\label{fig:tpvce-nogeom_total}
 					\end{subfigure}
 					\mycaption[Example of TPV-CE processed in different ways.]{
 						Solid lines are the power-law fit with the formula $y = k^{-1} x^{1-\Phi}$.
 						In (\textbf{a}) the charge used for the independent variable is taken from the full charge extracted in the \acr{ce} experiment, including the charge stored in contacts and electrodes.
-						The $\tau_|pfo|$ life\hyp{}time as obtained from \acr{tpv} is used as dependent variable.
+						The $\tau_|pfo|$ lifetime as obtained from \acr{tpv} is used as dependent variable.
 						In (\textbf{b}) just the charge from chemical capacitance (exponential addend in \cref{eq:ce_full}) is used as independent variable.
-						In (\textbf{c}) the $\tau$ is corrected using the fitted recombination order $\Phi$ to obtain the total carriers life\hyp{}time $\tau_|pfo| = \Phi\tau$.
+						In (\textbf{c}) the $\tau$ is corrected using the fitted recombination order $\Phi$ to obtain the total carriers lifetime $\tau_|pfo| = \Phi\tau$.
 						Data from \gls{fto}\-/\ch{d-TiO2}\-/\acr{csfamapbibr}\-/\gls{htm}\-/\ch{Au} solar cells \cite{Gelmetti2019}.
 					}\label{fig:tpvce}
 				}
 			}
 		\end{figure}
 
-		\paragraph{From small perturbations life\hyp{}time to rate constant -- first\hyp{}order reaction}
+		\paragraph{From small perturbations lifetime to rate constant -- first\hyp{}order reaction}
 		Here we consider a simple case where just a first order or a second order recombination is present.
 		From the \cref{eq:tpv_tau_order} it is clear that for the first\hyp{}order reaction case it is easy to obtain $k_1 = \tau^{-1} = \tau_|pfo|^{-1}$.
-		One fact of \cref{eq:tpv_tau_order} for the $\Phi=1$ case have to be underlined: the small perturbations life\hyp{}time for a first\hyp{}order recombination does not depend on the charge density, so it would appear as a plateau in the life\hyp{}time \textsl{versus} charge plot \cite{Kiermasch2018} which is not usually experimentally observed.
+		One fact of \cref{eq:tpv_tau_order} for the $\Phi=1$ case have to be underlined: the small perturbations lifetime for a first\hyp{}order recombination does not depend on the charge density, so it would appear as a plateau in the lifetime \textsl{versus} charge plot \cite{Kiermasch2018} which is not usually experimentally observed.
 
-		\paragraph{From small perturbations life\hyp{}time to rate constant -- higher order reaction}
+		\paragraph{From small perturbations lifetime to rate constant -- higher order reaction}
 		For the second and higher order recombination cases, to obtain $k$ is non\hyp{}trivial as it is related to $\tau$ \textsl{via} the charge density \cite{ORegan2007} and the reaction order \cite{Shuttle2008,Du2018,Barnes2011,Barnes2011a} as shown in \cref{eq:tpv_tau_order}.
-		From this equation we can notice that correcting the small perturbation life\hyp{}time $\tau$ we can easily obtain a pseudo first order life\hyp{}time (total carrier life\hyp{}time) $\tau_|pfo|$ as:
+		From this equation we can notice that correcting the small perturbation lifetime $\tau$ we can easily obtain a pseudo first order lifetime (total carrier lifetime) $\tau_|pfo|$ as:
 		\begin{equation}\label{eq:tau_pfo}
 			\tau_|pfo| = \Phi \tau = k^{-1} n_0^{1-\Phi}
 		\end{equation}
@@ -985,7 +986,7 @@
 	\paragraph{Concept}
 	This technique, applied to a solar cell at short circuit conditions, allows us to study the dependence of \gls{eqe} on the light illumination intensity \cite{ORegan2004}.
 	It gives approximatively the same information of the \gls{jsc} \textsl{versus} light intensity experiment explained in \cpageref{jsc-phi}.
-	Usually, the actual value of \gls{eqe} (generated charge over incident photons ratio) is not calculated, rather just the generated charge amount for a given laser pulse intensity in measured.
+	Usually, the actual value of \gls{eqe} (generated charge over incident photons ratio) is not calculated, rather just the generated charge amount $\Delta n$ for a given laser pulse intensity in measured.
 	%, rather than actual value of \gls{eqe} (generated charge over incident photons ratio) is obtained as the incident power is not usually measured (on the contrary to the classical \gls{eqe} experiment).
 
 	\begin{SCfigure}
@@ -1010,7 +1011,7 @@
 	1~sun equivalent illumination is defined as the illumination at which a silicon photodiode gives the same \gls{jsc} as under calibrated 1~sun from the solar simulator.
 
 	\paragraph{Small resistance and fast extraction}
-	The characteristic time of a \acr{tpc} decay is often comparable with the small perturbation life\hyp{}time from \acr{tpv} experiment at high background illumination.
+	The characteristic time of a \acr{tpc} decay is often comparable with the small perturbation lifetime from \acr{tpv} experiment at high background illumination.
 	This not necessarily invalidate the \gls{tpc} result, as the slow time could be due to the slow transport in the selective contacts.
 	The \gls{tpc} time can be limited by the RC time constant of the extracting circuit, in case a faster extraction is needed, a smaller resistance can be employed (clearly, the measure will be more noisy).
 	Thanks to the short time of the measurement, both with or without background illumination, we can assume that the ionic migration is never observed in this measurement.
@@ -1024,7 +1025,7 @@
 
 	\FloatBarrier
 	\newpage
-\section{Differential Capacitance (DC)}
+\section{Differential Capacitance (DC)}\label{characterization_dc}
 
 	\paragraph{Concept}
 	\Acr{dc} is a meta-measurement as it just combines the data from \acr{tpv} and \acr{tpc} without requiring any additional experimental step \cite{ORegan2005,ORegan2006,Shuttle2008,Credgington2014,Maurano2011}, sometimes also referred to as "differential charging".
@@ -1051,14 +1052,17 @@
 	%	he   the same assumption done for \acr{tpc} and explained in \cpageref{tpc_intensity}: the charge generation (\gls{eqe}) is independent from background light illumination.
 	%	We assume that the \gls{eqe} is the same at short and open circuit conditions, which means: the charge measured in \acr{tpc}, at short circuit, will be used for referencing data from \acr{tpv}, at open circuit.
 	Adapting the definition of capacitance "the ratio of the change in an electric charge in a system to the corresponding change in its electric potential" \cite{WikipediaCapacitance2019} to an applied voltage dependent capacitance, we can write:
-	\begin{equation}
-		C(V') = \eval{\dv{n}{V}}_{V=V'}
+	\begin{equation}\label{eq:dc}
+%		C(V') = \eval{\dv{n}{V}}_{V=V'}
+		C(V) = \eval{\frac{\Delta n}{\Delta V'}}_{V'=V}
 	\end{equation}
-	where $C$ is a light bias $V'$ dependent capacitance, $n$ is the perturbed electron density, and $V$ is the perturbed voltage.
-	So, the charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases $\Delta V(V')$ values obtained from \acr{tpv}, one for each illumination intensity.
-	The obtained capacitance value is plotted versus the steady state light bias $V'$.
-	The capacitance can be integrated over voltage for obtaining a charge density \textsl{versus} light bias relationship.
-
+	where $C$ is a light bias $V$ dependent capacitance, $n$ is the perturbed electron density, and $V'$ is the perturbed voltage.
+	So, the charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases $\Delta V'(V)$ values obtained from \acr{tpv}, one for each illumination intensity.
+	The obtained capacitance value is plotted versus the steady state light bias $V$.
+	The capacitance can be integrated over voltage for obtaining a charge density \textsl{versus} light bias relationship:
+		\begin{equation}\label{eq:dc_charge}
+	n_|DC|(V) = \int_{0}^{V} C(V') \dd V'
+	\end{equation}
 	\paragraph{Capacitance dependence on applied voltage}
 	The electrical capacitance of most of the commercial capacitors is independent on the applied voltage, as represented in \cref{fig:cap_voltage_dependence_commercial} where the capacitance was measured with a modified \acr{ce} experiment where the pre\hyp{}conditioning was done directly applying a voltage instead of applying a light bias.
 	This means that the extracted charge is linearly proportional to the applied voltage.
@@ -1170,7 +1174,7 @@
 	The shown \gls{jsc} and \gls{voc} reconstruction methods can be extended to obtain the whole current-voltage sweep \cite{Maurano2011}.
 
 	\paragraph{\Gls{jsc} reconstruction}\label{jsc_reconstruction}
-	The recombination current $J_|rec|$ can be described by the total carriers life\hyp{}time (or pseudo first order life\hyp{}time) $\tau_|pfo|$ and by the excess charge $n_|CE|$ with the following expression \cite{Wheeler2017,Du2018}: $J_|rec| = n_|CE| / \tau_|pfo|$.
+	The recombination current $J_|rec|$ can be described by the total carriers lifetime (or pseudo first order lifetime) $\tau_|pfo|$ and by the excess charge $n_|CE|$ with the following expression \cite{Wheeler2017,Du2018}: $J_|rec| = n_|CE| / \tau_|pfo|$.
 	At open circuit the photo\hyp{}generated current has to match the recombination current (no external current means that these two, at least in steady state conditions, cancel out), so $J_|rec| = J_|ph|$.
 	If losses at short circuit are negligible, photo\hyp{}generated current can be approximated by the short circuit current $J_|ph| \approx \jsc$ obtaining \cite{ORegan2015b}:
 	\begin{equation}\label{eq:reconstruction_jsc}
