@@ -101,7 +101,16 @@
 %	\dottedcontents{paragraph}[0em]{}{0em}{1pc} % in each chapter toc, also the paragraph is included, but the indentation is too much
 %	\dottedcontents{subsection}[0em]{}{0em}{1pc} % in each chapter toc, also the subsection is included, but the indentation is too much
 
-	\usepackage{hyperref}
+\usepackage{hyperref}
+% allowing url breaks at hyphens https://tex.stackexchange.com/a/3034/173645
+% "hyperref loads the url package internally" https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url#comment44478_3034
+% "Ordinarily, breaks are not allowed after “-” characters because this leads to
+%confusion. (Is the “-” part of the address or just a hyphen?) The package option
+%“[hyphens]” allows breaks after explicit hyphen characters."
+% BUT IT DOES NOT WORK
+%	\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+	% this indeed works, it should be loaded after biblatex https://tex.stackexchange.com/a/407368/173645
+	\usepackage{xurl}
 
 	\usepackage{xcolor} % for colors in hyperref links and in thumbs
 	\definecolor{colorone}{HTML}{1B9E77}

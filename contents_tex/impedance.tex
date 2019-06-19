@@ -146,7 +146,7 @@
 	The amplitude and phase of the oscillating electronic current density was obtained via
 	demodulation, mimicking the working principle of a two-phase lock-in amplifier \cite{WikipediaLockIn}.
 	As can be seen in \cref{fig:demodulation}, this method works both with sinusoidal profiles obtained from small perturbation simulations and also for large perturbation signals including distortion by higher harmonics.
-	It has been implemented in \texttt{ISwave\_EA\_single\_demodulation} described in \cpageref{ISwave_EA_single_demodulation}.
+	It has been implemented in \texttt{IS\-wave\_EA\_single\_demodulation} described in \cpageref{ISwave_EA_single_demodulation}.
 	The current density profile $j(t)$ was point-by-point multiplied by the voltage profile or the \SI{90}{\degree} shifted
 	voltage profile normalised by $v_|max|$ and integrated over time (typically 10 periods):
 
@@ -290,20 +290,28 @@ Experimentally, this is observed some times but lies close to the instrumental f
 	\makebox[\textwidth][c]{
 		\parbox{1.1\textwidth}{
 			\centering
-			\begin{subfigure}[t]{0.35\textwidth}
-				\includegraphics[scale=0.2]{delta_charge/delta_charge-highFreq-crop.pdf}
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{delta_charge/delta_charge-highFreq2.pdf}
 				\subcaption{Dark, high freq.}\label{fig:impedance-delta_charge-highFreq}
 			\end{subfigure}
 			\qquad
-			\begin{subfigure}[t]{0.29\textwidth}
-				\includegraphics[scale=0.2]{delta_charge/delta_charge-midFreq_dark-crop.pdf}
+			\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{delta_charge/delta_charge-midFreq_dark2.pdf}
 				\subcaption{Dark, mid freq.}\label{fig:impedance-delta_charge-midFreq_dark}
 			\end{subfigure}
-\qquad
-			\begin{subfigure}[t]{0.29\textwidth}
-				\includegraphics[scale=0.2]{delta_charge/delta_charge-midFreq_1sun-crop.pdf}
+			\bigskip
+			
+						\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{delta_charge/delta_charge-midFreq_1sun2.pdf}
 				\subcaption{1 sun, mid freq.}\label{fig:impedance-delta_charge-midFreq_1sun}
 			\end{subfigure}
+								\qquad
+						\begin{subfigure}[t]{0.5\textwidth}
+				\includegraphics[width=1\textwidth]{delta_charge/delta_charge-lowFreq_1sun2.pdf}
+				\subcaption{1 sun, low freq.}\label{fig:impedance-delta_charge-lowFreq_1sun}
+			\end{subfigure}
+
+
 			
 			\mycaption[Net charge profile variation in a period of oscillating voltage at high and mid frequencies.]{
 				A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) homojunction device is simulated.
@@ -311,7 +319,7 @@ Experimentally, this is observed some times but lies close to the instrumental f
 			The net charge profile is obtained with $\rho(x,t) = -n(x,t) + p(x,t) + a(x,t) + n_|stat|(x)$ where $n$, $p$, and $a$ are the electrons, holes, and ions density profiles and $n_|stat|$ are the fixed charges profile, including the doping in the contacts and the fixed counter ions in the perovskite layer.
 			The represented net charge variation is obtained as $\Delta \rho (x,t) = \rho(x,t) - \rho(x,0)$.
 			The green line indicates the additional net charge when the oscillating voltage is at its maximum, while the orange line indicates the situation at the voltage minimum.
-			In (\textbf{a}) the device is in dark and the voltage oscillates at \SI{1e9}{\Hz}; in (\textbf{b}) it is also in dark but the frequency is lower: \SI{1e6}{\Hz}; in (\textbf{c}) the frequency is also \SI{1e6}{\Hz} but the device is at \SI{1}{sun} illumination and at open circuit conditions.
+			In (\textbf{a}) the device is in dark and the voltage oscillates at \SI{1e9}{\Hz}; in (\textbf{b}) it is also in dark but the frequency is lower: \SI{1e6}{\Hz}; in (\textbf{c}) the frequency is also \SI{1e6}{\Hz} but the device is at \SI{1}{sun} illumination and at open circuit conditions; in (\textbf{d}) the frequency is decreased to \SI{1e-2}{\Hz} so that the ionic migration is active.
 		}\label{fig:impedance-delta_charge}
 		}
 	}
@@ -339,13 +347,16 @@ Experimentally, this is observed some times but lies close to the instrumental f
 		From the parallel plate capacitor model point of view, these charges in the dielectric layer effectively increase its permittivity.
 
 	\begin{figure}%impedance-accumulation
+				\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
 		\centering
 		\includegraphics[width=1\textwidth]{dd_capacitance/accumulation2.pdf}
 		\mycaption[Simulated accumulation capacitance spectra compared with capacitance due to charge accumulation.]{
-		Solid lines with dot markers represent the apparent capacitance, dash dotted lines with cross markers represent the capacitance calculated from the accumulation current calculated as explained in \cpageref{impedance_accumulation}.
+		Solid lines with dot markers represent the apparent capacitance, dash dotted lines show the capacitance calculated from the accumulation current obtained as explained in \cpageref{impedance_accumulation}.
 		For the dark case, the apparent and the accumulation capacitances correspond at any frequency.
 		With illumination, the high and mid frequency regions matches while the apparent capacitance is much larger for the low frequencies.
 	}\label{fig:impedance-accumulation}
+}}
 	\end{figure}
 
 
@@ -474,6 +485,22 @@ Under illumination or dark but with constant voltage bias, the mentioned low fre
 The available explanations in literature relied on a very large accumulation of free charges at the interfaces caused by the ionic accumulation in the same zone.
 We were able to reproduce this behaviour without observing the expected huge charge concentration.
 The origin of our observation was the influence of the ionic accumulation on the interface energetics and, specifically, on the recombination barrier.
+
+
+	\paragraph{Illuminated case -- Not just accumulation}
+	As can be seen in the low frequency region of \cref{fig:impedance-accumulation}, just the dark case can be explained by the accumulation capacitance resulting from the charges actually being stored in the device.
+	When the an illumination or a voltage bias are applied, the accumulation capacitance increases by less than one order of magnitude, so the giant capacitance experimentally observed is not due to an accumulation of charges.
+	This variation can be understood considering the different thickness of the depletion layers in the contacts depending on the voltage bias, as explained in \cpageref{geometric_capacitance_and_voltage} for the voltage dependent geometric capacitance.
+	Considering the parallel plates capacitor model, at low frequency we are observing one plate in the contact's depletion layer and the other contact in the perovskite at the interface, where we assume the ionic accumulation layer to be thin thanks to their abundance.
+	Comparing \cref{fig:impedance-delta_charge-midFreq_dark} with \cref{fig:impedance-delta_charge-midFreq_1sun} we can see how the different thickness of the space charge layers with different bias voltages (or dark \textsl{versus} \SI{1}{sun}) implies that the charge variation happens at different distances from the materials' interface.
+	This implies a higher accumulation capacitance at \SI{1}{sun}, which means more charge getting accumulated and depleted in the space charges during the voltage oscillation.
+	
+		\paragraph{Illuminated case -- Not just ions}
+	Looking at the low frequency region of \cref{fig:impedance-ionic-capacitance}, we can see how the ionic capacitance (so the amount of displaced ions) increases with the illumination or applied voltage.
+	This is just due to the wider charge density variation in the contacts, as observed in the previous paragraph.
+	Indeed the increase in ionic capacitance is more or less similar to the increase in accumulation capacitance, and neither this can itself explain a giant capacitance.
+	
+ (similarly to the ionic capacitance)
 
 	\paragraph{Illuminated case -- Recombination barriers without ions}
 Let me go back to a "normal" solar cell with no mobile ions.
@@ -695,11 +722,11 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 	The logical flowchart of a complete impedance spectra simulation has been represented in \cref{fig:impedance_flowchart}.
 
 
-	\paragraph{\texttt{ISwave\_EA\_single\_exec} -- Does a single impedance spectroscopy simulation}
+	\paragraph{\texttt{IS\-wave\_EA\_single\_exec} -- Does a single impedance spectroscopy simulation}
 	Starting from the last time point of the provided solution it applies a time-varying voltage.
 	This voltage profile is the background voltage bias from the provided solution summed to a sinusoidally oscillating voltage.
 
-	\textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pindrift};
+	\textit{Inputs:} 1) a single asymmetric structure as created by \texttt{pin\-drift};
 	2) voltage oscillation amplitude in volts;
 	3) voltage oscillation frequency;
 	4) number of periods to be simulated;
@@ -718,9 +745,9 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 	\textit{Outputs:} a structure with a solution being perturbed by an
 	oscillating voltage.
 
-	\textit{Requires:} \texttt{pindrift}, \texttt{verify\-Stabilization}, \texttt{pinana}.
+	\textit{Requires:} \texttt{pin\-drift}, \texttt{verify\-Stabilization}, \texttt{pinana}.
 
-	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{EA\_full\_exec}.
+	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}, \texttt{EA\_full\_exec}.
 
 	\textit{Example:} using \texttt{asymmetricize} (see \cpageref{asymmetricize}) the symmetric solution at 1 sun illumination and open circuit is broken in halves in order to be able to apply a custom voltage.
 	Then this script simulates an oscillating voltage at \SI{0.1}{\Hz} and \SI{2}{\mV} of half peak to peak voltage amplitude, with a constant voltage bias equal to the device \gls{voc},
@@ -730,7 +757,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 >> asymssol_i_1S_SR_is_100mHz_2mV = ISwave_EA_single_exec(asymmetricize(ssol_i_1S_SR), 2e-3, 1e-2, 20, 40, true, false, 1e-8)
    \end{lstlisting}
 
-	\paragraph{\texttt{ISwave\_EA\_single\_demodulation} -- Calculates phase and amplitude demodulating oscillating current data from impedance spectroscopy}\label{ISwave_EA_single_demodulation}
+	\paragraph{\texttt{IS\-wave\_EA\_single\_demodulation} -- Calculates phase and amplitude demodulating oscillating current data from impedance spectroscopy}\label{ISwave_EA_single_demodulation}
 	The current profile gets multiplied by the voltage profile and,
 	separately, by the voltage profile with an additional \SI{90}{\degree} phase.
 	The integrals of the resulting profiles are related to the phase.
@@ -753,7 +780,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	%		\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_single\_analysis}, \texttt{EA\_single\_analysis}.
+	\textit{Required by:} \texttt{IS\-wave\_single\_analysis}, \texttt{EA\_single\_analysis}.
 
 
 	\textit{Example:} demodulate the components of the oscillating current.
@@ -762,8 +789,8 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 		\end{lstlisting}
 
 
-	\paragraph{\texttt{ISwave\_EA\_single\_fit} -- Calculates phase and amplitude fitting oscillating current data from impedance spectroscopy}
-	This is an alternative to \texttt{ISwave\_EA\_single\_demodulation} which can be used to confirm the demodulation results.
+	\paragraph{\texttt{IS\-wave\_EA\_single\_fit} -- Calculates phase and amplitude fitting oscillating current data from impedance spectroscopy}
+	This is an alternative to \texttt{IS\-wave\_EA\_single\_demodulation} which can be used to confirm the demodulation results.
 
 	\textit{Inputs:} 1) an array with the time mesh;
 	2) an array with the value to be fitted, which in case of impedance simulation is the current \textsl{versus} time profile;
@@ -776,7 +803,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	%\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_single\_analysis}, \texttt{EA\_single\_analysis}.
+	\textit{Required by:} \texttt{IS\-wave\_single\_analysis}, \texttt{EA\_single\_analysis}.
 
 	\textit{Example:} fits the oscillating current \textsl{versus} voltage data for a \SI{200}{\Hz} simulation.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -785,13 +812,13 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 
 
-	\paragraph{\texttt{ISwave\_single\_analysis} -- Calculate impedance and phase from impedance spectroscopy data}
-	The imaginary and real components of complex impedance (respectively reactance and resistance) are extracted using either \texttt{ISwave\_EA\_single\_demodulation} or \texttt{ISwave\_EA\_single\_fit}.
+	\paragraph{\texttt{IS\-wave\_single\_analysis} -- Calculate impedance and phase from impedance spectroscopy data}
+	The imaginary and real components of complex impedance (respectively reactance and resistance) are extracted using either \texttt{IS\-wave\_EA\_single\_demodulation} or \texttt{IS\-wave\_EA\_single\_fit}.
 
 	\textit{Inputs:} 1) a structure with a solution being perturbed by an
-	oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
+	oscillating voltage, as generated from \texttt{IS\-wave\_EA\_single\_exec};
 	2) logical, when true graphics does not get created and
-	\texttt{ISwave\_subtracting\_analysis} does not get launched, useful when
+	\texttt{IS\-wave\_subtracting\_analysis} does not get launched, useful when
 	launched under parallelization;
 	3) logical, get phase via demodulation instead of using a fitting.
 
@@ -809,35 +836,35 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 	oscillation and phase of non ionic current as obtained via
 	subtraction of ionic current from total electronic current.
 
-	\textit{Requires:} \texttt{ISwave\_subtracting\_analysis}, \texttt{ISwave\_EA\_single\_fit}, \texttt{ISwave\_EA\_single\_demodulation}, \texttt{pinana}.
+	\textit{Requires:} \texttt{IS\-wave\_subtracting\_analysis}, \texttt{IS\-wave\_EA\_single\_fit}, \texttt{IS\-wave\_EA\_single\_demodulation}, \texttt{pinana}.
 
-	\textit{Required by:} \texttt{from\-ISwaveEA\-Struct\-ToTxt}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
+	\textit{Required by:} \texttt{from\-IS\-waveEA\-Struct\-ToTxt}, \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} plot current profile, reference profiles and calculate the phase using demodulation approach.
 	\begin{lstlisting}[style=Matlab-editor]
 >> ISwave_single_analysis(asymssol_i_1S_SR_is_100mHz_2mV, false, true)
 \end{lstlisting}
 
-	\paragraph{\texttt{ISwave\_subtracting\_analysis} -- Calculates the time derivative of the total charge in the device}
+	\paragraph{\texttt{IS\-wave\_subtracting\_analysis} -- Calculates the time derivative of the total charge in the device}
 	The charge excess in a device compared with the previous time point gets expressed as a current.
 	This is used as a reference for impedance spectroscopy and for separating the ionic contribution.
 
 	\textit{Inputs:} a structure with a solution being perturbed by an
-	oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec}.
+	oscillating voltage, as generated from \texttt{IS\-wave\_EA\_single\_exec}.
 
 	\textit{Outputs:} 1) charge variation over time in the whole device;
 	2) charge variation over time in the perovskite layer.
 
 	%\textit{Requires:} 
 
-	\textit{Required by:} \texttt{from\-ISwaveEA\-Struct\-ToTxt}, \texttt{ISwave\_single\_analysis}.
+	\textit{Required by:} \texttt{from\-IS\-waveEA\-Struct\-ToTxt}, \texttt{IS\-wave\_single\_analysis}.
 
 	\textit{Example:} extract reference values.
 	\begin{lstlisting}[style=Matlab-editor]
 >> [subtracting_n_t, subtracting_n_intr_t] = ISwave_subtracting_analysis(asymssol_i_1S_SR_is_100mHz_2mV)
 \end{lstlisting}
 
-	\paragraph{\texttt{ISwave\_full\_exec} -- Simulates impedance spectroscopy at various frequencies on many provided solutions}
+	\paragraph{\texttt{IS\-wave\_full\_exec} -- Simulates impedance spectroscopy at various frequencies on many provided solutions}
 	A single structure can be provided as steady state solution to start from for simulating impedance spectroscopy.
 	Alternatively, a cell containing various structures can be provided.
 	For example, if a cell generated using \texttt{gen\-Int\-Structs} (see \cpageref{genIntStructs}) is provided, the impedance at various light intensities can be compared.
@@ -846,7 +873,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	\textit{Inputs:} 1) can be a cell structure containing either symmetrical or asymmetrical structures. Various background
 	light intensities can be provided using \texttt{gen\-Int\-Structs} and various applied voltages using \texttt{gen\-Vapp\-Structs}.
-	Otherwise it can be a single structure as created by \texttt{pindrift};
+	Otherwise it can be a single structure as created by \texttt{pin\-drift};
 	2) highest frequency limit;
 	3) lowest frequency limit;
 	4) number of points to simulate between the lowest and
@@ -855,16 +882,16 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 	6) logical, after stabilization sets the mobility of
 	ionic defects to zero to simulate the impedance with effectively frozen ions;
 	7) logical, determines which method to use for extracting phase and amplitude of the current.
-	If false, always uses fitting \textsl{via} \texttt{ISwave\_EA\_single\_fit}, if true uses demodulation \textsl{via} \texttt{ISwave\_EA\_single\_demodulation}. Anyway if the obtained phase is weird, fit will be used
+	If false, always uses fitting \textsl{via} \texttt{IS\-wave\_EA\_single\_fit}, if true uses demodulation \textsl{via} \texttt{IS\-wave\_EA\_single\_demodulation}. Anyway if the obtained phase is weird, fit will be used
 	automatically for confirming the result;
 	8) logical, whether to graph the individual solutions and
 	the overall graphics.
 
 	\textit{Outputs:} a structure containing the most important results of the simulation.
 
-	\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
-	\texttt{ISwave\_single\_analysis}, \texttt{ISwave\_full\_analysis\_nyquist},
-	\texttt{IS\_full\_analysis\_impedance}, \texttt{ISwave\_full\_analysis\_phase}, \texttt{pinana},
+	\textit{Requires:} \texttt{asymmetricize}, \texttt{IS\-wave\_EA\_single\_exec},
+	\texttt{IS\-wave\_single\_analysis}, \texttt{IS\-wave\_full\_analysis\_nyquist},
+	\texttt{IS\_full\_analysis\_impedance}, \texttt{IS\-wave\_full\_analysis\_phase}, \texttt{pinana},
 	\texttt{stabilize}.
 
 	\textit{Required by:} \texttt{examples\_unit\_test}.
@@ -876,38 +903,38 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 >> ISwave_oc = ISwave_full_exec(genIntStructs(ssol_i_eq_SR, 1, 1e-3, 7, true), 1e9, 1e-2, 56, 2e-3, false, true, true)
 \end{lstlisting}
 
-	\paragraph{\texttt{ISwave\_full\_exec\_nonparallel} -- Non parallelized version of \texttt{ISwave\_full\_exec}}
-	The fundamental difference from \texttt{ISwave\_full\_exec} is the lack of \texttt{parfor}
+	\paragraph{\texttt{IS\-wave\_full\_exec\_nonparallel} -- Non parallelized version of \texttt{IS\-wave\_full\_exec}}
+	The fundamental difference from \texttt{IS\-wave\_full\_exec} is the lack of \texttt{parfor}
 	for parallel computation. This allows more flexibility at the cost of a
 	more time demanding simulation.
 
-	\textit{Inputs:} 1-5) identical to \texttt{ISwave\_full\_exec} 1-5 ones;
+	\textit{Inputs:} 1-5) identical to \texttt{IS\-wave\_full\_exec} 1-5 ones;
 	6) logical, if true do not check that the oscillating solution reached a
 	(oscillating) stabilization, instead take always the first solution
 	and use its final time point as the starting point of the next
 	frequency simulation. This can be useful when it is known that the
 	starting solution is not stabilized and a realistic simulation of the
 	solution evolving during the measurement is wanted.
-	7-9) identical to \texttt{ISwave\_full\_exec} 6-8 ones;
+	7-9) identical to \texttt{IS\-wave\_full\_exec} 6-8 ones;
 	10) logic, defines whether to save in volatile base
 	workspace each of the calculated solutions.
 
 	\textit{Outputs:} a structure containing the most important results of the simulation.
 
-	\textit{Requires:} \texttt{asymmetricize}, \texttt{ISwave\_EA\_single\_exec},
-	\texttt{ISwave\_single\_analysis}, \texttt{ISwave\_full\_analysis\_nyquist},
-	\texttt{IS\_full\_analysis\_impedance}, \texttt{ISwave\_full\_analysis\_phase}, \texttt{pinana},
+	\textit{Requires:} \texttt{asymmetricize}, \texttt{IS\-wave\_EA\_single\_exec},
+	\texttt{IS\-wave\_single\_analysis}, \texttt{IS\-wave\_full\_analysis\_nyquist},
+	\texttt{IS\_full\_analysis\_impedance}, \texttt{IS\-wave\_full\_analysis\_phase}, \texttt{pinana},
 	\texttt{stabilize}.
 
 	\textit{Required by:} \texttt{examples\_unit\_test}.
 
-	\textit{Example:} Identical to the example shown for \texttt{ISwave\_full\_exec} but this also saves to base workspace the single oscillating solutions and starts each simulation from the last time point of the previous, strictly sequentially without reaching stabilization.
+	\textit{Example:} Identical to the example shown for \texttt{IS\-wave\_full\_exec} but this also saves to base workspace the single oscillating solutions and starts each simulation from the last time point of the previous, strictly sequentially without reaching stabilization.
 	\begin{lstlisting}[style=Matlab-editor]
 >> ISwave_oc_sequential = ISwave_full_exec_nonparallel(genIntStructs(ssol_i_eq_SR, 1, 1e-3, 7, true), 1e9, 1e-2, 56, 2e-3, true, false, true, true, true)
 \end{lstlisting}
 
-	\paragraph{\texttt{ISwave\_full\_analysis\_phase} -- Represents Bode plots of phase from impedance spectroscopy}
-	The phase of the current oscillation with regards to the applied voltage is plotted as obtained from simulations made with \texttt{ISwave\_full\_exec} or \texttt{ISwave\_full\_exec\_nonparallel}.
+	\paragraph{\texttt{IS\-wave\_full\_analysis\_phase} -- Represents Bode plots of phase from impedance spectroscopy}
+	The phase of the current oscillation with regards to the applied voltage is plotted as obtained from simulations made with \texttt{IS\-wave\_full\_exec} or \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 
 	\textit{Inputs:} a structure containing the most important results of the simulation.
@@ -916,7 +943,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	%		\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
+	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 
 	\textit{Example:} do phase Bode plots.
@@ -926,7 +953,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	\paragraph{\texttt{IS\_full\_analysis\_impedance} -- Represents Bode plots of impedance and apparent capacitance from impedance spectroscopy}
 	Plot the value of absolute impedance magnitude $|Z|$, resistance $Z'$ (real component), reactance $Z''$ (imaginary component), and apparent capacitance defined as $\omega^{-1}\Im(Z^{-1})$ at various frequencies and various illumination or background voltage bias conditions.
-	As a reference, the following currents are also used for plotting the mentioned quantities: ionic displacement current, recombination current, and total charge time derivative as obtained from \texttt{ISwave\_subtracting\_analysis}.
+	As a reference, the following currents are also used for plotting the mentioned quantities: ionic displacement current, recombination current, and total charge time derivative as obtained from \texttt{IS\-wave\_subtracting\_analysis}.
 
 	\textit{Inputs:} a structure containing the most important results of the simulation.
 
@@ -934,14 +961,14 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	%\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
+	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} do impedance and apparent capacitance Bode plots.
 	\begin{lstlisting}[style=Matlab-editor]
 >> IS_full_analysis_impedance(ISwave_oc)
 \end{lstlisting}
 
-	\paragraph{\texttt{ISwave\_full\_analysis\_nyquist} -- Plots Nyquist graph for impedance spectroscopy}
+	\paragraph{\texttt{IS\-wave\_full\_analysis\_nyquist} -- Plots Nyquist graph for impedance spectroscopy}
 	Nyquist plot refers the imaginary component of the impedance to its real component.
 	A normalized spectra is also plotted and the rescaling factors are indicated in the legend.
 
@@ -951,7 +978,7 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 	%\textit{Requires:} 
 
-	\textit{Required by:} \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}.
+	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} do Nyquist plot.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -961,10 +988,10 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 
 
 
-	\paragraph{\texttt{from\-ISwaveEA\-Struct\-ToTxt} -- Exports single impedance simulation data to text files}
-	This helper saves the main data from a oscillating solution created by \texttt{ISwave\_EA\_single\_exec} to text files, for easing the import with Origin (from OriginLab).
+	\paragraph{\texttt{from\-IS\-waveEA\-Struct\-ToTxt} -- Exports single impedance simulation data to text files}
+	This helper saves the main data from a oscillating solution created by \texttt{IS\-wave\_EA\_single\_exec} to text files, for easing the import with Origin (from OriginLab).
 
-	\textit{Inputs:} 1) a structure with a solution being perturbed by an oscillating voltage, as generated from \texttt{ISwave\_EA\_single\_exec};
+	\textit{Inputs:} 1) a structure with a solution being perturbed by an oscillating voltage, as generated from \texttt{IS\-wave\_EA\_single\_exec};
 	2) char array, prefix to be used for the text files names.
 
 	%\textit{Outputs:} 
@@ -978,8 +1005,8 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 >> fromISwaveEAStructToTxt(asymssol_i_1S_SR_is_100mHz_2mV, 'asymssol_i_1S_SR_is_100mHz_2mV')
 \end{lstlisting}
 
-	\paragraph{\texttt{from\-ISwave\-Results\-ToTxt} -- Exports data of a set of impedance simulations to text files}
-	This helper saves the main data from a complete impedance spectroscopy simulation including various solutions created by \texttt{ISwave\_full\_exec} to text files, for easing the import with Origin (from OriginLab).
+	\paragraph{\texttt{from\-IS\-wave\-Results\-ToTxt} -- Exports data of a set of impedance simulations to text files}
+	This helper saves the main data from a complete impedance spectroscopy simulation including various solutions created by \texttt{IS\-wave\_full\_exec} to text files, for easing the import with Origin (from OriginLab).
 
 	\textit{Inputs:} 1) a structure containing the most important results of the simulation;
 	2) char array, prefix to be used for the text files names.
@@ -999,12 +1026,12 @@ For example, converting a bi-exponential decay in \gls{tpv} to frequency domain 
 		\paragraph{\texttt{examples\_unit\_test} -- Runs unit testing on all the implemented experiments}
 Runs various simulations in order to test the functioning of pindrift and many other implemented functions.
 Additionally it verifies that the results satisfies some basic checks.
-For profiling the time spent running each function run \texttt{profile on} before running the tests and \texttt{profile viewer} after.
+For profiling the time spent running each function run \texttt{profile\- on} before running the tests and \texttt{profile\- viewer} after.
 Using Matlab's Coverage Reports, the unused code can be easily spotted.
 
 %		\textit{Inputs:} 
 %\textit{Outputs:} 
-\textit{Requires:} \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ideality\_from\_Voc}, \texttt{ISwave\_full\_exec}, \texttt{ISwave\_full\_exec\_nonparallel}, \texttt{equilibrate\_minimal}, \texttt{gen\-Int\-Structs}, \texttt{gen\-Vapp\-Structs}.
+\textit{Requires:} \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ideality\_from\_Voc}, \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}, \texttt{equilibrate\_minimal}, \texttt{gen\-Int\-Structs}, \texttt{gen\-Vapp\-Structs}.
 %\textit{Required by:} 
 
 

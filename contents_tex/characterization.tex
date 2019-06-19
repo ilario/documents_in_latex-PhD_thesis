@@ -128,10 +128,10 @@
 		This effect has been reported for \gls{dssc} in \authoryear{Barnes2013}.
 		%		\paragraph{Large perturbations -- \gls{trpl}}
 		Last example: in the \glsdesc{trpl} a laser pulse illuminates the otherwise unilluminated absorber layer.
-		If mobile ions are present, this pulse induces some extent of ionic migration to a new profile \cite{Levine2018}.
+		If mobile ions are present, this pulse induces some extent of ionic migration to a new profile \cite{Levine2018} (just consider that the ionic profile for a solar cell in dark and at \SI{1}{sun} is different, as the amount of electric field to screen is different).
 		The extent of this migration will depend on the pulse intensity and duration.
-		The fact that the relaxation time of the ionic migration (\si{\ms} to seconds for the ions \cite{Jacobs2018}) is usually much larger than the laser repetition rate (\si{\ms} to \si{\us} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse.
-		As the ionic profile affects the free charges concentration, and this in turn rules the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care.
+		The fact that the relaxation time of the ionic migration (\si{\ms} to seconds for the ions \cite{Jacobs2018}) is usually much larger than the laser repetition rate (\si{\us} to \si{\ms} for typical \gls{trpl} lasers \cite{EdinburghInstruments}) implies that the ionic profile variation slowly "builds up" pulse after pulse.
+		As the ionic profile affects the free charges concentration profile and non radiative surface recombination, and these in turn affect the radiative recombination, the measurements of \gls{trpl} have to be done with extreme care as they are expected to strongly depend on laser intensity and repetition rate.
 		An example of hysteretic behaviour observed with \gls{trpl} can be found in \authoryear{Motti2016} and elsewhere \cite{Chen2015,Chen2017}.
 		%		This should also be considered when comparing lifetimes from different laser fluences \cite{Manser2014}.
 
@@ -176,9 +176,12 @@
 	The shunt and series resistances can be evaluated by the current \textsl{versus} voltage derivative of a dark current-voltage sweep \cite{Pysch2007}.
 	The former from the current values at voltages close to zero and the latter from the current at high-enough voltage.
 	Perovskite solar cell hysteretic behaviour can affect this measurement.
-	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages are needed for estimating the series resistance.
-	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017} so a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2019} and explained in \cpageref{transient_suns_voc} should be implemented.
-	In the case of series resistance, as the employed voltages are always larger than the built-in voltage, the depletion layers should be filled anyway and the transient method should not be required.
+	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages should be enough for estimating the series resistance.
+	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017}.
+	So a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2019} and explained in \cpageref{transient_suns_voc} might be implemented for estimating the shunt resistance.
+%	Instead, for series resistance the transient method should not be needed, as the large employed voltage employed voltages are always larger than the built-in voltage, the depletion layers should be filled anyway and the transient method should not be required.
+	Instead, for series resistance the transient method should not be needed, as the large employed voltage should be enough for flattening the ionic profile.
+	The impact of these resistances on the \gls{pce} is paramount, as the \gls{ff} strongly depends both on series and on shunt resistances.
 
 	\paragraph{Solar cells parameters extraction from sweeps}\label{characterization_hysteresis}
 	For the devices studied in this thesis, the reported values of \gls{voc}, \gls{jsc}, \gls{pce} and \gls{ff} are extracted from a forward or reverse current-voltage sweep.
@@ -405,8 +408,21 @@
 	This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported \cite{ORegan2015b}.
 	The charge measured in the external circuit due to the ionic displacement current could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
 
-	INSERT FIGURE OF CONDUCTION BAND VARIATION DURING CHARGE EXTRACTION AT SHORT AND LONG TIMES HERE; WITH CHARGES REPRESENTATION
 
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\includegraphics[width=0.9\textwidth]{ce_single_dd_levels_dynamic/ce_levels_corrected.pdf}
+			\mycaption[Evolution of energy levels during CE.]{
+				A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) device is simulated and the energy levels evolution during a \gls{ce} experiment are shown.
+				At the beginning, the device is stabilised at open circuit conditions under \SI{1}{sun} illumination, represented by the green lines.
+				Then the illumination is switched off and the device is brought to short circuit.
+				After \SI{1e-4}{\s}, the electronic charges have been extracted, leaving an electric field in the bulk of the perovskite layer.
+				Subsequently, at long times (\SI{1}{\s}) the ions move for screening the mentioned electric field.
+			}\label{fig:ce_levels_corrected}
+	}}
+\end{figure}
 
 
 	\subsection{Interpretation of CE Single Decays}
@@ -459,7 +475,7 @@
 		\paragraph{Exponential part and chemical capacitance in \gls{osc}}\label{ce_exp_osc}
 		In \gls{osc} literature the charge \textsl{versus} light bias voltage trend is described simply as the exponential shape which describes a Maxwell\hyp{}Boltzmann distribution for a two levels scenario.
 		In a few publications, the shape if fitted to an error function \cite{Ajuria2011}.
-		For a common solar cell working conditions, the Maxwell\hyp{}Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much bigger than $k_|B|T$.
+		For a common solar cell working conditions, the Maxwell\hyp{}Boltzmann classical particles approximation should be valid as the distance between Fermi level energy and the band edges is expected to be always much larger than $k_|B|T$.
 		This could be false for high applied voltages, where Fermi\hyp{}Dirac distribution for fermions should be used.
 		Thus, the expression for the conduction band electronic density $n$ obtained from the mentioned distribution is:
 		\begin{equation}
@@ -559,14 +575,14 @@
 	\subsection{Interpretation of CE \textsl{versus} Light Bias With Mobile Ions}
 
 		\paragraph{Linear part with mobile ions}\label{ce_ions_linear}
-		The presence of mobile ions in perovskite materials which can accumulate at the perovskite/contacts interfaces, adds an additional capacitance $C_|ion|$, which sums up to the geometric capacitance $C_|g|$ increasing the weight of the linear component, as we showed in \authoryear{Moia2019}.
+		The presence of mobile ions in perovskite materials which can accumulate at the perovskite/contacts interfaces, adds an additional capacitance $C_|ion|$, which replaces the geometric capacitance $C_|g|$ at low frequencies or long time scales, as we showed in \authoryear{Moia2019}.
+		Comparing the initial electrostatic potential profile with the electrostatic potential at long times, after the ionic migration, we can see that there is no electric field in the bulk of the perovskite layer neither at the beginning neither at the end of the measurement.
+		This means that the capacitance we can observe at long times or slow frequencies is not the geometric one, but rather the ionic one across each of the interfaces which is expected to be independent on the device's thickness.
 		Nevertheless, as pointed out in \cpageref{ce_limitations_perovskite}, the \acr{ce} measurements are never carried on for long enough to include the ionic migration, and so also the ionic accumulation capacitance is not observed in our experiments.
 		This can be visualized with the simulation reported in \cref{fig:ce_full_dd} where the long timescale (where the current is monitored until complete stabilization) and the short timescale (few tens of microseconds) \acr{ce} experiment are compared.
 		The difference between the short and long timescale extracted charges is the linear contribution by the ionic capacitance discharge, observable as electronic current thanks to the relative displacement current.
 		A simulation with frozen ions (the ionic profile was stabilized at open circuit and frozen during the \acr{ce} experiment) was also performed but not reported.
 		For this case, the simulated extracted charge was identical to the reported short timescale extraction simulation in \cref{fig:ce_full_dd}.
-
-		EXPLAIN HOW THE SHORT TIME EXTRACTION CORRESPONDS TO A LARGE CAPACITOR WITH ELECTRODES IN THE CONTACTS; SENSITIVE TO THE PEROVSKITE THICKNESS; WHILE THE LONG TIMES ONE IS SENSITIVE TO THE JUNCTION/TRANSITION CAPACITANCE ONLY
 
 		\begin{figure}%[!hbtp]%
 			\makebox[\textwidth][c]{
@@ -771,7 +787,7 @@
 			\begin{subfigure}[t]{0.51\textwidth}
 				\centering
 				\includegraphics[width=0.9\textwidth]{tpv_ionic/tpv_ionic_cb.pdf}
-				\subcaption{Conduction band variation over time.}\label{fig:tpv_ionic-cb}
+				\subcaption{Conduction band \textit{variation} over time.}\label{fig:tpv_ionic-cb}
 			\end{subfigure}
 			\bigskip
 			
