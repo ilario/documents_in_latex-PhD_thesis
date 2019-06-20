@@ -60,13 +60,6 @@
 	Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so the \SI{40}{\nm} \gls{pcbm70} layer should be enough for an homogeneous coverage.
 	From the same \gls{esem} image, we can measure the grain lateral size, which is not significantly different for the six observed samples (two per each \gls{mapi} thickness, data detailed in \cref{fig:thicknesses-esem-topview} caption).
 
-	\begin{SCfigure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
-	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
-\end{SCfigure}
-
-
 %\afterpage{
 %	\clearpage
 %\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
@@ -149,6 +142,11 @@
 	This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far\hyp{}from\hyp{}zero transmittance.
 	The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
+	\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
+\end{SCfigure}
 
 %\afterpage{
 \begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
@@ -156,7 +154,7 @@
 		% multirow does not get the correct number of rows with tabularx
 		% mycaption does not work inside xltabular
 		\caption[Parameters fitted from CE and DC data, from devices with different layers' thicknesses.]{\textbf{Parameters fitted from CE and DC data, from devices with different layers' thicknesses.}
-			The experimental data reported in \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric} has been fitted using \cref{eq:ce_full} for \gls{ce} data and \cref{eq:dc_full} for \gls{dc} data.
+			The experimental data reported in \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric} has been fitted using \cref{eq:ce_full} for \acr{ce} data and \cref{eq:dc_full} for \acr{dc} data.
 		}\label{table:thicknesses_photophysics}\\[\belowcaptionskip]
 		\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{3}{c|}{\small\textbf{CE}} & \multicolumn{3}{c}{\small\textbf{DC}}
 		\rule[-1ex]{0pt}{3ex} \\
@@ -205,9 +203,9 @@
 %}
 
 	\paragraph{Geometric capacitance from DC and CE}
-	From the low and mid background light capacitance obtained from \gls{dc} in \cref{fig:thicknesses-mapi-geometric-dc} and from the linear part of \gls{ce} in \cref{fig:thicknesses-mapi-geometric-ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
+	From the low and mid background light capacitance obtained from \acr{dc} in \cref{fig:thicknesses-mapi-geometric-dc} and from the linear part of \acr{ce} in \cref{fig:thicknesses-mapi-geometric-ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
 	This capacitance arises from the accumulation of charges in the selective contacts' depletion layers, considering this as a parallel plates capacitor it is easy to foresee that the increase of \gls{mapi} layer will increase the distance between the "plates" and cause a decrease in the capacitance.
-	Please note that this is valid just if the \gls{ce} is integrated over short times, so that the ionic displacement is negligible.
+	Please note that this is valid just if the \acr{ce} is integrated over short times, so that the ionic displacement is negligible.
 	Otherwise, as explained in \cpageref{ce_ions_linear}, the measured geometric capacitance would regard charges (ionic and electronic) accumulating on the two sides of each perovskite\-/contact interface (a junction capacitance rather than a geometric capacitance), being insensitive to the \gls{mapi} thickness.
 	%This can be observed from the tilting of the linear regime of charge \textsl{versus} light bias  or in the constant capacitance regime .
 	The fitted values of $C_|g|$ are reported in \cref{table:thicknesses_photophysics}.
@@ -219,28 +217,28 @@
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1.1\textwidth]{photophysics-mapi/photophysics-CEs.pdf}
-					\subcaption{Charge from \gls{ce}}\label{fig:thicknesses-mapi-geometric-ce}
+					\subcaption{Charge from \acr{ce}}\label{fig:thicknesses-mapi-geometric-ce}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1.1\textwidth]{photophysics-mapi/photophysics-DCs-capacitance.pdf}
-					\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-mapi-geometric-dc}
+					\subcaption{Capacitance from \acr{dc}}\label{fig:thicknesses-mapi-geometric-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different MAPI thicknesses, highlighting the varying geometric capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line shows just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \acr{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line shows just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \acr{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
 				}\label{fig:thicknesses-mapi-geometric}
 			}
 		}
 	\end{figure}
 
-	%\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
-	%Both from \gls{ce} in \cref{fig:thicknesses-mapi-geometric-ce} and from \gls{dc} in \cref{fig:thicknesses-mapi-geometric-dc} we can see that the exponential regime in the charge accumulation, assigned to the chemical capacitance of charges accumulating in the perovskite layer, is similar for all the thicknesses.
+	%\paragraph{Exponential charge distribution from \acr{dc} and \acr{ce}}
+	%Both from \acr{ce} in \cref{fig:thicknesses-mapi-geometric-ce} and from \acr{dc} in \cref{fig:thicknesses-mapi-geometric-dc} we can see that the exponential regime in the charge accumulation, assigned to the chemical capacitance of charges accumulating in the perovskite layer, is similar for all the thicknesses.
 	%Indeed, no change was expected as the energy levels of the layers is identical in all the devices.
-	%Additionally, comparing the two techniques' results for the same sample, we can notice that in every case the exponential regimes starts at lower voltages for \gls{dc}.
+	%Additionally, comparing the two techniques' results for the same sample, we can notice that in every case the exponential regimes starts at lower voltages for \acr{dc}.
 	%This discrepancy between the two techniques is not always observed for perovskite solar cells and its interpretation is pending.
 
 	%\paragraph{Carriers lifetime}
-	%Then we studied the carriers lifetime \textsl{via} \gls{tpv} and related these to the chemical charge (subtracting the charges stored in the geometric capacitance) obtained either \textsl{via} \gls{ce} or \textsl{via} \gls{dc} we can confirm 
+	%Then we studied the carriers lifetime \textsl{via} \acr{tpv} and related these to the chemical charge (subtracting the charges stored in the geometric capacitance) obtained either \textsl{via} \acr{ce} or \textsl{via} \acr{dc} we can confirm 
 	%
 	%\begin{figure}
 	%	\makebox[\textwidth][c]{
@@ -248,14 +246,14 @@
 	%			\centering
 	%			\begin{subfigure}[t]{0.51\textwidth}
 	%				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVCEs-nogeom_total.pdf}
-	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-mapi-tpv-ce}
+	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \acr{ce} charge}\label{fig:thicknesses-mapi-tpv-ce}
 	%			\end{subfigure}
 	%			\qquad
 	%			\begin{subfigure}[t]{0.51\textwidth}
 	%				\includegraphics[width=1\textwidth]{photophysics-mapi/photophysics-TPVDCs-nogeom_total.pdf}
-	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-mapi-tpv-dc}
+	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \acr{dc} charge}\label{fig:thicknesses-mapi-tpv-dc}
 	%			\end{subfigure}
-	%			\mycaption[Total carrier lifetime \textsl{versus} charge of devices with different MAPI thicknesses.]{The small perturbation lifetimes were obtained \textsl{via} \gls{tpv} and corrected to total carrier lifetime as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation lifetime \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-mapi-tpv}
+	%			\mycaption[Total carrier lifetime \textsl{versus} charge of devices with different MAPI thicknesses.]{The small perturbation lifetimes were obtained \textsl{via} \acr{tpv} and corrected to total carrier lifetime as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation lifetime \textsl{versus} chemical charge from \acr{ce}, while in (\textbf{b}) the chemical charge from \acr{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \acr{ce}, while in (\textbf{b}) it was obtained from \acr{dc}.}\label{fig:thicknesses-mapi-tpv}
 	%		}
 	%	}
 	%\end{figure}
@@ -290,17 +288,17 @@
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1.1\textwidth]{photophysics-pcbm/photophysics-CEs.pdf}
-					\subcaption{Charge from \gls{ce}}\label{fig:thicknesses-pcbm-geometric-ce}
+					\subcaption{Charge from \acr{ce}}\label{fig:thicknesses-pcbm-geometric-ce}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1.1\textwidth]{photophysics-pcbm/photophysics-DCs-capacitance.pdf}
-					\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-pcbm-geometric-dc}
+					\subcaption{Capacitance from \acr{dc}}\label{fig:thicknesses-pcbm-geometric-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different \glsentrytext{pcbm70} thicknesses, highlighting the varying geometric capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \acr{ce} is reported.
 					The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line shows just its exponential part, ignoring the geometric capacitance.
-					In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. 
+					In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \acr{dc}. 
 					The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
 				}\label{fig:thicknesses-pcbm-geometric}
 			}
@@ -308,7 +306,7 @@
 	\end{figure}
 
 	\paragraph{Geometric capacitance from \glsentryshort{dc} and \glsentryshort{ce}}
-	Also in the case of increasing \gls{pcbm70} \gls{etm} thickness, the geometric capacitance diminishes (observed \textsl{via} \gls{ce} in \cref{fig:thicknesses-pcbm-geometric-ce} and \gls{dc} in \cref{fig:thicknesses-pcbm-geometric-dc}), coherently to what observed by \authoryear{Wheeler2017}.
+	Also in the case of increasing \gls{pcbm70} \gls{etm} thickness, the geometric capacitance diminishes (observed \textsl{via} \acr{ce} in \cref{fig:thicknesses-pcbm-geometric-ce} and \acr{dc} in \cref{fig:thicknesses-pcbm-geometric-dc}), coherently to what observed by \authoryear{Wheeler2017}.
 	Thinking within the parallel plate capacitor model (explained in \cpageref{geometric_capacitance}) where $C_|g| = \epsilon_0 \epsilon_|r| A / d$, this means that the distance $d$ between the two charge storage locations is increasing.
 	This is incompatible with what we expected: that the electronic charge gets stored in a thin depletion layer in the \gls{etm} on the perovskite layer side, as in this case the distance $d$ would not change increasing the \gls{pcbm70} layer.
 	So, the main electrons storage location is either close to the \gls{etm}\-/\ch{Ag} interface or within the whole \gls{etm} layer due to a Debye length (a.k.a. Thomas–Fermi screening length, is an indication of the depth inside a semiconductor layer at which an external electric field is completely screened, it depends on the permittivity and the doping density of the material, see \cpageref{intro-space_charge}) larger than the \gls{pcbm70} thickness.
@@ -316,7 +314,7 @@
 	%Similarly to what observed for the geometric capacitance 
 	So we can consider the \gls{mapi}\-/\gls{pcbm70} stack as the inter\hyp{}electrodes material of a capacitor.
 
-	%\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+	%\paragraph{Exponential charge distribution from \acr{dc} and \acr{ce}}
 
 	%\paragraph{Carriers lifetime}
 	%
@@ -326,14 +324,14 @@
 	%			\centering
 	%			\begin{subfigure}[t]{0.51\textwidth}
 	%				\includegraphics[width=1\textwidth]{photophysics-pcbm/photophysics-TPVCEs-nogeom_total.pdf}
-	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-pcbm-tpv-ce}
+	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \acr{ce} charge}\label{fig:thicknesses-pcbm-tpv-ce}
 	%			\end{subfigure}
 	%			\qquad
 	%			\begin{subfigure}[t]{0.51\textwidth}
 	%				\includegraphics[width=1\textwidth]{photophysics-pcbm/photophysics-TPVDCs-nogeom_total.pdf}
-	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-pcbm-tpv-dc}
+	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \acr{dc} charge}\label{fig:thicknesses-pcbm-tpv-dc}
 	%			\end{subfigure}
-	%			\mycaption[Total carrier lifetime \textsl{versus} charge of devices with different \glsentrytext{pcbm70} thicknesses.]{The small perturbation lifetimes were obtained \textsl{via} \gls{tpv} and corrected to total carrier lifetime as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation lifetime \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-pcbm-tpv}
+	%			\mycaption[Total carrier lifetime \textsl{versus} charge of devices with different \glsentrytext{pcbm70} thicknesses.]{The small perturbation lifetimes were obtained \textsl{via} \acr{tpv} and corrected to total carrier lifetime as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation lifetime \textsl{versus} chemical charge from \acr{ce}, while in (\textbf{b}) the chemical charge from \acr{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \acr{ce}, while in (\textbf{b}) it was obtained from \acr{dc}.}\label{fig:thicknesses-pcbm-tpv}
 	%		}
 	%	}
 	%\end{figure}
@@ -371,15 +369,15 @@
 				\centering
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1.1\textwidth]{photophysics-pedotpss/photophysics-CEs.pdf}
-					\subcaption{Charge from \gls{ce}}\label{fig:thicknesses-pedotpss-geometric-ce}
+					\subcaption{Charge from \acr{ce}}\label{fig:thicknesses-pedotpss-geometric-ce}
 				\end{subfigure}
 				\qquad
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1.1\textwidth]{photophysics-pedotpss/photophysics-DCs-capacitance.pdf}
-					\subcaption{Capacitance from \gls{dc}}\label{fig:thicknesses-pedotpss-geometric-dc}
+					\subcaption{Capacitance from \acr{dc}}\label{fig:thicknesses-pedotpss-geometric-dc}
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different \glsentrytext{pedotpss} thicknesses, highlighting the varying geometric capacitance.]{
-					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \gls{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line shows just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \gls{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
+					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \acr{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line shows just its exponential part, ignoring the geometric capacitance. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \acr{dc}. The solid line indicates the fitting using \cref{eq:dc_full}. All the fitted parameters are reported in \cref{table:thicknesses_photophysics}.
 				}\label{fig:thicknesses-pedotpss-geometric}
 			}
 		}
@@ -395,7 +393,7 @@
 
 \section{Conclusions}
 We fabricated various top cathode perovskite solar cells varying the thickness of each solution deposited layer.
-We measured the geometrical capacitance of this set of devices using two independent characterisation techniques: \gls{ce} and \gls{dc}.
+We measured the geometrical capacitance of this set of devices using two independent characterisation techniques: \acr{ce} and \acr{dc}.
 From the obtained results, we gained insight on the storage location of the photogenerated charge at open circuit conditions.
 In our solar cell architecture, the holes are stored close to the \gls{pedotpss}\-/\gls{mapi} interface, likely in a thin depletion layer in the \gls{htm}.
 Instead, the electrons does not get stored close to the \gls{mapi}\-/\gls{pcbm70} interface but either through the whole \gls{etm} layer or at the \gls{pcbm70}\-/\ch{Ag} interface.
@@ -403,7 +401,7 @@ Likely, this is simply caused by a Debye length (space charge layer width) large
 %Knowing where the charge concentration varies more with illumination is a useful information which indicates the 
 
 
-	%\paragraph{Exponential charge distribution from \gls{dc} and \gls{ce}}
+	%\paragraph{Exponential charge distribution from \acr{dc} and \acr{ce}}
 
 	%\paragraph{Carriers lifetime}
 	%
@@ -413,14 +411,14 @@ Likely, this is simply caused by a Debye length (space charge layer width) large
 	%			\centering
 	%			\begin{subfigure}[t]{0.51\textwidth}
 	%				\includegraphics[width=1\textwidth]{photophysics-pedotpss/photophysics-TPVCEs-nogeom_total.pdf}
-	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \gls{ce} charge}\label{fig:thicknesses-pedotpss-tpv-ce}
+	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \acr{ce} charge}\label{fig:thicknesses-pedotpss-tpv-ce}
 	%			\end{subfigure}
 	%			\qquad
 	%			\begin{subfigure}[t]{0.51\textwidth}
 	%				\includegraphics[width=1\textwidth]{photophysics-pedotpss/photophysics-TPVDCs-nogeom_total.pdf}
-	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \gls{dc} charge}\label{fig:thicknesses-pedotpss-tpv-dc}
+	%				\subcaption{\Gls{tpv} lifetime \textsl{versus} \acr{dc} charge}\label{fig:thicknesses-pedotpss-tpv-dc}
 	%			\end{subfigure}
-	%			\mycaption[Total carrier lifetime \textsl{versus} charge of devices with different \glsentrytext{pedotpss} thicknesses.]{The small perturbation lifetimes were obtained \textsl{via} \gls{tpv} and corrected to total carrier lifetime as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation lifetime \textsl{versus} chemical charge from \gls{ce}, while in (\textbf{b}) the chemical charge from \gls{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \gls{ce}, while in (\textbf{b}) it was obtained from \gls{dc}.}\label{fig:thicknesses-pedotpss-tpv}
+	%			\mycaption[Total carrier lifetime \textsl{versus} charge of devices with different \glsentrytext{pedotpss} thicknesses.]{The small perturbation lifetimes were obtained \textsl{via} \acr{tpv} and corrected to total carrier lifetime as reported in \cref{eq:tau_pfo}. In (\textbf{a}) the recombination orders needed for the correction were obtained from the fitting the small perturbation lifetime \textsl{versus} chemical charge from \acr{ce}, while in (\textbf{b}) the chemical charge from \acr{dc} was used. Additionally, in (\textbf{a}) the chemical charge \textsl{versus} light bias needed for the $x$~axis, was taken from \acr{ce}, while in (\textbf{b}) it was obtained from \acr{dc}.}\label{fig:thicknesses-pedotpss-tpv}
 	%		}
 	%	}
 	%\end{figure}

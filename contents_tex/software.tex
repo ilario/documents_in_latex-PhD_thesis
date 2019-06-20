@@ -347,14 +347,14 @@ Plot free charges and ions densities, and energy levels over device thickness an
 
 		\paragraph{\texttt{TPV\-const\_full\_exec} -- Simulate Transient PhotoVoltage in a range of background light intensities without varying the pulse intensity}	
 The pulse intensity is tuned to be a small perturbation compared to the 1
- sun background illumination, then the \gls{tpv} is simulated for all the
+ sun background illumination, then the \acr{tpv} is simulated for all the
  provided solutions without changing the chosen pulse intensity.
  
 		\textit{Inputs:} 1) can be a cell structure containing structures at various background
 		     light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
 		     Otherwise it can be a single structure as created by \texttt{pin\-drift};
 		   2) logical, whether to assign in volatile base
-		     workspace the calculated solutions of single \gls{tpv} decays.
+		     workspace the calculated solutions of single \acr{tpv} decays.
 				
 		\textit{Outputs:} a structure containing the most important results of the simulation.
 		
@@ -364,13 +364,13 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 		
 		
 				\paragraph{\texttt{TPV\-variab\_full\_exec} -- Simulate Transient PhotoVoltage in a range of background light intensities adapting the pulse intensity for each simulation}
-				For each of the provided solutions, the pulse intensity is tuned to be a small perturbation compared to the background illumination intensity, then the \gls{tpv} is simulated.
+				For each of the provided solutions, the pulse intensity is tuned to be a small perturbation compared to the background illumination intensity, then the \acr{tpv} is simulated.
 				
 				\textit{Inputs:} 1) can be a cell structure containing structures at various background
 				light intensities. This can be generated using \texttt{gen\-Int\-Structs}.
 				Otherwise it can be a single struct as created by \texttt{pin\-drift};
 				2) logical, whether to assign in volatile base
-				workspace the calculated solutions of single \gls{tpv} decays.
+				workspace the calculated solutions of single \acr{tpv} decays.
 				
 				\textit{Outputs:} a structure containing the most important results of the simulation.
 				
@@ -397,7 +397,7 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 		\paragraph{\texttt{TPV\_full\_analysis} -- Plot TPV}
 			Both mono and bi exponential fitting results are plotted \textsl{versus} light-bias.
 			
-				\textit{Inputs:} a structure containing the most important results of the \gls{tpv} simulation.
+				\textit{Inputs:} a structure containing the most important results of the \acr{tpv} simulation.
 		
 %		\textit{Outputs:} .
 		
@@ -630,12 +630,12 @@ field, each column is a space point.
 					\item \texttt{mainwindow.ui} -- Qt4 graphical interface.
 				\end{itemize}
 				
-				\paragraph{\Gls{voc} and \gls{jsc} estimation}
+				\paragraph{\Glsentryshort{voc} and \glsentryshort{jsc} estimation}
 				The data point respectively closer to zero current or to zero voltage is taken as a first rough approximation.
 				Then, the preceding and following 3 data points are selected, if available.
 				The set of 7 data points is fitted with a parabolic curve and the final \gls{voc} and \gls{jsc} values are obtained from the result of the fit.
 				
-				\paragraph{\Gls{pce} estimation}
+				\paragraph{\Glsentryshort{pce} estimation}
 				Instead, for obtaining the maximum power point no fitting is performed and the data point having the maximum $J\cdot V$ value is returned.
 				From this point and the aforementioned \gls{voc} and \gls{jsc} points, the fill factor is calculated (see \cpageref{characterization_ff}).
 				
@@ -875,10 +875,10 @@ In case the user closes the software forgetting to save the last measurement, th
 
 
 	\subsection{Charge Extraction (\glsentryshort{ce})}\label{r_ce}
-	For details on \gls{ce} technique, see \cpageref{characterization_ce}.
+	For details on \acr{ce} technique, see \cpageref{characterization_ce}.
 
 		\paragraph{\texttt{from\_ce\_to\_table.R} -- Converts CE output}
-		The output from \gls{ce} measurement software is rather minimal, as it lacks the time column.
+		The output from \acr{ce} measurement software is rather minimal, as it lacks the time column.
 		This script generates a two column file output which is more convenient for plotting with other commonly employed software.
 		It works both for the TPV and for the TPC outputs.
 		
@@ -892,7 +892,7 @@ In case the user closes the software forgetting to save the last measurement, th
 		See \cpageref{characterization_subtractDark} and \cref{fig:ce_noise-subtractDark} for a more complete description.
 		
 		\paragraph{\texttt{ce-\-integrateExp.R} -- Integrates a fit to CE transients}
-		Determines the start of the \gls{ce} decay from the last zero before the voltage maximum, then fits the decay with an exponential function.
+		Determines the start of the \acr{ce} decay from the last zero before the voltage maximum, then fits the decay with an exponential function.
 		The fit is performed using a robust fitting routine (as implemented in \texttt{robust\-base} \cite{Maechler2018}) in order to avoid the influence from the voltage rise points.
 		The integral function of the fitted exponential function is plotted and its value at infinite time is taken for the extracted charge.
 				See \cpageref{characterization_integrateExp} and \cref{fig:ce_noise-integrateExp} for a more complete description.
@@ -909,18 +909,18 @@ In case the user closes the software forgetting to save the last measurement, th
 %		\paragraph{\texttt{ce-with\_limits.R} -- Compares CE transients with RC decays}
 
 	\subsection{Transient PhotoVoltage (\glsentryshort{tpv})}\label{r_tpv}
-	For details on \gls{tpv} technique, see \cpageref{characterization_tpv}.
+	For details on \acr{tpv} technique, see \cpageref{characterization_tpv}.
 	
 		\paragraph{\texttt{from\_tpv\_tpc\_to\_table.R} -- Converts CE output}
 		Similarly to \texttt{from\_ce\_to\_table.R}, this converts the one column raw file to a two columns text file.
 
 		\paragraph{\texttt{tpv.R} -- Fits TPV decays}
-		This rather large routine fits the single \gls{tpv} decays.
+		This rather large routine fits the single \acr{tpv} decays.
 		The following features can be activated or deactivated editing the script header:
 		bi-exponential fitting, robust fitting \cite{Maechler2018}, save the plots to PNG or PDF files, plot all the data points or use a 2D histogram for reducing the overplotting problem (see \cref{fig:tpv_robust}), additionally plot with abscissa and/or ordinate axis in logarithmic scale, plot residuals, allow the fitting to match negative peaks.
 		In order to successfully perform the bi-exponential fits using \cref{eq:tpv_biexp}, a good initial guess is provided at first and then, if convergence is not obtained, random initial guesses.
 		If cases where this is not enough, some data points from the beginning of the decay (the most noisy part of the decay) are removed until when the fit converges.
-		Additionally, the voltage increase value $\Delta V$ is also calculated here and will be used by \gls{dc} scripts, as explained in \cpageref{characterization_dc}.
+		Additionally, the voltage increase value $\Delta V$ is also calculated here and will be used by \acr{dc} scripts, as explained in \cpageref{characterization_dc}.
 		
 %		
 %				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
@@ -935,20 +935,20 @@ In case the user closes the software forgetting to save the last measurement, th
 		Similarly to the aforementioned \texttt{tpv-\-from\_output\_to\_graph.R} script, this plots the mono\hyp{}exponential lifetime \textsl{versus} light bias data for various devices in the same plot, allowing the user to make a graphical comparison.
 %
 	\subsection{Transient PhotoCurrent (\glsentryshort{tpc})}\label{r_tpc}
-	For details on \gls{tpc} technique, see \cpageref{characterization_tpc}.
+	For details on \acr{tpc} technique, see \cpageref{characterization_tpc}.
 
 		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
-		Similarly to what \texttt{ce.R} does for integrating the \gls{ce} voltage transient, also this script directly integrates the voltage transients \textsl{versus} time after subtracting a baseline, like in \cref{fig:tpc}.
+		Similarly to what \texttt{ce.R} does for integrating the \acr{ce} voltage transient, also this script directly integrates the voltage transients \textsl{versus} time after subtracting a baseline, like in \cref{fig:tpc}.
 		
 %		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
 %
 %
 	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
-	For details on \gls{dc} technique, see \cpageref{characterization_dc}.
+	For details on \acr{dc} technique, see \cpageref{characterization_dc}.
 
 		\paragraph{\texttt{dc-\-from\_output\_to\_graph.R} -- Calculates and plots capacitance and charge from DC}
 		This script takes the photogenerated charge $\Delta n$ output from \texttt{tpc.R} and the voltage increase $\Delta V$ output from \texttt{tpv.R} and obtains the voltage dependent capacitance using \cref{eq:dc}.
-		In case the values from different \gls{tpc} measures differs, for example due to the presence of background illumination, the first quartile of all the measured $\Delta n$ is used.
+		In case the values from different \acr{tpc} measures differs, for example due to the presence of background illumination, the first quartile of all the measured $\Delta n$ is used.
 		The value of the geometric capacitance is obtained fitting the capacitance using \cref{eq:dc_full} and then taking the $C_|g|$ parameter value.
 		The chemical capacitance profile is obtained subtracting $C_|g|$ to the calculated capacitance profile.
 		The obtained capacitance \textsl{versus} light bias discrete profiles are converted to a continuous profile using R's \texttt{Vectorize} function and integrated over voltage (see \cref{eq:dc_charge}) for obtaining the excess charge \textsl{versus} light bias trends with or without geometric capacitance.
@@ -957,20 +957,20 @@ In case the user closes the software forgetting to save the last measurement, th
 %		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
 %		
 		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-\-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
-		The comparison of capacitance and charge from \gls{dc} is plotted for various devices and fitted using \cref{eq:dc_full}, like in \cref{fig:dc_deltaV}.
+		The comparison of capacitance and charge from \acr{dc} is plotted for various devices and fitted using \cref{eq:dc_full}, like in \cref{fig:dc_deltaV}.
 		The data to be plotted is taken from the output of \texttt{dc-\-from\_output\_to\_graph.R} script.
 
 	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
-		For details on \gls{tpv}-CE and \gls{tpv}-DC techniques, see \cpageref{characterization_tpvce}.
+		For details on \acr{tpv}-CE and \acr{tpv}-DC techniques, see \cpageref{characterization_tpvce}.
 %
 %
 %
 %		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV lifetimes to CE charge}
 		
 				\paragraph{\texttt{tpvce-\-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-\-from\_many\_output\_to\_graph.R} -- Compare TPV lifetimes related to either CE or DC charge of various devices}
-The mono\hyp{}exponential lifetimes from \texttt{tpv.R} are plotted \textsl{versus} various charge profiles obtained from \gls{ce} or \gls{dc}.
-In order to squash the light bias axes from the different techniques, the \gls{ce} or \gls{dc} charge \textsl{versus} voltage profiles are fitted and the employed charge value at the \gls{tpv} light biases is obtained from the fit.
-The charge profiles employed are: complete charge including geometric capacitance, chemical charge subtracting $C_|g|$ obtained either with \cref{eq:ce_full} for \gls{ce} or with \cref{eq:dc_full} for \gls{dc}.
+The mono\hyp{}exponential lifetimes from \texttt{tpv.R} are plotted \textsl{versus} various charge profiles obtained from \acr{ce} or \acr{dc}.
+In order to squash the light bias axes from the different techniques, the \acr{ce} or \acr{dc} charge \textsl{versus} voltage profiles are fitted and the employed charge value at the \acr{tpv} light biases is obtained from the fit.
+The charge profiles employed are: complete charge including geometric capacitance, chemical charge subtracting $C_|g|$ obtained either with \cref{eq:ce_full} for \acr{ce} or with \cref{eq:dc_full} for \acr{dc}.
 Fitting the small perturbation lifetimes \textsl{versus} chemical charge using \cref{eq:tau_pfo}, the recombination order $\Phi$ is obtained.
 This $\Phi$ is used for correcting the small perturbation lifetimes to total carrier lifetimes (pseudo first order lifetimes) using \cref{eq:tau_pfo} and is plotted again \textsl{versus} chemical charge.
 An example of all the mentioned plots can be observed in \cref{fig:tpvce,fig:tae_photophysics_tpvcedc}.
@@ -1003,12 +1003,12 @@ An example of all the mentioned plots can be observed in \cref{fig:tpvce,fig:tae
 	\epigraph{\textit{\enquote{A student of mine sells a complete system for that, just go and buy it}}}
 	
 
-	As seen in \cpageref{characterization_hysteresis}, a \gls{mppt} system ensures to obtain a \gls{pce} value closer to the real world working conditions \cite{Zimmermann2016}.
-	The hysteretic phenomena in perovskite solar cells requires new procedures for \gls{mppt} \cite{Cimaroli2017,Pellet2017,Rakocevic2019} and a few commercial systems are already available for that \cite{CicciResearchsrl2019,CandlelightSystems}.
-	An interesting project for having robust \gls{mppt} measurable with Tektronix Keithley 2400 is mppTracker \cite{AFMD2017}.
+	As seen in \cpageref{characterization_hysteresis}, a \acr{mppt} system ensures to obtain a \gls{pce} value closer to the real world working conditions \cite{Zimmermann2016}.
+	The hysteretic phenomena in perovskite solar cells requires new procedures for \acr{mppt} \cite{Cimaroli2017,Pellet2017,Rakocevic2019} and a few commercial systems are already available for that \cite{CicciResearchsrl2019,CandlelightSystems}.
+	An interesting project for having robust \acr{mppt} measurable with Tektronix Keithley 2400 is mppTracker \cite{AFMD2017}.
 	I made a few contributions which are accessible on \url{https://github.com/AFMD/mppTracker/pulls?q=is%3Apr}.
 	As the effort in this project were very limited on my side, I will not further describe that but an example of the output is reported in \cref{fig:mppt}.
-	If confirmed, recent reports on "bistable short circuit current" in perovskite solar cells by \authoryear{Calado2018} would further complicate the implementation of a \gls{mppt}.
+	If confirmed, recent reports on "bistable short circuit current" in perovskite solar cells by \authoryear{Calado2018} would further complicate the implementation of a \acr{mppt}.
 	\begin{figure}[H]
 			\makebox[\textwidth][c]{
 			\parbox{1.1\textwidth}{
