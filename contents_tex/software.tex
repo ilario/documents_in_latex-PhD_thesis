@@ -28,7 +28,7 @@ Uses analytical initial conditions and runs to equilibrium and steady state, obt
  Takes the parameters from \texttt{pin\-Params.m} file and tries
  to obtain a steady state solution (as if the device has been left for
  a long period of time). This solution can then be used as accurate
- initial conditions for other simulations, \textsl{e.g.} a JV scan.
+ initial conditions for other simulations, \textsl{e.g.}\ a JV scan.
  Note that the stabilization time is consistently adjusted to appropriate values for to
  ensure there are numerous mesh points where large gradients in the time
  dimension are present.
@@ -49,7 +49,7 @@ Uses analytical initial conditions and runs to equilibrium and steady state, obt
 \textit{Required by:} \texttt{examples\_unit\_test}.
 
 		\paragraph{\texttt{verify\-Stabilization} -- Verifies if the provided solution has evolved until its steady state}\label{verifyStabilization}
-Checks if the solution reached a stabilized (\textsl{i.e.} steady state) status comparing the final time point with a manually specified time point. Beware that this can have false positives when the analysed solution had
+Checks if the solution reached a stabilized (\textsl{i.e.}\ steady state) status comparing the final time point with a manually specified time point. Beware that this can have false positives when the analysed solution had
  has been run over a time which is so small that the ionic movement did not even start.
  For each variable under study, the comparison integrates over the solution thickness the absolute value of the difference in the profile of this variable at two different times in the solution.
  If this integrated difference is larger than \num{1e-4} times the integrated profile of the same variable at the final time point at which its spatially average value has been subtracted, the solution is considered as not stabilized yet.
@@ -151,7 +151,7 @@ Differently from \texttt{gen\-Int\-Structs} case, here the voltage array has to 
 
 \textit{Required by:} \texttt{examples\_unit\_test}.
 
-		\paragraph{\texttt{find\-Optim\-Voc} -- Find the exact \gls{voc} minimizing the current output}
+		\paragraph{\texttt{find\-Optim\-Voc} -- Find the exact \glsentryshort{voc} minimizing the current output}
 Stabilize an asymmetric solution to the real open circuit voltage
 which is the applied voltage where the current is minimized,
 starting from the voltage present in the given solution. The suggested
@@ -252,7 +252,7 @@ Plot free charges and ions densities, and energy levels over device thickness an
 	\textit{Required by:} \texttt{examples\_unit\_test}.
 
 
-	\subsection{Charge Extraction}
+	\subsection{Charge Extraction}\label{dd_ce}
 		Careful stabilization of illuminated solutions is crucial, especially for avoiding glitches appearing at high light illumination (minority charges accumulation at the edges of the symmetric solution).
 
 		\paragraph{\texttt{CE\_full\_exec} -- Do Charge Extraction in a range of background light intensities}		
@@ -343,7 +343,7 @@ Plot free charges and ions densities, and energy levels over device thickness an
 		\textit{Required by:} \texttt{CE\_full\_exec}.
 		
 
-	\subsection{Transient PhotoVoltage}
+	\subsection{Transient PhotoVoltage}\label{dd_tpv}
 
 		\paragraph{\texttt{TPV\-const\_full\_exec} -- Simulate Transient PhotoVoltage in a range of background light intensities without varying the pulse intensity}	
 The pulse intensity is tuned to be a small perturbation compared to the 1
@@ -379,7 +379,7 @@ The pulse intensity is tuned to be a small perturbation compared to the 1
 		
 		\paragraph{\texttt{TPV\_single\_exec} -- Perform a single TPV simulation}
 		
-		\textit{Inputs:} 1) a single symmetric (\textsl{i.e.} open circuit) structure as created by \texttt{pin\-drift};
+		\textit{Inputs:} 1) a single symmetric (\textsl{i.e.}\ open circuit) structure as created by \texttt{pin\-drift};
 		2) a first guess for maximum time which should be enough for simulating the full decay, if zero is provided a value of \SI{1e-5}{\s} is used and no further exploration of the simulation time is performed (this is useful when we are just interested in the amount of voltage variation, rather than in the full decay);
 		3) intensity of the perturbing light pulse.
 		
@@ -673,22 +673,22 @@ field, each column is a space point.
 		The active area is also prompted at this point.
 
 		\paragraph{Voltage range and step}
-		Then, the lowest and highest voltage limits (\textsl{i.e.} \texttt{:SOURce:\-VOLTage:\-STARt} or \texttt{:SOURce:\-VOLTage:\-STOP}) are prompted, together with the voltage step (\textsl{i.e.} \texttt{:SOURce:\-VOLTage:\-STEP}).
+		Then, the lowest and highest voltage limits (\textsl{i.e.}\ \texttt{:SOURce:\-VOLTage:\-STARt} or \texttt{:SOURce:\-VOLTage:\-STOP}) are prompted, together with the voltage step (\textsl{i.e.} \texttt{:SOURce:\-VOLTage:\-STEP}).
 		The number of measured points (used for the buffer size in \texttt{:TRACe:\-POINts} and for the trigger count in \texttt{:TRIGger:\-COUNt}) can be calculated dividing the voltage range by the voltage step.
 		
 		\paragraph{Compliance}
 		This introduces a maximum limit to the current that can flow in the connected device, in order to avoid overheating and related damages to the solar cell.
 		In order to respect this limit, Keithley equipment reduces the applied voltage (this does not get reflected in the saved output, where the capped regions appears simply as a plateau).
-		The compliance value (\textsl{i.e.} \texttt{:SENSe:\-CURRent:\-PROTection}) has to be smaller than the chosen scale.
+		The compliance value (\textsl{i.e.}\ \texttt{:SENSe:\-CURRent:\-PROTection}) has to be smaller than the chosen scale.
 		
 		\paragraph{Scale and "Auto Scale"}
 		As it was explained in \cpageref{autoscale}, the "automatic scale" feature of the Keithley is detrimental for perovskite solar cells dynamic (like a current\hyp{}voltage sweep) measurements.
-		For this reason a check and a combo box have been added for enabling\-/disabling automatic scale and setting the manual scale (\textsl{i.e.} \texttt{:SOURce:\-CURRent:\-RANGe}).
+		For this reason a check and a combo box have been added for enabling\-/disabling automatic scale and setting the manual scale (\textsl{i.e.}\ \texttt{:SOURce:\-CURRent:\-RANGe}).
 		
 		\paragraph{Integration time, delay time, and scan speed calculation}
-		Integration time (\textsl{i.e.} \texttt{:SENSe:\-VOLTage:\-NPLCycles}) is the number of power line cycles during which each current point is measured \cite{KeithleyInstruments2011}.
+		Integration time (\textsl{i.e.}\ \texttt{:SENSe:\-VOLTage:\-NPLCycles}) is the number of power line cycles during which each current point is measured \cite{KeithleyInstruments2011}.
 		For example, on a \SI{50}{\Hz} electrical network, an integration time of 1 means that the current is measured during \SI{20}{\ms} for each voltage point.
-		Delay time (\textsl{i.e.} \texttt{:SOURce:\-DELay}) is the time waited for the current stabilisation after the voltage step.
+		Delay time (\textsl{i.e.}\ \texttt{:SOURce:\-DELay}) is the time waited for the current stabilisation after the voltage step.
 The scan speed $s[V/s]$ is obtained from the voltage step \texttt{:SENSe:\-VOLTage:\-STEP} $V_|step|[V]$, integration time $i$ and the delay time \texttt{:SOURce:\-DELay} $t_|delay|[s]$ Keithley's parameters with the following \textit{empirical} expression estimated by Werther Cambarau:
 
 \begin{equation}
@@ -725,7 +725,7 @@ After closing and opening the illumination shutter, it starts a single current\h
 \begin{SCfigure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{PyPV/pypv-plot.png}
-	\mycaption[Current\hyp{}voltage plot window of PyPV.]{
+	\mycaption[Current\hyp{}voltage plot window of PyPV\@.]{
 		The plot window includes the main performance data and can be manually resized, zoomed, and saved as an image.
 	}\label{fig:pypv-plot}
 \end{SCfigure}
@@ -793,7 +793,7 @@ In a few cases, a small window appears warning the user of some problem or askin
  				\includegraphics[width=1\textwidth]{PyPV/keithley.jpg}
  				\subcaption{Keithley display output}\label{fig:pypv-keithley}
  			\end{subfigure}
- 			\mycaption[Additional output of PyPV.]{In (\textbf{a}) the textual output from console is shown.
+ 			\mycaption[Additional output of PyPV\@.]{In (\textbf{a}) the textual output from console is shown.
  				The printed information is usually not important for normal software usage but can help for debugging.
  				In (\textbf{b}) instructions to the user are delivered \textsl{via} Keithley's display and buzzer.
  			}\label{fig:pypv-other}
@@ -802,7 +802,7 @@ In a few cases, a small window appears warning the user of some problem or askin
  \end{figure}
  
 \paragraph{Additional output}
-Python console in \cref{fig:pypv-console} is used mainly for reporting additional data \textsl{e.g.} where the files got saved or each of the measured steady state \gls{voc} points.
+Python console in \cref{fig:pypv-console} is used mainly for reporting additional data \textsl{e.g.}\ where the files got saved or each of the measured steady state \gls{voc} points.
 Keithley's display in \cref{fig:pypv-keithley} is used for communicating to the user which diode has to be measured during the "AutoMeasure".
 Moreover, the same information is also outputted using Keithley's buzzer as a number of beeps.
 
@@ -812,7 +812,7 @@ Moreover, the same information is also outputted using Keithley's buzzer as a nu
 When using the "AutoSave" of the "AutoMeasure" functions, the following directory structure is created, if not already existing: \texttt{user name\-/YYYY-MM-DD} where the subdirectory is the measurement date in little endian format.
 
 \paragraph{Files naming}\label{pypv_naming_files}
-When using the "AutoSave" of the "AutoMeasure" functions, inside the aforementioned directory the measurements are named with the following schema: \texttt{experiment name-device name-\textit{<diode>}-\textit{<direction>}.txt} where \textit{\texttt{<diode>}} is the identification number of the specific diode under measurement, in case there is more than one per substrate (\textsl{e.g.} in our case, each device has four independent diodes, as can be seen in \cref{fig:device}) and \texttt{\textit{<direction>}} can be either \texttt{forward} or \texttt{reverse}, as explained in \cpageref{characterization_fwdrev} for the sweep scan direction.
+When using the "AutoSave" of the "AutoMeasure" functions, inside the aforementioned directory the measurements are named with the following schema: \texttt{experiment name-device name-\textit{<diode>}-\textit{<direction>}.txt} where \textit{\texttt{<diode>}} is the identification number of the specific diode under measurement, in case there is more than one per substrate (\textsl{e.g.}\ in our case, each device has four independent diodes, as can be seen in \cref{fig:device}) and \texttt{\textit{<direction>}} can be either \texttt{forward} or \texttt{reverse}, as explained in \cpageref{characterization_fwdrev} for the sweep scan direction.
 In case an illumination different from \SI{100}{\mW\per\square\cm} was used, a field is added specifying it in the file name.
 For example, a typical path and file name could be: \texttt{ilario/\-2019-06-18/\-ig79-c26-2-0.25sun-reverse.txt}.
 In order to improve the compatibility with different file systems, the accents in the user name, experiment name, and device name fields are removed using \texttt{unicode\-data.\-normalize} function.
@@ -834,7 +834,7 @@ In case the user closes the software forgetting to save the last measurement, th
 
 	\subsection{Limitations}
 
-		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV.
+		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV\@.
 		This demonstrated to be a failure in long term development planning.
 
 %\pagebreak[2]
@@ -848,7 +848,7 @@ In case the user closes the software forgetting to save the last measurement, th
 		I am describing the routines here in order to allow others to use and modify them.
 		The described routines have been tested to work on Linux and Windows systems.
 		All of the described functions can be downloaded from \url{https://github.com/ilario/photophysics-data-processing-R}.
-		Just the scripts which are relevant for the data published in this thesis will be reported, while many others (\textsl{e.g.} parameter extraction from current\hyp{}voltage sweeps, statistics on the performance parameters, Tauc plot fitting, logarithmic smoothing of transient absorption spectroscopy data\dots) can be found online.
+		Just the scripts which are relevant for the data published in this thesis will be reported, while many others (\textsl{e.g.}\ parameter extraction from current\hyp{}voltage sweeps, statistics on the performance parameters, Tauc plot fitting, logarithmic smoothing of transient absorption spectroscopy data\dots) can be found online.
 
 	\subsection{Helpers}
 		\paragraph{\texttt{limits\_for\_graphics.R} -- Set graphical parameters}
@@ -902,7 +902,7 @@ In case the user closes the software forgetting to save the last measurement, th
 		Then it fits the trend using \cref{eq:ce_full}.
 		
 		\paragraph{\texttt{ce-\-from\_many\_output\_to\_graph.R} -- Compares between CE of various devices}
-		Plots the charge \textsl{versus} light bias trends of all the devices' data in the current directory.
+		Plots the charge \textsl{versus} light bias trends of all the devices' data in the current directory, like in \cref{fig:tae_photophysics-ce}.
 		This is used for comparisons like the one in the right column of \cref{fig:ce_noise}.
 		
 %		\paragraph{\texttt{ce-time-many.R} -- Compares single CE transients of various devices}
@@ -926,7 +926,7 @@ In case the user closes the software forgetting to save the last measurement, th
 %				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
 %				
 		\paragraph{\texttt{tpv-\-from\_output\_to\_graph.R} -- Plots TPV lifetimes \textsl{versus} light bias}
-		This script plots the lifetimes obtained from mono or bi exponential fits in \texttt{tpv.R} \textsl{versus} light bias voltage.
+		This script plots the lifetimes obtained from mono or bi exponential fits in \texttt{tpv.R} \textsl{versus} light bias voltage, like in \cref{fig:tpv}.
 		Additionally, it fits the high voltage points using \cref{eq:tpv_tau_vs_intensity}.
 %		
 %\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares lifetime with RC time}
@@ -938,7 +938,7 @@ In case the user closes the software forgetting to save the last measurement, th
 	For details on \gls{tpc} technique, see \cpageref{characterization_tpc}.
 
 		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
-		Similarly to what \texttt{ce.R} does for integrating the \gls{ce} voltage transient, also this script directly integrates the voltage transients \textsl{versus} time after subtracting a baseline.
+		Similarly to what \texttt{ce.R} does for integrating the \gls{ce} voltage transient, also this script directly integrates the voltage transients \textsl{versus} time after subtracting a baseline, like in \cref{fig:tpc}.
 		
 %		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
 %
@@ -957,7 +957,7 @@ In case the user closes the software forgetting to save the last measurement, th
 %		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
 %		
 		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-\-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
-		The comparison of capacitance and charge from \gls{dc} is plotted for various devices and fitted using \cref{eq:dc_full}.
+		The comparison of capacitance and charge from \gls{dc} is plotted for various devices and fitted using \cref{eq:dc_full}, like in \cref{fig:dc_deltaV}.
 		The data to be plotted is taken from the output of \texttt{dc-\-from\_output\_to\_graph.R} script.
 
 	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}

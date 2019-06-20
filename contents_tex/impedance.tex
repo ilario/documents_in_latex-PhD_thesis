@@ -4,11 +4,11 @@
 	The first information that can be directly extracted from impedance spectroscopy is a frequency\hyp{}dependent capacitance \cite{Brus2016}.
 	When studying this in perovskite solar cells, the results are of difficult interpretation \cite{Almora2018,Guillen2014}.
 	A giant capacitance is always observed at low frequencies for illuminated devices \cite{Juarez-Perez2014,Kim2015c}.
-	More rarely, also a negative capacitance (\textsl{i.e.} an inductance) has been observed in perovskite solar cell \cite{Ghahremanirad2017,Guerrero2016,Sanchez2014} and other kinds of solar cells \cite{Mora-Sero2006,Knapp2015}.
+	More rarely, also a negative capacitance (\textsl{i.e.}\ an inductance) has been observed in perovskite solar cell \cite{Ghahremanirad2017,Guerrero2016,Sanchez2014} and other kinds of solar cells \cite{Mora-Sero2006,Knapp2015}.
 	In order to extract the individual parameters, like transport and recombination constants, the data has to be fitted using an electronic equivalent circuit \cite{Jamnik2001}.
 	The components of the circuit should have a relation with the actually existing processes, so that we can relate the parameters of the electrical component with the solar cell specific internal mechanisms.
 	Many complex circuits have been proposed in literature, some of them included inductors for matching the inductive behaviour \cite{Almora2018,Ghahremanirad2017,Guerrero2016}.
-	Previous to 2018, these phenomena were interpreted as caused by a huge free charge accumulation at the interfaces due to the influence of ionic accumulation \cite{Guerrero2016,Zarazua2016a} supported by drift\hyp{}diffusion simulations \cite{Garcia-Rosell2018,Lopez-Varo2018}.
+	Previous to 2018, these phenomena were interpreted as surface polarisation caused by a huge free charge accumulation at the interfaces due to the influence of ionic accumulation \cite{Guerrero2016,Zarazua2016a} supported by drift\hyp{}diffusion simulations \cite{Garcia-Rosell2018,Lopez-Varo2018}.
 	It has to be noted that any slow process causing a change in the flowing current could result in an apparent capacitance or inductance, this could happen with degradation processes or heating \cite{Knapp2015,Shimizu2017}.
 	When studying perovskite solar cells, we have to consider that the electrostatic potential arising from mobile ion redistribution controls electronic charge transfer barriers \cite{Tress2016,Pockett2017}.
 	In November 2017 we started modelling impedance spectroscopy using Driftfusion software and the modules already developed for Charge Extraction simulation.
@@ -22,7 +22,7 @@
 	This allows the charge to flow through an interface to not only depend on the applied voltage, like in a Schottky diode, but also on an external influence: the ionic density close to the interface.
 	The influence of ionic migration on electronic transfer can be thought as an amplification of electronic current by ionic current.
 	Our model not only works in the small perturbation regime employed in impedance spectroscopy, but can also explain hysteresis in current\hyp{}voltage sweeps as shown in Fig.5 of \authoryear{Moia2019}.
-	The understanding of this mechanism allows the researchers to insightfully use impedance spectroscopy on perovskite solar cells and other ionic/\-electronic interfaces (\textsl{e.g.} electrochemical communication between neurons in the brain \cite{Cole1956}) but could also be employed for designing new physical electronic components showing large and tunable apparent capacitance or inductance in a reduced volume.
+	The understanding of this mechanism allows the researchers to insightfully use impedance spectroscopy on perovskite solar cells and other ionic/\-electronic interfaces (\textsl{e.g.}\ electrochemical communication between neurons in the brain \cite{Cole1956}) but could also be employed for designing new physical electronic components showing large and tunable apparent capacitance or inductance in a reduced volume.
 
 	\paragraph{Design of the Experiment}
 	Impedance spectroscopy has been initially modelled studying the current evolution after a single voltage step.
@@ -118,7 +118,7 @@
 		V = V_|DC| + v(t) = V_|DC| + v_|max| \sin(\omega t)
 	\end{equation}
 
-	$V_|DC|$ was set equal to the steady state voltage of the provided input solution (\textsl{e.g.} \gls{voc} for the simulations at open circuit).
+	$V_|DC|$ was set equal to the steady state voltage of the provided input solution (\textsl{e.g.}\ \gls{voc} for the simulations at open circuit).
 	Usually, a $v_|max|$ of \SI{2}{\mV} is employed.
 	This value is much smaller than the experimentally used one but very similar results are obtained when using larger perturbations (simulations with a $v_|max|$ of \SI{200}{\mV} are mentioned in \cpageref{impedance-large_perturbations}).
 	The small value allowed me to obtain a computationally fast simulation without being affected by too much numerical noise.
@@ -162,7 +162,7 @@
 	\end{equation}
 
 	where $m$ is the number of periods, $t_0$ is the start of the integration time, $\sin(\omega t)$ is the normalised voltage profile, and $\cos(\omega t)$ is the \SI{90}{\degree} shifted one.
-	Actually, for avoiding numerical problems (\textsl{e.g.} values close to the single\hyp{}precision accuracy) the current profile constant bias is subtracted and the result is normalised.
+	Actually, for avoiding numerical problems (\textsl{e.g.}\ values close to the single\hyp{}precision accuracy) the current profile constant bias is subtracted and the result is normalised.
 	Amplitude $j_|max|$ and current phase $\theta$ (which is the same as the impedance phase but with the opposite sign) are then given via:
 
 	\begin{equation}
@@ -318,7 +318,7 @@ Experimentally, this is observed some times but lies close to the instrumental f
 			
 			\mycaption[Net charge profile variation in a period of oscillating voltage at high and mid frequencies.]{
 				A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) homojunction device is simulated.
-				The space charge layers in the device (\textsl{e.g.} depletion layers in the contacts) have a net charge (unbalanced positive and negative charge densities).
+				The space charge layers in the device (\textsl{e.g.}\ depletion layers in the contacts) have a net charge (unbalanced positive and negative charge densities).
 			The net charge profile is obtained with $\rho(x,t) = -n(x,t) + p(x,t) + a(x,t) + n_|stat|(x)$ where $n$, $p$, and $a$ are the electrons, holes, and ions density profiles and $n_|stat|$ are the fixed charges profile, including the doping in the contacts and the fixed counter ions in the perovskite layer.
 			The represented net charge variation is obtained as $\Delta \rho (x,t) = \rho(x,t) - \rho(x,0)$.
 			The green line indicates the additional net charge when the oscillating voltage is at its maximum, while the orange line indicates the situation at the voltage minimum.
@@ -428,7 +428,7 @@ Experimentally, this is observed some times but lies close to the instrumental f
 	This feature has been interpreted as a ionic influence on the dark capacitance by \authoryear{Yang2015e}.
 	Indeed, calculating an apparent capacitance value from the ionic displacement current (see \cpageref{displacement_current_ionic,intro_displacement_current}) we can see that it matches the apparent capacitance value in dark, reported in \cref{fig:impedance-ionic-capacitance}.
 	Differently from the geometric capacitance observed at mid frequencies, this low frequency capacitance value is independent from the perovskite layer thickness, as it relates just to the interfacial region, neglecting any contribution from the perovskite bulk.
-	In case the ionic capacitance is smaller than the geometric capacitance (\textsl{e.g.} if the ionic concentration is not high enough for screening the electric field or with a very thin device), no bump can be seen and just the geometric capacitance is observed at low frequency.
+	In case the ionic capacitance is smaller than the geometric capacitance (\textsl{e.g.}\ if the ionic concentration is not high enough for screening the electric field or with a very thin device), no bump can be seen and just the geometric capacitance is observed at low frequency.
 	As a concept, this ionic capacitance is similar to the "junction capacitance" or "transition capacitance" of the interface between a $p$-type and a $n$-type material but in this case one of the materials has ions rather than electrons or holes.
 
 
@@ -529,7 +529,7 @@ The equivalent electrical circuit for this regime is represented in \cref{fig:di
 			
 			\mycaption[Simulated apparent capacitance spectra and Nyquist plot compared with capacitance due to recombination current.]{
 				In (\textbf{a}) the normalised Nyquist plot is reported, the normalisation factor is reported in the legend.
-				The cross markers indicate the even frequency decades (\textsl{i.e.} from right to left \num{0.01}, \num{1}, \SI{100}{\Hz}\dots) so that the mid frequency minimum of 1~sun curve is around \SI{1000}{\Hz}.
+				The cross markers indicate the even frequency decades (\textsl{i.e.}\ from right to left \num{0.01}, \num{1}, \SI{100}{\Hz}\dots) so that the mid frequency minimum of 1~sun curve is around \SI{1000}{\Hz}.
 				In (\textbf{b}) the apparent capacitance spectra (solid lines) is compared with the capacitance calculated from the out\hyp{}of\hyp{}phase recombination flux (dotted lines).
 			}\label{fig:impedance-recombination_nyquist}
 		}
@@ -704,7 +704,7 @@ Just a voltage step was applied and the resulting current evolution was used for
 This approach is computationally much faster than a complete oscillating simulation and can give exactly the same results if properly treated for converting the time\hyp{}domain data to frequency\hyp{}domain using a Fourier transform.
 In the publication by \authoryear{Jacobs2018}, they used this approach for simulating impedance spectroscopy in perovskite solar cells.
 Our preliminary implementation needs to be refined and at this stage is not ready for being published.
-Following this approach, we can obtain frequency domain simulations for IMVS, IMPS, and impedance spectroscopy respectively from \gls{tpv}, \gls{tpc}, and current\hyp{}voltage step small perturbations (see Supplementary Note 5 or Supplementary Note 4 for sweep large perturbation in \authoryear{Moia2019}) simulations in time domain.
+Following this approach, we can obtain frequency domain simulations for IMVS, IMPS, and impedance spectroscopy respectively from \acr{tpv}, \acr{tpc}, and current\hyp{}voltage step small perturbations (see Supplementary Note 5 or Supplementary Note 4 for sweep large perturbation in \authoryear{Moia2019}) simulations in time domain.
 For example, converting a bi\hyp{}exponential decay in \gls{tpv} to frequency domain through Fourier transform, we can obtain two arches in the IMVS Nyquist plot or from a bi\hyp{}exponential current evolution after a voltage step we can obtain the impedance spectroscopy features (preliminary simulation performed by Dr.\ Piers Barnes) as shown in \cref{fig:impedance_fourier}.
 \authoryear{Ebadi2019} also have shown how a device showing current transient with two opposite phases will also show a negative capacitance in impedance spectroscopy.
 Similarly, for current\hyp{}voltage sweeps I suppose that the "bumps" (see \cpageref{characterization_scanspeed} and \cref{fig:iv_ugly}) and the "negative hysteresis" (forward sweep giving a higher maximum \gls{pce} than reverse sweep) which can be observed for some perovskite solar cells at certain scan speeds are also indicative of the presence of negative capacitance in these devices.
