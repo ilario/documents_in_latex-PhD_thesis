@@ -2,7 +2,8 @@
 \section{Introduction}
 
 
-	\afterpage{
+\afterpage{
+	\clearpage
 	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 	\begin{xltabular}[c]{1.05\linewidth}{@{}>{\hsize=1.2\hsize}Y|>{\hsize=0.9\hsize}Y|>{\hsize=0.9\hsize}Y | c >{\hsize=1.5\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.75\hsize}Y >{\hsize=0.8\hsize}Y @{}}
 		% multirow does not get the correct number of rows with tabularx
@@ -90,6 +91,8 @@
 	The data was analysed by me and Dr.\ Nuria F.\ Montcada.
 	The experiment was designed and the data interpreted by me, Dr.\ Nuria F.\ Montcada, and Prof.\ Emilio J.\ Palomares Gil.
 
+
+
 \section{Varying \glsentrytext{mapi} Thickness (Absorber Layer)}
 
 	\begin{figure}
@@ -122,8 +125,30 @@
 	Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so the \SI{40}{\nm} \gls{pcbm70} layer should be enough for an homogeneous coverage.
 	From the same \gls{esem} image, we can measure the grain lateral size, which is not significantly different for the six observed samples (two per each \gls{mapi} thickness, data detailed in \cref{fig:thicknesses-esem-topview} caption).
 
-\afterpage{
-	%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
+	\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
+\end{SCfigure}
+
+
+	\paragraph{Current-voltage sweeps}
+	In \cref{fig:thicknesses-jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
+	%\paragraph{Current-voltage sweeps -- \gls{ff}}
+	The \gls{ff} is not significantly different for the devices with different \gls{mapi} layer thickness.
+	The only observable difference is the presence of a higher hysteresis (difference between forward and reverse scan) in this parameter for the thicker \gls{mapi} case.
+	This could indicate a small change in the perovskite\-/\gls{pcbm70} interface or just a change in the hysteresis characteristic time due to the increased ionic resistance in the thicker \gls{mapi} layer.
+	%\paragraph{Current-voltage sweeps -- \gls{voc}}
+	Regarding the \gls{voc}, this value also did not change with thickness, indicating that the same recombination processes and dynamics are present disregarding the absorber thickness.
+	The higher deviation of this parameter for the thicker perovskite could be due to its higher roughness, causing some devices to have pinholes in the \gls{etm} layer.
+	%\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
+	What is clear and expected is the \gls{jsc} increase.
+	This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far\hyp{}from\hyp{}zero transmittance.
+	The increase in photogeneration rate is reflected in an increase of \gls{pce}.
+
+
+%\afterpage{
+\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
 	\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.1\hsize}Y | >{\hsize=0.7\hsize}Y | >{\hsize=0.7\hsize}Y | Y >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y @{}}
 		% multirow does not get the correct number of rows with tabularx
 		% mycaption does not work inside xltabular
@@ -173,24 +198,8 @@
 		\rule[-1ex]{0pt}{4ex}
 		& 				 		& 65	& \rnum{64.4501923191207} & \rnum{5.44744643856892e-32} & \rnum{0.678974589798595} & \rnum{50.3194494652546} & \rnum{1.34432980262899e-16} & \rnum{2.00044590997543}\\
 	\end{xltabular}
-	%\end{table}
-}
-
-	\paragraph{Current-voltage sweeps}
-	In \cref{fig:thicknesses-jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
-	%\paragraph{Current-voltage sweeps -- \gls{ff}}
-	The \gls{ff} is not significantly different for the devices with different \gls{mapi} layer thickness.
-	The only observable difference is the presence of a higher hysteresis (difference between forward and reverse scan) in this parameter for the thicker \gls{mapi} case.
-	This could indicate a small change in the perovskite\-/\gls{pcbm70} interface or just a change in the hysteresis characteristic time due to the increased ionic resistance in the thicker \gls{mapi} layer.
-	%\paragraph{Current-voltage sweeps -- \gls{voc}}
-	Regarding the \gls{voc}, this value also did not change with thickness, indicating that the same recombination processes and dynamics are present disregarding the absorber thickness.
-	The higher deviation of this parameter for the thicker perovskite could be due to its higher roughness, causing some devices to have pinholes in the \gls{etm} layer.
-	%\paragraph{Current-voltage sweeps -- \gls{jsc} and \gls{pce}}
-	What is clear and expected is the \gls{jsc} increase.
-	This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far\hyp{}from\hyp{}zero transmittance.
-	The increase in photogeneration rate is reflected in an increase of \gls{pce}.
-
-
+\end{table}
+%}
 
 	\paragraph{Geometric capacitance from DC and CE}
 	From the low and mid background light capacitance obtained from \gls{dc} in \cref{fig:thicknesses-mapi-geometric-dc} and from the linear part of \gls{ce} in \cref{fig:thicknesses-mapi-geometric-ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
@@ -200,11 +209,6 @@
 	%This can be observed from the tilting of the linear regime of charge \textsl{versus} light bias  or in the constant capacitance regime .
 	The fitted values of $C_|g|$ are reported in \cref{table:thicknesses_photophysics}.
 
-	\begin{SCfigure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
-	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
-\end{SCfigure}
 
 	\begin{figure}
 		\makebox[\textwidth][c]{
