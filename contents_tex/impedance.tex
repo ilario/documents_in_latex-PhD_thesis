@@ -8,18 +8,21 @@
 	In order to extract the individual parameters, like transport and recombination constants, the data has to be fitted using an electronic equivalent circuit \cite{Jamnik2001}.
 	The components of the circuit should have a relation with the actually existing processes, so that we can relate the parameters of the electrical component with the solar cell specific internal mechanisms.
 	Many complex circuits have been proposed in literature, some of them included inductors for matching the inductive behaviour \cite{Almora2018,Ghahremanirad2017,Guerrero2016}.
-	Previously to our publication, these phenomena were interpreted as caused by a huge free charge accumulation at the interfaces due to the influence of ionic accumulation \cite{Guerrero2016,Zarazua2016a} supported by drift\hyp{}diffusion simulations \cite{Garcia-Rosell2018,Lopez-Varo2018}.
-	It has to be noted that any slow process causing a change in the flowing current could result in an apparent capacitance or inductance, this could happen with degradation processes or heating \cite{Knapp2015}.
-	In perovskite solar cells, the electrostatic potential arising from mobile ion redistribution controls electronic charge transfer barriers \cite{Tress2016,Pockett2017}.
+	Previous to 2018, these phenomena were interpreted as caused by a huge free charge accumulation at the interfaces due to the influence of ionic accumulation \cite{Guerrero2016,Zarazua2016a} supported by drift\hyp{}diffusion simulations \cite{Garcia-Rosell2018,Lopez-Varo2018}.
+	It has to be noted that any slow process causing a change in the flowing current could result in an apparent capacitance or inductance, this could happen with degradation processes or heating \cite{Knapp2015,Shimizu2017}.
+	When studying perovskite solar cells, we have to consider that the electrostatic potential arising from mobile ion redistribution controls electronic charge transfer barriers \cite{Tress2016,Pockett2017}.
+	In November 2017 we started modelling impedance spectroscopy using Driftfusion software and the modules already developed for Charge Extraction simulation.
 	In May 2018 we uploaded to ArXiv a pre-print which was then published in \authoryear{Moia2019} with an alternative interpretation for the giant capacitance: this influence of the ionic charge on the electronic processes such as recombination and can give rise to apparent capacitive behaviour.
 	This effect does not involve an accumulation of an enormous amount of charge, as it was expected by a giant capacitance, so it cannot be described by a capacitor in the equivalent electrical circuit.
-	For the inductive behaviour we proposed that the same influence can affect the charge injection causing a negative apparent capacitance.
-	More or less at the same time, other research groups published similar interpretations \cite{Ebadi2019,Jacobs2018}.
+	For the inductive behaviour (negative capacitance) we proposed that the same influence can affect the charge injection causing a negative apparent capacitance.
+	Additionally, we also shown that the reaction or penetration of the perovskite's mobile ions into the contact materials can also explain some inductive behaviour.
+	More or less at the same time, other research groups published similar interpretations \cite{Jacobs2018,Ebadi2019}.
+	Moreover, in \authoryear{Ebadi2019} the influence of ionic migration on the injection barrier is experimentally confirmed.
 	We proposed that both of the effects (apparent capacitance and inductance) can be described by transistors element in the circuit, as represented in \cref{fig:diode_transistor-transistor}.
-	This allows the charge to flow through an interface to not only depend on the applied voltage, like in a common diode, but also on an external influence: the ionic density close to the interface.
+	This allows the charge to flow through an interface to not only depend on the applied voltage, like in a Schottky diode, but also on an external influence: the ionic density close to the interface.
 	The influence of ionic migration on electronic transfer can be thought as an amplification of electronic current by ionic current.
-	Our model not only works in the small perturbation regime employed in impedance spectroscopy, but can also explain data from hysteretic current\hyp{}voltage sweeps.
-	The understanding of this mechanism not only allows the researcher to successfully use impedance spectroscopy on perovskite solar cells and other ionic and electronic interfaces (e.g. electrochemical communication between neurons in the brain \cite{Cole1956}) but could also be employed for designing new physical electronic components showing large and tunable apparent capacitance or inductance in a reduced volume.
+	Our model not only works in the small perturbation regime employed in impedance spectroscopy, but can also explain hysteresis in current\hyp{}voltage sweeps as shown in Fig.5 of \authoryear{Moia2019}.
+	The understanding of this mechanism allows the researchers to insightfully use impedance spectroscopy on perovskite solar cells and other ionic/\-electronic interfaces (\textsl{e.g.} electrochemical communication between neurons in the brain \cite{Cole1956}) but could also be employed for designing new physical electronic components showing large and tunable apparent capacitance or inductance in a reduced volume.
 
 	\paragraph{Design of the Experiment}
 	Impedance spectroscopy has been initially modelled studying the current evolution after a single voltage step.
@@ -61,7 +64,7 @@
 \section{Simulating impedance spectroscopy}
 
 	
-\afterpage{
+\begin{table}
 	\clearpage
 	%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 	\begin{xltabular}[c]{1\linewidth}{@{} >{\hsize=1.6\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.8\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=1\hsize}Y @{}}
@@ -101,7 +104,7 @@
 		SRH time constants \rule[-2ex]{0pt}{3.5ex}&\gls{symb:taunp}	&	\num{5e-10}&	/&	\num{5e-10}&	\si{\s}\\
 		Generation rate & \gls{symb:g}&	/&	\num{2.5e21}&	/&	\si{\per\cubic\cm\per\s}\\
 	\end{xltabular}
-}
+\end{table}
 
 	\paragraph{Initial conditions}
 	The solution of the electrons, holes, ions density and electrostatic concentration profiles of the device under steady state operating conditions was determined using Driftfusion core functions and the parameters listed in \cref{table:impedance_parameters}.
@@ -241,7 +244,7 @@
 	\mysection[Simulated apparent capacitance]{Simulated apparent capacitance spectra characteristics}
 
 As we can see comparing \cref{fig:impedance-capacitance-oc,fig:impedance-capacitance-vapp}, when oscillating the voltage around \gls{voc} on an illuminated solution or around the same values for a dark solution, the result is very similar.
-This behaviour is also observed experimentally, as reported in \cref{fig:experimental-vapp}.
+This behaviour is also observed experimentally, as reported in \cref{fig:experimental-vapp} and elsewhere \cite{Ebadi2019,Tress2015, }.
 All the parameters reported in \cref{table:impedance_parameters} are a very rough estimation of the reality.
 Because of this, some results can greatly diverge from the experimentally observed ones, for example all the time scales are expected to be incorrect.
 What we were looking for, was a qualitative description of the perovskite solar cell behaviour.
@@ -499,8 +502,6 @@ The origin of our observation was the influence of the ionic accumulation on the
 	Looking at the low frequency region of \cref{fig:impedance-ionic-capacitance}, we can see how the ionic capacitance (so the amount of displaced ions) increases with the illumination or applied voltage.
 	This is just due to the wider charge density variation in the contacts, as observed in the previous paragraph.
 	Indeed the increase in ionic capacitance is more or less similar to the increase in accumulation capacitance, and neither this can itself explain a giant capacitance.
-	
- (similarly to the ionic capacitance)
 
 	\paragraph{Illuminated case -- Recombination barriers without ions}
 Let me go back to a "normal" solar cell with no mobile ions.
@@ -536,7 +537,7 @@ The equivalent electrical circuit for this regime is represented in \cref{fig:di
 \end{figure}
 
 	\paragraph{Illuminated case -- Recombination barriers with ions}
-When we simulate in the low frequency regime, the ions accumulate and deplete close to the interface in a capacitive manner, as described in the previous paragraph.
+When we simulate in the low frequency regime, the ions accumulate and deplete close to the interface in a capacitive manner, as described in the previous paragraph and represented in \cref{fig:impedance-delta_charge-lowFreq_1sun}.
 In our simulation, the ionic concentration was enough to screen the electric field inside the perovskite layer within a few tens of nanometres from the material's interfaces.
 In the low frequency, the ions have time for continuously screening the field induced by the varying voltage, as represented in \cref{fig:diode_transistor-band_diagram_lowfreq}.
 Contrariwise to what happened at mid and high frequencies in \cref{fig:diode_transistor-band_diagram_hifreq}, we can see how at low frequency the variation of the recombination energy barrier is not just the applied voltage.
@@ -586,7 +587,7 @@ The fact that a large voltage perturbation causes a non\hyp{}sinusoidal current 
 						\subcaption{Zoom into mid frequency region}\label{fig:impedance-200mV_nyquist-zoom}
 					\end{subfigure}
 					\mycaption[Simulated Nyquist plot for large perturbations simulation.]{
-						In (\textbf{a}) the normalised Nyquist plot of a simulation with \SI{200}{\mV} wide oscillating applied voltage is represented.
+						In (\textbf{a}) the normalised Nyquist plot of a simulation with \SI{200}{\mV} wide oscillating voltage is represented.
 						Normalisation factor is indicated in the legend.
 						In (\textbf{b}) zoom at mid frequencies region of the same Nyquist plot, where loops can be observed in the high intensity curves.
 					}\label{fig:impedance-200mV}
@@ -635,7 +636,7 @@ The fact that a large voltage perturbation causes a non\hyp{}sinusoidal current 
 		\end{figure}
 
 		\paragraph{Lack of low frequency plateau}
-		Going down to very low frequency we observe a plateau in the apparent capacitance, which experimentally is not usually observed \cite{Juarez-Perez2014} with a few exceptions \cite{Ebadi2019}.
+		Simulating down to very low frequency we observe a plateau in the apparent capacitance, which, as shown in \cref{fig:experimental-cap,fig:experimental-vapp}, experimentally is not usually observed \cite{Juarez-Perez2014} with a few exceptions \cite{Ebadi2019}.
 		The lack of a plateau has been interpreted by \authoryear{Jacobs2018} with the presence of more than one mobile ionic species, which is quite likely as seen in \cpageref{intro_ionic_migration}.
 		Additionally, we hypothesized \cite{Moia2019} that this effect could arise from the different ionic mobility in perovskite when infiltrated in mesoporous layers; dispersive transport in disordered material regions \cite{Schwarz1998} where the mobility varies over time and position; or mostly diffusive transport of ions in the mesoporous layers which could be better described by a Warburg diffusion element in the equivalent electrical circuit.
 		
@@ -697,14 +698,51 @@ This simulation has already been implemented but the code release is waiting for
 \paragraph{Implement other similar techniques}
 Using some of the modules already implemented for impedance spectroscopy simulation, it should be easy to implement also other characterisation techniques like Intensity-Modulated Photovoltage/Photocurrent Spectroscopy (IMVS, IMPS) \cite{Pockett2015,Guillen2014} and Mott-Schottky capacitance analysis \cite{Almora2016}.
 
-\paragraph{Faster simulation with voltage step}
-The preliminary implementation of the impedance spectroscopy simulation did not employ the complete description of the oscillating voltage.
+\paragraph{Faster simulation with voltage step}\label{impedance_fourier}
+The first implementation of the impedance spectroscopy simulation done in November 2017 did not employ the complete description of the oscillating voltage.
 Just a voltage step was applied and the resulting current evolution was used for obtaining a rough approximation of the apparent capacitance spectrum.
 This approach is computationally much faster than a complete oscillating simulation and can give exactly the same results if properly treated for converting the time\hyp{}domain data to frequency\hyp{}domain using a Fourier transform.
 In the publication by \authoryear{Jacobs2018}, they used this approach for simulating impedance spectroscopy in perovskite solar cells.
 Our preliminary implementation needs to be refined and at this stage is not ready for being published.
-Following this approach, we can obtain frequency domain simulations for IMVS, IMPS, and impedance spectroscopy respectively from \gls{tpv}, \gls{tpc}, and current\hyp{}voltage step transient simulations in time domain.
-For example, converting a bi-exponential decay in \gls{tpv} to frequency domain through Fourier transform, we can obtain two arches in the IMVS Nyquist plot (preliminary simulation performed by Dr.\ Piers Barnes).
+Following this approach, we can obtain frequency domain simulations for IMVS, IMPS, and impedance spectroscopy respectively from \gls{tpv}, \gls{tpc}, and current\hyp{}voltage step small perturbations (see Supplementary Note 5 or Supplementary Note 4 for sweep large perturbation in \authoryear{Moia2019}) simulations in time domain.
+For example, converting a bi\hyp{}exponential decay in \gls{tpv} to frequency domain through Fourier transform, we can obtain two arches in the IMVS Nyquist plot or from a bi\hyp{}exponential current evolution after a voltage step we can obtain the impedance spectroscopy features (preliminary simulation performed by Dr.\ Piers Barnes) as shown in \cref{fig:impedance_fourier}.
+\authoryear{Ebadi2019} also have shown how a device showing current transient with two opposite phases will also show a negative capacitance in impedance spectroscopy.
+Similarly, for current\hyp{}voltage sweeps I suppose that the "bumps" (see \cpageref{characterization_scanspeed} and \cref{fig:iv_ugly}) and the "negative hysteresis" (forward sweep giving a higher maximum \gls{pce} than reverse sweep) which can be observed for some perovskite solar cells at certain scan speeds are also indicative of the presence of negative capacitance in these devices.
+
+\begin{figure}
+	\makebox[\textwidth][c]{
+		\parbox{1.1\textwidth}{
+			\centering
+			\begin{subfigure}[t]{0.45\textwidth}
+				\includegraphics[width=1\textwidth]{fourier/posSlowExp.pdf}
+				\subcaption{Bi-exponential decay}\label{fig:impedance_fourier_posSlowExp}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.45\textwidth}
+				\includegraphics[width=1\textwidth]{fourier/impsig-posSlowExp.pdf}
+				\subcaption{Frequency domain representation}\label{fig:impedance_fourier_impsig-posSlowExp}
+			\end{subfigure}
+			\bigskip
+			
+			\begin{subfigure}[t]{0.45\textwidth}
+				\includegraphics[width=1\textwidth]{fourier/negSlowExp.pdf}
+				\subcaption{Positive fast decay and negative slow decay}\label{fig:impedance_fourier_negSlowExp}
+			\end{subfigure}
+			\qquad
+			\begin{subfigure}[t]{0.45\textwidth}
+				\includegraphics[width=1\textwidth]{fourier/impsig-negSlowExp.pdf}
+				\subcaption{Frequency domain representation}\label{fig:impedance_fourier_impsig-negSlowExp}
+			\end{subfigure}
+			\mycaption[Example of Fourier transformation of bi\hyp{}exponential current decays to impedance spectra.]{
+				In (\textbf{a}) a bi\hyp{}exponential decay is plotted, it can be thought as the output current profile after a voltage step.
+				In (\textbf{b}) the corresponding Nyquist plot is reported as obtained via Fourier transform, we can see how the profile in (\textbf{a}) causes the presence of two arches.
+				In (\textbf{c}) another kind of bi\hyp{}exponential shape is represented, in which the slow exponential gives an increasing trend.
+				In (\textbf{d}) the corresponding Nyquist plot shows that we can expect inductive effects for the case represented in (\textbf{c}).
+				The employed code is courtesy of Dr.\ Piers Barnes.
+			}\label{fig:impedance_fourier}
+		}
+	}
+\end{figure}
 
 \section{Implementation of impedance spectroscopy}
 

@@ -13,7 +13,7 @@
 	Specifically we looked for the influence of the \gls{htm} on the device \gls{voc}.
 	For \gls{osc}, the correlation between the built-in voltage and the \gls{voc} is well established \cite{Kooistra2007,Gadisa2004,Brabec2001,Wilke2012,Chen2009,Tress2011,Sanchez-Diaz2010}.
 	For perovskite solar cells, some authors observed a weak correlation between the \gls{htm} ionization potential and the cell voltage \cite{Polander2014,Abate2015a,Kwon2014,Rakstys2015,Wu2016a} while others suggested a complex interplay of factors where the \gls{htm} \gls{homo} just plays a marginal role \cite{Correa-Baena2017,Belisle2016,Ishida2016,Park2018,Jimenez-Lopez2017,Tress2017}.
-	The tested \gls{htm} were: the classic \gls{spiro}, the previously reported \gls{tae1} (CAS 1802982-22-4, after the first report in \cite{Cabau2015a}, it has been used also by other research groups in \cite{Choi2015b,Labban2016,Wu2016a,Wu2016b}) and two novel molecules: \glsdesc{tae3} (\gls{tae3}, CAS 2055756-83-5) and \glsdesc{tae4} (\gls{tae4}).
+	The tested \gls{htm} were: the classic \gls{spiro} (\cref{fig:tae-molecules-spiro}), the previously reported \gls{tae1} (CAS 1802982-22-4, \cref{fig:tae-molecules-tae1}, after the first report in \cite{Cabau2015a}, it has been used also by other research groups in \cite{Choi2015b,Labban2016,Wu2016a,Wu2016b}) and two novel molecules: \glsdesc{tae3} (\gls{tae3}, CAS 2055756-83-5, \cref{fig:tae-molecules-tae3}) and \glsdesc{tae4} (\gls{tae4}, \cref{fig:tae-molecules-tae4}).
 
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -120,7 +120,7 @@
 
 	\paragraph{\Glsentryshort{homo} from cyclic voltammetry}
 	The oxidation potential of each \gls{htm} has been measured \textsl{via} cyclic voltammetry in solution.
-	Then the energy of \gls{homo}, reported in \cref{table:tae_molecular}, has been obtained from the oxidation potential \textsl{via} the empirical linear relationship reported in \authoryear{DAndrade2005}.
+	Then the energy of \gls{homo}, reported in \cref{table:tae_molecular} and represented in \cref{fig:tae-energy_levels}, has been obtained from the oxidation potential \textsl{via} the empirical linear relationship reported in \authoryear{DAndrade2005}.
 	The obtained \gls{homo} value is shallowest for \gls{tae3}, then \gls{spiro} a bit above \gls{tae1} level, and finally \gls{tae4} being the deepest.
 	Considering that these \gls{htm} gets doped by exposing the devices to dry air (see fabrication method in \cpageref{methods_bottom}), the Fermi level in these p-type materials should be rather close to the \gls{homo}.
 %	Considering the built-in voltage, defined as the difference in \gls{etm} (which is \ch{TiO2} in all cases) and \gls{htm} Fermi levels, we expect it to be larger for the devices with \gls{tae4} and smallest for the \gls{tae3} ones.
@@ -140,9 +140,14 @@
 
 	\paragraph{Direct optical band gap}
 	We extracted the direct band gap value from the direct Tauc plot of the absorbance onset \cite{WikipediaTauc}, an easy technique developed for crystalline and amorphous semiconductors \cite{Stenzel2005} with delocalized orbitals but often employed also for small molecules.
-	A closely related value can be obtained from the photoluminescence peak maximum, which is also reported in \cref{table:tae_molecular}.
-	The shape of the absorbance onset (Urbach tail) of an \gls{htm}, additionally to provide information on its optical band gap, can reveal the presence of mid-gap states which would favour the surface recombination \cite{Tvingstedt2017}.
-
+	A closely related value can be obtained from the photoluminescence peak maximum, which is also reported in \cref{table:tae_molecular} (but should not be used for estimating the band gap as the emission could happen from localised states with different energetics).
+	The shape of the absorbance onset of an \gls{htm}, additionally to provide information on its optical band gap, can reveal the presence of mid-gap states (observable as an exponential Urbach tail) which would favour the surface recombination \cite{Tvingstedt2017}.
+	
+	\paragraph{\Glsentryshort{lumo} and selectivity}
+		The optical band gap has been employed for obtaining the \gls{lumo} values reported in \cref{table:tae_molecular} and represented in \cref{fig:tae-energy_levels}.
+		The selectivity of \gls{htm} has been reported to be key for perovskite solar cells' \gls{voc} \cite{Stolterfoht2018a}.
+		The often neglected position of the \gls{htm} \gls{lumo} has been reported to be relevant for the injection of hot electrons, thus favouring their recombination in a recent preprint by \authoryear{Jimenez-Lopez2018} and in \authoryear{Droseros2019}.
+		
 	\paragraph{Simulated energy levels}
 	The details of the molecular simulation are reported in \cite{Gelmetti2019}, shortly: geometry and energy levels of the fundamental state were obtained with \gls{dft} performed including the solvent effect \textsl{via} Polarizable Continuum Model simulating the presence of surrounding tetrahydrofuran; then a time dependent \gls{dft} using hybrid exchange–correlation functional (CAM-B3LYP) allowed us to obtain the absorption spectrum.	
 	As can be seen in \cref{table:tae_molecular}, the \gls{dft} simulated $E^{\mathrm{sim}}_|HOMO|$ manages to reproduce the trend of the experimental $E^{\mathrm{exp}}_|HOMO|$, being the \gls{tae3} the shallowest and \gls{tae4} the deepest.
@@ -218,7 +223,7 @@ The patterns perfectly match the reference Cs5 pattern from \authoryear{Saliba20
 
 \section{Current-Voltage Sweeps}
 
-	\afterpage{
+	\begin{table}
 		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.4\hsize}Y| c Y Y >{\hsize=0.7\hsize}Y >{\hsize=0.9\hsize}Y @{}}
 			% multirow does not get the correct number of rows with tabularx
@@ -263,7 +268,7 @@ The patterns perfectly match the reference Cs5 pattern from \authoryear{Saliba20
 			\multirow{2}{*}{\gls{tae4}}	&	fwd	&	21	$\pm	1.9	$ &	0.81	$\pm	0.03	$ &	54	$\pm	10	$ &	9.3	$\pm	2.5	$ \\*
 			&	rev	&	21	$\pm	1.8	$ &	0.9	$\pm	0.05	$ &	61	$\pm	9	$ &	11.6	$\pm	2.8	$ \\[1mm]
 		\end{xltabular}
-	}
+	\end{table}
 
 	As can be seen in \cref{table:tae_jv}, the most significant differences in the performances of devices when changing \gls{htm} are observed in the \gls{voc}.
 	\Gls{spiro} allowed the devices to achieve the highest \gls{voc}, while \gls{tae3} and \gls{tae4} gave the lowest voltages.
@@ -324,40 +329,66 @@ With some caution (we employed the classical method, not the improved one descri
 	This way, the data points get closer indicating very similar recombination constants being present for all the cases which thus are of no help for explaining the observed \gls{voc} differences.
 	The difference in lifetimes in \gls{tae4} devices when referencing to \gls{ce} or \gls{dc} is due to the large incoherence of \gls{ce} or \gls{dc} for this device, as shown in \cref{fig:tae_photophysics_cedc}.
 	
-	
-	%	\afterpage{
-	%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
-	\begin{xltabular}[c]{1.05\linewidth}{@{} Y | Y | Y Y | Y Y @{}}
-		% multirow does not get the correct number of rows with tabularx
-		% mycaption does not work inside xltabular
-		\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
-			The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:tpv_tau_vs_intensity} for \gls{tpv} data (using a $T$ of \SI{300}{\celsius}) and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
-		}\label{table:tae_photophysics}\\[\belowcaptionskip]
-		\multirow{3}{*}{\textbf{HTM}} & \textbf{\gls{tpv}} & \multicolumn{2}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{2}{c}{\small\textbf{\gls{tpvdc}}}
-		\rule[-1ex]{0pt}{3ex} \\
-		& \small\gls{symb:v} & \small$k$ & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:Phi}  \\
-		\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{} & - &  \footnotesize\si{} &  - \\[1mm]
-		\hline
-		\endfirsthead
-		\multicolumn{2}{@{}l}{\ldots \small continues}\\
-		\hline
-		\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-DC|$ \\
-		\hline
-		\endhead
-		\hline
-		\multicolumn{6}{r@{}}{\small continues\ldots}\\
-		\endfoot
-		\hline
-		\endlastfoot
-		\rule[-1ex]{0pt}{4ex}
-		\gls{spiro}	& \rnum{2.07090585704198274280}	& \rsnum{185540681086}	& \rnum{1.65526}	& \rsnum{248756218905472636.81592039800995024876}	& \rnum{2.39888} \\
-		\gls{tae1}	& \rnum{1.69834635792333172897}	& \rsnum{220431917728005}	& \rnum{2.07791}	& \rsnum{57688495457156566631170924}	& \rnum{3.4511} \\
-		\gls{tae3}	& \rnum{2.60358060992170656706}	& \rsnum{3577194679210}	& \rnum{1.7992}	& \rsnum{388533596500089.36272719502055342725}	& \rnum{2.1104} \\
-		\gls{tae4}	& \rnum{1.21543176059352121997}	& \rsnum{45968589491447146715}	& \rnum{2.63246}	& \rsnum{8854711580563434818607468954981642986410188991391331220236}	& \rnum{8.3677} \\
-	\end{xltabular}
-	%\end{table}
-	%	}
+%	\begin{xltabular}[c]{1.05\linewidth}{@{} Y | Y | Y Y | Y Y @{}}
+%		% multirow does not get the correct number of rows with tabularx
+%		% mycaption does not work inside xltabular
+%		\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
+%			The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:tpv_tau_vs_intensity} for \gls{tpv} data (using a $T$ of \SI{300}{\celsius}) and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
+%		}\label{table:tae_photophysics}\\[\belowcaptionskip]
+%		\multirow{3}{*}{\textbf{HTM}} & \textbf{\gls{tpv}} & \multicolumn{2}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{2}{c}{\small\textbf{\gls{tpvdc}}}
+%		\rule[-1ex]{0pt}{3ex} \\
+%		& \small\gls{symb:v} & \small$k$ & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:Phi}  \\
+%		\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{\s^{-1}.\cm^{2\Phi-2}} & - &  \footnotesize\si{\s^{-1}.\cm^{2\Phi-2}} &  - \\[1mm]
+%		\hline
+%		\endfirsthead
+%		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+%		\hline
+%		\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-DC|$ \\
+%		\hline
+%		\endhead
+%		\hline
+%		\multicolumn{6}{r@{}}{\small continues\ldots}\\
+%		\endfoot
+%		\hline
+%		\endlastfoot
+%		\rule[-1ex]{0pt}{4ex}
+%		\gls{spiro}	& \rnum{2.07090585704198274280}	& \rsnum{.089670}	& \rnum{1.65526}	& \rsnum{.0000000012677273851307339}	& \rnum{2.39888} \\
+%		\gls{tae1}	& \rnum{1.69834635792333172897}	& \rsnum{.0000012125681615542155824199981}	& \rnum{2.07791}	& \rsnum{.0000000000000000000049164511186}	& \rnum{3.4511} \\
+%		\gls{tae3}	& \rnum{2.60358060992170656706}	& \rsnum{.0034108286886881829748637047853}	& \rnum{1.7992}	& \rsnum{.0000005230964359068281862683963}	& \rnum{2.1104} \\
+%		\gls{tae4}	& \rnum{1.21543176059352121997}	& \rsnum{.0000000000095469441207386226347}	& \rnum{2.63246}	& \rsnum{.000000000000000000000000000000000000000000000000000000000000000000000000000000002945246552214639247}	& \rnum{8.3677} \\
+%	\end{xltabular}
 
+
+\begin{table}
+	\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.2\hsize}Y | >{\hsize=0.7\hsize}Y | >{\hsize=1.3\hsize}Y >{\hsize=1.3\hsize}Y >{\hsize=0.45\hsize}Y | >{\hsize=1.3\hsize}Y >{\hsize=1.3\hsize}Y >{\hsize=0.45\hsize}Y @{}}
+	% multirow does not get the correct number of rows with tabularx
+	% mycaption does not work inside xltabular
+	\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
+		The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:tpv_tau_vs_intensity} for \gls{tpv} data (using a $T$ of \SI{300}{\celsius}) and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
+	}\label{table:tae_photophysics}\\[\belowcaptionskip]
+	\multirow{3}{*}{\textbf{HTM}} & \textbf{\gls{tpv}} & \multicolumn{3}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{3}{c}{\small\textbf{\gls{tpvdc}}}
+	\rule[-1ex]{0pt}{3ex} \\
+	& \small\gls{symb:v} & \small$k$ & \small\gls{symb:tau0} & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:tau0} & \small\gls{symb:Phi}  \\
+	\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{\s^{-1}.\cm^{2\Phi-2}} & \footnotesize\si{\s}& - &  \footnotesize\si{\s^{-1}.\cm^{2\Phi-2}}& \footnotesize\si{\s} &  - \\[1mm]
+	\hline
+	\endfirsthead
+	\multicolumn{2}{@{}l}{\ldots \small continues}\\
+	\hline
+	\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$& \small$\tau_{0,\mathrm{TPV-CE}}$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$& \small$\tau_{0,\mathrm{TPV-CE}}$ & \small$\Phi_|TPV-DC|$ \\
+	\hline
+	\endhead
+	\hline
+	\multicolumn{6}{r@{}}{\small continues\ldots}\\
+	\endfoot
+	\hline
+	\endlastfoot
+	\rule[-1ex]{0pt}{4ex}
+	\gls{spiro}	& \rnum{2.07090585704198274280}	& \rsnum{.089670}							& \rsnum{1644.5868708489}	& \rnum{1.65526}	& \rsnum{.0000000012677273851307339}		& \rsnum{2383.40662630806}	& \rnum{2.39888} \\
+	\gls{tae1}	& \rnum{1.69834635792333172897}	& \rsnum{.0000012125681615542155824199981}	& \rsnum{42728824.6935065}	& \rnum{2.07791}	& \rsnum{.0000000000000000000049164511186}& \rsnum{70957827.1284169}	& \rnum{3.4511} \\
+	\gls{tae3}	& \rnum{2.60358060992170656706}	& \rsnum{.0034108286886881829748637047853}	& \rsnum{0.0353967580086076}& \rnum{1.7992}		& \rsnum{.0000005230964359068281862683963}& \rsnum{0.0414669507838948}& \rnum{2.1104} \\
+	\gls{tae4}	& \rnum{1.21543176059352121997}	& \rsnum{.0000000000095469441207386226347}	& \rsnum{3712226.25783568}	& \rnum{2.63246}	& \rsnum{.000000000000000000000000000000000000000000000000000000000000000000000000000000002945246552214639247}& \rsnum{4623539.4194068}	& \rnum{8.3677} \\
+\end{xltabular}
+\end{table}
 
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -393,7 +424,7 @@ With some caution (we employed the classical method, not the improved one descri
 \section{Work function of Stacked Materials}
 
 %	\afterpage{
-		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
+		\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=2\hsize}Y | Y  >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
 			% multirow does not get the correct number of rows with tabularx
 			% mycaption does not work inside xltabular
@@ -425,8 +456,9 @@ With some caution (we employed the classical method, not the improved one descri
 			%		\ch{TiO2}/\gls{csfamapbibr}	&  4.24 & 4.28 &  4.20 & 4.44 & 4.29  \\ 
 			% data from received paper graphics
 %			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  4.04 & 4.08 &  4.00 & 4.24 & 4.09  \\
-			\gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr}	&  $4.04$ & $+0.04$ &  $-0.04$ & $+0.20$ & $+0.05$  \\
+			\gls{fto}\-/\ch{TiO2}/\-\gls{csfamapbibr}	&  $4.04$ & $+0.04$ &  $-0.04$ & $+0.20$ & $+0.05$  \\
 		\end{xltabular}
+	\end{table}
 %	}
 
 	Further characterisation of the workfunction of the \gls{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm}.

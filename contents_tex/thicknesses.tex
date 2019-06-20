@@ -109,7 +109,7 @@
 
 				\begin{subfigure}[t]{0.51\textwidth}
 					\includegraphics[width=1\textwidth]{esem-topview/ig87-c34-2000RPM-30k-hv-contrast.png}
-					\subcaption{\SI{2000}{\rpm}, \SI{440}{\nm}}\label{fig:thicknesseses-esem-topview-2000RPM}
+					\subcaption{\SI{2000}{\rpm}, \SI{440}{\nm}}\label{fig:thicknesses-esem-topview-2000RPM}
 				\end{subfigure}
 				\mycaption[Top view ESEM images of annealed perovskite layers with various thicknesses.]{The surface of a thin perovskite layer is studied using  FIJI/ImageJ \cite{Schindelin2012} on images of two different devices for each deposition condition (just one reported here for brevity). The average domain diameter (and its standard deviation) is \SI{182 \pm 25}{\nm} for the thin \SI{230}{\nm} perovskite layer in (\textbf{a}), \SI{190 \pm 34}{\nm} for the medium \SI{320}{\nm} perovskite layer in (\textbf{b}), \SI{189 \pm 23}{\nm} for the thick \SI{440}{\nm} perovskite layer in (\textbf{c}).}\label{fig:thicknesses-esem-topview}
 			}
@@ -122,11 +122,59 @@
 	Any way, measuring the roughness average with a profilometer, it resulted to be \SI{< 10}{\nm} for all the cases, so the \SI{40}{\nm} \gls{pcbm70} layer should be enough for an homogeneous coverage.
 	From the same \gls{esem} image, we can measure the grain lateral size, which is not significantly different for the six observed samples (two per each \gls{mapi} thickness, data detailed in \cref{fig:thicknesses-esem-topview} caption).
 
-	\begin{SCfigure}
-		\centering
-		\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
-		\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
-	\end{SCfigure}
+\afterpage{
+	%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
+	\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.1\hsize}Y | >{\hsize=0.7\hsize}Y | >{\hsize=0.7\hsize}Y | Y >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y @{}}
+		% multirow does not get the correct number of rows with tabularx
+		% mycaption does not work inside xltabular
+		\caption[Parameters fitted from CE and DC data, from devices with different layers' thicknesses.]{\textbf{Parameters fitted from CE and DC data, from devices with different layers' thicknesses.}
+			The experimental data reported in \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric} has been fitted using \cref{eq:ce_full} for \gls{ce} data and \cref{eq:dc_full} for \gls{dc} data.
+		}\label{table:thicknesses_photophysics}\\[\belowcaptionskip]
+		\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{3}{c|}{\small\textbf{CE}} & \multicolumn{3}{c}{\small\textbf{DC}}
+		\rule[-1ex]{0pt}{3ex} \\
+		\small\gls{mapi} &  \small\gls{etm} & \small\gls{htm} & \small\gls{symb:Cg} & \small\gls{symb:neq} &  \small\gls{symb:m} & \small\gls{symb:Cg} & \small\gls{symb:neq} &  \small\gls{symb:m} \\
+		\rule[-1ex]{0pt}{2.5ex}  \footnotesize\si{\nm} &  \footnotesize\si{\nm} &  \footnotesize\si{\nm} & \footnotesize\si{\nano\F\per\square\cm} &  \footnotesize\si{\coulomb\per\square\cm} & - &  \footnotesize\si{\nano\F\per\square\cm} &  \footnotesize\si{\coulomb\per\square\cm} & - \\[1mm]
+		\hline
+		\endfirsthead
+		\multicolumn{2}{@{}l}{\ldots \small continues}\\
+		\hline
+		\small\gls{mapi} & \small\gls{etm} & \small\gls{htm} & \small\gls{symb:Cg} & \small\gls{symb:neq} & \small\gls{symb:m} & \small\gls{symb:Cg} & \small\gls{symb:neq} & \small\gls{symb:m} \\
+		\hline
+		\endhead
+		\hline
+		\multicolumn{9}{r@{}}{\small continues\ldots}\\
+		\endfoot
+		\hline
+		\endlastfoot
+		\rule[-1ex]{0pt}{4ex}
+		230 	& \multirow{3}{*}{40}	&  \multirow{3}{*}{65}	& \rnum{85.3301567640111}	& \rnum{5.12603766463996e-21}	& \rnum{1.42540882502849}	& \rnum{63.5691599645725}	& \rnum{2.80156436794216e-12}	& \rnum{4.42885311532801} \\*
+		\cline{1-1} \cline{4-9}
+		\rule[-1ex]{0pt}{4ex}
+		320	&  						& 						& \rnum{77.7280226931573}	& \rnum{4.82359451755698e-27}	& \rnum{0.970504332684817}	& \rnum{55.4099677743798}	& \rnum{9.01531708758845e-13}	& \rnum{4.09817044704697} \\*
+		\cline{1-1} \cline{4-9}
+		\rule[-1ex]{0pt}{4ex}
+		440	&  						& 						& \rnum{70.7196355753457}	& \rnum{1.1916876016195e-27}	& \rnum{0.912575007143644}	& \rnum{50.42918432699}	& \rnum{8.6536760550073e-15}	& \rnum{2.64532408455481} \\
+		\hline
+		\rule[-1ex]{0pt}{4ex}
+		\multirow{3}{*}{350}	& 40 	&  \multirow{3}{*}{65} & \rnum{76.399963266735} & \rnum{2.59099124009742e-20} & \rnum{1.42377526492346} & \rnum{55.0987488891515} & \rnum{7.87748762963633e-15} & \rnum{2.51025076329765}\\*
+		\cline{2-2} \cline{4-9}
+		\rule[-1ex]{0pt}{4ex}
+		& 60 	& 					 	& \rnum{61.3214241914314} & \rnum{9.01470965786247e-25} & \rnum{1.07005213324604} & \rnum{42.8290117954868} & \rnum{9.34331162626908e-13} & \rnum{3.81783541577789} \\*
+		\cline{2-2} \cline{4-9}
+		\rule[-1ex]{0pt}{4ex}
+		& 90 	&  						&\rnum{43.8300398524054} & \rnum{5.33438024104082e-29} & \rnum{0.853781763130922} & \rnum{33.9400710508692} & \rnum{4.49280198629451e-11} & \rnum{5.98365652726317}\\
+		\hline
+		\rule[-1ex]{0pt}{4ex}
+		\multirow{3}{*}{300}	& \multirow{3}{*}{40}	& 27 	& \rnum{63.8554990179897} & \rnum{9.74708581977915e-15} & \rnum{2.93729998552211} & \rnum{46.1396721657447} & \rnum{1.63620664547478e-15} & \rnum{2.37232492243424}\\*
+		\cline{3-9}
+		\rule[-1ex]{0pt}{4ex}
+		&  						& 45	& \rnum{66.7217372609922} & \rnum{6.39620737296978e-21} & \rnum{1.2951381459487} & \rnum{49.8531675841145} & \rnum{4.64793103413763e-16} & \rnum{2.13846267623868} \\*
+		\cline{3-9}
+		\rule[-1ex]{0pt}{4ex}
+		& 				 		& 65	& \rnum{64.4501923191207} & \rnum{5.44744643856892e-32} & \rnum{0.678974589798595} & \rnum{50.3194494652546} & \rnum{1.34432980262899e-16} & \rnum{2.00044590997543}\\
+	\end{xltabular}
+	%\end{table}
+}
 
 	\paragraph{Current-voltage sweeps}
 	In \cref{fig:thicknesses-jv_champions-mapi} we can observe the current-voltage sweeps of the champion devices while in \cref{table:thicknesses_jv} the averages and standard deviations are reported.
@@ -142,59 +190,7 @@
 	This is most likely due to the low \gls{eqe} in the thin perovskite layer due to its far\hyp{}from\hyp{}zero transmittance.
 	The increase in photogeneration rate is reflected in an increase of \gls{pce}.
 
-	\afterpage{
-		%\begin{table}%[h]	% longtables cannot stay inside a float, if they do, they will not break
-		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.1\hsize}Y | >{\hsize=0.7\hsize}Y | >{\hsize=0.7\hsize}Y | Y >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y | Y  >{\hsize=1.65\hsize}Y >{\hsize=0.6\hsize}Y @{}}
-			% multirow does not get the correct number of rows with tabularx
-			% mycaption does not work inside xltabular
-			\caption[Parameters fitted from CE and DC data, from devices with different layers' thicknesses.]{\textbf{Parameters fitted from CE and DC data, from devices with different layers' thicknesses.}
-				The experimental data reported in \cref{fig:thicknesses-mapi-geometric,fig:thicknesses-pcbm-geometric,fig:thicknesses-pedotpss-geometric} has been fitted using \cref{eq:ce_full} for \gls{ce} data and \cref{eq:dc_full} for \gls{dc} data.
-			}\label{table:thicknesses_photophysics}\\[\belowcaptionskip]
-			\multicolumn3{c|}{\small\textbf{Layers thickness}} & \multicolumn{3}{c|}{\small\textbf{CE}} & \multicolumn{3}{c}{\small\textbf{DC}}
-			\rule[-1ex]{0pt}{3ex} \\
-			\small\gls{mapi} &  \small\gls{etm} & \small\gls{htm} & \small\gls{symb:Cg} & \small\gls{symb:neq} &  \small\gls{symb:m} & \small\gls{symb:Cg} & \small\gls{symb:neq} &  \small\gls{symb:m} \\
-			\rule[-1ex]{0pt}{2.5ex}  \footnotesize\si{\nm} &  \footnotesize\si{\nm} &  \footnotesize\si{\nm} & \footnotesize\si{\nano\F\per\square\cm} &  \footnotesize\si{\coulomb\per\square\cm} & - &  \footnotesize\si{\nano\F\per\square\cm} &  \footnotesize\si{\coulomb\per\square\cm} & - \\[1mm]
-			\hline
-			\endfirsthead
-			\multicolumn{2}{@{}l}{\ldots \small continues}\\
-			\hline
-			\small\gls{mapi} & \small\gls{etm} & \small\gls{htm} & \small\gls{symb:Cg} & \small\gls{symb:neq} & \small\gls{symb:m} & \small\gls{symb:Cg} & \small\gls{symb:neq} & \small\gls{symb:m} \\
-			\hline
-			\endhead
-			\hline
-			\multicolumn{9}{r@{}}{\small continues\ldots}\\
-			\endfoot
-			\hline
-			\endlastfoot
-			\rule[-1ex]{0pt}{4ex}
-			230 	& \multirow{3}{*}{40}	&  \multirow{3}{*}{65}	& \rnum{85.3301567640111}	& \rnum{5.12603766463996e-21}	& \rnum{1.42540882502849}	& \rnum{63.5691599645725}	& \rnum{2.80156436794216e-12}	& \rnum{4.42885311532801} \\*
-			\cline{1-1} \cline{4-9}
-			\rule[-1ex]{0pt}{4ex}
-			320	&  						& 						& \rnum{77.7280226931573}	& \rnum{4.82359451755698e-27}	& \rnum{0.970504332684817}	& \rnum{55.4099677743798}	& \rnum{9.01531708758845e-13}	& \rnum{4.09817044704697} \\*
-			\cline{1-1} \cline{4-9}
-			\rule[-1ex]{0pt}{4ex}
-			440	&  						& 						& \rnum{70.7196355753457}	& \rnum{1.1916876016195e-27}	& \rnum{0.912575007143644}	& \rnum{50.42918432699}	& \rnum{8.6536760550073e-15}	& \rnum{2.64532408455481} \\
-			\hline
-			\rule[-1ex]{0pt}{4ex}
-			\multirow{3}{*}{350}	& 40 	&  \multirow{3}{*}{65} & \rnum{76.399963266735} & \rnum{2.59099124009742e-20} & \rnum{1.42377526492346} & \rnum{55.0987488891515} & \rnum{7.87748762963633e-15} & \rnum{2.51025076329765}\\*
-			\cline{2-2} \cline{4-9}
-			\rule[-1ex]{0pt}{4ex}
-			& 60 	& 					 	& \rnum{61.3214241914314} & \rnum{9.01470965786247e-25} & \rnum{1.07005213324604} & \rnum{42.8290117954868} & \rnum{9.34331162626908e-13} & \rnum{3.81783541577789} \\*
-			\cline{2-2} \cline{4-9}
-			\rule[-1ex]{0pt}{4ex}
-			& 90 	&  						&\rnum{43.8300398524054} & \rnum{5.33438024104082e-29} & \rnum{0.853781763130922} & \rnum{33.9400710508692} & \rnum{4.49280198629451e-11} & \rnum{5.98365652726317}\\
-			\hline
-			\rule[-1ex]{0pt}{4ex}
-			\multirow{3}{*}{300}	& \multirow{3}{*}{40}	& 27 	& \rnum{63.8554990179897} & \rnum{9.74708581977915e-15} & \rnum{2.93729998552211} & \rnum{46.1396721657447} & \rnum{1.63620664547478e-15} & \rnum{2.37232492243424}\\*
-			\cline{3-9}
-			\rule[-1ex]{0pt}{4ex}
-			&  						& 45	& \rnum{66.7217372609922} & \rnum{6.39620737296978e-21} & \rnum{1.2951381459487} & \rnum{49.8531675841145} & \rnum{4.64793103413763e-16} & \rnum{2.13846267623868} \\*
-			\cline{3-9}
-			\rule[-1ex]{0pt}{4ex}
-			& 				 		& 65	& \rnum{64.4501923191207} & \rnum{5.44744643856892e-32} & \rnum{0.678974589798595} & \rnum{50.3194494652546} & \rnum{1.34432980262899e-16} & \rnum{2.00044590997543}\\
-		\end{xltabular}
-		%\end{table}
-	}
+
 
 	\paragraph{Geometric capacitance from DC and CE}
 	From the low and mid background light capacitance obtained from \gls{dc} in \cref{fig:thicknesses-mapi-geometric-dc} and from the linear part of \gls{ce} in \cref{fig:thicknesses-mapi-geometric-ce} we can obtain a geometric capacitance $C_|g|$, as explained in \cref{ch:characterization}.
@@ -203,6 +199,12 @@
 	Otherwise, as explained in \cpageref{ce_ions_linear}, the measured geometric capacitance would regard charges (ionic and electronic) accumulating on the two sides of each perovskite\-/contact interface (a junction capacitance rather than a geometric capacitance), being insensitive to the \gls{mapi} thickness.
 	%This can be observed from the tilting of the linear regime of charge \textsl{versus} light bias  or in the constant capacitance regime .
 	The fitted values of $C_|g|$ are reported in \cref{table:thicknesses_photophysics}.
+
+	\begin{SCfigure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{jv_champions-mapi/mapi-IVs.pdf}
+	\mycaption[Current-voltage sweeps for champion devices with different MAPI thicknesses.]{The solid line with filled markers represents the forward scan, while the dashed line with hollow markers represents the reverse scan.}\label{fig:thicknesses-jv_champions-mapi}
+\end{SCfigure}
 
 	\begin{figure}
 		\makebox[\textwidth][c]{
@@ -299,7 +301,7 @@
 	\end{figure}
 
 	\paragraph{Geometric capacitance from \glsentryshort{dc} and \glsentryshort{ce}}
-	Also in the case of increasing \gls{pcbm70} \gls{etm} thickness, the geometric capacitance diminishes, coherently to what observed by \authoryear{Wheeler2017}.
+	Also in the case of increasing \gls{pcbm70} \gls{etm} thickness, the geometric capacitance diminishes (observed \textsl{via} \gls{ce} in \cref{fig:thicknesses-pcbm-geometric-ce} and \gls{dc} in \cref{fig:thicknesses-pcbm-geometric-dc}), coherently to what observed by \authoryear{Wheeler2017}.
 	Thinking within the parallel plate capacitor model (explained in \cpageref{geometric_capacitance}) where $C_|g| = \epsilon_0 \epsilon_|r| A / d$, this means that the distance $d$ between the two charge storage locations is increasing.
 	This is incompatible with what we expected: that the electronic charge gets stored in a thin depletion layer in the \gls{etm} on the perovskite layer side, as in this case the distance $d$ would not change increasing the \gls{pcbm70} layer.
 	So, the main electrons storage location is either close to the \gls{etm}\-/\ch{Ag} interface or within the whole \gls{etm} layer due to a Debye length (a.k.a. Thomas–Fermi screening length, is an indication of the depth inside a semiconductor layer at which an external electric field is completely screened, it depends on the permittivity and the doping density of the material, see \cpageref{intro-space_charge}) larger than the \gls{pcbm70} thickness.

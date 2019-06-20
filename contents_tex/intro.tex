@@ -284,7 +284,8 @@ If the material layer is thinner than the Debye length, the electric field will 
 		\end{figure}
 
 
-		\paragraph{Displacement current -- interpretation} So the displacement current accounts for the charge movements not identifiable as current and for their effect on the surrounding circuitry.
+		\paragraph{Displacement current -- interpretation}
+		So the displacement current accounts for the charge movements not identifiable as current and for their effect on the surrounding circuitry.
 		An example is represented in \cref{fig:displacement_current-ionic}: the amperometer can measure a current even if no charge crossed the perovskite/electrode interface, this is a displacement current caused by the creation of a dipole due to the ionic accumulation at the interfaces.
 		One can imagine the resulting current as needed for maintaining the zero potential difference between the two contacts.
 		It is not, as one could erroneously and instinctively think, the effect of an electric field generated in the contacts by the moving charge in the perovskite layer (with related Coulomb force and image charges) as out of the two two-dimensional planes of opposite charges no electric field is present.
@@ -337,9 +338,9 @@ If the material layer is thinner than the Debye length, the electric field will 
 		Radiative recombination involves the collision of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of the depletion layer or, in intrinsic perovskites, once ionic profile stabilized cancelling the electric field), while in case of uneven concentrations (in doped semiconductors or inside depletion layers) the limiting reagent is the minority carrier (electrons in p-type and holes in n-type materials) and the reaction order is 1.
 		The expression used for modelling is:
 		 \begin{equation}
-		U_|rad| = k_|rad| (np-n_|i|^2)
+		U_|rad| = k_|rad| (np-n_|eq|^2)
 				\end{equation}
-		where $n_|i|$ is the equilibrium carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
+		where $n_|eq|$ is the equilibrium carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
 		The dependency from $np$ indicates that this recombination type depends on the quasi\hyp{}Fermi levels splitting.
 		This type of recombination is present in perovskite solar cells, indeed some of the most efficient perovskite solar cells can be used as \gls{led} taking advantage of their radiative recombination \cite{Bi2016}.
 
@@ -355,7 +356,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
 		The expression used for modelling is \cite{Shockley1952,Nelson2003}:
 		\begin{equation}\label{eq:srh}
-			U_{SRH} = \frac{np-n_|i|^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
+			U_{SRH} = \frac{np-n_|eq|^2}{\tau_n(p+p_t)+ \tau_p(n+n_t)}
 		\end{equation}
 		where $\tau_n$ and $\tau_p$ are constants describing the trap capture cross section (which can be different for electrons and holes) and the traps density while $n_t$ and $p_t$ are the carrier densities that would be present with a the Fermi level equal to the traps energy.
 		For a doped semiconductor with similar $\tau_n$ and $\tau_p$, the expression can be simplified, for example in a p-type material we can use \cite[108]{Nelson2003}:
@@ -497,11 +498,12 @@ If the material layer is thinner than the Debye length, the electric field will 
 
 \begin{SCfigure}
 	\centering
-	\includegraphics[width=0.5\textwidth]{nrel_chart/pv-efficiencies-2019-06-13.pdf}
+	\includegraphics[width=0.7\textwidth]{nrel_chart/pv-efficiencies-2019-06-13.pdf}
 	\mycaption[NREL chart of "Best Research-Cell Efficiencies"]{Just the perovskite solar cells (not stabilized) results have been reported.}\label{fig:nrel_chart}
 \end{SCfigure}
 
-	Lead perovskites are known since long time, both inorganic \cite{Moller1958} and hybrid inorganic\hyp{}organic \cite{Weber1978}.
+	Inorganic lead perovskites are known since at least 1958 and first reported in \authoryear{Moller1958}.
+	Hybrid inorganic\hyp{}organic lead halide perovskites have been first reported in 1978 by \authoryear{Weber1978} and one of the published structures, \gls{mapi}, is represented in \cref{fig:crystal}.
 	Just recently, in 2009, it has started to be used as absorber for solar cells (started by the research groups Miyasaka \cite{Kojima2009}, Park \cite{Im2011a,Kim2012b}, and Snaith \cite{Lee2012}).
 	Perovskite solar cells evolved from the \gls{dssc} tradition, where an absorber dye is in contact with a titania \gls{etm} and an organic \gls{htm}.
 	Here the absorber dye is substituted by a hybrid organic-inorganic lead halide perovskite semiconductor and both the \gls{etm} and the \gls{htm} can be composed of various, either organic or inorganic, materials.
@@ -545,7 +547,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 	The non-radiative recombination inside the perovskite material is surprisingly low for a low temperature processed material.
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
 	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \gls{etm} and an \gls{htm} the photoluminescence lifetime is dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
-	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/selective contacts interfaces \cite{Calado2019,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
+	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/\-selective contacts interfaces \cite{Calado2019,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
 %		This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
 This recombination is important in perovskite solar cells also due to the high minority carriers concentration close to the contacts, which is a result of the screening of the electric field in the bulk of the perovskite material.
 %This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
@@ -598,7 +600,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	%	The presence of and mobile ionic species have been demonstrated in various kind of hybrid lead halide perovskite materials.
 
 	\paragraph{Field free absorber}
-	The high density of ionic defects causes the equilibrium free charge concentration to be low \cite{Walsh2015} and the electric field inside the absorber to be completely shielded within few nanometres from the interfaces \cite{Tress2015}.
+	The high density of ionic defects causes the equilibrium free charge concentration to be low \cite{Walsh2015} and the electric field inside the absorber to be completely shielded within few nanometres from the interfaces \cite{Tress2015,Richardson2016}.
 
 %	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
 
