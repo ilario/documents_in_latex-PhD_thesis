@@ -179,7 +179,7 @@
 b5paper,
 bindingoffset=0.3in,
 centering,
-marginparwidth=0.2in,
+marginparwidth=0.1in,
 textwidth=5.1in,
 marginparsep=1em,
 top=2.5cm,
@@ -876,7 +876,7 @@ bottom=2cm%,
 	\paragraph*{Publication} Part of this chapter has been published in \cite{Gelmetti2017}: \fullcite{Gelmetti2017}.
 
 	\paragraph*{Abstract}
-	All-organic, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} devices were fabricated and studied by means of current-voltage sweeps, \acr{ce}, \acr{tpv}, and \acr{dc}.
+	All-organic contacts, solution processed, top cathode, two step perovskite deposition \gls{ito}\-/\gls{pedotpss}\-/\gls{mapi}\-/\gls{pcbm70}\-/\ch{Ag} devices were fabricated and studied by means of current-voltage sweeps, \acr{ce}, and \acr{dc}.
 	Small variations in each layer thickness were introduced, so that we could compare the effect of this change on the resulting device characteristics.
 	Characterization via current-voltage sweeps and photophysical techniques allowed us to study the charge distribution in these devices.
 	Specifically, we have measured devices' capacitance under illumination using photo-induced time resolved techniques and obtained indications about holes and electrons storage location.
@@ -908,8 +908,8 @@ bottom=2cm%,
 	Part of this chapter has been published in \cite{Moia2019}: \fullcite{Moia2019}.
 
 	\paragraph*{Abstract}
-	Driftfusion modelling platform allowed me to simulate the current evolution in a perovskite solar cell when applying an oscillating voltage, in presence of constant illumination.
-	From this simple simulation we could reproduce the experimentally observed giant or negative capacitance and gain insight on their likely origin.
+	Driftfusion modelling platform allowed us to simulate the current evolution in a perovskite solar cell when applying an oscillating voltage in presence of constant illumination or voltage bias.
+	From this simple simulation we could reproduce both the experimentally observed giant capacitance and negative capacitance gaining insight on their likely origin.
 	The ionic migration in the perovskite layer behaves as a capacitive current of charges accumulating next to the interfaces with the contacts.
 	The capacitive origin of this ionic current implies it happens out of phase with the applied oscillating voltage.
 	We show that accumulation and depletion of ionic charge at the interfaces modulates surface recombination and charge injection, causing respectively giant capacitance and negative capacitance (\textsl{i.e.}\ inductance).
@@ -942,7 +942,7 @@ bottom=2cm%,
 	The data processing R routines can be examined at \url{https://github.com/ilario/photophysics-data-processing-R}.
 
 	\paragraph*{Abstract}
-	During my PhD thesis I wrote code mainly for three projects: current\hyp{}voltage sweep data acquisition, processing and analysis routines for various kinds of characterisation data, physical modelling of perovskite solar cells.
+	During my PhD thesis I wrote code mainly for three projects: physical modelling of perovskite solar cells, current\hyp{}voltage sweep data acquisition, processing and analysis routines for various kinds of characterisation data.
 	All of this work is intended to be re-used by others, so this chapter will detail how to use it and describe the design choices.
 
 \newpage
@@ -972,12 +972,14 @@ bottom=2cm%,
 		\EnableQuotes % I didn't understand why, but this command has to be present in some parts of the code
 
 
-\newpage\phantom{Ciao Mamma!}\cleardoublepage
+%\newpage\phantom{Ciao Mamma!}
+\cleardoublepage
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
 	\input{contents_tex/conclusions.tex}
 	
-\newpage\phantom{Ciao Mamma!}\cleardoublepage
+%\newpage\phantom{Ciao Mamma!}
+\cleardoublepage
 
 	\printindex
 	
