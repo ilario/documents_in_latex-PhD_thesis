@@ -6,7 +6,7 @@
 	Nature conveys this energy in plenty of ways, including the generation of every renewable and most of non-renewable energy sources.
 	Solar energy is effectively the primary energy source for our planet's ecosystem, so it is the most interesting source of energy for human usage.
 
-%	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
+	%	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
 
 
 	\paragraph{Availability}
@@ -18,14 +18,14 @@
 			\parbox{1.1\textwidth}{
 				\centering
 				\begin{subfigure}[b]{1\textwidth}
-	\includegraphics[width=0.9\textwidth]{world_map-PVOUT/world_map-PVOUT.pdf}
-	\subcaption{Daily photovoltaic electricity potential}\label{fig:world_map-PVOUT}
-\end{subfigure}	
+					\includegraphics[width=0.9\textwidth]{world_map-PVOUT/world_map-PVOUT.pdf}
+					\subcaption{Daily photovoltaic electricity potential}\label{fig:world_map-PVOUT}
+				\end{subfigure}
 
-			\begin{subfigure}[b]{1\textwidth}
-				\includegraphics[width=0.9\textwidth]{world_map-HDI/world_map-HDI.pdf}
-				\subcaption{Human development index by region}\label{fig:world_map-HDI}
-			\end{subfigure}
+				\begin{subfigure}[b]{1\textwidth}
+					\includegraphics[width=0.9\textwidth]{world_map-HDI/world_map-HDI.pdf}
+					\subcaption{Human development index by region}\label{fig:world_map-HDI}
+				\end{subfigure}
 
 				\begin{subfigure}[b]{1\textwidth}
 					\includegraphics[width=0.9\textwidth]{world_map-electrical_vs_land/world_map-electrical_vs_land.pdf}
@@ -60,16 +60,16 @@
 	\mysection[Relevant Physics]{Relevant Physics for Stacked Semiconductor Thin Films}
 
 	\subsection{Energy Levels and Occupancy}
-			
-	\begin{SCfigure}
-		\centering
-		\includegraphics[width=0.7\textwidth]{homo_lumo/homo_lumo.pdf}
-		\mycaption[Representation of HOMO and LUMO levels.]{
-			Each horizontal line represents the energy of a molecular orbital in a neutral molecule at ground state.
-			So the bottom group are the occupied orbitals while the upper group are the virtual ones.
-		}\label{fig:homo_lumo}
-	\end{SCfigure}
-		
+
+		\begin{SCfigure}
+			\centering
+			\includegraphics[width=0.7\textwidth]{homo_lumo/homo_lumo.pdf}
+			\mycaption[Representation of HOMO and LUMO levels.]{
+				Each horizontal line represents the energy of a molecular orbital in a neutral molecule at ground state.
+				So the bottom group are the occupied orbitals while the upper group are the virtual ones.
+			}\label{fig:homo_lumo}
+		\end{SCfigure}
+
 		\paragraph{HOMO and LUMO}
 		The energy that an electron can have when it is bound in a nanometric volume (like a molecular bond) is quantized, the possible energies are represented in \cref{fig:homo_lumo}.
 		The lowest levels represent the ones actually occupied with electrons and their energy is defined as the energy that can be provided to a neutral isolated molecule at its ground state which result in one electron being separated from it at an infinite distance and zero kinetic energy.
@@ -83,12 +83,12 @@
 		As we saw, for an isolated molecule the energy levels are discrete values.
 		On the contrary, for materials where electrons are delocalised in a periodic potential (\textsl{e.g.}\ in a crystal structure) we have continuous bands (ranges) of allowed electronic energies separated by energy gaps \cite{WikipediaPeriodic}.
 		For a 3D crystal, the density of states can be approximated to be the \gls{dos} of a free electrons gas where it grows with the square root of the energy, as represented in \cref{fig:DOS} \cite[140]{Kittel2004}.
-		
+
 		\paragraph{Valence and conduction bands in amorphous solids}
 		In amorphous solids, the allowed electronic energy is still composed by bands but localised states can appear inside the band gaps and the band edges are less defined.
 		These tails of the edges are usually composed by localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite[213]{Stenzel2005}.
-%		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
-		
+		%		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
+
 		\begin{SCfigure}
 			\centering
 			\includegraphics[width=0.6\textwidth]{DOS/DOS.pdf}
@@ -96,10 +96,10 @@
 				The green line indicates the density of states in a 3D crystalline solid, the two bands have been drawn with the same shape for simplicity, in general this could not be the case.
 				The orange line is the Fermi\hyp{}Dirac distribution for the electrons population.
 				The grey line is (approximatively) the product of the two aforementioned lines representing the electronic density energy distribution.
-				
+
 			}\label{fig:DOS}
 		\end{SCfigure}
-		
+
 
 		\paragraph{Boltzmann and Fermi-Dirac statistics}\label{intro_statistics}
 		For a system with defined temperature and total energy but various possible states at different energies, Boltzmann distribution gives the probability of finding it in a specific state.
@@ -111,7 +111,7 @@
 		For low temperature or high electron density cases, the interactions between particles cannot be ignored.
 		The consideration of Pauli exclusion principle for fermions modifies the Boltzmann distribution into the Fermi\hyp{}Dirac distribution, which has not been used for the simulations performed in this thesis:
 		\begin{equation}\label{eq:fermidirac}
-		n_|CB| = \frac{n_|eDOS|}{\exp[(E_|CB|-\bar\mu)/(k_|B|T)]+1}
+			n_|CB| = \frac{n_|eDOS|}{\exp[(E_|CB|-\bar\mu)/(k_|B|T)]+1}
 		\end{equation}
 		where $n_|DOS|$ has been replaced with the effective density of states $n_|eDOS|$ which considers the effective mass for interacting particles.
 
@@ -119,13 +119,13 @@
 		Fermi level is an imaginary level (disregarding the actual states present in a system) defined for systems in thermodynamic equilibrium (no macroscopic particles or energy fluxes, neither internal nor from other systems) having an energy such that its occupancy probability is \SI{50}{\%}.
 		For example, considering the 3D crystalline system represented in \cref{fig:DOS}, if the Fermi level approaches the conduction band edge, the population at that edge state can be estimated using \cref{eq:fermidirac}: $\frac{n_|eDOS|}{\exp[(E_|CB|-E_|CB|)/(k_|B|T)]+1} = n_|eDOS|/2$ so it will be half full, while the valence band will be close to completely full (many electrons, very few holes).
 		This level is ultimately the relevant potential for the charge carriers for a system in thermodynamic equilibrium, so if carriers can migrate through the system the Fermi level will have the same energy in every location of it.
-		
+
 		\paragraph{Doping}
 		A perfect crystal semiconductor (no defects, no added dopants) is intrinsic, which means that its Fermi level is in the middle of the band gap and that the electron density in the conduction band is equal to the holes density in the valence band, as represented in \cref{fig:DOS}.
 		In the example of the previous paragraph, where the Fermi level was close to the conduction band, the concentration of electrons greatly exceeds the holes density.
 		This situation can happen in "extrinsic" or "doped" semiconductors, where the presence of, for example, positive ionic Schottky defects or oxidised species can compensate the charge of the high electrons concentration and result in a charge neutral material, as represented in \cref{fig:homojunction-doping}.
 		It can also happen that the material, or a part of it, is just charged, for example due to the application of an electric field or in a space\index{space charge layer} charge layer as will be seen further.
-		
+
 		\begin{SCfigure}
 			\centering
 			\includegraphics[width=0.5\textwidth]{holes_concentration/hj-holes_concentration.pdf}
@@ -133,7 +133,7 @@
 				Simulation of an heterojunction.
 				Notice how the $\bar\mu_|VB|$ (valence band quasi\hyp{}Fermi level) distance from the valence band (top plot) relates to the holes concentration (bottom plot).}\label{fig:holes_concentration}
 		\end{SCfigure}
-	
+
 		\paragraph{Quasi-Fermi level}
 		For a system out of thermodynamic equilibrium the Fermi level is not defined any more.
 		For example, if a constant illumination hits the system plenty of electrons will be promoted from the valence band to the conduction band and the occupancy described by \cref{eq:boltzmann} or \cref{eq:fermidirac} does not hold.
@@ -142,41 +142,41 @@
 		For simplicity, the quasi-Fermi level relative to the valence band is usually referred to the holes concentration rather than to the electrons.
 		As the system is not in thermodynamic equilibrium, macroscopic particle currents can be present and this means that the energy of this level is location dependent, and can also be time dependent.
 		Clearly, at thermodynamic equilibrium both the holes and the electrons quasi\hyp{}Fermi levels coalesce into the Fermi level.
-		
+
 		\paragraph{Quasi-Fermi level and occupancy}
 		When observing a band diagram, like the one reported in \cref{fig:holes_concentration}, it is very easy to have an idea of the carriers concentrations observing the distance between the quasi\hyp{}Fermi levels and the band edges.
 		For example, in \cref{fig:holes_concentration} we can see that the closer the $\bar\mu_|VB|$ (quasi\hyp{}Fermi level relative to the valence band) gets to the valence band, the higher the holes concentration in it.
-		
+
 		\paragraph{Quasi\hyp{}Fermi levels and current}
 		Coherent with the Fermi level concept, quasi-Fermi levels are the relevant potentials for the migration of holes in the valence band and electrons in the conduction band, treated separately.
 		The quasi\hyp{}Fermi level considers both the internal chemical potential $\mu$ and the electrostatic potential $V_|E|$ and, as we will see below, these two quantities determine respectively the diffusion and the drift current.
 		For this reason, a gradient in the valence or conduction band quasi\hyp{}Fermi level ($\bar\mu_|VB|$ or $\bar\mu_|CB|$) always indicates the presence of a current respectively of holes or electrons.
 		The local value of this current will be proportional to the local quasi\hyp{}Fermi level gradient and to the respective particle local concentration.
-		
-\subsection{Electrostatics}
-Electrostatics refers to all electronic phenomena which does not intrinsically require a time varying quantity.
+
+	\subsection{Electrostatics}
+		Electrostatics refers to all electronic phenomena which does not intrinsically require a time varying quantity.
 
 
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.36\textwidth}
-				\includegraphics[scale=1.3]{drift_diffusion/drift_twobands.pdf}
-				\subcaption{Drift due to electric field}\label{fig:drift_diffusion-drift}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.66\textwidth}
-				\includegraphics[scale=1.3]{drift_diffusion/diffusion-noncharged.pdf}
-				\subcaption{Diffusion of particles}\label{fig:drift_diffusion-diffusion}
-			\end{subfigure}
-			\mycaption[Representation of drift and diffusion of charged particles.]{
-				In (\textbf{a}) the drift of holes in the valence band and electrons in the conduction band due to an electric field is represented.
-				In (\textbf{b}) the diffusion of generic particles due to differences in concentration is represented.
-		}\label{fig:drift_diffusion}
-		}
-	}
-\end{figure}
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.36\textwidth}
+						\includegraphics[scale=1.3]{drift_diffusion/drift_twobands.pdf}
+						\subcaption{Drift due to electric field}\label{fig:drift_diffusion-drift}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.66\textwidth}
+						\includegraphics[scale=1.3]{drift_diffusion/diffusion-noncharged.pdf}
+						\subcaption{Diffusion of particles}\label{fig:drift_diffusion-diffusion}
+					\end{subfigure}
+					\mycaption[Representation of drift and diffusion of charged particles.]{
+						In (\textbf{a}) the drift of holes in the valence band and electrons in the conduction band due to an electric field is represented.
+						In (\textbf{b}) the diffusion of generic particles due to differences in concentration is represented.
+					}\label{fig:drift_diffusion}
+				}
+			}
+		\end{figure}
 
 		\paragraph{Charged particles drift}\label{intro_drift}
 		The electric field acts a Lorentz force on the charged particles.
@@ -184,38 +184,38 @@ Electrostatics refers to all electronic phenomena which does not intrinsically r
 		The velocity is proportional to the electric field intensity and the mobility (characteristic of material and type of charge).
 		As represented in \cref{fig:drift_diffusion-drift}, in a typical energy diagram electrons drift downhill and holes drift uphill.
 
-\paragraph{Particles diffusion}\label{intro_diffusion}
-For all the non-fixed particles, part of the thermal energy is translational energy, regardless of their charge.
-This means that the particles move in random directions, like in a Brownian motion for gases or in Drude model for classical description of electrons bouncing around.
-The disordered motion statistically compensate differences in concentrations.
-If the net diffusion flux is considered, this is proportional to the concentration gradient and to the diffusion coefficient (which is proportional to the mobility, as described by Einstein relation).
-As represented in \cref{fig:drift_diffusion-diffusion}, particles in highly concentrated zones tend to move towards less densely occupied ones.
-Concentration of particles is the main contribution to the internal chemical potential $\mu$.
+		\paragraph{Particles diffusion}\label{intro_diffusion}
+		For all the non-fixed particles, part of the thermal energy is translational energy, regardless of their charge.
+		This means that the particles move in random directions, like in a Brownian motion for gases or in Drude model for classical description of electrons bouncing around.
+		The disordered motion statistically compensate differences in concentrations.
+		If the net diffusion flux is considered, this is proportional to the concentration gradient and to the diffusion coefficient (which is proportional to the mobility, as described by Einstein relation).
+		As represented in \cref{fig:drift_diffusion-diffusion}, particles in highly concentrated zones tend to move towards less densely occupied ones.
+		Concentration of particles is the main contribution to the internal chemical potential $\mu$.
 
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[scale=0.65]{homojunction/doping-ppipp.pdf}
-				\subcaption{Homojunction before contact}\label{fig:homojunction-doping}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.51\textwidth}
-				\includegraphics[scale=0.65]{homojunction/poisson_and_depletion-ppipp.pdf}
-				\subcaption{After contact}\label{fig:homojunction-poisson_and_depletion}
-			\end{subfigure}			
-			\mycaption[Schematics of a \textit{p}-\textit{i}-\textit{p} homojunction, with emphasis on depletion\index{space charge layer} layers and representation of Poisson equation.]{
-				In (\textbf{a}) three layers of the same material when doped to be respectively \textit{p}-type, intrinsic (non doped), and \textit{p}-type are represented.
-				In order to compensate the fixed charges introduced by dopage and maintain the net charge neutrality, the \textit{p}-type layers have the valence band rich in holes (clearly also the populations on the conduction band is affected by the doping, but not represented for simplicity).
-				In (\textbf{b}) the three layers are brought in contact forming an homojunction.
-				The holes flow through the interfaces following the Fermi level gradient, until it gets flattened.
-				This generates space\index{space charge layer} charge layers at the interfaces, where a net charge is present (the thickness of it is expected to be thicker in the intrinsic layer rather than in the doped ones, as described in \cpageref{intro-debye_length}).
-				To easily understand the bending direction of the layers due to the net charge, the Poisson equation tells us that a positive charge means a positive vacuum level second derivative.
-			}\label{fig:homojunction}
-		}
-	}
-\end{figure}
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.51\textwidth}
+						\includegraphics[scale=0.65]{homojunction/doping-ppipp.pdf}
+						\subcaption{Homojunction before contact}\label{fig:homojunction-doping}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.51\textwidth}
+						\includegraphics[scale=0.65]{homojunction/poisson_and_depletion-ppipp.pdf}
+						\subcaption{After contact}\label{fig:homojunction-poisson_and_depletion}
+					\end{subfigure}
+					\mycaption[Schematics of a \textit{p}-\textit{i}-\textit{p} homojunction, with emphasis on depletion\index{space charge layer} layers and representation of Poisson equation.]{
+						In (\textbf{a}) three layers of the same material when doped to be respectively \textit{p}-type, intrinsic (non doped), and \textit{p}-type are represented.
+						In order to compensate the fixed charges introduced by dopage and maintain the net charge neutrality, the \textit{p}-type layers have the valence band rich in holes (clearly also the populations on the conduction band is affected by the doping, but not represented for simplicity).
+						In (\textbf{b}) the three layers are brought in contact forming an homojunction.
+						The holes flow through the interfaces following the Fermi level gradient, until it gets flattened.
+						This generates space\index{space charge layer} charge layers at the interfaces, where a net charge is present (the thickness of it is expected to be thicker in the intrinsic layer rather than in the doped ones, as described in \cpageref{intro-debye_length}).
+						To easily understand the bending direction of the layers due to the net charge, the Poisson equation tells us that a positive charge means a positive vacuum level second derivative.
+					}\label{fig:homojunction}
+				}
+			}
+		\end{figure}
 
 
 		\paragraph{Poisson equation}
@@ -227,7 +227,7 @@ Concentration of particles is the main contribution to the internal chemical pot
 		For easing the understanding of the band diagram, the scheme in \cref{fig:homojunction-poisson_and_depletion} can be handful.
 		As can be seen, in the zones where a net charge is present (space\index{space charge layer} charge layers, depletion\index{space charge layer} layers in the represented case) the second derivative of the electrostatic potential or of the vacuum level depends on the sign of this net charge: upwards for positive charge and downwards for negative one.
 		A material with a different permittivity will need a different amount of net charge in order to have the same "curvature" of the vacuum level: the higher the permittivity, the more the charge needed for obtaining the same electrostatic potential profile.
-	
+
 		\paragraph{Space charge layers and electric field screening}\label{intro-space_charge}
 		As represented in \cref{fig:homojunction}, when two materials with different Fermi levels are brought into contact their free charges migrate until when the Fermi level is flattened.
 		This generates non-neutral zones, where a net charge is present, denominated space\index{space charge layer} charge layers.
@@ -237,19 +237,19 @@ Concentration of particles is the main contribution to the internal chemical pot
 		These space\index{space charge layer} charge layers will cause an opposite electric field which will completely eliminate the field in the bulk of the material.
 		Extending this concept to the aforementioned example of semiconductors in contact, it is easy to see that far from the interfaces the electric field is zero, or "screened" by the charged layers, as represented in \cref{fig:homojunction-poisson_and_depletion}.
 		% and the materials' free charges and polarizability (permittivity) arranges so that the non-zero field zone is as thin as possible.
-		
+
 		\paragraph{Debye length}\label{intro-debye_length}
 		In each layer, the thickness of this space\index{space charge layer} charge region is named "Debye length" or "Thomas\hyp{}Fermi screening length".
-The density profile and thickness of the space\index{space charge layer} charge layer depends on the establishment of a dynamic equilibrium of drifting and diffusing charges in this region.
-Taking as a reference the charges shown in \cref{fig:homojunction-poisson_and_depletion}, the holes in the bulk of the \textit{p}-type material (leftmost and rightmost) will diffuse towards the interface, just because of the concentration gradient (close to the interface the material is depleted of holes).
-In the opposite direction, the holes in the intrinsic material (in the middle) will drift towards the \textit{p}-type material due to the electric field.
-The steady state of this equilibrium, and so also the Debye length, depends upon the carriers concentration (which in turn depends on the doping density) and the material permittivity \cite{WikipediaDebye2019}.
+		The density profile and thickness of the space\index{space charge layer} charge layer depends on the establishment of a dynamic equilibrium of drifting and diffusing charges in this region.
+		Taking as a reference the charges shown in \cref{fig:homojunction-poisson_and_depletion}, the holes in the bulk of the \textit{p}-type material (leftmost and rightmost) will diffuse towards the interface, just because of the concentration gradient (close to the interface the material is depleted of holes).
+		In the opposite direction, the holes in the intrinsic material (in the middle) will drift towards the \textit{p}-type material due to the electric field.
+		The steady state of this equilibrium, and so also the Debye length, depends upon the carriers concentration (which in turn depends on the doping density) and the material permittivity \cite{WikipediaDebye2019}.
 		For example, in a material with high permittivity the polarization will decrease the efficacy of the charges and a thicker layer will be needed.
 		Another example, in an intrinsic material there are few free charges and the space\index{space charge layer} charge layer will be much thicker, as in \cref{fig:homojunction-poisson_and_depletion}.
-If the material layer is thinner than the Debye length, the electric field will be screened just partially and no region will be completely field free.
-		
+		If the material layer is thinner than the Debye length, the electric field will be screened just partially and no region will be completely field free.
+
 	\subsection{Electrodynamics}
-	Electrodynamics refer to all the phenomena intrinsically time-dependent, which varies with time.
+		Electrodynamics refer to all the phenomena intrinsically time-dependent, which varies with time.
 
 		\paragraph{Displacement current -- definition}\label{intro_displacement_current}
 		The displacement current\index{displacement current} $J_D$ appears in the fourth macroscopic Maxwell's equation as $\partial D / \partial t$ for describing the contributions to magnetizing field not originated by a current of free charges $J_f$: $\nabla \times H = J_f + \frac{\partial D}{\partial t}$.
@@ -318,7 +318,7 @@ If the material layer is thinner than the Debye length, the electric field will 
 
 		\paragraph{Continuity equation}
 		The continuity equation has a very intuitive meaning: the concentration of a species in a specific volume can increase due to generation $g$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
-%		 (\textsl{e.g.}\ charges slowing down in a position will start accumulating).
+		%		 (\textsl{e.g.}\ charges slowing down in a position will start accumulating).
 		This last contribution can be understood with the following example: a red traffic light stops the cars flow and causes the increase of their concentration.
 		For an electron concentration $n$:
 		\begin{equation}\label{eq_continuity}
@@ -340,18 +340,18 @@ If the material layer is thinner than the Debye length, the electric field will 
 		An indirect bandgap disfavours the radiative recombination: in these materials the recombination involves a large momentum variation, while the photon emitted due to the recombination can take just a small momentum and the rest of it should be released as an additional phonon (lattice vibrations).
 		Radiative recombination involves the collision of two opposite free charges, so it can be considered as having a reaction order of 2 when electrons and holes concentrations are similar, $n \approx p$ (in intrinsic semiconductors out of depletion\index{space charge layer} layers or, in intrinsic perovskites, once ionic profile screened the electric field), while in case of uneven concentrations (in doped semiconductors or within depletion\index{space charge layer} layers) the limiting reagent is the minority carrier (electrons in \textit{p}-type and holes in \textit{n}-type materials) and the reaction order is 1.
 		The expression used for modelling is:
-		 \begin{equation}
-		U_|rad| = k_|rad| (np-n_|eq|^2)
-				\end{equation}
+		\begin{equation}
+			U_|rad| = k_|rad| (np-n_|eq|^2)
+		\end{equation}
 		where $n_|eq|$ is the equilibrium carrier density as obtained from Boltzmann distribution for an intrinsic semiconductor, it is just introduced in the equation in order to account for the thermal generation.
 		The dependency from $np$ indicates that this recombination type depends on the quasi\hyp{}Fermi levels splitting \cite{Stolterfoht2018a}.
 		This type of recombination is present in perovskite solar cells, indeed some of the most efficient perovskite solar cells can be used as \gls{led} taking advantage of their radiative recombination \cite{Bi2016}.
 
 		\paragraph{\Glsentryshort{srh} trap mediated recombination}
-		Shockley-Read-Hall recombination \cite{Shockley1952} happens in two steps: a free carrier decays from the respective band into an empty localised state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.		
+		Shockley-Read-Hall recombination \cite{Shockley1952} happens in two steps: a free carrier decays from the respective band into an empty localised state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
 		Usually both the momentum difference and the chemical energy is released \textsl{via} phonons, so no radiative emission is involved.
 		When the trap is empty and/or when it is occupied, it will have a net charge which will ease the capture of a free carrier through Coulomb force (partially screened by the material's permittivity) \cite{Kirchartz2018,Kirchartz2019}.
-%		The capture of a free charge by an empty or occupied trap will be favoured by the Coulomb attraction due to the charged state of the trap
+		%		The capture of a free charge by an empty or occupied trap will be favoured by the Coulomb attraction due to the charged state of the trap
 		As aforementioned, in an indirect band gap material the radiative recombination is disfavoured, but the presence of a trap state can divide in two easier steps the charge recombination process.
 		%		In an indirect band gap material (where the momentum difference between the starting and final state is large) band-to-band bimolecular radiative recombination is disfavoured, but the presence of a localised trap state can catalyse the transition 
 		This recombination type can have reaction order of 1 or 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2019}.
@@ -364,18 +364,18 @@ If the material layer is thinner than the Debye length, the electric field will 
 		where $\tau_n$ and $\tau_p$ are constants describing the trap capture cross section (which can be different for electrons and holes) and the traps density while $n_t$ and $p_t$ are the carrier densities that would be present with a the Fermi level equal to the traps energy.
 		For a doped semiconductor with similar $\tau_n$ and $\tau_p$ constants, the expression can be simplified, for example in a \textit{p}-type material we can use \cite[108]{Nelson2003}:
 		\begin{equation}
-		U_{SRH} \approx \frac{n-n_0}{\tau_n}
+			U_{SRH} \approx \frac{n-n_0}{\tau_n}
 		\end{equation}
 		so, the more the material is densely doped, the smaller the minority carriers density and the less important is this kind of recombination.
 		For lead halide hybrid perovskite materials, this kind of recombination is or is not important depending on the presence of mid-gap states, which in turn depends on the material composition and stoichiometry.
 
 		\paragraph{Surface recombination}\label{intro_surface_recombination}
-%		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
+		%		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
 		Also known as interfacial recombination, refers to the annihilation of two opposite charges happening at the boundary of a material block: an interface.
 		An interface can form between grains of the same material or between different materials.
 		At the boundary of a crystal, the well ordered structure is interrupted creating various localised states which can act as traps for \gls{srh} recombination.
 		Additionally, the impurities tend to accumulate to the crystalline grain surface, external contamination is likely to occur at the material surface, chemical reactivity can vary the composition of two materials' interface, and mid-gap states could be already present in one of the two interfacing materials.
-%		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
+		%		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
 		Recent reports indicate that also the \acr{lumo} of an \gls{htm}, even if it is out of the perovskite's band gap, can efficiently mediate the recombination of hot electrons \cite{Jimenez-Lopez2018,Droseros2019}.
 		In this thesis, I will consider the surface recombination as a case of \gls{srh} recombination.
 		Considering the interface between two different materials, for example, \textit{p}-type \acr{htm} and close-to-intrinsic perovskite, the surface recombination will involve the majority carrier, holes, in the \textit{p}-type material and electrons in the intrinsic semiconductor.
@@ -390,9 +390,9 @@ If the material layer is thinner than the Debye length, the electric field will 
 		These high charge densities are unlikely to happen in perovskite solar cells at maximum power point working conditions while they could happen at open circuit under illumination.
 
 	\subsection{Charge Generation}
-	Thanks to microscopic reversibility, each of the mentioned recombination processes has an identical but opposed generation process \cite[81]{Nelson2003}.
-	These generation processes require some energy in input, which can be thermal (phonons, \textsl{i.e.}\ lattice vibrations) for the generation associated to the non radiative processes or radiative for the reverse of the radiative recombination.
-	This last case, named photogeneration, is the most interesting for photovoltaics.
+		Thanks to microscopic reversibility, each of the mentioned recombination processes has an identical but opposed generation process \cite[81]{Nelson2003}.
+		These generation processes require some energy in input, which can be thermal (phonons, \textsl{i.e.}\ lattice vibrations) for the generation associated to the non radiative processes or radiative for the reverse of the radiative recombination.
+		This last case, named photogeneration, is the most interesting for photovoltaics.
 
 
 
@@ -403,11 +403,11 @@ If the material layer is thinner than the Debye length, the electric field will 
 		The energy gained by the stick would absorb all the energy of the incoming electric field, causing the annihilation of the photon.
 		Passing to consider a molecule, the photon would be absorbed just if it matches the energy difference between the fundamental (\cref{fig:generation-initial}) and an excited molecular state (and just if a transition dipole moment is not zero and other selection rules).
 		As we ultimately want to extract free charges from the material, we will consider just the transitions of electrons between molecular orbitals or bands.
-%		 dipole vector of the starting state is not identical to the final state ().
+		%		 dipole vector of the starting state is not identical to the final state ().
 		After the photon absorption, a previously occupied energy level is now missing one electron which has been promoted to a previously unoccupied virtual state.
 		This is represented in \cref{fig:generation-excited_hot} for a high energy photon generating a hot excitation \ch{M^{*h}} (which later can result in a hot exciton and a hot carrier, not treated in this thesis) or in \cref{fig:generation-excited} for a photon with just enough energy to generate an excitation \ch{M^{*}}.
 		Photons with energy smaller than the optical band gap can also be absorbed by different processes like valence band to empty mid gap localised state, occupied mid gap localised state (trapped charge) to conduction band, localised states caused by structural disorder or thermal motion in crystals (Urbach tails) but they will not be considered in this thesis.
-		
+
 		\begin{figure}
 			\makebox[\textwidth][c]{
 				\parbox{1.1\textwidth}{
@@ -436,53 +436,53 @@ If the material layer is thinner than the Debye length, the electric field will 
 						In (\textbf{b}) a photon with high energy excited an electron from the \acr{homo} to the \acr{lumo}$+2$, equivalently also other levels can be involved \textsl{e.g.}\ \acr{homo}$-1$.
 						In (\textbf{c}) a photon with just enough energy has promoted an electron.
 						Please note that the final state of the electron (a \gls{somo}) has a lower energy than the \acr{lumo}, as explained in the text.
-						In (\textbf{d}) the excited electron in the \gls{somo} has been transferred to the \acr{lumo} of an adjacent molecule. 
+						In (\textbf{d}) the excited electron in the \gls{somo} has been transferred to the \acr{lumo} of an adjacent molecule.
 					}\label{fig:generation}
 				}
- 			}
+			}
 		\end{figure}
-	
+
 		\paragraph{Exciton and exciton binding energy}\label{intro_exciton}
 		The starting state of the electron involved in the radiative excitation is the \acr{homo} of the molecule \ch{M}, marked in \cref{fig:generation-initial} with $\alpha$.
 		When an electron is removed from the \acr{homo}, the energy of the \acr{lumo} decreases, as it now refers to a different electronic configuration, where the underlying orbitals are not fully balancing the nuclei positive charges any more.
 		So the arrival state of the excited electron, marked with $\gamma$ in \cref{fig:generation-excited}, is at a lower energy than the initial state \acr{lumo} ($\beta$) and the optical band gap (which can be measured from absorbance spectrum \textsl{via} a Tauc plot) is smaller than the band gap (difference between the electron affinity and the ionization potential represented in \cref{fig:homo_lumo}).
 		Additionally, these energies can be influences by the polarisability of the surroundings (\textsl{e.g.}\ solvent permittivity) which can have different energetic contributions to \ch{M}, \ch{M-}, or \ch{M^{*}}; by intermolecular interactions; and by the molecular geometry which also depends on the solvent or solid state.
-%		The \acr{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in .
-%		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
+		%		The \acr{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in .
+		%		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
 		Next to the excitation, an electron can either go back (recombine) or start getting apart from the original location, as represented in \cref{fig:generation-exciton} where it has been transferred to an adjacent molecule.
 		As a final step for generating a free carrier, the Coulomb force caused by the electron on \ch{M-} and the "hole" on \ch{M+} has to be overcome.
 		Both the aforementioned energy difference between $\gamma$ (upper \gls{somo} of the excited molecule) and $\delta$ (\acr{lumo}), and the energy needed for taking the charges apart breaking the electrostatic attraction of the exciton contribute to the exciton binding energy.
 		For most of the crystalline materials with delocalised orbitals, electron binding energy is smaller than the ambient thermal energy $k_|B|T$ so a direct generation of opposite and independent free charges is observed.
-%		Also localised states (charges in mid gap traps) can be involved in optical excitation, in that case
-%		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
+		%		Also localised states (charges in mid gap traps) can be involved in optical excitation, in that case
+		%		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
 
 	\subsection{PhotoVoltaic Effect}
-	The charge generation causes an increase of the concentration of both electrons in the conduction band and of holes in the valence band.
-	This can be represented with the position of the quasi\hyp{}Fermi levels as they approach to the respective band edge ($\bar\mu_|CB|$ towards conduction band and $\bar\mu_|VB|$ towards valence band).
-	
-	
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\textwidth]{collection/OC_noions_loweppAbsorber-annotated.pdf}
-		\mycaption[Simulation of a \textit{p-i-n} homojunction device illuminated at open circuit.]{
-			From left to right: \textit{p}-type material, intrinsic semiconductor where generation occurs, \textit{n}-type material.
-			Low permittivity in the central layer was employed in order to represent also an electric field free zone.
-			In top figure, the band diagram is represented.
-			Single arrows indicate drift due to the field.
-			The observable gradients of the quasi-Fermi levels just represent the minority carriers recombination current.
-			The values of $\bar\mu_|VB|$ in the location marked with $\alpha$ and of $\bar\mu_|CB|$ in $\beta$ are the relevant ones for the open circuit voltage.
-			In bottom figure: the charges' concentrations.
-			Double arrows represent charge diffusion.
-		}\label{fig:collection}
-	\end{figure}
-	
+		The charge generation causes an increase of the concentration of both electrons in the conduction band and of holes in the valence band.
+		This can be represented with the position of the quasi\hyp{}Fermi levels as they approach to the respective band edge ($\bar\mu_|CB|$ towards conduction band and $\bar\mu_|VB|$ towards valence band).
+
+
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\textwidth]{collection/OC_noions_loweppAbsorber-annotated.pdf}
+			\mycaption[Simulation of a \textit{p-i-n} homojunction device illuminated at open circuit.]{
+				From left to right: \textit{p}-type material, intrinsic semiconductor where generation occurs, \textit{n}-type material.
+				Low permittivity in the central layer was employed in order to represent also an electric field free zone.
+				In top figure, the band diagram is represented.
+				Single arrows indicate drift due to the field.
+				The observable gradients of the quasi-Fermi levels just represent the minority carriers recombination current.
+				The values of $\bar\mu_|VB|$ in the location marked with $\alpha$ and of $\bar\mu_|CB|$ in $\beta$ are the relevant ones for the open circuit voltage.
+				In bottom figure: the charges' concentrations.
+				Double arrows represent charge diffusion.
+			}\label{fig:collection}
+		\end{figure}
+
 		\paragraph{Charges reaching the interfaces \textsl{via} diffusion}
 		In the absorber layer, the charges concentration increases thanks to the photogeneration, this causes a gradient of concentration that drives a diffusion current (see \cpageref{intro_diffusion}) towards the non\hyp{}absorbing layers.
 		At the interface with the contacts, the carriers' concentration is often smaller than in the bulk and this keeps up the diffusion current.
 		This happens either due to recombination processes at the interfaces (\textsl{e.g.}\ when an electron reaches the holes rich \textit{p}-type \gls{htm}) or to the charges collection through the interfaces as described in the next paragraph.
 		As we will see, in perovskite solar cells the electric field in the bulk is mostly screened, and the transport \textsl{via} diffusion is very important.
 		In the example reported in \cref{fig:collection} bottom, the gradients in the charges' concentrations cause diffusion currents.
-		
+
 		\paragraph{Charge collection due to drift}
 		In regions where an electric field is present, \textsl{e.g.}\ close to the interfaces in a perovskite solar cells, the free charges are pulled by the Lorentz force as seen in \cpageref{intro_drift}.
 		In the example reported in \cref{fig:collection} top, the curvature of the bands indicates the presence of electric field driving the charges' drift.
@@ -490,38 +490,38 @@ If the material layer is thinner than the Debye length, the electric field will 
 		\paragraph{Current}
 		As seen above, the photogenerated electrons gets collected in the \acr{etm} and the holes in the \acr{htm}.
 		If an external electrical circuit connects the two electrodes of our solar cell, optionally including a load, the accumulated carriers will discharge through this circuit and we will be able to measure a current and to extract a power.
-		
+
 		\paragraph{Voltage}
 		The quasi-Fermi splitting induced by the photogeneration of charges gets reflected in a shift of these levels also in the contacts.
 		In doped contacts, the concentration of the minority carrier should become negligible due to the recombination with the abundant majority carrier (\textsl{e.g.} the electronic concentration in a \textit{p}-type contact will decrease until the where, in the bulk of the material, its respective conduction band quasi-Fermi level coalesce with the valence band quasi-Fermi level related to the majority carriers).
 		Further, as in the metallic contacts there is no conduction nor valence band (and very fast recombination), the quasi\hyp{}Fermi level related to the majority carrier ($\bar\mu_|VB|$ in the \acr{htm} or $\bar\mu_|CB|$ in the \gls{etm}) is the one ruling the Fermi level in the metal.
 		So the difference between the holes' $\bar\mu_|VB|$ at the \gls{htm}/electrode interface ($\alpha$ in \cref{fig:collection}) and the electrons' $\bar\mu_|CB|$ at the \gls{etm}/electrode interface ($\beta$ in \cref{fig:collection}) gets reflected into the electrodes Fermi level, which ultimately can be measured as a voltage.
-			 
-%		For this reason the relevant energy level at the left end of \acr{htm} is the valence band quasi\hyp{}Fermi level 
+
+		%		For this reason the relevant energy level at the left end of \acr{htm} is the valence band quasi\hyp{}Fermi level 
 
 \section{Perovskite Solar Cells}
 	\epigraph{\textit{\enquote{That's yogurt science!}}}
 
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.43\textwidth}
-				\includegraphics[width=1\textwidth]{crystal_perovskite_edvin_fako/ilario2-crop.png}
-				\subcaption{}\label{fig:crystal-single}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.59\textwidth}
-				\includegraphics[width=1\textwidth]{crystal_perovskite_edvin_fako/ilario1-crop.png}
-				\subcaption{}\label{fig:crystal-bulk}
-			\end{subfigure}
-			\mycaption[Crystal structure of \glsentrytext{mapi} perovskite.]{In (\textbf{a}) the methylammonium cation is between \ch{PbI6} octahedra.
-				In (\textbf{b}) the bulk structure is represented.
-				These graphics, created with Vasp and Blender software, are courtesy of Edvin Fako \texttt{<efako@iciq.es>}.
-			}\label{fig:crystal}
+	\begin{figure}
+		\makebox[\textwidth][c]{
+			\parbox{1.1\textwidth}{
+				\centering
+				\begin{subfigure}[t]{0.43\textwidth}
+					\includegraphics[width=1\textwidth]{crystal_perovskite_edvin_fako/ilario2-crop.png}
+					\subcaption{}\label{fig:crystal-single}
+				\end{subfigure}
+				\qquad
+				\begin{subfigure}[t]{0.59\textwidth}
+					\includegraphics[width=1\textwidth]{crystal_perovskite_edvin_fako/ilario1-crop.png}
+					\subcaption{}\label{fig:crystal-bulk}
+				\end{subfigure}
+				\mycaption[Crystal structure of \glsentrytext{mapi} perovskite.]{In (\textbf{a}) the methylammonium cation is between \ch{PbI6} octahedra.
+					In (\textbf{b}) the bulk structure is represented.
+					These graphics, created with Vasp and Blender software, are courtesy of Edvin Fako \texttt{<efako@iciq.es>}.
+				}\label{fig:crystal}
+			}
 		}
-	}
-\end{figure}
+	\end{figure}
 
 
 	Inorganic lead perovskites are known since at least 1958 and first reported in \authoryear{Moller1958}.
@@ -531,13 +531,13 @@ If the material layer is thinner than the Debye length, the electric field will 
 	Here the absorber dye is substituted by a hybrid organic-inorganic lead halide perovskite semiconductor and both the \acr{etm} and the \acr{htm} can be composed of solid organic or inorganic materials.
 	Thanks to the enormous research effort, these kind of devices reached a record stabilised efficiency of 20.9~\% \cite{Green2019} with reports of even higher non-stabilised efficiencies (23.7~\% \cite{Green2019,Jiang2017}) in relatively short time, as represented in \cref{fig:nrel_chart}.
 
-%	\paragraph{Composition}
-%	Cesium introduction \cite{Bi2016,Saliba2016}
-\begin{SCfigure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{nrel_chart/pv-efficiencies-2019-06-13.pdf}
-	\mycaption[NREL chart of "Best Research-Cell Efficiencies"]{Just the perovskite solar cells (not stabilised) results have been reported.}\label{fig:nrel_chart}
-\end{SCfigure}
+	%	\paragraph{Composition}
+	%	Cesium introduction \cite{Bi2016,Saliba2016}
+	\begin{SCfigure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{nrel_chart/pv-efficiencies-2019-06-13.pdf}
+		\mycaption[NREL chart of "Best Research-Cell Efficiencies"]{Just the perovskite solar cells (not stabilised) results have been reported.}\label{fig:nrel_chart}
+	\end{SCfigure}
 
 
 
@@ -554,9 +554,9 @@ If the material layer is thinner than the Debye length, the electric field will 
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
 	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \acr{etm} and an \acr{htm} the photoluminescence lifetime is dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
 	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/\-selective contacts interfaces \cite{Calado2019,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
-%		This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
-This recombination is important in perovskite solar cells also due to the high minority carriers concentration close to the contacts, which is a result of the screening of the electric field in the bulk of the perovskite material.
-%This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
+	%		This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
+	This recombination is important in perovskite solar cells also due to the high minority carriers concentration close to the contacts, which is a result of the screening of the electric field in the bulk of the perovskite material.
+	%This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
 	%	Considering the perovskite material, traps are more likely to form on the surface of crystal domains, where the bulk symmetry is broken and carrier-phonon coupling, which can ease indirect transitions is more likely due to the easier deformation of the broken structure . 
 
 	\paragraph{Open circuit voltage}
@@ -575,13 +575,13 @@ This recombination is important in perovskite solar cells also due to the high m
 	For perovskite solar cells, the record reported \textit{bandgap\hyp{}voltage offset} are already much smaller than the voltage losses reported for \gls{osc} \cite{Tvingstedt2015}.
 	Also the morphology and composition of perovskite material can have an impact on the \gls{voc}: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes and direct recombination between the two contacts \cite{Lee2015,Montcada2017,Qiu2016,Marchioro2014}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies which can be reduced modifying the perovskite composition \cite{Bi2016}.
 	If we consider the possibility of stabilising the hot carriers (free charges generated by a photon with energy larger than the band gap, can be stabilised hindering the generation of phonons needed for their thermalisation) and of collecting them to the contacts before their thermal relaxation to the band edge, also a \gls{voc} larger than the absorber band gap could be achieved and might, at least theoretically, break the Shockley\hyp{}Queisser efficiency limit \cite{WikipediaSQlimit}.
-	
-%	\paragraph{Charge extraction and charge blocking}
-%	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
-%	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015}
-%	% and for blockage CITE SOMETHING.
 
-\paragraph{Ionic defects}
+	%	\paragraph{Charge extraction and charge blocking}
+	%	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
+	%	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015}
+	%	% and for blockage CITE SOMETHING.
+
+	\paragraph{Ionic defects}
 	A Schottky defect is the lack of a ion and its counter ion from an otherwise perfect crystal structure.
 	This is commonly observed in ionic solids with weak lattice energy.
 	Taking as an example the \gls{mapi} lead halide perovskite, the formation of the Schottky defect \ch[kroeger-vink=true]{V'_{MA} + V^._{I}} (a methylammonium cation and a iodine anion leaving the crystal) is expected to be rather easy as these ions leaves behind vacancies with just charge $\pm 1$ and the product, \ch{CH3NH3I} can further decompose in volatile compounds like methylamine and hydrogen iodide.
@@ -589,7 +589,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	This specific defect can be avoided with small variations of the stoichiometry but other kind of defects will become more likely (\textsl{e.g.}\ \ch[kroeger-vink=true]{V''_{Pb} + 2 V^._{I}}), and the minimum defects' concentration achievable with \gls{mapi} perovskite has been reported to be around \SI{\approx 8e17}{\per\cubic\cm} (\SI{\approx 0.02}{\%}) \cite{Walsh2015}.
 	A iodine vacancy can also be originated by a Frenkel defect where a iodine migrates from its site to an interstitial one \ch[kroeger-vink=true]{V^._{I} + I'_{i}} and some studies support this as the origin of defects in perovskite materials \cite{Birkhold2018,Birkhold2018a,Minns2017,Mosconi2016,Uratani2017}.
 	Frenkel defects are expected to constitute shallow or deep traps in the perovskite band gap while Schottky defects should not present energies inside the band gap \cite{Kim2014h,Yin2014,Buin2014,Du2015}.
-%	For a halide perovskite, when compared with an oxide perovskite where \ch{X} is oxygen, the formation of ionic defects is easier thanks to the lower charge of the ionic species which means a lower lattice energy.
+	%	For a halide perovskite, when compared with an oxide perovskite where \ch{X} is oxygen, the formation of ionic defects is easier thanks to the lower charge of the ionic species which means a lower lattice energy.
 
 	\paragraph{Ionic migration}\label{intro_ionic_migration}
 	Ionic conductivity in halide perovskite materials has been pointed out more than 35 years ago \cite{Mizusaki1983,Yamada1995,Yamada1998}.
@@ -600,23 +600,23 @@ This recombination is important in perovskite solar cells also due to the high m
 	In complete perovskite solar cells, the ionic migration is one of the factors causing hysteretic\index{hysteresis} low frequency current\hyp{}voltage behaviour \cite{Unger2014,Xiao2015,Meloni2016,Tress2015}.
 	Still, the presence of ionic motion has been demonstrated even in non\hyp{}hysteretic\index{hysteresis} devices \cite{Calado2016,Jacobs2018,Bryant2015}.
 
-	
-%	The fact that in the  materials the charge of the ionic species is low, $+1$, $+2$, or $-1$, allows the crystal to form defects easily
-%	The ionic defect concentration in these materials can be very high due to the weak lattice energy 
+
+	%	The fact that in the  materials the charge of the ionic species is low, $+1$, $+2$, or $-1$, allows the crystal to form defects easily
+	%	The ionic defect concentration in these materials can be very high due to the weak lattice energy 
 	%	The presence of and mobile ionic species have been demonstrated in various kind of hybrid lead halide perovskite materials.
 
 	\paragraph{Field free absorber}
 	The high density of ionic defects causes the equilibrium free charge concentration to be low \cite{Walsh2015} and the electric field inside the absorber to be completely shielded within few nanometres from the interfaces \cite{Tress2015,Richardson2016}.
 
-%	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
+	%	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
 
 	\paragraph{Diffusion as the main transport mechanism}
 	As we saw, most of the absorber layer in a perovskite solar cell will be electric field free.
 	In this region, no drift will help with the charge collection and the photogenerated free charges will have to approach the contacts \textsl{via} diffusion.
 	This is possible in perovskite thanks to its excellent electron and holes mobility \cite{Leijtens2014,Herz2017} making possible diffusion lengths in the micrometre scale \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014,Liu2017}.
-	
-%	(due to the built-in voltage being the workfunction difference of the selective contacts)
-%	(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
+
+	%	(due to the built-in voltage being the workfunction difference of the selective contacts)
+	%	(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
 	\paragraph{Hysteresis}
 	Hysteretic behaviour in current-voltage sweeps, while not often observed in other kind of solar cells, it is frequent in perovskite solar cells.
 	Still, many reports of hysteresis-free perovskite solar cells can be found, especially for top cathode or for high performances bottom cathode devices.
@@ -624,7 +624,7 @@ This recombination is important in perovskite solar cells also due to the high m
 	Considering that the recombination and collection of free charges is affected by the ions-modulated electric field \cite{Pockett2017}, this is enough to explain the presence of hysteresis\index{hysteresis} \cite{Tress2015,Calado2016} \textsl{via} the modulation of interfacial energy barriers \cite{Moia2019}.
 	Additionally, adsorption or chemical reaction of perovskite ionic defects with the selective contact surface (\textsl{e.g.}\ with titanium oxide \cite{Yu2016,Beilsten-Edmands2015,Carrillo2016}) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis\index{hysteresis} while top cathode with all-organic contacts usually does not.
 
-%	\paragraph{Intrinsic or doped semiconductor}
+	%	\paragraph{Intrinsic or doped semiconductor}
 
 
 	\paragraph{Characterisation}
@@ -645,37 +645,37 @@ This recombination is important in perovskite solar cells also due to the high m
 	So, when this cation gets in contact with non-acidic materials it can release its proton and leave the the perovskite crystal structure as methylamine.
 	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
 	Additionally, various other reactions can happen inside the material or at its interfaces, for example the formation of metallic lead \cite{Birkhold2018a,Sadoughi2015}, of molecular iodine \cite{Minns2017}, of lead iodide \cite{Buin2015,Walsh2015}, of methylammonium iodide \cite{Walsh2015}.
-Some of these degradation pathways are further favoured by contact with moisture \cite{Jong2018,Schlipf2019,Hu2017,Han2015a} (which if not too much, can be reversed \cite{Leguy2015}), with oxygen in combination with light \cite{Senocrate2018a,Aristidou2017} (as described in \cpageref{methods_degradation}), with UV light \cite{Lee2016}, with temperature \cite{Philippe2015,Conings2015}, with \gls{spiro} \cite{Carrillo2016,Kim2017,Kim2016a}, with \gls{pcbm60} \cite{DeBastiani2016}, with the metallic electrodes due to chemical reactivity \cite{Kato2015,Guerrero2016a,Back2016,Zhao2016,DeBastiani2016} or intermixing \cite{Domanski2016}.
+	Some of these degradation pathways are further favoured by contact with moisture \cite{Jong2018,Schlipf2019,Hu2017,Han2015a} (which if not too much, can be reversed \cite{Leguy2015}), with oxygen in combination with light \cite{Senocrate2018a,Aristidou2017} (as described in \cpageref{methods_degradation}), with UV light \cite{Lee2016}, with temperature \cite{Philippe2015,Conings2015}, with \gls{spiro} \cite{Carrillo2016,Kim2017,Kim2016a}, with \gls{pcbm60} \cite{DeBastiani2016}, with the metallic electrodes due to chemical reactivity \cite{Kato2015,Guerrero2016a,Back2016,Zhao2016,DeBastiani2016} or intermixing \cite{Domanski2016}.
 
-%	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
+	%	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
 
-%\section{Background and Related Work}\label{sec:background}
-%
-%	\subsection{Perovskite Solar Cells}
-%
-%	\subsection{Hole Transporting Materials}
-%
-%	\subsection{PhotoPhysical Studies and Techniques}
-%
-%	\subsection{Modelling and Relevant Physics}
+	%\section{Background and Related Work}\label{sec:background}
+	%
+	%	\subsection{Perovskite Solar Cells}
+	%
+	%	\subsection{Hole Transporting Materials}
+	%
+	%	\subsection{PhotoPhysical Studies and Techniques}
+	%
+	%	\subsection{Modelling and Relevant Physics}
 
-\newpage
+	\newpage
 
 \section{Motivation and Aims}\label{sec:aims}
-\epigraph{\textit{\enquote{To begin with, we want everything.}}}{autistici / inventati}
+	\epigraph{\textit{\enquote{To begin with, we want everything.}}}{autistici / inventati}
 
 
-The objectives of this thesis are:\nolinebreak
-\begin{itemize}
-	\item synthesise different kinds of lead perovskite absorbers (\textsl{e.g.}\ \gls{mapicl}, \gls{mapi}, \gls{famapbibr}, \gls{csfamapbibr});
-	\item fabricate solar cells with different structures (\textsl{e.g.}\ top and bottom cathode);
-	\item test different materials for selective contacts, either known (\textsl{e.g.}\ flat or mesoporous titania, \gls{pcbm70} or plain fullerene) or novel materials obtained \textsl{via} collaborations (\textsl{e.g.}\ \gls{tae1}, \gls{tae3}, \gls{tae4});
-	\item optimisation of the devices fabrication in order to get close to the state of the art devices;
-	\item characterisation of the prepared devices using the existing routine techniques (\textsl{e.g.}\ current\hyp{}voltage sweeps);
-	\item characterisation using advanced small perturbation techniques;
-	\item optimisation of the characterisation methods, data acquisition, and data processing;
-	\item obtain information on the charge accumulation and charge dynamics from the characterisation output;
-	\item model perovskite solar cells and compare the expected theoretical output with the experimental one;
-	\item where the simulation matches the experiment, take advantage of the additional insight obtainable from the modelling.	
-\end{itemize} 
+	The objectives of this thesis are:\nolinebreak
+	\begin{itemize}
+		\item synthesise different kinds of lead perovskite absorbers (\textsl{e.g.}\ \gls{mapicl}, \gls{mapi}, \gls{famapbibr}, \gls{csfamapbibr});
+		\item fabricate solar cells with different structures (\textsl{e.g.}\ top and bottom cathode);
+		\item test different materials for selective contacts, either known (\textsl{e.g.}\ flat or mesoporous titania, \gls{pcbm70} or plain fullerene) or novel materials obtained \textsl{via} collaborations (\textsl{e.g.}\ \gls{tae1}, \gls{tae3}, \gls{tae4});
+		\item optimisation of the devices fabrication in order to get close to the state of the art devices;
+		\item characterisation of the prepared devices using the existing routine techniques (\textsl{e.g.}\ current\hyp{}voltage sweeps);
+		\item characterisation using advanced small perturbation techniques;
+		\item optimisation of the characterisation methods, data acquisition, and data processing;
+		\item obtain information on the charge accumulation and charge dynamics from the characterisation output;
+		\item model perovskite solar cells and compare the expected theoretical output with the experimental one;
+		\item where the simulation matches the experiment, take advantage of the additional insight obtainable from the modelling.
+	\end{itemize}
 

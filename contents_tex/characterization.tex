@@ -121,7 +121,7 @@
 
 		\paragraph{Large perturbations} \label{perturbation}
 		Large perturbations regime means that the independent variable is changed by an amount large enough to cause the dependent variable to not adhere to the first term of its series expansion.
-%		Let's take some examples.
+		%		Let's take some examples.
 		%		\paragraph{Large perturbations -- \acr{tpv}}
 		For example, a too intense laser pulse in \acr{tpv} could change the voltage by a less\hyp{}than\hyp{}linear amount.
 		In this case, the light pulse is not only probing the recombination, but it is adding some, so a large perturbation has to be avoided.
@@ -139,11 +139,11 @@
 \section{Current-Voltage Sweeps}
 
 	\begin{SCfigure}%[!hbtp]%
-	\centering
-	\includegraphics[width=0.6\textwidth]{autoscale/ig1-3-1-int4.pdf}
-	\mycaption[Kinks in J-V sweep due to autoscale.]{A current\hyp{}voltage sweep of an hysteretic\index{hysteresis} perovskite solar cell with Keithley autoscale active.
-		Both the forward (dashed) and the reverse (solid line) present small discontinuities around \SI{1}{\mA} and \SI{0.1}{\mA}.}\label{fig:autoscale}
-\end{SCfigure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{autoscale/ig1-3-1-int4.pdf}
+		\mycaption[Kinks in J-V sweep due to autoscale.]{A current\hyp{}voltage sweep of an hysteretic\index{hysteresis} perovskite solar cell with Keithley autoscale active.
+			Both the forward (dashed) and the reverse (solid line) present small discontinuities around \SI{1}{\mA} and \SI{0.1}{\mA}.}\label{fig:autoscale}
+	\end{SCfigure}
 
 	After calibrating the light intensity in the solar simulator (see \cpageref{solarsimulator}), the devices were exposed to the illumination at open circuit for some seconds in order to have a stabilised open circuit voltage.
 	Then the curves were measured with the auto-measure function of the PyPV software which measures the reverse scan and then the forward scan (see \cpageref{automeasure}).
@@ -162,12 +162,12 @@
 	We wanted to underline that due to hysteresis\index{hysteresis} phenomena, no scan speed, direction, or precondition is the correct one.
 	Rather, a static measurement or a \acr{mppt} should be used for obtaining a accurate and realistic result \cite{Zimmermann2016}.
 	This comment regards also the so-called "hysteresis-free" perovskite solar cells, which can also present hysteretic\index{hysteresis} phenomena on different time\hyp{}scales \cite{Jacobs2018,Du2018} or temperatures \cite{Bryant2015}.
-	
+
 	\begin{SCfigure}%[!hbtp]%
-	\centering
-	\includegraphics[width=0.6\textwidth]{iv_ugly/ig47-b32-int2-4.pdf}
-	\mycaption[Hysteretic current-voltage scan.]{At the employed scan speed, the hysteresis\index{hysteresis} phenomena causes the reverse (solid line) scan to reach currents higher than the \gls{jsc}.}\label{fig:iv_ugly}
-\end{SCfigure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{iv_ugly/ig47-b32-int2-4.pdf}
+		\mycaption[Hysteretic current-voltage scan.]{At the employed scan speed, the hysteresis\index{hysteresis} phenomena causes the reverse (solid line) scan to reach currents higher than the \gls{jsc}.}\label{fig:iv_ugly}
+	\end{SCfigure}
 
 	\paragraph{Noise}
 	The noise often observed in current-voltage sweeps at high scan speeds in this thesis is mainly caused by oscillations in the solar simulator illumination intensity, as an example see \cref{fig:iv_params}.
@@ -180,7 +180,7 @@
 	An alternative could be to measure the stabilised current at a few voltage points: a couple of measurements close to zero voltage is enough for estimating the shunt resistance while two points at high voltages should be enough for estimating the series resistance.
 	Still, the ionic profile would be different for the different applied voltages used for shunt resistance measurement, affecting the recombination barriers \cite{Moia2019,Pockett2017}.
 	So a transient measurement similar to the one proposed for the ideality factor in \cite{Calado2019} and explained in \cpageref{transient_suns_voc} might be implemented for estimating the shunt resistance.
-%	Instead, for series resistance the transient method should not be needed, as the large employed voltage employed voltages are always larger than the built-in voltage, the depletion\index{space charge layer} layers should be filled anyway and the transient method should not be required.
+	%	Instead, for series resistance the transient method should not be needed, as the large employed voltage employed voltages are always larger than the built-in voltage, the depletion\index{space charge layer} layers should be filled anyway and the transient method should not be required.
 	Instead, for series resistance the transient method should not be needed, as the large employed voltage should be enough for flattening the ionic profile.
 	The impact of these resistances on the \gls{pce} is paramount, as the \gls{ff} strongly depends both on series and on shunt resistances.
 
@@ -330,7 +330,7 @@
 					\includegraphics[width=0.39\textwidth]{ce_noise/normal-spiro_vs_TAEs-CEs-crop.pdf}
 					\subcaption{Direct integration of raw data}\label{fig:ce_noise-normal}
 				\end{subfigure}
-%				\bigskip
+				%				\bigskip
 
 				\begin{subfigure}[t]{1\textwidth}
 					\includegraphics[width=0.4\textwidth]{{ce_noise/subtractDark-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}
@@ -338,7 +338,7 @@
 					\includegraphics[width=0.39\textwidth]{ce_noise/subtractDark-spiro_vs_TAEs-CEs-crop.pdf}
 					\subcaption{Subtraction of transformed noise profile}\label{fig:ce_noise-subtractDark}
 				\end{subfigure}
-%				\bigskip
+				%				\bigskip
 
 				\begin{subfigure}[t]{1\textwidth}
 					\includegraphics[width=0.4\textwidth]{{ce_noise/integrateExp-CE_ig104-1566-4_Voc_0.911mV-crop}.pdf}
@@ -372,22 +372,22 @@
 	\paragraph{Reduction of instrumental noise -- integration of a fitting}\label{characterization_integrateExp}
 	Finally the decays were fitted with a bi\hyp{}exponential formula (sum of two exponential) or, if the bi\hyp{}exponential fitting was not converging, by a simple exponential and the integral of this fit was used.
 	In both cases a robust fitting routine was employed \cite{Maechler2018}.
-	
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\includegraphics[width=0.9\textwidth]{ce_single_dd_levels_dynamic/ce_levels_corrected.pdf}
-			\mycaption[Evolution of energy levels during CE.]{
-				A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) device is simulated and the energy levels evolution during a \acr{ce} experiment are shown.
-				At the beginning, the device is stabilised at open circuit conditions under \SI{1}{sun} illumination, represented by the green lines.
-				Then the illumination is switched off and the device is brought to short circuit.
-				After \SI{1e-4}{\s}, the electronic charges have been extracted, leaving an electric field in the bulk of the perovskite layer.
-				Subsequently, at long times (\SI{1}{\s}) the ions move for screening the mentioned electric field.
-				\Gls{ce} simulation routines explained in \cpageref{dd_ce}.
-			}\label{fig:ce_levels_corrected}
-	}}
-\end{figure}
+
+	\begin{figure}
+		\makebox[\textwidth][c]{
+			\parbox{1.1\textwidth}{
+				\centering
+				\includegraphics[width=0.9\textwidth]{ce_single_dd_levels_dynamic/ce_levels_corrected.pdf}
+				\mycaption[Evolution of energy levels during CE.]{
+					A $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) device is simulated and the energy levels evolution during a \acr{ce} experiment are shown.
+					At the beginning, the device is stabilised at open circuit conditions under \SI{1}{sun} illumination, represented by the green lines.
+					Then the illumination is switched off and the device is brought to short circuit.
+					After \SI{1e-4}{\s}, the electronic charges have been extracted, leaving an electric field in the bulk of the perovskite layer.
+					Subsequently, at long times (\SI{1}{\s}) the ions move for screening the mentioned electric field.
+					\Gls{ce} simulation routines explained in \cpageref{dd_ce}.
+				}\label{fig:ce_levels_corrected}
+			}}
+	\end{figure}
 
 	\paragraph{Specific limitations for perovskite solar cells} \label{ce_limitations_perovskite}
 	When measuring the \acr{ce} of a perovskite solar cell, additionally to the aforementioned limitations, one should also consider that the ionic profile update (from $V=\voc$ to $V=0$) causes a displacement current\index{displacement current}, as described in \cpageref{intro_displacement_current}.
@@ -397,36 +397,36 @@
 	This will happen on very large time scales and it will not affect the short measurements used for the free charges estimation, so it is rarely reported \cite{ORegan2015b}.
 	The charge measured in the external circuit due to the ionic displacement current\index{displacement current} could be underestimated as the free charges rearrangements can also occur through the perovskite layer rather than through the external circuit.
 
-\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-noions.pdf}
-				\subcaption{Without mobile ions}\label{fig:ce_single_dd-noions}
-			\end{subfigure}
-			\bigskip
-			
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions.pdf}
-				\subcaption{With mobile ions}\label{fig:ce_single_dd-ions}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.5\textwidth}
-				\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions_zoom.pdf}
-				\subcaption{With mobile ions, magnified current density axis}\label{fig:ce_single_dd-ions_zoom}
-			\end{subfigure}
-			
-			\mycaption[Simulation of a single CE current profiles without or with mobile ions.]{
-				The current \textsl{versus} time profile of a \acr{ce} simulated experiment is shown on the left axis just for the 1~sun illumination intensity.
-				On the right axis the cumulative integration of the extracted charge.
-				Clearly, the extraction is unrealistically quick as the resistance included in a real \acr{ce} experiment was not included in the simulation.
-				In (\textbf{a}) the measurement of a device without mobile ions is shown, we can observe just one current peak contributing to the integrated charge; in (\textbf{b}) the presence of the mobile ions introduces a long\hyp{}times contribution to the extracted charge, the current causing this is very weak and long lasting, it can be better observed in the magnification in (\textbf{c}).
-				\Gls{ce} simulation routines explained in \cpageref{dd_ce}.
-		}\label{fig:ce_single_dd}
+	\begin{figure}
+		\makebox[\textwidth][c]{
+			\parbox{1.1\textwidth}{
+				\centering
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-noions.pdf}
+					\subcaption{Without mobile ions}\label{fig:ce_single_dd-noions}
+				\end{subfigure}
+				\bigskip
+
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions.pdf}
+					\subcaption{With mobile ions}\label{fig:ce_single_dd-ions}
+				\end{subfigure}
+				\qquad
+				\begin{subfigure}[t]{0.5\textwidth}
+					\includegraphics[width=1\textwidth]{ce_single_dd/ce_single_dd-ions_zoom.pdf}
+					\subcaption{With mobile ions, magnified current density axis}\label{fig:ce_single_dd-ions_zoom}
+				\end{subfigure}
+
+				\mycaption[Simulation of a single CE current profiles without or with mobile ions.]{
+					The current \textsl{versus} time profile of a \acr{ce} simulated experiment is shown on the left axis just for the 1~sun illumination intensity.
+					On the right axis the cumulative integration of the extracted charge.
+					Clearly, the extraction is unrealistically quick as the resistance included in a real \acr{ce} experiment was not included in the simulation.
+					In (\textbf{a}) the measurement of a device without mobile ions is shown, we can observe just one current peak contributing to the integrated charge; in (\textbf{b}) the presence of the mobile ions introduces a long\hyp{}times contribution to the extracted charge, the current causing this is very weak and long lasting, it can be better observed in the magnification in (\textbf{c}).
+					\Gls{ce} simulation routines explained in \cpageref{dd_ce}.
+				}\label{fig:ce_single_dd}
+			}
 		}
-	}
-\end{figure}
+	\end{figure}
 
 
 	\subsection{Interpretation of CE Single Decays}
@@ -485,7 +485,7 @@
 		\begin{equation}
 			n(V) = n_|DOS| \exp(\frac{qV - E_|g|}{k_|B|T}) = n_|eq| \exp(\frac{qV}{k_|B|T})
 		\end{equation}
-		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|eq|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the equilibrium carrier concentration from a Boltzmann distribution of a two levels system. 
+		where $n_|DOS|$ is the density of states which can be occupied by free charges, $E_|g|$ is the material band gap, and $n_|eq|=n_|DOS|\exp[-E_|g|/(k_|B|T)]$ prefactor is the equilibrium carrier concentration from a Boltzmann distribution of a two levels system.
 		%just a pre\hyp{}factor with no direct physical interpretation.
 		As the \acr{ce} can just extract the excess charge $n_|CE|$, what we can measure is:
 		\begin{equation}
@@ -601,8 +601,8 @@
 						The orange pluses considers the charge integrated until the device stabilisation, over various seconds, including also the ionic displacement current\index{displacement current}.
 						The purple circles simulates a mobile ions free device.
 						The solid lines represents the linear plus exponential fit crossing (0,0) obtained with the \cref{eq:ce_full} $n_|CE| = C_|g| V + n_|eq| \{\exp[q V / (mk_|B|T)] - 1\}$ where $C_|g|$, $n_|eq|$, and $m$ are free fitting parameters whose meaning is described in the text.
-					\Gls{ce} simulation routines explained in \cpageref{dd_ce}.
-				}\label{fig:ce_full_dd}
+						\Gls{ce} simulation routines explained in \cpageref{dd_ce}.
+					}\label{fig:ce_full_dd}
 				}
 			}
 		\end{figure}
@@ -782,41 +782,41 @@
 		For the band\hyp{}to\hyp{}band recombination, this implies that the $n \cdot p$ product, integrated over the device thickness, can be much smaller than an homogeneous carriers concentration \cite{Deibel2009}.
 		These considerations are key for drift\hyp{}driven \gls{osc} with low doping level materials \cite{Deledalle2015,Deledalle2014} but should be of smaller impact for the diffusion\hyp{}driven, field free perovskite solar cells, at least at steady state when the internal electric field is mostly shielded by the ionic accumulation at the interfaces.
 
-	\begin{figure}
-	\makebox[\textwidth][c]{
-		\parbox{1.1\textwidth}{
-			\centering
-			\begin{subfigure}[t]{0.51\textwidth}
-				\centering
-				\includegraphics[width=0.9\textwidth]{tpv_ionic/tpv_ionic_reference.pdf}
-				\subcaption{Low illumination, steady state.}\label{fig:tpv_ionic-reference}
-			\end{subfigure}
-			\qquad
-			\begin{subfigure}[t]{0.51\textwidth}
-				\centering
-				\includegraphics[width=0.9\textwidth]{tpv_ionic/tpv_ionic_cb.pdf}
-				\subcaption{Conduction band \textit{variation} over time.}\label{fig:tpv_ionic-cb}
-			\end{subfigure}
-			\bigskip
-			
-			\begin{subfigure}[t]{1\textwidth}
-				\centering
-				\includegraphics[width=0.8\textwidth]{tpv_ionic/tpv_ionic_dynamics.pdf}
-				\subcaption{Voltage, charge, and ionic accumulation variation over time.}\label{fig:tpv_ionic-dynamics}
-			\end{subfigure}
-			\mycaption[Simulation of TPV at low background intensities with mobile ions.]{
-				A TPV experiment has been simulated on a $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) homojunction device with mobile ions in the absorber layer and at open circuit conditions.
-				Low background light intensity \SI{1e-8}{suns} was applied, corresponding to a light bias of \SI{53}{\mV}.
-				The illumination pulse was \SI{1e-8}{s} long and weak enough to cause a perturbation which can be considered small.
-				In (\textbf{a}) the steady state energy levels and ionic profile is shown.
-				In (\textbf{b}) the variation (the conduction band perturbation is too small for being plotted as in (\textbf{a})), taking the steady state profile as zero, of the conduction band during a TPV experiment.
-				In (\textbf{c}), over time I plotted: the bi\hyp{}exponential voltage decay; the normalized total charge variation (the electronic profile integrated over the device thickness); and the ionic concentration variation at the perovskite/\gls{etm} interface, where the low ionic concentration temporarily increases during the transient.
-				The represented data is interpreted in \cpageref{tpv_biexp_lowlight_ions}.
-				\Gls{tpv} simulation routines explained in \cpageref{dd_tpv}.
-			}\label{fig:tpv_ionic}
-		}
-	}
-\end{figure}
+		\begin{figure}
+			\makebox[\textwidth][c]{
+				\parbox{1.1\textwidth}{
+					\centering
+					\begin{subfigure}[t]{0.51\textwidth}
+						\centering
+						\includegraphics[width=0.9\textwidth]{tpv_ionic/tpv_ionic_reference.pdf}
+						\subcaption{Low illumination, steady state.}\label{fig:tpv_ionic-reference}
+					\end{subfigure}
+					\qquad
+					\begin{subfigure}[t]{0.51\textwidth}
+						\centering
+						\includegraphics[width=0.9\textwidth]{tpv_ionic/tpv_ionic_cb.pdf}
+						\subcaption{Conduction band \textit{variation} over time.}\label{fig:tpv_ionic-cb}
+					\end{subfigure}
+					\bigskip
+
+					\begin{subfigure}[t]{1\textwidth}
+						\centering
+						\includegraphics[width=0.8\textwidth]{tpv_ionic/tpv_ionic_dynamics.pdf}
+						\subcaption{Voltage, charge, and ionic accumulation variation over time.}\label{fig:tpv_ionic-dynamics}
+					\end{subfigure}
+					\mycaption[Simulation of TPV at low background intensities with mobile ions.]{
+						A TPV experiment has been simulated on a $p$(\SI{200}{\nm})--$i$(\SI{500}{\nm})--$n$(\SI{200}{\nm}) homojunction device with mobile ions in the absorber layer and at open circuit conditions.
+						Low background light intensity \SI{1e-8}{suns} was applied, corresponding to a light bias of \SI{53}{\mV}.
+						The illumination pulse was \SI{1e-8}{s} long and weak enough to cause a perturbation which can be considered small.
+						In (\textbf{a}) the steady state energy levels and ionic profile is shown.
+						In (\textbf{b}) the variation (the conduction band perturbation is too small for being plotted as in (\textbf{a})), taking the steady state profile as zero, of the conduction band during a TPV experiment.
+						In (\textbf{c}), over time I plotted: the bi\hyp{}exponential voltage decay; the normalized total charge variation (the electronic profile integrated over the device thickness); and the ionic concentration variation at the perovskite/\gls{etm} interface, where the low ionic concentration temporarily increases during the transient.
+						The represented data is interpreted in \cpageref{tpv_biexp_lowlight_ions}.
+						\Gls{tpv} simulation routines explained in \cpageref{dd_tpv}.
+					}\label{fig:tpv_ionic}
+				}
+			}
+		\end{figure}
 
 
 		\paragraph{At low background illumination -- large perturbations}
@@ -873,7 +873,7 @@
 		Looking at the fast component, assigned to the rearrangement of the ionic profile, we usually observe a constant lifetime.
 		This suggests the presence of a background light insensitive ionic rearrangement time constant, which implies a light insensitive ionic mobility.
 		This should be further studied considering the report of illumination-dependent ionic mobility by Maier's group in \authoryear{Kim2018}.
-		
+
 		\paragraph{At low background illumination -- calculating ionic resistance}
 		We can consider this fast component's lifetime as a RC time due to ionic motion.
 		So, from this time and from the ionic capacitance (easy to obtain from impedance spectroscopy, see \cpageref{impedance_lowf_dark}), we can obtain the ionic resistance (which is proportional to ionic mobility and to ionic concentration) as:
@@ -921,9 +921,9 @@
 		Similarly to the example we just considered, where RC times put a cap to the slow observable lifetimes, \authoryear{Kiermasch2018} underlines that also the often-neglected diode\hyp{}capacitor discharge could have the same effect \cite{Tvingstedt2017,Hellen2003}.
 		The relevant capacitance would be the geometric capacitance\index{geometric capacitance} of the generated charges accumulating in the depletion\index{space charge layer} layers and the diode would be the perovskite-contacts interfaces with the relative dark saturation current.
 		Basically this represents a re\hyp{}injection of the majority charges from the contacts back to the perovskite, this causes a voltage decrease without actually needing recombination: charges could just diffuse back.
-				The lifetime observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981}.
-				In his PhD thesis, also \authoryear{Calado2018} observed and modelled this effect, named "thermionic emission".
-				All the authors agree that this effect is more important at low light intensity for thin devices (high capacitance) \cite{Kiermasch2018} while it could be negligible at high background illuminations.
+		The lifetime observed in this regime would also decrease exponentially with the light bias \cite{Castaner1981}.
+		In his PhD thesis, also \authoryear{Calado2018} observed and modelled this effect, named "thermionic emission".
+		All the authors agree that this effect is more important at low light intensity for thin devices (high capacitance) \cite{Kiermasch2018} while it could be negligible at high background illuminations.
 		Also when performing full signal Open Circuit Voltage Decay dynamics measurement (OCVD) \cite{Lederhandler1955,Mahan1981}, which has not been performed in this thesis, this limitation has to taken in consideration \cite{Tvingstedt2017,Pockett2017,Pockett2015,Kiermasch2018}.
 
 		\FloatBarrier
@@ -1088,15 +1088,15 @@
 	%	We assume that the \gls{eqe} is the same at short and open circuit conditions, which means: the charge measured in \acr{tpc}, at short circuit, will be used for referencing data from \acr{tpv}, at open circuit.
 	Adapting the definition of capacitance "the ratio of the change in an electric charge in a system to the corresponding change in its electric potential" \cite{WikipediaCapacitance2019} to an applied voltage dependent capacitance, we can write:
 	\begin{equation}\label{eq:dc}
-%		C(V') = \eval{\dv{n}{V}}_{V=V'}
+		%		C(V') = \eval{\dv{n}{V}}_{V=V'}
 		C(V) = \eval{\frac{\Delta n}{\Delta V'}}_{V'=V}
 	\end{equation}
 	where $C$ is a light bias $V$ dependent capacitance, $n$ is the perturbed electron density, and $V'$ is the perturbed voltage.
 	So, the charge obtained from the \acr{tpc} experiment is divided by an array of voltage increases $\Delta V'(V)$ values obtained from \acr{tpv}, one for each illumination intensity.
 	The obtained capacitance value is plotted versus the steady state light bias $V$.
 	The capacitance can be integrated over voltage for obtaining a charge density \textsl{versus} light bias relationship:
-		\begin{equation}\label{eq:dc_charge}
-	n_|DC|(V) = \int_{0}^{V} C(V') \dd V'
+	\begin{equation}\label{eq:dc_charge}
+		n_|DC|(V) = \int_{0}^{V} C(V') \dd V'
 	\end{equation}
 	\paragraph{Capacitance dependence on applied voltage}
 	The electrical capacitance of most of the commercial capacitors is independent on the applied voltage, as represented in \cref{fig:cap_voltage_dependence_commercial} where the capacitance was measured with a modified \acr{ce} experiment where the pre\hyp{}conditioning was done directly applying a voltage instead of applying a light bias.
@@ -1248,9 +1248,9 @@
 	The impedance spectroscopy can be represented in various shapes: Nyquist plots where $-Z''$ is plotted against $Z'$, Bode plots of phase, $|Z|$, $Z''$, or $Z'$ are plotted against the frequency $\nu$ or, as a capacitance (or apparent capacitance, as we will see in \cref{ch:impedance}) defined as $\omega^{-1}\Im(Z^{-1})$.
 
 	\paragraph{Frequency\hyp{}domain}
-The frequency\hyp{}domain results should be related to the time\hyp{}domain by the Fourier transform, so from frequency\hyp{}domain techniques we should be able to extract the same information as from time\hyp{}domain techniques, as the aforementioned ones (on this topic, see \cpageref{impedance_fourier}).
-Nevertheless, frequency\hyp{}domain techniques are more convenient for observing one by one all the different processes happening in a solar cell device, working at their characteristic frequency.
-On the other hand this also implies a much longer measurement, for which the device stability is paramount.
+	The frequency\hyp{}domain results should be related to the time\hyp{}domain by the Fourier transform, so from frequency\hyp{}domain techniques we should be able to extract the same information as from time\hyp{}domain techniques, as the aforementioned ones (on this topic, see \cpageref{impedance_fourier}).
+	Nevertheless, frequency\hyp{}domain techniques are more convenient for observing one by one all the different processes happening in a solar cell device, working at their characteristic frequency.
+	On the other hand this also implies a much longer measurement, for which the device stability is paramount.
 
 	\paragraph{Stability}
 	As the measurement of a complete impedance spectra is very time demanding, the device stability is of paramount importance.
