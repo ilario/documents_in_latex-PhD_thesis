@@ -1,8 +1,12 @@
 	%
 	% If you are looking for the PDF file, you can compile the .tex file or donwload the PDF from here:
-	% 
-	% 
-	% Istruzioni di compilazione (per produrre il pdf): avere un texlive funzionante e i pacchetti che vengono richiesti qui sotto; lanciare i comandi
+	% https://github.com/ilario/documents_in_latex-PhD_thesis
+	
+	% Instruction for compiling: install TeXlive or whatever other LaTeX distribution
+	%
+	% cd contents_tex
+	% pdflatex titlepage.tex
+	% cd ..
 	% pdflatex gelmetti-phd_thesis
 	% biber gelmetti-phd_thesis
 	% makeglossaries gelmetti-phd_thesis
@@ -75,14 +79,7 @@
 	\usepackage[textfont={color=darkgray,small},labelfont={color=darkgray,small,bf},format=plain]{subcaption} %the subfigure and subfig packages are deprecated. Specify the format in order to avoid the general caption format to apply also here https://tex.stackexchange.com/a/319870/173645
 	\usepackage{ragged2e} % needed by ragged option of sidecap?
 	
-	
-	%\usepackage{chngcntr} % needed for setting option not resetting footnote counter at chapter end
-	%\usepackage{pgfplots} % graphs
-	%\usepackage{booktabs}
-	%\usepackage{lscape} %for big landscape figures, rotate the page
-	%\usepackage{afterpage} %for making landscape float
 	\usepackage[section]{placeins} %keeps floats `in their place', preventing them from floating past a "\FloatBarrier" command into another section.
-	%\usepackage{float}
 	\usepackage{eso-pic} %background image on titlepage
 	\usepackage{transparent} %transparency for background image on titlepage
 	
@@ -98,8 +95,6 @@
 	
 	% has to be loaded before hyperref https://tex.stackexchange.com/questions/485270/hyperref-and-titletoc-prints-extra-section-1-or-doc-startchapter-1/
 	\usepackage{titletoc} % for adding a TOC at the beginning of each chapter, alternative to minitoc
-%	\dottedcontents{paragraph}[0em]{}{0em}{1pc} % in each chapter toc, also the paragraph is included, but the indentation is too much
-%	\dottedcontents{subsection}[0em]{}{0em}{1pc} % in each chapter toc, also the subsection is included, but the indentation is too much
 
 \usepackage{hyperref}
 % allowing url breaks at hyphens https://tex.stackexchange.com/a/3034/173645
@@ -123,29 +118,8 @@
 	\definecolor{coloreight}{HTML}{666666}
 		
 	\hypersetup{
-%		colorlinks,
 		hidelinks,
-%		linkcolor={red!10!black},
-%		citecolor={black},
-%		urlcolor={blue!80!black},
-%			bookmarks=true,         % show bookmarks bar?
-%			unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-%			pdftoolbar=true,        % show Acrobat’s toolbar?
-%			pdfmenubar=true,        % show Acrobat’s menu?
-%			pdffitwindow=false,     % window fit to page when opened
-%			pdfstartview={FitH},    % fits the width of the page to the window
-%			pdftitle={My title},    % title
-%			pdfauthor={Author},     % author
-%			pdfsubject={Subject},   % subject of the document
-%			pdfcreator={Creator},   % creator of the document
-%			pdfproducer={Producer}, % producer of the document
 			pdfkeywords={perovskite, solar cells, photovoltaics, photophysics, modelling, characterisation, drift-diffusion, fabrication, hole transporting materials, recombination, simulation, ion migration, halide perovskite, hybrid perovskite, perovskite solar cells, impedance spectroscopy, solar energy, optical transients, electrical transients, data acquisition, data analysis, open circuit voltage, spin coating, hole transport layer, charge transfer, semiconductor, time resolved spectroscopy} % list of keywords
-%			pdfnewwindow=true,      % links in new PDF window
-%			colorlinks=false,       % false: boxed links; true: colored links
-%			linkcolor=red,          % color of internal links (change box color with linkbordercolor)
-%			citecolor=green,        % color of links to bibliography
-%			filecolor=magenta,      % color of file links
-%			urlcolor=cyan           % color of external links
 	}
 
 
@@ -157,24 +131,18 @@
 	\makeglossaries % has to be after glossaries and after hyperref
 	\setacronymstyle{long-sp-short}
 
-%	\usepackage{relsize}%needed by textsmaller in glossaries
-%	\renewcommand*{\acronymfont}[1]{\textsmaller{#1}}
-	
 	% for the table of symbols, this soultion could be used: https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis
-	
-	%\usepackage{xspace} % for adding a conditional space in macros, dangerous as explained here: https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument/25825#25825
 	
 	%%%%%%%%%%%
 	%%%%%%%%%%% MULTIROW
 	%%%%%%%%%%%
 	\usepackage{multirow}% for tables
-	%\usepackage[bottom,multiple]{footmisc} %bottom insert additional whitespace between the main text and the footnote rule rather than over-stretching the inter-paragraph glue AND to prevent the floats going below footnotes. This has to be loaded before fancyhdr
 	
 	%%%%%%%%%%%
 	%%%%%%%%%%% FANCYHDR
 	%%%%%%%%%%%
 	\usepackage{fancyhdr}%page headers
-%	\usepackage[hmarginratio=3:2, vmarginratio=1:1, b5paper, textwidth=13cm, textheight=20cm]{geometry}% marginparwidth inserted only for wide sidecaps. 
+
 \usepackage[
 b5paper,
 bindingoffset=0.3in,
@@ -186,9 +154,8 @@ top=2.5cm,
 bottom=2cm%,
 %showframe
 ]{geometry}
-%	\evensidemargin 1.5in
-%	\oddsidemargin 1.5in
-	
+
+
 	%%%%%%%%%%%
 	%%%%%%%%%%% MAKEIDX
 	%%%%%%%%%%%
@@ -213,20 +180,16 @@ bottom=2cm%,
 	
 	
 	\usepackage{listings}
-%	\usepackage[numbered,framed]{matlab-prettifier}% for Matlab listings highlighting
 \usepackage{matlab-prettifier}% for Matlab listings highlighting
 	\lstset{style=Matlab-editor, basicstyle=\footnotesize}% basicstyle has to be placed after style
 	
 	\usepackage{cleveref} % for automatic Figure or figure and for ranges
-	%\crefdefaultlabelformat{#2\textbf{#1}#3} % bold numbers of references https://tex.stackexchange.com/a/255187/173645
 	\creflabelformat{figure}{#2\textcolor{blue}{#1}#3} % blue numbers just for figures references
-	
-	
-	
 	
 	\usepackage[spacing=true, stretch=40, shrink=40]{microtype} % automagically reduces overfull lines and improves justification
 
 	\usepackage{titlesec}
+	
 	% standatard definitions from section 9.2 in titlesec manual
 %\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 %\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
@@ -245,8 +208,6 @@ bottom=2cm%,
 \titleformat{\section}{\normalfont\Large\bfseries}{\hspace*{-0.8cm}\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{\hspace*{-0.8cm}\thesubsection}{1em}{}
 \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{\hspace*{-0.4cm}}[.]
-	%\newcommand{\myp}[1]{\paragraph{\hspace*{-0.5cm}#1}}
-	
 	
 % to be used in the specific chapter table of contents, via titletoc
 	\titlecontents{lsection}[-1em]{ \normalfont \footnotesize \bfseries }{}{}{}[]
@@ -272,8 +233,8 @@ bottom=2cm%,
 	}
 	
 	\usepackage{needspace}
+	% avoid pagebreak just after epigraph, alternative solutions on: https://tex.stackexchange.com/questions/477674/best-way-to-avoid-page-break-just-after-epigraph
 %	\preto\section{\vfil\penalty-10\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
-%	\preto\section{\vskip 0pt plus 1fil\penalty-200\vskip 0pt plus -1fil}
 	\preto\section{\needspace{7\baselineskip}}
 	
 	\usepackage{breqn} % for automatic line breaking in equations with dmath environment
@@ -290,18 +251,6 @@ bottom=2cm%,
 			[equation][\arabic{equation}][\cref@result]\p@equation\eq@number}}
 	\makeatother
 	
-	% cleveref does not like breqn, solution from https://tex.stackexchange.com/a/28607/173645
-	%	\makeatletter
-	%	\let\cref@old@eq@setnumber\eq@setnumber
-	%	\def\eq@setnumber{%
-	%		\cref@old@eq@setnumber%
-	%		\cref@constructprefix{equation}{\cref@result}%
-	%		\protected@xdef\cref@currentlabel{%
-	%			[equation][\arabic{equation}][\cref@result]\p@equation\theequation}}
-	%	\makeatother
-	
-	
-%	\usepackage{commath} % for upright d in derivatives
 
 	\usepackage{physics} % redefines plenty of things: \Im \Re \sin() \exp()... adds \dd for derivatives, \pdv for partial derivatives, \eval for evaluating the derivative in a point (does not work properly in dmath from breqn)
 	
@@ -317,32 +266,23 @@ bottom=2cm%,
 % for including titlepage as pdf with includepdf
 \usepackage{pdfpages} 
 
-% for having the glossary on two columns
-%\usepackage{glossary-mcols}
-
 % to have line break (hyphenation) also at dashed words using \hyp{} https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
 % htt allows hypenation also in typewriter, needed to avoid overfull boxes https://tex.stackexchange.com/a/10378/173645
 \usepackage[htt]{hyphenat}
-
-% useful for debugging hyphenation problems but it works just 
-%\usepackage{showhyphens} % just for lualatex
-%\usepackage{testhyphens}
 
 % "implements a command, \afterpage, that causes the commands specified in its argument to be expanded after the current page is output"
 % for making semi-float longtables https://tex.stackexchange.com/a/215443/173645
 \usepackage{afterpage}
 
 
-	%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
-%\usepackage[height={2cm},distance={2mm},topthumbmargin={auto},bottomthumbmargin={auto},width=0.95cm,eventxtindent=2.6mm,oddtxtexdent=2.4mm]{thumbs}%
+%\usepackage{flafter}% seems very useful: floats after their definition, not before https://tex.stackexchange.com/questions/261542/what-kind-of-a-package-is-flafter
+
 \usepackage[distance={1cm},width=0.95cm,eventxtindent=2.6mm,oddtxtexdent=2.4mm]{thumbs}%
 
-% like lscape, implements landscape environment for horizontal pages with normal headers, but also specifies the orientation in the PDF file
-%\usepackage{pdflscape}
 % on the contrary of lscape, rotating has a floating environment for images and tables
 \usepackage{rotating}
 
-	\usepackage[strict=true,autostyle=true]{csquotes} % for automatic direction of quotes, and for \enquote
+\usepackage[strict=true,autostyle=true]{csquotes} % for automatic direction of quotes, and for \enquote
 \MakeOuterQuote{"}
 
 % better electronic pdf bookmark, no change in the printed version
@@ -374,42 +314,10 @@ bottom=2cm%,
 	\noalign{\nobreak\vskip-\arrayrulewidth}}
 \makeatother
 
-%for lighter sans serif https://tex.stackexchange.com/a/94589/173645
-%\usepackage{pdftexcmds}
-%\renewcommand{\sfdefault}{SourceSansPro-LF}
-%\makeatletter
-%\def\curr@fontshape{%
-%	\f@encoding/\f@family/%
-%	\ifnum\pdf@strcmp{\f@series}{\mddefault}=\z@
-%	\ifnum\pdf@strcmp{\f@family}{\sfdefault}=\z@
-%	l%
-%	\else
-%	\f@series
-%	\fi
-%	\else
-%	\f@series
-%	\fi/\f@shape}
-%\makeatother
-
-
-
-
 	\captionsetup[SCfigure]{format=plain}
-	%\pgfplotsset{compat=newest}
-	%\counterwithout{footnote}{chapter} % not resetting footnote counter at chapter end
-	\newcommand{\HNMR}{$^1$\ch{H}-\textsmaller{NMR}}
-	\newcommand{\CNMR}{$^{13}$\ch{C}-\textsmaller{NMR}}
-	%\pgfplotsset{tick label style={font=\small},label style={font=\small}}
-	%\let\oldch\ch %move the ch command, needed for redefinition
-	%\renewcommand{\ch}[1]{\textsf{\oldch{#1}}} %add sans serif to \ch
-	
-	
-	% \cmpd*[cmpd-label = 1S]{ig2-1}
 
-	%\pgfplotsset{minor grid style={densely dotted,lightgray}}
 	\newcommand{\acr}[1]{\gls{#1}\index{\glsdesc{#1}}} % for having the entry also in index
 	\newcommand{\Acr}[1]{\Gls{#1}\index{\glsdesc{#1}}}
-	
 	
 	\newcommand{\me}{\mathrm{e}} % for having upright neper number symbol, from https://tex.stackexchange.com/a/19491/173645
 	\newcommand{\voc}{V_\mathrm{OC}} 
@@ -451,44 +359,6 @@ bottom=2cm%,
 % limit main table of content to sections, do not print subsections
 \setcounter{tocdepth}{1}
 	
-	% no idea why but this hyphenation gets completely ignored :(
-%	\hyphenation{tetra-hydro-furan
-%		di-chlo-ro-methane
-%		enantio-purity
-%		oxy-methyl-ene
-%		di-chroic
-%		aceto-nitrile
-%		iso-propyl
-%		alk-oxy-amine
-%		poly-thio-phene
-%		di-chloride
-%		inter-chain
-%		photo-lu-mine-scence
-%		supra-molecular
-%		photo-gene-rated
-%		hetero-junction
-%		poly-thio-phenic
-%		di-block
-%		thio-phenic
-%		poly-thio-phene
-%		bi-layer
-%		macro-initiator
-%		poly-vinyl-pyridine
-%		homo-polymer
-%		path-length
-%		intra-molecular
-%		inter-molecular
-%		hydro-chloric
-%		poly-dispersity
-%		poly-disperse
-%		chlo-ro-ben-ze-ne
-%		acetyl-acetone
-%		di-iso-prop-oxide
-%		acetyl-acet-on-ate
-%		aceto-nitrile
-%		ex-po-nen-tial
-%		ex-po-nen-ti-als}
-	
 	\title{Advanced Characterisation and Modelling of Charge Transfer in Perovskite Solar Cells}
 	\author{Ilario Gelmetti}
 	\date{2019}
@@ -512,9 +382,6 @@ bottom=2cm%,
 
 \selectlanguage{english}
 \EnableQuotes
-%\apptocmd{\@epitext}{\penalty=500}{}{}
-%\apptocmd{\epigraph}{\nopagebreak}{}{}
-%\AtEndEnvironment{\epigraphflush}{\nopagebreak}
 
 % from a conversation with Martin.Muench@Uni-Bonn.de
 %It would be more clear and "save" to just compile the titlepage (you can also compile the whole document, pdfpages just takes the first page) as titlepage.pdf and then use the pdfpages package, use
@@ -532,13 +399,8 @@ bottom=2cm%,
 \pagenumbering{roman}%
 
 
-
-
 \frontmatter
 
-%\addtocounter{page}{-1}
-
-%\newpage
 
 \chapter{Acknowledgements}
 	\input{contents_tex/acknowledgements.tex}
@@ -685,17 +547,7 @@ bottom=2cm%,
 	\newglossaryentry{symb:rho}{name={\ensuremath{\rho}}, description={net charge density}, sort={rho}}
 	\newglossaryentry{symb:Q}{name={\ensuremath{Q}}, description={generic charge per area}}
 	\newglossaryentry{symb:tau0}{name={\ensuremath{\tau_{0}}}, description={carriers' lifetime extrapolated at zero applied voltage}, sort={tau0}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
-	%\newglossaryentry{symb:}{name={\ensuremath{}}, description={}, sort={}}
 
-
-
-	%\newpage
 	\cleardoublepage
 	% \pdfbookmark[<level>]{<title>}{<dest>}
 	\pdfbookmark[chapter]{\contentsname}{toc}
@@ -707,19 +559,15 @@ bottom=2cm%,
 	%\lstlistoflistings
 
 	\glsaddall
-	%\setglossarystyle{mcolindex}
-	%\renewcommand*{\glsmcols}{2}
+	
 	\printglossary[type=\acronymtype, title={Glossary, Acronyms, and Symbols}]
 
 	\clearpage
-	%\stopthumb
 
 	\cleardoublepage \vspace*{12cm}
 	\begin{flushright}
 		{\itshape \large Dedicata a So$\phi$a.}
 	\end{flushright}
-
-	%\newgeometry{top=1in, bottom=1in, outer=1in, inner=1in}
 
 
 \chapter[Abstract]{\centering Abstract - Sinopsis - Sinopsi}
@@ -897,7 +745,6 @@ bottom=2cm%,
 	\clearpage
 	\stopcontents[thicknesses]
 
-	%\chapter{Influence of Ionic Motion on Electronic Recombination as Observable in Impedance Spectroscopy}\label{ch:impedance}
 \chapter{Modelling the Influence of Ionic Migration on Impedance Spectroscopy}\label{ch:impedance}
 \chaptermark{Impedance Sectroscopy}
 	\epigraph{\textit{"We don't see that plateau"}}
@@ -971,14 +818,11 @@ bottom=2cm%,
 	\backmatter
 	\EnableQuotes % I didn't understand why, but this command has to be present in some parts of the code
 
-
-	%\newpage\phantom{Ciao Mamma!}
 	\cleardoublepage
 
 \chapter{Overall Conclusions}\label{ch:conclusions}
 	\input{contents_tex/conclusions.tex}
 
-	%\newpage\phantom{Ciao Mamma!}
 	\cleardoublepage
 
 	\printindex
