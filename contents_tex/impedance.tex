@@ -65,7 +65,6 @@
 
 
 	\begin{table}
-		%	\clearpage
 		%\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 		\begin{xltabular}[c]{1\linewidth}{@{} >{\hsize=1.6\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=0.8\hsize}Y >{\hsize=0.95\hsize}Y >{\hsize=1\hsize}Y @{}}
 			% multirow does not get the correct number of rows with tabularx
@@ -342,9 +341,6 @@
 		This distance can be estimated from the distance of the peaks in \cref{fig:impedance-delta_charge-midFreq_dark} as \SI{625}{\nm}.
 		From this and from the materials' permittivity (\gls{symb:epsilonr} $20$ for all the layers, see \cref{table:impedance_parameters}) we can predict a geometric capacitance\index{geometric capacitance} of \SI{2.83e-8}{\farad\per\square\cm} which is in accordance with the value obtained from the impedance.
 
-		%	electric constant =
-		%	8.85418782 × 10-12 m-3 kg-1 s4 A2
-
 		\paragraph{Illuminated case}
 		As can be seen in \cref{fig:impedance-accumulation}, with an illumination, the apparent capacitance of the mid frequency plateau increases up to \SI{7.60e-8}{\farad\per\square\cm} at \SI{1}{sun}.
 		This is caused by the large amount of free carriers in the perovskite due to illumination (or due to the voltage bias for the dark case reported in \cref{fig:impedance-capacitance-vapp}).
@@ -391,16 +387,12 @@
 			}
 		\end{figure}
 
-
-
 		Up to now, we observed the charging and discharging of a geometric capacitance\index{geometric capacitance} with the charge accumulation in the contacts and, in some cases, in the perovskite layer.
 		This is represented by the capacitor in \cref{fig:cap_scheme_hi_freq}.
 		We did not consider yet the ionic motion as at mid and high frequencies it was effectively frozen: the slow ions did not have time to migrate.
 		The activation of the ionic movement can be seen in the phase of ionic displacement current\index{displacement current} represented in \cref{fig:impedance-ionic-phase}.
 		As we can see, once the ionic migration is active, the related current is purely capacitive (\SI{+90}{\degree}).
 		This is expected as the ionic species can just accumulate or deplete at the interfaces of the perovskite layer with the contacts (simulations where ions could penetrate in the contacts have been performed but will not be reported in this thesis) screening the electric field, like in the capacitor represented in \cref{fig:cap_scheme_low_freq}.
-
-
 
 
 		\paragraph{Dark case}\label{impedance_lowf_dark}
@@ -576,7 +568,6 @@
 		In \authoryear{Moia2019} we showed that the failure in stabilising the device to the measurement conditions (temperature, background voltage, illumination) results in loops in the Nyquist plot positive semi\hyp{}plane.
 		Additionally, a large perturbation measurement, which is a wide sinusoidal voltage oscillation amplitude in impedance measurements, has been simulated to also cause loops in the Nyquist plot positive semi\hyp{}plane, as represented in \cref{fig:impedance-200mV}.
 		This observation comes merely from simulations, no experimental confirmation is available yet.
-		%But artefacts could arise and cause misinterpretations.
 		The fact that a large voltage perturbation causes a non\hyp{}sinusoidal current output is not a problem for the measurement itself, as the lock-in amplifiers are perfectly able to extract amplitude and phase of the signal's first harmonic (as shown in \cref{fig:demodulation}), ignoring the higher harmonics.
 
 		\begin{figure}%impedance-200mV
@@ -647,8 +638,6 @@
 		The lack of a plateau has been interpreted by \authoryear{Jacobs2018} with the presence of more than one mobile ionic species, which is quite likely as seen in \cpageref{intro_ionic_migration}.
 		Additionally, we hypothesized \cite{Moia2019} that this effect could arise from the different ionic mobility in perovskite when infiltrated in mesoporous layers; dispersive transport in disordered material regions \cite{Schwarz1998} where the mobility varies over time and position; or mostly diffusive transport of ions in the mesoporous layers which could be better described by a Warburg diffusion element in the equivalent electrical circuit.
 
-		%\paragraph{Larger ionic capacitance}
-
 		\paragraph{Short circuit}
 		Both the simulation at open circuit with illumination or at dark with applied background voltage bias matches quite nicely the experimental data.
 		On the contrary, the simulation at short circuit with illumination showed a low frequency apparent capacitance increase of just 30 times from dark to 1~sun, while experimentally a giant\index{giant capacitance} capacitance is also observed.
@@ -668,24 +657,12 @@
 					\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_nyquist_norm.pdf}
 					\subcaption{Illuminated, open circuit, Nyquist}\label{fig:impedance_heterojunction-oc-nyquist}
 				\end{subfigure}
-				%			\qquad
 				\bigskip
 
 				\begin{subfigure}[t]{1.1\textwidth}
 					\includegraphics[width=1\textwidth]{heterojunction/ISwave_oc_cap.pdf}
 					\subcaption{Illuminated, open circuit, apparent capacitance}\label{fig:impedance_heterojunction-oc-cap}
 				\end{subfigure}
-				%			\bigskip
-				%			
-				%			\begin{subfigure}[t]{0.51\textwidth}
-				%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_nyquist_norm.png}
-				%				\subcaption{Dark, applied voltage, Nyquist}\label{fig:impedance_heterojunction-vapp-nyquist}
-				%			\end{subfigure}
-				%						\qquad
-				%			\begin{subfigure}[t]{0.51\textwidth}
-				%				\includegraphics[width=1\textwidth]{heterojunction/ISwave_Vapp_cap.png}
-				%				\subcaption{Dark, applied voltage, apparent capacitance}\label{fig:impedance_heterojunction-vapp-cap}
-				%			\end{subfigure}
 				\mycaption[Preliminary simulations of impedance on heterojunction model.]{The filled symbols indicate positive capacitance values, the hollow symbols represents negative capacitance\index{negative capacitance} which was changed in sign in order to be plotted on the same axis.}\label{fig:impedance_heterojunction}
 			}
 		}
@@ -823,8 +800,6 @@
 	\textit{Outputs:} an array with the values from the demodulation: constant
 	bias, sinusoid amplitude, phase shift.
 
-	%		\textit{Requires:} 
-
 	\textit{Required by:} \texttt{IS\-wave\_single\_analysis}, \texttt{EA\_single\_analysis}.
 
 
@@ -845,8 +820,6 @@
 
 	\textit{Outputs:} an array with the values from the sinusoidal fit: constant
 	bias, sinusoid amplitude, phase shift.
-
-	%\textit{Requires:} 
 
 	\textit{Required by:} \texttt{IS\-wave\_single\_analysis}, \texttt{EA\_single\_analysis}.
 
@@ -899,8 +872,6 @@
 
 	\textit{Outputs:} 1) charge variation over time in the whole device;
 	2) charge variation over time in the perovskite layer.
-
-	%\textit{Requires:} 
 
 	\textit{Required by:} \texttt{from\-IS\-waveEA\-Struct\-ToTxt}, \texttt{IS\-wave\_single\_analysis}.
 
@@ -984,10 +955,6 @@
 
 	\textit{Inputs:} a structure containing the most important results of the simulation.
 
-	%		\textit{Outputs:} 
-
-	%		\textit{Requires:} 
-
 	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 
@@ -1002,10 +969,6 @@
 
 	\textit{Inputs:} a structure containing the most important results of the simulation.
 
-	%\textit{Outputs:} 
-
-	%\textit{Requires:} 
-
 	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
 	\textit{Example:} do impedance and apparent capacitance Bode plots.
@@ -1018,10 +981,6 @@
 	A normalized spectra is also plotted and the rescaling factors are indicated in the legend.
 
 	\textit{Inputs:} a structure containing the most important results of the simulation.
-
-	%\textit{Outputs:} 
-
-	%\textit{Requires:} 
 
 	\textit{Required by:} \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}.
 
@@ -1039,12 +998,6 @@
 	\textit{Inputs:} 1) a structure with a solution being perturbed by an oscillating voltage, as generated from \texttt{IS\-wave\_EA\_single\_exec};
 	2) char array, prefix to be used for the text files names.
 
-	%\textit{Outputs:} 
-
-	%\textit{Requires:} 
-
-	%\textit{Required by:} 
-
 	\textit{Example:} save single simulation data to text files.
 	\begin{lstlisting}[style=Matlab-editor]
 >> fromISwaveEAStructToTxt(asymssol_i_1S_SR_is_100mHz_2mV, 'asymssol_i_1S_SR_is_100mHz_2mV')
@@ -1055,12 +1008,6 @@
 
 	\textit{Inputs:} 1) a structure containing the most important results of the simulation;
 	2) char array, prefix to be used for the text files names.
-
-	%\textit{Outputs:} 
-
-	%\textit{Requires:} 
-
-	%\textit{Required by:} 
 
 	\textit{Example:} save data from a set of simulations to text files.
 	\begin{lstlisting}[style=Matlab-editor]
@@ -1074,10 +1021,7 @@
 	For profiling the time spent running each function run \texttt{profile\- on} before running the tests and \texttt{profile\- viewer} after.
 	Using Matlab's Coverage Reports, the unused code can be easily spotted.
 
-	%		\textit{Inputs:} 
-	%\textit{Outputs:} 
 	\textit{Requires:} \texttt{ideality\_from\_dark\_jVpoints}, \texttt{ideality\_from\_Voc}, \texttt{IS\-wave\_full\_exec}, \texttt{IS\-wave\_full\_exec\_nonparallel}, \texttt{equilibrate\_minimal}, \texttt{gen\-Int\-Structs}, \texttt{gen\-Vapp\-Structs}.
-	%\textit{Required by:} 
 
 
 \section{Conclusions}

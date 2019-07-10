@@ -6,8 +6,6 @@
 	Nature conveys this energy in plenty of ways, including the generation of every renewable and most of non-renewable energy sources.
 	Solar energy is effectively the primary energy source for our planet's ecosystem, so it is the most interesting source of energy for human usage.
 
-	%	JUST A SMALL PART OF THIS INCOMING ENERGY IS GETTING USED
-
 
 	\paragraph{Availability}
 	The ubiquitous availability of solar power can be the leverage for an economical power levelling across different regions of the planet.
@@ -43,7 +41,6 @@
 	\paragraph{Resilience}
 	The usage of photovoltaic energy is compatible with a distributed and decentralized network model.
 	Such a power network can be much more resilient than the fossil fuels based system, with the only single-point-of-failure being the climate variability.
-	%	is the electric energy production method that best matches a distributed and decentralized network model, 
 	Combined with accumulation (needed for night time usage) and with other energy sources, it can be the pivot of an extremely reliable electric energy provisioning system.
 
 	\paragraph{More energy is not enough} It is intuitive that increasing the energy production is a high-price solution to the growing energetic demand.
@@ -56,7 +53,6 @@
 	Except photovoltaic energy.
 	This very simple difference already hints for the huge conceptual and technological step required by photovoltaics as compared to other electrical energy sources.
 
-	% transducer
 	\mysection[Relevant Physics]{Relevant Physics for Stacked Semiconductor Thin Films}
 
 	\subsection{Energy Levels and Occupancy}
@@ -87,7 +83,6 @@
 		\paragraph{Valence and conduction bands in amorphous solids}
 		In amorphous solids, the allowed electronic energy is still composed by bands but localised states can appear inside the band gaps and the band edges are less defined.
 		These tails of the edges are usually composed by localised states whose mobility is low, for this reason in amorphous solids the mobility gap is wider than just the band edges separation \cite[213]{Stenzel2005}.
-		%		The carriers close to the band edges (in the bottom of conduction band or in the top of the valence band) are typically localised and have
 
 		\begin{SCfigure}
 			\centering
@@ -236,7 +231,6 @@
 		A space\index{space charge layer} charge layer can also arise due to the presence of an external electric field, simply because of the force that this field exerts on the mobile charges.
 		These space\index{space charge layer} charge layers will cause an opposite electric field which will completely eliminate the field in the bulk of the material.
 		Extending this concept to the aforementioned example of semiconductors in contact, it is easy to see that far from the interfaces the electric field is zero, or "screened" by the charged layers, as represented in \cref{fig:homojunction-poisson_and_depletion}.
-		% and the materials' free charges and polarizability (permittivity) arranges so that the non-zero field zone is as thin as possible.
 
 		\paragraph{Debye length}\label{intro-debye_length}
 		In each layer, the thickness of this space\index{space charge layer} charge region is named "Debye length" or "Thomas\hyp{}Fermi screening length".
@@ -318,7 +312,6 @@
 
 		\paragraph{Continuity equation}
 		The continuity equation has a very intuitive meaning: the concentration of a species in a specific volume can increase due to generation $g$, can decrease due to recombination $U$ or can change due to a speed change of a charge flow passing by.
-		%		 (\textsl{e.g.}\ charges slowing down in a position will start accumulating).
 		This last contribution can be understood with the following example: a red traffic light stops the cars flow and causes the increase of their concentration.
 		For an electron concentration $n$:
 		\begin{equation}\label{eq_continuity}
@@ -332,7 +325,6 @@
 		This is independent from the illumination intensity, so it can be considered as having a reaction order of zero.
 		Lead halide perovskite have quite a high static permittivity \cite{Moia2019} and a small electron effective mass \cite{Herz2017} which means a high holes and electrons mobility \cite{Leijtens2014}, this implies that, at room temperature, the exciton binding energy (described in \cpageref{intro_exciton}) is even smaller than $k_|B|T$ \cite{Miyata2015,Galkowski2016,Tvingstedt2015} and the direct generation of free charges occurs.
 		So this kind of recombination is negligible in perovskite solar cells \cite{Wehrenfennig2014}.
-		%Non-geminate recombination refers to the annihilation of an electron and an hole happening after their complete separation, as opposed to geminate recombination where the recombination happens just after the charges separation but before their distancing.
 
 		\paragraph{Radiative recombination}
 		This is an unavoidable form of recombination, which finds its origin in the detailed balance principle describing that, at thermodynamic equilibrium, all the absorbed thermal photons, coming from the surroundings of the cell, have to be re-emitted as black body radiation.
@@ -351,9 +343,7 @@
 		Shockley-Read-Hall recombination \cite{Shockley1952} happens in two steps: a free carrier decays from the respective band into an empty localised state with energy in between the valence and the conduction bands, a trap, after this event, a free charge of the opposite sign reaches the trapped charge location and recombine with it.
 		Usually both the momentum difference and the chemical energy is released \textsl{via} phonons, so no radiative emission is involved.
 		When the trap is empty and/or when it is occupied, it will have a net charge which will ease the capture of a free carrier through Coulomb force (partially screened by the material's permittivity) \cite{Kirchartz2018,Kirchartz2019}.
-		%		The capture of a free charge by an empty or occupied trap will be favoured by the Coulomb attraction due to the charged state of the trap
 		As aforementioned, in an indirect band gap material the radiative recombination is disfavoured, but the presence of a trap state can divide in two easier steps the charge recombination process.
-		%		In an indirect band gap material (where the momentum difference between the starting and final state is large) band-to-band bimolecular radiative recombination is disfavoured, but the presence of a localised trap state can catalyse the transition 
 		This recombination type can have reaction order of 1 or 2 depending on how many of these steps constitutes a bottleneck \cite{Calado2019}.
 		In case of mid-gap traps (with energy in the middle of the bandgap), these states will be rather saturated and the process of trapping a free charge will be slow as an empty trap has to be hit, then the actual recombination is fast, so the reaction order is 1.
 		In case of shallow traps, the first step could or could not be a bottleneck, this time depending on the availability of free charges to trap: in doped semiconductors this could be a limiting factor, and the reaction order would be again 1; in intrinsic semiconductors there will be plenty of free charges of both types, and the reaction order can get close to 2.
@@ -370,12 +360,10 @@
 		For lead halide hybrid perovskite materials, this kind of recombination is or is not important depending on the presence of mid-gap states, which in turn depends on the material composition and stoichiometry.
 
 		\paragraph{Surface recombination}\label{intro_surface_recombination}
-		%		Also known as interfacial recombination, refers to the annihilation of one kind of free charge on a material with a charge of the opposite sign located on another material, happening at the materials' interface.
 		Also known as interfacial recombination, refers to the annihilation of two opposite charges happening at the boundary of a material block: an interface.
 		An interface can form between grains of the same material or between different materials.
 		At the boundary of a crystal, the well ordered structure is interrupted creating various localised states which can act as traps for \gls{srh} recombination.
 		Additionally, the impurities tend to accumulate to the crystalline grain surface, external contamination is likely to occur at the material surface, chemical reactivity can vary the composition of two materials' interface, and mid-gap states could be already present in one of the two interfacing materials.
-		%		The presence of mid-gap states in the doped selective contact can mediate the recombination in a fashion similar to the aforementioned Shockley-Read-Hall mechanism.
 		Recent reports indicate that also the \acr{lumo} of an \gls{htm}, even if it is out of the perovskite's band gap, can efficiently mediate the recombination of hot electrons \cite{Jimenez-Lopez2018,Droseros2019}.
 		In this thesis, I will consider the surface recombination as a case of \gls{srh} recombination.
 		Considering the interface between two different materials, for example, \textit{p}-type \acr{htm} and close-to-intrinsic perovskite, the surface recombination will involve the majority carrier, holes, in the \textit{p}-type material and electrons in the intrinsic semiconductor.
@@ -403,7 +391,6 @@
 		The energy gained by the stick would absorb all the energy of the incoming electric field, causing the annihilation of the photon.
 		Passing to consider a molecule, the photon would be absorbed just if it matches the energy difference between the fundamental (\cref{fig:generation-initial}) and an excited molecular state (and just if a transition dipole moment is not zero and other selection rules).
 		As we ultimately want to extract free charges from the material, we will consider just the transitions of electrons between molecular orbitals or bands.
-		%		 dipole vector of the starting state is not identical to the final state ().
 		After the photon absorption, a previously occupied energy level is now missing one electron which has been promoted to a previously unoccupied virtual state.
 		This is represented in \cref{fig:generation-excited_hot} for a high energy photon generating a hot excitation \ch{M^{*h}} (which later can result in a hot exciton and a hot carrier, not treated in this thesis) or in \cref{fig:generation-excited} for a photon with just enough energy to generate an excitation \ch{M^{*}}.
 		Photons with energy smaller than the optical band gap can also be absorbed by different processes like valence band to empty mid gap localised state, occupied mid gap localised state (trapped charge) to conduction band, localised states caused by structural disorder or thermal motion in crystals (Urbach tails) but they will not be considered in this thesis.
@@ -447,14 +434,10 @@
 		When an electron is removed from the \acr{homo}, the energy of the \acr{lumo} decreases, as it now refers to a different electronic configuration, where the underlying orbitals are not fully balancing the nuclei positive charges any more.
 		So the arrival state of the excited electron, marked with $\gamma$ in \cref{fig:generation-excited}, is at a lower energy than the initial state \acr{lumo} ($\beta$) and the optical band gap (which can be measured from absorbance spectrum \textsl{via} a Tauc plot) is smaller than the band gap (difference between the electron affinity and the ionization potential represented in \cref{fig:homo_lumo}).
 		Additionally, these energies can be influences by the polarisability of the surroundings (\textsl{e.g.}\ solvent permittivity) which can have different energetic contributions to \ch{M}, \ch{M-}, or \ch{M^{*}}; by intermolecular interactions; and by the molecular geometry which also depends on the solvent or solid state.
-		%		The \acr{lumo}, marked as $\beta$, gets occupied by the promoted electron and its energy decrease, to the new level with $\gamma$ in .
-		%		As can be seen comparing the $\beta$ and the $\gamma$ levels, 
 		Next to the excitation, an electron can either go back (recombine) or start getting apart from the original location, as represented in \cref{fig:generation-exciton} where it has been transferred to an adjacent molecule.
 		As a final step for generating a free carrier, the Coulomb force caused by the electron on \ch{M-} and the "hole" on \ch{M+} has to be overcome.
 		Both the aforementioned energy difference between $\gamma$ (upper \gls{somo} of the excited molecule) and $\delta$ (\acr{lumo}), and the energy needed for taking the charges apart breaking the electrostatic attraction of the exciton contribute to the exciton binding energy.
 		For most of the crystalline materials with delocalised orbitals, electron binding energy is smaller than the ambient thermal energy $k_|B|T$ so a direct generation of opposite and independent free charges is observed.
-		%		Also localised states (charges in mid gap traps) can be involved in optical excitation, in that case
-		%		\paragraph{Light absorption in presence of electric field}\label{intro_electroabsorbance}
 
 	\subsection{PhotoVoltaic Effect}
 		The charge generation causes an increase of the concentration of both electrons in the conduction band and of holes in the valence band.
@@ -497,8 +480,6 @@
 		Further, as in the metallic contacts there is no conduction nor valence band (and very fast recombination), the quasi\hyp{}Fermi level related to the majority carrier ($\bar\mu_|VB|$ in the \acr{htm} or $\bar\mu_|CB|$ in the \gls{etm}) is the one ruling the Fermi level in the metal.
 		So the difference between the holes' $\bar\mu_|VB|$ at the \gls{htm}/electrode interface ($\alpha$ in \cref{fig:collection}) and the electrons' $\bar\mu_|CB|$ at the \gls{etm}/electrode interface ($\beta$ in \cref{fig:collection}) gets reflected into the electrodes Fermi level, which ultimately can be measured as a voltage.
 
-		%		For this reason the relevant energy level at the left end of \acr{htm} is the valence band quasi\hyp{}Fermi level 
-
 \section{Perovskite Solar Cells}
 	\epigraph{\textit{\enquote{That's yogurt science!}}}
 
@@ -531,8 +512,6 @@
 	Here the absorber dye is substituted by a hybrid organic-inorganic lead halide perovskite semiconductor and both the \acr{etm} and the \acr{htm} can be composed of solid organic or inorganic materials.
 	Thanks to the enormous research effort, these kind of devices reached a record stabilised efficiency of 20.9~\% \cite{Green2019} with reports of even higher non-stabilised efficiencies (23.7~\% \cite{Green2019,Jiang2017}) in relatively short time, as represented in \cref{fig:nrel_chart}.
 
-	%	\paragraph{Composition}
-	%	Cesium introduction \cite{Bi2016,Saliba2016}
 	\begin{SCfigure}
 		\centering
 		\includegraphics[width=0.7\textwidth]{nrel_chart/pv-efficiencies-2019-06-13.pdf}
@@ -540,10 +519,8 @@
 	\end{SCfigure}
 
 
-
 	\paragraph{Perovskite Absorber Synthesis}
 	The preparation of this hybrid semiconductor \textsl{via} spin coating and annealing at low temperature is extremely easy and convenient for small-scale research purposes.
-	%	From my point of view, 
 	Nevertheless, this fabrication process is affected by a low reproducibility, likely due to the sensibility of the drying and crystallization step.
 	This factor clearly slows down the research in perovskite solar cells.
 	In literature, various reports of completely different results obtained from supposedly identical synthesis can be found \cite{Pockett2015,Gottesman2014}.
@@ -554,10 +531,7 @@
 	This is demonstrated by the large diffusion length in isolated crystals \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014}: for the \gls{csfamapbibr} it is reported being \SI{\approx140}{\nm} for the electrons and \SI{\approx1.9}{\um} for holes \cite{Liu2017}.
 	This is confirmed by the fact that once a thin layer (\SI{\approx500}{\nm}) of the material is layered between an \acr{etm} and an \acr{htm} the photoluminescence lifetime is dramatically reduced \cite{Jimenez-Lopez2017,Eperon2014} indicating that the free charges can diffuse at least over the layer thickness.
 	Even if not always the case \cite{Valadez-Villalobos2019,Tress2018,Peng2016}, it is often reported that at open circuit conditions, the predominant recombination pathway in perovskite solar cells is identifiable as the surface recombination at the perovskite/\-selective contacts interfaces \cite{Calado2019,Stolterfoht2018a,Stolterfoht2018,Gelmetti2019,Shao2016,Correa-Baena2017,Hou2016}.
-	%		This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
 	This recombination is important in perovskite solar cells also due to the high minority carriers concentration close to the contacts, which is a result of the screening of the electric field in the bulk of the perovskite material.
-	%This recombination is more important in a perovskite solar cell rather than in \gls{osc} as the built-in field is shielded by the ionic accumulation and the minority carriers concentration at the perovskite\-/contacts interfaces is higher.
-	%	Considering the perovskite material, traps are more likely to form on the surface of crystal domains, where the bulk symmetry is broken and carrier-phonon coupling, which can ease indirect transitions is more likely due to the easier deformation of the broken structure . 
 
 	\paragraph{Open circuit voltage}
 	The open circuit voltage of a perovskite solar cell depends on many contributions and has a hard upper limit dictated by the perovskite band gap and the radiative recombination \cite{Tress2017,Tress2015a}.
@@ -576,11 +550,6 @@
 	Also the morphology and composition of perovskite material can have an impact on the \gls{voc}: non-passivated perovskite surface states which can act as traps \cite{Zheng2017} thanks to the easier deformation of the broken crystal cell, favouring the electron-phonon coupling needed for indirect transitions \cite{Wu2015}; inhomogeneous perovskite layer can lead to pinholes and direct recombination between the two contacts \cite{Lee2015,Montcada2017,Qiu2016,Marchioro2014}; accessible grain boundaries due to non-compact perovskite layer causes the presence of more recombination centres \cite{Shao2016a}; the presence of secondary phases with in-gap energies which can be reduced modifying the perovskite composition \cite{Bi2016}.
 	If we consider the possibility of stabilising the hot carriers (free charges generated by a photon with energy larger than the band gap, can be stabilised hindering the generation of phonons needed for their thermalisation) and of collecting them to the contacts before their thermal relaxation to the band edge, also a \gls{voc} larger than the absorber band gap could be achieved and might, at least theoretically, break the Shockley\hyp{}Queisser efficiency limit \cite{WikipediaSQlimit}.
 
-	%	\paragraph{Charge extraction and charge blocking}
-	%	Selective contacts are in charge of selectively extract one kind of charge, blocking the other.
-	%	Clearly, the relative position of the perovskite and selective contact energy level is key both for extraction \cite{CorreaBaena2015}
-	%	% and for blockage CITE SOMETHING.
-
 	\paragraph{Ionic defects}
 	A Schottky defect is the lack of a ion and its counter ion from an otherwise perfect crystal structure.
 	This is commonly observed in ionic solids with weak lattice energy.
@@ -589,7 +558,6 @@
 	This specific defect can be avoided with small variations of the stoichiometry but other kind of defects will become more likely (\textsl{e.g.}\ \ch[kroeger-vink=true]{V''_{Pb} + 2 V^._{I}}), and the minimum defects' concentration achievable with \gls{mapi} perovskite has been reported to be around \SI{\approx 8e17}{\per\cubic\cm} (\SI{\approx 0.02}{\%}) \cite{Walsh2015}.
 	A iodine vacancy can also be originated by a Frenkel defect where a iodine migrates from its site to an interstitial one \ch[kroeger-vink=true]{V^._{I} + I'_{i}} and some studies support this as the origin of defects in perovskite materials \cite{Birkhold2018,Birkhold2018a,Minns2017,Mosconi2016,Uratani2017}.
 	Frenkel defects are expected to constitute shallow or deep traps in the perovskite band gap while Schottky defects should not present energies inside the band gap \cite{Kim2014h,Yin2014,Buin2014,Du2015}.
-	%	For a halide perovskite, when compared with an oxide perovskite where \ch{X} is oxygen, the formation of ionic defects is easier thanks to the lower charge of the ionic species which means a lower lattice energy.
 
 	\paragraph{Ionic migration}\label{intro_ionic_migration}
 	Ionic conductivity in halide perovskite materials has been pointed out more than 35 years ago \cite{Mizusaki1983,Yamada1995,Yamada1998}.
@@ -600,32 +568,20 @@
 	In complete perovskite solar cells, the ionic migration is one of the factors causing hysteretic\index{hysteresis} low frequency current\hyp{}voltage behaviour \cite{Unger2014,Xiao2015,Meloni2016,Tress2015}.
 	Still, the presence of ionic motion has been demonstrated even in non\hyp{}hysteretic\index{hysteresis} devices \cite{Calado2016,Jacobs2018,Bryant2015}.
 
-
-	%	The fact that in the  materials the charge of the ionic species is low, $+1$, $+2$, or $-1$, allows the crystal to form defects easily
-	%	The ionic defect concentration in these materials can be very high due to the weak lattice energy 
-	%	The presence of and mobile ionic species have been demonstrated in various kind of hybrid lead halide perovskite materials.
-
 	\paragraph{Field free absorber}
 	The high density of ionic defects causes the equilibrium free charge concentration to be low \cite{Walsh2015} and the electric field inside the absorber to be completely shielded within few nanometres from the interfaces \cite{Tress2015,Richardson2016}.
-
-	%	characterization complexity reduction due to more homogeneous carriers profile \cite{Kirchartz2012}
 
 	\paragraph{Diffusion as the main transport mechanism}
 	As we saw, most of the absorber layer in a perovskite solar cell will be electric field free.
 	In this region, no drift will help with the charge collection and the photogenerated free charges will have to approach the contacts \textsl{via} diffusion.
 	This is possible in perovskite thanks to its excellent electron and holes mobility \cite{Leijtens2014,Herz2017} making possible diffusion lengths in the micrometre scale \cite{Wehrenfennig2014,Wehrenfennig2014a,Stranks2013,Xing2013,Shi2015a,Eperon2014,Liu2017}.
 
-	%	(due to the built-in voltage being the workfunction difference of the selective contacts)
-	%	(drift is not the main transport mechanism in stabilized perovskite solar cells due to the electric screening effect of the mobile ionic species)
 	\paragraph{Hysteresis}
 	Hysteretic behaviour in current-voltage sweeps, while not often observed in other kind of solar cells, it is frequent in perovskite solar cells.
 	Still, many reports of hysteresis-free perovskite solar cells can be found, especially for top cathode or for high performances bottom cathode devices.
 	As we saw above, the presence of mobile ionic species is widely accepted for most of the hybrid lead perovskite materials and this has been indicated as one of the causes of the hysteresis\index{hysteresis} \cite{Unger2014,Xiao2015}.
 	Considering that the recombination and collection of free charges is affected by the ions-modulated electric field \cite{Pockett2017}, this is enough to explain the presence of hysteresis\index{hysteresis} \cite{Tress2015,Calado2016} \textsl{via} the modulation of interfacial energy barriers \cite{Moia2019}.
 	Additionally, adsorption or chemical reaction of perovskite ionic defects with the selective contact surface (\textsl{e.g.}\ with titanium oxide \cite{Yu2016,Beilsten-Edmands2015,Carrillo2016}) could be important and can explain why \cite{Moia2019}, bottom cathode cells with inorganic contacts usually present hysteresis\index{hysteresis} while top cathode with all-organic contacts usually does not.
-
-	%	\paragraph{Intrinsic or doped semiconductor}
-
 
 	\paragraph{Characterisation}
 	The characterisation techniques for perovskite solar cells and the relative interpretation evolved from the techniques and theory built around \gls{osc} and \gls{dssc} \cite{Barnes2013}.
@@ -646,18 +602,6 @@
 	This could explain the reports about the beneficial addition of acids in perovskite precursors solution, mainly by Snaith group \cite{Noel2017,Zhang2015a,Nayak2016}.
 	Additionally, various other reactions can happen inside the material or at its interfaces, for example the formation of metallic lead \cite{Birkhold2018a,Sadoughi2015}, of molecular iodine \cite{Minns2017}, of lead iodide \cite{Buin2015,Walsh2015}, of methylammonium iodide \cite{Walsh2015}.
 	Some of these degradation pathways are further favoured by contact with moisture \cite{Jong2018,Schlipf2019,Hu2017,Han2015a} (which if not too much, can be reversed \cite{Leguy2015}), with oxygen in combination with light \cite{Senocrate2018a,Aristidou2017} (as described in \cpageref{methods_degradation}), with UV light \cite{Lee2016}, with temperature \cite{Philippe2015,Conings2015}, with \gls{spiro} \cite{Carrillo2016,Kim2017,Kim2016a}, with \gls{pcbm60} \cite{DeBastiani2016}, with the metallic electrodes due to chemical reactivity \cite{Kato2015,Guerrero2016a,Back2016,Zhao2016,DeBastiani2016} or intermixing \cite{Domanski2016}.
-
-	%	https://www.ossila.com/pages/perovskite-solar-cell-degradation-causes
-
-	%\section{Background and Related Work}\label{sec:background}
-	%
-	%	\subsection{Perovskite Solar Cells}
-	%
-	%	\subsection{Hole Transporting Materials}
-	%
-	%	\subsection{PhotoPhysical Studies and Techniques}
-	%
-	%	\subsection{Modelling and Relevant Physics}
 
 	\newpage
 

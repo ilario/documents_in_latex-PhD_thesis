@@ -8,7 +8,6 @@
 		The impedance spectroscopy simulation is not included here as it has been treated in \cref{ch:impedance}.
 		Driftfusion \cite{Calado2018a,Calado2016} is a time resolved, one dimensional, drift\hyp{}diffusion modelling platform.
 		It takes advantage of Matlab \texttt{pdepe} solver for partial differential equations with boundary conditions in time and one spatial dimension.
-		%Solve initial-boundary value problems for parabolic-elliptic PDEs in 1-D.
 		Currently, it can simulate the electrostatic potential, and the density of electrons, holes and one ionic species at specified depths in a multi\hyp{}layered electronic device and at specified time points.
 		Even if an heterojunction version of the code is available, I implemented functions for the homojunction (every material has the same bandgap) release, which is much more stable and tested.
 		All the described scripts can be obtained from \url{https://github.com/barnesgroupICL/Driftfusion/tree/2018-EIS}.
@@ -67,8 +66,6 @@
 		value needs to be strictly between 0 and 1.
 
 		\textit{Outputs:} a logic (true/false) asserting if the solution in input reached its stability.
-
-		%\textit{Requires:} nothing.
 
 		\textit{Required by:} \texttt{CE\_full\_exec}, \texttt{CE\_single\_exec}, \texttt{find\-Optim\-Voc}, \texttt{IS\-wave\_EA\_single\_exec}, \texttt{stabilize}, \texttt{TPV\-const\_full\_exec}, \texttt{TPV\_single\_exec}.
 
@@ -195,15 +192,10 @@
 		\textit{Requires:} \texttt{change\-Light}, \texttt{pin\-drift}, \texttt{gen\-Int\-Structs},
 		\texttt{asymmetricize}, \texttt{find\-Optim\-Voc}, \texttt{stabilize}.
 
-		%		\textit{Required by:} 
-
 		\paragraph{\texttt{from\-Steady\-State\-Struct\-To\-Txt} -- Exports stabilised solutions data to text for plotting externally}
 		Save the main data from a stabilised solution created by \texttt{pin\-drift} to text files, using a format easy to import with Origin (from OriginLab).
 		\textit{Inputs:} 1) a structure as created by \texttt{pin\-drift};
 		2) a char array to be used as prefix for the saved files names.
-		%		\textit{Outputs:} none.
-		%		\textit{Requires:} nothing.
-		%		\textit{Required by:} 
 
 		\paragraph{\texttt{plot\_charges\_single} -- Plots various density and energy profiles over time}
 		Plot free charges and ions densities, and energy levels over device thickness and over time.
@@ -217,11 +209,7 @@
 
 		\textit{Inputs:} 1) a symmetric or asymmetric structure of a solution evolving over time;
 		2) optional char array, if provided saves the images in the current directory with the name starting with it.
-		%\textit{Outputs:} 
-		%\textit{Requires:} 
-		%\textit{Required by:} 
 
-		%	\subsection{Ideality Factor}
 		\paragraph{\texttt{ideality\_from\_Voc} -- Obtains ideality factor from voltage \textsl{versus} illumination intensity relation}\label{dd_ideality}
 		As explained in \cpageref{characterization_ideality}, the ideality factor can be obtained relating \gls{voc} to the light intensity.
 		%		 data of a device illuminated at various illumination intensities
@@ -239,7 +227,6 @@
 
 		\paragraph{\texttt{ideality\_from\_dark\_jVpoints} -- Obtains voltage dependent ideality factor from the stabilised current at different voltages}
 		A voltage dependent ideality factor can be obtained from a dark current\hyp{}voltage sweep (or stabilised points in the case of hysteretic\index{hysteresis} devices) \cite{Honsberg2019}.
-		%		 data of a device illuminated at various illumination intensities
 
 		\textit{Inputs:} 1) an asymmetric solution structure as created by \texttt{pin\-drift} in dark conditions;
 		2) the maximum voltage point;
@@ -269,8 +256,6 @@
 
 		\textit{Requires:} \texttt{CE\_single\_exec}, \texttt{CE\_ISstep\_single\_analysis},   \texttt{CE\_ISstep\_subtracting\_analysis}, \texttt{CE\_full\_fit}, \texttt{CE\_full\_analysis},  \texttt{asymmetricize}, \texttt{pinana}.
 
-		%		\textit{Required by:} \texttt{}.
-
 
 		\paragraph{\texttt{CE\_single\_exec} -- Do a single Charge Extraction experiment}
 
@@ -289,10 +274,6 @@
 
 		\textit{Inputs:} a structure containing the most important results of the CE simulation.
 
-		%		\textit{Outputs:} .
-
-		%		\textit{Requires:} \texttt{}.
-
 		\textit{Required by:} \texttt{CE\_full\_exec}.
 
 
@@ -307,7 +288,6 @@
 		\textit{Outputs:} an array with the values from the linear + exponential fit:
 		linear gradient, exponential function linear factor, exponent.
 
-		%		\textit{Requires:} \texttt{}.
 
 		\textit{Required by:} \texttt{CE\_full\_exec}.
 
@@ -323,8 +303,6 @@
 		\textit{Outputs:} 1) array of cumulative charge extracted at each time point;
 		2) index of the previous array indicating the end of the early extraction, time at which the electronic charge have been extracted but the ionic defects did not move yet.
 
-		%		\textit{Requires:} \texttt{}.
-
 		\textit{Required by:} \texttt{CE\_full\_exec}.
 
 		\paragraph{\texttt{CE\_ISstep\_subtracting\_analysis} -- Calculate the charge excess in device under illumination}
@@ -339,7 +317,6 @@
 		\textit{Outputs:} 1) array of excess charges in the whole device versus time;
 		2) array of excess charges in the intrinsic layer versus time.
 
-		%		\textit{Requires:} \texttt{}.
 		\textit{Required by:} \texttt{CE\_full\_exec}.
 
 
@@ -359,8 +336,6 @@
 		\textit{Outputs:} a structure containing the most important results of the simulation.
 
 		\textit{Requires:} \texttt{TPV\_single\_exec}, \texttt{TPV\_single\_analysis}.
-
-		%		\textit{Required by:} \texttt{}.
 
 
 		\paragraph{\texttt{TPV\-variab\_full\_exec} -- Simulate Transient PhotoVoltage in a range of background light intensities adapting the pulse intensity for each simulation}
@@ -390,18 +365,10 @@
 		\textit{Required by:} \texttt{TPV\-const\_full\_exec}, \texttt{TPV\-variab\_full\_exec}.
 
 
-
-
-		%		\textit{Required by:} \texttt{}.
-
 		\paragraph{\texttt{TPV\_full\_analysis} -- Plot TPV}
 		Both mono and bi exponential fitting results are plotted \textsl{versus} light-bias.
 
 		\textit{Inputs:} a structure containing the most important results of the \acr{tpv} simulation.
-
-		%		\textit{Outputs:} .
-
-		%		\textit{Requires:} \texttt{}.
 
 		\textit{Required by:} \texttt{TPV\-const\_full\_exec}, \texttt{TPV\-variab\_full\_exec}.
 
@@ -425,8 +392,6 @@
 		7) linear factor of slow decay of bi-exponential fit;
 		8) lifetime of slow decay of bi-exponential fit.
 
-		%		\textit{Requires:} \texttt{}.
-
 		\textit{Required by:} \texttt{TPV\-const\_full\_exec}, \texttt{TPV\-variab\_full\_exec}.
 
 		\paragraph{\texttt{TPV\_single\_analysis\_noMulti\-Start} -- Fit voltage decays from single TPV solutions and do graphics}
@@ -449,16 +414,6 @@
 		7) linear factor of slow decay of bi-exponential fit;
 		8) lifetime of slow decay of bi-exponential fit.
 
-		%		\textit{Required by:} \texttt{}.
-
-		%
-		%
-		%\subsection{Impedance Spectroscopy in Time Domain}
-		%\epigraph{\textit{"I thought you could implement this"\\"Ehm\dots Do you mean\dots by tomorrow?"\\"That would be amazing!"}}
-		%
-		%\subsection{Impedance Spectroscopy in Frequency Domain}
-
-
 
 
 	\subsection{ElectroAbsorption}\label{software_electroabsorbance}
@@ -474,8 +429,6 @@
 		The first harmonic component is driven by the product of the steady state electric field $E_|DC|(x)$ and the amplitude of the first harmonic of the oscillating electric field $|E_|AC||$ at each spatial point.
 		The second harmonic component is related to the square of the oscillating electric field amplitude $|E_|AC|^2|$ at each spatial point.
 		Thanks to the modularity of the developed routines, some of the functions coded for the impedance spectroscopy modelling are called by ElectroAbsorption routines, specifically: \texttt{IS\-wave\_EA\_single\_fit}, \texttt{IS\-wave\_EA\_single\_demodulation}, and \texttt{IS\-wave\_EA\_single\_exec}.
-
-		%		photo induced absorption stark spectroscopy on perovskite solar cells \cite{Roiati2014,Li2016}
 
 
 		\paragraph{\texttt{EA\_full\_exec} -- Perform ElectroAbsorption simulation on all the provided solutions}
@@ -499,8 +452,6 @@
 
 		\textit{Requires:} \texttt{asymmetricize}, \texttt{IS\-wave\_EA\_single\_exec},
 		\texttt{EA\_single\_analysis}, \texttt{EA\_full\_analysis\_phase}, \texttt{pinana}, \texttt{EA\_full\_analysis\_Efield}.
-
-		%		\textit{Required by:} \texttt{}.
 
 		\paragraph{\texttt{EA\_single\_analysis} -- Calculate ElectroAbsorbance and phase}
 		The first and second harmonics are locally calculated and averaged over the device thickness.
@@ -550,10 +501,6 @@
 
 		\textit{Inputs:} a structure containing the most important results of the EA simulation.
 
-		%		\textit{Outputs:} .
-
-		%		\textit{Requires:} \texttt{}.
-
 		\textit{Required by:} \texttt{EA\_full\_exec}.
 
 
@@ -562,26 +509,8 @@
 
 		\textit{Inputs:} a structure containing the most important results of the EA simulation.
 
-		%		\textit{Outputs:} .
-
-		%		\textit{Requires:} \texttt{}.
-
 		\textit{Required by:} \texttt{EA\_full\_exec}.
 
-
-		%		\subsection{Techniques Which Could Be Implemented}
-		%		\paragraph{IMVS}
-		%		\paragraph{IMPS}
-		%		\paragraph{Mott-Schottky}
-		%\url{https://en.wikipedia.org/wiki/Mott-Schottky_plot}
-		%mott-schottky in organics under illumination 10.1103/PhysRevApplied.7.034018
-		%impedance and mott-schottky article in osc \cite{Brus2016}		
-		%dyakonov sobre mott-shottky 10.1021/acsaem.8b01119
-
-
-
-
-		%\pagebreak[2]
 		\newpage
 		\mysection[PyPV]{PyPV: An easy Current-Voltage curves acquisition interface}
 		\epigraph{\textit{\enquote{So this bug is 7 years old, right? Why nobody tried to fix it?}}}
@@ -605,8 +534,6 @@
 		In comparison to the mentioned legacy software, PyPV has the advantage of not needing any commercial license which allowed us to use it on various computers.
 		Additionally some of the features which will be described below were just missing in the previous software.
 		As far as I know, PyPV is currently used in the following research institutions: ICIQ (Institut Català d’Investigació Química), URV (Universitat Rovira i Vrigili), İzmir Katip Çelebi Üniversitesi, and Karamanoglu Mehmetbey University.
-
-		%I received a proof-of-concept software developed by  and decided to continue the development. At that point the software had an interface with few buttons and a working Keithley communication library.
 
 		\paragraph{User's requests}
 		The feedback from the new users of the software helped me improving PyPV with the following features: solar simulator shutter control, more robust connection to the GPIB-USB-HS adapter, better installation instructions.
@@ -749,7 +676,6 @@
 		Currently, the measurement steps for AutoMeasure is hard-coded in \texttt{main\-window.py} file.
 		Hopefully I will change this feature to relay on an external file, like for the aforementioned "Run a List\dots" button.
 		In the current configuration, the measurement procedure is:
-		%the device is kept under illumination at open circuit conditions, then a reverse sweep is measured and, immediately after this, the forward sweep is measured.
 		\begin{enumerate}
 			\item tells the user (using Keithley's display and buzzer) to select the diode number 1 in the device under measurement;
 			\item after waiting for the shutter delays, the illumination shutter is opened;
@@ -760,7 +686,6 @@
 			\item a plot window is spawned and the AutoSave function is called;
 			\item tells the user to select the next diode and repeats the steps from step \#2 on.
 		\end{enumerate}
-		%The reason for measuring the reverse sweep first, is that the reverse sweep starts from a high voltage point which is closer to the stabilised condition of the devices prior to the measurement (illuminated and open circuit).
 
 		\paragraph{Saved measurements table}
 		In this table on the right side of the software (see \cref{fig:pypv-gui}), the saved measurement identification and parameters are displayed.
@@ -837,7 +762,6 @@
 		The interface development has been started with the "Monkey Studio" software, which development has ceased even before the start of PyPV\@.
 		This demonstrated to be a failure in long term development planning.
 
-		%\pagebreak[2]
 		\newpage
 \section{Robust and quick data analysis \textsl{via} R scripts}
 	\epigraph{\textit{\enquote{Is there an Origin version for Linux?}\\\enquote{No}}}
@@ -871,8 +795,6 @@
 		This basic \gls{gui} prompts the user for the directories containing the data of each of the devices to be compared.
 		Then it plots the characterisation data of all the selected devices in single plots, in order to help the visual comparison of the results.
 
-		%\subsection{Photophysical Characterization \textsl{via} Optical and Electrical Transients}
-
 
 	\subsection{Charge Extraction (\glsentryshort{ce})}\label{r_ce}
 		For details on \acr{ce} technique, see \cpageref{characterization_ce}.
@@ -904,10 +826,7 @@
 		\paragraph{\texttt{ce-\-from\_many\_output\_to\_graph.R} -- Compares between CE of various devices}
 		Plots the charge \textsl{versus} light bias trends of all the devices' data in the current directory, like in \cref{fig:tae_photophysics-ce}.
 		This is used for comparisons like the one in the right column of \cref{fig:ce_noise}.
-
-		%		\paragraph{\texttt{ce-time-many.R} -- Compares single CE transients of various devices}
-		%		\paragraph{\texttt{ce-with\_limits.R} -- Compares CE transients with RC decays}
-
+		
 	\subsection{Transient PhotoVoltage (\glsentryshort{tpv})}\label{r_tpv}
 		For details on \acr{tpv} technique, see \cpageref{characterization_tpv}.
 
@@ -922,15 +841,10 @@
 		If cases where this is not enough, some data points from the beginning of the decay (the most noisy part of the decay) are removed until when the fit converges.
 		Additionally, the voltage increase value $\Delta V$ is also calculated here and will be used by \acr{dc} scripts, as explained in \cpageref{characterization_dc}.
 
-		%		
-		%				\paragraph{\texttt{tpv\_onlyDeltaV.R} -- Gets the voltage increase from TPV decays}
-		%				
 		\paragraph{\texttt{tpv-\-from\_output\_to\_graph.R} -- Plots TPV lifetimes \textsl{versus} light bias}
 		This script plots the lifetimes obtained from mono or bi exponential fits in \texttt{tpv.R} \textsl{versus} light bias voltage, like in \cref{fig:tpv}.
 		Additionally, it fits the high voltage points using \cref{eq:tpv_tau_vs_intensity}.
-		%		
-		%\paragraph{\texttt{tpv-from\_output\_to\_graph-with\_limits.R} -- Compares lifetime with RC time}
-		%
+		
 		\paragraph{\texttt{tpv-\-from\_many\_output\_to\_graph.R} -- Compares between TPV of various devices}
 		Similarly to the aforementioned \texttt{tpv-\-from\_output\_to\_graph.R} script, this plots the mono\hyp{}exponential lifetime \textsl{versus} light bias data for various devices in the same plot, allowing the user to make a graphical comparison.
 		%
@@ -940,9 +854,6 @@
 		\paragraph{\texttt{tpc.R} -- Integrates TPC transients}
 		Similarly to what \texttt{ce.R} does for integrating the \acr{ce} voltage transient, also this script directly integrates the voltage transients \textsl{versus} time after subtracting a baseline, like in \cref{fig:tpc}.
 
-		%		\paragraph{\texttt{tpc-vs-tpv-vs-ce.R} -- Compares the single transients from various techniques}
-		%
-		%
 	\subsection{Differential Capacitance (\glsentryshort{dc})}\label{r_dc}
 		For details on \acr{dc} technique, see \cpageref{characterization_dc}.
 
@@ -953,19 +864,13 @@
 		The chemical capacitance\index{chemical capacitance} profile is obtained subtracting $C_|g|$ to the calculated capacitance profile.
 		The obtained capacitance \textsl{versus} light bias discrete profiles are converted to a continuous profile using R's \texttt{Vectorize} function and integrated over voltage (see \cref{eq:dc_charge}) for obtaining the excess charge \textsl{versus} light bias trends with or without geometric capacitance\index{geometric capacitance}.
 
-		%		
-		%		\paragraph{\texttt{cedc.R} -- Compares the charge \textsl{versus} light\hyp{}bias obtained from CE or DC}
-		%		
 		\paragraph{\texttt{dc-from\_many\_output\_to\_graph\_capacitance.R} and \texttt{dc-\-from\_many\_output\_to\_graph\_charge.R} -- Compares between DC of various devices}
 		The comparison of capacitance and charge from \acr{dc} is plotted for various devices and fitted using \cref{eq:dc_full}, like in \cref{fig:dc_deltaV}.
 		The data to be plotted is taken from the output of \texttt{dc-\-from\_output\_to\_graph.R} script.
 
 	\subsection{Transient PhotoVoltage referred to charge from CE or DC (\glsentryshort{tpvce} and \glsentryshort{tpvdc})}\label{r_tpvcedc}
 		For details on \acr{tpv}-CE and \acr{tpv}-DC techniques, see \cpageref{characterization_tpvce}.
-		%
-		%
-		%
-		%		\paragraph{\texttt{tpvce-from\_output\_to\_graph.R} -- Relate TPV lifetimes to CE charge}
+
 
 		\paragraph{\texttt{tpvce-\-from\_many\_output\_to\_graph.R} and \texttt{tpvdc-\-from\_many\_output\_to\_graph.R} -- Compare TPV lifetimes related to either CE or DC charge of various devices}
 		The mono\hyp{}exponential lifetimes from \texttt{tpv.R} are plotted \textsl{versus} various charge profiles obtained from \acr{ce} or \acr{dc}.
@@ -974,29 +879,6 @@
 		Fitting the small perturbation lifetimes \textsl{versus} chemical charge using \cref{eq:tau_pfo}, the recombination order $\Phi$ is obtained.
 		This $\Phi$ is used for correcting the small perturbation lifetimes to total carrier lifetimes (pseudo first order lifetimes) using \cref{eq:tau_pfo} and is plotted again \textsl{versus} chemical charge.
 		An example of all the mentioned plots can be observed in \cref{fig:tpvce,fig:tae_photophysics_tpvcedc}.
-
-		%	\subsection{Current-Voltage Sweeps}
-		%		\paragraph{\texttt{extractdata-curves-vi-separated\_files.R} -- Functions for extracting parameters from current\hyp{}voltage sweeps¨}
-		%		\paragraph{\texttt{iv-generate\_mydata.R} and \texttt{iv-generate\_mydata\_with\_comments.R}}
-		%		\paragraph{\texttt{iv-generate\_images.R}}
-		%				\paragraph{\texttt{iv-plot\_list.R}, \texttt{iv-plot\_list-suppinfo.R}, and \texttt{iv-light\_intensity.R}}
-		%		\paragraph{\texttt{iv-generate\_statistics.R}}
-		%		\paragraph{\texttt{iv-jsc\_voc\_vs\_light\_intensity.R}}
-
-		%
-		%		\paragraph{\texttt{jsc-stability.R} and \texttt{voc-stability.R}}
-		%
-		%	\subsection{Other}
-		%	Not all the scripts are described in this chapter, two of the most interesting others will be reported here:
-		%	
-		%				\paragraph{\texttt{jrec-ce.R} and \texttt{jrec-dc.R} -- Reconstructs the \gls{jsc}}
-		%					\cpageref{jsc_reconstruction}
-		%					
-		%		\paragraph{\texttt{mppt\_to\_graph.R} -- Plots tracking of maximum power point}
-		%		\paragraph{\texttt{profilometry.R} -- Plots profilometer measurements and fit heights}
-		%		\paragraph{\texttt{tas-downsample.R} -- Reduces the dimension of TAS decays}
-		%%		\paragraph{\texttt{tas-graph.R} -- Plots TAS decays}
-		%		\paragraph{\texttt{uvvis-pl.R} -- Plots absorbance and photoluminescence spectra and fits Tauc plots}
 
 		\newpage
 \section{Contributions to mppTracker}\label{software_mppt}
@@ -1022,18 +904,5 @@
 				}\label{fig:mppt}
 			}}
 	\end{figure}
-
-	%	\begin{minipage}{\linewidth}
-	%		\begin{center}
-	%	\includegraphics[width=1\textwidth]{mppt/ig92-spiro-1456-1-led437penta.png}
-	%			\captionof{figure}[Example of maximum power tracking measurement.]{\textbf{Example of maximum power tracking measurement.}
-	%					The reported measurement has been performed with an improved version of mppTracker on a \gls{fto}\-/\ch{d-TiO2}\-/\gls{csfamapbibr}\-/\gls{spiro}\-/\ch{Au} solar cell.
-	%			The black line indicates the applied voltage and refers to the left axis.
-	%			The red line represents the measured current and refers to the right axis.
-	%			Te resulting power conversion efficiency is the green line and is also on the right axis.
-	%		}\label{fig:mppt}
-	%		\end{center}
-	%	\end{minipage}
-
 
 

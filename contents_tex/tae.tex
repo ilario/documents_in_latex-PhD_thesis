@@ -47,7 +47,6 @@
 	\paragraph{Design of the Experiment}
 	Differently from our previous report on \gls{tae1}\index{TAE-1} \cite{Cabau2015a}, we decided to avoid the mesoporous titania layer decreasing the complexity of the stack.
 	In order to compare different materials for the selective contact layer, we decided to avoid any modification to the layers underlying the absorber one in the solar cell stack, as these could heavily affect the perovskite crystallisation and morphology \cite{Tao2017,Bi2015}.
-	%The variation of the upper contact (\textsl{i.e.}\ the \acr{htm} in bottom cathode solar cells) guarantees that the observed differences will not be due to a different perovskite structure, whose crystallization has been reported to be sensible to the underlying contact 
 	Additionally, the \acr{htm} under comparison have been deposited under as similar as possible conditions (partially hindered by a different solubility), employing the same additives (with the same molar ratio with the \acr{htm} concentration, we used \gls{litfsi} and \iupac{4-tert-butylpyridine}) and thicknesses.
 	For reducing the possible differences in \gls{dos} width, the chosen \acr{htm} have all very similar chemical structures.
 
@@ -65,14 +64,8 @@
 	\Gls{kpfm} measurements has been performed and interpreted by Dr.\ Ana Pérez-Rodríguez, Dr.\ Esther Barrena, and Prof.\ Carmen Ocal at ICMAB-CSIC, UAB, Barcelona.
 
 
-	% Belisle2016 In the ionic accumulation case (Figure 3b), these variations in the HTM are accommodated by a vacuum-level shift (drawn here as enabled by the accumulation of positive charge such as iodide vacancies theorized to exist in these materials(43)) at the interface, screening the electric field across the perovskite and leaving carrier densities, and therefore recombination, independent of the HTM.
-	%
-
-	%
-	%
 \section{Molecular Characterisation}
 
-	%\afterpage{
 	\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=1.5\hsize}Y | >{\hsize=1.5\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.9\hsize}Y >{\hsize=0.9\hsize}Y >{\hsize=0.9\hsize}Y >{\hsize=0.9\hsize}Y Y @{}}
 			% multirow does not get the correct number of rows with tabularx
@@ -87,17 +80,13 @@
 				$E^{\mathrm{sim}}_|HOMO|$ and $E^{\mathrm{sim}}_|LUMO|$ have been obtained \textsl{via} a \gls{dft} simulation.
 				$E^{\mathrm{sim,abs}}_|onset|$ is the direct optical band gap obtained \textsl{via} Tauc plot of the absorbance simulated with time-dependent \gls{dft}.
 			}\label{table:tae_molecular}\\[\belowcaptionskip]
-			%		\rule[-1ex]{0pt}{3ex} \\
-			%		\multirow{2}{*}{\small\gls{htm}} & \small$\mu_|h|$ & \small$E^{\mathrm{abs}}_|onset|$ & \small$E^{\mathrm{pl}}_|max|$ & \small$E_|g|$ & \small$E_|ox|$ & \small$E^{\mathrm{exp}}_|HOMO|$ & \small$E^{\mathrm{exp}}_|LUMO|$ & \small$E^{\mathrm{sim}}_|HOMO|$ & \small$E^{\mathrm{sim}}_|LUMO|$\\ 
 			\multirow{2}{*}{\small\gls{htm}} & \small$\mu_|h|$ & \small$E^{\mathrm{abs}}_|onset|$ & \small$E^{\mathrm{pl}}_|max|$ & \small$E^{\mathrm{exp}}_|HOMO|$ & \small$E^{\mathrm{exp}}_|LUMO|$ & \small$E^{\mathrm{sim}}_|HOMO|$ & \small$E^{\mathrm{sim}}_|LUMO|$ & \small$E^{\mathrm{sim,abs}}_|onset|$ \\
 			\rule[-1ex]{0pt}{2.5ex}
-			%		   & \footnotesize\si{\square\cm\per\V\per\s} & \footnotesize\si{nm} & \footnotesize\si{nm} & \footnotesize\si{\eV} & \footnotesize\si{\V} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} \\[1mm]
 			& \footnotesize\si{\square\cm\per\V\per\s} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} & \footnotesize\si{\eV} \\[1mm]
 			\hline
 			\endfirsthead
 			\multicolumn{2}{@{}l}{\ldots \small continues}\\
 			\hline
-			%		\small\gls{htm} & \small$\mu_|h|$ & \small$E^{\mathrm{abs}}_|onset|$ & \small$E^{\mathrm{pl}}_|max|$ & \small$E_|g|$ & \small$E_|ox|$ & \small$E^{\mathrm{exp}}_|HOMO|$ & \small$E^{\mathrm{exp}}_|LUMO|$ & \small$E^{\mathrm{sim}}_|HOMO|$ & \small$E^{\mathrm{sim}}_|LUMO|$\\ 
 			\small\gls{htm} & \small$\mu_|h|$ & \small$E^{\mathrm{abs}}_|onset|$ & \small$E^{\mathrm{pl}}_|max|$ & \small$E^{\mathrm{exp}}_|HOMO|$ & \small$E^{\mathrm{exp}}_|LUMO|$ & \small$E^{\mathrm{sim}}_|HOMO|$ & \small$E^{\mathrm{sim}}_|LUMO|$ & \small$E^{\mathrm{sim,abs}}_|onset|$\\
 			\hline
 			\endhead
@@ -107,10 +96,6 @@
 			\hline
 			\endlastfoot
 			\rule[-1ex]{0pt}{3ex}
-			%		spiro\hyp{}OMeTAD 	& \num{2.6E-4} 	& \num{}	& \num{}	& \num{3.01}	& \num{-5.10}	& \num{-2.09}	& \num{}	& \num{}  \\
-			%		TAE-1				& \num{5.9E-5} 	& \num{}	& \num{}	& \num{2.58}	& \num{-5.32}	& \num{-2.74}	& \num{-5.61}	& \num{-0.54}  \\
-			%		TAE-3 				& \num{8E-4} 	& \num{1.836}	& \num{1.722}	& \num{1.84}	& \num{-5.00}	& \num{-3.16}	& \num{-5.54}	& \num{-1.77}  \\
-			%		TAE-4 				& \num{7E-4} 	& \num{1.969}	& \num{1.771}	& \num{1.97}	& \num{-5.53}	& \num{-3.56}	& \num{-6.14}	& \num{-2.27} \\
 			spiro-OMeTAD 		& \num{2.6E-4} 	& 				& 					& \num{-5.10}	& \num{-2.09}	& 				&  				& \\
 			TAE-1				& \num{5.9E-5} 	& \num{2.813}	& 					& \num{-5.32}	& \num{-2.74}	& \num{-5.61}	& \num{-0.54}	& \num{3.04} \\
 			TAE-3 				& \num{8E-4} 	& \num{1.836}	& \num{1.722}		& \num{-5.00}	& \num{-3.16}	& \num{-5.54}	& \num{-1.77}	& \num{2.02} \\
@@ -123,7 +108,6 @@
 	Then the energy of \acr{homo}, reported in \cref{table:tae_molecular} and represented in \cref{fig:tae-energy_levels}, has been obtained from the oxidation potential \textsl{via} the empirical linear relationship reported in \authoryear{DAndrade2005}.
 	The obtained \acr{homo} value is shallowest for \gls{tae3}, then \gls{spiro} a bit above \gls{tae1}\index{TAE-1} level, and finally \gls{tae4}\index{TAE-4} being the deepest.
 	Considering that these \acr{htm} gets doped by exposing the devices to dry air (see fabrication method in \cpageref{methods_bottom}, we did not add any chemical oxidiser, hopefully oxygen is enough for doping all the \acr{htm} even if their oxidation potential is quite variate), the Fermi level in these \textit{p}-type materials should be rather close to the \acr{homo}.
-	%	Considering the built-in voltage, defined as the difference in \acr{etm} (which is \ch{TiO2} in all cases) and \acr{htm} Fermi levels, we expect it to be larger for the devices with \gls{tae4}\index{TAE-4} and smallest for the \gls{tae3}\index{TAE-3} ones.
 	The built-in voltage is defined in equilibrium as the Fermi level difference at the metallic electrodes in a complete device $V_|BI| = (\bar\mu^{\mathrm{cathode}} - \bar\mu^{\mathrm{anode}})/q$ and can be approximated by the difference in Fermi levels of the isolated \acr{etm} (which is \ch{TiO2} in all cases) and \acr{htm} $V_|BI| \approx (\bar\mu^{\mathrm{ETM}} - \bar\mu^{\mathrm{HTM}})/q$.
 	So, we expect the built-in voltage to follow the trend in $\bar\mu^{\mathrm{HTM}}$ and to be larger for the devices with \gls{tae4}\index{TAE-4} and smallest for the \gls{tae3}\index{TAE-3} ones.
 	Please note that the value obtained from cyclic voltammetry in solution could be different from the \acr{homo} energy in solid state film.
@@ -312,7 +296,6 @@
 				\end{subfigure}
 				\mycaption[CE and DC of devices with different HTM, highlighting the varying chemical capacitance\index{chemical capacitance}.]{
 					In (\textbf{a}) the charge \textsl{versus} light bias as obtained from \acr{ce} is reported. The dark solid line is an exponential fitting following \cref{eq:ce_full} while the light solid line is just its exponential part, ignoring the geometric capacitance\index{geometric capacitance}. In (\textbf{b}) the capacitance dependence on light bias is reported as obtained from \acr{dc}. The solid line indicates the fitting using \cref{eq:dc_full}.
-					%All the fitted parameters are reported in \cref{table:tae_photophysics}.
 				}\label{fig:tae_photophysics_cedc}
 			}
 		}
@@ -334,35 +317,6 @@
 	A much more meaningful result can be obtained referencing the small perturbation lifetimes obtained from \acr{tpv} to the chemical charge concentration (the charge stored in the perovskite layer, estimated from the exponential parts of \cref{fig:tae_photophysics_cedc}), and correcting the resulting data with the recombination order, as explained in \cpageref{characterization_tpvce}.
 	This way, the data points get closer indicating very similar recombination rates at the same excess chemical charge density (vertical comparison in \cref{fig:tae_photophysics_tpvdc,fig:tae_photophysics_tpvdc} data) being present for all the cases which thus are of no help for explaining the observed \gls{voc} differences.
 	The difference in lifetimes in \gls{tae4}\index{TAE-4} devices when referencing to \acr{ce} or \acr{dc} is due to the large incoherence of \acr{ce} or \acr{dc} for this device, as shown in \cref{fig:tae_photophysics_cedc}.
-
-	%	\begin{xltabular}[c]{1.05\linewidth}{@{} Y | Y | Y Y | Y Y @{}}
-	%		% multirow does not get the correct number of rows with tabularx
-	%		% mycaption does not work inside xltabular
-	%		\caption[Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.]{\textbf{Parameters fitted from TPV, TPV-CE, and TPV-DC data, from devices with different HTM.}
-	%			The experimental data reported in \cref{fig:tae_photophysics_tpvcedc} has been fitted using \cref{eq:tpv_tau_vs_intensity} for \acr{tpv} data (using a $T$ of \SI{300}{\celsius}) and \cref{eq:tau_pfo} for \gls{tpvce} and \gls{tpvdc} data.
-	%		}\label{table:tae_photophysics}\\[\belowcaptionskip]
-	%		\multirow{3}{*}{\textbf{HTM}} & \textbf{\acr{tpv}} & \multicolumn{2}{c|}{\small\textbf{\gls{tpvce}}} & \multicolumn{2}{c}{\small\textbf{\gls{tpvdc}}}
-	%		\rule[-1ex]{0pt}{3ex} \\
-	%		& \small\gls{symb:v} & \small$k$ & \small\gls{symb:Phi} & \small$k$ & \small\gls{symb:Phi}  \\
-	%		\rule[-1ex]{0pt}{2.5ex}   & - &  \footnotesize\si{\s^{-1}.\cm^{2\Phi-2}} & - &  \footnotesize\si{\s^{-1}.\cm^{2\Phi-2}} &  - \\[1mm]
-	%		\hline
-	%		\endfirsthead
-	%		\multicolumn{2}{@{}l}{\ldots \small continues}\\
-	%		\hline
-	%		\small\gls{htm} & \small\gls{symb:v} & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-CE|$ & \small$k_|TPV-CE|$ & \small$\Phi_|TPV-DC|$ \\
-	%		\hline
-	%		\endhead
-	%		\hline
-	%		\multicolumn{6}{r@{}}{\small continues\ldots}\\
-	%		\endfoot
-	%		\hline
-	%		\endlastfoot
-	%		\rule[-1ex]{0pt}{4ex}
-	%		\gls{spiro}	& \rnum{2.07090585704198274280}	& \rsnum{.089670}	& \rnum{1.65526}	& \rsnum{.0000000012677273851307339}	& \rnum{2.39888} \\
-	%		\gls{tae1}	& \rnum{1.69834635792333172897}	& \rsnum{.0000012125681615542155824199981}	& \rnum{2.07791}	& \rsnum{.0000000000000000000049164511186}	& \rnum{3.4511} \\
-	%		\gls{tae3}	& \rnum{2.60358060992170656706}	& \rsnum{.0034108286886881829748637047853}	& \rnum{1.7992}	& \rsnum{.0000005230964359068281862683963}	& \rnum{2.1104} \\
-	%		\gls{tae4}	& \rnum{1.21543176059352121997}	& \rsnum{.0000000000095469441207386226347}	& \rnum{2.63246}	& \rsnum{.000000000000000000000000000000000000000000000000000000000000000000000000000000002945246552214639247}	& \rnum{8.3677} \\
-	%	\end{xltabular}
 
 
 	\begin{table}
@@ -429,7 +383,6 @@
 
 \section{Work function of Stacked Materials}
 
-	%	\afterpage{
 	\begin{table}%[h]	% longtables cannot stay inside a float, otherwise they will not break
 		\begin{xltabular}[c]{1.05\linewidth}{@{} >{\hsize=2\hsize}Y | Y  >{\hsize=0.9\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y >{\hsize=0.7\hsize}Y @{}}
 			% multirow does not get the correct number of rows with tabularx
@@ -465,23 +418,17 @@
 			\gls{fto}\-/\ch{TiO2}/\-\gls{csfamapbibr}	&  $4.04$ & $+0.04$ &  $-0.04$ & $+0.20$ & $+0.05$  \\
 		\end{xltabular}
 	\end{table}
-	%	}
 
 	Further characterisation of the workfunction of the \acr{htm} surface when layered on top of \gls{fto} or \ch{TiO2} or \gls{csfamapbibr} has been performed using \gls{kpfm}.
 	The measured \gls{cpd} allowed us to study the impact the underlying perovskite layer can have on the \acr{htm} material.
-	%It has been reported that perovskite Fermi level could depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
 	Perovskite Fermi level can depend on the underlying material workfunction \cite{Miller2014,Olthof2017}.
 	In our case, the different values between the \gls{fto}\-/\ch{TiO2} and the \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} surface workfunctions indicates that perovskite Fermi level is not pinned to the underlying layers.
 	The value we observed for the \gls{csfamapbibr} surface work function matches the reported one for \gls{mapi} deposited on \ch{TiO2} \cite{Miller2014}.
 	Values for \acr{htm} on top of \gls{fto}\-/\ch{TiO2} have little deviations from the value for the uncovered substrate, with the exception of \gls{tae3}.
 	In the same way, the values measured for the organic layers deposited on top of \gls{fto}\-/\ch{TiO2}\-/\gls{csfamapbibr} are close to the value for the uncovered perovskite layer, also here with the exception of \gls{tae3}.
-	%	The deviations from the substrate value are in the same direction and similar magnitudes for both substrate types, with the \gls{tae3}\index{TAE-3} showing the larger deviation both on top of \ch{TiO2} or on top of perovskite.
 	These measurements have been discussed in Dr.\ Ana Pérez\hyp{}Rodríguez PhD thesis \cite{Perez-Rodriguez2018}.
 	Within the rigid band model, the observation of such a large deviation for \gls{tae3}\index{TAE-3} indicates that the equilibrium Fermi level of the substrate is out of the \acr{htm} band gap.
 	This is expected to cause a strong interfacial dipole (identifiable as depletion\index{space charge layer} layers) and a consequent vacuum level shift.
-	%	The much larger deviations observed when using \gls{tae3}\index{TAE-3} indicate a deviation of the vacuum level for this molecule, which in turn indicates the formation of interfacial dipoles or the lack of alignment of the \gls{tae3}\index{TAE-3} \acr{homo} with perovskite valence band.
-
-	%"the often-questionable validity of vacuum level alignment, the importance of interface dipoles, and band bending as the result of interface formation" \cite{Schulz2019}
 
 \section{Conclusions}
 	Comparing the \gls{voc} obtained from solar cells having different \acr{htm} with the \acr{homo} values of these, we noticed a discrepancy.
