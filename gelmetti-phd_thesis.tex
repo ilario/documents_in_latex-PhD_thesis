@@ -13,6 +13,9 @@
 	% texindy gelmetti-phd_thesis.idx
 	% pdflatex gelmetti-phd_thesis
 	% pdflatex gelmetti-phd_thesis
+	
+	% In order to decrease the dimension of the PDF file and reduce the resolution of some raster images, use:
+	% gs -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -dPrinted=false -dNOPAUSE -dQUIET -dBATCH -sOutputFile=gelmetti-phd_thesis-printer_quality.pdf gelmetti-phd_thesis.pdf
 
 	
 	\documentclass[b5paper, 12pt, openright]{book} % URV suggests B5	
