@@ -238,7 +238,8 @@ bottom=2cm%,
 	\usepackage{needspace}
 	% avoid pagebreak just after epigraph, alternative solutions on: https://tex.stackexchange.com/questions/477674/best-way-to-avoid-page-break-just-after-epigraph
 %	\preto\section{\vfil\penalty-10\vfilneg} % weakened \filbreak which would be \vfil\penalty-200\vfilneg % to avoid newpages to appear just below epitaphs, that usually are just after section names
-	\preto\section{\needspace{7\baselineskip}}
+	\preto\section{\needspace{10\baselineskip}}
+	\preto\subsection{\needspace{10\baselineskip}}
 	
 	\usepackage{breqn} % for automatic line breaking in equations with dmath environment
 	
@@ -828,7 +829,9 @@ bottom=2cm%,
 
 	\cleardoublepage
 
+{\small
 	\printindex
+}
 
 	% for having a smaller font in bibliography (less pages) https://tex.stackexchange.com/a/1441/173645
 	\renewcommand*{\bibfont}{\small}
