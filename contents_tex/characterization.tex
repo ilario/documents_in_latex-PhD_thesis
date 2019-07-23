@@ -30,8 +30,8 @@
 
 		\paragraph{Current and current density}
 		The current $J=P/V$ is measured through an external circuit and the sign is a consequence of the voltage and electrical power definition: a current ("conventional current", flow of positively charged particles) being released from the device's anode and being received from the cathode is defined as negative.
-		The sign convention can be understood thinking that: inside the device, somehow, a positive charge was moved from the high Fermi level contact to the low Fermi level contact, increasing its electrochemical energy, the opposite to what would happen in a resistor, whose current is always positive.
-		In a solar cell device, the current (and the related electrical power) can be either positive or negative depending on the illumination and voltage conditions.
+		The sign convention can be understood thinking that: inside the device, somehow, a positive charge was moved from the high Fermi level contact to the low Fermi level contact, increasing its electrochemical energy, the opposite to what would happen in a resistor, whose electrical power is always positive.
+		In a solar cell device, the electrical power (and the related current) can be either positive or negative depending on the illumination and voltage conditions.
 		It can be expressed in extensive form with current (Amperes) unit or in intensive form "current density" with current (Amperes) per active area (square centimetre) unit.
 
 		\begin{SCfigure}
@@ -46,7 +46,8 @@
 		\Gls{voc} parameter is defined as the voltage $V$ at which the current is zero while the solar cell device is illuminated and in steady state (positive by its own definition).
 
 		\paragraph{\Glsentrydesc{jsc}}
-		\Gls{jsc} parameter is defined as the unsigned value of the current density flowing in an external circuit short circuiting (zero resistance) the solar cell device's contacts while illuminated at 1~sun and in steady state.
+		\Gls{jsc} parameter is defined as the unsigned value of the current density flowing in an external circuit short circuiting (zero resistance) the solar cell device's contacts while illuminated and in steady state.
+		When not specified, the reference illumination intensity is \SI{1}{sun}.
 		It is usually reported in current (milli Amperes) over active area (square centimetre) unit.
 
 		\paragraph{Maximum power density}
@@ -60,6 +61,7 @@
 		\paragraph{\Glsentrydesc{ff}}\label{characterization_ff}
 		\Gls{ff} parameter is defined as the ratio between \gls{pce} and the product of \gls{voc} and \gls{jsc}.
 		This parameter does not have a physical meaning, but it represents how much the series and shunt resistances affect the device efficiency.
+		If resistances are negligible (series resistance very small and shunt resistance very large), the \gls{ff} will be limited by charges' recombination processes.
 		It can be represented either as a fraction of unity or as a percentage.
 		In \cref{fig:iv_params}, the \gls{ff} can be graphically obtained from the ratio of the areas of the two rectangles.
 
@@ -524,7 +526,7 @@
 		By consequence, $\epsilon_|r|$ should be considered as a thickness\hyp{}weighted mean of the relative permittivities of each material between the two accumulation zones.
 		Moreover, as the depletion\index{space charge layer} layers fill up they widen and shrink, so this capacitance can vary as happens for the junction capacitance (\textsl{i.e.}\ transition capacitance) of a $p$-$n$ junction.
 		A voltage dependent geometric capacitance\index{geometric capacitance} can be obtained from dark \acr{ce} measurements applying reverse voltage biases \cite{Kiermasch2018} or \textsl{via} impedance spectroscopy in dark with a constant voltage bias \cite{Brus2016,Pockett2015}.
-		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$-type materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion\index{space charge layer} layers thickness (Debye length), happening in the contacts, is negligible when summed to the perovskite layer thickness.
+		While this dependency cannot be ignored in silicon solar cells or in \gls{osc}, where the $n$ and the $p$-type materials are in close contact, it is likely negligible in perovskite solar cells as the change of depletion\index{space charge layer} layers thickness, happening in the contacts, is negligible when summed to the perovskite layer thickness.
 
 		\paragraph{Energy levels point of view}\label{ce_energy_levels}
 		As we mentioned, the linear trend is related to the accumulation in the contacts depletion\index{space charge layer} layers (or, generically, space\index{space charge layer} charge layers), this can be seen from the decrease of the perovskite\hyp{}contacts conduction band offset between \cref{fig:ce_single_dd_levels-dark,,fig:ce_single_dd_levels-1sun}.
