@@ -1,0 +1,9 @@
+PhD thesis of Ilario Gelmetti
+=============================
+
+image::https://zenodo.org/badge/DOI/10.5281/zenodo.5326749.svg[link="https://doi.org/10.5281/zenodo.5326749"]
+
+You can find here the PDF file of the thesis and the ODP file of the presentation delivered on 2019-07-15.
+
+Feel free to use the LaTeX files as a template for your own thesis.
+
